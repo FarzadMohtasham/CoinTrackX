@@ -1,6 +1,7 @@
-import './App.css'
+import { JSX } from 'react'
+import './App.scss'
 
-function App() {
+function App(): JSX.Element {
   return (
     <div></div>
   )
