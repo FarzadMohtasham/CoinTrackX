@@ -1,0 +1,12 @@
+:root {
+    --font-size-heading-1: 6.4rem;
+    --font-size-heading-2: 4.0rem;
+    --font-size-heading-3: 3.2rem;
+    --font-size-heading-4: 2.4rem;
+
+    --font-size-body-xlg: 2rem;
+    --font-size-body-lg: 1.8rem;
+    --font-size-body-md: 1.6rem;
+    --font-size-body-sm: 1.4rem;
+    --font-size-body-xsm: 1.2rem;
+}

@@ -1,9 +1,11 @@
 import { JSX } from 'react'
-import './App.scss'
+import './App.css'
 
 function App(): JSX.Element {
   return (
-    <div></div>
+    <div className={'app'}>
+      <h2>Hello World</h2>
+    </div>
   )
 }
 
