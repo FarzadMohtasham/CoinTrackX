@@ -1,4 +1,4 @@
-import {styled, css} from 'styled-components'
+import {styled} from 'styled-components'
 import {BadgePropsType} from "../ts/type/BadgeProps.type.ts"
 
 // Component
