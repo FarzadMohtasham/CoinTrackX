@@ -4,7 +4,7 @@ import {styled, css} from 'styled-components'
 import Icon from './Icon.tsx'
 
 //  Types
-import {ButtonPropsType} from "../ts/type/ButtonProps.type.ts";
+import {ButtonPropsType} from "../../ts/type/ButtonProps.type.ts";
 
 // Data
 import {
@@ -12,7 +12,7 @@ import {
     buttonPaddingVariations,
     buttonFontSizeVariations,
     buttonBorderRadius
-} from './../data/Button.data.ts'
+} from '../../data/Button.data.ts'
 
 function Button(props: ButtonPropsType) {
     const {
