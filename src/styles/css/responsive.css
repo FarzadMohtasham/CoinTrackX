@@ -1,0 +1,19 @@
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: var(--breakpoint-sm)) {
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: var(--breakpoint-md)) {
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: var(--breakpoint-lg)) {
+}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: var(--breakpoint-xl)) {
+}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: var(--breakpoint-xxl)) {
+}

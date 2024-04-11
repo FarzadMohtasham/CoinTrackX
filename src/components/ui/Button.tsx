@@ -34,7 +34,7 @@ function Button(props: ButtonPropsType) {
       cursor: pointer;
       padding: ${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']};
       font-size: ${buttonFontSizeVariations[size].fontSize};
-      width: ${expanded ? '100%' : `min-content`};
+      width: ${expanded ? '100%' : `max-content`};
       background-color: ${!outline ? buttonTypeVariations[type].backgroundColor : 'rgba(0, 0, 0, 0)'};
       color: ${!outline ? buttonTypeVariations[type].color : buttonTypeVariations[type].backgroundColor};
       border-radius: ${buttonBorderRadius[borderRadius]};
@@ -42,7 +42,7 @@ function Button(props: ButtonPropsType) {
       transition: background-color .3s ease-in-out, border .3s ease-in-out;
 
       &:hover {
-        ${outline && css`background-color: var(--color-${type + '-100)'};`}
+        ${outline && css`background-color: var(--color-${type + '-50)'};`}
 
         ${!outline && css`background-color: var(--color-${type + '-700)'};`}
         ${!outline && css`border: .2rem solid var(--color-${type + '-700)'};`}
