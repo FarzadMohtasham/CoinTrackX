@@ -1,7 +1,7 @@
 :root {
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --breakpoint-xxl: 1400px;
+    --breakpoint-sm: 57.6rem;
+    --breakpoint-md: 76.8rem;
+    --breakpoint-lg: 99.2rem;
+    --breakpoint-xl: 120.0rem;
+    --breakpoint-xxl: 140.0rem;
 }

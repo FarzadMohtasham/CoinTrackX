@@ -25,11 +25,11 @@ function Button(props: ButtonPropsType) {
         expanded = false,
         borderRadius = 'sm',
         outline = false,
+        hideOn = 'none'
     }: ButtonPropsType = props
 
-    // const hPadding
-
     const StyledButton = styled.button`
+      display: inline-block;
       text-align: center;
       cursor: pointer;
       padding: ${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']};
@@ -42,15 +42,30 @@ function Button(props: ButtonPropsType) {
       transition: background-color .3s ease-in-out, border .3s ease-in-out;
 
       &:hover {
-        ${outline && css`background-color: var(--color-${type + '-50)'};`}
+        ${outline && css`background-color: var(--color-${type + '-100)'};`}
 
         ${!outline && css`background-color: var(--color-${type + '-700)'};`}
         ${!outline && css`border: .2rem solid var(--color-${type + '-700)'};`}
       }
+
+      /*Very Small devices (landscape phones, 576px and down)*/
+      @media (max-width: 76.79rem) {
+        ${hideOn === 'mobile' ? css`display: none;` : ''}
+      }
+
+      /*Medium devices (tablets, 768px and up)*/
+      @media (min-width: 76.8rem) {
+        ${hideOn === 'tablet' ? css`display: none;` : ''}
+      }
+
+      /*Large devices (desktops, 992px and up)*/
+      @media (min-width: 99.2rem) {
+        ${hideOn === 'desktop' ? css`display: none;` : ''}
+      }
     `
 
     return (
-        <StyledButton>
+        <StyledButton className={hideOn !== 'none' ? `hide-on-${hideOn}` : ''}>
             {hasIcon && (iconDir === 'left' && <Icon icon={icon}/>)}
             {children}
             {hasIcon && (iconDir === 'right' && <Icon icon={icon}/>)}

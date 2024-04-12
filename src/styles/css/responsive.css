@@ -1,19 +1,41 @@
+/*Very Small devices (landscape phones, 576px and down)*/
+@media (max-width: 57.6rem) {
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
 /*Small devices (landscape phones, 576px and up)*/
-@media (min-width: var(--breakpoint-sm)) {
+@media (min-width: 57.6rem) {
+    .hide-on-mobile {
+        display: none;
+    }
 }
 
 /*Medium devices (tablets, 768px and up)*/
-@media (min-width: var(--breakpoint-md)) {
+@media (min-width: 76.8rem) {
+    .hide-on-tablet {
+        display: none;
+    }
 }
 
 /*Large devices (desktops, 992px and up)*/
-@media (min-width: var(--breakpoint-lg)) {
+@media (min-width: 99.2rem) {
+    .hide-on-desktop {
+        display: none;
+    }
 }
 
 /*X-Large devices (large desktops, 1200px and up)*/
-@media (min-width: var(--breakpoint-xl)) {
+@media (min-width: 120.0rem) {
+    .hide-on-desktop {
+        display: none;
+    }
 }
 
 /*XX-Large devices (larger desktops, 1400px and up)*/
-@media (min-width: var(--breakpoint-xxl)) {
+@media (min-width: 140.0rem) {
+    .hide-on-desktop {
+        display: none;
+    }
 }

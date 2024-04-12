@@ -9,4 +9,5 @@ export type ButtonPropsType = {
     hollow?: boolean;
     borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full',
     outline?: boolean,
+    hideOn?: 'mobile' | 'tablet' | 'desktop' | 'none'
 }

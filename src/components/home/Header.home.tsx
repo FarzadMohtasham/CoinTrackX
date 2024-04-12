@@ -102,6 +102,7 @@ export default function Header() {
                 </NavLink>
                 <Button type={'primary'}
                         borderRadius={'lg'}
+                        hideOn={'mobile'}
                         outline>
                     Get Started
                 </Button>
