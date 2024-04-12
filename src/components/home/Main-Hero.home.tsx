@@ -9,7 +9,7 @@ const HeroStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 6.8rem;
-  padding: 3rem 0;
+  padding: 8rem 0;
 
   .left-col {
     display: flex;
