@@ -3,7 +3,7 @@ import Heading from "../ui/Heading.tsx";
 import Button from "../ui/Button.tsx";
 import {Link} from "react-router-dom";
 
-const HeroStyled = styled.div`
+const HeroStyled = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
