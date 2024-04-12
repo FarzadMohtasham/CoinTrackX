@@ -49,17 +49,17 @@ function Button(props: ButtonPropsType) {
       }
 
       /*Very Small devices (landscape phones, 576px and down)*/
-      @media (max-width: 76.79rem) {
+      @media (max-width: ${props => props.theme.responsive.md}) {
         ${hideOn === 'mobile' ? css`display: none;` : ''}
       }
 
       /*Medium devices (tablets, 768px and up)*/
-      @media (min-width: 76.8rem) {
+      @media (min-width: ${props => props.theme.responsive.md}) {
         ${hideOn === 'tablet' ? css`display: none;` : ''}
       }
 
       /*Large devices (desktops, 992px and up)*/
-      @media (min-width: 99.2rem) {
+      @media (min-width: ${props => props.theme.responsive.lg}) {
         ${hideOn === 'desktop' ? css`display: none;` : ''}
       }
     `

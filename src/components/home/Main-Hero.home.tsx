@@ -1,6 +1,7 @@
-import { styled } from 'styled-components'
+import {styled} from 'styled-components'
 import Heading from "../ui/Heading.tsx";
 import Button from "../ui/Button.tsx";
+import {Link} from "react-router-dom";
 
 const HeroStyled = styled.div`
   display: flex;
@@ -9,17 +10,6 @@ const HeroStyled = styled.div`
   align-items: center;
   gap: 6.8rem;
   padding: 3rem 0;
-
-  /*X-Large devices (large desktops, 1200px and up)*/
-  @media (min-width: ${props => props.theme.responsive.xl}) {
-    flex-direction: row;
-    gap: 11.8rem;
-
-    .left-col {
-      align-items: flex-start !important;
-      text-align: left !important;
-    }
-  }
 
   .left-col {
     display: flex;
@@ -48,7 +38,40 @@ const HeroStyled = styled.div`
 
   .right-col {
     img {
-      max-width: 54.4rem;
+      width: 100%;
+    }
+  }
+
+  /*Very Small devices (landscape phones, 576px and down)*/
+  @media (max-width: ${props => props.theme.responsive.md}) {
+    .left-col {
+      width: 100%;
+    }
+
+    .right-col {
+      width: 100%;
+    }
+  }
+
+  /*Medium devices (tablets, 768px and up)*/
+  @media (min-width: ${props => props.theme.responsive.md}) {
+    flex-direction: row;
+    gap: 11.8rem;
+
+    .left-col {
+      width: 50%;
+    }
+
+    .right-col {
+      width: 50%;
+    }
+  }
+
+  /*X-Large devices (large desktops, 1200px and up)*/
+  @media (min-width: ${props => props.theme.responsive.xl}) {
+    .left-col {
+      align-items: flex-start !important;
+      text-align: left !important;
     }
   }
 `
@@ -60,10 +83,12 @@ export default function Hero() {
                 <span>Sign in to your secure wallet!</span>
                 <Heading>The next-gen crypto tracking & trading training platform</Heading>
                 <p>Track your crypto currency coin and tokens in one place, from BTC and ETH to XRP...</p>
-                <Button type={"primary"}
-                        borderRadius={'lg'}>
-                    Get started
-                </Button>
+                <Link to={'login'}>
+                    <Button type={"primary"}
+                            borderRadius={'lg'}>
+                        Get started
+                    </Button>
+                </Link>
             </div>
 
             <div className={'right-col'}>
