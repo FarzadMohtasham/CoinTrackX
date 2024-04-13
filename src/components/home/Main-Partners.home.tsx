@@ -1,4 +1,5 @@
-import { styled } from "styled-components"
+import {styled} from "styled-components"
+import Container from "../ui/Container.tsx";
 
 const PartnersContainer = styled.section`
   padding-top: 10rem;
@@ -57,19 +58,21 @@ const Brand = styled.div`
 
 export default function Partners() {
     return (
-        <PartnersContainer>
-            <DataWrapper>
-                <span className={'label'}>partners</span>
-                <h3 className={'title'}>We’re backed by the bests of the world!</h3>
-                <span className={'desc'}>Trusted by these blockchains leading industries </span>
-            </DataWrapper>
+        <Container>
+            <PartnersContainer>
+                <DataWrapper>
+                    <span className={'label'}>partners</span>
+                    <h3 className={'title'}>We’re backed by the bests of the world!</h3>
+                    <span className={'desc'}>Trusted by these blockchains leading industries </span>
+                </DataWrapper>
 
-            <Brands>
-                <Brand><img src="/images/logo1.brand.home.svg" alt=""/></Brand>
-                <Brand><img src="/images/logo2.brand.home.svg" alt=""/></Brand>
-                <Brand><img src="/images/logo3.brand.home.svg" alt=""/></Brand>
-                <Brand><img src="/images/logo4.brand.home.svg" alt=""/></Brand>
-            </Brands>
-        </PartnersContainer>
+                <Brands>
+                    <Brand><img src="/images/logo1.brand.home.svg" alt=""/></Brand>
+                    <Brand><img src="/images/logo2.brand.home.svg" alt=""/></Brand>
+                    <Brand><img src="/images/logo3.brand.home.svg" alt=""/></Brand>
+                    <Brand><img src="/images/logo4.brand.home.svg" alt=""/></Brand>
+                </Brands>
+            </PartnersContainer>
+        </Container>
     )
 }

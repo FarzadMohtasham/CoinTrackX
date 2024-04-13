@@ -1,4 +1,5 @@
 import {styled} from "styled-components"
+import Container from "../ui/Container.tsx";
 
 const numbersList = [
     {
@@ -48,21 +49,23 @@ const NumberStyled = styled.div`
 
 export default function Numbers() {
     return (
-        <NumbersContainerStyled>
-            {
-                numbersList.map((numberItem, index) => {
-                    return (
-                        <NumberStyled key={numberItem.title + index}>
-                            <h3 className={'title'}>
-                                {numberItem.title}
-                            </h3>
-                            <span className={'desc'}>
+        <Container>
+            <NumbersContainerStyled>
+                {
+                    numbersList.map((numberItem, index) => {
+                        return (
+                            <NumberStyled key={numberItem.title + index}>
+                                <h3 className={'title'}>
+                                    {numberItem.title}
+                                </h3>
+                                <span className={'desc'}>
                                 {numberItem.desc}
                             </span>
-                        </NumberStyled>
-                    )
-                })
-            }
-        </NumbersContainerStyled>
+                            </NumberStyled>
+                        )
+                    })
+                }
+            </NumbersContainerStyled>
+        </Container>
     )
 }

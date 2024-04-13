@@ -1,7 +1,8 @@
-import {styled} from 'styled-components'
+import {styled, css} from 'styled-components'
 import Heading from "../ui/Heading.tsx";
 import Button from "../ui/Button.tsx";
 import {Link} from "react-router-dom";
+import Container from "../ui/Container.tsx";
 
 const HeroStyled = styled.section`
   display: flex;
@@ -78,22 +79,24 @@ const HeroStyled = styled.section`
 
 export default function Hero() {
     return (
-        <HeroStyled>
-            <div className={'left-col'}>
-                <span>Sign in to your secure wallet!</span>
-                <Heading>The next-gen crypto tracking & trading training platform</Heading>
-                <p>Track your crypto currency coin and tokens in one place, from BTC and ETH to XRP...</p>
-                <Link to={'login'}>
-                    <Button type={"primary"}
-                            borderRadius={'lg'}>
-                        Get started
-                    </Button>
-                </Link>
-            </div>
+        <Container backgroundStyle={css`background: linear-gradient(to top, #f8f7fe, #fff);`}>
+            <HeroStyled>
+                <div className={'left-col'}>
+                    <span>Sign in to your secure wallet!</span>
+                    <Heading>The next-gen crypto tracking & trading training platform</Heading>
+                    <p>Track your crypto currency coin and tokens in one place, from BTC and ETH to XRP...</p>
+                    <Link to={'login'}>
+                        <Button type={"primary"}
+                                borderRadius={'lg'}>
+                            Get started
+                        </Button>
+                    </Link>
+                </div>
 
-            <div className={'right-col'}>
-                <img src="/images/illustration.home.png" alt=""/>
-            </div>
-        </HeroStyled>
+                <div className={'right-col'}>
+                    <img src="/images/illustration.home.png" alt=""/>
+                </div>
+            </HeroStyled>
+        </Container>
     )
 }

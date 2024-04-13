@@ -1,11 +1,14 @@
 import {styled} from 'styled-components'
 
+import { ContainerPropsType } from './../../ts/type/ContainerProps.type.ts'
+
 const ContainerStyled = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  ${props => props.backgroundStyle}
+  
   .wrapper {
     width: 95%;
     max-width: 95%;
@@ -47,11 +50,15 @@ const ContainerStyled = styled.div`
   }
 `
 
-export default function Container(props: any) {
-    const {children} = props
+export default function Container(props: ContainerPropsType) {
+    const {
+        children,
+        backgroundStyle = ''
+    } = props
 
     return (
-        <ContainerStyled>
+        // @ts-ignore
+        <ContainerStyled backgroundStyle={backgroundStyle}>
             <div className={'wrapper'}>
                 {children}
             </div>
