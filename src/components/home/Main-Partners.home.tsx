@@ -1,35 +1,10 @@
 import {styled} from "styled-components"
 import Container from "../ui/Container.tsx";
+import HeadingBox from "../ui/HeadingBox.tsx";
 
 const PartnersContainer = styled.section`
   padding-top: 10rem;
   padding-bottom: 4.8rem;
-`
-
-const DataWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-  padding-bottom: 4.8rem;
-
-  .label {
-    text-transform: uppercase;
-    color: var(--color-primary);
-    display: block;
-    text-align: center;
-  }
-
-  .title {
-    text-align: center;
-    font-weight: 500;
-  }
-
-  .desc {
-    text-align: center;
-    color: var(--color-black-500);
-    font-size: var(--font-size-body-md);
-    font-weight: 500;
-  }
 `
 
 const Brands = styled.div`
@@ -60,11 +35,10 @@ export default function Partners() {
     return (
         <Container>
             <PartnersContainer>
-                <DataWrapper>
-                    <span className={'label'}>partners</span>
-                    <h3 className={'title'}>We’re backed by the bests of the world!</h3>
-                    <span className={'desc'}>Trusted by these blockchains leading industries </span>
-                </DataWrapper>
+                <HeadingBox label={'partners'}
+                            heading={'We’re backed by the bests of the world!'}
+                            desc={'Trusted by these blockchains leading industries'}
+                            headingTag={'h3'}/>
 
                 <Brands>
                     <Brand><img src="/images/logo1.brand.home.svg" alt=""/></Brand>
