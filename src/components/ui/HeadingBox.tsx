@@ -30,17 +30,17 @@ const DescStyled = styled.p`
 
 export default function HeadingBox(props: HeadingBoxType) {
     const {
-        label = '',
-        heading = '',
-        desc = '',
+        label = null,
+        heading = null,
+        desc = null,
         headingTag = 'h3',
     }: HeadingBoxType = props
 
     return (
         <HeadingBoxStyled>
-            <LabelStyled>{label}</LabelStyled>
-            <HeadingStyled as={headingTag}>{heading}</HeadingStyled>
-            <DescStyled>{desc}</DescStyled>
+            {label && <LabelStyled>{label}</LabelStyled>}
+            {heading && <HeadingStyled as={headingTag}>{heading}</HeadingStyled>}
+            {desc && <DescStyled>{desc}</DescStyled>}
         </HeadingBoxStyled>
     )
 }
