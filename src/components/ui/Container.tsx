@@ -3,7 +3,7 @@ import {styled} from 'styled-components'
 import {ContainerPropsType} from './../../ts/type/ContainerProps.type.ts'
 
 const backgroundStyleFn = (props: ContainerPropsType) => {
-    return props.backgroundStyle
+    return props.background_style
 }
 
 const ContainerStyled = styled.div`
@@ -57,12 +57,12 @@ const ContainerStyled = styled.div`
 export default function Container(props: ContainerPropsType) {
     const {
         children,
-        backgroundStyle = ''
+        background_style = ''
     } = props
 
     return (
         // @ts-ignore
-        <ContainerStyled backgroundStyle={backgroundStyle}>
+        <ContainerStyled background_style={background_style}>
             <div className={'wrapper'}>
                 {children}
             </div>
