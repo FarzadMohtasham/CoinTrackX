@@ -43,7 +43,7 @@ const HeroStyled = styled.section`
     }
   }
 
-  /*Very Small devices (landscape phones, 576px and down)*/
+  /*Very Small devices (landscape phones, 768px and down)*/
   @media (max-width: ${props => props.theme.responsive.md}) {
     .left-col {
       width: 100%;
@@ -79,7 +79,7 @@ const HeroStyled = styled.section`
 
 export default function Hero() {
     return (
-        <Container backgroundStyle={css`background: linear-gradient(to top, #f8f7fe, #fff);`}>
+        <Container background_style={css`background: linear-gradient(to top, #f8f7fe, #fff);`}>
             <HeroStyled>
                 <div className={'left-col'}>
                     <span>Sign in to your secure wallet!</span>

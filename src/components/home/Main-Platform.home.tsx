@@ -15,7 +15,7 @@ const PlatformWrapper = styled.div`
 
 export default function Platform() {
     return (
-        <Container background_style={css`background: linear-gradient(to top, #f8f7fe, #f8f7fe, #fff);`}>
+        <Container background_style={css`background: linear-gradient(to top, #FFFFFF, #EFEDFD, #FFFFFF);`}>
             <PlatformWrapper>
                 <HeadingBox label={'platform'}
                             heading={'Get a bird’s eye view of your crypto assets growing!'}
