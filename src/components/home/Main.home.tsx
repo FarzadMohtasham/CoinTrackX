@@ -1,7 +1,6 @@
 import BuyCrypto from './Main-BuyCrypto.home.tsx'
 import Coins from './Main-Coins.home.tsx'
 import Hero from './Main-Hero.home.tsx'
-import Features from './Main-Features.home.tsx'
 import Numbers from './Main-Numbers.home.tsx'
 import Partners from './Main-Partners.home.tsx'
 import Testimonials from './Main-Testimonials.home.tsx'
@@ -17,7 +16,6 @@ export default function Main() {
             <Platform/>
             <Coins/>
             <BuyCrypto/>
-            <Features/>
             <Testimonials/>
         </div>
     )
