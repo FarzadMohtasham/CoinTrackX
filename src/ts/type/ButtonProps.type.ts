@@ -1,4 +1,6 @@
-export type ButtonPropsType = {
+import {ComponentProps} from "react";
+
+export type ButtonPropsType = ComponentProps<any> & {
     children: string;
     type?: 'primary' | 'secondary' | 'black' | 'white' | 'danger';
     hasIcon?: boolean;

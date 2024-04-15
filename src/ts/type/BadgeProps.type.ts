@@ -1,4 +1,6 @@
-export type BadgePropsType = {
+import {ComponentProps} from "react";
+
+export type BadgePropsType = ComponentProps<any> & {
     children: string;
     type?: 'success' | 'danger';
     hasIcon?: boolean;

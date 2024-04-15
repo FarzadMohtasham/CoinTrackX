@@ -1,4 +1,6 @@
-export type HeadingBoxType = {
+import {ComponentProps} from 'react'
+
+export type HeadingBoxType = ComponentProps<any> & {
     label?: string | null;
     heading?: string | null;
     desc?: string | null;
