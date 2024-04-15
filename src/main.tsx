@@ -7,13 +7,26 @@ import {lightTheme} from './utils/themes.ts'
 // Styling imports
 import './styles/index.css'
 
-// Components
-import Home from "./pages/Home.tsx";
+// Pages
+import Home from './pages/Home.tsx'
+
+import Login from './pages/auth/Login.tsx'
+import Signup from './pages/auth/Signup.tsx'
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: "/",
         element: <Home/>,
+        children: [
+            {
+                path: "/login",
+                element: <Login/>
+            },
+            {
+                path: "/signup",
+                element: <Signup/>
+            }
+        ]
     }
 ])
 

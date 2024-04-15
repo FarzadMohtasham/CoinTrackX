@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
-import logo from './../../../public/images/logo.svg'
-import logoType from './../../../public/images/logo-type.svg'
+import logo from '/images/logo.svg'
+import logoType from '/images/logo-type.svg'
 
 const StyledLogo = styled.div`
   display: flex;
