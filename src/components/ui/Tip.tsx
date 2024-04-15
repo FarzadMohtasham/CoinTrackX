@@ -1,5 +1,4 @@
 import {JSX, useState} from 'react'
-import { redirect } from 'react-router-dom'
 
 import styles from './Tip.module.scss'
 
@@ -12,10 +11,10 @@ export default function Tip(props: TipPropsType): JSX.Element | undefined {
     const {
         children,
         extended = false,
-        closable = false,
+        // closable = false,
         redirect = true,
-        link = '',
-        replaceHistory = false,
+        // link = '',
+        // replaceHistory = false,
     } = props
 
     if (hide) return
@@ -36,7 +35,7 @@ export default function Tip(props: TipPropsType): JSX.Element | undefined {
     function onRedirectHandler(): void {
         if (!redirect) return
 
-        redirect('')
+        // redirect('')
     }
 
     return (
