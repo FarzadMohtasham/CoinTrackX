@@ -94,14 +94,13 @@ export default function Header() {
 
             <ButtonsCTAStyled className='cta-buttons'>
                 <NavLink to={'login'}>
-                    <Button type={'black'}
+                    <Button btnType={'black'}
                             borderRadius={'lg'}
                             outline>
                         Sign In
                     </Button>
                 </NavLink>
-                <Button type={'primary'}
-                        borderRadius={'lg'}
+                <Button borderRadius={'lg'}
                         hideOn={'mobile'}
                         outline>
                     Get Started

@@ -1,10 +1,10 @@
-import {styled, css, StyledObject} from 'styled-components'
+import {styled, css} from 'styled-components'
 
 // Components
 import Icon from './Icon.tsx'
 
 //  Types
-import {ButtonPropsType} from "../../ts/type/ButtonProps.type.ts";
+import {ButtonPropsType, Properties} from "../../ts/type/ButtonProps.type.ts";
 
 // Data
 import {
@@ -13,20 +13,6 @@ import {
     buttonFontSizeVariations,
     buttonBorderRadius
 } from '../../data/Button.data.ts'
-
-type Properties = {
-    padding: StyledObject;
-    fontSize: StyledObject;
-    expanded: StyledObject;
-    backgroundColor: StyledObject;
-    color: StyledObject;
-    borderRadiusP: StyledObject;
-    border: StyledObject;
-    hover: StyledObject;
-    mobileMedia: StyledObject;
-    tabletMedia: StyledObject;
-    desktopMedia: StyledObject;
-}
 
 const StyledButton = styled.button<{ properties: Properties }>`
   display: inline-block;
@@ -64,7 +50,7 @@ const StyledButton = styled.button<{ properties: Properties }>`
 function Button(props: ButtonPropsType) {
     const {
         children = 'ERROR - No Value',
-        type = 'primary',
+        btnType = 'primary',
         hasIcon = false,
         icon = '',
         iconDir = 'left',
@@ -73,19 +59,19 @@ function Button(props: ButtonPropsType) {
         borderRadius = 'sm',
         outline = false,
         hideOn = 'none'
-    } = props
+    }: ButtonPropsType = props
 
     const padding = css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
     const fontSize = css`${buttonFontSizeVariations[size].fontSize}`
-    const backgroundColor = css`${!outline ? buttonTypeVariations[type].backgroundColor : 'rgba(0, 0, 0, 0)'}`
-    const color = css`${!outline ? buttonTypeVariations[type].color : buttonTypeVariations[type].backgroundColor}`
+    const backgroundColor = css`${!outline ? buttonTypeVariations[btnType].backgroundColor : 'rgba(0, 0, 0, 0)'}`
+    const color = css`${!outline ? buttonTypeVariations[btnType].color : buttonTypeVariations[btnType].backgroundColor}`
     const borderRadiusP = css`${buttonBorderRadius[borderRadius]}`
-    const border = css`${outline ? css`var(--color-${type + '-200)'}` : `${buttonTypeVariations[type].backgroundColor}`}`
+    const border = css`${outline ? css`var(--color-${btnType + '-200)'}` : `${buttonTypeVariations[btnType].backgroundColor}`}`
     const hover = css`
-      ${outline && css`background-color: var(--color-${type + '-100)'};`}
+      ${outline && css`background-color: var(--color-${btnType + '-100)'};`}
 
-      ${!outline && css`background-color: var(--color-${type + '-700)'};`}
-      ${!outline && css`border: .2rem solid var(--color-${type + '-700)'};`}
+      ${!outline && css`background-color: var(--color-${btnType + '-700)'};`}
+      ${!outline && css`border: .2rem solid var(--color-${btnType + '-700)'};`}
     `
     const mobileMedia = `${hideOn === 'mobile' ? css`display: none;` : ''}`
     const tabletMedia = `${hideOn === 'tablet' ? css`display: none;` : ''}`

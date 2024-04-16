@@ -1,32 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import {RouterProvider} from 'react-router-dom'
 import {ThemeProvider} from "styled-components";
 import {lightTheme} from './utils/themes.ts'
+import router from "./router.tsx";
+import supabaseClient from "./config/supabase.ts";
 
 // Styling imports
 import './styles/index.css'
 
-// Pages
-import Home from './pages/Home.tsx'
-
-import Login from './pages/auth/Login.tsx'
-import Signup from './pages/auth/Signup.tsx'
-
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Home/>,
-    },
-    {
-        path: "/login",
-        element: <Login/>
-    },
-    {
-        path: "/signup",
-        element: <Signup/>
-    }
-])
+console.log(supabaseClient)
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
