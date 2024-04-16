@@ -73,7 +73,7 @@ function Button(props: ButtonPropsType) {
         borderRadius = 'sm',
         outline = false,
         hideOn = 'none'
-    }: ButtonPropsType = props
+    } = props
 
     const padding = css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
     const fontSize = css`${buttonFontSizeVariations[size].fontSize}`

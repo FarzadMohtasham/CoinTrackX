@@ -27,13 +27,14 @@ const HeroStyled = styled.section`
     h1 {
       display: block;
       line-height: 1.1;
-      padding-bottom: 3.2rem;
+      margin-bottom: 3.2rem;
     }
 
     p {
       color: var(--color-black-600);
       line-height: 1.55;
-      padding-bottom: 4.8rem;
+      margin-bottom: 4.8rem;
+      display: block;
     }
   }
 
@@ -83,11 +84,10 @@ export default function Hero() {
             <HeroStyled>
                 <div className={'left-col'}>
                     <span>Sign in to your secure wallet!</span>
-                    <Heading>The next-gen crypto tracking & trading training platform</Heading>
+                    <Heading heading_type={'h1'}>The next-gen crypto tracking & trading training platform</Heading>
                     <p>Track your crypto currency coin and tokens in one place, from BTC and ETH to XRP...</p>
                     <Link to={'login'}>
-                        <Button type={"primary"}
-                                borderRadius={'lg'}>
+                        <Button borderRadius={'lg'}>
                             Get started
                         </Button>
                     </Link>
