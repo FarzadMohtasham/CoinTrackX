@@ -1,6 +1,6 @@
 import {ComponentProps} from "react";
 
-export type TipPropsType = ComponentProps<any> & {
+export type TipPropsType = ComponentProps<'div'> & {
     children: string;
     closable?: boolean;
     redirect?: boolean;
