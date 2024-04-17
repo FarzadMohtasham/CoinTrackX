@@ -57,12 +57,14 @@ const ContainerStyled = styled.div`
 export default function Container(props: ContainerPropsType) {
     const {
         children,
-        background_style = ''
+        background_style = '',
+        tag_type = 'div'
     } = props
 
     return (
         // @ts-ignore
-        <ContainerStyled background_style={background_style}>
+        <ContainerStyled background_style={background_style}
+                         as={tag_type}>
             <div className={'wrapper'}>
                 {children}
             </div>

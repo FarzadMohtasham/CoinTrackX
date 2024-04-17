@@ -38,7 +38,7 @@ export default function SuperchargeCard(props: SuperchargePropsType) {
             <img src={imgSrc}
                  alt={title}/>
             <Heading font_weight={'500'}
-                     className={'card-heading'}
+                     class_name={'card-heading'}
                      heading_type={'h4'}>{title}</Heading>
             <p>{desc}</p>
         </SuperChargedStyled>

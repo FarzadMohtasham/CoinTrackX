@@ -82,7 +82,7 @@ export default function Review(props: ReviewProps) {
                 }
             </div>
 
-            <Heading className={'quote'} heading_type={'h6'}>
+            <Heading class_name={'quote'} heading_type={'h6'}>
                 {quote}
             </Heading>
 

@@ -10,7 +10,7 @@ const StyledLogo = styled.div`
 
 export default function Logo() {
     return (
-        <StyledLogo>
+        <StyledLogo className={'brand-logo'}>
             <img src={logo}
                  alt="logo"
                  width={24}/>

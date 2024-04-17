@@ -1,10 +1,20 @@
+import {styled} from "styled-components"
+import {CopyRightProps} from "../../ts/type/CopyRightProps.type.ts"
+
 const date: Date = new Date()
 
-export default function CopyRight() {
+const CopyRightStyled = styled.span`
+  color: ${props => props.color};
+`
+
+export default function CopyRight(props: CopyRightProps) {
+    const {
+        color = 'black'
+    } = props
 
     return (
-        <span>
+        <CopyRightStyled color={color} className={'copy-right'}>
             Copyright {date.getFullYear()} © CoinTrackX
-        </span>
+        </CopyRightStyled>
     )
 }

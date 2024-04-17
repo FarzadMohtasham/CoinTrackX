@@ -12,12 +12,12 @@ export default function Heading(props: HeadingPropsType) {
         children,
         heading_type = 'h3',
         font_weight = '400',
-        className = ''
+        class_name = ''
     } = props
 
     return (
         // @ts-ignore
-        <HeadingStyled className={className} font_weight={font_weight} as={heading_type}>
+        <HeadingStyled className={class_name} font_weight={font_weight} as={heading_type}>
             {children}
         </HeadingStyled>
     )
