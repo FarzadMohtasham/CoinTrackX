@@ -1,6 +1,4 @@
-import {ComponentProps} from "react";
-
-export type HeadingPropsType = ComponentProps<'h1'> & {
+export type HeadingPropsType = {
     children: string;
     heading_type?: string;
     font_weight?: string;

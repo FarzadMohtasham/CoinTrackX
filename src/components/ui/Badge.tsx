@@ -46,9 +46,9 @@ export default function Badge(props: BadgePropsType) {
 
     return (
         <BadgeStyled>
-            {hasIcon && (iconDir === 'left' ? <Icon icon={icon}/> : '')}
+            {hasIcon && (iconDir === 'left' ? <Icon icon_src={icon}/> : '')}
             {children}
-            {hasIcon && (iconDir === 'right' ? <Icon icon={icon}/> : '')}
+            {hasIcon && (iconDir === 'right' ? <Icon icon_src={icon}/> : '')}
         </BadgeStyled>
     )
 }

@@ -69,6 +69,10 @@ const NavItemStyled = styled.li`
 const ButtonsCTAStyled = styled.div`
   display: flex;
   gap: 1.6rem;
+  
+  a {
+    text-decoration: none;
+  }
 `
 
 export default function Header() {

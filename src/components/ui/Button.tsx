@@ -15,7 +15,10 @@ import {
 } from '../../data/Button.data.ts'
 
 const StyledButton = styled.button<{ properties: Properties }>`
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  justify-content: center;
   text-align: center;
   cursor: pointer;
   padding: ${(props) => props.properties.padding};
@@ -50,6 +53,7 @@ const StyledButton = styled.button<{ properties: Properties }>`
 function Button(props: ButtonPropsType) {
     const {
         children = 'ERROR - No Value',
+        class_name = '',
         btnType = 'primary',
         hasIcon = false,
         icon = '',
@@ -58,19 +62,23 @@ function Button(props: ButtonPropsType) {
         expanded = false,
         borderRadius = 'sm',
         outline = false,
-        hideOn = 'none'
-    }: ButtonPropsType = props
+        hideOn = 'none',
+        on_click_handler = () => {
+            console.log('fuck me')
+        },
+        remove_padding = false
+    } = props
 
-    const padding = css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
+    const padding = remove_padding ? 0 : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
     const fontSize = css`${buttonFontSizeVariations[size].fontSize}`
     const backgroundColor = css`${!outline ? buttonTypeVariations[btnType].backgroundColor : 'rgba(0, 0, 0, 0)'}`
     const color = css`${!outline ? buttonTypeVariations[btnType].color : buttonTypeVariations[btnType].backgroundColor}`
     const borderRadiusP = css`${buttonBorderRadius[borderRadius]}`
-    const border = css`${outline ? css`var(--color-${btnType + '-200)'}` : `${buttonTypeVariations[btnType].backgroundColor}`}`
+    const border = css`${outline ? css`var(--color-${btnType + '-100)'}` : `${buttonTypeVariations[btnType].backgroundColor}`}`
     const hover = css`
-      ${outline && css`background-color: var(--color-${btnType + '-100)'};`}
+      ${outline && css`background-color: var(--color-${btnType + '-50)'};`}
 
-      ${!outline && css`background-color: var(--color-${btnType + '-700)'};`}
+      ${!outline && css`background-color: var(--color-${btnType + '-900)'};`}
       ${!outline && css`border: .2rem solid var(--color-${btnType + '-700)'};`}
     `
     const mobileMedia = `${hideOn === 'mobile' ? css`display: none;` : ''}`
@@ -88,15 +96,19 @@ function Button(props: ButtonPropsType) {
         mobileMedia,
         tabletMedia,
         desktopMedia,
-        expanded
+        expanded,
     }
 
     return (
         // @ts-ignore
-        <StyledButton className={hideOn !== 'none' ? `hide-on-${hideOn}` : ''} properties={buttonProperties}>
-            {hasIcon && (iconDir === 'left' && <Icon icon={icon}/>)}
+        <StyledButton className={`${class_name} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`} properties={buttonProperties}
+                      onClick={on_click_handler}
+        >
+            {hasIcon && (iconDir === 'left' &&
+                <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
             {children}
-            {hasIcon && (iconDir === 'right' && <Icon icon={icon}/>)}
+            {hasIcon && (iconDir === 'right' &&
+                <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
         </StyledButton>
     )
 }

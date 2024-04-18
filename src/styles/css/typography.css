@@ -10,7 +10,3 @@
     --font-size-body-sm: 1.4rem;
     --font-size-body-xsm: 1.2rem;
 }
-
-h1, h2, h3, h4, h5, h6, p, span, a, button, li {
-    font-family: "Sora", sans-serif;
-}

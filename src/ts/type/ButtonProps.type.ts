@@ -1,4 +1,3 @@
-import {ComponentProps} from "react";
 import {StyledObject} from "styled-components";
 
 export type Properties = {
@@ -15,8 +14,9 @@ export type Properties = {
     desktopMedia: StyledObject;
 }
 
-export type ButtonPropsType = ComponentProps<'button'> & {
+export type ButtonPropsType = {
     children: string;
+    class_name?: string;
     btnType?: 'primary' | 'secondary' | 'black' | 'white' | 'danger';
     hasIcon?: boolean;
     icon?: any;
@@ -24,7 +24,9 @@ export type ButtonPropsType = ComponentProps<'button'> & {
     size?: 'sm' | 'lg';
     expanded?: boolean;
     hollow?: boolean;
-    borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full',
-    outline?: boolean,
-    hideOn?: 'mobile' | 'tablet' | 'desktop' | 'none'
+    borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+    outline?: boolean;
+    hideOn?: 'mobile' | 'tablet' | 'desktop' | 'none';
+    on_click_handler?: () => void,
+    remove_padding?: boolean
 }
