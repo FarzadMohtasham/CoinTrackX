@@ -6,3 +6,7 @@ export type HeadingPropsType = {
     font_weight?: string;
     class_name?: string;
 }
+
+export type HeadingStyledProps = {
+    font_weight: string;
+}
