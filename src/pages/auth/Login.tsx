@@ -6,6 +6,7 @@ import EmailInput from "../../components/ui/Input-Fields/Email.input.tsx"
 import {Link} from "react-router-dom"
 
 import {toast, Toaster} from 'react-hot-toast'
+import {useState} from "react";
 
 const LoginContainer = styled.main`
   background-color: #F9F8FF;
@@ -75,6 +76,9 @@ const SingUpLink = styled.div`
 `
 
 export default function Login() {
+    const [email, setEmail] = useState<string>('')
+    // const [password, setPassword] = useState<string>('')
+
     const onGoogleAuthHandler = () => {
         toast.error('Google Auth service will add soon...', {
             icon: <img src={'/icons/google-logo.png'}
@@ -98,6 +102,7 @@ export default function Login() {
             <Toaster
                 position="top-center"
             />
+            {email}
             <LoginWrapper>
                 <HeadContent>
                     <Link to={'/'}>
@@ -134,7 +139,8 @@ export default function Login() {
                         </Button>
                     </div>
                     <Separator title={'OR'}/>
-                    <EmailInput place_holder={'email'}/>
+                    <EmailInput place_holder={'email'}
+                                on_change_handler={setEmail}/>
                     <Button borderRadius={'lg'} expanded>
                         Log in
                     </Button>

@@ -1,9 +1,14 @@
 import {styled} from "styled-components"
 import Icon from "../Icon.tsx";
+import {useState} from "react";
 
 type EmailInputProps = {
-    place_holder?: string;
-    on_change_handler?: (value: string) => void;
+    place_holder: string;
+    on_change_handler: (value: string) => void;
+}
+
+type InputStyledProps = {
+    inputSelected: boolean;
 }
 
 const Input = styled.div`
@@ -13,6 +18,7 @@ const Input = styled.div`
   border-radius: 1.2rem;
   border: .1rem solid var(--color-black-100);
   padding: 1.2rem;
+  transition: border-color .3s ease-in-out;
 
   input {
     width: 100%;
@@ -31,11 +37,13 @@ const Input = styled.div`
   }
 `
 
-const EmailInputContainer = styled(Input)`
-
+const EmailInputContainer = styled(Input)<InputStyledProps>`
+  border-color: ${props => props.inputSelected ? 'var(--color-black-600)' : 'var(--color-black-100)'};
 `
 
 export default function EmailInput(props: EmailInputProps) {
+    const [inputSelected, setInputSelected] = useState<boolean>(false)
+
     const {
         place_holder = 'Undefined',
         on_change_handler = () => {
@@ -47,9 +55,11 @@ export default function EmailInput(props: EmailInputProps) {
     }
 
     return (
-        <EmailInputContainer>
+        <EmailInputContainer inputSelected={inputSelected}>
             <Icon width={'20rem'} icon_src={'email-icon.svg'}/>
             <input type={'text'} name={'email'} placeholder={place_holder}
+                   onFocus={() => setInputSelected(true)}
+                   onBlur={() => setInputSelected(false)}
                    onChange={e => onChange(e.target.value)}/>
         </EmailInputContainer>
     )
