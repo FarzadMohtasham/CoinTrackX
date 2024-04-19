@@ -1,5 +1,7 @@
+import React from "react";
+
 export type BadgePropsType = {
-    children: string;
+    children: React.ReactNode;
     type?: 'success' | 'danger';
     hasIcon?: boolean;
     icon?: any;

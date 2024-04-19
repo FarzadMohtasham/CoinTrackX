@@ -1,4 +1,5 @@
 import {StyledObject} from "styled-components";
+import React from "react";
 
 export type Properties = {
     padding: StyledObject;
@@ -15,7 +16,7 @@ export type Properties = {
 }
 
 export type ButtonPropsType = {
-    children: string;
+    children: React.ReactNode;
     class_name?: string;
     btnType?: 'primary' | 'secondary' | 'black' | 'white' | 'danger';
     hasIcon?: boolean;

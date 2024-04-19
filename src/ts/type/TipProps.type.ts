@@ -1,5 +1,7 @@
+import React from "react";
+
 export type TipPropsType = {
-    children: string;
+    children: React.ReactNode;
     closable?: boolean;
     redirect?: boolean;
     link?: string;
