@@ -63,8 +63,7 @@ export default function Review(props: ReviewProps) {
     const {numberOfStars, quote, author} = props
 
     return (
-        // @ts-ignore
-        <ReviewStyled className={'review'} properties={props}>
+        <ReviewStyled className={'review'}>
             <div className="stars">
                 {
                     [...Array((5 - numberOfStars) + numberOfStars).keys()].map((_, index) => {
