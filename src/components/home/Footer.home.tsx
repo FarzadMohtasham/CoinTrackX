@@ -115,7 +115,7 @@ export default function Footer() {
                             {
                                 socialMediaLogoList.map((social, index) => {
                                     return (
-                                        <Link to={'#'}>
+                                        <Link to={'#'} key={social.name + index}>
                                             <img key={social.name + index}
                                                  src={social.logoSrc}
                                                  alt={social.name}/>
