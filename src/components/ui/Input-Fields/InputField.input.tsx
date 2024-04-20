@@ -1,17 +1,9 @@
 import {styled} from "styled-components"
 import Icon from "../Icon.tsx";
 import {useEffect, useState} from "react";
+import {InputProps, InputStyledProps} from "../../../ts/type/InputFieldProps.type.ts";
 
-type InputProps = {
-    place_holder: string;
-    on_change_handler: (value: string) => void;
-    icon_src: string;
-    icon_width: string;
-}
 
-type InputStyledProps = {
-    inputSelected: boolean;
-}
 
 const InputStyled = styled.div`
   display: flex;
