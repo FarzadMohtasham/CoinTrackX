@@ -2,7 +2,7 @@ import {styled} from "styled-components"
 import Heading from "../../components/ui/Heading.tsx"
 import Button from "../../components/ui/Button.tsx"
 import Separator from "../../components/ui/Separator.tsx"
-import EmailInput from "../../components/ui/Input-Fields/Email.input.tsx"
+import EmailInput from "../../components/ui/Input-Fields/InputField.input.tsx"
 import {Link} from "react-router-dom"
 
 import {toast, Toaster} from 'react-hot-toast'
