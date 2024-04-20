@@ -2,7 +2,6 @@ import {styled} from "styled-components"
 import Icon from "../Icon.tsx";
 import {useEffect, useState} from "react";
 import {InputProps, InputStyledProps} from "../../../ts/type/InputFieldProps.type.ts";
-import {string} from "yup";
 
 const InputStyled = styled.div`
   display: flex;
