@@ -1,18 +1,18 @@
-import {RuleSet, StyledObject} from "styled-components";
 import React from "react";
+import {RuleSet} from "styled-components";
 
 export type Properties = {
-    padding: RuleSet<object>;
-    fontSize: StyledObject;
-    expanded: StyledObject;
-    backgroundColor: StyledObject;
-    color: StyledObject;
-    borderRadiusS: StyledObject;
-    border: StyledObject;
-    hover: StyledObject;
-    mobileMedia: StyledObject;
-    tabletMedia: StyledObject;
-    desktopMedia: StyledObject;
+    padding: number | RuleSet<object>;
+    fontSize: string | RuleSet<object>;
+    expanded: boolean | RuleSet<object>;
+    backgroundColor: string | RuleSet<object>;
+    color: string | RuleSet<object>;
+    borderRadiusS: string | RuleSet<object>;
+    border: string | RuleSet<object>;
+    hover: string | RuleSet<object>;
+    mobileMedia: string | RuleSet<object>;
+    tabletMedia: string | RuleSet<object>;
+    desktopMedia: string | RuleSet<object>;
 }
 
 export type ButtonPropsType = {
