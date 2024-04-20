@@ -1,6 +1,6 @@
 import {styled} from "styled-components"
 import Icon from "../Icon.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 type InputProps = {
     place_holder: string;
@@ -45,6 +45,7 @@ const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
 
 export default function Input(props: InputProps) {
     const [inputFieldSelected, setInputFieldSelected] = useState<boolean>(false)
+    const [inputValue, setInputValue] = useState<string>('')
 
     const {
         place_holder = 'Undefined',
@@ -54,17 +55,18 @@ export default function Input(props: InputProps) {
         icon_width = '20rem',
     } = props
 
-    const onChange = (value: string): void => {
-        on_change_handler(value)
-    }
+    useEffect((): void => {
+        on_change_handler(inputValue)
+    }, [inputValue])
 
     return (
         <InputFieldContainer inputSelected={inputFieldSelected}>
             <Icon width={icon_width} icon_src={icon_src}/>
             <input type={'text'} name={'input'} placeholder={place_holder}
+                   value={inputValue}
                    onFocus={() => setInputFieldSelected(true)}
                    onBlur={() => setInputFieldSelected(false)}
-                   onChange={e => onChange(e.target.value)}/>
+                   onChange={e => setInputValue(e.target.value)}/>
         </InputFieldContainer>
     )
 }
