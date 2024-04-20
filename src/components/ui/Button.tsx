@@ -24,7 +24,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   gap: 1.2rem;
   justify-content: center;
   text-align: center;
-  cursor: pointer;
+  cursor: ${props => props.properties.cursor};
   padding: ${(props) => props.properties.padding};
   font-size: ${props => props.properties.fontSize};
   width: ${props => props.properties.expanded ? '100%' : `max-content`};
@@ -67,46 +67,70 @@ function Button(props: ButtonPropsType) {
         borderRadius = 'sm',
         outline = false,
         hideOn = 'none',
+        disabled = false,
         on_click_handler = () => {
-            console.log('fuck me')
         },
         remove_padding = false
     } = props
 
     const padding = remove_padding ? 0 : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
     const fontSize = css`${buttonFontSizeVariations[size].fontSize}`
-    const backgroundColor = css`${!outline ? buttonTypeVariations[btnType].backgroundColor : 'rgba(0, 0, 0, 0)'}`
+    const cursor = disabled ? 'not-allowed' : 'pointer'
+
+    const backgroundColor =
+        css`${
+            !outline ?
+                (
+                    disabled ?
+                        css`var(--color-${btnType + '-500)'}`
+                        :
+                        buttonTypeVariations[btnType].backgroundColor
+                )
+                :
+                'rgba(0, 0, 0, 0)'
+        }`
+
     const color = css`${!outline ? buttonTypeVariations[btnType].color : buttonTypeVariations[btnType].backgroundColor}`
     const borderRadiusS = css`${buttonBorderRadius[borderRadius]}`
-    const border = css`${outline ? css`var(--color-${btnType + '-100)'}` : `${buttonTypeVariations[btnType].backgroundColor}`}`
+
+    const border = css`${
+        outline ?
+            css`var(--color-${btnType + '-100)'}`
+            :
+            (
+                disabled ?
+                    css`var(--color-${btnType + '-50)'}`
+                    :
+                    `${buttonTypeVariations[btnType].backgroundColor}`
+            )
+    }`
+
     const hover = css`
       ${outline && css`background-color: var(--color-${btnType + '-50)'};`}
 
-      ${!outline && css`background-color: var(--color-${btnType + '-900)'};`}
-      ${!outline && css`border: .2rem solid var(--color-${btnType + '-700)'};`}
+      ${!outline && (disabled ? '' : css`background-color: var(--color-${btnType + '-900)'};`)}
+      ${
+              !outline ?
+                      css`border: .2rem solid var(--color-${btnType + '-50)'};`
+                      :
+                      css`border: .2rem solid var(--color-${btnType + '-100)'};`
+      }
     `
     const mobileMedia = `${hideOn === 'mobile' ? css`display: none;` : ''}`
     const tabletMedia = `${hideOn === 'tablet' ? css`display: none;` : ''}`
     const desktopMedia = `${hideOn === 'desktop' ? css`display: none;` : ''}`
 
-    const buttonProperties = {
-        padding,
-        fontSize,
-        backgroundColor,
-        color,
-        borderRadiusS,
-        border,
-        hover,
-        mobileMedia,
-        tabletMedia,
-        desktopMedia,
-        expanded,
+    const buttonProperties = {padding, fontSize, backgroundColor, color, borderRadiusS, border, hover, mobileMedia, tabletMedia, desktopMedia, expanded, cursor}
+
+    const onClickHandler = () => {
+        if (disabled) return
+        on_click_handler()
     }
 
     return (
-        <ButtonStyled className={`${class_name} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`} properties={buttonProperties}
-                      onClick={on_click_handler}
-        >
+        <ButtonStyled className={`${class_name} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`}
+                      properties={buttonProperties}
+                      onClick={onClickHandler}>
             {hasIcon && (iconDir === 'left' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
             {children}

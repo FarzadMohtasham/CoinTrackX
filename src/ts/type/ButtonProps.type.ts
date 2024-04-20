@@ -13,6 +13,7 @@ export type Properties = {
     mobileMedia: string | RuleSet<object>;
     tabletMedia: string | RuleSet<object>;
     desktopMedia: string | RuleSet<object>;
+    cursor: string | RuleSet<object>;
 }
 
 export type ButtonPropsType = {
@@ -28,6 +29,7 @@ export type ButtonPropsType = {
     borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
     outline?: boolean;
     hideOn?: 'mobile' | 'tablet' | 'desktop' | 'none';
-    on_click_handler?: () => void,
-    remove_padding?: boolean
+    on_click_handler?: () => void;
+    remove_padding?: boolean;
+    disabled?: boolean;
 }

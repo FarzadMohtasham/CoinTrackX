@@ -1,12 +1,13 @@
 import {styled} from "styled-components"
+import {Link} from "react-router-dom"
 import Heading from "../../components/ui/Heading.tsx"
 import Button from "../../components/ui/Button.tsx"
 import Separator from "../../components/ui/Separator.tsx"
 import InputField from "../../components/ui/Input-Fields/InputField.input.tsx"
-import {Link} from "react-router-dom"
+import {loginInputValidator} from "../../validation/login.validator.ts";
 
 import {toast, Toaster} from 'react-hot-toast'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx";
 
 const LoginContainer = styled.main`
@@ -97,6 +98,8 @@ const SingUpLink = styled.div`
 export default function Login() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
+    const [emailFieldError, setEmailFieldError] = useState<string | null>(null)
+    const [passwordFieldError, setPasswordFieldError] = useState<string | null>(null)
 
     const onGoogleAuthHandler = () => {
         toast.error('Google Auth service will add soon...', {
@@ -116,9 +119,23 @@ export default function Login() {
         })
     }
 
-    const onLoginHandler = ():void => {
+    const onLoginHandler = (): void => {
         console.log(email, password)
     }
+
+    useEffect(() => {
+        loginInputValidator({type: 'email', payload: email}).then(validationResult => {
+            if (validationResult.isValid) setEmailFieldError(null)
+            else setEmailFieldError(validationResult.errorMessage)
+        })
+    }, [email])
+
+    useEffect(() => {
+        loginInputValidator({type: 'password', payload: password}).then(validationResult => {
+            if (validationResult.isValid) setPasswordFieldError(null)
+            else setPasswordFieldError(validationResult.errorMessage)
+        })
+    }, [password])
 
     return (
         <LoginContainer>
@@ -165,11 +182,15 @@ export default function Login() {
                                 on_change_handler={setEmail}
                                 icon_src={'icons8-email-64.png'}
                                 focus_icon_src={'icons8-email-64 (1).png'}
+                                error_message={emailFieldError}
+                                invalid_error_messages={['email is a required field']}
                     />
                     <PasswordFieldInput place_holder={'Password'}
+                                        error_message={passwordFieldError}
                                         on_change_handler={setPassword}
                     />
                     <Button borderRadius={'lg'}
+                            disabled={emailFieldError !== null || passwordFieldError !== null}
                             on_click_handler={onLoginHandler}
                             expanded>
                         Log in

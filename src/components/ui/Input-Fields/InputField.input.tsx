@@ -2,6 +2,7 @@ import {styled} from "styled-components"
 import Icon from "../Icon.tsx";
 import {useEffect, useState} from "react";
 import {InputProps, InputStyledProps} from "../../../ts/type/InputFieldProps.type.ts";
+import {string} from "yup";
 
 const InputStyled = styled.div`
   display: flex;
@@ -33,6 +34,10 @@ const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
   border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-500)' : 'var(--color-black-50)'};
 `
 
+const ErrorContainer = styled.span`
+  color: var(--color-danger);
+`
+
 export default function Input(props: InputProps) {
     const [inputFieldSelected, setInputFieldSelected] = useState<boolean>(false)
     const [inputValue, setInputValue] = useState<string>('')
@@ -44,23 +49,37 @@ export default function Input(props: InputProps) {
         icon_src = 'email-icon.svg',
         focus_icon_src = 'email-icon.svg',
         icon_width = '20rem',
+        error_message = null,
+        invalid_error_messages = null
     } = props
 
     useEffect((): void => {
         on_change_handler(inputValue)
     }, [inputValue])
 
+    const inputOnFocusHandler = () => setInputFieldSelected(true)
+    const inputOnBlurHandler = () => setInputFieldSelected(false)
+
     return (
-        <InputFieldContainer input_selected={inputFieldSelected.toString()}>
-            {!inputFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
-            {inputFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
-            <input type={'text'}
-                   name={'input'}
-                   placeholder={place_holder}
-                   value={inputValue}
-                   onFocus={() => setInputFieldSelected(true)}
-                   onBlur={() => setInputFieldSelected(false)}
-                   onChange={e => setInputValue(e.target.value)}/>
-        </InputFieldContainer>
+        <>
+            <InputFieldContainer input_selected={inputFieldSelected.toString()}>
+                {!inputFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
+                {inputFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
+                <input type={'text'}
+                       name={'input'}
+                       placeholder={place_holder}
+                       value={inputValue}
+                       onFocus={inputOnFocusHandler}
+                       onBlur={inputOnBlurHandler}
+                       onChange={e => setInputValue(e.target.value)}/>
+                <br/>
+            </InputFieldContainer>
+            {
+                invalid_error_messages !== null && (
+                    invalid_error_messages.find((val) => val === error_message) === undefined &&
+                    <ErrorContainer>{error_message}</ErrorContainer>
+                )
+            }
+        </>
     )
 }

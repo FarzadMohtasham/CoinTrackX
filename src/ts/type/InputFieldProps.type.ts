@@ -4,6 +4,8 @@ export type InputProps = {
     icon_src?: string;
     focus_icon_src?: string;
     icon_width?: string;
+    error_message?: string | null;
+    invalid_error_messages?: string[] | null;
 }
 
 export type InputStyledProps = {
