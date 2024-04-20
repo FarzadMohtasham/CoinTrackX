@@ -2,11 +2,12 @@ import {styled} from "styled-components"
 import Heading from "../../components/ui/Heading.tsx"
 import Button from "../../components/ui/Button.tsx"
 import Separator from "../../components/ui/Separator.tsx"
-import EmailInput from "../../components/ui/Input-Fields/InputField.input.tsx"
+import InputField from "../../components/ui/Input-Fields/InputField.input.tsx"
 import {Link} from "react-router-dom"
 
 import {toast, Toaster} from 'react-hot-toast'
 import {useState} from "react";
+import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx";
 
 const LoginContainer = styled.main`
   background-color: #F9F8FF;
@@ -19,6 +20,27 @@ const LoginWrapper = styled.div`
   background-color: white;
   padding: 5rem;
   border-radius: 2rem;
+  width: 95dvw;
+
+  /*Very Small devices (landscape phones, 274px and up)*/
+  @media (min-width: ${props => props.theme.responsive.xsm}) {
+    width: 70dvw;
+  }
+
+  /*Small devices (landscape phones, 576px and up)*/
+  @media (min-width: ${props => props.theme.responsive.sm}) {
+    width: 57dvw;
+  }
+
+  /*Medium devices (tablets, 768px and up)*/
+  @media (min-width: ${props => props.theme.responsive.md}) {
+    width: 45dvw;
+  }
+
+  /*Large devices (desktops, 992px and up)*/
+  @media (min-width: ${props => props.theme.responsive.lg}) {
+    width: 30dvw;
+  }
 `
 
 const HeadContent = styled.div`
@@ -74,7 +96,7 @@ const SingUpLink = styled.div`
 
 export default function Login() {
     const [email, setEmail] = useState<string>('')
-    // const [password, setPassword] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
 
     const onGoogleAuthHandler = () => {
         toast.error('Google Auth service will add soon...', {
@@ -94,12 +116,15 @@ export default function Login() {
         })
     }
 
+    const onLoginHandler = ():void => {
+        console.log(email, password)
+    }
+
     return (
         <LoginContainer>
             <Toaster
                 position="top-center"
             />
-            {email}
             <LoginWrapper>
                 <HeadContent>
                     <Link to={'/'}>
@@ -136,9 +161,17 @@ export default function Login() {
                         </Button>
                     </div>
                     <Separator title={'OR'}/>
-                    <EmailInput place_holder={'email'}
-                                on_change_handler={setEmail}/>
-                    <Button borderRadius={'lg'} expanded>
+                    <InputField place_holder={'email'}
+                                on_change_handler={setEmail}
+                                icon_src={'icons8-email-64.png'}
+                                focus_icon_src={'icons8-email-64 (1).png'}
+                    />
+                    <PasswordFieldInput place_holder={'Password'}
+                                        on_change_handler={setPassword}
+                    />
+                    <Button borderRadius={'lg'}
+                            on_click_handler={onLoginHandler}
+                            expanded>
                         Log in
                     </Button>
                     <SingUpLink>

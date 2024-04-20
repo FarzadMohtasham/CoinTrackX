@@ -1,5 +1,6 @@
 const defaultProps = {
     responsive: {
+        xsm: '27.4rem',
         sm: '57.6rem',
         md: '76.8rem',
         lg: '99.2rem',

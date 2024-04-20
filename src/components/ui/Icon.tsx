@@ -9,6 +9,9 @@ export default function Icon(props: IconProps) {
         width = '2rem',
         height = '2rem',
         same_height = true,
+        class_name = 'icon',
+        on_click_handler = () => {
+        },
     } = props
 
     if (same_height) height = width
@@ -21,7 +24,8 @@ export default function Icon(props: IconProps) {
              alt={icon_alt}
              width={width}
              height={height}
-             className={'icon'}
+             className={class_name}
+             onClick={on_click_handler}
         />
     )
 }

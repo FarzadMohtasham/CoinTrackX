@@ -3,8 +3,6 @@ import Icon from "../Icon.tsx";
 import {useEffect, useState} from "react";
 import {InputProps, InputStyledProps} from "../../../ts/type/InputFieldProps.type.ts";
 
-
-
 const InputStyled = styled.div`
   display: flex;
   align-items: center;
@@ -32,7 +30,7 @@ const InputStyled = styled.div`
 `
 
 const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
-  border-color: ${props => props.inputSelected ? 'var(--color-black-500)' : 'var(--color-black-50)'};
+  border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-500)' : 'var(--color-black-50)'};
 `
 
 export default function Input(props: InputProps) {
@@ -44,6 +42,7 @@ export default function Input(props: InputProps) {
         on_change_handler = () => {
         },
         icon_src = 'email-icon.svg',
+        focus_icon_src = 'email-icon.svg',
         icon_width = '20rem',
     } = props
 
@@ -52,9 +51,12 @@ export default function Input(props: InputProps) {
     }, [inputValue])
 
     return (
-        <InputFieldContainer inputSelected={inputFieldSelected}>
-            <Icon width={icon_width} icon_src={icon_src}/>
-            <input type={'text'} name={'input'} placeholder={place_holder}
+        <InputFieldContainer input_selected={inputFieldSelected.toString()}>
+            {!inputFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
+            {inputFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
+            <input type={'text'}
+                   name={'input'}
+                   placeholder={place_holder}
                    value={inputValue}
                    onFocus={() => setInputFieldSelected(true)}
                    onBlur={() => setInputFieldSelected(false)}
