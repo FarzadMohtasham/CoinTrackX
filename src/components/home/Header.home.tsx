@@ -54,7 +54,6 @@ const NavItemStyled = styled.li`
   font-weight: 400;
 
   a {
-    text-decoration: none;
     color: var(--color-black-600);
     transition: color .3s ease-in-out;
   }
@@ -69,10 +68,6 @@ const NavItemStyled = styled.li`
 const ButtonsCTAStyled = styled.div`
   display: flex;
   gap: 1.6rem;
-  
-  a {
-    text-decoration: none;
-  }
 `
 
 export default function Header() {

@@ -92,7 +92,6 @@ const ColumnList = styled.ul`
 
 const ColumnItem = styled.li`
   a {
-    text-decoration: none;
     color: var(--color-black-400);
     font-size: var(--font-size-body-sm);
     font-weight: 500;

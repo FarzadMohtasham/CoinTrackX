@@ -1,13 +1,13 @@
-import {StyledObject} from "styled-components";
+import {RuleSet, StyledObject} from "styled-components";
 import React from "react";
 
 export type Properties = {
-    padding: StyledObject;
+    padding: RuleSet<object>;
     fontSize: StyledObject;
     expanded: StyledObject;
     backgroundColor: StyledObject;
     color: StyledObject;
-    borderRadiusP: StyledObject;
+    borderRadiusS: StyledObject;
     border: StyledObject;
     hover: StyledObject;
     mobileMedia: StyledObject;

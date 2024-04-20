@@ -14,7 +14,11 @@ import {
     buttonBorderRadius
 } from '../../data/Button.data.ts'
 
-const StyledButton = styled.button<{ properties: Properties }>`
+type ButtonStyledProps = {
+    properties: Properties;
+}
+
+const ButtonStyled = styled.button<ButtonStyledProps>`
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -26,7 +30,7 @@ const StyledButton = styled.button<{ properties: Properties }>`
   width: ${props => props.properties.expanded ? '100%' : `max-content`};
   background-color: ${props => props.properties.backgroundColor};
   color: ${props => props.properties.color};
-  border-radius: ${props => props.properties.borderRadiusP};
+  border-radius: ${props => props.properties.borderRadiusS};
   border: .2rem solid ${props => props.properties.border};
   transition: background-color .3s ease-in-out, border .3s ease-in-out;
 
@@ -73,7 +77,7 @@ function Button(props: ButtonPropsType) {
     const fontSize = css`${buttonFontSizeVariations[size].fontSize}`
     const backgroundColor = css`${!outline ? buttonTypeVariations[btnType].backgroundColor : 'rgba(0, 0, 0, 0)'}`
     const color = css`${!outline ? buttonTypeVariations[btnType].color : buttonTypeVariations[btnType].backgroundColor}`
-    const borderRadiusP = css`${buttonBorderRadius[borderRadius]}`
+    const borderRadiusS = css`${buttonBorderRadius[borderRadius]}`
     const border = css`${outline ? css`var(--color-${btnType + '-100)'}` : `${buttonTypeVariations[btnType].backgroundColor}`}`
     const hover = css`
       ${outline && css`background-color: var(--color-${btnType + '-50)'};`}
@@ -90,7 +94,7 @@ function Button(props: ButtonPropsType) {
         fontSize,
         backgroundColor,
         color,
-        borderRadiusP,
+        borderRadiusS,
         border,
         hover,
         mobileMedia,
@@ -100,8 +104,7 @@ function Button(props: ButtonPropsType) {
     }
 
     return (
-        // @ts-ignore
-        <StyledButton className={`${class_name} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`} properties={buttonProperties}
+        <ButtonStyled className={`${class_name} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`} properties={buttonProperties}
                       onClick={on_click_handler}
         >
             {hasIcon && (iconDir === 'left' &&
@@ -109,7 +112,7 @@ function Button(props: ButtonPropsType) {
             {children}
             {hasIcon && (iconDir === 'right' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
-        </StyledButton>
+        </ButtonStyled>
     )
 }
 

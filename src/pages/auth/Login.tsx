@@ -25,8 +25,6 @@ const HeadContent = styled.div`
   margin-bottom: 4.8rem;
 
   a {
-    text-decoration: none;
-
     .back-btn {
       margin-bottom: 1rem;
     }
@@ -65,7 +63,6 @@ const SingUpLink = styled.div`
   }
 
   .postfix {
-    text-decoration: none;
     color: var(--color-primary);
     font-weight: 500;
 
