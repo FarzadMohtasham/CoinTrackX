@@ -1,6 +1,8 @@
+import {css} from "styled-components";
+
 const checkboxData = {
     primary: {
-        active: `#275EFE`,
+        active: css`var(--color-primary)`,
         'active-inner': `#fff`,
         focus: `2px rgba(39, 94, 254, .3)`,
         border: `#BBC1E1`,
@@ -10,7 +12,7 @@ const checkboxData = {
         'disabled-inner': `#E1E6F9`,
     },
     danger: {
-        active: `#275EFE`,
+        active: css`var(--color-danger)`,
         'active-inner': `#fff`,
         focus: `2px rgba(39, 94, 254, .3)`,
         border: `#BBC1E1`,
@@ -20,7 +22,7 @@ const checkboxData = {
         'disabled-inner': `#E1E6F9`,
     },
     black: {
-        active: `#275EFE`,
+        active: css`var(--color-black)`,
         'active-inner': `#fff`,
         focus: `2px rgba(39, 94, 254, .3)`,
         border: `#BBC1E1`,
