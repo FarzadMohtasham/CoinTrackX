@@ -30,7 +30,7 @@ const InputStyled = styled.div`
 `
 
 const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
-  border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-500)' : 'var(--color-black-50)'};
+  border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
 `
 
 const ErrorContainer = styled.span`

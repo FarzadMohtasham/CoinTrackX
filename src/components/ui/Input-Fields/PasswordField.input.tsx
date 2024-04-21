@@ -27,10 +27,14 @@ const PasswordInputStyled = styled.div`
       outline-width: 0;
     }
   }
+  
+  .visible-icon, .invisible-icon {
+    opacity: .5;
+  }
 `
 
 const PasswordFieldContainer = styled(PasswordInputStyled)<InputStyledProps>`
-  border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-500)' : 'var(--color-black-50)'};
+  border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
 
   .visible-icon, .invisible-icon {
     cursor: pointer;
@@ -53,7 +57,7 @@ export default function PasswordFieldInput(props: InputProps) {
         icon_src = 'email-focus-icon.png',
         icon_width = '20rem',
         error_message = null,
-        invalid_error_messages = null
+        invalid_error_messages = []
     } = props
 
     useEffect((): void => {

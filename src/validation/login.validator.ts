@@ -15,7 +15,10 @@ const emailValidationSchema = object({
 });
 
 const passwordValidationSchema = object({
-    password: string().required()
+    password: string()
+        .required()
+        .test('min-length', 'Password length can\'t be lower than 8', val => val.length >= 8)
+        .test('max-length', 'Password length can\'t be lower than 16', val => val.length <= 16)
 });
 
 export const loginInputValidator = async (props: ValidatorProps): Promise<ValidationResult> => {

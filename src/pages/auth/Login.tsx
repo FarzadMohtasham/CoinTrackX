@@ -9,6 +9,7 @@ import {loginInputValidator} from "../../validation/login.validator.ts";
 import {toast, Toaster} from 'react-hot-toast'
 import {useEffect, useState} from "react";
 import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx";
+import CheckboxInput from "../../components/ui/Input-Fields/Checkbox.input.tsx";
 
 const LoginContainer = styled.main`
   background-color: #F9F8FF;
@@ -100,6 +101,7 @@ export default function Login() {
     const [password, setPassword] = useState<string>('')
     const [emailFieldError, setEmailFieldError] = useState<string | null>(null)
     const [passwordFieldError, setPasswordFieldError] = useState<string | null>(null)
+    const [rememberMe, setRememberMe] = useState<boolean>(false)
 
     const onGoogleAuthHandler = () => {
         toast.error('Google Auth service will add soon...', {
@@ -120,7 +122,13 @@ export default function Login() {
     }
 
     const onLoginHandler = (): void => {
-        console.log(email, password)
+        const formData = {
+            email,
+            password,
+            rememberMe
+        }
+
+        console.log(formData)
     }
 
     useEffect(() => {
@@ -163,6 +171,7 @@ export default function Login() {
                         <Button expanded
                                 outline
                                 hasIcon
+                                borderRadius={'lg'}
                                 on_click_handler={onGoogleAuthHandler}
                                 icon={'google-logo.png'}
                                 btnType={'black'}>
@@ -171,6 +180,7 @@ export default function Login() {
                         <Button expanded
                                 outline
                                 hasIcon
+                                borderRadius={'lg'}
                                 on_click_handler={onAppleAuthHandler}
                                 icon={'apple-logo.png'}
                                 btnType={'black'}>
@@ -186,9 +196,11 @@ export default function Login() {
                                 invalid_error_messages={['email is a required field']}
                     />
                     <PasswordFieldInput place_holder={'Password'}
+                                        invalid_error_messages={['password is a required field']}
                                         error_message={passwordFieldError}
                                         on_change_handler={setPassword}
                     />
+                    <CheckboxInput label={'Remember me'} check_box_setter={setRememberMe}/>
                     <Button borderRadius={'lg'}
                             disabled={emailFieldError !== null || passwordFieldError !== null}
                             on_click_handler={onLoginHandler}
