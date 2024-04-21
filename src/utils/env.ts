@@ -6,4 +6,6 @@ const envSchema = z.object({
     SUPABASE_API_KEY: z.string().default('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp3cmxlZWNzdnlnc2Z0b3RhdHR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTMyNjgzMzgsImV4cCI6MjAyODg0NDMzOH0.wBXhT_krBgiAWZqCN5XVDcidWJmXLNcRs6GnjfJEPx8').readonly()
 })
 
-export const env = envSchema.parse({name: 'dsf'})
+const env = envSchema.parse({name: 'dsf'})
+
+export default env

@@ -27,7 +27,7 @@ const PasswordInputStyled = styled.div`
       outline-width: 0;
     }
   }
-  
+
   .visible-icon, .invisible-icon {
     opacity: .5;
   }
@@ -46,23 +46,24 @@ const ErrorContainer = styled.span`
 `
 
 export default function PasswordFieldInput(props: InputProps) {
-    const [inputFieldSelected, setInputFieldSelected] = useState<boolean>(false)
-    const [inputValue, setInputValue] = useState<string>('')
+    const [passwordFieldSelected, setInputFieldSelected] = useState<boolean>(false)
+    const [passwordValue, setPasswordValue] = useState<string>('')
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false)
 
     const {
         place_holder = 'Undefined',
         on_change_handler = () => {
         },
-        icon_src = 'email-focus-icon.png',
+        icon_src = 'email-focus-icon.svg',
+        focus_icon_src = 'password-focus-icon.svg',
         icon_width = '20rem',
         error_message = null,
         invalid_error_messages = []
     } = props
 
     useEffect((): void => {
-        on_change_handler(inputValue)
-    }, [inputValue])
+        on_change_handler(passwordValue)
+    }, [passwordValue])
 
     const handlePasswordVisible = (): void => {
         setPasswordVisible(preValue => !preValue)
@@ -70,15 +71,16 @@ export default function PasswordFieldInput(props: InputProps) {
 
     return (
         <>
-            <PasswordFieldContainer input_selected={inputFieldSelected.toString()}>
-                <Icon width={icon_width} icon_src={icon_src}/>
+            <PasswordFieldContainer input_selected={passwordFieldSelected.toString()}>
+                {!passwordFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
+                {passwordFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
                 <input type={passwordVisible ? 'text' : 'password'}
                        name={'input'}
                        placeholder={place_holder}
-                       value={inputValue}
+                       value={passwordValue}
                        onFocus={() => setInputFieldSelected(true)}
                        onBlur={() => setInputFieldSelected(false)}
-                       onChange={e => setInputValue(e.target.value)}/>
+                       onChange={e => setPasswordValue(e.target.value)}/>
                 {
                     passwordVisible ?
                         <Icon width={icon_width} icon_alt={'visible icon'}
@@ -93,7 +95,7 @@ export default function PasswordFieldInput(props: InputProps) {
                 }
             </PasswordFieldContainer>
             {
-                invalid_error_messages !== null && (
+                (invalid_error_messages.length !== 0 && error_message) && (
                     invalid_error_messages.find((val) => val === error_message) === undefined &&
                     <ErrorContainer>{error_message}</ErrorContainer>
                 )

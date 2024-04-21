@@ -190,14 +190,16 @@ export default function Login() {
                     <Separator title={'OR'}/>
                     <InputField place_holder={'email'}
                                 on_change_handler={setEmail}
-                                icon_src={'icons8-email-64.png'}
-                                focus_icon_src={'icons8-email-64 (1).png'}
+                                icon_src={'email-icon.svg'}
+                                focus_icon_src={'email-focus-icon.svg'}
                                 error_message={emailFieldError}
                                 invalid_error_messages={['email is a required field']}
                     />
                     <PasswordFieldInput place_holder={'Password'}
                                         invalid_error_messages={['password is a required field']}
+                                        icon_src={'password-icon.svg'}
                                         error_message={passwordFieldError}
+                                        focus_icon_src={'password-focus-icon.svg'}
                                         on_change_handler={setPassword}
                     />
                     <CheckboxInput label={'Remember me'} check_box_setter={setRememberMe}/>
