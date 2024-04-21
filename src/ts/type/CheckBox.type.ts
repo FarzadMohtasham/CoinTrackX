@@ -1,3 +1,5 @@
+import {RuleSet} from "styled-components";
+
 export type CheckboxTypes = 'primary' | 'danger' | 'black'
 
 export type CheckboxProps = {
@@ -8,7 +10,7 @@ export type CheckboxProps = {
 }
 
 export type Properties = {
-    active: string,
+    active: RuleSet<object>,
     'active-inner': string,
     focus: string,
     border: string,
