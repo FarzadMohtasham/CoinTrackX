@@ -27,10 +27,6 @@ const PasswordInputStyled = styled.div`
       outline-width: 0;
     }
   }
-
-  .visible-icon, .invisible-icon {
-    opacity: .5;
-  }
 `
 
 const PasswordFieldContainer = styled(PasswordInputStyled)<InputStyledProps>`
@@ -86,12 +82,12 @@ export default function PasswordFieldInput(props: InputProps) {
                         <Icon width={icon_width} icon_alt={'visible icon'}
                               class_name={'visible-icon'}
                               on_click_handler={handlePasswordVisible}
-                              icon_src={'visible-icon.png'}/>
+                              icon_src={'invisible-icon.svg'}/>
                         :
                         <Icon width={icon_width} icon_alt={'invisible icon'}
                               class_name={'invisible-icon'}
                               on_click_handler={handlePasswordVisible}
-                              icon_src={'invisible-icon.png'}/>
+                              icon_src={'visible-icon.svg'}/>
                 }
             </PasswordFieldContainer>
             {
