@@ -4,97 +4,26 @@ import Heading from "../../components/ui/Heading.tsx"
 import Button from "../../components/ui/Button.tsx"
 import Separator from "../../components/ui/Separator.tsx"
 import InputField from "../../components/ui/Input-Fields/InputField.input.tsx"
-import {loginInputValidator} from "../../validation/login.validator.ts";
+import {loginInputValidator} from "../../validation/login.validator.ts"
 
 import {toast, Toaster} from 'react-hot-toast'
-import {useEffect, useState} from "react";
-import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx";
-import CheckboxInput from "../../components/ui/Input-Fields/Checkbox.input.tsx";
+import {useEffect, useState} from "react"
+import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx"
+import CheckboxInput from "../../components/ui/Input-Fields/Checkbox.input.tsx"
 
-const LoginContainer = styled.main`
-  background-color: #F9F8FF;
-  height: 100dvh;
-  display: grid;
-  place-content: center;
-`
+import {
+    AuthStyled,
+    AuthInnerWrapper,
+    HeadContent as HeadContentStyled,
+    MainContent as MainContentStyled,
+    AuthLink,
+} from "../../components/styled-components/Auth.styled.tsx"
 
-const LoginWrapper = styled.div`
-  background-color: white;
-  padding: 5rem;
-  border-radius: 2rem;
-  width: 95dvw;
-
-  /*Very Small devices (landscape phones, 274px and up)*/
-  @media (min-width: ${props => props.theme.responsive.xsm}) {
-    width: 70dvw;
-  }
-
-  /*Small devices (landscape phones, 576px and up)*/
-  @media (min-width: ${props => props.theme.responsive.sm}) {
-    width: 57dvw;
-  }
-
-  /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: ${props => props.theme.responsive.md}) {
-    width: 45dvw;
-  }
-
-  /*Large devices (desktops, 992px and up)*/
-  @media (min-width: ${props => props.theme.responsive.lg}) {
-    width: 30dvw;
-  }
-`
-
-const HeadContent = styled.div`
-  margin-bottom: 4.8rem;
-
-  a {
-    .back-btn {
-      margin-bottom: 1rem;
-    }
-  }
-
-  .heading {
-    margin-bottom: 1.2rem;
-  }
-
-  .heading-desc {
-    font-size: var(--font-size-body-md);
-    color: var(--color-black-500);
-    font-weight: 500;
-    display: block;
-  }
-`
-
-const MainContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
-
-  .google-apple-login {
-    display: flex;
-    gap: 1.6rem;
-  }
-`
-
-const SingUpLink = styled.div`
-  display: flex;
-  gap: .5rem;
-
-  .prefix {
-    color: var(--color-black-500);
-    font-weight: 500;
-  }
-
-  .postfix {
-    color: var(--color-primary);
-    font-weight: 500;
-
-    &:focus {
-      color: var(--color-primary);
-    }
-  }
-`
+const LoginContainer = styled(AuthStyled)``
+const LoginWrapper = styled(AuthInnerWrapper)``
+const HeadContent = styled(HeadContentStyled)``
+const MainContent = styled(MainContentStyled)``
+const SingUpLink = styled(AuthLink)``
 
 export default function Login() {
     const [email, setEmail] = useState<string>('')
