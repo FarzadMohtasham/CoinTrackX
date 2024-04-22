@@ -3,6 +3,11 @@ import Icon from "../Icon.tsx";
 import {useEffect, useState} from "react";
 import {InputProps, InputStyledProps} from "../../../ts/type/InputFieldProps.type.ts";
 
+const FieldContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 const InputStyled = styled.div`
   display: flex;
   align-items: center;
@@ -30,6 +35,7 @@ const InputStyled = styled.div`
 `
 
 const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
+  margin-bottom: 1rem;
   border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
 `
 
@@ -49,7 +55,7 @@ export default function Input(props: InputProps) {
         focus_icon_src = 'email-icon.svg',
         icon_width = '20rem',
         error_message = null,
-        invalid_error_messages = null
+        invalid_error_messages = []
     } = props
 
     useEffect((): void => {
@@ -60,7 +66,7 @@ export default function Input(props: InputProps) {
     const inputOnBlurHandler = () => setInputFieldSelected(false)
 
     return (
-        <>
+        <FieldContainer>
             <InputFieldContainer input_selected={inputFieldSelected.toString()}>
                 {!inputFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
                 {inputFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
@@ -71,14 +77,13 @@ export default function Input(props: InputProps) {
                        onFocus={inputOnFocusHandler}
                        onBlur={inputOnBlurHandler}
                        onChange={e => setInputValue(e.target.value)}/>
-                <br/>
             </InputFieldContainer>
             {
-                invalid_error_messages !== null && (
+                (invalid_error_messages.length !== 0 && error_message) && (
                     invalid_error_messages.find((val) => val === error_message) === undefined &&
                     <ErrorContainer>{error_message}</ErrorContainer>
                 )
             }
-        </>
+        </FieldContainer>
     )
 }
