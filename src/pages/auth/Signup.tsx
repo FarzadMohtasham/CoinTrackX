@@ -6,7 +6,7 @@ import Separator from "../../components/ui/Separator.tsx"
 import InputField from "../../components/ui/Input-Fields/InputField.input.tsx"
 import {signupInputValidator} from "../../validation/signup.validator.ts"
 
-import {toast, Toaster} from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
 import {useEffect, useState} from "react"
 import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx"
 import CheckboxInput from "../../components/ui/Input-Fields/Checkbox.input.tsx"
@@ -119,9 +119,6 @@ export default function Login() {
 
     return (
         <LoginContainer>
-            <Toaster
-                position="top-center"
-            />
             <LoginWrapper>
                 <HeadContent>
                     <Link to={'/'}>
