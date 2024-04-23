@@ -35,7 +35,7 @@ export const AuthInnerWrapper = styled.div`
 `
 
 export const HeadContent = styled.div`
-  margin-bottom: 4.8rem;
+  margin-bottom: 3.8rem;
 
   a {
     .back-btn {
@@ -59,10 +59,15 @@ export const MainContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+  width: 100%;
 
   .google-apple-login {
     display: flex;
     gap: 1.6rem;
+  }
+  
+  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
+    gap: 1.2rem;
   }
 `
 

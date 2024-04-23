@@ -23,6 +23,8 @@ const LoginContainer = styled(AuthStyled)``
 const LoginWrapper = styled(AuthInnerWrapper)``
 const HeadContent = styled(HeadContentStyled)``
 const MainContent = styled(MainContentStyled)`
+  width: 100%;
+  
   .name-inputs-wrapper {
     display: flex;
     gap: 2.4rem;
@@ -31,8 +33,6 @@ const MainContent = styled(MainContentStyled)`
   }
 
   @media (max-width: ${props => props.theme.responsive.sm}) {
-    width: 57dvw;
-
     .name-inputs-wrapper {
       flex-direction: column;
       gap: 3.2rem;
