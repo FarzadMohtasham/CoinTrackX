@@ -17,7 +17,7 @@ import {
     HeadContent as HeadContentStyled,
     MainContent as MainContentStyled,
     AuthLink,
-} from "../../components/styled-components/Auth.styled.tsx"
+} from "./Auth.styled.tsx"
 
 const LoginContainer = styled(AuthStyled)``
 const LoginWrapper = styled(AuthInnerWrapper)``
