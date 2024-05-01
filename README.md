@@ -1,4 +1,6 @@
-# React + TypeScript + Vite
+# CoinTrackX => React + TypeScript + Vite
+
+Tools used in this project: React - TypeScript - React-Testing-Library - Jest - styled-components - recharts - react-scroll - redux - yup - zod - date-fns - cryptocurrency-icons - axios - react-table - react-query - react-nprogress - supabase-js - sass - react-hot-toast - react-hook-form - react-router
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
