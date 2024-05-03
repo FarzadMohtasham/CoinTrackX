@@ -1,9 +1,9 @@
 import {styled} from "styled-components"
-import {CopyRightProps} from "../../ts/type/CopyRightProps.type.ts"
+import {CopyRightProps, CopyRightStyledProps} from "../../ts/type/CopyRightProps.type.ts"
 
 const date: Date = new Date()
 
-const CopyRightStyled = styled.span`
+const CopyRightStyled = styled.span<CopyRightStyledProps>`
   color: ${props => props.color};
 `
 
