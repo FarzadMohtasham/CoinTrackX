@@ -1,18 +1,14 @@
 import {styled} from 'styled-components'
 
-import {ContainerPropsType} from './../../ts/type/ContainerProps.type.ts'
+import {ContainerPropsType, ContainerStyledProps} from './../../ts/type/ContainerProps.type.ts'
 
-const backgroundStyleFn = (props: ContainerPropsType) => {
-    return props.background_style
-}
-
-const ContainerStyled = styled.div`
+const ContainerStyled = styled.div<ContainerStyledProps>`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  ${props => backgroundStyleFn(props)}
+  ${props => props.background_style}
   .wrapper {
     width: 95%;
     max-width: 95%;

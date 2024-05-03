@@ -6,3 +6,7 @@ export type ContainerPropsType = {
     background_style?: RuleSet,
     tag_type?: React.ElementType
 }
+
+export type ContainerStyledProps = {
+    background_style: RuleSet
+}
