@@ -1,6 +1,6 @@
 import {styled} from "styled-components";
 import {InputProps, InputStyledProps} from "../../../ts/type/InputFieldProps.type.ts";
-import {useEffect, useState} from "react";
+import {Fragment, useEffect, useState} from "react";
 import Icon from "../Icon.tsx";
 
 const PasswordInputStyled = styled.div`
@@ -66,7 +66,7 @@ export default function PasswordFieldInput(props: InputProps) {
     }
 
     return (
-        <>
+        <Fragment>
             <PasswordFieldContainer input_selected={passwordFieldSelected.toString()}>
                 {!passwordFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
                 {passwordFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
@@ -96,6 +96,6 @@ export default function PasswordFieldInput(props: InputProps) {
                     <ErrorContainer>{error_message}</ErrorContainer>
                 )
             }
-        </>
+        </Fragment>
     )
 }
