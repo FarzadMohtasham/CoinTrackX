@@ -11,6 +11,8 @@ import {useEffect, useState} from "react"
 import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx"
 import CheckboxInput from "../../components/ui/Input-Fields/Checkbox.input.tsx"
 
+import {supabaseClient as supabase} from "../../config/supabase.ts";
+
 import {
     AuthStyled,
     AuthInnerWrapper,
@@ -24,7 +26,7 @@ const LoginWrapper = styled(AuthInnerWrapper)``
 const HeadContent = styled(HeadContentStyled)``
 const MainContent = styled(MainContentStyled)`
   width: 100%;
-  
+
   .name-inputs-wrapper {
     display: flex;
     gap: 2.4rem;
@@ -71,20 +73,17 @@ export default function Login() {
         })
     }
 
-    const onSignupHandler = (): void => {
+    const onSignupHandler = async () => {
         if (!agreeTerms) {
             toast.error('You should agree with Terms & Conditions')
             return
         }
 
-        const formData = {
-            firstName,
-            lastName,
-            email,
-            password
-        }
+        const { data, error } = await supabase.auth.signUp({
+            email, password
+        })
 
-        console.log(formData)
+        console.log(data, error)
     }
 
     useEffect(() => {

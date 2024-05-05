@@ -11,6 +11,8 @@ import {useEffect, useState} from "react"
 import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx"
 import CheckboxInput from "../../components/ui/Input-Fields/Checkbox.input.tsx"
 
+import {supabaseClient as supabase} from "../../config/supabase.ts"
+
 import {
     AuthStyled,
     AuthInnerWrapper,
@@ -50,14 +52,12 @@ export default function Login() {
         })
     }
 
-    const onLoginHandler = (): void => {
-        const formData = {
-            email,
-            password,
-            rememberMe
-        }
+    const onLoginHandler = async () => {
+        const {data, error} = await supabase.auth.signInWithPassword({
+            email, password
+        })
 
-        console.log(formData)
+        console.log(data, error)
     }
 
     useEffect(() => {
