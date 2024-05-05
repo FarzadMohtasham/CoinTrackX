@@ -6,15 +6,15 @@ import Signup from "./pages/auth/Signup.tsx";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home/>,
+        Component: Home,
     },
     {
         path: "/login",
-        element: <Login/>,
+        Component: Login,
     },
     {
         path: "/signup",
-        element: <Signup/>
+        Component: Signup,
     }
 ])
 
