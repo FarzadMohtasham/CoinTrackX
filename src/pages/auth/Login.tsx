@@ -51,13 +51,13 @@ export default function Login() {
         })
     }
 
-    const onLoginHandler = () => {
+    const onLoginHandler = async () => {
         try {
-            const data = login(email, password)
+            const data = await login(email, password)
             toast.success('Good, Sign in was successful!')
             console.log(data)
         } catch (e: string | any) {
-            toast.error(e)
+            toast.error(e.toString())
         }
     }
 

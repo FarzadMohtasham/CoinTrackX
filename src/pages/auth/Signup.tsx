@@ -83,7 +83,7 @@ export default function Login() {
             toast.success(`Congratulation, You signed up successfully`)
             console.log(data)
         } catch (e: string | any) {
-            toast.error(e)
+            toast.error(e.toString())
         }
     }
 
