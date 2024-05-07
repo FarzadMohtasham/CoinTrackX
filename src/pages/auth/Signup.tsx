@@ -20,6 +20,7 @@ import {
     MainContent as MainContentStyled,
     AuthLink,
 } from "./Auth.styled.tsx"
+import {AuthError, AuthResponse} from "@supabase/supabase-js";
 
 const LoginContainer = styled(AuthStyled)``
 const LoginWrapper = styled(AuthInnerWrapper)``
@@ -79,11 +80,17 @@ export default function Login() {
             return
         }
 
-        const { data, error } = await supabase.auth.signUp({
-            email, password
-        })
+        try {
+            const {data, error}: AuthResponse = await supabase.auth.signUp({
+                email, password
+            })
 
-        console.log(data, error)
+            if (!error && data.user?.aud === 'authenticated') {
+                toast.success('Congratulation, Signup was successful!')
+            }
+        } catch (e: AuthError | any) {
+            toast.error(e)
+        }
     }
 
     useEffect(() => {
