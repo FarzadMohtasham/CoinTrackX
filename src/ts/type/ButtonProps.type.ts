@@ -32,4 +32,5 @@ export type ButtonPropsType = {
     on_click_handler?: () => void;
     remove_padding?: boolean;
     disabled?: boolean;
+    isLoading?: boolean;
 }

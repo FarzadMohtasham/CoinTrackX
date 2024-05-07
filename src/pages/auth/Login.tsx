@@ -33,6 +33,20 @@ export default function Login() {
     const [passwordFieldError, setPasswordFieldError] = useState<string | null>(null)
     const [rememberMe, setRememberMe] = useState<boolean>(false)
 
+    const [authLoading, setAuthLoading] = useState<boolean>(false)
+
+    const onLoginHandler = async () => {
+        setAuthLoading(true)
+        try {
+            const data = await login(email, password)
+            toast.success('Good, Sign in was successful!')
+            console.log(data)
+        } catch (e: string | any) {
+            toast.error(e.toString())
+        }
+        setAuthLoading(false)
+    }
+
     const onGoogleAuthHandler = () => {
         toast.error('Google Auth service will add soon...', {
             icon: <img src={'/icons/google-logo.png'}
@@ -49,16 +63,6 @@ export default function Login() {
                        height={15}
                        alt={'apple icon'}/>
         })
-    }
-
-    const onLoginHandler = async () => {
-        try {
-            const data = await login(email, password)
-            toast.success('Good, Sign in was successful!')
-            console.log(data)
-        } catch (e: string | any) {
-            toast.error(e.toString())
-        }
     }
 
     useEffect(() => {
@@ -133,6 +137,7 @@ export default function Login() {
                     <Button borderRadius={'lg'}
                             disabled={emailFieldError !== null || passwordFieldError !== null}
                             on_click_handler={onLoginHandler}
+                            isLoading={authLoading}
                             expanded>
                         Log in
                     </Button>

@@ -54,6 +54,27 @@ export default function Login() {
     const [emailFieldError, setEmailFieldError] = useState<string | null>(null)
     const [passwordFieldError, setPasswordFieldError] = useState<string | null>(null)
 
+    const [authLoading, setAuthLoading] = useState<boolean>(false)
+
+    const onSignupHandler = async () => {
+        if (!agreeTerms) {
+            toast.error('You should agree with Terms & Conditions')
+            return
+        }
+
+        setAuthLoading(true)
+
+        try {
+            const data = await signup({firstName, lastName}, email, password)
+            toast.success(`Congratulation, You signed up successfully`)
+            console.log(data)
+        } catch (e: string | any) {
+            toast.error(e.toString())
+        }
+
+        setAuthLoading(false)
+    }
+
     const onGoogleAuthHandler = () => {
         toast.error('Google Auth service will add soon...', {
             icon: <img src={'/icons/google-logo.png'}
@@ -70,21 +91,6 @@ export default function Login() {
                        height={15}
                        alt={'apple icon'}/>
         })
-    }
-
-    const onSignupHandler = async () => {
-        if (!agreeTerms) {
-            toast.error('You should agree with Terms & Conditions')
-            return
-        }
-
-        try {
-            const data = await signup({firstName, lastName}, email, password)
-            toast.success(`Congratulation, You signed up successfully`)
-            console.log(data)
-        } catch (e: string | any) {
-            toast.error(e.toString())
-        }
     }
 
     useEffect(() => {
@@ -192,6 +198,7 @@ export default function Login() {
                     <Button borderRadius={'lg'}
                             disabled={signUpButtonDisabled}
                             on_click_handler={onSignupHandler}
+                            isLoading={authLoading}
                             expanded>
                         Sign up
                     </Button>

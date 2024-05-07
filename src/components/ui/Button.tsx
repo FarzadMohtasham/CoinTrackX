@@ -13,6 +13,7 @@ import {
     buttonFontSizeVariations,
     buttonBorderRadius
 } from '../../data/Button.data.ts'
+import {BounceLoader} from "react-spinners";
 
 type ButtonStyledProps = {
     properties: Properties;
@@ -55,7 +56,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
 `
 
 function Button(props: ButtonPropsType) {
-    const {
+    let {
         children = 'ERROR - No Value',
         class_name = '',
         btnType = 'primary',
@@ -68,10 +69,13 @@ function Button(props: ButtonPropsType) {
         outline = false,
         hideOn = 'none',
         disabled = false,
+        isLoading = false,
         on_click_handler = () => {
         },
         remove_padding = false
     } = props
+
+    disabled = isLoading;
 
     const padding = remove_padding ? 0 : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
     const fontSize = css`${buttonFontSizeVariations[size].fontSize}`
@@ -120,7 +124,20 @@ function Button(props: ButtonPropsType) {
     const tabletMedia = `${hideOn === 'tablet' ? css`display: none;` : ''}`
     const desktopMedia = `${hideOn === 'desktop' ? css`display: none;` : ''}`
 
-    const buttonProperties = {padding, fontSize, backgroundColor, color, borderRadiusS, border, hover, mobileMedia, tabletMedia, desktopMedia, expanded, cursor}
+    const buttonProperties = {
+        padding,
+        fontSize,
+        backgroundColor,
+        color,
+        borderRadiusS,
+        border,
+        hover,
+        mobileMedia,
+        tabletMedia,
+        desktopMedia,
+        expanded,
+        cursor
+    }
 
     const onClickHandler = () => {
         if (disabled) return
@@ -133,6 +150,8 @@ function Button(props: ButtonPropsType) {
                       onClick={onClickHandler}>
             {hasIcon && (iconDir === 'left' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
+            {isLoading &&
+                <BounceLoader size={18} color={`var(--color-${btnType + '-500)'}`}/>}
             {children}
             {hasIcon && (iconDir === 'right' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
