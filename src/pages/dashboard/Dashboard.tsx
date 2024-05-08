@@ -5,7 +5,7 @@ const AssetsPortfolioContainer = styled.div``
 export default function Dashboard() {
     return (
         <AssetsPortfolioContainer>
-
+            Dashboard
         </AssetsPortfolioContainer>
     )
 }

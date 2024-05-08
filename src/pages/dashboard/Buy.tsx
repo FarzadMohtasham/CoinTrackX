@@ -5,7 +5,7 @@ const BuyContainer = styled.div``
 export default function Buy() {
     return (
         <BuyContainer>
-
+            Buy
         </BuyContainer>
     )
 }
