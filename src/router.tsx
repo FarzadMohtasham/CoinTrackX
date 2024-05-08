@@ -2,6 +2,13 @@ import {createBrowserRouter} from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import Login from "./pages/auth/Login.tsx";
 import Signup from "./pages/auth/Signup.tsx";
+import DashboardLayout from "./layout/Dashboard.layout.tsx";
+import Dashboard from "./pages/dashboard/Dashboard.tsx";
+import AssetsPortfolio from "./pages/dashboard/AssetsPortfolio.tsx";
+import Prices from "./pages/dashboard/Prices.tsx";
+import Buy from "./pages/dashboard/Buy.tsx";
+import Transactions from "./pages/dashboard/Transactions.tsx";
+import Settings from "./pages/dashboard/Settings.tsx";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +22,36 @@ const router = createBrowserRouter([
     {
         path: "/signup",
         Component: Signup,
+    },
+    {
+        Component: DashboardLayout,
+        children: [
+            {
+                path: '/dashboard',
+                Component: Dashboard,
+                index: true,
+            },
+            {
+                path: '/assets-portfolio',
+                Component: AssetsPortfolio,
+            },
+            {
+                path: '/prices',
+                Component: Prices,
+            },
+            {
+                path: '/buy',
+                Component: Buy,
+            },
+            {
+                path: '/transactions',
+                Component: Transactions,
+            },
+            {
+                path: '/settings',
+                Component: Settings,
+            },
+        ]
     }
 ])
 
