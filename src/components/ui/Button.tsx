@@ -13,7 +13,7 @@ import {
     buttonFontSizeVariations,
     buttonBorderRadius
 } from '../../data/Button.data.ts'
-import {BounceLoader} from "react-spinners";
+import {MoonLoader} from "react-spinners";
 
 type ButtonStyledProps = {
     properties: Properties;
@@ -86,7 +86,7 @@ function Button(props: ButtonPropsType) {
             !outline ?
                 (
                     disabled ?
-                        css`var(--color-${btnType + '-500)'}`
+                        css`var(--color-${btnType + '-700)'}`
                         :
                         buttonTypeVariations[btnType].backgroundColor
                 )
@@ -151,7 +151,7 @@ function Button(props: ButtonPropsType) {
             {hasIcon && (iconDir === 'left' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
             {isLoading &&
-                <BounceLoader size={18} color={`var(--color-${btnType + '-500)'}`}/>}
+                <MoonLoader size={18} color={`var(--color-${btnType + '-500)'}`}/>}
             {children}
             {hasIcon && (iconDir === 'right' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
