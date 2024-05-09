@@ -1,5 +1,5 @@
 import {styled} from "styled-components"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import Heading from "../../components/ui/Heading.tsx"
 import Button from "../../components/ui/Button.tsx"
 import Separator from "../../components/ui/Separator.tsx"
@@ -57,6 +57,8 @@ export default function Login() {
 
     const [authLoading, setAuthLoading] = useState<boolean>(false)
 
+    const navigate = useNavigate()
+
     useAutoRedirectOnAuth('dashboard', true)
 
     const onSignupHandler = async () => {
@@ -69,8 +71,8 @@ export default function Login() {
 
         try {
             const data = await signup({firstName, lastName}, email, password)
-            toast.success(`Congratulation, You signed up successfully`)
-            console.log(data)
+            toast.success(`Congratulation, You signed up successfully :)`)
+            navigate('/login')
         } catch (e: string | any) {
             toast.error(e.toString())
         }
