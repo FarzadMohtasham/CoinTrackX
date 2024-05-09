@@ -19,6 +19,7 @@ import {
     AuthLink,
 } from "./Auth.styled.tsx"
 import {signup} from "../../services/api/apiAuth.service.ts";
+import useAutoRedirectOnAuth from "../../hooks/useAutoRedirectOnAuth.ts";
 
 const LoginContainer = styled(AuthStyled)``
 const LoginWrapper = styled(AuthInnerWrapper)``
@@ -55,6 +56,8 @@ export default function Login() {
     const [passwordFieldError, setPasswordFieldError] = useState<string | null>(null)
 
     const [authLoading, setAuthLoading] = useState<boolean>(false)
+
+    useAutoRedirectOnAuth('dashboard', true)
 
     const onSignupHandler = async () => {
         if (!agreeTerms) {

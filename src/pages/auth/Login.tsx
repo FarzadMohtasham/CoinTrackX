@@ -1,5 +1,5 @@
 import {styled} from "styled-components"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import Heading from "../../components/ui/Heading.tsx"
 import Button from "../../components/ui/Button.tsx"
 import Separator from "../../components/ui/Separator.tsx"
@@ -19,6 +19,7 @@ import {
     AuthLink,
 } from "./Auth.styled.tsx"
 import {login} from "../../services/api/apiAuth.service.ts";
+import useAutoRedirectOnAuth from "../../hooks/useAutoRedirectOnAuth.ts";
 
 const LoginContainer = styled(AuthStyled)``
 const LoginWrapper = styled(AuthInnerWrapper)``
@@ -35,12 +36,18 @@ export default function Login() {
 
     const [authLoading, setAuthLoading] = useState<boolean>(false)
 
+    const navigate = useNavigate()
+
+    useAutoRedirectOnAuth('dashboard', true)
+
     const onLoginHandler = async () => {
         setAuthLoading(true)
         try {
             const data = await login(email, password)
             toast.success('Good, Sign in was successful!')
-            console.log(data)
+            navigate('/dashboard', {
+                replace: true
+            })
         } catch (e: string | any) {
             toast.error(e.toString())
         }
@@ -133,7 +140,8 @@ export default function Login() {
                                         focus_icon_src={'password-focus-icon.svg'}
                                         on_change_handler={setPassword}
                     />
-                    <CheckboxInput label={'Remember me'} check_box_setter={setRememberMe}/>
+                    <CheckboxInput label={'Remember me'}
+                                   check_box_setter={setRememberMe}/>
                     <Button borderRadius={'lg'}
                             disabled={emailFieldError !== null || passwordFieldError !== null}
                             on_click_handler={onLoginHandler}
