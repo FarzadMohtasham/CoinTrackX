@@ -9,11 +9,13 @@ const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
   cursor: pointer;
   padding: 1.4rem 0 1.4rem 1.2rem;
   width: 100%;
+  transition: all .3s ease-in-out;
+  border: .2rem white solid;
 
   ${props => props.$active && css`
     background-color: var(--color-primary-50);
     border-radius: .8rem;
-    border: .2rem var(--color-black-50) solid;
+    border: .2rem var(--color-black-50) solid !important;
   `}
   span {
     font-size: var(--font-size-body-sm);
