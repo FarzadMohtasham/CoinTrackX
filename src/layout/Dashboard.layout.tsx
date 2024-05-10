@@ -6,8 +6,6 @@ import NavigationItem from "../components/ui/NavigationItem.tsx";
 import {NavigationListData} from "../data/NavigationList.data.ts";
 import {NavigationItemType} from "../ts/type/NavigationItem.type.ts";
 import React, {useEffect, useState} from "react";
-import {titleCase} from "../utils/helpers.ts";
-import {array} from "yup";
 
 const LayoutContainer = styled.div`
   display: grid;
