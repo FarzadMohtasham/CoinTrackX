@@ -16,9 +16,10 @@ export type NavigationProps = {
 }
 
 export type NavigationItemType = {
-    name: string,
-    link: string,
-    icon_src: string,
-    active_icon_src: string,
-    active: boolean,
+    name: string;
+    title: string;
+    link: string;
+    icon_src: string;
+    active_icon_src: string;
+    active: boolean;
 }

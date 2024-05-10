@@ -1,11 +1,13 @@
 import {styled} from "styled-components";
-import {Outlet, useNavigate} from 'react-router-dom'
+import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
 import Heading from "../components/ui/Heading.tsx";
 import Logo from "../components/ui/Logo.tsx";
 import NavigationItem from "../components/ui/NavigationItem.tsx";
 import {NavigationListData} from "../data/NavigationList.data.ts";
 import {NavigationItemType} from "../ts/type/NavigationItem.type.ts";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {titleCase} from "../utils/helpers.ts";
+import {array} from "yup";
 
 const LayoutContainer = styled.div`
   display: grid;
@@ -86,7 +88,7 @@ const LayoutHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 3.2rem;
+  padding: 0 2.4rem;
 `
 const LayoutSidebar = styled.div`
   flex-direction: column;
@@ -126,8 +128,23 @@ const LayoutMain = styled.div`
 export default function DashboardLayout() {
     const [navigationList, setNavigationList] = useState<NavigationItemType[]>(NavigationListData)
     const [selectedNavName, setSelectedNavName] = useState<string>('dashboard')
+    const location = useLocation()
 
     const navigate = useNavigate()
+
+    const resetNavListActiveProp = () => {
+        setNavigationList((navList) => navList.map(nav => {
+            nav.active = false
+            return nav
+        }))
+    }
+
+    const setNavListItemToActive = (navName: string) => {
+        setNavigationList((navList) => navList.map(nav => {
+            if (nav.name === navName) nav.active = true
+            return nav
+        }))
+    }
 
     const onNavigationItemHandler = (navItemName: string): void => {
         const currentSelectedNavIndex = navigationList.findIndex(nav => nav.active)
@@ -142,10 +159,25 @@ export default function DashboardLayout() {
         navigate(navigationList[newSelectedNavIndex].link)
     }
 
+    // Nav name update
     useEffect(() => {
-        const currentSelectedNavIndex = navigationList.findIndex(nav => nav.active)
-        setSelectedNavName(navigationList[currentSelectedNavIndex].name)
-    });
+        const selectedNavIndex = navigationList.findIndex(nav => nav.active)
+        setSelectedNavName(navigationList[selectedNavIndex].title)
+    }, [navigationList]);
+
+    // Update active nav based on url changes
+    useEffect(() => {
+        const pathList: any = location.pathname.split('/')
+
+        resetNavListActiveProp()
+
+        // Check if user was on the /dashboard, set all to false and dashboard to the true
+        if (!pathList[2]) {
+            setNavListItemToActive(pathList[1])
+        } else {
+            setNavListItemToActive(pathList[2])
+        }
+    }, [location.pathname]);
 
     return (
         <LayoutContainer>
@@ -161,10 +193,12 @@ export default function DashboardLayout() {
             </LayoutHeader>
 
             <LayoutSidebar>
-                <Logo/>
+                <Link to={'/dashboard'}>
+                    <Logo/>
+                </Link>
                 <div className={'navigation-list'}>
                     {
-                        navigationList.map((navItem: NavigationItemType, index: number): JSX.Element => {
+                        navigationList.map((navItem: NavigationItemType, index: number): React.JSX.Element => {
                             return (
                                 <NavigationItem key={navItem.name + index}
                                                 icon_src={navItem.icon_src}
@@ -174,7 +208,7 @@ export default function DashboardLayout() {
                                                 active={navItem.active}
                                                 on_click={() => onNavigationItemHandler(navItem.name)}
                                 >
-                                    {navItem.name}
+                                    {navItem.title}
                                 </NavigationItem>
                             )
                         })

@@ -11,7 +11,6 @@ export default function useAutoRedirectOnAuth(path: string = 'dashboard', router
 
         if (userLocalStorage !== null) {
             if (JSON.parse(String(userLocalStorage)).access_token) {
-                console.log('true')
                 navigate(path, {
                     replace: routerReplace
                 })
