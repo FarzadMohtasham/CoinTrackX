@@ -5,6 +5,7 @@ import logoType from '/images/logo-type.svg'
 
 const StyledLogo = styled.div`
   display: flex;
+  width: min-content;
   gap: .8rem;
 `
 

@@ -32,23 +32,23 @@ const router = createBrowserRouter([
                 index: true,
             },
             {
-                path: '/assets-portfolio',
+                path: '/dashboard/assets-portfolio',
                 Component: AssetsPortfolio,
             },
             {
-                path: '/prices',
+                path: '/dashboard/prices',
                 Component: Prices,
             },
             {
-                path: '/buy',
+                path: '/dashboard/buy',
                 Component: Buy,
             },
             {
-                path: '/transactions',
+                path: '/dashboard/transactions',
                 Component: Transactions,
             },
             {
-                path: '/settings',
+                path: '/dashboard/settings',
                 Component: Settings,
             },
         ]
