@@ -5,7 +5,7 @@ import Logo from "../components/ui/Logo.tsx";
 import NavigationItem from "../components/ui/NavigationItem.tsx";
 import {NavigationListData} from "../data/NavigationList.data.ts";
 import {NavigationItemType} from "../ts/type/NavigationItem.type.ts";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const LayoutContainer = styled.div`
   display: grid;
@@ -120,10 +120,12 @@ const LayoutSidebar = styled.div`
 const LayoutMain = styled.div`
   grid-area: layout-main;
   overflow-y: scroll;
+  padding: 3.2rem 2rem;
 `
 
 export default function DashboardLayout() {
     const [navigationList, setNavigationList] = useState<NavigationItemType[]>(NavigationListData)
+    const [selectedNavName, setSelectedNavName] = useState<string>('dashboard')
 
     const navigate = useNavigate()
 
@@ -140,14 +142,22 @@ export default function DashboardLayout() {
         navigate(navigationList[newSelectedNavIndex].link)
     }
 
+    useEffect(() => {
+        const currentSelectedNavIndex = navigationList.findIndex(nav => nav.active)
+        setSelectedNavName(navigationList[currentSelectedNavIndex].name)
+    });
+
     return (
         <LayoutContainer>
             <LayoutHeader>
-                <Heading heading_type={'h6'}>LayoutHeader</Heading>
+                <Heading heading_type={'h5'}
+                         font_weight={'bold'}>
+                    {selectedNavName}
+                </Heading>
 
-                <div>
-                    sadfdsfd
-                </div>
+                <span>
+                    right side
+                </span>
             </LayoutHeader>
 
             <LayoutSidebar>
