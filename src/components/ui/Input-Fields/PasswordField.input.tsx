@@ -30,7 +30,7 @@ const PasswordInputStyled = styled.div`
 `
 
 const PasswordFieldContainer = styled(PasswordInputStyled)<InputStyledProps>`
-  border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
+  border-color: ${props => props.$input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
 
   .visible-icon, .invisible-icon {
     cursor: pointer;
@@ -67,7 +67,7 @@ export default function PasswordFieldInput(props: InputProps) {
 
     return (
         <Fragment>
-            <PasswordFieldContainer input_selected={passwordFieldSelected.toString()}>
+            <PasswordFieldContainer $input_selected={passwordFieldSelected.toString()}>
                 {!passwordFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
                 {passwordFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
                 <input type={passwordVisible ? 'text' : 'password'}

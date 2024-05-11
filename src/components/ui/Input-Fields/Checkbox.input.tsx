@@ -15,14 +15,14 @@ const CheckBoxContainer = styled.div<CheckboxStyledProps>`
   }
 
   input {
-    --active: ${props => props.properties.active};
-    --active-inner: ${props => props.properties['active-inner']};
-    --focus: ${props => props.properties.focus};
-    --border: ${props => props.properties.border};
-    --border-hover: ${props => props.properties['border-hover']};
-    --background: ${props => props.properties.background};
-    --disabled: ${props => props.properties.disabled};
-    --disabled-inner: ${props => props.properties['disabled-inner']};
+    --active: ${props => props.$properties.active};
+    --active-inner: ${props => props.$properties['active-inner']};
+    --focus: ${props => props.$properties.focus};
+    --border: ${props => props.$properties.border};
+    --border-hover: ${props => props.$properties['border-hover']};
+    --background: ${props => props.$properties.background};
+    --disabled: ${props => props.$properties.disabled};
+    --disabled-inner: ${props => props.$properties['disabled-inner']};
   }
 `
 
@@ -49,7 +49,7 @@ export default function CheckboxInput(props: CheckboxProps) {
 
     return (
         <CheckBoxContainer onClick={checkboxOnClickHandler}
-                           properties={{...checkboxProperties}}>
+                           $properties={{...checkboxProperties}}>
             <input type={'checkbox'}
                    checked={checked}
                    onChange={() => {

@@ -7,6 +7,7 @@ import {NavigationListData} from "../data/NavigationList.data.ts";
 import {NavigationItemType} from "../ts/type/NavigationItem.type.ts";
 import React, {useEffect, useState} from "react";
 import Profile from "../components/ui/Profile.tsx";
+import Alert from "../components/ui/Notifications.tsx";
 
 const LayoutContainer = styled.div`
   display: grid;
@@ -193,6 +194,7 @@ export default function DashboardLayout() {
                 </Heading>
 
                 <div className={'right-col'}>
+                    <Alert/>
                     <Profile/>
                 </div>
             </LayoutHeader>

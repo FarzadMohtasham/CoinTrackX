@@ -21,5 +21,5 @@ export type Properties = {
 }
 
 export type CheckboxStyledProps = {
-    properties: Properties
+    $properties: Properties
 }
