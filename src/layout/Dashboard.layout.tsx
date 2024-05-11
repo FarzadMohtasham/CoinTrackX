@@ -6,6 +6,7 @@ import NavigationItem from "../components/ui/NavigationItem.tsx";
 import {NavigationListData} from "../data/NavigationList.data.ts";
 import {NavigationItemType} from "../ts/type/NavigationItem.type.ts";
 import React, {useEffect, useState} from "react";
+import Profile from "../components/ui/Profile.tsx";
 
 const LayoutContainer = styled.div`
   display: grid;
@@ -87,6 +88,12 @@ const LayoutHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 2.4rem;
+
+  .right-col {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
 `
 const LayoutSidebar = styled.div`
   flex-direction: column;
@@ -185,9 +192,9 @@ export default function DashboardLayout() {
                     {selectedNavName}
                 </Heading>
 
-                <span>
-                    right side
-                </span>
+                <div className={'right-col'}>
+                    <Profile/>
+                </div>
             </LayoutHeader>
 
             <LayoutSidebar>

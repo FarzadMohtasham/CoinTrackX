@@ -8,5 +8,5 @@ export type HeadingPropsType = {
 }
 
 export type HeadingStyledProps = {
-    font_weight: string;
+    $font_weight: string;
 }

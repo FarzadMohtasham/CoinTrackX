@@ -8,5 +8,5 @@ export type ContainerPropsType = {
 }
 
 export type ContainerStyledProps = {
-    background_style: RuleSet
+    $background_style: RuleSet
 }

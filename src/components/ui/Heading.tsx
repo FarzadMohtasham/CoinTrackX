@@ -2,7 +2,7 @@ import {styled} from 'styled-components'
 import {HeadingPropsType, HeadingStyledProps} from "../../ts/type/HeadingProps.type.ts";
 
 const HeadingStyled = styled.h1<HeadingStyledProps>`
-  font-weight: ${props => props.font_weight};
+  font-weight: ${props => props.$font_weight};
 `
 
 export default function Heading(props: HeadingPropsType) {
@@ -14,7 +14,9 @@ export default function Heading(props: HeadingPropsType) {
     } = props
 
     return (
-        <HeadingStyled className={class_name} font_weight={font_weight} as={heading_type}>
+        <HeadingStyled className={class_name}
+                       $font_weight={font_weight}
+                       as={heading_type}>
             {children}
         </HeadingStyled>
     )

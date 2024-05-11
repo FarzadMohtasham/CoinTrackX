@@ -8,7 +8,7 @@ const ContainerStyled = styled.div<ContainerStyledProps>`
   flex-direction: column;
   align-items: center;
 
-  ${props => props.background_style}
+  ${props => props.$background_style}
   .wrapper {
     width: 95%;
     max-width: 95%;
@@ -59,7 +59,7 @@ export default function Container(props: ContainerPropsType) {
 
     return (
         // @ts-ignore
-        <ContainerStyled background_style={background_style}
+        <ContainerStyled $background_style={background_style}
                          as={tag_type}>
             <div className={'wrapper'}>
                 {children}

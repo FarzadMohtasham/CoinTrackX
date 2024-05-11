@@ -9,5 +9,5 @@ export type InputProps = {
 }
 
 export type InputStyledProps = {
-    input_selected: string;
+    $input_selected: string;
 }

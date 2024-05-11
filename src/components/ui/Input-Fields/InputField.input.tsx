@@ -36,7 +36,7 @@ const InputStyled = styled.div`
 
 const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
   margin-bottom: 1rem;
-  border-color: ${props => props.input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
+  border-color: ${props => props.$input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
 `
 
 const ErrorContainer = styled.span`
@@ -67,7 +67,7 @@ export default function Input(props: InputProps) {
 
     return (
         <FieldContainer>
-            <InputFieldContainer input_selected={inputFieldSelected.toString()}>
+            <InputFieldContainer $input_selected={inputFieldSelected.toString()}>
                 {!inputFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
                 {inputFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
                 <input type={'text'}

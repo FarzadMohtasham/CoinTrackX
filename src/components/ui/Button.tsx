@@ -16,7 +16,7 @@ import {
 import {HashLoader} from "react-spinners";
 
 type ButtonStyledProps = {
-    properties: Properties;
+    $properties: Properties;
 }
 
 const ButtonStyled = styled.button<ButtonStyledProps>`
@@ -25,33 +25,33 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   gap: 1.2rem;
   justify-content: center;
   text-align: center;
-  cursor: ${props => props.properties.cursor};
-  padding: ${(props) => props.properties.padding};
-  font-size: ${props => props.properties.fontSize};
-  width: ${props => props.properties.expanded ? '100%' : `max-content`};
-  background-color: ${props => props.properties.backgroundColor};
-  color: ${props => props.properties.color};
-  border-radius: ${props => props.properties.borderRadiusS};
-  border: .2rem solid ${props => props.properties.border};
+  cursor: ${props => props.$properties.cursor};
+  padding: ${(props) => props.$properties.padding};
+  font-size: ${props => props.$properties.fontSize};
+  width: ${props => props.$properties.expanded ? '100%' : `max-content`};
+  background-color: ${props => props.$properties.backgroundColor};
+  color: ${props => props.$properties.color};
+  border-radius: ${props => props.$properties.borderRadiusS};
+  border: .2rem solid ${props => props.$properties.border};
   transition: background-color .3s ease-in-out, border .3s ease-in-out;
 
   &:hover {
-    ${props => props.properties.hover}
+    ${props => props.$properties.hover}
   }
 
   /*Very Small devices (landscape phones, 576px and down)*/
   @media (max-width: ${props => props.theme.responsive.md}) {
-    ${props => props.properties.mobileMedia}
+    ${props => props.$properties.mobileMedia}
   }
 
   /*Medium devices (tablets, 768px and up)*/
   @media (min-width: ${props => props.theme.responsive.md}) {
-    ${props => props.properties.tabletMedia}
+    ${props => props.$properties.tabletMedia}
   }
 
   /*Large devices (desktops, 992px and up)*/
   @media (min-width: ${props => props.theme.responsive.lg}) {
-    ${props => props.properties.desktopMedia}
+    ${props => props.$properties.desktopMedia}
   }
 `
 
@@ -146,7 +146,7 @@ function Button(props: ButtonPropsType) {
 
     return (
         <ButtonStyled className={`${class_name} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`}
-                      properties={buttonProperties}
+                      $properties={buttonProperties}
                       onClick={onClickHandler}>
             {hasIcon && (iconDir === 'left' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
