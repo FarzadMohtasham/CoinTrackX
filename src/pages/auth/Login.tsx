@@ -43,7 +43,8 @@ export default function Login() {
     const onLoginHandler = async () => {
         setAuthLoading(true)
         try {
-            const data = await login(email, password)
+            // const data = await login(email, password)
+            await login(email, password)
             toast.success('Good, Sign in was successful!')
             navigate('/dashboard', {
                 replace: true
