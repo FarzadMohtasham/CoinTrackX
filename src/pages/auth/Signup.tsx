@@ -70,7 +70,8 @@ export default function Login() {
         setAuthLoading(true)
 
         try {
-            const data = await signup({firstName, lastName}, email, password)
+            // const data = await signup({firstName, lastName}, email, password)
+            await signup({firstName, lastName}, email, password)
             toast.success(`Congratulation, You signed up successfully :)`)
             navigate('/login')
         } catch (e: string | any) {
