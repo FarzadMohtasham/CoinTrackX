@@ -2,7 +2,9 @@ import {styled} from "styled-components"
 import Container from "../ui/Container.tsx";
 import HeadingBox from "../ui/HeadingBox.tsx";
 
-const PartnersContainer = styled.section`
+const PartnersContainer = styled.section.attrs({
+    id: 'partners'
+})`
   padding-top: 10rem;
   padding-bottom: 4.8rem;
 `

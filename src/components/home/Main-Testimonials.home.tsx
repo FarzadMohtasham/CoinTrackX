@@ -36,7 +36,9 @@ const reviewsList: ReviewType[] = [
     }
 ]
 
-const TestimonialsWrapper = styled.div`
+const TestimonialsWrapper = styled.div.attrs({
+    id: 'testimonials'
+})`
   padding: 10rem 0;
   display: flex;
   flex-direction: column;

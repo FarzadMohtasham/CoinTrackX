@@ -2,27 +2,29 @@ import {styled, IStyledComponent} from "styled-components";
 import Logo from "../ui/Logo.tsx";
 import Button from "../ui/Button.tsx";
 import {NavLink} from "react-router-dom";
+import scrollTo from "../../utils/scroller.ts";
+import {removeLetter} from "../../utils/helpers.ts";
 
 const navItems = [
     {
-        name: 'features',
-        link: '#'
+        name: 'partners',
+        link: '#partners'
     },
     {
-        name: 'prices',
-        link: '#'
+        name: 'platforms',
+        link: '#platforms'
     },
     {
-        name: 'company',
-        link: '#'
+        name: 'coins',
+        link: '#coins'
     },
     {
-        name: 'developers',
-        link: '#'
+        name: 'buy crypto',
+        link: '#buy-crypto'
     },
     {
-        name: 'developers',
-        link: '#'
+        name: 'testimonials',
+        link: '#testimonials'
     },
 ]
 
@@ -35,10 +37,10 @@ const HeaderStyled: IStyledComponent<any> = styled.header`
 
 const NavBarStyled: IStyledComponent<any> = styled.nav`
   display: none;
-  
+
   @media (min-width: 992px) {
     & {
-      display: block; 
+      display: block;
     }
   }
 `
@@ -81,8 +83,10 @@ export default function Header() {
                         navItems.map((nav: { name: string, link: string }, index: number) => {
                             return (
                                 <NavItemStyled key={nav.name + index}>
-                                    <a href={nav.link}>
-                                        {nav.name}
+                                    <a onClick={() => {
+                                        scrollTo(removeLetter(nav.link, '#'))
+                                    }}>
+                                        {nav.name.toUpperCase()}
                                     </a>
                                 </NavItemStyled>
                             )

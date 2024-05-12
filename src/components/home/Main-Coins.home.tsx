@@ -12,7 +12,9 @@ const coinsSrcList = [
     '/images/xrp.coin.home.svg',
 ]
 
-const CoinsWrapperStyled = styled.section`
+const CoinsWrapperStyled = styled.section.attrs({
+    id: 'coins'
+})`
   padding-top: 10rem;
   padding-bottom: 4.8rem;
   display: flex;

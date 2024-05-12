@@ -8,3 +8,7 @@ export function titleCase(str: string) {
     // Directly return the joined string
     return splitStr.join(' ');
 }
+
+export function removeLetter(str: string, letterToRemove: string) {
+    return str.split(letterToRemove).join('');
+}

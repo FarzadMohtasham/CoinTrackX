@@ -3,7 +3,9 @@ import Container from "../ui/Container.tsx";
 import HeadingBox from "../ui/HeadingBox.tsx";
 import SuperchargeCard from "../ui/Card/Supercharge.card.tsx";
 
-const BuyCryptoWrapperStyled = styled.section`
+const BuyCryptoWrapperStyled = styled.section.attrs({
+    id: 'buy-crypto'
+})`
   padding: 10rem 0;
   display: flex;
   flex-direction: column;

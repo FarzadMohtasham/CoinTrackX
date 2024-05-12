@@ -3,7 +3,9 @@ import {css, styled} from "styled-components";
 import Container from "../ui/Container.tsx";
 import HeadingBox from "../ui/HeadingBox.tsx";
 
-const PlatformWrapper = styled.div`
+const PlatformWrapper = styled.div.attrs({
+    id: 'platforms'
+})`
   display: flex;
   flex-direction: column;
   padding-top: 10rem;
