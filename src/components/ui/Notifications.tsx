@@ -102,13 +102,16 @@ export default function Notifications() {
             {
                 notifIsOpen && <NotificationsWrapper>
                     {
-                        notifications.map((notification) => {
+                        notifications.map((notification, index) => {
                             const {
                                 title, message, priority, type,
                             } = notification
 
                             return (
-                                <NotificationStyled $priority={priority} $type={type}>
+                                <NotificationStyled $priority={priority}
+                                                    $type={type}
+                                                    key={title + index}
+                                >
                                     <span className={'title'}>{title}</span>
                                     <span className="message">{message}</span>
                                 </NotificationStyled>
@@ -121,9 +124,6 @@ export default function Notifications() {
     )
 }
 
+export async function loader() {
 
-
-
-
-
-
+}
