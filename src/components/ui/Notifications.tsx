@@ -1,22 +1,15 @@
 import {styled} from "styled-components"
-import {MutableRefObject, useEffect, useRef, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import Icon from "./Icon.tsx"
-
-type NotificationContainerProps = {
-    ref: MutableRefObject<any>
-}
-
-type NotificationStyledProps = {
-    $priority: string;
-    $type: string;
-}
-
-type Notifications = {
-    title: string;
-    message: string;
-    type: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
-    priority: 'high' | 'middle' | 'low';
-}
+import {
+    Notifications as NotificationsT,
+    NotificationStyledProps,
+    NotificationContainerProps
+} from "../../ts/type/Notifications.type.ts"
+import {useQuery} from "@tanstack/react-query";
+import {fetchNotifications} from "../../services/api/notifications.api.ts";
+import {UseQueryResult} from "@tanstack/react-query";
+import Skeleton from "react-loading-skeleton";
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
   display: grid;
@@ -60,20 +53,12 @@ export default function Notifications() {
     const [notifIsOpen, setNotifIsOpen] = useState(false)
     const notificationRef = useRef<HTMLElement | null>(null)
     // TODO Load and set Notifications from API
-    const [notifications /*, setNotifications*/] = useState<[] | Notifications[]>([
-        {
-            title: 'Notification title',
-            message: 'Welcome to the CoinTrackX application, We love you :)',
-            type: 'primary',
-            priority: 'high',
-        },
-        {
-            title: 'Notification title',
-            message: 'Notifications message',
-            type: 'primary',
-            priority: 'high',
-        },
-    ])
+    const [notifications, setNotifications] = useState<[] | NotificationsT[]>([])
+
+    const {data: response, isLoading}: UseQueryResult<NotificationsT, Error> = useQuery({
+        queryKey: ['notifications'],
+        queryFn: fetchNotifications
+    })
 
     const onNotificationsClickHandler = (): void => {
         setNotifIsOpen(true)
@@ -86,6 +71,11 @@ export default function Notifications() {
     }
 
     useEffect(() => {
+        // @ts-ignore
+        setNotifications(response?.data || [])
+    }, [response]);
+
+    useEffect(() => {
         document.body.addEventListener('click', handleOnOutsideClick)
         return () => {
             document.body.removeEventListener('click', handleOnOutsideClick)
@@ -93,37 +83,36 @@ export default function Notifications() {
     }, []);
 
     return (
-        notifications.length > 0 && <NotificationsContainer ref={notificationRef}>
-            <Icon icon_src={'notifications.svg'}
-                  icon_alt={'notification icon'}
-                  width={'30rem'}
-                  on_click_handler={onNotificationsClickHandler}/>
+        isLoading ?
+            <Skeleton width={'4rem'} height={'4rem'} style={{borderRadius: '.8rem'}}/>
+            :
+            notifications.length > 0 && <NotificationsContainer ref={notificationRef}>
+                <Icon icon_src={'notifications.svg'}
+                      icon_alt={'notification icon'}
+                      width={'30rem'}
+                      on_click_handler={onNotificationsClickHandler}/>
 
-            {
-                notifIsOpen && <NotificationsWrapper>
-                    {
-                        notifications.map((notification, index) => {
-                            const {
-                                title, message, priority, type,
-                            } = notification
+                {
+                    notifIsOpen && <NotificationsWrapper>
+                        {
+                            notifications.map((notification, index) => {
+                                const {
+                                    title, message, priority, type,
+                                } = notification
 
-                            return (
-                                <NotificationStyled $priority={priority}
-                                                    $type={type}
-                                                    key={title + index}
-                                >
-                                    <span className={'title'}>{title}</span>
-                                    <span className="message">{message}</span>
-                                </NotificationStyled>
-                            )
-                        })
-                    }
-                </NotificationsWrapper>
-            }
-        </NotificationsContainer>
+                                return (
+                                    <NotificationStyled $priority={priority}
+                                                        $type={type}
+                                                        key={title + index}
+                                    >
+                                        <span className={'title'}>{title}</span>
+                                        <span className="message">{message}</span>
+                                    </NotificationStyled>
+                                )
+                            })
+                        }
+                    </NotificationsWrapper>
+                }
+            </NotificationsContainer>
     )
-}
-
-export async function loader() {
-
 }
