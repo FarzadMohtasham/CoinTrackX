@@ -18,7 +18,7 @@ import {
     MainContent as MainContentStyled,
     AuthLink,
 } from "./Auth.styled.tsx"
-import {login} from "../../services/api/apiAuth.api.ts";
+import {login} from "../../services/api/auth.api.ts";
 import useAutoRedirectOnAuth from "../../hooks/useAutoRedirectOnAuth.ts";
 
 const LoginContainer = styled(AuthStyled)``

@@ -9,6 +9,7 @@ export async function login(email: string, password: string) {
     return data
 }
 
+// @ts-ignore
 export async function signup({firstName, lastName}: {
     firstName: string,
     lastName: string
