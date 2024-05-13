@@ -110,11 +110,13 @@ export default function Header() {
                     </Button>
                 </NavLink>
                 {
-                    !userLoggedIn && <Button borderRadius={'lg'}
-                                             hideOn={'mobile'}
-                                             outline>
-                        Get Started
-                    </Button>
+                    !userLoggedIn && <NavLink to={'/login'}>
+                        <Button borderRadius={'lg'}
+                                hideOn={'mobile'}
+                                outline>
+                            Get Started
+                        </Button>
+                    </NavLink>
                 }
             </ButtonsCTAStyled>
         </HeaderStyled>
