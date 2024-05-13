@@ -3,6 +3,7 @@ import Heading from "../ui/Heading.tsx";
 import Button from "../ui/Button.tsx";
 import {Link} from "react-router-dom";
 import Container from "../ui/Container.tsx";
+import useUserLoggedIn from "../../hooks/useUserLoggedIn.ts";
 
 const HeroStyled = styled.section`
   display: flex;
@@ -79,6 +80,8 @@ const HeroStyled = styled.section`
 `
 
 export default function Hero() {
+    const userLoggedIn = useUserLoggedIn()
+
     return (
         <Container background_style={css`background: linear-gradient(to top, #f8f7fe, #fff);`}>
             <HeroStyled>
@@ -88,7 +91,9 @@ export default function Hero() {
                     <p>Track your crypto currency coin and tokens in one place, from BTC and ETH to XRP...</p>
                     <Link to={'login'}>
                         <Button borderRadius={'lg'}>
-                            Get started
+                            {
+                                userLoggedIn ? 'Dashboard' : 'Get Started'
+                            }
                         </Button>
                     </Link>
                 </div>

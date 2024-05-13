@@ -4,6 +4,8 @@ import Button from "../ui/Button.tsx";
 import {NavLink} from "react-router-dom";
 import scrollTo from "../../utils/scroller.ts";
 import {removeLetter} from "../../utils/helpers.ts";
+import useUserLoggedIn from "../../hooks/useUserLoggedIn.ts";
+import Icon from "../ui/Icon.tsx";
 
 const navItems = [
     {
@@ -73,9 +75,7 @@ const ButtonsCTAStyled = styled.div`
 `
 
 export default function Header() {
-    const userLoggedIn = !!JSON.parse(localStorage.getItem(import.meta.env.VITE_User_Auth_Local_Storage_KEY) as string)?.access_token
-
-    console.log(userLoggedIn)
+    const userLoggedIn = useUserLoggedIn()
 
     return (
         <HeaderStyled>
@@ -104,9 +104,8 @@ export default function Header() {
                     <Button btnType={'black'}
                             borderRadius={'lg'}
                             outline>
-                        {
-                            userLoggedIn ? 'Go To Dashboard' : 'Login'
-                        }
+                        {userLoggedIn && <Icon icon_src={'dashboard.svg'} width={'20rem'}/>}
+                        {userLoggedIn ? 'Go To Dashboard' : 'Login'}
                     </Button>
                 </NavLink>
                 {
