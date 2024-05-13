@@ -73,7 +73,9 @@ const ButtonsCTAStyled = styled.div`
 `
 
 export default function Header() {
-    const userLoggedIn = import.meta.env.VITE_User_Auth_Local_Storage_KEY && true
+    const userLoggedIn = !!JSON.parse(localStorage.getItem(import.meta.env.VITE_User_Auth_Local_Storage_KEY) as string)?.access_token
+
+    console.log(userLoggedIn)
 
     return (
         <HeaderStyled>
