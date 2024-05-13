@@ -73,6 +73,8 @@ const ButtonsCTAStyled = styled.div`
 `
 
 export default function Header() {
+    const userLoggedIn = import.meta.env.VITE_User_Auth_Local_Storage_KEY && true
+
     return (
         <HeaderStyled>
             <Logo/>
@@ -96,18 +98,22 @@ export default function Header() {
             </NavBarStyled>
 
             <ButtonsCTAStyled className='cta-buttons'>
-                <NavLink to={'login'}>
+                <NavLink to={'/login'}>
                     <Button btnType={'black'}
                             borderRadius={'lg'}
                             outline>
-                        Sign In
+                        {
+                            userLoggedIn ? 'Go To Dashboard' : 'Login'
+                        }
                     </Button>
                 </NavLink>
-                <Button borderRadius={'lg'}
-                        hideOn={'mobile'}
-                        outline>
-                    Get Started
-                </Button>
+                {
+                    !userLoggedIn && <Button borderRadius={'lg'}
+                                             hideOn={'mobile'}
+                                             outline>
+                        Get Started
+                    </Button>
+                }
             </ButtonsCTAStyled>
         </HeaderStyled>
     )
