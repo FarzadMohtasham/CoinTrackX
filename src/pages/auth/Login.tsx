@@ -32,7 +32,7 @@ export default function Login() {
     const [password, setPassword] = useState<string>('')
     const [emailFieldError, setEmailFieldError] = useState<string | null>(null)
     const [passwordFieldError, setPasswordFieldError] = useState<string | null>(null)
-    const [, setRememberMe] = useState<boolean>(false)
+    const [_, setRememberMe] = useState<boolean>(false)
 
     const [authLoading, setAuthLoading] = useState<boolean>(false)
 
