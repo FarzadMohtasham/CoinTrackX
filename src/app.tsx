@@ -23,7 +23,7 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
-            {!import.meta.env.VITE_IS_PRODUCTION && <ReactQueryDevtools initialIsOpen={false}/>}
+            {import.meta.env.VITE_NODE_ENV === 'development' && <ReactQueryDevtools initialIsOpen={false}/>}
             <Toaster
                 position="top-center"
             />
