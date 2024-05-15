@@ -20,7 +20,25 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@config/*": ["./src/config/*"],
+      "@data/*": ["./src/data/*"],
+      "@feature/*": ["./src/feature/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@jest/*": ["./src/jest/*"],
+      "@layout/*": ["./src/layout/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@query/*": ["./src/query/*"],
+      "@services/*": ["./src/services/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@tests/*": ["./src/tests/*"],
+      "@ts/*": ["./src/ts/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@validation/*": ["./src/validation/*"],
+    }
   },
   "include": [
     "src",

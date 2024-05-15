@@ -1,7 +1,8 @@
 import {styled} from 'styled-components'
-import Container from "../ui/Container.tsx";
-import HeadingBox from "../ui/HeadingBox.tsx";
-import SuperchargeCard from "../ui/Card/Supercharge.card.tsx";
+
+import Container from "@components/ui/Container.tsx";
+import HeadingBox from "@components/ui/HeadingBox.tsx";
+import SuperchargeCard from "@components/ui/Card/Supercharge.card.tsx";
 
 const BuyCryptoWrapperStyled = styled.section.attrs({
     id: 'buy-crypto'

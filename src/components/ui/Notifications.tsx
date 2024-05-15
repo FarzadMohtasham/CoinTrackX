@@ -1,15 +1,19 @@
-import {styled} from "styled-components"
 import {useEffect, useRef, useState} from "react"
+import {styled} from "styled-components"
+import Skeleton from "react-loading-skeleton";
+
+import {useQuery} from "@tanstack/react-query";
+import {fetchNotifications} from "@services/api/notifications.api.ts";
+import {UseQueryResult} from "@tanstack/react-query";
+
 import Icon from "./Icon.tsx"
+
 import {
     Notifications as NotificationsT,
     NotificationStyledProps,
     NotificationContainerProps
-} from "../../ts/type/Notifications.type.ts"
-import {useQuery} from "@tanstack/react-query";
-import {fetchNotifications} from "../../services/api/notifications.api.ts";
-import {UseQueryResult} from "@tanstack/react-query";
-import Skeleton from "react-loading-skeleton";
+} from "@ts/type/Notifications.type.ts"
+
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
   display: grid;

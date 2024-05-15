@@ -1,5 +1,5 @@
-import {supabaseClient} from "../../config/supabase.ts"
-import {AuthResponse} from "@supabase/supabase-js";
+import {AuthResponse} from '@supabase/supabase-js'
+import {supabaseClient} from '@config/supabase.ts'
 
 export async function login(email: string, password: string) {
     const {data, error}: AuthResponse = await supabaseClient.auth.signInWithPassword({email, password})

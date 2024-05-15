@@ -1,7 +1,9 @@
-import {styled} from "styled-components";
-import {InputProps, InputStyledProps} from "../../../ts/type/InputFieldProps.type.ts";
 import {Fragment, useEffect, useState} from "react";
-import Icon from "../Icon.tsx";
+import {styled} from "styled-components";
+
+import Icon from "@components/ui/Icon.tsx";
+
+import {InputProps, InputStyledProps} from "@ts/type/InputFieldProps.type.ts";
 
 const PasswordInputStyled = styled.div`
   display: flex;

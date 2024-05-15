@@ -1,15 +1,15 @@
 import {styled, css} from "styled-components"
-import Container from "../ui/Container.tsx";
-import Logo from "../ui/Logo.tsx";
-import CopyRight from "../ui/CopyRight.tsx";
-import Heading from "../ui/Heading.tsx";
+import Container from "@components/ui/Container.tsx";
+import Logo from "@components/ui/Logo.tsx";
+import CopyRight from "@components/ui/CopyRight.tsx";
+import Heading from "@components/ui/Heading.tsx";
 import {Link} from "react-router-dom";
 
 // Type
 import {ColumnItem as ColumnItemType} from './../../ts/type/Footer.type.ts'
 
 // Data
-import {footerColumnItemsList, socialMediaLogoList} from './../../data/Footer.data.ts'
+import {footerColumnItemsList, socialMediaLogoList} from '@data/Footer.data.ts'
 
 const FooterWrapper = styled.div`
   padding-bottom: 10rem;

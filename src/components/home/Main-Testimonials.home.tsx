@@ -1,10 +1,10 @@
 import {styled, css} from "styled-components"
-import Container from "../ui/Container.tsx"
-import HeadingBox from "../ui/HeadingBox.tsx";
+
+import Container from "@components/ui/Container.tsx"
+import HeadingBox from "@components/ui/HeadingBox.tsx";
+import Review from '@components/ui/Review.tsx'
 
 import {Review as ReviewType} from "../../ts/type/Review.type.ts";
-
-import Review from '../ui/Review.tsx'
 
 const reviewsList: ReviewType[] = [
     {

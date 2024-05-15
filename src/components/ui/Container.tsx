@@ -1,6 +1,6 @@
 import {styled} from 'styled-components'
 
-import {ContainerPropsType, ContainerStyledProps} from './../../ts/type/ContainerProps.type.ts'
+import {ContainerPropsType, ContainerStyledProps} from '@ts/type/ContainerProps.type.ts'
 
 const ContainerStyled = styled.div<ContainerStyledProps>`
   width: 100%;

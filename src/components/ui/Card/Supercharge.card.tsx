@@ -1,5 +1,6 @@
 import {styled} from "styled-components"
-import Heading from "../Heading.tsx";
+
+import Heading from "@components/ui/Heading.tsx";
 
 type SuperchargePropsType = {
     imgSrc: string;

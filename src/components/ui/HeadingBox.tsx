@@ -1,6 +1,6 @@
 import {styled} from 'styled-components'
 
-import {HeadingBoxType} from "../../ts/type/HeadingBox.type.ts";
+import {HeadingBoxType} from "@ts/type/HeadingBox.type.ts";
 
 const HeadingBoxStyled = styled.div`
   display: flex;

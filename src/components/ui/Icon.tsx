@@ -1,4 +1,4 @@
-import {IconProps} from "../../ts/type/IconProps.type.ts";
+import {IconProps} from "@ts/type/IconProps.type.ts";
 
 export default function Icon(props: IconProps) {
     const iconPath = '/icons'

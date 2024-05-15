@@ -1,7 +1,9 @@
-import {styled} from "styled-components"
-import Icon from "../Icon.tsx";
 import {useEffect, useState} from "react";
-import {InputProps, InputStyledProps} from "../../../ts/type/InputFieldProps.type.ts";
+import {styled} from "styled-components"
+
+import Icon from "@components/ui/Icon.tsx";
+
+import {InputProps, InputStyledProps} from "@ts/type/InputFieldProps.type.ts";
 
 const FieldContainer = styled.div`
   display: flex;

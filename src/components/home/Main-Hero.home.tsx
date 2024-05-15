@@ -1,9 +1,10 @@
 import {styled, css} from 'styled-components'
-import Heading from "../ui/Heading.tsx";
-import Button from "../ui/Button.tsx";
 import {Link} from "react-router-dom";
-import Container from "../ui/Container.tsx";
-import useUserLoggedIn from "../../hooks/useUserLoggedIn.ts";
+
+import Heading from "@components/ui/Heading.tsx";
+import Button from "@components/ui/Button.tsx";
+import Container from "@components/ui/Container.tsx";
+import useUserLoggedIn from "@hooks/useUserLoggedIn.ts";
 
 const HeroStyled = styled.section`
   display: flex;

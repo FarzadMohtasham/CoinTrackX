@@ -1,5 +1,6 @@
 import {styled} from 'styled-components'
-import {BadgePropsType} from "../../ts/type/BadgeProps.type.ts"
+
+import {BadgePropsType} from "@ts/type/BadgeProps.type.ts"
 
 // Component
 import Icon from "./Icon.tsx";

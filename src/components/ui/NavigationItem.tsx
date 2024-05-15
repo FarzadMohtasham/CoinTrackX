@@ -1,6 +1,8 @@
-import Icon from "./Icon.tsx";
 import {css, styled} from "styled-components";
-import {NavigationProps, NavigationItemStyledProps} from "../../ts/type/NavigationItem.type.ts"
+
+import Icon from "@components/ui/Icon.tsx";
+
+import {NavigationProps, NavigationItemStyledProps} from "@ts/type/NavigationItem.type.ts"
 
 const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
   display: flex;

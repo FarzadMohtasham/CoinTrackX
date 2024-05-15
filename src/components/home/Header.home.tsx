@@ -1,11 +1,13 @@
-import {styled, IStyledComponent} from "styled-components";
-import Logo from "../ui/Logo.tsx";
-import Button from "../ui/Button.tsx";
 import {NavLink} from "react-router-dom";
-import scrollTo from "../../utils/scroller.ts";
-import {removeLetter} from "../../utils/helpers.ts";
-import useUserLoggedIn from "../../hooks/useUserLoggedIn.ts";
-import Icon from "../ui/Icon.tsx";
+import {styled, IStyledComponent} from "styled-components";
+
+import Logo from "@components/ui/Logo.tsx";
+import Button from "@components/ui/Button.tsx";
+import scrollTo from "@utils/scroller.ts";
+import useUserLoggedIn from "@hooks/useUserLoggedIn.ts";
+import Icon from "@components/ui/Icon.tsx";
+
+import {removeLetter} from "@utils/helpers.ts";
 
 const navItems = [
     {

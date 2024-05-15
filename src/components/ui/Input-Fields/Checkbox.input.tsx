@@ -1,7 +1,7 @@
 import {styled} from "styled-components"
 import {useState} from "react";
-import checkboxData from "../../../data/CheckBox.data.ts";
-import {CheckboxProps, CheckboxStyledProps, CheckboxTypes, Properties} from "../../../ts/type/CheckBox.type.ts";
+import checkboxData from "@data/CheckBox.data.ts";
+import {CheckboxProps, CheckboxStyledProps, CheckboxTypes, Properties} from "@ts/type/CheckBox.type.ts";
 
 const CheckBoxContainer = styled.div<CheckboxStyledProps>`
   display: flex;

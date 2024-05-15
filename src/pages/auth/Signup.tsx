@@ -1,15 +1,18 @@
-import {styled} from "styled-components"
-import {Link, useNavigate} from "react-router-dom"
-import Heading from "../../components/ui/Heading.tsx"
-import Button from "../../components/ui/Button.tsx"
-import Separator from "../../components/ui/Separator.tsx"
-import InputField from "../../components/ui/Input-Fields/InputField.input.tsx"
-import {signupInputValidator} from "../../validation/signup.validator.ts"
-
+import {useEffect, useState} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
+import {styled} from 'styled-components'
 import {toast} from 'react-hot-toast'
-import {useEffect, useState} from "react"
-import PasswordFieldInput from "../../components/ui/Input-Fields/PasswordField.input.tsx"
-import CheckboxInput from "../../components/ui/Input-Fields/Checkbox.input.tsx"
+
+import Heading from '@components/ui/Heading.tsx'
+import Button from '@components/ui/Button.tsx'
+import Separator from '@components/ui/Separator.tsx'
+import InputField from '@components/ui/Input-Fields/InputField.input.tsx'
+import CheckboxInput from '@components/ui/Input-Fields/Checkbox.input.tsx'
+import PasswordFieldInput from '@components/ui/Input-Fields/PasswordField.input.tsx'
+
+import {signupInputValidator} from '@validation/signup.validator.ts'
+import {signup} from '@services/api/auth.api.ts'
+import useAutoRedirectOnAuth from '@hooks/useAutoRedirectOnAuth.ts'
 
 import {
     AuthStyled,
@@ -17,9 +20,7 @@ import {
     HeadContent as HeadContentStyled,
     MainContent as MainContentStyled,
     AuthLink,
-} from "./Auth.styled.tsx"
-import {signup} from "../../services/api/auth.api.ts";
-import useAutoRedirectOnAuth from "../../hooks/useAutoRedirectOnAuth.ts";
+} from '@pages/auth/Auth.styled.tsx'
 
 const LoginContainer = styled(AuthStyled)``
 const LoginWrapper = styled(AuthInnerWrapper)``

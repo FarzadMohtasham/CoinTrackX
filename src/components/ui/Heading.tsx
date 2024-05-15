@@ -1,5 +1,6 @@
 import {styled} from 'styled-components'
-import {HeadingPropsType, HeadingStyledProps} from "../../ts/type/HeadingProps.type.ts";
+
+import {HeadingPropsType, HeadingStyledProps} from "@ts/type/HeadingProps.type.ts";
 
 const HeadingStyled = styled.h1<HeadingStyledProps>`
   font-weight: ${props => props.$font_weight};

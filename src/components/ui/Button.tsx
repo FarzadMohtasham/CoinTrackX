@@ -1,10 +1,10 @@
 import {styled, css} from 'styled-components'
 
 // Components
-import Icon from './Icon.tsx'
+import Icon from '@components/ui/Icon.tsx'
 
 //  Types
-import {ButtonPropsType, Properties} from "../../ts/type/ButtonProps.type.ts";
+import {ButtonPropsType, Properties} from "@ts/type/ButtonProps.type.ts";
 
 // Data
 import {
@@ -12,7 +12,7 @@ import {
     buttonPaddingVariations,
     buttonFontSizeVariations,
     buttonBorderRadius
-} from '../../data/Button.data.ts'
+} from '@data/Button.data.ts'
 import {HashLoader} from "react-spinners";
 
 type ButtonStyledProps = {

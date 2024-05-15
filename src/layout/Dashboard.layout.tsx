@@ -1,13 +1,15 @@
-import {styled} from "styled-components";
-import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
-import Heading from "../components/ui/Heading.tsx";
-import Logo from "../components/ui/Logo.tsx";
-import NavigationItem from "../components/ui/NavigationItem.tsx";
-import {NavigationListData} from "../data/NavigationList.data.ts";
-import {NavigationItemType} from "../ts/type/NavigationItem.type.ts";
 import React, {useEffect, useState} from "react";
-import Profile from "../components/ui/Profile.tsx";
-import Alert from "../components/ui/Notifications.tsx";
+import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
+import {styled} from "styled-components";
+
+import Heading from "@components/ui/Heading.tsx";
+import Logo from "@components/ui/Logo.tsx";
+import NavigationItem from "@components/ui/NavigationItem.tsx";
+import Profile from "@components/ui/Profile.tsx";
+import Alert from "@components/ui/Notifications.tsx";
+
+import {NavigationListData} from "@data/NavigationList.data.ts";
+import {NavigationItemType} from "@ts/type/NavigationItem.type.ts";
 
 const LayoutContainer = styled.div`
   display: grid;
