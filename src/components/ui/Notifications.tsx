@@ -2,18 +2,15 @@ import {useEffect, useRef, useState} from "react"
 import {styled} from "styled-components"
 import Skeleton from "react-loading-skeleton";
 
-import {useQuery} from "@tanstack/react-query";
-import {fetchNotifications} from "@services/api/notifications.api.ts";
-import {UseQueryResult} from "@tanstack/react-query";
-
 import Icon from "./Icon.tsx"
+
+import {useNotificationsQuery} from "@query/useNotifications.query.tsx";
 
 import {
     Notifications as NotificationsT,
     NotificationStyledProps,
     NotificationContainerProps
 } from "@ts/type/Notifications.type.ts"
-
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
   display: grid;
@@ -56,20 +53,16 @@ const NotificationStyled = styled.div<NotificationStyledProps>`
 export default function Notifications() {
     const [notifIsOpen, setNotifIsOpen] = useState(false)
     const notificationRef = useRef<HTMLElement | null>(null)
-    // TODO Load and set Notifications from API
     const [notifications, setNotifications] = useState<[] | NotificationsT[]>([])
 
-    const {data: response, isLoading}: UseQueryResult<NotificationsT, Error> = useQuery({
-        queryKey: ['notifications'],
-        queryFn: fetchNotifications
-    })
+    const {data: response, isLoading} = useNotificationsQuery()
 
     const onNotificationsClickHandler = (): void => {
         setNotifIsOpen(true)
     }
 
     const handleOnOutsideClick = (e: Event) => {
-        if ((notificationRef.current && !e?.composedPath().includes(notificationRef.current)) && !notifIsOpen) {
+        if ((notificationRef.current && !e.composedPath().includes(notificationRef.current)) && !notifIsOpen) {
             setNotifIsOpen(false)
         }
     }
@@ -81,6 +74,7 @@ export default function Notifications() {
 
     useEffect(() => {
         document.body.addEventListener('click', handleOnOutsideClick)
+
         return () => {
             document.body.removeEventListener('click', handleOnOutsideClick)
         }
