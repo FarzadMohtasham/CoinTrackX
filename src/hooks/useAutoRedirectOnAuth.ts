@@ -7,9 +7,11 @@ export default function useAutoRedirectOnAuth(path: string = 'dashboard', router
 
     useEffect(() => {
         const userLocalStorage: object | null = useLocaleStorage(import.meta.env.VITE_User_Auth_Local_Storage_KEY)
+        console.log(userLocalStorage)
 
         if (userLocalStorage !== null) {
             if (JSON.parse(String(userLocalStorage)).access_token) {
+                console.log('if2 true')
                 navigate(path, {
                     replace: routerReplace
                 })

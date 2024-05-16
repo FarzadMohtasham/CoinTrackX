@@ -10,6 +10,7 @@ export type NotificationStyledProps = {
 }
 
 export type Notifications = {
+    data: [];
     title: string;
     message: string;
     type: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';

@@ -68,7 +68,6 @@ export default function Notifications() {
     }
 
     useEffect(() => {
-        // @ts-ignore
         setNotifications(response?.data || [])
     }, [response]);
 

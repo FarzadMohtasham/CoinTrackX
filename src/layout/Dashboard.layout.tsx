@@ -14,7 +14,6 @@ import {NavigationItemType} from "@ts/type/NavigationItem.type.ts";
 const LayoutContainer = styled.div`
   display: grid;
   height: 100vh;
-
   /*Very Small devices (landscape phones, 576px and down)*/
   @media (max-width: 57.6rem) {
     grid-template-areas: 
@@ -31,7 +30,6 @@ const LayoutContainer = styled.div`
     'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
     'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main';
   }
-
   /*Small devices (landscape phones, 576px and up)*/
   @media (min-width: 57.6rem) {
     grid-template-areas: 
@@ -48,7 +46,6 @@ const LayoutContainer = styled.div`
     'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
     'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main';
   }
-
   /*Medium devices (tablets, 768px and up)*/
   @media (min-width: 76.8rem) {
     grid-template-areas: 
@@ -65,7 +62,6 @@ const LayoutContainer = styled.div`
     'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
     'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main';
   }
-
   /*Large devices (desktops, 992px and up)*/
   @media (min-width: 99.2rem) {
     grid-template-areas: 
@@ -83,7 +79,6 @@ const LayoutContainer = styled.div`
     'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main';
   }
 `
-
 const LayoutHeader = styled.div`
   grid-area: layout-header;
   border-bottom: .2rem var(--color-black-100) solid;
@@ -126,7 +121,6 @@ const LayoutSidebar = styled.div`
     display: flex;
   }
 `
-
 const LayoutMain = styled.div`
   grid-area: layout-main;
   overflow-y: scroll;
@@ -136,8 +130,8 @@ const LayoutMain = styled.div`
 export default function DashboardLayout() {
     const [navigationList, setNavigationList] = useState<NavigationItemType[]>(NavigationListData)
     const [selectedNavName, setSelectedNavName] = useState<string>('dashboard')
-    const location = useLocation()
 
+    const location = useLocation()
     const navigate = useNavigate()
 
     const resetNavListActiveProp = () => {
