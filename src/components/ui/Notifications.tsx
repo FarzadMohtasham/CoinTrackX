@@ -33,12 +33,13 @@ const NotificationsWrapper = styled.div`
 `
 
 const NotificationStyled = styled.div<NotificationStyledProps>`
-  background-color: var(--color-black-100);
+  background-color: ${props => props.theme.notifications_color[`${props.$type}_bg_color`]};
   padding: 1rem;
   border-radius: .8rem;
 
   span.title {
     font-size: var(--font-size-body-md);
+    color: ${props => props.theme.notifications_color[`${props.$type}_title_color`]};
     display: block;
     margin-bottom: .5rem;
     font-weight: 500;
@@ -47,6 +48,7 @@ const NotificationStyled = styled.div<NotificationStyledProps>`
   span.message {
     font-size: var(--font-size-body-sm);
     display: block;
+    color: ${props => props.theme.notifications_color[`${props.$type}_text_color`]};;
   }
 `
 

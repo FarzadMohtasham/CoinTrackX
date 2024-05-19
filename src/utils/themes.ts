@@ -23,7 +23,7 @@ const defaultProps = {
         },
         secondary: {
             color_secondary: '#DAF727',
-            color_secondary_50:  'rgba(218, 247, 39, 0.05)',
+            color_secondary_50: 'rgba(218, 247, 39, 0.05)',
             color_secondary_100: 'rgba(218, 247, 39, 0.1)',
             color_secondary_200: 'rgba(218, 247, 39, 0.2)',
             color_secondary_300: 'rgba(218, 247, 39, 0.3)',
@@ -49,7 +49,7 @@ const defaultProps = {
         },
         white: {
             color_white: '#FFF',
-            color_white_50:  'rgba(255, 255, 255, 0.05)',
+            color_white_50: 'rgba(255, 255, 255, 0.05)',
             color_white_100: 'rgba(255, 255, 255, 0.1)',
             color_white_200: 'rgba(255, 255, 255, 0.2)',
             color_white_300: 'rgba(255, 255, 255, 0.3)',
@@ -62,7 +62,7 @@ const defaultProps = {
         },
         danger: {
             color_danger: '#ff2e28',
-            color_danger_50:  'rgba(255, 46, 40, 0.05)',
+            color_danger_50: 'rgba(255, 46, 40, 0.05)',
             color_danger_100: 'rgba(255, 46, 40, 0.1)',
             color_danger_200: 'rgba(255, 46, 40, 0.2)',
             color_danger_300: 'rgba(255, 46, 40, 0.3)',
@@ -75,7 +75,7 @@ const defaultProps = {
         },
         success: {
             color_success: '#11CF8B',
-            color_success_50:  'rgba(17, 207, 139, 0.05)',
+            color_success_50: 'rgba(17, 207, 139, 0.05)',
             color_success_100: 'rgba(17, 207, 139, 0.1)',
             color_success_200: 'rgba(17, 207, 139, 0.2)',
             color_success_300: 'rgba(17, 207, 139, 0.3)',
@@ -86,7 +86,32 @@ const defaultProps = {
             color_success_800: 'rgba(17, 207, 139, 0.8)',
             color_success_900: 'rgba(17, 207, 139, 0.09)',
         }
-    }
+    },
+    notifications_color: {
+        primary_bg_color: '#cfe2ff',
+        primary_title_color: '#0E0637',
+        primary_text_color: '#0E0637',
+
+        secondary_bg_color: '#e2e3e5',
+        secondary_title_color: '#0E0637',
+        secondary_text_color: '#0E0637',
+
+        success_bg_color: '#d1e7dd',
+        success_title_color: '#0E0637',
+        success_text_color: '#0E0637',
+
+        danger_bg_color: '#f8d7da',
+        danger_title_color: '#0E0637',
+        danger_text_color: '#0E0637',
+
+        warning_bg_color: '#fff3cd',
+        warning_title_color: '#0E0637',
+        warning_text_color: '#0E0637',
+
+        info_bg_color: '#cff4fc',
+        info_title_color: '#0E0637',
+        info_text_color: '#0E0637',
+    },
 }
 
 export const lightTheme = {
