@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from "react"
 import {styled} from "styled-components"
 import Skeleton from "react-loading-skeleton";
+import * as _ from 'lodash'
 
 import Icon from "./Icon.tsx"
 
@@ -70,7 +71,15 @@ export default function Notifications() {
     }
 
     useEffect(() => {
-        setNotifications(response?.data || [])
+        if (!response?.data?.length) return
+
+        const filterByHigh = response?.data.filter(notif => notif.priority === 'high')
+        const filterByMiddle = response?.data.filter(notif => notif.priority === 'middle')
+        const filterByLow = response?.data.filter(notif => notif.priority === 'low')
+
+        const filteredNotifications = _.union(filterByHigh, filterByMiddle, filterByLow)
+
+        setNotifications(filteredNotifications)
     }, [response]);
 
     useEffect(() => {
