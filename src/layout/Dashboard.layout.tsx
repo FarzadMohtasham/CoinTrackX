@@ -100,6 +100,8 @@ const LayoutSidebar = styled.div`
   grid-area: layout-sidebar;
   border-right: .2rem var(--color-black-100) solid;
   padding: 3.2rem 2.4rem;
+  max-width: 30rem;
+  width: 100%;
 
   .navigation-list {
     display: flex;
