@@ -10,6 +10,7 @@ import Alert from "@components/ui/Notifications.tsx";
 
 import {NavigationListData} from "@data/NavigationList.data.ts";
 import {NavigationItemType} from "@ts/type/NavigationItem.type.ts";
+import useDashboardProtectRoute from "@hooks/useDashboardProtectRoute.ts";
 
 const LayoutContainer = styled.div`
   display: grid;
@@ -133,6 +134,8 @@ export default function DashboardLayout() {
 
     const location = useLocation()
     const navigate = useNavigate()
+
+    useDashboardProtectRoute('/login', true)
 
     const resetNavListActiveProp = () => {
         setNavigationList((navList) => navList.map(nav => {

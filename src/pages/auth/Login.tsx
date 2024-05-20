@@ -12,7 +12,6 @@ import CheckboxInput from "@components/ui/Input-Fields/Checkbox.input.tsx"
 
 import {loginInputValidator} from "@validation/login.validator.ts"
 import {login} from "@services/api/auth.api.ts";
-import useAutoRedirectOnAuth from "@hooks/useAutoRedirectOnAuth.ts";
 
 import {
     AuthStyled,
@@ -21,9 +20,10 @@ import {
     MainContent as MainContentStyled,
     AuthLink,
 } from "./Auth.styled.tsx"
+import useAutoRedirectOnAuth from "@hooks/useAutoRedirectOnAuth.ts";
 
-const LoginContainer = styled(AuthStyled)``
-const LoginWrapper = styled(AuthInnerWrapper)``
+const Container = styled(AuthStyled)``
+const Wrapper = styled(AuthInnerWrapper)``
 const HeadContent = styled(HeadContentStyled)``
 const MainContent = styled(MainContentStyled)``
 const SingUpLink = styled(AuthLink)``
@@ -39,7 +39,7 @@ export default function Login() {
 
     const navigate = useNavigate()
 
-    useAutoRedirectOnAuth('dashboard', true)
+    useAutoRedirectOnAuth()
 
     const onLoginHandler = async () => {
         setAuthLoading(true)
@@ -89,8 +89,8 @@ export default function Login() {
     }, [password])
 
     return (
-        <LoginContainer>
-            <LoginWrapper>
+        <Container>
+            <Wrapper>
                 <HeadContent>
                     <Link to={'/'}>
                         <Button btnType={'white'}
@@ -158,7 +158,7 @@ export default function Login() {
                         </Link>
                     </SingUpLink>
                 </MainContent>
-            </LoginWrapper>
-        </LoginContainer>
+            </Wrapper>
+        </Container>
     )
 }
