@@ -1,11 +1,11 @@
-import {useEffect, useRef, useState} from "react"
-import {styled} from "styled-components"
-import Skeleton from "react-loading-skeleton";
-import * as _ from 'lodash'
+import {useEffect, useRef, useState} from 'react'
+import {styled} from 'styled-components'
+import Skeleton from 'react-loading-skeleton'
+import _ from 'lodash'
 
-import Icon from "./Icon.tsx"
+import Icon from './Icon.tsx'
 
-import {useNotificationsQuery} from "@query/useNotifications.query.tsx";
+import {useNotificationsQuery} from '@query/useNotifications.query.tsx';
 
 import {
     Notifications as NotificationsT,
@@ -71,11 +71,15 @@ export default function Notifications() {
     }
 
     useEffect(() => {
+        function filterNotifByPriority(priority: string, data: NotificationsT[] = response?.data || []) {
+            return data.filter(notif => notif.priority === priority)
+        }
+
         if (!response?.data?.length) return
 
-        const filterByHigh = response?.data.filter(notif => notif.priority === 'high')
-        const filterByMiddle = response?.data.filter(notif => notif.priority === 'middle')
-        const filterByLow = response?.data.filter(notif => notif.priority === 'low')
+        const filterByHigh = filterNotifByPriority('high')
+        const filterByMiddle = filterNotifByPriority('middle')
+        const filterByLow = filterNotifByPriority('low')
 
         const filteredNotifications = _.union(filterByHigh, filterByMiddle, filterByLow)
 
