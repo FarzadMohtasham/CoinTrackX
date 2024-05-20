@@ -207,18 +207,17 @@ export default function DashboardLayout() {
                 <div className={'navigation-list'}>
                     {
                         navigationList.map((navItem: NavigationItemType, index: number): React.JSX.Element => {
-                            return (
-                                <NavigationItem key={navItem.name + index}
-                                                icon_src={navItem.icon_src}
-                                                active_icon_src={navItem.active_icon_src}
-                                                icon_alt={navItem.name}
-                                                icon_width={'20rem'}
-                                                active={navItem.active}
-                                                on_click={() => onNavigationItemHandler(navItem.name)}
-                                >
-                                    {navItem.title}
-                                </NavigationItem>
-                            )
+                            const navItemProps = {
+                                key: navItem.name + index,
+                                icon_src: navItem.icon_src,
+                                active_icon_src: navItem.active_icon_src,
+                                icon_alt: navItem.name,
+                                icon_width: '20rem',
+                                active: navItem.active,
+                                on_click: () => onNavigationItemHandler(navItem.name),
+                            }
+
+                            return <NavigationItem {...navItemProps}>{navItem.title}</NavigationItem>
                         })
                     }
                 </div>
