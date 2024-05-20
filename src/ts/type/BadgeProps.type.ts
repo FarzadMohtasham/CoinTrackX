@@ -6,7 +6,6 @@ export type BadgePropsType = {
     hasIcon?: boolean;
     icon?: any;
     iconDir?: 'left' | 'right';
-    hollow?: boolean;
     borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full',
     outline?: boolean,
 }

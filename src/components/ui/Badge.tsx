@@ -25,8 +25,8 @@ export default function Badge(props: BadgePropsType) {
     } = props
 
     const bgColor = type === 'success' ?
-        `var(--color-success${outline ? '-200' : ''})` :
-        `var(--color-danger${outline ? '-200' : ''})`
+        `var(--color-success${outline ? '-100' : ''})` :
+        `var(--color-danger${outline ? '-100' : ''})`
 
     const borderColor = type === 'success' ?
         `var(--color-success${outline ? '-200' : ''})` :
@@ -37,12 +37,17 @@ export default function Badge(props: BadgePropsType) {
         (outline ? 'var(--color-danger)' : 'var(--color-white)')
 
     const BadgeStyled = styled.span`
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      width: min-content;
       background-color: ${bgColor};
       padding: .6rem .8rem;
       font-size: var(--font-size-body-xsm);
       color: ${textColor};
       border-radius: ${borderRadiusVariations[borderRadius]};
       border: .1rem solid ${borderColor};
+      font-weight: 500;
     `
 
     return (

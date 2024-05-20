@@ -1,11 +1,15 @@
 import {styled} from "styled-components"
+import PortfolioSummary from "@components/dashboard/PortfolioSummary.tsx";
 
-const AssetsPortfolioContainer = styled.div``
+const DashboardContainer = styled.div`
+  display: grid;
+  place-content: center;
+`
 
 export default function Dashboard() {
     return (
-        <AssetsPortfolioContainer>
-            Dashboard
-        </AssetsPortfolioContainer>
+        <DashboardContainer>
+            <PortfolioSummary/>
+        </DashboardContainer>
     )
 }
