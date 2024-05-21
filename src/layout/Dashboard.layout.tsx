@@ -13,79 +13,85 @@ import {NavigationItemType} from "@ts/type/NavigationItem.type.ts";
 import useDashboardProtectRoute from "@hooks/useDashboardProtectRoute.ts";
 
 const LayoutContainer = styled.div`
-  display: grid;
   height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+
   /*Very Small devices (landscape phones, 576px and down)*/
   @media (max-width: 57.6rem) {
-    grid-template-areas: 
-    'layout-header layout-header layout-header layout-header layout-header layout-header layout-header layout-header'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main';
+    .layout-header {
+      grid-column: 1 / 13;
+      grid-row: 1 / 2;
+    }
+
+    .layout-main {
+      grid-column: 1 / 13;
+      grid-row: 2 / 13;
+    }
+
+    .layout-sidebar {
+      grid-column: 1 / 3;
+      grid-row: 1 / 13;
+    }
   }
   /*Small devices (landscape phones, 576px and up)*/
   @media (min-width: 57.6rem) {
-    grid-template-areas: 
-    'layout-header layout-header layout-header layout-header layout-header layout-header layout-header layout-header'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-main layout-main layout-main layout-main layout-main layout-main layout-main layout-main';
+    .layout-header {
+      grid-column: 1 / 13;
+      grid-row: 1 / 2;
+    }
+
+    .layout-main {
+      grid-column: 1 / 13;
+      grid-row: 2 / 13;
+    }
+
+    .layout-sidebar {
+      grid-column: 1 / 3;
+      grid-row: 1 / 13;
+    }
   }
   /*Medium devices (tablets, 768px and up)*/
   @media (min-width: 76.8rem) {
-    grid-template-areas: 
-    'layout-sidebar layout-header layout-header layout-header layout-header layout-header layout-header layout-header'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main';
+    .layout-header {
+      grid-column: 4 / 13;
+      grid-row: 1 / 2;
+    }
+
+    .layout-main {
+      grid-column: 4 / 13;
+      grid-row: 2 / 13;
+    }
+
+    .layout-sidebar {
+      grid-column: 1 / 4;
+      grid-row: 1 / 13;
+    }
   }
   /*Large devices (desktops, 992px and up)*/
   @media (min-width: 99.2rem) {
-    grid-template-areas: 
-    'layout-sidebar layout-header layout-header layout-header layout-header layout-header layout-header layout-header'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main'
-    'layout-sidebar layout-main layout-main layout-main layout-main layout-main layout-main layout-main';
+    .layout-header {
+      grid-column: 3 / 13;
+      grid-row: 1 / 2;
+    }
+
+    .layout-main {
+      grid-column: 3 / 13;
+      grid-row: 2 / 13;
+    }
+
+    .layout-sidebar {
+      grid-column: 1 / 3;
+      grid-row: 1 / 13;
+    }
   }
 `
-const LayoutHeader = styled.div`
-  grid-area: layout-header;
-  border-bottom: .2rem var(--color-black-100) solid;
+const LayoutHeader = styled.div.attrs({className: 'layout-header'})`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: .2rem var(--color-black-100) solid;
   padding: 0 2.4rem;
 
   .right-col {
@@ -94,14 +100,15 @@ const LayoutHeader = styled.div`
     gap: 2rem;
   }
 `
-const LayoutSidebar = styled.div`
+
+const LayoutSidebar = styled.div.attrs({className: 'layout-sidebar'})`
+  display: flex;
   flex-direction: column;
   gap: 4.8rem;
-  grid-area: layout-sidebar;
   border-right: .2rem var(--color-black-100) solid;
   padding: 3.2rem 2.4rem;
-  max-width: 30rem;
   width: 100%;
+  height: 100%;
 
   .navigation-list {
     display: flex;
@@ -124,8 +131,7 @@ const LayoutSidebar = styled.div`
     display: flex;
   }
 `
-const LayoutMain = styled.div`
-  grid-area: layout-main;
+const LayoutMain = styled.div.attrs({className: 'layout-main'})`
   overflow-y: scroll;
   padding: 3.2rem 2rem;
 `
