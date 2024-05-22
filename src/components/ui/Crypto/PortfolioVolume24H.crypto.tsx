@@ -5,7 +5,8 @@ import Badge from '@components/ui/Badge.tsx'
 const Container = styled.div`
   display: flex;
   align-items: center;
-  gap: 13rem;
+  justify-content: space-between;
+  width: 100%;
 `
 
 const LeftCol = styled.div`
@@ -19,16 +20,16 @@ const LeftCol = styled.div`
     gap: .8rem;
 
     span {
-      color: var(--color-black-500);
       font-weight: 500;
+      color: var(--color-black-500);
       font-size: var(--font-size-body-sm);
     }
   }
 
   .content {
     span {
-      font-size: var(--font-size-heading-2);
       font-weight: bold;
+      font-size: var(--font-size-heading-2);
     }
   }
 `

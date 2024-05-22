@@ -11,6 +11,7 @@ import Alert from "@components/ui/Notifications.tsx";
 import {NavigationListData} from "@data/NavigationList.data.ts";
 import {NavigationItemType} from "@ts/type/NavigationItem.type.ts";
 import useDashboardProtectRoute from "@hooks/useDashboardProtectRoute.ts";
+import Icon from "@components/ui/Icon.tsx";
 
 const LayoutContainer = styled.div`
   height: 100vh;
@@ -19,7 +20,7 @@ const LayoutContainer = styled.div`
   grid-template-rows: repeat(12, 1fr);
 
   /*Very Small devices (landscape phones, 576px and down)*/
-  @media (max-width: 57.6rem) {
+  @media (max-width: ${props => props.theme.responsive.sm}) {
     .layout-header {
       grid-column: 1 / 13;
       grid-row: 1 / 2;
@@ -36,7 +37,7 @@ const LayoutContainer = styled.div`
     }
   }
   /*Small devices (landscape phones, 576px and up)*/
-  @media (min-width: 57.6rem) {
+  @media (min-width: ${props => props.theme.responsive.sm}) {
     .layout-header {
       grid-column: 1 / 13;
       grid-row: 1 / 2;
@@ -53,7 +54,7 @@ const LayoutContainer = styled.div`
     }
   }
   /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: 76.8rem) {
+  @media (min-width: ${props => props.theme.responsive.md}) {
     .layout-header {
       grid-column: 4 / 13;
       grid-row: 1 / 2;
@@ -70,7 +71,7 @@ const LayoutContainer = styled.div`
     }
   }
   /*Large devices (desktops, 992px and up)*/
-  @media (min-width: 99.2rem) {
+  @media (min-width: ${props => props.theme.responsive.lg}) {
     .layout-header {
       grid-column: 3 / 13;
       grid-row: 1 / 2;
@@ -94,10 +95,28 @@ const LayoutHeader = styled.div.attrs({className: 'layout-header'})`
   border-bottom: .2rem var(--color-black-100) solid;
   padding: 0 2.4rem;
 
+  .left-col {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .menu-burger {
+      display: block;
+    }
+  }
+
   .right-col {
     display: flex;
     align-items: center;
     gap: 2rem;
+  }
+
+  @media (min-width: ${props => props.theme.responsive.md}) {
+    .left-col {
+      .menu-burger {
+        display: none;
+      }
+    }
   }
 `
 
@@ -117,23 +136,22 @@ const LayoutSidebar = styled.div.attrs({className: 'layout-sidebar'})`
   }
 
   /*Very Small devices (landscape phones, 576px and down)*/
-  @media (max-width: 57.6rem) {
+  @media (max-width: ${props => props.theme.responsive.sm}) {
     display: none;
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media (min-width: 57.6rem) {
+  @media (min-width: ${props => props.theme.responsive.sm}) {
     display: none;
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: 76.8rem) {
+  @media (min-width: ${props => props.theme.responsive.md}) {
     display: flex;
   }
 `
 const LayoutMain = styled.div.attrs({className: 'layout-main'})`
   overflow-y: scroll;
-  padding: 3.2rem 2rem;
 `
 
 export default function DashboardLayout() {
@@ -195,10 +213,15 @@ export default function DashboardLayout() {
     return (
         <LayoutContainer>
             <LayoutHeader>
-                <Heading heading_type={'h5'}
-                         font_weight={'bold'}>
-                    {selectedNavName}
-                </Heading>
+                <div className={'left-col'}>
+                    <Icon icon_src={'menu-burger.svg'}
+                          width={'25rem'}
+                          class_name={'menu-burger'}/>
+                    <Heading heading_type={'h5'}
+                             font_weight={'bold'}>
+                        {selectedNavName}
+                    </Heading>
+                </div>
 
                 <div className={'right-col'}>
                     <Alert/>

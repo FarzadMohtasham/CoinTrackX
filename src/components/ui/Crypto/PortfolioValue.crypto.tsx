@@ -5,7 +5,8 @@ import Badge from '@components/ui/Badge.tsx'
 const Container = styled.div`
   display: flex;
   align-items: center;
-  gap: 13rem;
+  justify-content: space-between;
+  width: 100%;
 `
 
 const LeftCol = styled.div`
