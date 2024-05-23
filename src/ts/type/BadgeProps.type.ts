@@ -9,3 +9,11 @@ export type BadgePropsType = {
     borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full',
     outline?: boolean,
 }
+
+export type BadgeProps = {
+    $bgColor: string;
+    $textColor: string;
+    $borderRadiusVariations: any;
+    $borderRadius: string;
+    $borderColor: string;
+}

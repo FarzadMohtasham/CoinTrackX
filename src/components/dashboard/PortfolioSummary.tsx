@@ -2,7 +2,9 @@ import PortfolioValueCrypto from '@components/ui/Crypto/PortfolioValue.crypto.ts
 import PortfolioVolume24HCrypto from '@components/ui/Crypto/PortfolioVolume24H.crypto.tsx'
 import {styled} from 'styled-components'
 
-const PortfolioSummaryContainer = styled.div`
+const PortfolioSummaryContainer = styled.div.attrs({
+    className: 'portfolio-summary'
+})`
   display: flex;
   flex-direction: row;
   justify-content: space-between;

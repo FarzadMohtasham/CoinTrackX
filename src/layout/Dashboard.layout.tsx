@@ -237,7 +237,6 @@ export default function DashboardLayout() {
                     {
                         navigationList.map((navItem: NavigationItemType, index: number): React.JSX.Element => {
                             const navItemProps = {
-                                key: navItem.name + index,
                                 icon_src: navItem.icon_src,
                                 active_icon_src: navItem.active_icon_src,
                                 icon_alt: navItem.name,
@@ -246,7 +245,11 @@ export default function DashboardLayout() {
                                 on_click: () => onNavigationItemHandler(navItem.name),
                             }
 
-                            return <NavigationItem {...navItemProps}>{navItem.title}</NavigationItem>
+                            return (
+                                <NavigationItem
+                                    key={navItem.name + index} {...navItemProps}>{navItem.title}
+                                </NavigationItem>
+                            )
                         })
                     }
                 </div>

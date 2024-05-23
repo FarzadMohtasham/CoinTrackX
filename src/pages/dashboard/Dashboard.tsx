@@ -1,11 +1,16 @@
 import {styled} from 'styled-components'
 
 import PortfolioSummary from '@components/dashboard/PortfolioSummary.tsx';
+import CurrencyPrice from "@components/ui/Crypto/CurrencyPrice.tsx";
 
 const DashboardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   padding: 3.2rem 2rem;
+
+  .portfolio-summary {
+    margin-bottom: 2.4rem;
+  }
 `
 
 const PortfolioSummaryWrapper = styled.div.attrs({
@@ -29,6 +34,7 @@ export default function Dashboard() {
         <DashboardContainer>
             <PortfolioSummaryWrapper>
                 <PortfolioSummary/>
+                <CurrencyPrice/>
             </PortfolioSummaryWrapper>
         </DashboardContainer>
     )
