@@ -54,7 +54,16 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
   gap: 1rem;
   text-transform: uppercase;
   border-radius: .6rem;
-  ${props => props.$selected && css`background-color: #22242a;`}
+  transition: background-color .3s ease-in-out;
+  ${props => props.$selected && css`background-color: #22242a`};
+  
+  ${
+    props => !props.$selected && css`
+      &:hover {
+        background-color: var(--color-white-50);
+      }
+    `
+  }
 `
 
 export default function Select(props: SelectProps) {
