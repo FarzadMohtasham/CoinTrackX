@@ -120,7 +120,7 @@ const LayoutHeader = styled.div.attrs({className: 'layout-header'})`
   }
 `
 
-const LayoutSidebar = styled.div.attrs({className: 'layout-sidebar'})`
+const LayoutSidebar = styled.aside.attrs({className: 'layout-sidebar'})`
   display: flex;
   flex-direction: column;
   gap: 4.8rem;
