@@ -53,14 +53,14 @@ const TestimonialsWrapper = styled.div.attrs({
   }
 
   /*Very Small devices (landscape phones, 768px and down)*/
-  @media (max-width: ${props => props.theme.responsive.md}) {
+  @media screen and (max-width: ${props => props.theme.responsive.md}) {
     .reviews {
       flex-direction: column;
     }
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${props => props.theme.responsive.md}) {
     .reviews {
       flex-direction: row;
     }

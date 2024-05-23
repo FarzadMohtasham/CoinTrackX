@@ -35,7 +35,7 @@ const MainContent = styled(MainContentStyled)`
     width: 100%;
   }
 
-  @media (max-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
     .name-inputs-wrapper {
       flex-direction: column;
       gap: 3.2rem;

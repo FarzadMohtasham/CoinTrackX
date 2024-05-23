@@ -47,7 +47,7 @@ const HeroStyled = styled.section`
   }
 
   /*Very Small devices (landscape phones, 768px and down)*/
-  @media (max-width: ${props => props.theme.responsive.md}) {
+  @media screen and (max-width: ${props => props.theme.responsive.md}) {
     .left-col {
       width: 100%;
     }
@@ -58,7 +58,7 @@ const HeroStyled = styled.section`
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${props => props.theme.responsive.md}) {
     flex-direction: row;
     gap: 11.8rem;
 
@@ -72,7 +72,7 @@ const HeroStyled = styled.section`
   }
 
   /*X-Large devices (large desktops, 1200px and up)*/
-  @media (min-width: ${props => props.theme.responsive.xl}) {
+  @media screen and (min-width: ${props => props.theme.responsive.xl}) {
     .left-col {
       align-items: flex-start !important;
       text-align: left !important;

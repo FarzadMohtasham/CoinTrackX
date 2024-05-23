@@ -12,7 +12,7 @@ const PortfolioSummaryContainer = styled.div`
   padding: 2.4rem;
 
   /*Very Small devices (landscape phones, 576px and down)*/
-  @media (max-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
     flex-direction: column;
   }
 `

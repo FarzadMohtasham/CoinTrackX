@@ -42,7 +42,7 @@ const HeaderStyled: IStyledComponent<any> = styled.header`
 const NavBarStyled: IStyledComponent<any> = styled.nav`
   display: none;
 
-  @media (min-width: 992px) {
+  @media screen and (min-width: 992px) {
     & {
       display: block;
     }

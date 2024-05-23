@@ -17,13 +17,13 @@ const Brands = styled.div`
   gap: 8rem;
 
   /*Small devices (landscape phones, 768px and down)*/
-  @media (max-width: ${props => props.theme.responsive.md}) {
+  @media screen and (max-width: ${props => props.theme.responsive.md}) {
     flex-direction: column;
     gap: 5rem;
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${props => props.theme.responsive.md}) {
     flex-direction: row;
   }
 `

@@ -37,7 +37,7 @@ const CoinsListStyled = styled.div`
   }
 
   /*Very Small devices (landscape phones, 768px and down)*/
-  @media (max-width: ${props => props.theme.responsive.md}) {
+  @media screen and (max-width: ${props => props.theme.responsive.md}) {
     grid-template-areas: "a b"
                          "c d"
                          "e f"
@@ -46,7 +46,7 @@ const CoinsListStyled = styled.div`
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${props => props.theme.responsive.md}) {
     grid-template-areas: 'a b c d e f g';
     border-radius: 100rem;
   }

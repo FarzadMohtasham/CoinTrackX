@@ -14,22 +14,22 @@ export const AuthInnerWrapper = styled.div`
   width: 95dvw;
 
   /*Very Small devices (landscape phones, 274px and up)*/
-  @media (min-width: ${props => props.theme.responsive.xsm}) {
+  @media screen and (min-width: ${props => props.theme.responsive.xsm}) {
     width: 70dvw;
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media (min-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (min-width: ${props => props.theme.responsive.sm}) {
     width: 57dvw;
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${props => props.theme.responsive.md}) {
     width: 45dvw;
   }
 
   /*Large devices (desktops, 992px and up)*/
-  @media (min-width: ${props => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${props => props.theme.responsive.lg}) {
     width: 30dvw;
   }
 `

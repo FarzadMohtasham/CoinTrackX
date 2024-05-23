@@ -1,5 +1,6 @@
-import {styled} from "styled-components"
-import PortfolioSummary from "@components/dashboard/PortfolioSummary.tsx";
+import {styled} from 'styled-components'
+
+import PortfolioSummary from '@components/dashboard/PortfolioSummary.tsx';
 
 const DashboardContainer = styled.div`
   display: grid;
@@ -14,11 +15,11 @@ const PortfolioSummaryWrapper = styled.div.attrs({
     grid-column: 1 / 10;
   }
 
-  @media (min-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (min-width: ${props => props.theme.responsive.sm}) {
     grid-column: 2 / 9;
   }
 
-  @media (min-width: ${props => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${props => props.theme.responsive.lg}) {
     grid-column: 3 / 8;
   }
 `
