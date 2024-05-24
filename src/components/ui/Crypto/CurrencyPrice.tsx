@@ -4,10 +4,6 @@ import Select from "@components/ui/Select.tsx";
 
 import {SelectMenuItem} from "@ts/type/Select.type.ts";
 
-const CurrencyPriceContainer = styled.div`
-  display: grid;
-`
-
 const CurrencyList: SelectMenuItem[] = [
     {
         name: 'btc',
@@ -31,10 +27,30 @@ const CurrencyList: SelectMenuItem[] = [
     },
 ]
 
+const CurrencyPriceContainer = styled.div`
+  display: grid;
+`
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-weight: bold;
+    font-size: var(--font-size-body-lg);
+  }
+`
+
 export default function CurrencyPrice() {
     return (
         <CurrencyPriceContainer>
-            <Select $menu_items={CurrencyList} $has_icon/>
+            <Header>
+                <span>
+                    Currency Price
+                </span>
+                <Select $menu_items={CurrencyList} $has_icon/>
+            </Header>
         </CurrencyPriceContainer>
     )
 }

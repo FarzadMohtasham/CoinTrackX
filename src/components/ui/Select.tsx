@@ -20,9 +20,8 @@ const SelectBtnWrapper = styled.div`
   border-radius: .8rem;
   cursor: pointer;
 
-  span {
+  .selected-item-text {
     text-transform: uppercase;
-    color: black;
     font-weight: 500;
     font-size: var(--font-size-body-sm);
   }
@@ -56,20 +55,19 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
   border-radius: .6rem;
   transition: background-color .3s ease-in-out;
   ${props => props.$selected && css`background-color: #22242a`};
-  
-  ${
-    props => !props.$selected && css`
-      &:hover {
-        background-color: var(--color-white-50);
-      }
-    `
-  }
+
+  ${props => !props.$selected && css`
+    &:hover {
+      background-color: var(--color-white-50);
+    }
+  `}
 `
 
 export default function Select(props: SelectProps) {
     const {
         $menu_items: menu_items,
-        $has_icon: has_icon = false
+        $has_icon: has_icon = false,
+        $close_after_select = true,
     } = props
 
     const [selectedItem, setSelectedItem]: [selectedItem: SelectMenuItemT | null, setSelectedItem: Dispatch<SetStateAction<null | SelectMenuItemT>>] = useState<null | SelectMenuItemT>(null)
@@ -96,6 +94,8 @@ export default function Select(props: SelectProps) {
 
     const menuItemOnClickHandler = (menuItem: SelectMenuItemT) => {
         setSelectedItem(menuItem)
+
+        if ($close_after_select) setSelectMenuIsOpen(false)
     }
 
     // Set default menu item to the selectedItem
@@ -107,8 +107,8 @@ export default function Select(props: SelectProps) {
     return (
         <SelectContainer ref={selectRef}>
             <SelectBtnWrapper onClick={handleSelectBtn}>
-                {has_icon && <Icon icon_src={selectedItem?.icon_src || ''} width={'16rem'}/>}
-                <span>{selectedItem?.name}</span>
+                {has_icon && <Icon icon_src={selectedItem?.icon_src || ''} width={'20rem'}/>}
+                <span className={'selected-item-text'}>{selectedItem?.name}</span>
                 <Icon icon_src={'arrow-down-simple.svg'} width={'10rem'}/>
             </SelectBtnWrapper>
 
@@ -120,7 +120,7 @@ export default function Select(props: SelectProps) {
                                 <SelectMenuItem key={item.name + i}
                                                 onClick={() => menuItemOnClickHandler(item)}
                                                 $selected={item.name === selectedItem?.name}>
-                                    {has_icon && <Icon icon_src={item.icon_src} width={'16rem'}/>}
+                                    {has_icon && <Icon icon_src={item.icon_src} width={'20rem'}/>}
                                     {item.name}
                                 </SelectMenuItem>
                             )
