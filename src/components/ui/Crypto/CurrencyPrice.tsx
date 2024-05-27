@@ -1,5 +1,4 @@
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
-import {useQuery} from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 import {styled} from 'styled-components'
 import {Line} from 'react-chartjs-2'
@@ -16,12 +15,11 @@ import {
     Tooltip
 } from 'chart.js'
 
-import {getAssetHistory} from "@services/api/assets.api.ts";
-
 import Select from '@components/ui/Select.tsx'
 import Button from "@components/ui/Button.tsx";
 
 import {SelectMenuItem} from '@ts/type/Select.type.ts'
+import useCurrencyPriceQuery from "@query/useCurrencyPrice.query.tsx";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
@@ -112,19 +110,7 @@ export default function CurrencyPrice() {
     const [currencyList, setCurrencyList]: [SelectMenuItem[], Dispatch<SetStateAction<SelectMenuItem[]>>] = useState<SelectMenuItem[]>(defaultCurrencyList)
     const [selectedCurrency, setSelectedCurrency] = useState<string>('bitcoin')
 
-    const {data: currencyPriceHistoryData, error, refetch, isLoading}: {
-        data: object[] | any,
-        error: any,
-        refetch: any,
-        isLoading: any
-    } = useQuery({
-        queryKey: ['currency-price'],
-        queryFn: () => getAssetHistory(selectedCurrency, 'd1', 10),
-        staleTime: 10000,
-        retry: false,
-    })
-
-    console.log(error)
+    const {currencyPriceHistoryData, error, refetch, isLoading} = useCurrencyPriceQuery(selectedCurrency)
 
     const options: ChartOptions<'line'> = {
         animation: false,
