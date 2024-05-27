@@ -56,7 +56,6 @@ type HistoryLength = number | 0
 export const getAssetHistory = async (assetName: AssetName | string, interval: AssetHistoryInterval = 'd1', historyLength: HistoryLength) => {
     const response: getAssetHistoryResponse = {
         data: null,
-        error: null
     }
 
     try {
@@ -68,11 +67,11 @@ export const getAssetHistory = async (assetName: AssetName | string, interval: A
         } else {
             response.data = historyData
         }
-    } catch (e) {
-        response.error = e
+    } catch (e: any) {
+        throw new Error(e.message)
     }
 
-    return response
+    return response.data
 }
 
 

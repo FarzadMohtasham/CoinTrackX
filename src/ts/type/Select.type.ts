@@ -1,5 +1,6 @@
 export type SelectMenuItem = {
     name: string;
+    value: string;
     icon_src: string;
     default: boolean;
 }

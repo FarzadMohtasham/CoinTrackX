@@ -12,7 +12,6 @@ export type getAssetResponse = {
 
 export type getAssetHistoryResponse = {
     data: AxiosResponse | null;
-    error: any;
 }
 export type AssetName =
     'bitcoin'

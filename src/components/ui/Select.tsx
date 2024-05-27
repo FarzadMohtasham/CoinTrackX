@@ -112,8 +112,8 @@ export default function Select(props: SelectProps) {
     }, []);
 
     useEffect(() => {
-        if (selectedItem?.name) {
-            $new_value_setter(selectedItem.name)
+        if (selectedItem?.value) {
+            $new_value_setter(selectedItem.value)
         }
     }, [selectedItem]);
 

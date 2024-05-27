@@ -28,23 +28,27 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 const defaultCurrencyList: SelectMenuItem[] = [
     {
         name: 'btc',
+        value: 'bitcoin',
         default: true,
-        icon_src: 'crypto/btc.svg'
+        icon_src: 'crypto/btc.svg',
     },
     {
         name: 'eth',
+        value: 'ethereum',
         default: false,
         icon_src: 'crypto/eth.svg'
     },
     {
         name: 'bnb',
+        value: 'binance-coin',
         default: false,
         icon_src: 'crypto/bnb.svg'
     },
     {
-        name: 'cake',
+        name: 'xrp',
+        value: 'xrp',
         default: false,
-        icon_src: 'crypto/cake.svg'
+        icon_src: 'crypto/xrp.svg'
     },
 ]
 
@@ -117,7 +121,10 @@ export default function CurrencyPrice() {
         queryKey: ['currency-price'],
         queryFn: () => getAssetHistory(selectedCurrency, 'd1', 10),
         staleTime: 10000,
+        retry: false,
     })
+
+    console.log(error)
 
     const options: ChartOptions<'line'> = {
         animation: false,
@@ -152,17 +159,15 @@ export default function CurrencyPrice() {
     }, [selectedCurrency]);
 
     useEffect(function updateLabelsAndDatasets() {
-        console.log(currencyPriceHistoryData?.data)
-
-        if (currencyPriceHistoryData?.data) {
+        if (currencyPriceHistoryData) {
             setDatasets(() => {
-                return currencyPriceHistoryData?.data.map((priceHistory: CryptoHistoryRecord) => priceHistory.priceUsd)
+                return currencyPriceHistoryData.map((priceHistory: CryptoHistoryRecord) => priceHistory.priceUsd)
             })
 
             setLabels((prevLabels) => {
-                if (!currencyPriceHistoryData?.data) return prevLabels
+                if (!currencyPriceHistoryData) return prevLabels
 
-                return currencyPriceHistoryData?.data.map((priceHistory: CryptoHistoryRecord) => {
+                return currencyPriceHistoryData.map((priceHistory: CryptoHistoryRecord) => {
                     return priceHistory.date.split('T')[0]
                 })
             })
