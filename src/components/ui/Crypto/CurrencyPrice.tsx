@@ -3,7 +3,6 @@ import {useQuery} from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 import {styled} from 'styled-components'
 import {Line} from 'react-chartjs-2'
-import {format, formatDistance} from 'date-fns'
 import {
     CategoryScale,
     Chart as ChartJS,
@@ -23,9 +22,6 @@ import Select from '@components/ui/Select.tsx'
 import Button from "@components/ui/Button.tsx";
 
 import {SelectMenuItem} from '@ts/type/Select.type.ts'
-import {array} from "yup";
-import {AssetName} from "@ts/type/Assets.api.type.ts";
-
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
