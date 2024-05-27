@@ -6,6 +6,7 @@ export type SelectMenuItem = {
 
 export type SelectProps = {
     $menu_items: SelectMenuItem[];
+    $new_value_setter: any;
     $has_icon?: boolean;
     $close_after_select?: boolean;
     $menu_x_dir_start_position?: 'right' | 'left';

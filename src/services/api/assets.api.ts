@@ -51,7 +51,9 @@ export const getAsset = async (assetName: AssetName) => {
     return response
 }
 
-export const getAssetHistory = async (assetName: AssetName, interval: AssetHistoryInterval = 'd1') => {
+type HistoryLength = number | 0
+
+export const getAssetHistory = async (assetName: AssetName | string, interval: AssetHistoryInterval = 'd1', historyLength: HistoryLength) => {
     const response: getAssetHistoryResponse = {
         data: null,
         error: null
@@ -59,7 +61,13 @@ export const getAssetHistory = async (assetName: AssetName, interval: AssetHisto
 
     try {
         const {data}: AxiosResponse = await axiosInstance.get(assetName + '/history?interval=' + interval)
-        response.data = data.data
+        const historyData = data.data
+
+        if (historyData.length >= 1 && historyLength <= historyData.length) {
+            response.data = historyData.slice(historyData.length - historyLength, historyData.length)
+        } else {
+            response.data = historyData
+        }
     } catch (e) {
         response.error = e
     }

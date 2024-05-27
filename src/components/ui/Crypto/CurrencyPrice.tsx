@@ -1,28 +1,35 @@
+import {Dispatch, SetStateAction, useEffect, useState} from "react";
 import {useQuery} from "@tanstack/react-query";
+import Skeleton from "react-loading-skeleton";
 import {styled} from 'styled-components'
 import {Line} from 'react-chartjs-2'
+import {format, formatDistance} from 'date-fns'
 import {
-    Chart as ChartJS,
     CategoryScale,
+    Chart as ChartJS,
+    ChartData,
+    ChartOptions,
+    Legend,
     LinearScale,
-    PointElement,
     LineElement,
+    PointElement,
     Title,
-    Tooltip,
-    Legend, ChartData, ChartOptions
+    Tooltip
 } from 'chart.js'
 
 import {getAssetHistory} from "@services/api/assets.api.ts";
 
 import Select from '@components/ui/Select.tsx'
+import Button from "@components/ui/Button.tsx";
 
 import {SelectMenuItem} from '@ts/type/Select.type.ts'
-import Button from "@components/ui/Button.tsx";
-import Skeleton from "react-loading-skeleton";
+import {array} from "yup";
+import {AssetName} from "@ts/type/Assets.api.type.ts";
+
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
-const CurrencyList: SelectMenuItem[] = [
+const defaultCurrencyList: SelectMenuItem[] = [
     {
         name: 'btc',
         default: true,
@@ -91,10 +98,28 @@ const RequestError = styled.div`
   }
 `
 
+type Labels = string[];
+
+type CryptoHistoryRecord = {
+    date: string;
+    priceUsd: string;
+    time: number;
+}
+
 export default function CurrencyPrice() {
-    const {data, error, refetch, isLoading} = useQuery({
+    const [labels, setLabels]: [Labels | null, Dispatch<SetStateAction<Labels | null>>] = useState<Labels | null>(null)
+    const [datasets, setDatasets]: [number[] | null, Dispatch<SetStateAction<number[] | null>>] = useState<number[] | null>(null)
+    const [currencyList, setCurrencyList]: [SelectMenuItem[], Dispatch<SetStateAction<SelectMenuItem[]>>] = useState<SelectMenuItem[]>(defaultCurrencyList)
+    const [selectedCurrency, setSelectedCurrency] = useState<string>('bitcoin')
+
+    const {data: currencyPriceHistoryData, error, refetch, isLoading}: {
+        data: object[] | any,
+        error: any,
+        refetch: any,
+        isLoading: any
+    } = useQuery({
         queryKey: ['currency-price'],
-        queryFn: () => getAssetHistory('bitcoin'),
+        queryFn: () => getAssetHistory(selectedCurrency, 'd1', 10),
         staleTime: 10000,
     })
 
@@ -112,17 +137,41 @@ export default function CurrencyPrice() {
     }
 
     const fake_data: ChartData<'line'> = {
-        labels: ['fuck-me1', 'fuck-me2', 'fuck-me3', 'fuck-me4', 'fuck-me5', 'fuck-me6'],
+        labels: labels || [],
         datasets: [
             {
-                label: 'Price',
-                data: [100, 200, 300, 400, 500, 600],
-                borderColor: 'red'
+                label: 'Price of ' + selectedCurrency.toUpperCase(),
+                data: datasets || [],
+                borderColor: 'gray'
             }
         ]
     }
 
-    const reloadChartHandler = async () => await refetch()
+    const reloadChartHandler = () => {
+        refetch()
+    }
+
+    useEffect(function onSelectedCurrencyUpdate() {
+        refetch()
+    }, [selectedCurrency]);
+
+    useEffect(function updateLabelsAndDatasets() {
+        console.log(currencyPriceHistoryData?.data)
+
+        if (currencyPriceHistoryData?.data) {
+            setDatasets(() => {
+                return currencyPriceHistoryData?.data.map((priceHistory: CryptoHistoryRecord) => priceHistory.priceUsd)
+            })
+
+            setLabels((prevLabels) => {
+                if (!currencyPriceHistoryData?.data) return prevLabels
+
+                return currencyPriceHistoryData?.data.map((priceHistory: CryptoHistoryRecord) => {
+                    return priceHistory.date.split('T')[0]
+                })
+            })
+        }
+    }, [currencyPriceHistoryData]);
 
     return (
         <CurrencyPriceContainer>
@@ -130,8 +179,9 @@ export default function CurrencyPrice() {
                 <span>
                     Currency Price
                 </span>
-                <Select $menu_items={CurrencyList}
+                <Select $menu_items={currencyList}
                         $has_icon
+                        $new_value_setter={(newValue: string) => setSelectedCurrency(newValue)}
                 />
             </Header>
 

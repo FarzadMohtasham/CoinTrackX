@@ -74,11 +74,12 @@ export default function Select(props: SelectProps) {
         $has_icon: has_icon = false,
         $close_after_select = true,
         $menu_x_dir_start_position = 'right',
+        $new_value_setter,
     } = props
 
     const [selectedItem, setSelectedItem]: [selectedItem: SelectMenuItemT | null, setSelectedItem: Dispatch<SetStateAction<null | SelectMenuItemT>>] = useState<null | SelectMenuItemT>(null)
-    const selectRef = useRef<HTMLElement | null>(null);
     const [selectMenuIsOpen, setSelectMenuIsOpen] = useState<boolean>(false)
+    const selectRef = useRef<HTMLElement | null>(null);
 
     const handleSelectBtn = () => {
         if (selectMenuIsOpen) setSelectMenuIsOpen(false)
@@ -91,6 +92,12 @@ export default function Select(props: SelectProps) {
         }
     }
 
+    const menuItemOnClickHandler = (menuItem: SelectMenuItemT) => {
+        setSelectedItem(menuItem)
+
+        if ($close_after_select) setSelectMenuIsOpen(false)
+    }
+
     useEffect(() => {
         document.body.addEventListener('click', handleOutSideMenuClick)
         return () => {
@@ -98,17 +105,17 @@ export default function Select(props: SelectProps) {
         }
     });
 
-    const menuItemOnClickHandler = (menuItem: SelectMenuItemT) => {
-        setSelectedItem(menuItem)
-
-        if ($close_after_select) setSelectMenuIsOpen(false)
-    }
-
     // Set default menu item to the selectedItem
     useEffect(() => {
         const defaultMenuItem = menu_items.filter(item => item.default)[0]
         setSelectedItem(defaultMenuItem)
     }, []);
+
+    useEffect(() => {
+        if (selectedItem?.name) {
+            $new_value_setter(selectedItem.name)
+        }
+    }, [selectedItem]);
 
     return (
         <SelectContainer ref={selectRef}>
