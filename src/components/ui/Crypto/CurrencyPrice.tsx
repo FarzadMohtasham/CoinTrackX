@@ -20,10 +20,11 @@ import Button from "@components/ui/Button.tsx";
 
 import {SelectMenuItem} from '@ts/type/Select.type.ts'
 import useCurrencyPriceQuery from "@query/useCurrencyPrice.query.tsx";
+import {AssetHistoryInterval} from "@ts/type/Assets.api.type.ts";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
-const defaultCurrencyList: SelectMenuItem[] = [
+const currencyList: SelectMenuItem[] = [
     {
         name: 'btc',
         value: 'bitcoin',
@@ -49,6 +50,62 @@ const defaultCurrencyList: SelectMenuItem[] = [
         icon_src: 'crypto/xrp.svg'
     },
 ]
+const chartIntervals: SelectMenuItem[] = [
+    {
+        name: '1 Min',
+        value: 'm1',
+        icon_src: '',
+        default: false,
+    },
+    {
+        name: '5 Min',
+        value: 'm5',
+        icon_src: '',
+        default: false,
+    },
+    {
+        name: '15 Min',
+        value: 'm15',
+        icon_src: '',
+        default: false,
+    },
+    {
+        name: '30 Min',
+        value: 'm30',
+        icon_src: '',
+        default: false,
+    },
+    {
+        name: '1 Hour',
+        value: 'h1',
+        icon_src: '',
+        default: false,
+    },
+    {
+        name: '2 Hour',
+        value: 'h2',
+        icon_src: '',
+        default: false,
+    },
+    {
+        name: '6 Hour',
+        value: 'h6',
+        icon_src: '',
+        default: false,
+    },
+    {
+        name: '12 Hour',
+        value: 'h12',
+        icon_src: '',
+        default: false,
+    },
+    {
+        name: '1 Day',
+        value: 'd1',
+        icon_src: '',
+        default: true,
+    },
+]
 
 const CurrencyPriceContainer = styled.div`
   display: grid;
@@ -64,11 +121,15 @@ const Header = styled.div`
     font-weight: bold;
     font-size: var(--font-size-body-lg);
   }
+
+  div.options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 `
 
-const ContentWrapper = styled.div`
-
-`
+const ContentWrapper = styled.div``
 
 const Content = styled.div`
   display: flex;
@@ -107,10 +168,17 @@ type CryptoHistoryRecord = {
 export default function CurrencyPrice() {
     const [labels, setLabels]: [Labels | null, Dispatch<SetStateAction<Labels | null>>] = useState<Labels | null>(null)
     const [datasets, setDatasets]: [number[] | null, Dispatch<SetStateAction<number[] | null>>] = useState<number[] | null>(null)
-    const [currencyList, setCurrencyList]: [SelectMenuItem[], Dispatch<SetStateAction<SelectMenuItem[]>>] = useState<SelectMenuItem[]>(defaultCurrencyList)
     const [selectedCurrency, setSelectedCurrency] = useState<string>('bitcoin')
+    const [selectedChartInterval, setSelectedChartInterval] = useState<AssetHistoryInterval>(() => {
+        return chartIntervals.filter(interval => interval.default)[0].value as AssetHistoryInterval
+    })
 
-    const {currencyPriceHistoryData, error, refetch, isLoading} = useCurrencyPriceQuery(selectedCurrency)
+    const {
+        currencyPriceHistoryData,
+        error,
+        refetch,
+        isLoading
+    } = useCurrencyPriceQuery(selectedCurrency, selectedChartInterval)
 
     const options: ChartOptions<'line'> = {
         animation: false,
@@ -141,8 +209,8 @@ export default function CurrencyPrice() {
     }
 
     useEffect(function onSelectedCurrencyUpdate() {
-        refetch()
-    }, [selectedCurrency]);
+        reloadChartHandler()
+    }, [selectedCurrency, selectedChartInterval]);
 
     useEffect(function updateLabelsAndDatasets() {
         if (currencyPriceHistoryData) {
@@ -166,10 +234,15 @@ export default function CurrencyPrice() {
                 <span>
                     Currency Price
                 </span>
-                <Select $menu_items={currencyList}
-                        $has_icon
-                        $new_value_setter={(newValue: string) => setSelectedCurrency(newValue)}
-                />
+                <div className={'options'}>
+                    <Select $menu_items={currencyList}
+                            $has_icon
+                            $new_value_setter={(newState: string) => setSelectedCurrency(newState)}
+                    />
+                    <Select $menu_items={chartIntervals}
+                            $new_value_setter={(newState: AssetHistoryInterval) => setSelectedChartInterval(newState)}
+                    />
+                </div>
             </Header>
 
             {

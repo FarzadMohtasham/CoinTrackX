@@ -11,7 +11,7 @@ import {
 } from "@ts/type/Select.type.ts";
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
-  width: min-content;
+  width: max-content;
   display: block;
   position: relative;
 `
@@ -120,7 +120,7 @@ export default function Select(props: SelectProps) {
     return (
         <SelectContainer ref={selectRef}>
             <SelectBtnWrapper onClick={handleSelectBtn}>
-                {has_icon && <Icon icon_src={selectedItem?.icon_src || ''} width={'20rem'}/>}
+                {has_icon && <Icon icon_src={selectedItem?.icon_src || ''} width={'18rem'}/>}
                 <span className={'selected-item-text'}>{selectedItem?.name}</span>
                 <Icon icon_src={'arrow-down-simple.svg'} width={'10rem'}/>
             </SelectBtnWrapper>
