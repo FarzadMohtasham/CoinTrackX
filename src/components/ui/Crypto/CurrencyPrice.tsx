@@ -130,7 +130,9 @@ export default function CurrencyPrice() {
                 <span>
                     Currency Price
                 </span>
-                <Select $menu_items={CurrencyList} $has_icon/>
+                <Select $menu_items={CurrencyList}
+                        $has_icon
+                />
             </Header>
 
             {

@@ -3,7 +3,12 @@ import {css, styled} from "styled-components";
 
 import Icon from "@components/ui/Icon.tsx";
 
-import {SelectProps, SelectMenuItem as SelectMenuItemT, SelectedMenuItemProps} from "@ts/type/Select.type.ts";
+import {
+    SelectProps,
+    SelectMenuItem as SelectMenuItemT,
+    SelectedMenuItemProps,
+    SelectMenuWrapperProps
+} from "@ts/type/Select.type.ts";
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
   width: min-content;
@@ -27,7 +32,7 @@ const SelectBtnWrapper = styled.div`
   }
 `
 
-const SelectMenuWrapper = styled.ul`
+const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
   list-style: none;
   background-color: #2f343e;
   padding: 1rem;
@@ -35,7 +40,7 @@ const SelectMenuWrapper = styled.ul`
   flex-direction: column;
   gap: 1rem;
   position: absolute;
-  left: 0;
+  ${props => props.$menu_x_dir_start_position === 'right' ? 'right: 0' : 'left: 0'};
   top: 5rem;
   border-radius: .8rem;
 
@@ -68,6 +73,7 @@ export default function Select(props: SelectProps) {
         $menu_items: menu_items,
         $has_icon: has_icon = false,
         $close_after_select = true,
+        $menu_x_dir_start_position = 'right',
     } = props
 
     const [selectedItem, setSelectedItem]: [selectedItem: SelectMenuItemT | null, setSelectedItem: Dispatch<SetStateAction<null | SelectMenuItemT>>] = useState<null | SelectMenuItemT>(null)
@@ -113,7 +119,7 @@ export default function Select(props: SelectProps) {
             </SelectBtnWrapper>
 
             {
-                selectMenuIsOpen && <SelectMenuWrapper>
+                selectMenuIsOpen && <SelectMenuWrapper $menu_x_dir_start_position={$menu_x_dir_start_position}>
                     {
                         menu_items.map((item, i) => {
                             return (
