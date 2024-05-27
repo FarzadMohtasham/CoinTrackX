@@ -53,7 +53,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 
   span {
     font-weight: bold;
@@ -66,7 +66,15 @@ const ContentWrapper = styled.div`
 `
 
 const Content = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 99.99%;
+  transition: max-width 0s ease-in-out;
+
+  span {
+    font-size: var(--font-size-body-sm);
+  }
 `
 
 const RequestError = styled.div`
