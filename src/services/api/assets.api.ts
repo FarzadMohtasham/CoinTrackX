@@ -1,7 +1,19 @@
 import axios, {AxiosResponse} from "axios"
-import {AssetName, getAssetHistoryResponse, getAssetResponse, getAssetsResponse} from "@ts/type/Assets.api.type.ts";
+import {
+    AssetHistoryInterval,
+    AssetName,
+    getAssetHistoryResponse,
+    getAssetResponse,
+    getAssetsResponse
+} from "@ts/type/Assets.api.type.ts";
 
-const baseURL = 'api.coincap.io/v2'
+const axiosInstance = axios.create({
+    baseURL: 'https://api.coincap.io/v2/assets/',
+    timeout: 10000,
+    headers: {
+        'Accept': 'application/json',
+    }
+})
 
 export const getAssets = async (): Promise<getAssetsResponse> => {
     const response: getAssetsResponse = {
@@ -10,11 +22,7 @@ export const getAssets = async (): Promise<getAssetsResponse> => {
     }
 
     try {
-        const {data}: AxiosResponse = await axios.get(baseURL + '/assets', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+        const {data}: AxiosResponse = await axiosInstance.get('')
         response.data = data
     } catch (e) {
         response.error = e
@@ -23,19 +31,19 @@ export const getAssets = async (): Promise<getAssetsResponse> => {
     return response
 }
 
-export const getAsset = async () => {
+export const getAsset = async (assetName: AssetName) => {
     const response: getAssetResponse = {
         data: null,
         error: null
     }
 
     try {
-        const {data}: AxiosResponse = await axios.get(baseURL + '/assets', {
+        const {data}: AxiosResponse = await axiosInstance.get(assetName, {
             headers: {
-                'Content-Type': 'application/json'
-            }
+                Accept: 'application/json',
+            },
         })
-        response.data = data
+        response.data = data.data
     } catch (e) {
         response.error = e
     }
@@ -43,19 +51,15 @@ export const getAsset = async () => {
     return response
 }
 
-export const getAssetHistory = async (assetName: AssetName) => {
+export const getAssetHistory = async (assetName: AssetName, interval: AssetHistoryInterval = 'd1') => {
     const response: getAssetHistoryResponse = {
         data: null,
         error: null
     }
 
     try {
-        const {data}: AxiosResponse = await axios.get(baseURL + '/assets/' + assetName + '/history', {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        response.data = data
+        const {data}: AxiosResponse = await axiosInstance.get(assetName + '/history?interval=' + interval)
+        response.data = data.data
     } catch (e) {
         response.error = e
     }
@@ -76,7 +80,7 @@ export const getAssetMarket = async (assetName: AssetName) => {
     }
 
     try {
-        const {data}: AxiosResponse = await axios.get(baseURL + '/assets/' + assetName + '/markets', {
+        const {data}: AxiosResponse = await axios.get(assetName + '/markets', {
             headers: {
                 'Content-Type': 'application/json'
             }

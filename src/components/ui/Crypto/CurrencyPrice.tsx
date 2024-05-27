@@ -1,8 +1,26 @@
-import {styled} from "styled-components";
+import {useQuery} from "@tanstack/react-query";
+import {styled} from 'styled-components'
+import {Line} from 'react-chartjs-2'
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend, ChartData, ChartOptions
+} from 'chart.js'
 
-import Select from "@components/ui/Select.tsx";
+import {getAssetHistory} from "@services/api/assets.api.ts";
 
-import {SelectMenuItem} from "@ts/type/Select.type.ts";
+import Select from '@components/ui/Select.tsx'
+
+import {SelectMenuItem} from '@ts/type/Select.type.ts'
+import Button from "@components/ui/Button.tsx";
+import Skeleton from "react-loading-skeleton";
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
 const CurrencyList: SelectMenuItem[] = [
     {
@@ -35,6 +53,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1rem;
 
   span {
     font-weight: bold;
@@ -42,7 +61,61 @@ const Header = styled.div`
   }
 `
 
+const ContentWrapper = styled.div`
+
+`
+
+const Content = styled.div`
+  width: 100%;
+`
+
+const RequestError = styled.div`
+  width: 100%;
+  height: 10rem;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem 0;
+
+  span {
+    margin-bottom: 2rem;
+  }
+`
+
 export default function CurrencyPrice() {
+    const {data, error, refetch, isLoading} = useQuery({
+        queryKey: ['currency-price'],
+        queryFn: () => getAssetHistory('bitcoin'),
+        staleTime: 10000,
+    })
+
+    const options: ChartOptions<'line'> = {
+        animation: false,
+        plugins: {
+            tooltip: {
+                enabled: true
+            },
+            legend: {
+                position: "bottom"
+            },
+        },
+        responsive: true,
+    }
+
+    const fake_data: ChartData<'line'> = {
+        labels: ['fuck-me1', 'fuck-me2', 'fuck-me3', 'fuck-me4', 'fuck-me5', 'fuck-me6'],
+        datasets: [
+            {
+                label: 'Price',
+                data: [100, 200, 300, 400, 500, 600],
+                borderColor: 'red'
+            }
+        ]
+    }
+
+    const reloadChartHandler = async () => await refetch()
+
     return (
         <CurrencyPriceContainer>
             <Header>
@@ -51,6 +124,42 @@ export default function CurrencyPrice() {
                 </span>
                 <Select $menu_items={CurrencyList} $has_icon/>
             </Header>
+
+            {
+                isLoading ? <Skeleton width={'100%'}
+                                      height={'40rem'}
+                                      borderRadius={'2rem'}
+                    />
+                    :
+                    <ContentWrapper>
+                        {
+                            error &&
+                            <RequestError>
+                                <span>
+                                    Failed to load chart data, Please reload chart
+                                </span>
+                                <Button icon={'chart-white.svg'}
+                                        on_click_handler={reloadChartHandler}>
+                                    Reload Chart
+                                </Button>
+                            </RequestError>
+                        }
+
+                        {
+                            !error &&
+                            <Content>
+                                <span>
+                                    Chart reloads every 10s!
+                                </span>
+                                <Line
+                                    className={'asset-price'}
+                                    data={fake_data}
+                                    options={options}
+                                />
+                            </Content>
+                        }
+                    </ContentWrapper>
+            }
         </CurrencyPriceContainer>
     )
 }
