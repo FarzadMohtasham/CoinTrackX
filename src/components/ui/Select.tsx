@@ -50,6 +50,7 @@ const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
     cursor: pointer;
     font-weight: 400;
     font-size: var(--font-size-body-sm);
+    min-width: max-content;
   }
 `
 
@@ -59,6 +60,7 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
   text-transform: uppercase;
   border-radius: .6rem;
   transition: background-color .3s ease-in-out;
+
   ${props => props.$selected && css`background-color: #22242a`};
 
   ${props => !props.$selected && css`
