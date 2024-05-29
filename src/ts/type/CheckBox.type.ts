@@ -1,4 +1,4 @@
-import {RuleSet} from "styled-components";
+import {RuleSet} from 'styled-components'
 
 export type CheckboxTypes = 'primary' | 'danger' | 'black'
 

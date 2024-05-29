@@ -5,12 +5,12 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {RouterProvider} from 'react-router-dom'
-import {ThemeProvider} from "styled-components";
+import {ThemeProvider} from 'styled-components'
 import {lightTheme} from '@utils/themes.ts'
-import router from "./router.tsx";
-import {Toaster} from "react-hot-toast";
-import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
-import ReactQueryClient from "@query/queryClient.tsx";
+import router from './router.tsx'
+import {Toaster} from 'react-hot-toast'
+import {ReactQueryDevtools} from '@tanstack/react-query-devtools'
+import ReactQueryClient from '@query/queryClient.tsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

@@ -1,5 +1,5 @@
-import {Dispatch, SetStateAction, useEffect, useState} from "react";
-import Skeleton from "react-loading-skeleton";
+import {Dispatch, SetStateAction, useEffect, useState} from 'react'
+import Skeleton from 'react-loading-skeleton'
 import {styled} from 'styled-components'
 import {Line} from 'react-chartjs-2'
 import {
@@ -16,11 +16,11 @@ import {
 } from 'chart.js'
 
 import Select from '@components/ui/Select.tsx'
-import Button from "@components/ui/Button.tsx";
+import Button from '@components/ui/Button.tsx'
 
 import {SelectMenuItem} from '@ts/type/Select.type.ts'
-import useCurrencyPriceQuery from "@query/useCurrencyPrice.query.tsx";
-import {AssetHistoryInterval} from "@ts/type/Assets.api.type.ts";
+import useCurrencyPriceQuery from '@query/useCurrencyPrice.query.tsx'
+import {AssetHistoryInterval} from '@ts/type/Assets.api.type.ts'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 

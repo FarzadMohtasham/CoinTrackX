@@ -1,5 +1,5 @@
 import {screen, render} from '@testing-library/react'
-import HeadingBox from "./HeadingBox.tsx";
+import HeadingBox from './HeadingBox.tsx'
 
 test('HeadingBox UI Component Test', () => {
     render(

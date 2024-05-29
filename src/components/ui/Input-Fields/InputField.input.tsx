@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
-import {styled} from "styled-components"
+import {useEffect, useState} from 'react'
+import {styled} from 'styled-components'
 
-import Icon from "@components/ui/Icon.tsx";
+import Icon from '@components/ui/Icon.tsx'
 
 import {InputProps, InputStyledProps} from "@ts/type/InputFieldProps.type.ts";
 

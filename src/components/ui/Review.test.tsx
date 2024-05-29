@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react'
-import Review from "./Review.tsx";
+import Review from './Review.tsx'
 
 test('Review UI Component Test', () => {
     render(<Review numberOfStars={4}

@@ -1,14 +1,14 @@
-import {Dispatch, Ref, SetStateAction, useEffect, useRef, useState} from "react";
-import {css, styled} from "styled-components";
+import {Dispatch, Ref, SetStateAction, useEffect, useRef, useState} from 'react'
+import {css, styled} from 'styled-components'
 
-import Icon from "@components/ui/Icon.tsx";
+import Icon from '@components/ui/Icon.tsx'
 
 import {
     SelectProps,
     SelectMenuItem as SelectMenuItemT,
     SelectedMenuItemProps,
     SelectMenuWrapperProps
-} from "@ts/type/Select.type.ts";
+} from '@ts/type/Select.type.ts'
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
   width: max-content;

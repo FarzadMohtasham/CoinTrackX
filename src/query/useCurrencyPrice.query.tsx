@@ -1,6 +1,6 @@
-import {useQuery} from "@tanstack/react-query";
-import {getAssetHistory} from "@services/api/assets.api.ts";
-import {AssetHistoryInterval} from "@ts/type/Assets.api.type.ts";
+import {useQuery} from '@tanstack/react-query'
+import {getAssetHistory} from '@services/api/assets.api.ts'
+import {AssetHistoryInterval} from '@ts/type/Assets.api.type.ts'
 
 export default function useCurrencyPriceQuery(selectedCurrency: string, chartInterval: AssetHistoryInterval = 'd1', historyLength: number = 10) {
     const {data: currencyPriceHistoryData, error, refetch, isLoading}: {

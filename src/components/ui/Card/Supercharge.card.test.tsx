@@ -1,5 +1,5 @@
-import {render, screen} from "@testing-library/react";
-import SuperchargeCard from "./Supercharge.card.tsx";
+import {render, screen} from '@testing-library/react'
+import SuperchargeCard from './Supercharge.card.tsx'
 
 test('Supercharge UI Component Test', () => {
     render(

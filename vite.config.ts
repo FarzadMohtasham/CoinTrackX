@@ -30,6 +30,11 @@ export default defineConfig({
     resolve: {
         alias: resolveAlias
     },
+    server: {
+        port: 3000,
+        hmr: true,
+        strictPort: true,
+    }
 })
 
 

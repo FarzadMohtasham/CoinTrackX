@@ -1,4 +1,4 @@
-import {object, string, ValidationError} from "yup";
+import {object, string, ValidationError} from 'yup'
 
 type ValidatorProps = {
     type: 'firstName' | 'lastName' | 'email' | 'password';

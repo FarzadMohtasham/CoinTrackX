@@ -1,7 +1,7 @@
 import {styled} from 'styled-components'
 
-import PortfolioSummary from '@components/dashboard/PortfolioSummary.tsx';
-import CurrencyPrice from "@components/ui/Crypto/CurrencyPrice.tsx";
+import PortfolioSummary from '@components/dashboard/PortfolioSummary.tsx'
+import CurrencyPrice from "@components/ui/Crypto/CurrencyPrice.tsx"
 
 const DashboardContainer = styled.div`
   display: grid;

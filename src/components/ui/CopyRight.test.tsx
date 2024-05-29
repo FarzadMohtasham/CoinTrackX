@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import CopyRight from "./CopyRight.tsx";
+import CopyRight from './CopyRight.tsx'
 
 test('CopyRight UI Component Test', () => {
     render(<CopyRight/>)
