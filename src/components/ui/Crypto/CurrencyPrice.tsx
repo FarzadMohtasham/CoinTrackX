@@ -49,6 +49,24 @@ const currencyList: SelectMenuItem[] = [
         default: false,
         icon_src: 'crypto/xrp.svg'
     },
+    {
+        name: 'bnb',
+        value: 'binance-coin',
+        default: false,
+        icon_src: 'crypto/bnb.svg'
+    },
+    {
+        name: 'sol',
+        value: 'solana',
+        default: false,
+        icon_src: 'crypto/sol.svg'
+    },
+    {
+        name: 'dogecoin',
+        value: 'dogecoin',
+        default: false,
+        icon_src: 'crypto/doge.svg'
+    },
 ]
 const chartIntervals: SelectMenuItem[] = [
     {

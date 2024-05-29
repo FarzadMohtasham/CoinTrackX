@@ -11,8 +11,10 @@ export default function useCurrencyPriceQuery(selectedCurrency: string, chartInt
     } = useQuery({
         queryKey: ['currency-price'],
         queryFn: () => getAssetHistory(selectedCurrency, chartInterval, historyLength),
-        staleTime: 10000,
+        staleTime: 1000 * 10,
         retry: false,
+        refetchOnWindowFocus: true,
+        refetchOnReconnect: true
     })
 
     return {currencyPriceHistoryData, error, refetch, isLoading}
