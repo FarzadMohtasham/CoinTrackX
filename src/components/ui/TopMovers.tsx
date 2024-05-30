@@ -1,13 +1,13 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState} from 'react'
 import {styled} from 'styled-components'
 
-import TopMover from "@components/ui/TopMover.tsx";
+import TopMover from '@components/ui/TopMover.tsx'
 
-import useGetAssetsQuery from "@query/useGetAssets.tsx";
+import useGetAssetsQuery from '@query/useGetAssets.tsx'
 
-import {TopMover as TopMoverT} from "@ts/type/TopMover.type.ts";
-import Heading from "@components/ui/Heading.tsx";
-import Button from "@components/ui/Button.tsx";
+import {TopMover as TopMoverT} from '@ts/type/TopMover.type.ts'
+import Heading from '@components/ui/Heading.tsx'
+import Button from '@components/ui/Button.tsx'
 
 const TopMoversContainer = styled.div`
   display: flex;

@@ -1,9 +1,9 @@
-import {styled} from "styled-components";
-import Skeleton from "react-loading-skeleton";
+import {styled} from 'styled-components'
+import Skeleton from 'react-loading-skeleton'
 
-import Icon from "@components/ui/Icon.tsx";
+import Icon from '@components/ui/Icon.tsx'
 
-import {TopMoverProps} from "@ts/type/TopMover.type.ts";
+import {TopMoverProps} from '@ts/type/TopMover.type.ts'
 
 const TopMoverContainer = styled.div`
   width: 100%;

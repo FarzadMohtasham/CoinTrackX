@@ -1,11 +1,10 @@
+import {useState} from 'react'
 import {styled} from 'styled-components'
+import {useNavigate} from 'react-router-dom'
 
-import Input from "@components/ui/Input-Fields/InputField.input.tsx";
-import Button from "@components/ui/Button.tsx";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import TopMovers from "@components/ui/TopMovers.tsx";
-import Skeleton from "react-loading-skeleton";
+import Input from '@components/ui/Input-Fields/InputField.input.tsx'
+import Button from '@components/ui/Button.tsx'
+import TopMovers from '@components/ui/TopMovers.tsx'
 
 const PricesContainer = styled.div`
   padding: 3.2rem 2rem;
