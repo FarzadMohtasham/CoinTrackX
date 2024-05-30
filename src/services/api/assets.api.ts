@@ -15,20 +15,19 @@ const axiosInstance = axios.create({
     }
 })
 
-export const getAssets = async (): Promise<getAssetsResponse> => {
+export const getAssets = async () => {
     const response: getAssetsResponse = {
         data: null,
-        error: null
     }
 
     try {
         const {data}: AxiosResponse = await axiosInstance.get('')
-        response.data = data
-    } catch (e) {
-        response.error = e
+        response.data = data.data
+    } catch (e: any) {
+        throw new Error(e.message)
     }
 
-    return response
+    return response.data
 }
 
 export const getAsset = async (assetName: AssetName) => {

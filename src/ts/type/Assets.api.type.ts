@@ -2,7 +2,6 @@ import {AxiosResponse} from 'axios'
 
 export type getAssetsResponse = {
     data: AxiosResponse | null;
-    error: any;
 }
 
 export type getAssetResponse = {
