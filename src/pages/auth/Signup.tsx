@@ -138,8 +138,7 @@ export default function Login() {
                         <Button btnType={'white'}
                                 icon={'back-icon.png'}
                                 class_name={'back-btn'}
-                                remove_padding
-                                hasIcon>
+                                remove_padding>
                             Back
                         </Button>
                     </Link>
@@ -152,7 +151,6 @@ export default function Login() {
                     <div className={'google-apple-login'}>
                         <Button expanded
                                 outline
-                                hasIcon
                                 borderRadius={'lg'}
                                 on_click_handler={onGoogleAuthHandler}
                                 icon={'google-logo.png'}
@@ -161,7 +159,6 @@ export default function Login() {
                         </Button>
                         <Button expanded
                                 outline
-                                hasIcon
                                 borderRadius={'lg'}
                                 on_click_handler={onAppleAuthHandler}
                                 icon={'apple-logo.png'}

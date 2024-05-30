@@ -32,7 +32,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   background-color: ${props => props.$properties.backgroundColor};
   color: ${props => props.$properties.color};
   border-radius: ${props => props.$properties.borderRadiusS};
-  border: .2rem solid ${props => props.$properties.border};
+  border: ${props => props.$properties.no_border ? '0' : '.2rem'} solid ${props => props.$properties.border};
   transition: background-color .3s ease-in-out, border .3s ease-in-out;
   height: 5rem;
 
@@ -61,8 +61,7 @@ function Button(props: ButtonPropsType) {
         children = 'ERROR - No Value',
         class_name = '',
         btnType = 'primary',
-        hasIcon = false,
-        icon = '',
+        icon = null,
         iconDir = 'left',
         size = 'sm',
         expanded = false,
@@ -73,7 +72,8 @@ function Button(props: ButtonPropsType) {
         isLoading = false,
         on_click_handler = () => {
         },
-        remove_padding = false
+        remove_padding = false,
+        no_border = false,
     } = props
 
     disabled = isLoading;
@@ -116,9 +116,9 @@ function Button(props: ButtonPropsType) {
       ${!outline && (disabled ? '' : css`background-color: var(--color-${btnType + '-900)'};`)}
       ${
               !outline ?
-                      css`border: .2rem solid var(--color-${btnType + '-50)'};`
+                      css`border: ${no_border ? '0' : '.2rem'} solid var(--color-${btnType + '-50)'};`
                       :
-                      css`border: .2rem solid var(--color-${btnType + '-100)'};`
+                      css`border: ${no_border ? '0' : '.2rem'} solid var(--color-${btnType + '-100)'};`
       }
     `
     const mobileMedia = `${hideOn === 'mobile' ? css`display: none;` : ''}`
@@ -137,7 +137,8 @@ function Button(props: ButtonPropsType) {
         tabletMedia,
         desktopMedia,
         expanded,
-        cursor
+        cursor,
+        no_border,
     }
 
     const onClickHandler = () => {
@@ -149,12 +150,12 @@ function Button(props: ButtonPropsType) {
         <ButtonStyled className={`${class_name} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`}
                       $properties={buttonProperties}
                       onClick={onClickHandler}>
-            {hasIcon && (iconDir === 'left' &&
+            {icon && (iconDir === 'left' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
             {isLoading &&
                 <HashLoader size={18} color={`var(--color-${btnType + '-500)'}`}/>}
             {children}
-            {hasIcon && (iconDir === 'right' &&
+            {icon && (iconDir === 'right' &&
                 <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
         </ButtonStyled>
     )

@@ -7,6 +7,7 @@ import useGetAssetsQuery from "@query/useGetAssets.tsx";
 
 import {TopMover as TopMoverT} from "@ts/type/TopMover.type.ts";
 import Heading from "@components/ui/Heading.tsx";
+import Button from "@components/ui/Button.tsx";
 
 const TopMoversContainer = styled.div`
   display: flex;
@@ -15,7 +16,9 @@ const TopMoversContainer = styled.div`
 `
 
 const TopMoversHeaderWrapper = styled.div`
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
 const TopMoversWrapper = styled.div`
@@ -26,7 +29,7 @@ const TopMoversWrapper = styled.div`
 `
 
 export default function TopMovers() {
-    const [topMovers, setTopMovers] = useState<TopMoverT[]>([
+    const [topMovers, setTopMovers] = useState<TopMoverT[] | null>([
         {
             price: '1200430',
             h24_change: '323.45',
@@ -45,13 +48,13 @@ export default function TopMovers() {
             coin_id: 'btc',
             coin_symbol: 'btc'
         },
-    ]);
+    ])
 
     const {data, error, refetch, isLoading} = useGetAssetsQuery()
 
     useEffect(() => {
         console.log(data)
-    }, [data]);
+    }, [data])
 
     return (
         <TopMoversContainer>
@@ -60,11 +63,20 @@ export default function TopMovers() {
                          font_weight={'500'}>
                     Top Movers
                 </Heading>
+
+                <Button btnType={'gray'}
+                        icon={'refresh-gray.svg'}
+                        on_click_handler={() => refetch()}
+                        no_border
+                        outline
+                >
+                    Reload
+                </Button>
             </TopMoversHeaderWrapper>
 
             <TopMoversWrapper>
                 {
-                    topMovers.map((topMover, i) => {
+                    topMovers?.map((topMover, i) => {
                         return (
                             <TopMover {...topMover}
                                       is_loading={isLoading}

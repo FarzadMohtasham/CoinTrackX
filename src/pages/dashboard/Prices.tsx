@@ -76,7 +76,6 @@ export default function Prices() {
                                         borderRadius={'md'}
                                         on_click_handler={watchlistBtnHandler}
                                         btnType={'primary'}
-                                        hasIcon
                                         outline>
                                     Watchlist
                                 </Button>
@@ -85,7 +84,6 @@ export default function Prices() {
                                         borderRadius={'md'}
                                         on_click_handler={watchlistBtnHandler}
                                         btnType={'gray'}
-                                        hasIcon
                                         outline>
                                     Watchlist
                                 </Button>
@@ -93,7 +91,6 @@ export default function Prices() {
                         <Button icon={'portfolio-purple.svg'}
                                 borderRadius={'md'}
                                 on_click_handler={portfolioBtnHandler}
-                                hasIcon
                                 outline>
                             Portfolio
                         </Button>
