@@ -23,7 +23,7 @@ const TopMoverWrapper = styled.div`
 const TopMoverLeftCol = styled.div`
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 1.2rem;
 
   .coin-icon-wrapper {
   }
@@ -68,9 +68,31 @@ export default function TopMover(props: TopMoverProps) {
         coin_id = 'undefined',
         coin_symbol = 'undefined',
         price = 'undefined',
-        h24_change = 'undefined',
+        changePercent24Hr = 'undefined',
         is_loading = false,
     } = props
+
+    const calc24HChangeAmount = () => {
+        const priceToCalc: number = Number(Number(price).toFixed(3))
+        const changePercent24HrToCalc: number = Number(Number(changePercent24Hr).toFixed(2))
+
+        const calcResult: number = ((priceToCalc / 100) * changePercent24HrToCalc)
+
+        switch (true) {
+            case priceToCalc < 0.00001:
+                return calcResult.toFixed(7)
+            case priceToCalc < 0.0001:
+                return calcResult.toFixed(6)
+            case priceToCalc < 0.001:
+                return calcResult.toFixed(5)
+            case priceToCalc < 0.01:
+                return calcResult.toFixed(4)
+            case priceToCalc < 0.1:
+                return calcResult.toFixed(3)
+            case priceToCalc <= 1 || priceToCalc >= 1:
+                return calcResult.toFixed(2)
+        }
+    }
 
     return (
         <TopMoverContainer>
@@ -84,7 +106,7 @@ export default function TopMover(props: TopMoverProps) {
                     <TopMoverWrapper>
                         <TopMoverLeftCol>
                             <div className={'coin-icon-wrapper'}>
-                                <Icon icon_src={'crypto/btc.svg'}
+                                <Icon icon_src={`crypto/${coin_symbol.toLowerCase()}.svg`}
                                       width={'40rem'}
                                 />
                             </div>
@@ -96,13 +118,13 @@ export default function TopMover(props: TopMoverProps) {
                         </TopMoverLeftCol>
 
                         <TopMoverRightCol>
-                    <span className={'coin-price'}>
-                        {price}
-                    </span>
+                            <span className={'coin-price'}>
+                                {price}$
+                            </span>
 
                             <span className={'coin-price-24h-change'}>
-                        {h24_change}
-                    </span>
+                                {changePercent24Hr}%({calc24HChangeAmount()}$)
+                            </span>
                         </TopMoverRightCol>
                     </TopMoverWrapper>
             }

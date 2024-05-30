@@ -2,20 +2,7 @@ import {useQuery} from '@tanstack/react-query'
 
 import {getAssets} from '@services/api/assets.api.ts'
 
-type Asset = {
-    "id": string;
-    "rank": string;
-    "symbol": string;
-    "name": string;
-    "supply": string;
-    "maxSupply": string;
-    "marketCapUsd": string;
-    "volumeUsd24Hr": string;
-    "priceUsd": string;
-    "changePercent24Hr": string;
-    "vwap24Hr": string;
-    "explorer": string;
-}
+import {Asset} from "@ts/type/Assets.api.type.ts";
 
 export default function useGetAssetsQuery(
     staleTime: number = 1000 * 60 * 60,

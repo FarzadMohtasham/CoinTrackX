@@ -12,6 +12,22 @@ export type getAssetResponse = {
 export type getAssetHistoryResponse = {
     data: AxiosResponse | null;
 }
+
+export type Asset = {
+    "id": string;
+    "rank": string;
+    "symbol": string;
+    "name": string;
+    "supply": string;
+    "maxSupply": string;
+    "marketCapUsd": string;
+    "volumeUsd24Hr": string;
+    "priceUsd": string;
+    "changePercent24Hr": string;
+    "vwap24Hr": string;
+    "explorer": string;
+}
+
 export type AssetName =
     'bitcoin'
     | 'ethereum'

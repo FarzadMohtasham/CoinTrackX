@@ -12,3 +12,13 @@ export function titleCase(str: string) {
 export function removeLetter(str: string, letterToRemove: string) {
     return str.split(letterToRemove).join('');
 }
+
+
+
+
+
+
+
+
+
+
