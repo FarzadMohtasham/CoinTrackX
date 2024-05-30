@@ -53,7 +53,7 @@ export default function TopMovers() {
     const {data, error, refetch, isLoading} = useGetAssetsQuery()
 
     useEffect(() => {
-        console.log(data)
+
     }, [data])
 
     return (

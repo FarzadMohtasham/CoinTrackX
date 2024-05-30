@@ -72,8 +72,6 @@ export default function TopMover(props: TopMoverProps) {
         is_loading = false,
     } = props
 
-    console.log(is_loading)
-
     return (
         <TopMoverContainer>
             {
