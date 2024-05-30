@@ -1,11 +1,95 @@
 import {styled} from 'styled-components'
 
-const BuyContainer = styled.div``
+import Input from "@components/ui/Input-Fields/InputField.input.tsx";
+import Button from "@components/ui/Button.tsx";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+
+const BuyContainer = styled.div`
+  padding: 3.2rem 2rem;
+
+  .portfolio-summary {
+    margin-bottom: 2.4rem;
+  }
+`
+
+const SearchBar = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  .left-col {
+    flex-grow: 1;
+  }
+
+  .right-col {
+    display: flex;
+    gap: 1rem;
+  }
+`
+
+const TopMoversWrapper = styled.div`
+  
+`
+
 
 export default function Prices() {
+    const [search, setSearch] = useState<string>('')
+    const [watchlistIsActive, setWatchlistIsActive] = useState<boolean>(false)
+
+    const navigate = useNavigate()
+
+    const watchlistBtnHandler = () => {
+        setWatchlistIsActive(!watchlistIsActive)
+    }
+
+    const portfolioBtnHandler = () => {
+        navigate('/dashboard/assets-portfolio')
+    }
+
     return (
         <BuyContainer>
-            Prices
+            <TopMoversWrapper>
+
+            </TopMoversWrapper>
+
+            <SearchBar>
+                <div className={'left-col'}>
+                    <Input place_holder={'Search crypto'}
+                           icon_src={'search-gray.svg'}
+                           focus_icon_src={'search-gray-active.svg'}
+                           on_change_handler={value => setSearch(value)}/>
+                </div>
+                <div className={'right-col'}>
+                    {
+                        watchlistIsActive ?
+                            <Button icon={'watchlist-purple.svg'}
+                                    borderRadius={'md'}
+                                    on_click_handler={watchlistBtnHandler}
+                                    btnType={'primary'}
+                                    hasIcon
+                                    outline>
+                                Watchlist
+                            </Button>
+                            :
+                            <Button icon={'watchlist-gray.svg'}
+                                    borderRadius={'md'}
+                                    on_click_handler={watchlistBtnHandler}
+                                    btnType={'gray'}
+                                    hasIcon
+                                    outline>
+                                Watchlist
+                            </Button>
+                    }
+                    <Button icon={'portfolio-purple.svg'}
+                            borderRadius={'md'}
+                            on_click_handler={portfolioBtnHandler}
+                            hasIcon
+                            outline>
+                        Portfolio
+                    </Button>
+                </div>
+            </SearchBar>
         </BuyContainer>
     )
 }

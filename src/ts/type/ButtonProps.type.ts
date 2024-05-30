@@ -19,7 +19,7 @@ export type Properties = {
 export type ButtonPropsType = {
     children: React.ReactNode;
     class_name?: string;
-    btnType?: 'primary' | 'secondary' | 'black' | 'white' | 'danger';
+    btnType?: 'primary' | 'secondary' | 'black' | 'white' | 'danger' | 'gray';
     hasIcon?: boolean;
     icon?: any;
     iconDir?: 'left' | 'right';

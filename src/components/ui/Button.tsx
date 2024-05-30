@@ -34,6 +34,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   border-radius: ${props => props.$properties.borderRadiusS};
   border: .2rem solid ${props => props.$properties.border};
   transition: background-color .3s ease-in-out, border .3s ease-in-out;
+  height: 5rem;
 
   &:hover {
     ${props => props.$properties.hover}

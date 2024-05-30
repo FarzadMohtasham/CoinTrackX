@@ -36,7 +36,11 @@ export const buttonTypeVariations = {
     danger: {
         backgroundColor: 'var(--color-danger)',
         color: 'white',
-    }
+    },
+    gray: {
+        backgroundColor: 'var(--color-gray)',
+        color: 'gray',
+    },
 }
 export const buttonBorderRadius = {
     none: '0',

@@ -3,7 +3,7 @@ import {styled} from 'styled-components'
 
 import Icon from '@components/ui/Icon.tsx'
 
-import {InputProps, InputStyledProps} from "@ts/type/InputFieldProps.type.ts";
+import {InputProps, InputStyledProps} from '@ts/type/InputFieldProps.type.ts'
 
 const FieldContainer = styled.div`
   display: flex;
@@ -37,8 +37,7 @@ const InputStyled = styled.div`
 `
 
 const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
-  margin-bottom: 1rem;
-  border-color: ${props => props.$input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
+  border-color: ${props => props.$input_selected === 'true' ? 'var(--color-black-200)' : 'var(--color-black-50)'};
 `
 
 const ErrorContainer = styled.span`
