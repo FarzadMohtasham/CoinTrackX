@@ -14,6 +14,7 @@ const TopMoversContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+  
 `
 
 const TopMoversHeaderWrapper = styled.div`
@@ -24,9 +25,16 @@ const TopMoversHeaderWrapper = styled.div`
 
 const TopMoversWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
+
+  @media screen and (min-width: ${props => props.theme.responsive.sm}) {
+    flex-direction: row;
+  }
+
+  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
+    flex-direction: column;
+  }
 `
 
 export default function TopMovers() {
@@ -50,8 +58,6 @@ export default function TopMovers() {
             coin_symbol: 'btc'
         },
     ])
-    const [toastHolder, setToastHolder] = useState<string | undefined>(undefined);
-
     const {data, error, refetch, isLoading} = useGetAssetsQuery()
 
     const onReloadHandler = () => {
