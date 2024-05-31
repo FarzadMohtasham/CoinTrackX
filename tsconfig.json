@@ -32,6 +32,9 @@
       "@components/*": [
         "./src/components/*"
       ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
       "@config/*": [
         "./src/config/*"
       ],
@@ -71,9 +74,12 @@
       "@utils/*": [
         "./src/utils/*"
       ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
       "@validation/*": [
         "./src/validation/*"
-      ]
+      ],
     }
   },
   "include": [
