@@ -39,8 +39,6 @@ const TopMoversWrapper = styled.div`
 
 `
 
-import { Textarea } from "@/components/ui/textarea.tsx"
-
 export default function Prices() {
     const [search, setSearch] = useState<string>('')
     const [watchlistIsActive, setWatchlistIsActive] = useState<boolean>(false)
@@ -97,8 +95,6 @@ export default function Prices() {
                     </div>
                 </SearchBar>
             </PricesWrapper>
-
-            
         </PricesContainer>
     )
 }
