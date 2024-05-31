@@ -14,7 +14,7 @@ const TopMoversContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  
+
 `
 
 const TopMoversHeaderWrapper = styled.div`
@@ -34,6 +34,20 @@ const TopMoversWrapper = styled.div`
 
   @media screen and (max-width: ${props => props.theme.responsive.sm}) {
     flex-direction: column;
+  }
+`
+
+const ErrorBox = styled.div`
+  display: grid;
+  place-content: center;
+
+  .error-title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .error-desc {
+    text-align: center;
   }
 `
 
@@ -94,28 +108,39 @@ export default function TopMovers() {
                     Top Movers
                 </Heading>
 
-                <Button btnType={'gray'}
+                <Button btnType={error ? 'primary' : 'gray'}
                         icon={isLoading ? null : 'refresh-gray.svg'}
                         on_click_handler={onReloadHandler}
                         isLoading={isLoading}
                         no_border
-                        outline
+                        outline={!error}
                 >
                     Reload
                 </Button>
             </TopMoversHeaderWrapper>
-
-            <TopMoversWrapper>
-                {
-                    topMovers?.map((topMover, i) => {
-                        return (
-                            <TopMover {...topMover}
-                                      is_loading={isLoading}
-                                      key={'top-mover-' + i}/>
-                        )
-                    })
-                }
-            </TopMoversWrapper>
+            {
+                error ?
+                    <ErrorBox>
+                        <Heading heading_type={'h6'}
+                                 class_name={'error-title'}
+                                 font_weight={'500'}>
+                            Oops, Something went wrong!
+                        </Heading>
+                        <span className={'error-desc'}>Please reload...</span>
+                    </ErrorBox>
+                    :
+                    <TopMoversWrapper>
+                        {
+                            topMovers?.map((topMover, i) => {
+                                return (
+                                    <TopMover {...topMover}
+                                              is_loading={isLoading}
+                                              key={'top-mover-' + i}/>
+                                )
+                            })
+                        }
+                    </TopMoversWrapper>
+            }
         </TopMoversContainer>
     )
 }
