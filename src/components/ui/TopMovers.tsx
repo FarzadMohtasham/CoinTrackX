@@ -3,7 +3,7 @@ import {styled} from 'styled-components'
 
 import TopMover from '@components/ui/TopMover.tsx'
 
-import useGetAssetsQuery from '@query/useGetAssets.tsx'
+import useGetAssetsQuery from '@query/assets/useGetAssets.ts'
 
 import {TopMover as TopMoverT} from '@ts/type/TopMover.type.ts'
 import Heading from '@components/ui/Heading.tsx'

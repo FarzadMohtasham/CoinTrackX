@@ -19,7 +19,7 @@ import Select from '@components/ui/Select.tsx'
 import Button from '@components/ui/Button.tsx'
 
 import {SelectMenuItem} from '@ts/type/Select.type.ts'
-import useCurrencyPriceQuery from '@query/useCurrencyPrice.query.tsx'
+import useGetAssetHistory from '@query/assets/useGetAssetHistory.query.ts'
 import {AssetHistoryInterval} from '@ts/type/Assets.api.type.ts'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
@@ -196,7 +196,7 @@ export default function CurrencyPrice() {
         error,
         refetch,
         isLoading
-    } = useCurrencyPriceQuery(selectedCurrency, selectedChartInterval)
+    } = useGetAssetHistory(selectedCurrency, selectedChartInterval)
 
     const options: ChartOptions<'line'> = {
         animation: false,
