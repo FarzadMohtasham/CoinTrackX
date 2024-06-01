@@ -10,7 +10,7 @@ import InputField from "@components/ui/Input-Fields/InputField.input.tsx"
 import PasswordFieldInput from "@components/ui/Input-Fields/PasswordField.input.tsx"
 import CheckboxInput from "@components/ui/Input-Fields/Checkbox.input.tsx"
 
-import {loginInputValidator} from "@validation/login.validator.ts"
+import {loginInputValidator} from "@/lib/validation/login.validator.ts"
 import {login} from "@services/api/auth.api.ts";
 
 import {

@@ -114,9 +114,7 @@ const defaultProps = {
     },
 }
 
-export const lightTheme = {
-    ...defaultProps,
-}
-export const darkTheme = {
-    ...defaultProps,
+export default {
+    lightTheme: {...defaultProps},
+    darkTheme: {...defaultProps}
 }

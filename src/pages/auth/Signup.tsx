@@ -10,7 +10,7 @@ import InputField from '@components/ui/Input-Fields/InputField.input.tsx'
 import CheckboxInput from '@components/ui/Input-Fields/Checkbox.input.tsx'
 import PasswordFieldInput from '@components/ui/Input-Fields/PasswordField.input.tsx'
 
-import {signupInputValidator} from '@validation/signup.validator.ts'
+import {signupInputValidator} from '@/lib/validation/signup.validator.ts'
 import {signup} from '@services/api/auth.api.ts'
 import useAutoRedirectOnAuth from '@hooks/useAutoRedirectOnAuth.ts'
 

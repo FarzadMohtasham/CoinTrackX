@@ -21,3 +21,15 @@ export type SelectedMenuItemProps = {
     $selected?: boolean;
     onClick?: any
 }
+
+export type PriceTableData = {
+    name: string;
+    logoSrc: string;
+    symbol: string;
+    price: string;
+    marketCap: string;
+    circulatingSupply: string;
+    changePercent: string;
+    last24H: string;
+    watchList: boolean;
+}

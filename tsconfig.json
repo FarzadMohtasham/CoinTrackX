@@ -66,14 +66,17 @@
         "./src/tests/*"
       ],
       "@ts/*": [
-        "./src/ts/*"
+        "./src/lib/ts/*"
       ],
       "@utils/*": [
-        "./src/utils/*"
+        "./src/lib/utils/*"
       ],
       "@validation/*": [
-        "./src/validation/*"
+        "./src/lib/validation/*"
       ],
+      "@themes/*": [
+        "./src/lib/themes/*"
+      ]
     }
   },
   "include": [

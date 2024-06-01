@@ -18,7 +18,6 @@ export default defineConfig({
             "@": path.resolve(__dirname, "./src"),
             "@assets": path.resolve(__dirname, "./src/assets"),
             "@components": path.resolve(__dirname, "./src/components"),
-            "@/components": path.resolve(__dirname, "./src/components"),
             "@config": path.resolve(__dirname, "./src/config"),
             "@data": path.resolve(__dirname, "./src/data"),
             "@feature": path.resolve(__dirname, "./src/feature"),
@@ -30,10 +29,11 @@ export default defineConfig({
             "@services": path.resolve(__dirname, "./src/services"),
             "@styles": path.resolve(__dirname, "./src/styles"),
             "@tests": path.resolve(__dirname, "./src/tests"),
-            "@ts": path.resolve(__dirname, "./src/ts"),
-            "@utils": path.resolve(__dirname, "./src/utils"),
-            "@/lib": path.resolve(__dirname, "./src/lib"),
-            "@validation": path.resolve(__dirname, "./src/validation"),
+            "@ts": path.resolve(__dirname, "./src/lib/ts"),
+            "@utils": path.resolve(__dirname, "./src/lib/utils"),
+            "@lib": path.resolve(__dirname, "./src/lib"),
+            "@validation": path.resolve(__dirname, "./src/lib/validation"),
+            "@themes": path.resolve(__dirname, "./src/lib/themes"),
         }
     },
     server: {

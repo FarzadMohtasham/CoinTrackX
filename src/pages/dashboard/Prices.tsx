@@ -35,9 +35,9 @@ const SearchBar = styled.div`
   }
 `
 
-const TopMoversWrapper = styled.div`
+const TopMoversWrapper = styled.div``
 
-`
+const PriceTableWrapper = styled.div``
 
 export default function Prices() {
     const [search, setSearch] = useState<string>('')
@@ -94,6 +94,10 @@ export default function Prices() {
                         </Button>
                     </div>
                 </SearchBar>
+
+                <PriceTableWrapper>
+
+                </PriceTableWrapper>
             </PricesWrapper>
         </PricesContainer>
     )
