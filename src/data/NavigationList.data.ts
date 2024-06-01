@@ -19,7 +19,7 @@ export const NavigationListData: NavigationItemType[] = [
     },
     {
         name: 'prices',
-        title: 'Prices',
+        title: 'prices',
         link: '/dashboard/prices',
         icon_src: 'prices.svg',
         active_icon_src: 'active-prices.svg',

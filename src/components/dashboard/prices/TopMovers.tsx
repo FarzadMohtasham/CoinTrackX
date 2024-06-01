@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {styled} from 'styled-components'
 
-import TopMover from '@components/ui/TopMover.tsx'
+import TopMover from '@components/dashboard/prices/TopMover.tsx'
 
 import useGetAssetsQuery from '@query/assets/useGetAssets.ts'
 

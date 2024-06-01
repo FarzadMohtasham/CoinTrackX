@@ -1,10 +1,11 @@
-import {useState} from 'react'
+import {useMemo, useState} from 'react'
 import {styled} from 'styled-components'
 import {useNavigate} from 'react-router-dom'
 
 import Input from '@components/ui/Input-Fields/InputField.input.tsx'
 import Button from '@components/ui/Button.tsx'
-import TopMovers from '@components/ui/TopMovers.tsx'
+import TopMovers from '@components/dashboard/prices/TopMovers.tsx'
+import PricesTable from "@components/dashboard/prices/PricesTable.tsx";
 
 const PricesContainer = styled.div`
   padding: 3.2rem 2rem;
@@ -37,8 +38,6 @@ const SearchBar = styled.div`
 
 const TopMoversWrapper = styled.div``
 
-const PriceTableWrapper = styled.div``
-
 export default function Prices() {
     const [search, setSearch] = useState<string>('')
     const [watchlistIsActive, setWatchlistIsActive] = useState<boolean>(false)
@@ -55,6 +54,7 @@ export default function Prices() {
 
     return (
         <PricesContainer>
+
             <TopMoversWrapper>
                 <TopMovers/>
             </TopMoversWrapper>
@@ -93,11 +93,11 @@ export default function Prices() {
                             Portfolio
                         </Button>
                     </div>
+
                 </SearchBar>
 
-                <PriceTableWrapper>
+                <PricesTable/>
 
-                </PriceTableWrapper>
             </PricesWrapper>
         </PricesContainer>
     )

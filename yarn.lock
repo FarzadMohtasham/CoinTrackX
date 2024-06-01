@@ -734,6 +734,11 @@
   resolved "https://registry.yarnpkg.com/@chakra-ui/react-types/-/react-types-2.0.7.tgz#799c166a44882b23059c8f510eac9bd5d0869ac4"
   integrity sha512-12zv2qIZ8EHwiytggtGvo4iLT0APris7T0qaAWqzpUGS0cdUtR8W+V1BJ5Ocq+7tA6dzQ/7+w5hmXih61TuhWQ==
 
+"@chakra-ui/react-types@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/react-types/-/react-types-2.0.6.tgz#96b4f8a082ab5244fe6b574e953b1b64ece9605a"
+  integrity sha512-aAq/nl//PneEfeaDb94zwfXor4OP/d5kc6dEXOZB2HJgCt3hu2+F/1u1QpPLPPTys5xexkQojuZQLnnD9lmQFw==
+
 "@chakra-ui/react-use-animation-state@2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@chakra-ui/react-use-animation-state/-/react-use-animation-state-2.1.0.tgz#eab661fbafd96804fe867b0df0c27e78feefe6e2"
