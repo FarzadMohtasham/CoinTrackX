@@ -22,13 +22,18 @@ import {
 import {styled} from "styled-components";
 import Icon from "@components/ui/Icon.tsx";
 
+const PricesTableContainer = styled.div`
+  & .table-head {
+    background-color: var(--color-black-100);
+  }
+`
+
 const ColumnName = styled.div`
   display: flex;
   gap: 1.2rem;
   align-items: center;
 
   .left-col {
-
   }
 
   .right-col {
@@ -46,6 +51,17 @@ const ColumnName = styled.div`
       font-weight: 400;
     }
   }
+`
+
+const ColumnHeaderSpan = styled.span`
+  font-size: var(--font-size-body-xsm);
+  color: var(--color-black-700);
+  font-weight: 500;
+`
+
+const ColumnCellSpan = styled.span`
+  font-size: var(--font-size-body-xsm);
+  font-weight: 400;
 `
 
 export default function PricesTable() {
@@ -71,32 +87,32 @@ export default function PricesTable() {
         {
             accessorKey: 'price',
             header: 'Price',
-            cell: (props: CellContext<any, any>) => <>{props.getValue()}</>
+            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
         },
         {
             accessorKey: 'marketCap',
             header: 'Market Cap',
-            cell: (props: CellContext<any, any>) => <>{props.getValue()}</>
+            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
         },
         {
             accessorKey: 'circulatingSupply',
             header: 'Circulating Supply',
-            cell: (props: CellContext<any, any>) => <>{props.getValue()}</>
+            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
         },
         {
             accessorKey: 'changePercent',
             header: 'change %',
-            cell: (props: CellContext<any, any>) => <>{props.getValue()}</>
+            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
         },
         {
             accessorKey: 'last24H',
             header: 'last (24H)',
-            cell: (props: CellContext<any, any>) => <>{props.getValue()}</>
+            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
         },
         {
             accessorKey: 'watchlist',
             header: '',
-            cell: (props: CellContext<any, any>) => <>{props.getValue()}</>
+            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
         },
     ], []);
 
@@ -135,53 +151,55 @@ export default function PricesTable() {
         getCoreRowModel: getCoreRowModel()
     })
 
-    console.log(table.getHeaderGroups())
-
     return (
-        <TableContainer>
-            <Table variant='striped' colorScheme='teal' className={'table'}>
-                <TableCaption>Imperial to metric conversion factors</TableCaption>
-                <Thead>
-                    {
-                        table.getHeaderGroups().map((headerGroup: HeaderGroup<any>): JSX.Element => {
-                            return (
-                                <Tr className={'tr'} key={headerGroup.id}>
-                                    {
-                                        headerGroup.headers.map((header: Header<any, any>): JSX.Element => {
-                                            return (
-                                                <Td className={'th'} key={header.id}>
-                                                    {String(header.column.columnDef.header)}
-                                                </Td>
-                                            )
-                                        })
-                                    }
-                                </Tr>
-                            )
-                        })
-                    }
-                </Thead>
-                <Tbody>
-                    {
-                        table.getRowModel().rows.map((row: Row<any>) => {
-                            return (
-                                <Tr key={row.id}>
-                                    {
-                                        row.getVisibleCells().map((cell: Cell<any, any>) => {
-                                            return (
-                                                <Td key={cell.id}>
-                                                    {
-                                                        flexRender(cell.column.columnDef.cell, cell.getContext())
-                                                    }
-                                                </Td>
-                                            )
-                                        })
-                                    }
-                                </Tr>
-                            )
-                        })
-                    }
-                </Tbody>
-            </Table>
-        </TableContainer>
+        <PricesTableContainer>
+            <TableContainer>
+                <Table className={'table'}>
+                    <TableCaption>Data will reload every 10s!</TableCaption>
+                    <Thead className={'table-head'}>
+                        {
+                            table.getHeaderGroups().map((headerGroup: HeaderGroup<any>): JSX.Element => {
+                                return (
+                                    <Tr className={'tr'} key={headerGroup.id}>
+                                        {
+                                            headerGroup.headers.map((header: Header<any, any>): JSX.Element => {
+                                                return (
+                                                    <Td className={'th'} key={header.id}>
+                                                        <ColumnHeaderSpan>
+                                                            {String(header.column.columnDef.header)}
+                                                        </ColumnHeaderSpan>
+                                                    </Td>
+                                                )
+                                            })
+                                        }
+                                    </Tr>
+                                )
+                            })
+                        }
+                    </Thead>
+                    <Tbody>
+                        {
+                            table.getRowModel().rows.map((row: Row<any>) => {
+                                return (
+                                    <Tr key={row.id}>
+                                        {
+                                            row.getVisibleCells().map((cell: Cell<any, any>) => {
+                                                return (
+                                                    <Td key={cell.id}>
+                                                        {
+                                                            flexRender(cell.column.columnDef.cell, cell.getContext())
+                                                        }
+                                                    </Td>
+                                                )
+                                            })
+                                        }
+                                    </Tr>
+                                )
+                            })
+                        }
+                    </Tbody>
+                </Table>
+            </TableContainer>
+        </PricesTableContainer>
     )
 }
