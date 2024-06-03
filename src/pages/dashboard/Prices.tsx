@@ -41,12 +41,12 @@ const TopMoversWrapper = styled.div``
 
 export default function Prices() {
     const [search, setSearch] = useState<string>('')
-    const [watchlistIsActive, setWatchlistIsActive] = useState<boolean>(false)
+    const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false)
 
     const navigate = useNavigate()
 
     const watchlistBtnHandler = () => {
-        setWatchlistIsActive(!watchlistIsActive)
+        setShowOnlyWatchlist(!showOnlyWatchlist)
     }
 
     const portfolioBtnHandler = () => {
@@ -70,7 +70,7 @@ export default function Prices() {
                     </div>
                     <div className={'right-col'}>
                         {
-                            watchlistIsActive ?
+                            showOnlyWatchlist ?
                                 <Button icon={'watchlist-purple.svg'}
                                         borderRadius={'md'}
                                         on_click_handler={watchlistBtnHandler}
@@ -97,7 +97,10 @@ export default function Prices() {
 
                 </SearchBar>
 
-                <PricesTable/>
+                <PricesTable searchVal={search}
+                             setSearch={setSearch}
+                             showOnlyWatchlist={showOnlyWatchlist}
+                />
 
             </PricesWrapper>
         </PricesContainer>

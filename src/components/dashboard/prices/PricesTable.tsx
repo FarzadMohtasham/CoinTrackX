@@ -1,31 +1,38 @@
+import {JSX, SetStateAction, useEffect, useMemo, useState} from 'react'
 import {
     Cell,
     CellContext,
-    ColumnDef, flexRender,
-    getCoreRowModel,
+    ColumnDef,
+    flexRender,
+    getCoreRowModel, getFilteredRowModel, getPaginationRowModel,
     Header,
-    HeaderGroup, Row,
+    HeaderGroup,
+    Row,
     useReactTable
-} from "@tanstack/react-table";
-import {useMemo, useState, JSX} from "react";
-import {AssetPriceTable} from "@ts/type/Tables.type.ts";
+} from '@tanstack/react-table'
+import Skeleton from 'react-loading-skeleton'
+import {styled} from 'styled-components'
 
-import {
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Td,
-    TableCaption,
-    TableContainer,
-} from '@chakra-ui/react'
-import {styled} from "styled-components";
-import Icon from "@components/ui/Icon.tsx";
+import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
+import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
+import useUser from '@hooks/useUser.ts'
+
+import Icon from '@components/ui/Icon.tsx'
+import PaginationRow from '@components/dashboard/prices/PaginationRow.tsx'
+
+import {Asset} from '@ts/type/Assets.api.type.ts'
+import {AssetPriceTable} from '@ts/type/Tables.type.ts'
 
 const PricesTableContainer = styled.div`
   & .table-head {
     background-color: var(--color-black-100);
   }
+`
+
+const SkeletonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `
 
 const ColumnName = styled.div`
@@ -64,8 +71,27 @@ const ColumnCellSpan = styled.span`
   font-weight: 400;
 `
 
-export default function PricesTable() {
-    const columns: ColumnDef<any>[] = useMemo(() => [
+type PricesTableProps = {
+    searchVal: string;
+    setSearch: SetStateAction<any>;
+    showOnlyWatchlist: boolean;
+}
+
+export default function PricesTable(props: PricesTableProps): JSX.Element {
+    const {
+        searchVal,
+        setSearch,
+        showOnlyWatchlist,
+    } = props
+
+    console.log(typeof searchVal)
+
+    const {data, error, refetch, isLoading} = useGetAssetsQuery()
+    const user = useUser()
+
+    console.log(user)
+
+    const tableColumns: ColumnDef<any>[] = useMemo(() => [
         {
             accessorKey: 'name',
             header: 'Name',
@@ -87,12 +113,14 @@ export default function PricesTable() {
         {
             accessorKey: 'price',
             header: 'Price',
-            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
+            cell: (props: CellContext<any, any>) =>
+                <ColumnCellSpan>${Number(props.getValue()).toFixed(2)}</ColumnCellSpan>
         },
         {
             accessorKey: 'marketCap',
             header: 'Market Cap',
-            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
+            cell: (props: CellContext<any, any>) =>
+                <ColumnCellSpan>${Number(props.getValue()).toFixed(2)}M</ColumnCellSpan>
         },
         {
             accessorKey: 'circulatingSupply',
@@ -116,90 +144,107 @@ export default function PricesTable() {
         },
     ], []);
 
-    const [data, setData] = useState<AssetPriceTable[]>([
-        {
-            name: {
-                name: 'Bitcoin',
-                symbol: 'BTC',
-                logoSrc: 'crypto/btc.svg',
-            },
-            price: '0.003',
-            marketCap: '$361.32B',
-            circulatingSupply: '19.144M',
-            changePercent: '1.37%',
-            last24H: '1.37%',
-            watchList: false,
-        },
-        {
-            name: {
-                name: 'Ethereum',
-                symbol: 'ETH',
-                logoSrc: 'crypto/eth.svg',
-            },
-            price: '0.003',
-            marketCap: '$361.32B',
-            circulatingSupply: '19.144M',
-            changePercent: '1.37%',
-            last24H: '1.37%',
-            watchList: false,
-        },
-    ])
+    useEffect(() => {
+        if (!data) return
+
+        console.log(data)
+
+        const tabledData = data.map((assetData: Asset): AssetPriceTable => {
+            return {
+                name: {
+                    name: assetData.name,
+                    symbol: assetData.symbol,
+                    logoSrc: `crypto/${assetData.symbol.toLowerCase()}.svg`,
+                },
+                price: assetData.priceUsd,
+                changePercent: assetData.vwap24Hr,
+                circulatingSupply: assetData.supply,
+                last24H: assetData.changePercent24Hr,
+                marketCap: assetData.marketCapUsd,
+                watchList: false,
+            } as AssetPriceTable
+        })
+
+        setTableData(tabledData)
+    }, [data]);
+
+    const [tableData, setTableData] = useState<AssetPriceTable[]>([])
 
     const table = useReactTable({
-        data,
-        columns,
-        getCoreRowModel: getCoreRowModel()
+        data: tableData,
+        columns: tableColumns,
+        getCoreRowModel: getCoreRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
+        state: {
+            globalFilter: searchVal,
+        },
+        onGlobalFilterChange: setSearch,
     })
 
     return (
         <PricesTableContainer>
-            <TableContainer>
-                <Table className={'table'}>
-                    <TableCaption>Data will reload every 10s!</TableCaption>
-                    <Thead className={'table-head'}>
+            {
+                isLoading ?
+                    <SkeletonContainer>
                         {
-                            table.getHeaderGroups().map((headerGroup: HeaderGroup<any>): JSX.Element => {
+                            [...Array(10)].map((_, i: number) => {
                                 return (
-                                    <Tr className={'tr'} key={headerGroup.id}>
-                                        {
-                                            headerGroup.headers.map((header: Header<any, any>): JSX.Element => {
-                                                return (
-                                                    <Td className={'th'} key={header.id}>
-                                                        <ColumnHeaderSpan>
-                                                            {String(header.column.columnDef.header)}
-                                                        </ColumnHeaderSpan>
-                                                    </Td>
-                                                )
-                                            })
-                                        }
-                                    </Tr>
+                                    <Skeleton key={'sk-' + i} height={'6rem'}/>
                                 )
                             })
                         }
-                    </Thead>
-                    <Tbody>
-                        {
-                            table.getRowModel().rows.map((row: Row<any>) => {
-                                return (
-                                    <Tr key={row.id}>
-                                        {
-                                            row.getVisibleCells().map((cell: Cell<any, any>) => {
-                                                return (
-                                                    <Td key={cell.id}>
-                                                        {
-                                                            flexRender(cell.column.columnDef.cell, cell.getContext())
-                                                        }
-                                                    </Td>
-                                                )
-                                            })
-                                        }
-                                    </Tr>
-                                )
-                            })
-                        }
-                    </Tbody>
-                </Table>
-            </TableContainer>
+                    </SkeletonContainer>
+                    :
+                    <TableContainer>
+                        <Table className={'table'}>
+                            <TableCaption>Data will reload every 10s!</TableCaption>
+                            <Thead className={'table-head'}>
+                                {
+                                    table.getHeaderGroups().map((headerGroup: HeaderGroup<any>): JSX.Element => {
+                                        return (
+                                            <Tr className={'tr'} key={headerGroup.id}>
+                                                {
+                                                    headerGroup.headers.map((header: Header<any, any>): JSX.Element => {
+                                                        return (
+                                                            <Td className={'th'} key={header.id}>
+                                                                <ColumnHeaderSpan>
+                                                                    {String(header.column.columnDef.header)}
+                                                                </ColumnHeaderSpan>
+                                                            </Td>
+                                                        )
+                                                    })
+                                                }
+                                            </Tr>
+                                        )
+                                    })
+                                }
+                            </Thead>
+                            <Tbody>
+                                {
+                                    table.getRowModel().rows.map((row: Row<any>) => {
+                                        return (
+                                            <Tr key={row.id}>
+                                                {
+                                                    row.getVisibleCells().map((cell: Cell<any, any>) => {
+                                                        return (
+                                                            <Td key={cell.id}>
+                                                                {
+                                                                    flexRender(cell.column.columnDef.cell, cell.getContext())
+                                                                }
+                                                            </Td>
+                                                        )
+                                                    })
+                                                }
+                                            </Tr>
+                                        )
+                                    })
+                                }
+                            </Tbody>
+                        </Table>
+                    </TableContainer>
+            }
+            <PaginationRow/>
         </PricesTableContainer>
     )
 }
