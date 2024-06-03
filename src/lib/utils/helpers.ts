@@ -13,12 +13,17 @@ export function removeLetter(str: string, letterToRemove: string) {
     return str.split(letterToRemove).join('');
 }
 
+export function getTime() {
+    const date = new Date()
 
+    const hour = date.getHours() <= 9 ? '0' + date.getHours() : date.getHours()
+    const min = date.getMinutes() <= 9 ? '0' + date.getMinutes() : date.getMinutes()
+    const sec = date.getSeconds() <= 9 ? '0' + date.getSeconds() : date.getSeconds()
 
+    return {hour, min, sec}
+}
 
-
-
-
-
-
-
+export function getTimeFormatted() {
+    const currentTime = getTime()
+    return `${currentTime.hour}:${currentTime.min}:${currentTime.sec}`
+}

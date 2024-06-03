@@ -76,7 +76,7 @@ function Button(props: ButtonPropsType) {
         no_border = false,
     } = props
 
-    disabled = isLoading;
+    disabled = isLoading || disabled;
 
     const padding = remove_padding ? 0 : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
     const fontSize = css`${buttonFontSizeVariations[size].fontSize}`
@@ -87,7 +87,7 @@ function Button(props: ButtonPropsType) {
             !outline ?
                 (
                     disabled ?
-                        css`var(--color-${btnType + '-700)'}`
+                        css`var(--color-${btnType + '-500)'}`
                         :
                         buttonTypeVariations[btnType].backgroundColor
                 )
@@ -143,7 +143,7 @@ function Button(props: ButtonPropsType) {
 
     const onClickHandler = () => {
         if (disabled) return
-        on_click_handler()
+        else on_click_handler()
     }
 
     return (

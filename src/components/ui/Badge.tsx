@@ -17,7 +17,7 @@ const BadgeStyled = styled.span<BadgeProps>`
   display: flex;
   align-items: center;
   gap: .5rem;
-  width: min-content;
+  width: max-content;
   background-color: ${props => props.$bgColor};
   padding: .6rem .8rem;
   font-size: var(--font-size-body-xsm);

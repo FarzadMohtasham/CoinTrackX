@@ -1,4 +1,4 @@
-import {JSX, SetStateAction, useEffect, useMemo, useState} from 'react'
+import {JSX, useEffect, useMemo, useState} from 'react'
 import {
     Cell,
     CellContext,
@@ -18,12 +18,20 @@ import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
 import useUser from '@hooks/useUser.ts'
 
 import Icon from '@components/ui/Icon.tsx'
+import Badge from '@components/ui/Badge.tsx'
 import PaginationRow from '@components/dashboard/prices/PaginationRow.tsx'
 
 import {Asset} from '@ts/type/Assets.api.type.ts'
 import {AssetPriceTable} from '@ts/type/Tables.type.ts'
+import {PaginationRowProps, PricesTableProps} from '@ts/type/PricesPage.type.ts'
+
+import {getTimeFormatted} from '@utils/helpers.ts'
 
 const PricesTableContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   & .table-head {
     background-color: var(--color-black-100);
   }
@@ -71,12 +79,6 @@ const ColumnCellSpan = styled.span`
   font-weight: 400;
 `
 
-type PricesTableProps = {
-    searchVal: string;
-    setSearch: SetStateAction<any>;
-    showOnlyWatchlist: boolean;
-}
-
 export default function PricesTable(props: PricesTableProps): JSX.Element {
     const {
         searchVal,
@@ -84,12 +86,10 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         showOnlyWatchlist,
     } = props
 
-    console.log(typeof searchVal)
+    const [lastRefetchTime, setLastRefetchTime] = useState<string>(getTimeFormatted())
 
-    const {data, error, refetch, isLoading} = useGetAssetsQuery()
+    const {data, error, refetch: refetchTableData, isLoading} = useGetAssetsQuery()
     const user = useUser()
-
-    console.log(user)
 
     const tableColumns: ColumnDef<any>[] = useMemo(() => [
         {
@@ -125,17 +125,28 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         {
             accessorKey: 'circulatingSupply',
             header: 'Circulating Supply',
-            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
+            cell: (props: CellContext<any, any>) =>
+                <ColumnCellSpan>{Number(props.getValue()).toFixed(2)}M</ColumnCellSpan>
         },
         {
             accessorKey: 'changePercent',
             header: 'change %',
-            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
+            cell: (props: CellContext<any, any>) => <ColumnCellSpan>
+                <Badge type={Number(props.getValue()) >= 0 ? 'success' : 'danger'}
+                       outline
+                       borderRadius={'full'}>
+                    <Icon icon_src={Number(props.getValue()) >= 0 ? 'arrow-up.svg' : 'arrow-down.svg'}
+                          width={'8rem'}
+                    />
+                    %{Number(props.getValue()).toFixed(2)}
+                </Badge>
+            </ColumnCellSpan>
         },
         {
             accessorKey: 'last24H',
             header: 'last (24H)',
-            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
+            cell: (props: CellContext<any, any>) =>
+                <ColumnCellSpan>{Number(props.getValue()).toFixed(2)}</ColumnCellSpan>
         },
         {
             accessorKey: 'watchlist',
@@ -143,30 +154,6 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
             cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
         },
     ], []);
-
-    useEffect(() => {
-        if (!data) return
-
-        console.log(data)
-
-        const tabledData = data.map((assetData: Asset): AssetPriceTable => {
-            return {
-                name: {
-                    name: assetData.name,
-                    symbol: assetData.symbol,
-                    logoSrc: `crypto/${assetData.symbol.toLowerCase()}.svg`,
-                },
-                price: assetData.priceUsd,
-                changePercent: assetData.vwap24Hr,
-                circulatingSupply: assetData.supply,
-                last24H: assetData.changePercent24Hr,
-                marketCap: assetData.marketCapUsd,
-                watchList: false,
-            } as AssetPriceTable
-        })
-
-        setTableData(tabledData)
-    }, [data]);
 
     const [tableData, setTableData] = useState<AssetPriceTable[]>([])
 
@@ -181,6 +168,48 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         },
         onGlobalFilterChange: setSearch,
     })
+
+    const PaginationRowComponentProps: PaginationRowProps = {
+        nextPageHandler: table.nextPage,
+        previousPageHandler: table.previousPage,
+        getCanNextPage: table.getCanNextPage(),
+        getCanPreviousPage: table.getCanPreviousPage(),
+        totalPageCount: table.getPageCount(),
+    }
+
+    useEffect(() => {
+        if (!data) return
+
+        const tabledData = data.map((assetData: Asset): AssetPriceTable => {
+            return {
+                name: {
+                    name: assetData.name,
+                    symbol: assetData.symbol,
+                    logoSrc: `crypto/${assetData.symbol.toLowerCase()}.svg`,
+                },
+                price: assetData.priceUsd,
+                changePercent: assetData.changePercent24Hr,
+                circulatingSupply: assetData.supply,
+                last24H: assetData.vwap24Hr,
+                marketCap: assetData.marketCapUsd,
+                watchList: false,
+            } as AssetPriceTable
+        })
+
+        setTableData(tabledData)
+    }, [data]);
+
+    useEffect(() => {
+        const tableRefetchInterval = setInterval(() => {
+            refetchTableData()
+            setLastRefetchTime(getTimeFormatted())
+        }, 1000 * 10)
+
+        return () => {
+            clearInterval(tableRefetchInterval)
+        }
+    }, []);
+
 
     return (
         <PricesTableContainer>
@@ -198,7 +227,7 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
                     :
                     <TableContainer>
                         <Table className={'table'}>
-                            <TableCaption>Data will reload every 10s!</TableCaption>
+                            <TableCaption>Data will reload every 10s: last refetch: {lastRefetchTime}</TableCaption>
                             <Thead className={'table-head'}>
                                 {
                                     table.getHeaderGroups().map((headerGroup: HeaderGroup<any>): JSX.Element => {
@@ -244,7 +273,8 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
                         </Table>
                     </TableContainer>
             }
-            <PaginationRow/>
+
+            {!isLoading && <PaginationRow {...PaginationRowComponentProps}/>}
         </PricesTableContainer>
     )
 }
