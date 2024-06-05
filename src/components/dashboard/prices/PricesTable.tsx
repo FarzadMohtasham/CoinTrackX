@@ -101,13 +101,13 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
             cell: (props: CellContext<any, any>) => {
                 return (
                     <ColumnName>
-                        <Icon icon_src={props.getValue().logoSrc}
+                        <Icon icon_src={props.renderValue().logoSrc}
                               class_name={'left-col'}
                               width={'35rem'}
                         />
                         <div className={'right-col'}>
-                            <span className={'name'}>{props.getValue().name}</span>
-                            <span className={'symbol'}>{props.getValue().symbol}</span>
+                            <span className={'name'}>{props.renderValue().name}</span>
+                            <span className={'symbol'}>{props.renderValue().symbol}</span>
                         </div>
                     </ColumnName>
                 )
@@ -117,31 +117,31 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
             accessorKey: 'price',
             header: 'Price',
             cell: (props: CellContext<any, any>) =>
-                <ColumnCellSpan>${Number(props.getValue()).toFixed(2)}</ColumnCellSpan>
+                <ColumnCellSpan>${Number(props.renderValue()).toFixed(2)}</ColumnCellSpan>
         },
         {
             accessorKey: 'marketCap',
             header: 'Market Cap',
             cell: (props: CellContext<any, any>) =>
-                <ColumnCellSpan>${Number(props.getValue()).toFixed(2)}M</ColumnCellSpan>
+                <ColumnCellSpan>${Number(props.renderValue()).toFixed(2)}M</ColumnCellSpan>
         },
         {
             accessorKey: 'circulatingSupply',
             header: 'Circulating Supply',
             cell: (props: CellContext<any, any>) =>
-                <ColumnCellSpan>{Number(props.getValue()).toFixed(2)}M</ColumnCellSpan>
+                <ColumnCellSpan>{Number(props.renderValue()).toFixed(2)}M</ColumnCellSpan>
         },
         {
             accessorKey: 'changePercent',
             header: 'change %',
             cell: (props: CellContext<any, any>) => <ColumnCellSpan>
-                <Badge type={Number(props.getValue()) >= 0 ? 'success' : 'danger'}
+                <Badge type={Number(props.renderValue()) >= 0 ? 'success' : 'danger'}
                        outline
                        borderRadius={'full'}>
-                    <Icon icon_src={Number(props.getValue()) >= 0 ? 'arrow-up.svg' : 'arrow-down.svg'}
+                    <Icon icon_src={Number(props.renderValue()) >= 0 ? 'arrow-up.svg' : 'arrow-down.svg'}
                           width={'8rem'}
                     />
-                    %{Number(props.getValue()).toFixed(2)}
+                    %{Number(props.renderValue()).toFixed(2)}
                 </Badge>
             </ColumnCellSpan>
         },
@@ -149,13 +149,13 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
             accessorKey: 'last24H',
             header: 'last (24H)',
             cell: (props: CellContext<any, any>) =>
-                <ColumnCellSpan>{Number(props.getValue()).toFixed(2)}</ColumnCellSpan>
+                <ColumnCellSpan>{Number(props.renderValue()).toFixed(2)}</ColumnCellSpan>
         },
         {
             accessorKey: 'watchlist',
             header: '',
             cell: (props: CellContext<any, any>) => <ColumnCellSpan>
-                <Icon width={'20rem'} icon_src={props.getValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
+                <Icon width={'20rem'} icon_src={props.renderValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
             </ColumnCellSpan>
         },
     ], []);
