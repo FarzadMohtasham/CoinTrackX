@@ -8,10 +8,11 @@ import {
     Header,
     HeaderGroup,
     Row,
-    useReactTable
+    useReactTable,
 } from '@tanstack/react-table'
 import Skeleton from 'react-loading-skeleton'
 import {styled} from 'styled-components'
+import {v4 as uuidv4} from 'uuid'
 
 import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
@@ -84,14 +85,16 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         searchVal,
         setSearch,
         showOnlyWatchlist,
+        watchlistFilterStatus,
     } = props
 
     const [lastRefetchTime, setLastRefetchTime] = useState<string>(getTimeFormatted())
+    const [watchlistColumnFilterStatus, setWatchlistColumnFilterStatus] = useState<boolean>(false)
 
     const {data, error, refetch: refetchTableData, isLoading} = useGetAssetsQuery()
     const user = useUser()
 
-    const tableColumns: ColumnDef<any>[] = useMemo(() => [
+    const tableColumns: ColumnDef<AssetPriceTable>[] = useMemo(() => [
         {
             accessorKey: 'name',
             header: 'Name',
@@ -151,7 +154,9 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         {
             accessorKey: 'watchlist',
             header: '',
-            cell: (props: CellContext<any, any>) => <ColumnCellSpan>{props.getValue()}</ColumnCellSpan>
+            cell: (props: CellContext<any, any>) => <ColumnCellSpan>
+                <Icon width={'20rem'} icon_src={props.getValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
+            </ColumnCellSpan>
         },
     ], []);
 
@@ -167,6 +172,7 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
             globalFilter: searchVal,
         },
         onGlobalFilterChange: setSearch,
+        getRowId: () => uuidv4()
     })
 
     const PaginationRowComponentProps: PaginationRowProps = {
@@ -210,6 +216,9 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         }
     }, []);
 
+    useEffect(() => {
+        setWatchlistColumnFilterStatus(watchlistFilterStatus)
+    }, [watchlistFilterStatus]);
 
     return (
         <PricesTableContainer>
@@ -252,6 +261,7 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
                             <Tbody>
                                 {
                                     table.getRowModel().rows.map((row: Row<any>) => {
+                                        console.log(table.getRowModel())
                                         return (
                                             <Tr key={row.id}>
                                                 {

@@ -100,6 +100,7 @@ export default function Prices() {
                 <PricesTable searchVal={search}
                              setSearch={setSearch}
                              showOnlyWatchlist={showOnlyWatchlist}
+                             watchlistFilterStatus={showOnlyWatchlist}
                 />
 
             </PricesWrapper>

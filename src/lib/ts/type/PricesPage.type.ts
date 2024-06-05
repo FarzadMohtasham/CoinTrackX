@@ -12,4 +12,5 @@ export type PricesTableProps = {
     searchVal: string;
     setSearch: SetStateAction<any>;
     showOnlyWatchlist: boolean;
+    watchlistFilterStatus: boolean;
 }
