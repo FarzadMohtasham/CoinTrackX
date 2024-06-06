@@ -13,6 +13,7 @@ import {
 import Skeleton from 'react-loading-skeleton'
 import {styled} from 'styled-components'
 import {v4 as uuidv4} from 'uuid'
+import {useNavigate} from "react-router-dom";
 
 import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
@@ -26,10 +27,10 @@ import {Asset} from '@ts/type/Assets.api.type.ts'
 import {AssetPriceTable} from '@ts/type/Tables.type.ts'
 import {PaginationRowProps} from '@ts/type/PricesPage.type.ts'
 
+import Input from '@components/ui/Input-Fields/InputField.input.tsx'
+import Button from '@components/ui/Button.tsx'
+
 import {getTimeFormatted} from '@utils/helpers.ts'
-import Input from "@components/ui/Input-Fields/InputField.input.tsx";
-import Button from "@components/ui/Button.tsx";
-import {useNavigate} from "react-router-dom";
 
 const PricesTableContainer = styled.div`
   display: flex;
