@@ -13,7 +13,7 @@ import {
 import Skeleton from 'react-loading-skeleton'
 import {styled} from 'styled-components'
 import {v4 as uuidv4} from 'uuid'
-import {useNavigate} from "react-router-dom";
+import {NavigateFunction, useNavigate} from "react-router-dom";
 
 import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
@@ -101,23 +101,20 @@ const ColumnCellSpan = styled.span`
 
 export default function PricesTable(): JSX.Element {
     const [lastRefetchTime, setLastRefetchTime] = useState<string>(getTimeFormatted())
-
-    const [pagination, setPagination] = useState<PaginationState>({pageIndex: 0, pageSize: 20})
-
+    const [pagination, setPagination]= useState<PaginationState>({pageIndex: 0, pageSize: 20})
     const [search, setSearch] = useState<string>('')
-
     const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false)
 
     const {data, refetch: refetchTableData, isLoading} = useGetAssetsQuery()
     // const user = useUser()
 
-    const navigate = useNavigate()
+    const navigate: NavigateFunction = useNavigate()
 
-    const watchlistBtnHandler = () => {
+    const watchlistBtnHandler = (): void => {
         setShowOnlyWatchlist(!showOnlyWatchlist)
     }
 
-    const portfolioBtnHandler = () => {
+    const portfolioBtnHandler = (): void => {
         navigate('/dashboard/assets-portfolio')
     }
 
@@ -212,7 +209,7 @@ export default function PricesTable(): JSX.Element {
         totalPageCount: table.getPageCount(),
     }
 
-    useEffect(() => {
+    useEffect((): void => {
         if (!data) return
 
         const tabledData = data.map((assetData: Asset): AssetPriceTable => {
@@ -235,7 +232,7 @@ export default function PricesTable(): JSX.Element {
     }, [data]);
 
     useEffect(() => {
-        const tableRefetchInterval = setInterval(() => {
+        const tableRefetchInterval: NodeJS.Timeout = setInterval(() => {
             refetchTableData()
             setLastRefetchTime(getTimeFormatted())
         }, 1000 * 10)

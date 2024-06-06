@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction, useEffect, useState} from 'react'
+import {Dispatch, JSX, SetStateAction, useEffect, useState} from 'react'
 import Skeleton from 'react-loading-skeleton'
 import {styled} from 'styled-components'
 import {Line} from 'react-chartjs-2'
@@ -177,12 +177,15 @@ type CryptoHistoryRecord = {
     time: number;
 }
 
-export default function CurrencyPrice() {
+export default function CurrencyPrice(): JSX.Element {
     const [labels, setLabels]: [Labels | null, Dispatch<SetStateAction<Labels | null>>] = useState<Labels | null>(null)
+
     const [datasets, setDatasets]: [number[] | null, Dispatch<SetStateAction<number[] | null>>] = useState<number[] | null>(null)
-    const [selectedCurrency, setSelectedCurrency] = useState<string>('bitcoin')
-    const [selectedChartInterval, setSelectedChartInterval] = useState<AssetHistoryInterval>(() => {
-        return chartIntervals.filter(interval => interval.default)[0].value as AssetHistoryInterval
+
+    const [selectedCurrency, setSelectedCurrency]: [string, Dispatch<SetStateAction<string>>] = useState<string>('bitcoin')
+
+    const [selectedChartInterval, setSelectedChartInterval]: [AssetHistoryInterval, Dispatch<SetStateAction<AssetHistoryInterval>>] = useState<AssetHistoryInterval>(() => {
+        return chartIntervals.filter((interval: SelectMenuItem) => interval.default)[0].value as AssetHistoryInterval
     })
 
     const {
@@ -216,21 +219,21 @@ export default function CurrencyPrice() {
         ]
     }
 
-    const reloadChartHandler = () => {
+    const reloadChartHandler = (): void => {
         refetch()
     }
 
-    useEffect(function onSelectedCurrencyUpdate() {
+    useEffect(function onSelectedCurrencyUpdate(): void {
         reloadChartHandler()
     }, [selectedCurrency, selectedChartInterval]);
 
-    useEffect(function updateLabelsAndDatasets() {
+    useEffect(function updateLabelsAndDatasets(): void {
         if (currencyPriceHistoryData) {
             setDatasets(() => {
                 return currencyPriceHistoryData.map((priceHistory: CryptoHistoryRecord) => priceHistory.priceUsd)
             })
 
-            setLabels((prevLabels) => {
+            setLabels((prevLabels: Labels | null): string[] | null => {
                 if (!currencyPriceHistoryData) return prevLabels
 
                 return currencyPriceHistoryData.map((priceHistory: CryptoHistoryRecord) => {

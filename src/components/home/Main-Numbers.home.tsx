@@ -1,8 +1,9 @@
-import {styled} from "styled-components"
+import {JSX} from 'react'
+import {styled} from 'styled-components'
 
-import Container from "@components/ui/Container.tsx";
+import Container from '@components/ui/Container.tsx'
 
-const numbersList = [
+const numbersList: {title: string, desc: string}[] = [
     {
         title: '+100 Coin/Token',
         desc: 'supported'
@@ -48,12 +49,12 @@ const NumberStyled = styled.div`
   }
 `
 
-export default function Numbers() {
+export default function Numbers(): JSX.Element {
     return (
         <Container>
             <NumbersContainerStyled>
                 {
-                    numbersList.map((numberItem, index) => {
+                    numbersList.map((numberItem: { title: string, desc: string }, index: number) => {
                         return (
                             <NumberStyled key={numberItem.title + index}>
                                 <h3 className={'title'}>

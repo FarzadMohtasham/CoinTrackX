@@ -1,21 +1,24 @@
-import {styled, css} from "styled-components"
-import Container from "@components/ui/Container.tsx";
-import Logo from "@components/ui/Logo.tsx";
-import CopyRight from "@components/ui/CopyRight.tsx";
-import Heading from "@components/ui/Heading.tsx";
-import {Link} from "react-router-dom";
+import {JSX} from 'react'
+import {Link} from 'react-router-dom'
+import {styled, css, ExecutionContext, FastOmit} from 'styled-components'
+
+import Container from '@components/ui/Container.tsx'
+import Logo from '@components/ui/Logo.tsx'
+import CopyRight from '@components/ui/CopyRight.tsx'
+import Heading from '@components/ui/Heading.tsx'
 
 // Type
-import {ColumnItem as ColumnItemType} from './../../ts/type/Footer.type.ts'
+import {ColumnItem as ColumnItemType} from '@ts/type/Footer.type.ts'
+import {IStyledComponentBase} from "styled-components/dist/types";
 
 // Data
 import {footerColumnItemsList, socialMediaLogoList} from '@data/Footer.data.ts'
 
-const FooterWrapper = styled.div`
+const FooterWrapper: IStyledComponentBase<any> = styled.div`
   padding-bottom: 10rem;
 `
 
-const FooterStyled = styled.div`
+const FooterStyled: IStyledComponentBase<any> = styled.div`
   background: white;
   border-radius: 2.4rem;
   padding: 6.4rem;
@@ -61,7 +64,7 @@ const FooterStyled = styled.div`
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (max-width: ${props => props.theme.responsive.md}) {
+  @media screen and (max-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.responsive.md}) {
     grid-template-areas: 'footer-column-1'
                          'footer-column-2'
                          'footer-column-3'
@@ -70,14 +73,14 @@ const FooterStyled = styled.div`
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.responsive.md}) {
     grid-template-areas: 'footer-column-1 footer-column-2'
                           'footer-column-3 footer-column-4';
     gap: 2.5rem;
   }
 
   /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.responsive.lg}) {
     grid-template-areas: 'footer-column-1 footer-column-2 footer-column-3 footer-column-4';
     gap: 4rem;
   }
@@ -103,7 +106,7 @@ const ColumnItem = styled.li`
   }
 `
 
-export default function Footer() {
+export default function Footer(): JSX.Element {
     return (
         <Container tag_type={'footer'}
                    background_style={css`background-color: #f7f6fe;`}>

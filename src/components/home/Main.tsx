@@ -1,3 +1,5 @@
+import {JSX} from 'react'
+
 import BuyCrypto from './Main-BuyCrypto.home.tsx'
 import Coins from './Main-Coins.home.tsx'
 import Hero from './Main-Hero.home.tsx'
@@ -7,7 +9,7 @@ import Testimonials from './Main-Testimonials.home.tsx'
 import Platform from './Main-Platform.home.tsx'
 
 
-export default function Main() {
+export default function Main(): JSX.Element {
     return (
         <div>
             <Hero/>

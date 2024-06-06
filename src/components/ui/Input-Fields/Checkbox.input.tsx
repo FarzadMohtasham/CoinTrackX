@@ -1,7 +1,9 @@
-import {styled} from "styled-components"
-import {useState} from "react";
-import checkboxData from "@data/CheckBox.data.ts";
-import {CheckboxProps, CheckboxStyledProps, CheckboxTypes, Properties} from "@ts/type/CheckBox.type.ts";
+import {JSX, useState} from 'react'
+import {styled} from 'styled-components'
+
+import checkboxData from '@data/CheckBox.data.ts'
+
+import {CheckboxProps, CheckboxStyledProps, CheckboxTypes, Properties} from '@ts/type/CheckBox.type.ts'
 
 const CheckBoxContainer = styled.div<CheckboxStyledProps>`
   display: flex;
@@ -26,7 +28,7 @@ const CheckBoxContainer = styled.div<CheckboxStyledProps>`
   }
 `
 
-export default function CheckboxInput(props: CheckboxProps) {
+export default function CheckboxInput(props: CheckboxProps): JSX.Element {
     const {
         label = null,
         check_box_setter,
@@ -37,7 +39,7 @@ export default function CheckboxInput(props: CheckboxProps) {
     const [checked, setChecked] = useState<boolean>(default_value)
 
     const checkboxOnClickHandler = (): void => {
-        setChecked((currentChecked) => !currentChecked)
+        setChecked((currentChecked: boolean) => !currentChecked)
         check_box_setter(!checked)
     }
 
@@ -52,7 +54,7 @@ export default function CheckboxInput(props: CheckboxProps) {
                            $properties={{...checkboxProperties}}>
             <input type={'checkbox'}
                    checked={checked}
-                   onChange={() => {
+                   onChange={(): void => {
                    }}
                    name={label !== null ? label.replace(' ', '-').toLowerCase().trim() : 'checkbox'}/>
             {

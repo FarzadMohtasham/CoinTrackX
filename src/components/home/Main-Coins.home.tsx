@@ -1,7 +1,8 @@
+import {JSX} from 'react'
 import {css, styled} from 'styled-components'
 
-import Container from "@components/ui/Container.tsx";
-import HeadingBox from "@components/ui/HeadingBox.tsx";
+import Container from '@components/ui/Container.tsx'
+import HeadingBox from '@components/ui/HeadingBox.tsx'
 
 const coinsSrcList = [
     '/images/dogecoin.coin.home.svg',
@@ -52,7 +53,7 @@ const CoinsListStyled = styled.div`
   }
 `
 
-export default function Coins() {
+export default function Coins(): JSX.Element {
     return (
         <Container background_style={css`background: linear-gradient(to bottom, #EFEDFD, #FFFFFF);`}>
             <CoinsWrapperStyled>
