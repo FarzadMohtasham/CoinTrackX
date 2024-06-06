@@ -1,7 +1,8 @@
-import {css, styled} from "styled-components";
+import {JSX} from 'react'
+import {css, styled} from 'styled-components'
 
-import Container from "@components/ui/Container.tsx";
-import HeadingBox from "@components/ui/HeadingBox.tsx";
+import Container from '@components/ui/Container.tsx'
+import HeadingBox from '@components/ui/HeadingBox.tsx'
 
 const PlatformWrapper = styled.div.attrs({
     id: 'platforms'
@@ -15,7 +16,7 @@ const PlatformWrapper = styled.div.attrs({
   }
 `
 
-export default function Platform() {
+export default function Platform(): JSX.Element {
     return (
         <Container background_style={css`background: linear-gradient(to top, #FFFFFF, #EFEDFD, #FFFFFF);`}>
             <PlatformWrapper>

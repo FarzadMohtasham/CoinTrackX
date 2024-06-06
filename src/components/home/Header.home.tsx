@@ -1,13 +1,14 @@
-import {NavLink} from "react-router-dom";
-import {styled, IStyledComponent} from "styled-components";
+import {JSX} from 'react'
+import {NavLink} from 'react-router-dom'
+import {styled} from 'styled-components'
 
-import Logo from "@components/ui/Logo.tsx";
-import Button from "@components/ui/Button.tsx";
-import scrollTo from "@utils/scroller.ts";
-import useUserLoggedIn from "@hooks/useUserLoggedIn.ts";
-import Icon from "@components/ui/Icon.tsx";
+import Logo from '@components/ui/Logo.tsx'
+import Button from '@components/ui/Button.tsx'
+import scrollTo from '@utils/scroller.ts'
+import useUserLoggedIn from '@hooks/useUserLoggedIn.ts'
+import Icon from '@components/ui/Icon.tsx'
 
-import {removeLetter} from "@utils/helpers.ts";
+import {removeLetter} from '@utils/helpers.ts'
 
 const navItems = [
     {
@@ -32,14 +33,14 @@ const navItems = [
     },
 ]
 
-const HeaderStyled: IStyledComponent<any> = styled.header`
+const HeaderStyled = styled.header`
   padding: 2.4rem 4.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
 
-const NavBarStyled: IStyledComponent<any> = styled.nav`
+const NavBarStyled = styled.nav`
   display: none;
 
   @media screen and (min-width: 992px) {
@@ -49,7 +50,7 @@ const NavBarStyled: IStyledComponent<any> = styled.nav`
   }
 `
 
-const NavItemsStyled: IStyledComponent<any> = styled.ul`
+const NavItemsStyled = styled.ul`
   list-style: none;
   display: flex;
   gap: 4rem;
@@ -76,7 +77,7 @@ const ButtonsCTAStyled = styled.div`
   gap: 1.6rem;
 `
 
-export default function Header() {
+export default function Header(): JSX.Element {
     const userLoggedIn = useUserLoggedIn()
 
     return (

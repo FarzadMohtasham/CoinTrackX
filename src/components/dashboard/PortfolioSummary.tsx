@@ -1,8 +1,12 @@
-import PortfolioValueCrypto from '@components/ui/Crypto/PortfolioValue.crypto.tsx'
-import PortfolioVolume24HCrypto from '@components/ui/Crypto/PortfolioVolume24H.crypto.tsx'
+import {JSX} from 'react'
 import {styled} from 'styled-components'
 
-const PortfolioSummaryContainer = styled.div.attrs({
+import PortfolioValueCrypto from '@components/ui/Crypto/PortfolioValue.crypto.tsx'
+import PortfolioVolume24HCrypto from '@components/ui/Crypto/PortfolioVolume24H.crypto.tsx'
+
+import {IStyledComponentBase} from 'styled-components/dist/types'
+
+const PortfolioSummaryContainer: IStyledComponentBase<any> = styled.div.attrs({
     className: 'portfolio-summary'
 })`
   display: flex;
@@ -19,7 +23,7 @@ const PortfolioSummaryContainer = styled.div.attrs({
   }
 `
 
-export default function PortfolioSummary() {
+export default function PortfolioSummary(): JSX.Element {
     return (
         <PortfolioSummaryContainer>
             <PortfolioValueCrypto/>

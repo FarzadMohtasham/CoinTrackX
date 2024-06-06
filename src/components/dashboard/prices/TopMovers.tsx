@@ -1,14 +1,14 @@
-import {useEffect, useState} from 'react'
+import {JSX, useEffect, useState} from 'react'
 import {styled} from 'styled-components'
 
 import TopMover from '@components/dashboard/prices/TopMover.tsx'
+import Heading from '@components/ui/Heading.tsx'
+import Button from '@components/ui/Button.tsx'
 
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
 
 import {TopMover as TopMoverT} from '@ts/type/TopMover.type.ts'
-import Heading from '@components/ui/Heading.tsx'
-import Button from '@components/ui/Button.tsx'
-import {Asset} from "@ts/type/Assets.api.type.ts";
+import {Asset} from '@ts/type/Assets.api.type.ts'
 
 const TopMoversContainer = styled.div`
   display: flex;
@@ -51,7 +51,7 @@ const ErrorBox = styled.div`
   }
 `
 
-export default function TopMovers() {
+export default function TopMovers(): JSX.Element {
     const [topMovers, setTopMovers] = useState<TopMoverT[] | null>([
         {
             price: '1200430',
@@ -74,20 +74,20 @@ export default function TopMovers() {
     ])
     const {data, error, refetch, isLoading} = useGetAssetsQuery()
 
-    const onReloadHandler = () => {
+    const onReloadHandler = (): void => {
         refetch()
     }
 
-    useEffect(() => {
+    useEffect((): void => {
 
         const assets: Asset[] = data
 
         if (assets) {
-            const sortedAssets: Asset[] = assets.sort((assetA, assetB) => {
+            const sortedAssets: Asset[] = assets.sort((assetA: Asset, assetB: Asset) => {
                 return Number(assetA.changePercent24Hr) - Number(assetB.changePercent24Hr)
             }).reverse().slice(0, 3)
 
-            const newTopMovers = sortedAssets.map((asset): TopMoverT => {
+            const newTopMovers: TopMoverT[] = sortedAssets.map((asset: Asset): TopMoverT => {
                 return {
                     price: Number(asset.priceUsd).toFixed(3).toString(),
                     changePercent24Hr: Number(asset.changePercent24Hr).toFixed(2).toString(),
@@ -131,7 +131,7 @@ export default function TopMovers() {
                     :
                     <TopMoversWrapper>
                         {
-                            topMovers?.map((topMover, i) => {
+                            topMovers?.map((topMover: TopMoverT, i: number) => {
                                 return (
                                     <TopMover {...topMover}
                                               is_loading={isLoading}

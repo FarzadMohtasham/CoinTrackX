@@ -4,6 +4,7 @@ import Skeleton from 'react-loading-skeleton'
 import Icon from '@components/ui/Icon.tsx'
 
 import {TopMoverProps} from '@ts/type/TopMover.type.ts'
+import {JSX} from "react";
 
 const TopMoverContainer = styled.div`
   width: 100%;
@@ -63,16 +64,16 @@ const TopMoverRightCol = styled.div`
   }
 `
 
-export default function TopMover(props: TopMoverProps) {
+export default function TopMover(props: TopMoverProps): JSX.Element {
     const {
         coin_id = 'undefined',
         coin_symbol = 'undefined',
         price = 'undefined',
         changePercent24Hr = 'undefined',
         is_loading = false,
-    } = props
+    }: TopMoverProps = props
 
-    const calc24HChangeAmount = () => {
+    const calc24HChangeAmount = (): string => {
         const priceToCalc: number = Number(Number(price).toFixed(3))
         const changePercent24HrToCalc: number = Number(Number(changePercent24Hr).toFixed(2))
 
@@ -91,6 +92,8 @@ export default function TopMover(props: TopMoverProps) {
                 return calcResult.toFixed(3)
             case priceToCalc <= 1 || priceToCalc >= 1:
                 return calcResult.toFixed(2)
+            default:
+                return ''
         }
     }
 

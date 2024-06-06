@@ -1,10 +1,11 @@
-import {styled, css} from "styled-components"
+import {JSX} from 'react'
+import {styled, css} from 'styled-components'
 
-import Container from "@components/ui/Container.tsx"
-import HeadingBox from "@components/ui/HeadingBox.tsx";
+import Container from '@components/ui/Container.tsx'
+import HeadingBox from '@components/ui/HeadingBox.tsx'
 import Review from '@components/ui/Review.tsx'
 
-import {Review as ReviewType} from "../../ts/type/Review.type.ts";
+import {Review as ReviewType} from '@ts/type/Review.type.ts'
 
 const reviewsList: ReviewType[] = [
     {
@@ -67,7 +68,7 @@ const TestimonialsWrapper = styled.div.attrs({
   }
 `
 
-export default function Testimonials() {
+export default function Testimonials(): JSX.Element {
     return (
         <Container background_style={css`background: linear-gradient(to top, #f7f6fe, #ffffff);`}>
             <TestimonialsWrapper>

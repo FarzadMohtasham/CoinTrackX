@@ -1,10 +1,10 @@
+import {JSX, useState} from 'react'
 import {styled} from 'styled-components'
 
 import Button from '@components/ui/Button.tsx'
+import Icon from '@components/ui/Icon.tsx'
 
 import {PaginationRowProps} from '@ts/type/PricesPage.type.ts'
-import Icon from "@components/ui/Icon.tsx";
-import {useState} from "react";
 
 const PaginationRowContainer = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const PaginationRowContainer = styled.div`
   align-items: center;
 `
 
-export default function PaginationRow(props: PaginationRowProps) {
+export default function PaginationRow(props: PaginationRowProps): JSX.Element {
     const [pageIndex, setPageIndex] = useState(1)
 
     const {
@@ -21,14 +21,14 @@ export default function PaginationRow(props: PaginationRowProps) {
         nextPageHandler,
         previousPageHandler,
         totalPageCount,
-    } = props
+    }: PaginationRowProps = props
 
-    const onNextPageHandler = () => {
+    const onNextPageHandler = (): void => {
         nextPageHandler()
         setPageIndex(pageIndex + 1)
     }
 
-    const onPreviousPageHandler = () => {
+    const onPreviousPageHandler = (): void => {
         previousPageHandler()
         setPageIndex(pageIndex - 1)
     }

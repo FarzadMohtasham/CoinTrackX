@@ -1,6 +1,7 @@
-import {styled} from "styled-components"
+import {JSX} from 'react'
+import {styled} from 'styled-components'
 
-import Heading from "@components/ui/Heading.tsx";
+import Heading from '@components/ui/Heading.tsx'
 
 type SuperchargePropsType = {
     imgSrc: string;
@@ -27,12 +28,12 @@ const SuperChargedStyled = styled.div`
   }
 `
 
-export default function SuperchargeCard(props: SuperchargePropsType) {
+export default function SuperchargeCard(props: SuperchargePropsType): JSX.Element {
     const {
         imgSrc = '',
         title = '',
         desc = ''
-    } = props
+    }: SuperchargePropsType = props
 
     return (
         <SuperChargedStyled>

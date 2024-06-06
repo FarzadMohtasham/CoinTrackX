@@ -1,7 +1,8 @@
-import {styled} from "styled-components"
+import {JSX} from 'react'
+import {styled} from 'styled-components'
 
-import Container from "@components/ui/Container.tsx";
-import HeadingBox from "@components/ui/HeadingBox.tsx";
+import Container from '@components/ui/Container.tsx'
+import HeadingBox from '@components/ui/HeadingBox.tsx'
 
 const PartnersContainer = styled.section.attrs({
     id: 'partners'
@@ -34,7 +35,7 @@ const Brand = styled.div`
   }
 `
 
-export default function Partners() {
+export default function Partners(): JSX.Element {
     return (
         <Container>
             <PartnersContainer>

@@ -1,10 +1,11 @@
+import {JSX} from 'react'
 import {styled, css} from 'styled-components'
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom'
 
-import Heading from "@components/ui/Heading.tsx";
-import Button from "@components/ui/Button.tsx";
-import Container from "@components/ui/Container.tsx";
-import useUserLoggedIn from "@hooks/useUserLoggedIn.ts";
+import Heading from '@components/ui/Heading.tsx'
+import Button from '@components/ui/Button.tsx'
+import Container from '@components/ui/Container.tsx'
+import useUserLoggedIn from '@hooks/useUserLoggedIn.ts'
 
 const HeroStyled = styled.section`
   display: flex;
@@ -80,8 +81,8 @@ const HeroStyled = styled.section`
   }
 `
 
-export default function Hero() {
-    const userLoggedIn = useUserLoggedIn()
+export default function Hero(): JSX.Element {
+    const userLoggedIn: boolean = useUserLoggedIn()
 
     return (
         <Container background_style={css`background: linear-gradient(to top, #f8f7fe, #fff);`}>

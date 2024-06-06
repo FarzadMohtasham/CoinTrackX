@@ -1,4 +1,6 @@
+import {JSX} from 'react'
 import {styled} from 'styled-components'
+
 import Icon from '@components/ui/Icon.tsx'
 import Badge from '@components/ui/Badge.tsx'
 
@@ -38,7 +40,7 @@ const RightCol = styled.div`
 
 `
 
-export default function PortfolioValueCrypto() {
+export default function PortfolioValueCrypto(): JSX.Element {
     return (
         <Container>
             <LeftCol>
