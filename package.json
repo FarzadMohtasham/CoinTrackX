@@ -21,6 +21,7 @@
     "@tanstack/react-table": "^8.17.3",
     "@types/lodash": "^4.17.4",
     "@types/react-scroll": "^1.8.10",
+    "@types/uuid": "^9.0.8",
     "axios": "^1.6.8",
     "chart.js": "^4.4.3",
     "class-variance-authority": "^0.7.0",
