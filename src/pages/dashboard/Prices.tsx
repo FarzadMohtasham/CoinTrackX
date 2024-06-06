@@ -1,9 +1,5 @@
-import {useState} from 'react'
 import {styled} from 'styled-components'
-import {useNavigate} from 'react-router-dom'
 
-import Input from '@components/ui/Input-Fields/InputField.input.tsx'
-import Button from '@components/ui/Button.tsx'
 import TopMovers from '@components/dashboard/prices/TopMovers.tsx'
 import PricesTable from '@components/dashboard/prices/PricesTable.tsx'
 
@@ -21,38 +17,9 @@ const PricesContainer = styled.div`
 const PricesWrapper = styled.div`
 `
 
-const SearchBar = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-
-  .left-col {
-    flex-grow: 1;
-  }
-
-  .right-col {
-    display: flex;
-    gap: 1rem;
-  }
-`
-
 const TopMoversWrapper = styled.div``
 
 export default function Prices() {
-    const [search, setSearch] = useState<string>('')
-    const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false)
-
-    const navigate = useNavigate()
-
-    const watchlistBtnHandler = () => {
-        setShowOnlyWatchlist(!showOnlyWatchlist)
-    }
-
-    const portfolioBtnHandler = () => {
-        navigate('/dashboard/assets-portfolio')
-    }
-
     return (
         <PricesContainer>
 
@@ -61,48 +28,7 @@ export default function Prices() {
             </TopMoversWrapper>
 
             <PricesWrapper>
-                <SearchBar>
-                    <div className={'left-col'}>
-                        <Input place_holder={'Search crypto'}
-                               icon_src={'search-gray.svg'}
-                               focus_icon_src={'search-gray-active.svg'}
-                               on_change_handler={value => setSearch(value)}/>
-                    </div>
-                    <div className={'right-col'}>
-                        {
-                            showOnlyWatchlist ?
-                                <Button icon={'watchlist-purple.svg'}
-                                        borderRadius={'md'}
-                                        on_click_handler={watchlistBtnHandler}
-                                        btnType={'primary'}
-                                        outline>
-                                    Watchlist
-                                </Button>
-                                :
-                                <Button icon={'watchlist-gray.svg'}
-                                        borderRadius={'md'}
-                                        on_click_handler={watchlistBtnHandler}
-                                        btnType={'gray'}
-                                        outline>
-                                    Watchlist
-                                </Button>
-                        }
-                        <Button icon={'portfolio-purple.svg'}
-                                borderRadius={'md'}
-                                on_click_handler={portfolioBtnHandler}
-                                outline>
-                            Portfolio
-                        </Button>
-                    </div>
-
-                </SearchBar>
-
-                <PricesTable searchVal={search}
-                             setSearch={setSearch}
-                             showOnlyWatchlist={showOnlyWatchlist}
-                             watchlistFilterStatus={showOnlyWatchlist}
-                />
-
+                <PricesTable/>
             </PricesWrapper>
         </PricesContainer>
     )

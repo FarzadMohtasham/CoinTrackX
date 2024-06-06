@@ -6,7 +6,7 @@ import {
     flexRender,
     getCoreRowModel, getFilteredRowModel, getPaginationRowModel,
     Header,
-    HeaderGroup, PaginationOptions, PaginationState,
+    HeaderGroup, PaginationState,
     Row,
     useReactTable,
 } from '@tanstack/react-table'
@@ -24,9 +24,12 @@ import PaginationRow from '@components/dashboard/prices/PaginationRow.tsx'
 
 import {Asset} from '@ts/type/Assets.api.type.ts'
 import {AssetPriceTable} from '@ts/type/Tables.type.ts'
-import {PaginationRowProps, PricesTableProps} from '@ts/type/PricesPage.type.ts'
+import {PaginationRowProps} from '@ts/type/PricesPage.type.ts'
 
 import {getTimeFormatted} from '@utils/helpers.ts'
+import Input from "@components/ui/Input-Fields/InputField.input.tsx";
+import Button from "@components/ui/Button.tsx";
+import {useNavigate} from "react-router-dom";
 
 const PricesTableContainer = styled.div`
   display: flex;
@@ -35,6 +38,22 @@ const PricesTableContainer = styled.div`
 
   & .table-head {
     background-color: var(--color-black-100);
+  }
+`
+
+const SearchBar = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  .left-col {
+    flex-grow: 1;
+  }
+
+  .right-col {
+    display: flex;
+    gap: 1rem;
   }
 `
 
@@ -80,20 +99,27 @@ const ColumnCellSpan = styled.span`
   font-weight: 400;
 `
 
-export default function PricesTable(props: PricesTableProps): JSX.Element {
-    const {
-        searchVal,
-        setSearch,
-        showOnlyWatchlist,
-        watchlistFilterStatus,
-    } = props
-
+export default function PricesTable(): JSX.Element {
     const [lastRefetchTime, setLastRefetchTime] = useState<string>(getTimeFormatted())
-    const [watchlistColumnFilterStatus, setWatchlistColumnFilterStatus] = useState<boolean>(false)
+
     const [pagination, setPagination] = useState<PaginationState>({pageIndex: 0, pageSize: 20})
 
-    const {data, error, refetch: refetchTableData, isLoading} = useGetAssetsQuery()
+    const [search, setSearch] = useState<string>('')
+
+    const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false)
+
+    const {data, refetch: refetchTableData, isLoading} = useGetAssetsQuery()
     const user = useUser()
+
+    const navigate = useNavigate()
+
+    const watchlistBtnHandler = () => {
+        setShowOnlyWatchlist(!showOnlyWatchlist)
+    }
+
+    const portfolioBtnHandler = () => {
+        navigate('/dashboard/assets-portfolio')
+    }
 
     const tableColumns: ColumnDef<AssetPriceTable>[] = useMemo(() => [
         {
@@ -170,7 +196,7 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
         state: {
-            globalFilter: searchVal,
+            globalFilter: search,
             pagination: pagination,
         },
         onGlobalFilterChange: setSearch,
@@ -219,12 +245,48 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         }
     }, []);
 
-    useEffect(() => {
-        setWatchlistColumnFilterStatus(watchlistFilterStatus)
-    }, [watchlistFilterStatus]);
-
     return (
         <PricesTableContainer>
+            {
+                isLoading ?
+                    <Skeleton height={'7rem'}/>
+                    :
+                    <SearchBar>
+                        <div className={'left-col'}>
+                            <Input place_holder={'Search crypto'}
+                                   icon_src={'search-gray.svg'}
+                                   focus_icon_src={'search-gray-active.svg'}
+                                   on_change_handler={value => setSearch(value)}/>
+                        </div>
+                        <div className={'right-col'}>
+                            {
+                                showOnlyWatchlist ?
+                                    <Button icon={'watchlist-purple.svg'}
+                                            borderRadius={'md'}
+                                            on_click_handler={watchlistBtnHandler}
+                                            btnType={'primary'}
+                                            outline>
+                                        Watchlist
+                                    </Button>
+                                    :
+                                    <Button icon={'watchlist-gray.svg'}
+                                            borderRadius={'md'}
+                                            on_click_handler={watchlistBtnHandler}
+                                            btnType={'gray'}
+                                            outline>
+                                        Watchlist
+                                    </Button>
+                            }
+                            <Button icon={'portfolio-purple.svg'}
+                                    borderRadius={'md'}
+                                    on_click_handler={portfolioBtnHandler}
+                                    outline>
+                                Portfolio
+                            </Button>
+                        </div>
+
+                    </SearchBar>
+            }
             {
                 isLoading ?
                     <SkeletonContainer>
