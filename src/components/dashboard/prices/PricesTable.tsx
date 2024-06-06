@@ -6,7 +6,7 @@ import {
     flexRender,
     getCoreRowModel, getFilteredRowModel, getPaginationRowModel,
     Header,
-    HeaderGroup,
+    HeaderGroup, PaginationOptions, PaginationState,
     Row,
     useReactTable,
 } from '@tanstack/react-table'
@@ -90,6 +90,7 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
 
     const [lastRefetchTime, setLastRefetchTime] = useState<string>(getTimeFormatted())
     const [watchlistColumnFilterStatus, setWatchlistColumnFilterStatus] = useState<boolean>(false)
+    const [pagination, setPagination] = useState<PaginationState>({pageIndex: 0, pageSize: 20})
 
     const {data, error, refetch: refetchTableData, isLoading} = useGetAssetsQuery()
     const user = useUser()
@@ -170,8 +171,10 @@ export default function PricesTable(props: PricesTableProps): JSX.Element {
         getPaginationRowModel: getPaginationRowModel(),
         state: {
             globalFilter: searchVal,
+            pagination: pagination,
         },
         onGlobalFilterChange: setSearch,
+        onPaginationChange: setPagination,
         getRowId: () => uuidv4()
     })
 
