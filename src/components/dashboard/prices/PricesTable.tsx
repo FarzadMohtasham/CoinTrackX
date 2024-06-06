@@ -17,7 +17,6 @@ import {useNavigate} from "react-router-dom";
 
 import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
-import useUser from '@hooks/useUser.ts'
 
 import Icon from '@components/ui/Icon.tsx'
 import Badge from '@components/ui/Badge.tsx'

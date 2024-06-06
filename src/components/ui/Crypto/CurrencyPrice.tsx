@@ -50,12 +50,6 @@ const currencyList: SelectMenuItem[] = [
         icon_src: 'crypto/xrp.svg'
     },
     {
-        name: 'bnb',
-        value: 'binance-coin',
-        default: false,
-        icon_src: 'crypto/bnb.svg'
-    },
-    {
         name: 'sol',
         value: 'solana',
         default: false,
