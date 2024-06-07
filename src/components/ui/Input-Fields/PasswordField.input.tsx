@@ -1,9 +1,9 @@
-import {Fragment, useEffect, useState} from "react";
-import {styled} from "styled-components";
+import {Fragment, JSX, useEffect, useState} from 'react'
+import {styled} from 'styled-components'
 
-import Icon from "@components/ui/Icon.tsx";
+import Icon from '@components/ui/Icon.tsx'
 
-import {InputProps, InputStyledProps} from "@ts/type/InputFieldProps.type.ts";
+import {InputProps, InputStyledProps} from '@ts/type/InputFieldProps.type.ts'
 
 const PasswordInputStyled = styled.div`
   display: flex;
@@ -43,28 +43,28 @@ const ErrorContainer = styled.span`
   color: var(--color-danger);
 `
 
-export default function PasswordFieldInput(props: InputProps) {
+export default function PasswordFieldInput(props: InputProps): JSX.Element {
     const [passwordFieldSelected, setInputFieldSelected] = useState<boolean>(false)
     const [passwordValue, setPasswordValue] = useState<string>('')
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false)
 
     const {
         place_holder = 'Undefined',
-        on_change_handler = () => {
+        on_change_handler = (): void => {
         },
         icon_src = 'email-focus-icon.svg',
         focus_icon_src = 'password-focus-icon.svg',
         icon_width = '20rem',
         error_message = null,
         invalid_error_messages = []
-    } = props
+    }: InputProps = props
 
     useEffect((): void => {
         on_change_handler(passwordValue)
     }, [passwordValue])
 
     const handlePasswordVisible = (): void => {
-        setPasswordVisible(preValue => !preValue)
+        setPasswordVisible((preValue: boolean): boolean => !preValue)
     }
 
     return (
@@ -94,7 +94,7 @@ export default function PasswordFieldInput(props: InputProps) {
             </PasswordFieldContainer>
             {
                 (invalid_error_messages.length !== 0 && error_message) && (
-                    invalid_error_messages.find((val) => val === error_message) === undefined &&
+                    invalid_error_messages.find((val: string): boolean => val === error_message) === undefined &&
                     <ErrorContainer>{error_message}</ErrorContainer>
                 )
             }

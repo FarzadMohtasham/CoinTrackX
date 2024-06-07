@@ -1,11 +1,11 @@
-import {useEffect, useRef, useState} from 'react'
+import {JSX, useEffect, useRef, useState} from 'react'
 import {styled} from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
 import _ from 'lodash'
 
 import Icon from './Icon.tsx'
 
-import {useNotificationsQuery} from '@query/useNotifications.query.tsx';
+import {useNotificationsQuery} from '@query/useNotifications.query.tsx'
 
 import {
     Notifications as NotificationsT,
@@ -34,13 +34,13 @@ const NotificationsWrapper = styled.div`
 `
 
 const NotificationStyled = styled.div<NotificationStyledProps>`
-  background-color: ${props => props.theme.notifications_color[`${props.$type}_bg_color`]};
+  background-color: ${(props: any) => props.theme.notifications_color[`${props.$type}_bg_color`]};
   padding: 1rem;
   border-radius: .8rem;
 
   span.title {
     font-size: var(--font-size-body-md);
-    color: ${props => props.theme.notifications_color[`${props.$type}_title_color`]};
+    color: ${(props: any) => props.theme.notifications_color[`${props.$type}_title_color`]};
     display: block;
     margin-bottom: .5rem;
     font-weight: 500;
@@ -49,11 +49,11 @@ const NotificationStyled = styled.div<NotificationStyledProps>`
   span.message {
     font-size: var(--font-size-body-sm);
     display: block;
-    color: ${props => props.theme.notifications_color[`${props.$type}_text_color`]};;
+    color: ${(props: any) => props.theme.notifications_color[`${props.$type}_text_color`]};;
   }
 `
 
-export default function Notifications() {
+export default function Notifications(): JSX.Element {
     const [notifIsOpen, setNotifIsOpen] = useState(false)
     const notificationRef = useRef<HTMLElement | null>(null)
     const [notifications, setNotifications] = useState<[] | NotificationsT[]>([])
@@ -64,15 +64,15 @@ export default function Notifications() {
         setNotifIsOpen(true)
     }
 
-    const handleOnOutsideClick = (e: Event) => {
+    const handleOnOutsideClick = (e: Event): void => {
         if ((notificationRef.current && !e.composedPath().includes(notificationRef.current)) && !notifIsOpen) {
             setNotifIsOpen(false)
         }
     }
 
-    useEffect(() => {
-        function filterNotifByPriority(priority: string, data: NotificationsT[] = response?.data || []) {
-            return data.filter(notif => notif.priority === priority)
+    useEffect((): void => {
+        function filterNotifByPriority(priority: string, data: NotificationsT[] = response?.data || []): NotificationsT[] {
+            return data.filter((notif: NotificationsT): boolean => notif.priority === priority)
         }
 
         if (!response?.data?.length) return
@@ -89,42 +89,46 @@ export default function Notifications() {
     useEffect(() => {
         document.body.addEventListener('click', handleOnOutsideClick)
 
-        return () => {
+        return (): void => {
             document.body.removeEventListener('click', handleOnOutsideClick)
         }
     }, []);
 
     return (
-        isLoading ?
-            <Skeleton width={'4rem'} height={'4rem'} style={{borderRadius: '.8rem'}}/>
-            :
-            notifications.length > 0 && <NotificationsContainer ref={notificationRef}>
-                <Icon icon_src={'notifications.svg'}
-                      icon_alt={'notification icon'}
-                      width={'30rem'}
-                      on_click_handler={onNotificationsClickHandler}/>
+        <>
+            {
+                isLoading ?
+                    <Skeleton width={'4rem'} height={'4rem'} style={{borderRadius: '.8rem'}}/>
+                    :
+                    notifications.length > 0 && <NotificationsContainer ref={notificationRef}>
+                        <Icon icon_src={'notifications.svg'}
+                              icon_alt={'notification icon'}
+                              width={'30rem'}
+                              on_click_handler={onNotificationsClickHandler}/>
 
-                {
-                    notifIsOpen && <NotificationsWrapper>
                         {
-                            notifications.map((notification, index) => {
-                                const {
-                                    title, message, priority, type,
-                                } = notification
+                            notifIsOpen && <NotificationsWrapper>
+                                {
+                                    notifications.map((notification: NotificationsT, index: number) => {
+                                        const {
+                                            title, message, priority, type,
+                                        } = notification
 
-                                return (
-                                    <NotificationStyled $priority={priority}
-                                                        $type={type}
-                                                        key={title + index}
-                                    >
-                                        <span className={'title'}>{title}</span>
-                                        <span className="message">{message}</span>
-                                    </NotificationStyled>
-                                )
-                            })
+                                        return (
+                                            <NotificationStyled $priority={priority}
+                                                                $type={type}
+                                                                key={title + index}
+                                            >
+                                                <span className={'title'}>{title}</span>
+                                                <span className="message">{message}</span>
+                                            </NotificationStyled>
+                                        )
+                                    })
+                                }
+                            </NotificationsWrapper>
                         }
-                    </NotificationsWrapper>
-                }
-            </NotificationsContainer>
+                    </NotificationsContainer>
+            }
+        </>
     )
 }

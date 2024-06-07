@@ -1,20 +1,20 @@
-import {IconProps} from "@ts/type/IconProps.type.ts";
+import {JSX} from 'react'
+import {IconProps} from '@ts/type/IconProps.type.ts'
 
-export default function Icon(props: IconProps) {
+export default function Icon(props: IconProps): JSX.Element {
     const iconPath = '/icons'
 
     let {
         icon_src = '',
         icon_alt = 'icon',
         width = '2rem',
-        height = '2rem',
-        same_height = true,
+        height = null,
         class_name = 'icon',
-        on_click_handler = () => {
+        on_click_handler = (): void => {
         },
     } = props
 
-    if (same_height) height = width
+    if (height === null) height = width
 
     if (icon_src === '') icon_src = `${iconPath}/default.png`
     else icon_src = `${iconPath}/${icon_src}`

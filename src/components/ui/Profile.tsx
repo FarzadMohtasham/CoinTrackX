@@ -1,3 +1,4 @@
+import {JSX} from 'react'
 import {styled} from 'styled-components'
 import {Link} from 'react-router-dom'
 
@@ -12,7 +13,7 @@ type ProfileProps = {
 const ProfileStyled = styled.div<ProfileStyledProps>`
   width: 4rem;
   height: 4rem;
-  background-image: url(${props => props.$img_src}), linear-gradient(to top, black, black);
+  background-image: url(${(props: any) => props.$img_src}), linear-gradient(to top, black, black);
   background-position: center center;
   background-size: 100% 100%;
   object-fit: cover;
@@ -28,7 +29,7 @@ const ProfileStyled = styled.div<ProfileStyledProps>`
   }
 `
 
-export default function Profile(props: ProfileProps) {
+export default function Profile(props: ProfileProps): JSX.Element {
     const {
         img_src = '/icons/profile.jpg'
     } = props

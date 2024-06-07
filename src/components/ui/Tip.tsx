@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import styles from './Tip.module.scss'
 
 // Types
-import {TipPropsType} from "@ts/type/TipProps.type.ts";
+import {TipPropsType} from '@ts/type/TipProps.type.ts'
 
 export default function Tip(props: TipPropsType): React.JSX.Element | undefined {
     const [hide, setHide]: [hide: boolean, setHide: any] = useState(false)

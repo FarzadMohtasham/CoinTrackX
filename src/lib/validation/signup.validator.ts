@@ -1,14 +1,5 @@
 import {object, string, ValidationError} from 'yup'
-
-type ValidatorProps = {
-    type: 'firstName' | 'lastName' | 'email' | 'password';
-    payload: string;
-};
-
-type ValidationResult = {
-    isValid: boolean;
-    errorMessage: string;
-}
+import {ValidationResult, ValidatorProps} from '@ts/type/Auth.type.ts'
 
 const firstNameValidationSchema = object({
     'first name': string().required().min(1).max(30).trim(),

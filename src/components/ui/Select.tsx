@@ -1,4 +1,4 @@
-import {Dispatch, Ref, SetStateAction, useEffect, useRef, useState} from 'react'
+import {JSX, Ref, useEffect, useRef, useState} from 'react'
 import {css, styled} from 'styled-components'
 
 import Icon from '@components/ui/Icon.tsx'
@@ -40,7 +40,7 @@ const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
   flex-direction: column;
   gap: 1rem;
   position: absolute;
-  ${props => props.$menu_x_dir_start_position === 'right' ? 'right: 0' : 'left: 0'};
+  ${(props: any): string => props.$menu_x_dir_start_position === 'right' ? 'right: 0' : 'left: 0'};
   top: 5rem;
   border-radius: .8rem;
   z-index: 99;
@@ -62,16 +62,16 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
   border-radius: .6rem;
   transition: background-color .3s ease-in-out;
 
-  ${props => props.$selected && css`background-color: #22242a`};
+  ${(props: any) => props.$selected && css`background-color: #22242a`};
 
-  ${props => !props.$selected && css`
+  ${(props: any) => !props.$selected && css`
     &:hover {
       background-color: var(--color-white-50);
     }
   `}
 `
 
-export default function Select(props: SelectProps) {
+export default function Select(props: SelectProps): JSX.Element {
     const {
         $menu_items: menu_items,
         $has_icon: has_icon = false,
@@ -80,22 +80,22 @@ export default function Select(props: SelectProps) {
         $new_value_setter,
     } = props
 
-    const [selectedItem, setSelectedItem]: [selectedItem: SelectMenuItemT | null, setSelectedItem: Dispatch<SetStateAction<null | SelectMenuItemT>>] = useState<null | SelectMenuItemT>(null)
+    const [selectedItem, setSelectedItem] = useState<null | SelectMenuItemT>(null)
     const [selectMenuIsOpen, setSelectMenuIsOpen] = useState<boolean>(false)
     const selectRef = useRef<HTMLElement | null>(null);
 
-    const handleSelectBtn = () => {
+    const handleSelectBtn = (): void => {
         if (selectMenuIsOpen) setSelectMenuIsOpen(false)
         else setSelectMenuIsOpen(true)
     }
 
-    const handleOutSideMenuClick = (e: Event) => {
+    const handleOutSideMenuClick = (e: Event): void => {
         if ((selectRef.current && !e.composedPath().includes(selectRef.current)) && selectMenuIsOpen) {
             setSelectMenuIsOpen(false)
         }
     }
 
-    const menuItemOnClickHandler = (menuItem: SelectMenuItemT) => {
+    const menuItemOnClickHandler = (menuItem: SelectMenuItemT): void => {
         setSelectedItem(menuItem)
 
         if ($close_after_select) setSelectMenuIsOpen(false)
@@ -109,12 +109,12 @@ export default function Select(props: SelectProps) {
     });
 
     // Set default menu item to the selectedItem
-    useEffect(() => {
-        const defaultMenuItem = menu_items.filter(item => item.default)[0]
+    useEffect((): void => {
+        const defaultMenuItem = menu_items.filter((item: SelectMenuItemT) => item.default)[0]
         setSelectedItem(defaultMenuItem)
     }, []);
 
-    useEffect(() => {
+    useEffect((): void => {
         if (selectedItem?.value) {
             $new_value_setter(selectedItem.value)
         }
@@ -131,7 +131,7 @@ export default function Select(props: SelectProps) {
             {
                 selectMenuIsOpen && <SelectMenuWrapper $menu_x_dir_start_position={$menu_x_dir_start_position}>
                     {
-                        menu_items.map((item, i) => {
+                        menu_items.map((item: SelectMenuItemT, i: number) => {
                             return (
                                 <SelectMenuItem key={item.name + i}
                                                 onClick={() => menuItemOnClickHandler(item)}

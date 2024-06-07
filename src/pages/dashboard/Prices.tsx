@@ -2,6 +2,7 @@ import {styled} from 'styled-components'
 
 import TopMovers from '@components/dashboard/prices/TopMovers.tsx'
 import PricesTable from '@components/dashboard/prices/PricesTable.tsx'
+import {JSX} from "react";
 
 const PricesContainer = styled.div`
   padding: 3.2rem 2rem;
@@ -19,7 +20,7 @@ const PricesWrapper = styled.div`
 
 const TopMoversWrapper = styled.div``
 
-export default function Prices() {
+export default function Prices(): JSX.Element {
     return (
         <PricesContainer>
 

@@ -1,7 +1,8 @@
-import {styled} from "styled-components"
+import {styled} from 'styled-components'
 
-import {Review as ReviewProps} from "../../ts/type/Review.type.ts"
-import Heading from "./Heading.tsx";
+import {Review as ReviewProps} from '@ts/type/Review.type.ts'
+import Heading from './Heading.tsx'
+import {JSX} from "react";
 
 const FILLED_STAR_ICON_URL = '/icons/star-filled.svg'
 const UNFILLED_STAR_ICON_URL = '/icons/star-unfilled.svg'
@@ -59,14 +60,14 @@ const ReviewStyled = styled.div`
   }
 `
 
-export default function Review(props: ReviewProps) {
+export default function Review(props: ReviewProps): JSX.Element {
     const {numberOfStars, quote, author} = props
 
     return (
         <ReviewStyled className={'review'}>
             <div className="stars">
                 {
-                    [...Array((5 - numberOfStars) + numberOfStars).keys()].map((_, index) => {
+                    [...Array((5 - numberOfStars) + numberOfStars).keys()].map((_: unknown, index: number): JSX.Element => {
                         return (
                             (index + 1) <= numberOfStars ?
                                 <img src={FILLED_STAR_ICON_URL}

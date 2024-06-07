@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {JSX, useEffect, useState} from 'react'
 import {styled} from 'styled-components'
 
 import Icon from '@components/ui/Icon.tsx'
@@ -44,13 +44,13 @@ const ErrorContainer = styled.span`
   color: var(--color-danger);
 `
 
-export default function Input(props: InputProps) {
+export default function Input(props: InputProps): JSX.Element {
     const [inputFieldSelected, setInputFieldSelected] = useState<boolean>(false)
     const [inputValue, setInputValue] = useState<string>('')
 
     const {
         place_holder = 'Undefined',
-        on_change_handler = () => {
+        on_change_handler = (): void => {
         },
         icon_src = 'email-icon.svg',
         focus_icon_src = 'email-icon.svg',
@@ -81,7 +81,7 @@ export default function Input(props: InputProps) {
             </InputFieldContainer>
             {
                 (invalid_error_messages.length !== 0 && error_message) && (
-                    invalid_error_messages.find((val) => val === error_message) === undefined &&
+                    invalid_error_messages.find((val: string): boolean => val === error_message) === undefined &&
                     <ErrorContainer>{error_message}</ErrorContainer>
                 )
             }

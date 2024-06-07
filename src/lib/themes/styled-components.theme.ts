@@ -1,4 +1,6 @@
-const defaultProps = {
+import {StyledThemeProps} from "@ts/type/StyledTheme.type.ts";
+
+const defaultProps: StyledThemeProps = {
     responsive: {
         xsm: '27.4rem',
         sm: '57.6rem',

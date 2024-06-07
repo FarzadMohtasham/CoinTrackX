@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {JSX, useEffect, useState} from "react"
 import {Link, useNavigate} from "react-router-dom"
 import {styled} from "styled-components"
 import {toast} from 'react-hot-toast'
@@ -11,7 +11,7 @@ import PasswordFieldInput from "@components/ui/Input-Fields/PasswordField.input.
 import CheckboxInput from "@components/ui/Input-Fields/Checkbox.input.tsx"
 
 import {loginInputValidator} from "@/lib/validation/login.validator.ts"
-import {login} from "@services/api/auth.api.ts";
+import {login} from "@services/api/auth.api.ts"
 
 import {
     AuthStyled,
@@ -28,7 +28,7 @@ const HeadContent = styled(HeadContentStyled)``
 const MainContent = styled(MainContentStyled)``
 const SingUpLink = styled(AuthLink)``
 
-export default function Login() {
+export default function Login(): JSX.Element {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [emailFieldError, setEmailFieldError] = useState<string | null>(null)
@@ -41,7 +41,7 @@ export default function Login() {
 
     useAutoRedirectOnAuth()
 
-    const onLoginHandler = async () => {
+    const onLoginHandler = async (): Promise<void> => {
         setAuthLoading(true)
         try {
             // const data = await login(email, password)
@@ -56,7 +56,7 @@ export default function Login() {
         setAuthLoading(false)
     }
 
-    const onGoogleAuthHandler = () => {
+    const onGoogleAuthHandler = (): void => {
         toast.error('Google Auth service will add soon...', {
             icon: <img src={'/icons/google-logo.png'}
                        width={15}
@@ -65,7 +65,7 @@ export default function Login() {
         })
     }
 
-    const onAppleAuthHandler = () => {
+    const onAppleAuthHandler = (): void => {
         toast.error('Apple Auth service will add soon...', {
             icon: <img src={'/icons/apple-logo.png'}
                        width={15}
@@ -74,15 +74,15 @@ export default function Login() {
         })
     }
 
-    useEffect(() => {
+    useEffect((): void => {
         loginInputValidator({type: 'email', payload: email}).then(validationResult => {
             if (validationResult.isValid) setEmailFieldError(null)
             else setEmailFieldError(validationResult.errorMessage)
         })
     }, [email])
 
-    useEffect(() => {
-        loginInputValidator({type: 'password', payload: password}).then(validationResult => {
+    useEffect((): void => {
+        loginInputValidator({type: 'password', payload: password}).then((validationResult): void => {
             if (validationResult.isValid) setPasswordFieldError(null)
             else setPasswordFieldError(validationResult.errorMessage)
         })

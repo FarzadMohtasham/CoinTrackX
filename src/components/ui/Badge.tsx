@@ -3,7 +3,8 @@ import {styled} from 'styled-components'
 import {BadgeProps, BadgePropsType} from "@ts/type/BadgeProps.type.ts"
 
 // Component
-import Icon from "./Icon.tsx";
+import Icon from './Icon.tsx'
+import {JSX} from "react";
 
 const borderRadiusVariations = {
     none: '0',
@@ -18,16 +19,16 @@ const BadgeStyled = styled.span<BadgeProps>`
   align-items: center;
   gap: .5rem;
   width: max-content;
-  background-color: ${props => props.$bgColor};
+  background-color: ${(props: any) => props.$bgColor};
   padding: .6rem .8rem;
   font-size: var(--font-size-body-xsm);
-  color: ${props => props.$textColor};
-  border-radius: ${props => props.$borderRadiusVariations[props.$borderRadius]};
-  border: .1rem solid ${props => props.$borderColor};
+  color: ${(props: any) => props.$textColor};
+  border-radius: ${(props: any) => props.$borderRadiusVariations[props.$borderRadius]};
+  border: .1rem solid ${(props: any) => props.$borderColor};
   font-weight: 500;
 `
 
-export default function Badge(props: BadgePropsType) {
+export default function Badge(props: BadgePropsType): JSX.Element {
     const {
         children,
         icon,

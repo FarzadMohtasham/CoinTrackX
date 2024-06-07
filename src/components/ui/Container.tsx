@@ -1,3 +1,4 @@
+import {JSX} from 'react'
 import {styled} from 'styled-components'
 
 import {ContainerPropsType, ContainerStyledProps} from '@ts/type/ContainerProps.type.ts'
@@ -8,49 +9,49 @@ const ContainerStyled = styled.div<ContainerStyledProps>`
   flex-direction: column;
   align-items: center;
 
-  ${props => props.$background_style}
+  ${(props: any) => props.$background_style}
   .wrapper {
     width: 95%;
     max-width: 95%;
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.sm}) {
     .wrapper {
       width: 57.6rem;
     }
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.md}) {
     .wrapper {
       width: 76.8rem;
     }
   }
 
   /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.lg}) {
     .wrapper {
       width: 99.2rem;
     }
   }
 
   /*X-Large devices (large desktops, 1200px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.xl}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.xl}) {
     .wrapper {
       width: 120.0rem;
     }
   }
 
   /*XX-Large devices (larger desktops, 1400px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.xxl}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.xxl}) {
     .wrapper {
       width: 140.0rem;
     }
   }
 `
 
-export default function Container(props: ContainerPropsType) {
+export default function Container(props: ContainerPropsType): JSX.Element {
     const {
         children,
         background_style = '',
@@ -58,7 +59,6 @@ export default function Container(props: ContainerPropsType) {
     } = props
 
     return (
-        // @ts-ignore
         <ContainerStyled $background_style={background_style}
                          as={tag_type}>
             <div className={'wrapper'}>

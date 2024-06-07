@@ -1,17 +1,18 @@
-import {styled} from "styled-components"
+import {JSX} from 'react'
+import {styled} from 'styled-components'
 
-import {CopyRightProps, CopyRightStyledProps} from "@ts/type/CopyRightProps.type.ts"
+import {CopyRightProps, CopyRightStyledProps} from '@ts/type/CopyRightProps.type.ts'
 
 const date: Date = new Date()
 
 const CopyRightStyled = styled.span<CopyRightStyledProps>`
-  color: ${props => props.color};
+  color: ${(props: any) => props.color};
 `
 
-export default function CopyRight(props: CopyRightProps) {
+export default function CopyRight(props: CopyRightProps): JSX.Element {
     const {
         color = 'black'
-    } = props
+    }: CopyRightProps = props
 
     return (
         <CopyRightStyled color={color} className={'copy-right'}>

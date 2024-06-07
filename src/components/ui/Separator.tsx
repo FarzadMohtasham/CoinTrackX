@@ -1,3 +1,4 @@
+import {JSX} from 'react'
 import {styled} from "styled-components"
 
 type SeparatorProps = {
@@ -22,7 +23,7 @@ const SeparatorContainer = styled.div`
   }
 `
 
-export default function Separator(props: SeparatorProps) {
+export default function Separator(props: SeparatorProps): JSX.Element {
     return (
         <SeparatorContainer>
             <VerticalLine/>

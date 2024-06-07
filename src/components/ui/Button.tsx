@@ -1,4 +1,5 @@
-import {styled, css} from 'styled-components'
+import {JSX} from 'react'
+import {styled, css, RuleSet} from 'styled-components'
 import {HashLoader} from 'react-spinners'
 
 // Components
@@ -25,38 +26,38 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   gap: 1.2rem;
   justify-content: center;
   text-align: center;
-  cursor: ${props => props.$properties.cursor};
-  padding: ${(props) => props.$properties.padding};
-  font-size: ${props => props.$properties.fontSize};
-  width: ${props => props.$properties.expanded ? '100%' : `max-content`};
-  background-color: ${props => props.$properties.backgroundColor};
-  color: ${props => props.$properties.color};
-  border-radius: ${props => props.$properties.borderRadiusS};
-  border: ${props => props.$properties.no_border ? '0' : '.2rem'} solid ${props => props.$properties.border};
+  cursor: ${(props: any) => props.$properties.cursor};
+  padding: ${(props: any) => props.$properties.padding};
+  font-size: ${(props: any) => props.$properties.fontSize};
+  width: ${(props: any): string => props.$properties.expanded ? '100%' : `max-content`};
+  background-color: ${(props: any) => props.$properties.backgroundColor};
+  color: ${(props: any) => props.$properties.color};
+  border-radius: ${(props: any) => props.$properties.borderRadiusS};
+  border: ${(props: any): string => props.$properties.no_border ? '0' : '.2rem'} solid ${(props: any) => props.$properties.border};
   transition: background-color .3s ease-in-out, border .3s ease-in-out;
   height: 5rem;
 
   &:hover {
-    ${props => props.$properties.hover}
+    ${(props: any) => props.$properties.hover}
   }
 
   /*Very Small devices (landscape phones, 576px and down)*/
   @media screen and (max-width: ${props => props.theme.responsive.md}) {
-    ${props => props.$properties.mobileMedia}
+    ${(props: any) => props.$properties.mobileMedia}
   }
 
   /*Medium devices (tablets, 768px and up)*/
   @media screen and (min-width: ${props => props.theme.responsive.md}) {
-    ${props => props.$properties.tabletMedia}
+    ${(props: any) => props.$properties.tabletMedia}
   }
 
   /*Large devices (desktops, 992px and up)*/
   @media screen and (min-width: ${props => props.theme.responsive.lg}) {
-    ${props => props.$properties.desktopMedia}
+    ${(props: any) => props.$properties.desktopMedia}
   }
 `
 
-function Button(props: ButtonPropsType) {
+function Button(props: ButtonPropsType): JSX.Element {
     let {
         children = 'ERROR - No Value',
         class_name = '',
@@ -70,19 +71,19 @@ function Button(props: ButtonPropsType) {
         hideOn = 'none',
         disabled = false,
         isLoading = false,
-        on_click_handler = () => {
+        on_click_handler = (): void => {
         },
         remove_padding = false,
         no_border = false,
-    } = props
+    }: ButtonPropsType = props
 
     disabled = isLoading || disabled;
 
-    const padding = remove_padding ? 0 : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
-    const fontSize = css`${buttonFontSizeVariations[size].fontSize}`
-    const cursor = disabled ? 'not-allowed' : 'pointer'
+    const padding: RuleSet | number = remove_padding ? 0 : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
+    const fontSize: RuleSet = css`${buttonFontSizeVariations[size].fontSize}`
+    const cursor: string = disabled ? 'not-allowed' : 'pointer'
 
-    const backgroundColor =
+    const backgroundColor: RuleSet =
         css`${
             !outline ?
                 (
@@ -95,10 +96,10 @@ function Button(props: ButtonPropsType) {
                 'rgba(0, 0, 0, 0)'
         }`
 
-    const color = css`${!outline ? buttonTypeVariations[btnType].color : buttonTypeVariations[btnType].backgroundColor}`
+    const color: RuleSet = css`${!outline ? buttonTypeVariations[btnType].color : buttonTypeVariations[btnType].backgroundColor}`
     const borderRadiusS = css`${buttonBorderRadius[borderRadius]}`
 
-    const border = css`${
+    const border: RuleSet = css`${
         outline ?
             css`var(--color-${btnType + '-100)'}`
             :
@@ -110,7 +111,7 @@ function Button(props: ButtonPropsType) {
             )
     }`
 
-    const hover = css`
+    const hover: RuleSet = css`
       ${outline && css`background-color: var(--color-${btnType + '-50)'};`}
 
       ${!outline && (disabled ? '' : css`background-color: var(--color-${btnType + '-900)'};`)}
@@ -121,9 +122,9 @@ function Button(props: ButtonPropsType) {
                       css`border: ${no_border ? '0' : '.2rem'} solid var(--color-${btnType + '-100)'};`
       }
     `
-    const mobileMedia = `${hideOn === 'mobile' ? css`display: none;` : ''}`
-    const tabletMedia = `${hideOn === 'tablet' ? css`display: none;` : ''}`
-    const desktopMedia = `${hideOn === 'desktop' ? css`display: none;` : ''}`
+    const mobileMedia: RuleSet | string = `${hideOn === 'mobile' ? css`display: none;` : ''}`
+    const tabletMedia: RuleSet | string = `${hideOn === 'tablet' ? css`display: none;` : ''}`
+    const desktopMedia: RuleSet | string = `${hideOn === 'desktop' ? css`display: none;` : ''}`
 
     const buttonProperties = {
         padding,
@@ -141,7 +142,7 @@ function Button(props: ButtonPropsType) {
         no_border,
     }
 
-    const onClickHandler = () => {
+    const onClickHandler = (): void => {
         if (disabled) return
         else on_click_handler()
     }
@@ -151,12 +152,12 @@ function Button(props: ButtonPropsType) {
                       $properties={buttonProperties}
                       onClick={onClickHandler}>
             {icon && (iconDir === 'left' &&
-                <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
+                <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'}/>)}
             {isLoading &&
                 <HashLoader size={18} color={`var(--color-${btnType + '-500)'}`}/>}
             {children}
             {icon && (iconDir === 'right' &&
-                <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'} same_height/>)}
+                <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'}/>)}
         </ButtonStyled>
     )
 }

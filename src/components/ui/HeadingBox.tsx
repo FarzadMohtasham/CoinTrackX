@@ -1,6 +1,7 @@
+import {JSX} from 'react'
 import {styled} from 'styled-components'
 
-import {HeadingBoxType} from "@ts/type/HeadingBox.type.ts";
+import {HeadingBoxType} from '@ts/type/HeadingBox.type.ts'
 
 const HeadingBoxStyled = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ const DescStyled = styled.p`
   font-weight: 500;
 `
 
-export default function HeadingBox(props: HeadingBoxType) {
+export default function HeadingBox(props: HeadingBoxType): JSX.Element {
     const {
         label = null,
         heading = null,

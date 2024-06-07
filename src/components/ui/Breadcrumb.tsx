@@ -1,13 +1,14 @@
+import {JSX} from 'react'
 import {useLocation, Location, Link} from "react-router-dom";
 
-export default function Breadcrumb() {
+export default function Breadcrumb(): JSX.Element {
     const location: Location<any> = useLocation()
 
     let currentLink: string = ''
 
     const crumbs = location.pathname.split('/')
-        .filter(crumb => crumb !== '')
-        .map((crumb, index) => {
+        .filter((crumb: string): boolean => crumb !== '')
+        .map((crumb: string, index: number) => {
             currentLink += `/${crumb}`
 
             return (

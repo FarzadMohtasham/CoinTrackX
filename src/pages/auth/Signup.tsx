@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {JSX, useEffect, useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {styled} from 'styled-components'
 import {toast} from 'react-hot-toast'
@@ -21,6 +21,7 @@ import {
     MainContent as MainContentStyled,
     AuthLink,
 } from '@pages/auth/Auth.styled.tsx'
+import {ValidationResult} from "@ts/type/Auth.type.ts";
 
 const LoginContainer = styled(AuthStyled)``
 const LoginWrapper = styled(AuthInnerWrapper)``
@@ -44,7 +45,7 @@ const MainContent = styled(MainContentStyled)`
 `
 const SingUpLink = styled(AuthLink)``
 
-export default function Login() {
+export default function Login(): JSX.Element {
     const [firstName, setFirstName] = useState<string>('')
     const [lastName, setLastName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
@@ -62,7 +63,7 @@ export default function Login() {
 
     useAutoRedirectOnAuth('dashboard', true)
 
-    const onSignupHandler = async () => {
+    const onSignupHandler = async (): Promise<void> => {
         if (!agreeTerms) {
             toast.error('You should agree with Terms & Conditions')
             return
@@ -82,7 +83,7 @@ export default function Login() {
         setAuthLoading(false)
     }
 
-    const onGoogleAuthHandler = () => {
+    const onGoogleAuthHandler = (): void => {
         toast.error('Google Auth service will add soon...', {
             icon: <img src={'/icons/google-logo.png'}
                        width={15}
@@ -91,7 +92,7 @@ export default function Login() {
         })
     }
 
-    const onAppleAuthHandler = () => {
+    const onAppleAuthHandler = (): void => {
         toast.error('Apple Auth service will add soon...', {
             icon: <img src={'/icons/apple-logo.png'}
                        width={15}
@@ -100,29 +101,29 @@ export default function Login() {
         })
     }
 
-    useEffect(() => {
-        signupInputValidator({type: 'firstName', payload: firstName}).then(validationResult => {
+    useEffect((): void => {
+        signupInputValidator({type: 'firstName', payload: firstName}).then((validationResult: ValidationResult): void => {
             if (validationResult.isValid) setFirstNameFieldError(null)
             else setFirstNameFieldError(validationResult.errorMessage)
         })
     }, [firstName])
 
-    useEffect(() => {
-        signupInputValidator({type: 'lastName', payload: lastName}).then(validationResult => {
+    useEffect((): void => {
+        signupInputValidator({type: 'lastName', payload: lastName}).then((validationResult: ValidationResult): void => {
             if (validationResult.isValid) setLastNameFieldError(null)
             else setLastNameFieldError(validationResult.errorMessage)
         })
     }, [lastName])
 
-    useEffect(() => {
+    useEffect((): void => {
         signupInputValidator({type: 'email', payload: email}).then(validationResult => {
             if (validationResult.isValid) setEmailFieldError(null)
             else setEmailFieldError(validationResult.errorMessage)
         })
     }, [email])
 
-    useEffect(() => {
-        signupInputValidator({type: 'password', payload: password}).then(validationResult => {
+    useEffect((): void => {
+        signupInputValidator({type: 'password', payload: password}).then((validationResult: ValidationResult): void => {
             if (validationResult.isValid) setPasswordFieldError(null)
             else setPasswordFieldError(validationResult.errorMessage)
         })
