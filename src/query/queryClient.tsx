@@ -1,6 +1,6 @@
-import {QueryClientProvider, QueryClient, QueryCache} from '@tanstack/react-query'
-import {ReactNode} from 'react'
+import {JSX, ReactNode} from 'react'
 import {toast} from 'react-hot-toast'
+import {QueryClientProvider, QueryClient, QueryCache} from '@tanstack/react-query'
 
 type ReactQueryClientProps = {
     children: ReactNode
@@ -13,13 +13,13 @@ const queryClient = new QueryClient({
         },
     },
     queryCache: new QueryCache({
-        onError: error => {
+        onError: (error: Error): void => {
             toast.error(error.message)
         },
     })
 })
 
-export default function ReactQueryClient(props: ReactQueryClientProps) {
+export default function ReactQueryClient(props: ReactQueryClientProps): JSX.Element {
     return (
         <QueryClientProvider client={queryClient}>
             {props.children}

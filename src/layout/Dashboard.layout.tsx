@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {JSX, useEffect, useState} from 'react'
 import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom'
 import {styled} from 'styled-components'
 
@@ -20,7 +20,7 @@ const LayoutContainer = styled.div`
   grid-template-rows: repeat(12, 1fr);
 
   /*Very Small devices (landscape phones, 576px and down)*/
-  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (max-width: ${(props: any) => props.theme.responsive.sm}) {
     .layout-header {
       grid-column: 1 / 13;
       grid-row: 1 / 2;
@@ -37,7 +37,7 @@ const LayoutContainer = styled.div`
     }
   }
   /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.sm}) {
     .layout-header {
       grid-column: 1 / 13;
       grid-row: 1 / 2;
@@ -54,7 +54,7 @@ const LayoutContainer = styled.div`
     }
   }
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.md}) {
     .layout-header {
       grid-column: 4 / 13;
       grid-row: 1 / 2;
@@ -71,7 +71,7 @@ const LayoutContainer = styled.div`
     }
   }
   /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.lg}) {
     .layout-header {
       grid-column: 3 / 13;
       grid-row: 1 / 2;
@@ -111,7 +111,7 @@ const LayoutHeader = styled.div.attrs({className: 'layout-header'})`
     gap: 2rem;
   }
 
-  @media screen and (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.md}) {
     .left-col {
       .menu-burger {
         display: none;
@@ -136,17 +136,17 @@ const LayoutSidebar = styled.aside.attrs({className: 'layout-sidebar'})`
   }
 
   /*Very Small devices (landscape phones, 576px and down)*/
-  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (max-width: ${(props: any) => props.theme.responsive.sm}) {
     display: none;
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.sm}) {
     display: none;
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${(props: any) => props.theme.responsive.md}) {
     display: flex;
   }
 `
@@ -163,25 +163,25 @@ export default function DashboardLayout() {
 
     useDashboardProtectRoute('/login', true)
 
-    const resetNavListActiveProp = () => {
-        setNavigationList((navList) => navList.map(nav => {
+    const resetNavListActiveProp = (): void => {
+        setNavigationList((navList: NavigationItemType[]) => navList.map((nav: NavigationItemType) => {
             nav.active = false
             return nav
         }))
     }
 
-    const setNavListItemToActive = (navName: string) => {
-        setNavigationList((navList) => navList.map(nav => {
+    const setNavListItemToActive = (navName: string): void => {
+        setNavigationList((navList: NavigationItemType[]) => navList.map((nav: NavigationItemType) => {
             if (nav.name === navName) nav.active = true
             return nav
         }))
     }
 
     const onNavigationItemHandler = (navItemName: string): void => {
-        const currentSelectedNavIndex = navigationList.findIndex(nav => nav.active)
-        const newSelectedNavIndex = navigationList.findIndex(nav => nav.name === navItemName)
+        const currentSelectedNavIndex = navigationList.findIndex((nav: NavigationItemType) => nav.active)
+        const newSelectedNavIndex = navigationList.findIndex((nav: NavigationItemType): boolean => nav.name === navItemName)
 
-        setNavigationList((navList) => {
+        setNavigationList((navList: NavigationItemType[]) => {
             navList[currentSelectedNavIndex].active = false
             navList[newSelectedNavIndex].active = true
             return navList
@@ -191,13 +191,13 @@ export default function DashboardLayout() {
     }
 
     // Nav name update
-    useEffect(() => {
-        const selectedNavIndex = navigationList.findIndex(nav => nav.active)
+    useEffect((): void => {
+        const selectedNavIndex = navigationList.findIndex((nav: NavigationItemType) => nav.active)
         setSelectedNavName(navigationList[selectedNavIndex].title)
     }, [navigationList]);
 
     // Update active nav based on url changes
-    useEffect(() => {
+    useEffect((): void => {
         const pathList: any = location.pathname.split('/')
 
         resetNavListActiveProp()
@@ -235,7 +235,7 @@ export default function DashboardLayout() {
                 </Link>
                 <div className={'navigation-list'}>
                     {
-                        navigationList.map((navItem: NavigationItemType, index: number): React.JSX.Element => {
+                        navigationList.map((navItem: NavigationItemType, index: number): JSX.Element => {
                             const navItemProps = {
                                 icon_src: navItem.icon_src,
                                 active_icon_src: navItem.active_icon_src,

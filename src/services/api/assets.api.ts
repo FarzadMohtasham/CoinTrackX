@@ -15,7 +15,7 @@ const axiosInstance = axios.create({
     }
 })
 
-export const getAssets = async () => {
+export const getAssets = async (): Promise<getAssetsResponse | null> => {
     const response: getAssetsResponse = {
         data: null,
     }
@@ -30,7 +30,7 @@ export const getAssets = async () => {
     return response.data
 }
 
-export const getAsset = async (assetName: AssetName) => {
+export const getAsset = async (assetName: AssetName): Promise<getAssetsResponse> => {
     const response: getAssetResponse = {
         data: null,
         error: null
@@ -52,7 +52,7 @@ export const getAsset = async (assetName: AssetName) => {
 
 type HistoryLength = number | 0
 
-export const getAssetHistory = async (assetName: AssetName | string, interval: AssetHistoryInterval = 'd1', historyLength: HistoryLength) => {
+export const getAssetHistory = async (assetName: AssetName | string, interval: AssetHistoryInterval = 'd1', historyLength: HistoryLength): Promise<getAssetHistoryResponse | null> => {
     const response: getAssetHistoryResponse = {
         data: null,
     }
@@ -79,7 +79,7 @@ type getAssetMarketsT = {
     error: any;
 }
 
-export const getAssetMarket = async (assetName: AssetName) => {
+export const getAssetMarket = async (assetName: AssetName): Promise<getAssetMarketsT> => {
     const response: getAssetMarketsT = {
         data: null,
         error: null

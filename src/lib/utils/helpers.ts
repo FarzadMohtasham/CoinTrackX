@@ -1,4 +1,4 @@
-export function titleCase(str: string) {
+export function titleCase(str: string): string {
     const splitStr = str.toLowerCase().split(' ');
     for (let i = 0; i < splitStr.length; i++) {
         // You do not need to check if i is larger than splitStr length, as your for does that for you
@@ -9,7 +9,7 @@ export function titleCase(str: string) {
     return splitStr.join(' ');
 }
 
-export function removeLetter(str: string, letterToRemove: string) {
+export function removeLetter(str: string, letterToRemove: string): string {
     return str.split(letterToRemove).join('');
 }
 
@@ -23,7 +23,7 @@ export function getTime() {
     return {hour, min, sec}
 }
 
-export function getTimeFormatted() {
+export function getTimeFormatted(): string {
     const currentTime = getTime()
     return `${currentTime.hour}:${currentTime.min}:${currentTime.sec}`
 }

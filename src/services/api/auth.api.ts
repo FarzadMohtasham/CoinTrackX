@@ -1,7 +1,9 @@
-import {AuthResponse} from '@supabase/supabase-js'
+import {AuthResponse, Session, User} from '@supabase/supabase-js'
 import {supabaseClient} from '@config/supabase.ts'
 
-export async function login(email: string, password: string) {
+type LoginReturnT = { user: User | null, session: Session | null }
+
+export async function login(email: string, password: string): Promise<LoginReturnT> {
     const {data, error}: AuthResponse = await supabaseClient.auth.signInWithPassword({email, password})
 
     if (error) throw new Error(error.message)
@@ -13,7 +15,7 @@ export async function login(email: string, password: string) {
 export async function signup({firstName, lastName}: {
     firstName: string,
     lastName: string
-}, email: string, password: string) {
+}, email: string, password: string): Promise<LoginReturnT> {
     const {data, error}: AuthResponse = await supabaseClient.auth.signUp({
         email, password,
     })

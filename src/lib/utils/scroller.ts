@@ -6,6 +6,6 @@ const scrollOptions = {
     offset: 50,
 }
 
-export default function scrollTo(targetName: string, options: object = scrollOptions) {
+export default function scrollTo(targetName: string, options: object = scrollOptions): void {
     scroller.scrollTo(targetName, options)
 }
