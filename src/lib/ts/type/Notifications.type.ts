@@ -13,7 +13,7 @@ export type Notification = {
     created_at: ReactNode;
     message: string;
     type: 'success' | 'error' | 'info' | 'warning';
-    priority: string;
+    priority?: string;
     closable: boolean;
 }
 

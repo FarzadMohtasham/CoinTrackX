@@ -5,15 +5,19 @@ import {Notification, NotificationStyledProps} from '@ts/type/Notifications.type
 import {formatDistance} from "date-fns";
 import {toast} from "react-hot-toast";
 
+type NotifWidth = string | '100%' | 'min-content' | 'max-content';
+
 type SimpleNotifProps = {
     options: Notification & {
         closable?: boolean;
         icon_src?: string;
+        width?: NotifWidth;
     }
 }
 
 type SimpleNotifStyled = {
     $type: string;
+    $width: string;
 }
 
 const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNotifStyled>`
@@ -23,7 +27,7 @@ const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNot
   border-radius: .8rem;
   border: .2rem solid ${props => props.theme.notif.border_color};
   z-index: 99;
-
+  width: ${props => props.$width};
   background-color: ${props => props.theme.notif[props.$type + '_color']};
   overflow: hidden;
 `
@@ -76,14 +80,12 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
     const {
         title,
         type,
-        priority,
         created_at,
         message,
         closable,
         icon_src = 'rocket-lunch.svg',
+        width = '100%',
     } = props.options
-
-    console.log(type)
 
     const [closed, setClosed] = useState<boolean>(false)
 
@@ -95,7 +97,7 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
     return (
         <>
             {
-                !closed && <SimpleNotifContainer $type={type}>
+                !closed && <SimpleNotifContainer $type={type} $width={width}>
                     <LeftColumnWrapper className={'left-col'}>
                         <Icon icon_src={icon_src}
                               width={'25rem'}/>
