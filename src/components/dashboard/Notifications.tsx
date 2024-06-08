@@ -3,29 +3,32 @@ import {styled} from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
 import _ from 'lodash'
 
-import Icon from './Icon.tsx'
+import Icon from '../ui/Icon.tsx'
 
 import {useNotificationsQuery} from '@query/useNotifications.query.tsx'
 
 import {
-    Notifications as NotificationsT,
-    NotificationStyledProps,
+    Notification,
     NotificationContainerProps
 } from "@ts/type/Notifications.type.ts"
+import SimpleNotification from "@components/ui/Notifs/Simple-Notification.notif.tsx";
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
   display: grid;
   place-content: center;
-  cursor: pointer;
   position: relative;
+  
+  .notifications-icon {
+    cursor: pointer;
+  }
 `
 
 const NotificationsWrapper = styled.div`
-  width: 30rem;
+  width: 40rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: var(--color-black-50);
+  background-color: ${props => props.theme.notif.notifs_container_bg_color};
   position: absolute;
   top: 4rem;
   right: 0;
@@ -33,30 +36,10 @@ const NotificationsWrapper = styled.div`
   border-radius: 1.4rem;
 `
 
-const NotificationStyled = styled.div<NotificationStyledProps>`
-  background-color: ${(props: any) => props.theme.notifications_color[`${props.$type}_bg_color`]};
-  padding: 1rem;
-  border-radius: .8rem;
-
-  span.title {
-    font-size: var(--font-size-body-md);
-    color: ${(props: any) => props.theme.notifications_color[`${props.$type}_title_color`]};
-    display: block;
-    margin-bottom: .5rem;
-    font-weight: 500;
-  }
-
-  span.message {
-    font-size: var(--font-size-body-sm);
-    display: block;
-    color: ${(props: any) => props.theme.notifications_color[`${props.$type}_text_color`]};;
-  }
-`
-
 export default function Notifications(): JSX.Element {
     const [notifIsOpen, setNotifIsOpen] = useState(false)
     const notificationRef = useRef<HTMLElement | null>(null)
-    const [notifications, setNotifications] = useState<[] | NotificationsT[]>([])
+    const [notifications, setNotifications] = useState<[] | Notification[]>([])
 
     const {data: response, isLoading} = useNotificationsQuery()
 
@@ -71,17 +54,17 @@ export default function Notifications(): JSX.Element {
     }
 
     useEffect((): void => {
-        function filterNotifByPriority(priority: string, data: NotificationsT[] = response?.data || []): NotificationsT[] {
-            return data.filter((notif: NotificationsT): boolean => notif.priority === priority)
+        function filterNotifByPriority(priority: string, data: Notification[] = response?.data || []): Notification[] {
+            return data.filter((notif: Notification): boolean => notif.priority === priority)
         }
 
         if (!response?.data?.length) return
 
-        const filterByHigh = filterNotifByPriority('high')
-        const filterByMiddle = filterNotifByPriority('middle')
-        const filterByLow = filterNotifByPriority('low')
+        const filterByHigh: Notification[] = filterNotifByPriority('high')
+        const filterByMiddle: Notification[] = filterNotifByPriority('middle')
+        const filterByLow: Notification[] = filterNotifByPriority('low')
 
-        const filteredNotifications = _.union(filterByHigh, filterByMiddle, filterByLow)
+        const filteredNotifications: Notification[] = _.union(filterByHigh, filterByMiddle, filterByLow)
 
         setNotifications(filteredNotifications)
     }, [response]);
@@ -104,24 +87,16 @@ export default function Notifications(): JSX.Element {
                         <Icon icon_src={'notifications.svg'}
                               icon_alt={'notification icon'}
                               width={'30rem'}
+                              class_name={'notifications-icon'}
                               on_click_handler={onNotificationsClickHandler}/>
 
                         {
                             notifIsOpen && <NotificationsWrapper>
                                 {
-                                    notifications.map((notification: NotificationsT, index: number) => {
-                                        const {
-                                            title, message, priority, type,
-                                        } = notification
-
+                                    notifications.map((notificationOptions: Notification, index: number) => {
                                         return (
-                                            <NotificationStyled $priority={priority}
-                                                                $type={type}
-                                                                key={title + index}
-                                            >
-                                                <span className={'title'}>{title}</span>
-                                                <span className="message">{message}</span>
-                                            </NotificationStyled>
+                                            <SimpleNotification options={notificationOptions}
+                                                                key={index}/>
                                         )
                                     })
                                 }

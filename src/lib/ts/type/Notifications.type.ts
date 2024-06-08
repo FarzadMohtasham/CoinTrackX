@@ -1,18 +1,22 @@
-import {MutableRefObject} from 'react'
+import {MutableRefObject, ReactNode} from 'react'
 
 export type NotificationContainerProps = {
     ref: MutableRefObject<any>
 }
 
 export type NotificationStyledProps = {
-    $priority: string;
     $type: string;
 }
 
-export type Notifications = {
-    data: [];
+export type Notification = {
     title: string;
+    created_at: ReactNode;
     message: string;
-    type: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info';
-    priority: 'high' | 'middle' | 'low';
+    type: 'success' | 'error' | 'info' | 'warning';
+    priority: string;
+    closable: boolean;
 }
+
+
+
+

@@ -13,7 +13,7 @@ import {ChakraProvider, theme as chakraTheme} from '@chakra-ui/react'
 import router from './router.tsx'
 import ReactQueryClient from '@query/queryClient.tsx'
 
-import {styledComponents as styledComponentsTheme} from '@/lib/themes'
+import styledComponentTheme from '@/lib/themes/styled-components.theme.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <Toaster
                     position="top-center"
                 />
-                <ThemeProvider theme={styledComponentsTheme.lightTheme}>
+                <ThemeProvider theme={styledComponentTheme.lightTheme}>
                     <RouterProvider router={router}/>
                 </ThemeProvider>
             </ReactQueryClient>

@@ -87,29 +87,13 @@ export type StyledThemeProps = {
             color_success_900: string;
         }
     },
-    notifications_color: {
-        primary_bg_color: string;
-        primary_title_color: string;
-        primary_text_color: string;
-
-        secondary_bg_color: string;
-        secondary_title_color: string;
-        secondary_text_color: string;
-
-        success_bg_color: string;
-        success_title_color: string;
-        success_text_color: string;
-
-        danger_bg_color: string;
-        danger_title_color: string;
-        danger_text_color: string;
-
-        warning_bg_color: string;
-        warning_title_color: string;
-        warning_text_color: string;
-
-        info_bg_color: string;
-        info_title_color: string;
-        info_text_color: string;
-    },
+    notif: {
+        icon_wrapper_bg_color: string;
+        border_color: string;
+        success_color: string;
+        error_color: string;
+        info_color: string;
+        warning_color: string;
+        notifs_container_bg_color: string;
+    }
 }

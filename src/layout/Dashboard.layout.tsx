@@ -6,7 +6,7 @@ import Heading from '@components/ui/Heading.tsx'
 import Logo from '@components/ui/Logo.tsx'
 import NavigationItem from '@components/ui/NavigationItem.tsx'
 import Profile from '@components/ui/Profile.tsx'
-import Alert from '@components/ui/Notifications.tsx'
+import Alert from '@components/dashboard/Notifications.tsx'
 
 import {NavigationListData} from '@data/NavigationList.data.ts'
 import {NavigationItemType} from '@ts/type/NavigationItem.type.ts'

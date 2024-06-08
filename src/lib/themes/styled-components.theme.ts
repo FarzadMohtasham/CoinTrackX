@@ -1,4 +1,4 @@
-import {StyledThemeProps} from "@ts/type/StyledTheme.type.ts";
+import {StyledThemeProps} from '@ts/type/StyledTheme.type.ts'
 
 const defaultProps: StyledThemeProps = {
     responsive: {
@@ -89,34 +89,20 @@ const defaultProps: StyledThemeProps = {
             color_success_900: 'rgba(17, 207, 139, 0.09)',
         }
     },
-    notifications_color: {
-        primary_bg_color: '#cfe2ff',
-        primary_title_color: '#0E0637',
-        primary_text_color: '#0E0637',
-
-        secondary_bg_color: '#e2e3e5',
-        secondary_title_color: '#0E0637',
-        secondary_text_color: '#0E0637',
-
-        success_bg_color: '#d1e7dd',
-        success_title_color: '#0E0637',
-        success_text_color: '#0E0637',
-
-        danger_bg_color: '#f8d7da',
-        danger_title_color: '#0E0637',
-        danger_text_color: '#0E0637',
-
-        warning_bg_color: '#fff3cd',
-        warning_title_color: '#0E0637',
-        warning_text_color: '#0E0637',
-
-        info_bg_color: '#cff4fc',
-        info_title_color: '#0E0637',
-        info_text_color: '#0E0637',
-    },
+    notif: {
+        icon_wrapper_bg_color: '#f2f2f2',
+        border_color: '#DCDCDC',
+        success_color: '#EFFEF5',
+        error_color: '#FFF0F0',
+        info_color: '#EDF9FF',
+        warning_color: '#FFF7ED',
+        notifs_container_bg_color: '#f8f8f8',
+    }
 }
 
-export default {
+const styledComponentTheme = {
     lightTheme: {...defaultProps},
     darkTheme: {...defaultProps}
 }
+
+export default styledComponentTheme

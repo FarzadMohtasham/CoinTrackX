@@ -323,7 +323,6 @@ export default function PricesTable(): JSX.Element {
                             <Tbody>
                                 {
                                     table.getRowModel().rows.map((row: Row<any>) => {
-                                        console.log(table.getRowModel())
                                         return (
                                             <Tr key={row.id}>
                                                 {
