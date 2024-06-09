@@ -9,6 +9,7 @@ export type NotificationStyledProps = {
 }
 
 export type Notification = {
+    id: number;
     title: string;
     created_at: ReactNode;
     message: string;

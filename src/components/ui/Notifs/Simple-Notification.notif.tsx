@@ -8,6 +8,7 @@ import {toast} from "react-hot-toast";
 type NotifWidth = string | '100%' | 'min-content' | 'max-content';
 
 type SimpleNotifProps = {
+    onNotifClose?: (notifId: number) => void;
     options: Notification & {
         closable?: boolean;
         icon_src?: string;
@@ -78,6 +79,7 @@ const RightColumnWrapper: any = styled.div`
 
 export default function SimpleNotification(props: SimpleNotifProps): JSX.Element {
     const {
+        id,
         title,
         type,
         created_at,
@@ -87,10 +89,15 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
         width = '100%',
     } = props.options
 
+    const {onNotifClose} = props
+
     const [closed, setClosed] = useState<boolean>(false)
 
     const onCloseHandler = () => {
         setClosed(true)
+        if (onNotifClose) {
+            onNotifClose(id)
+        }
         toast.success('Notification closed successfully')
     }
 

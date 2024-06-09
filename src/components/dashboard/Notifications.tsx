@@ -17,7 +17,7 @@ const NotificationsContainer = styled.div<NotificationContainerProps>`
   display: grid;
   place-content: center;
   position: relative;
-  
+
   .notifications-icon {
     cursor: pointer;
   }
@@ -51,6 +51,11 @@ export default function Notifications(): JSX.Element {
         if ((notificationRef.current && !e.composedPath().includes(notificationRef.current)) && !notifIsOpen) {
             setNotifIsOpen(false)
         }
+    }
+
+    const removeNotification = (notifId: number): void => {
+        setNotifications((notifs: Notification[]) => notifs.filter(notif => notif.id !== notifId))
+        setNotifIsOpen(false)
     }
 
     useEffect((): void => {
@@ -94,8 +99,10 @@ export default function Notifications(): JSX.Element {
                             notifIsOpen && <NotificationsWrapper>
                                 {
                                     notifications.map((notificationOptions: Notification, index: number) => {
+                                        console.log(notificationOptions.id)
                                         return (
                                             <SimpleNotification options={notificationOptions}
+                                                                onNotifClose={removeNotification}
                                                                 key={index}/>
                                         )
                                     })
