@@ -33,7 +33,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   background-color: ${(props: any) => props.$properties.backgroundColor};
   color: ${(props: any) => props.$properties.color};
   border-radius: ${(props: any) => props.$properties.borderRadiusS};
-  border: ${(props: any): string => props.$properties.no_border ? '0' : '.2rem'} solid ${(props: any) => props.$properties.border};
+  border: ${(props: any): string => props.$properties.noBorder ? '0' : '.2rem'} solid ${(props: any) => props.$properties.border};
   transition: background-color .3s ease-in-out, border .3s ease-in-out;
   height: 5rem;
 
@@ -60,7 +60,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
 function Button(props: ButtonPropsType): JSX.Element {
     let {
         children = 'ERROR - No Value',
-        class_name = '',
+        className = '',
         btnType = 'primary',
         icon = null,
         iconDir = 'left',
@@ -71,15 +71,15 @@ function Button(props: ButtonPropsType): JSX.Element {
         hideOn = 'none',
         disabled = false,
         isLoading = false,
-        on_click_handler = (): void => {
+        onClickHandler = (): void => {
         },
-        remove_padding = false,
-        no_border = false,
+        removePadding = false,
+        noBorder = false,
     }: ButtonPropsType = props
 
     disabled = isLoading || disabled;
 
-    const padding: RuleSet | number = remove_padding ? 0 : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
+    const padding: RuleSet | number = removePadding ? 0 : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`
     const fontSize: RuleSet = css`${buttonFontSizeVariations[size].fontSize}`
     const cursor: string = disabled ? 'not-allowed' : 'pointer'
 
@@ -117,9 +117,9 @@ function Button(props: ButtonPropsType): JSX.Element {
       ${!outline && (disabled ? '' : css`background-color: var(--color-${btnType + '-900)'};`)}
       ${
               !outline ?
-                      css`border: ${no_border ? '0' : '.2rem'} solid var(--color-${btnType + '-50)'};`
+                      css`border: ${noBorder ? '0' : '.2rem'} solid var(--color-${btnType + '-50)'};`
                       :
-                      css`border: ${no_border ? '0' : '.2rem'} solid var(--color-${btnType + '-100)'};`
+                      css`border: ${noBorder ? '0' : '.2rem'} solid var(--color-${btnType + '-100)'};`
       }
     `
     const mobileMedia: RuleSet | string = `${hideOn === 'mobile' ? css`display: none;` : ''}`
@@ -139,25 +139,25 @@ function Button(props: ButtonPropsType): JSX.Element {
         desktopMedia,
         expanded,
         cursor,
-        no_border,
+        noBorder,
     }
 
-    const onClickHandler = (): void => {
+    const onButtonClickHandler = (): void => {
         if (disabled) return
-        else on_click_handler()
+        else onClickHandler()
     }
 
     return (
-        <ButtonStyled className={`${class_name} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`}
+        <ButtonStyled className={`${className} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`}
                       $properties={buttonProperties}
-                      onClick={onClickHandler}>
+                      onClick={onButtonClickHandler}>
             {icon && (iconDir === 'left' &&
-                <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'}/>)}
+                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15rem'}/>)}
             {isLoading &&
                 <HashLoader size={18} color={`var(--color-${btnType + '-500)'}`}/>}
             {children}
             {icon && (iconDir === 'right' &&
-                <Icon icon_src={icon} icon_alt={'button-icon'} width={'15rem'}/>)}
+                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15rem'}/>)}
         </ButtonStyled>
     )
 }

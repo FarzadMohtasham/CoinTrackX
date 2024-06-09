@@ -107,7 +107,7 @@ export default function Header(): JSX.Element {
                     <Button btnType={'black'}
                             borderRadius={'lg'}
                             outline>
-                        {userLoggedIn && <Icon icon_src={'dashboard.svg'} width={'20rem'}/>}
+                        {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20rem'}/>}
                         {userLoggedIn ? 'Go To Dashboard' : 'Login'}
                     </Button>
                 </NavLink>

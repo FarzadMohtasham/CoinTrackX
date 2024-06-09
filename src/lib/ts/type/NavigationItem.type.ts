@@ -8,18 +8,18 @@ export type NavigationItemStyledProps = {
 export type NavigationProps = {
     children: ReactNode;
     active?: boolean;
-    icon_src: string;
-    active_icon_src: string;
-    icon_alt?: string;
-    icon_width?: string;
-    on_click?: (navItemName: string) => void;
+    iconSrc: string;
+    activeIconSrc: string;
+    iconAlt?: string;
+    iconWidth?: string;
+    onClick?: (navItemName: string) => void;
 }
 
 export type NavigationItemType = {
     name: string;
     title: string;
     link: string;
-    icon_src: string;
-    active_icon_src: string;
+    iconSrc: string;
+    activeIconSrc: string;
     active: boolean;
 }

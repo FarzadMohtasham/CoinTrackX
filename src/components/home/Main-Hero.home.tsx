@@ -85,11 +85,11 @@ export default function Hero(): JSX.Element {
     const userLoggedIn: boolean = useUserLoggedIn()
 
     return (
-        <Container background_style={css`background: linear-gradient(to top, #f8f7fe, #fff);`}>
+        <Container backgroundStyle={css`background: linear-gradient(to top, #f8f7fe, #fff);`}>
             <HeroStyled>
                 <div className={'left-col'}>
                     <span>Sign in to your secure wallet!</span>
-                    <Heading heading_type={'h1'}>The next-gen crypto tracking & trading training platform</Heading>
+                    <Heading headingType={'h1'}>The next-gen crypto tracking & trading training platform</Heading>
                     <p>Track your crypto currency coin and tokens in one place, from BTC and ETH to XRP...</p>
                     <Link to={'login'}>
                         <Button borderRadius={'lg'}>

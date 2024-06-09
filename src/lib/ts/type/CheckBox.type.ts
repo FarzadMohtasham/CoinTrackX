@@ -4,8 +4,8 @@ export type CheckboxTypes = 'primary' | 'danger' | 'black'
 
 export type CheckboxProps = {
     label: string | null;
-    check_box_setter: (val: boolean) => void;
-    default_value?: boolean;
+    checkBoxSetter: (val: boolean) => void;
+    defaultValue?: boolean;
     type?: CheckboxTypes;
 }
 

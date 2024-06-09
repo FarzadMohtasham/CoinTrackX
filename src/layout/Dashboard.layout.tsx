@@ -9,7 +9,7 @@ import Profile from '@components/ui/Profile.tsx'
 import Alert from '@components/dashboard/Notifications.tsx'
 
 import {NavigationListData} from '@data/NavigationList.data.ts'
-import {NavigationItemType} from '@ts/type/NavigationItem.type.ts'
+import {NavigationItemType, NavigationProps} from '@ts/type/NavigationItem.type.ts'
 import useDashboardProtectRoute from '@hooks/useDashboardProtectRoute.ts'
 import Icon from '@components/ui/Icon.tsx'
 
@@ -214,11 +214,11 @@ export default function DashboardLayout() {
         <LayoutContainer>
             <LayoutHeader>
                 <div className={'left-col'}>
-                    <Icon icon_src={'menu-burger.svg'}
+                    <Icon iconSrc={'menu-burger.svg'}
                           width={'25rem'}
-                          class_name={'menu-burger'}/>
-                    <Heading heading_type={'h5'}
-                             font_weight={'bold'}>
+                          className={'menu-burger'}/>
+                    <Heading headingType={'h5'}
+                             fontWeight={'bold'}>
                         {selectedNavName}
                     </Heading>
                 </div>
@@ -236,13 +236,14 @@ export default function DashboardLayout() {
                 <div className={'navigation-list'}>
                     {
                         navigationList.map((navItem: NavigationItemType, index: number): JSX.Element => {
-                            const navItemProps = {
-                                icon_src: navItem.icon_src,
-                                active_icon_src: navItem.active_icon_src,
-                                icon_alt: navItem.name,
-                                icon_width: '20rem',
+                            const navItemProps: NavigationProps = {
+                                iconSrc: navItem.iconSrc,
+                                activeIconSrc: navItem.activeIconSrc,
+                                iconAlt: navItem.name,
+                                iconWidth: '20rem',
                                 active: navItem.active,
-                                on_click: () => onNavigationItemHandler(navItem.name),
+                                onClick: () => onNavigationItemHandler(navItem.name),
+                                children: null,
                             }
 
                             return (

@@ -138,13 +138,13 @@ export default function Login(): JSX.Element {
                     <Link to={'/'}>
                         <Button btnType={'white'}
                                 icon={'back-icon.png'}
-                                class_name={'back-btn'}
-                                remove_padding>
+                                className={'back-btn'}
+                                removePadding>
                             Back
                         </Button>
                     </Link>
-                    <Heading class_name={'heading'}
-                             heading_type={'h3'}>Sign Up</Heading>
+                    <Heading className={'heading'}
+                             headingType={'h3'}>Sign Up</Heading>
                     <span className={'heading-desc'}>Create an account to continue</span>
                 </HeadContent>
 
@@ -153,7 +153,7 @@ export default function Login(): JSX.Element {
                         <Button expanded
                                 outline
                                 borderRadius={'lg'}
-                                on_click_handler={onGoogleAuthHandler}
+                                onClickHandler={onGoogleAuthHandler}
                                 icon={'google-logo.png'}
                                 btnType={'black'}>
                             Google
@@ -161,7 +161,7 @@ export default function Login(): JSX.Element {
                         <Button expanded
                                 outline
                                 borderRadius={'lg'}
-                                on_click_handler={onAppleAuthHandler}
+                                onClickHandler={onAppleAuthHandler}
                                 icon={'apple-logo.png'}
                                 btnType={'black'}>
                             Apple
@@ -169,40 +169,40 @@ export default function Login(): JSX.Element {
                     </div>
                     <Separator title={'OR'}/>
                     <div className={'name-inputs-wrapper'}>
-                        <InputField place_holder={'First name'}
-                                    on_change_handler={setFirstName}
-                                    icon_src={'user-icon.svg'}
-                                    focus_icon_src={'user-focus-icon.svg'}
-                                    error_message={firstNameFieldError}
-                                    invalid_error_messages={['first name is a required field']}
+                        <InputField placeHolder={'First name'}
+                                    onChangeHandler={setFirstName}
+                                    iconSrc={'user-icon.svg'}
+                                    focusIconSrc={'user-focus-icon.svg'}
+                                    errorMessage={firstNameFieldError}
+                                    invalidErrorMessages={['first name is a required field']}
                         />
-                        <InputField place_holder={'Last name'}
-                                    on_change_handler={setLastName}
-                                    icon_src={'user-icon.svg'}
-                                    focus_icon_src={'user-focus-icon.svg'}
-                                    error_message={lastNameFieldError}
-                                    invalid_error_messages={['last name is a required field']}
+                        <InputField placeHolder={'Last name'}
+                                    onChangeHandler={setLastName}
+                                    iconSrc={'user-icon.svg'}
+                                    focusIconSrc={'user-focus-icon.svg'}
+                                    errorMessage={lastNameFieldError}
+                                    invalidErrorMessages={['last name is a required field']}
                         />
                     </div>
-                    <InputField place_holder={'email'}
-                                on_change_handler={setEmail}
-                                icon_src={'email-icon.svg'}
-                                focus_icon_src={'email-focus-icon.svg'}
-                                error_message={emailFieldError}
-                                invalid_error_messages={['email is a required field']}
+                    <InputField placeHolder={'email'}
+                                onChangeHandler={setEmail}
+                                iconSrc={'email-icon.svg'}
+                                focusIconSrc={'email-focus-icon.svg'}
+                                errorMessage={emailFieldError}
+                                invalidErrorMessages={['email is a required field']}
                     />
-                    <PasswordFieldInput place_holder={'Password'}
-                                        invalid_error_messages={['password is a required field']}
-                                        icon_src={'password-icon.svg'}
-                                        error_message={passwordFieldError}
-                                        focus_icon_src={'password-focus-icon.svg'}
-                                        on_change_handler={setPassword}
+                    <PasswordFieldInput placeHolder={'Password'}
+                                        invalidErrorMessages={['password is a required field']}
+                                        iconSrc={'password-icon.svg'}
+                                        errorMessage={passwordFieldError}
+                                        focusIconSrc={'password-focus-icon.svg'}
+                                        onChangeHandler={setPassword}
                     />
                     <CheckboxInput label={'I agree to the Terms & Conditions'}
-                                   check_box_setter={setAgreeTerms}/>
+                                   checkBoxSetter={setAgreeTerms}/>
                     <Button borderRadius={'lg'}
                             disabled={signUpButtonDisabled}
-                            on_click_handler={onSignupHandler}
+                            onClickHandler={onSignupHandler}
                             isLoading={authLoading}
                             expanded>
                         Sign up

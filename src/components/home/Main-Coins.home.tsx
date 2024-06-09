@@ -55,7 +55,7 @@ const CoinsListStyled = styled.div`
 
 export default function Coins(): JSX.Element {
     return (
-        <Container background_style={css`background: linear-gradient(to bottom, #EFEDFD, #FFFFFF);`}>
+        <Container backgroundStyle={css`background: linear-gradient(to bottom, #EFEDFD, #FFFFFF);`}>
             <CoinsWrapperStyled>
                 <HeadingBox label={'Coins'}
                             heading={'A lot of coin & tokens!'}

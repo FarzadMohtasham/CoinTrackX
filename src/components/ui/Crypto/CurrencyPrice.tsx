@@ -29,92 +29,92 @@ const currencyList: SelectMenuItem[] = [
         name: 'btc',
         value: 'bitcoin',
         default: true,
-        icon_src: 'crypto/btc.svg',
+        iconSrc: 'crypto/btc.svg',
     },
     {
         name: 'eth',
         value: 'ethereum',
         default: false,
-        icon_src: 'crypto/eth.svg'
+        iconSrc: 'crypto/eth.svg'
     },
     {
         name: 'bnb',
         value: 'binance-coin',
         default: false,
-        icon_src: 'crypto/bnb.svg'
+        iconSrc: 'crypto/bnb.svg'
     },
     {
         name: 'xrp',
         value: 'xrp',
         default: false,
-        icon_src: 'crypto/xrp.svg'
+        iconSrc: 'crypto/xrp.svg'
     },
     {
         name: 'sol',
         value: 'solana',
         default: false,
-        icon_src: 'crypto/sol.svg'
+        iconSrc: 'crypto/sol.svg'
     },
     {
         name: 'dogecoin',
         value: 'dogecoin',
         default: false,
-        icon_src: 'crypto/doge.svg'
+        iconSrc: 'crypto/doge.svg'
     },
 ]
 const chartIntervals: SelectMenuItem[] = [
     {
         name: '1 Min',
         value: 'm1',
-        icon_src: '',
+        iconSrc: '',
         default: false,
     },
     {
         name: '5 Min',
         value: 'm5',
-        icon_src: '',
+        iconSrc: '',
         default: false,
     },
     {
         name: '15 Min',
         value: 'm15',
-        icon_src: '',
+        iconSrc: '',
         default: false,
     },
     {
         name: '30 Min',
         value: 'm30',
-        icon_src: '',
+        iconSrc: '',
         default: false,
     },
     {
         name: '1 Hour',
         value: 'h1',
-        icon_src: '',
+        iconSrc: '',
         default: false,
     },
     {
         name: '2 Hour',
         value: 'h2',
-        icon_src: '',
+        iconSrc: '',
         default: false,
     },
     {
         name: '6 Hour',
         value: 'h6',
-        icon_src: '',
+        iconSrc: '',
         default: false,
     },
     {
         name: '12 Hour',
         value: 'h12',
-        icon_src: '',
+        iconSrc: '',
         default: false,
     },
     {
         name: '1 Day',
         value: 'd1',
-        icon_src: '',
+        iconSrc: '',
         default: true,
     },
 ]
@@ -250,12 +250,12 @@ export default function CurrencyPrice(): JSX.Element {
                     Currency Price
                 </span>
                 <div className={'options'}>
-                    <Select $menu_items={currencyList}
-                            $has_icon
-                            $new_value_setter={(newState: string) => setSelectedCurrency(newState)}
+                    <Select $menuItems={currencyList}
+                            $hasIcon
+                            $newValueSetter={(newState: string) => setSelectedCurrency(newState)}
                     />
-                    <Select $menu_items={chartIntervals}
-                            $new_value_setter={(newState: AssetHistoryInterval) => setSelectedChartInterval(newState)}
+                    <Select $menuItems={chartIntervals}
+                            $newValueSetter={(newState: AssetHistoryInterval) => setSelectedChartInterval(newState)}
                     />
                 </div>
             </Header>
@@ -274,7 +274,7 @@ export default function CurrencyPrice(): JSX.Element {
                                     Failed to load chart data, Please reload chart
                                 </span>
                                 <Button icon={'chart-white.svg'}
-                                        on_click_handler={reloadChartHandler}>
+                                        onClickHandler={reloadChartHandler}>
                                     Reload Chart
                                 </Button>
                             </RequestError>

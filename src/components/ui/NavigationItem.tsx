@@ -30,20 +30,20 @@ const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
 export default function NavigationItem(props: NavigationProps): JSX.Element {
     const {
         children = 'undefined children',
-        icon_src,
-        active_icon_src,
-        icon_alt = 'navigation-icon',
+        iconSrc,
+        activeIconSrc,
+        iconAlt = 'navigation-icon',
         active = false,
-        icon_width = '20rem',
-        on_click,
+        iconWidth = '20rem',
+        onClick,
     } = props
 
     return (
         <NavigationItemContainer $active={active}
-                                 onClick={on_click}>
-            <Icon icon_src={active ? active_icon_src : icon_src}
-                  icon_alt={icon_alt}
-                  width={icon_width}
+                                 onClick={onClick}>
+            <Icon iconSrc={active ? activeIconSrc : iconSrc}
+                  iconAlt={iconAlt}
+                  width={iconWidth}
             />
             <span>
                 {children}

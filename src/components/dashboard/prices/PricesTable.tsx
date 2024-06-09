@@ -125,8 +125,8 @@ export default function PricesTable(): JSX.Element {
             cell: (props: CellContext<any, any>) => {
                 return (
                     <ColumnName>
-                        <Icon icon_src={props.renderValue().logoSrc}
-                              class_name={'left-col'}
+                        <Icon iconSrc={props.renderValue().logoSrc}
+                              className={'left-col'}
                               width={'35rem'}
                         />
                         <div className={'right-col'}>
@@ -162,7 +162,7 @@ export default function PricesTable(): JSX.Element {
                 <Badge type={Number(props.renderValue()) >= 0 ? 'success' : 'danger'}
                        outline
                        borderRadius={'full'}>
-                    <Icon icon_src={Number(props.renderValue()) >= 0 ? 'arrow-up.svg' : 'arrow-down.svg'}
+                    <Icon iconSrc={Number(props.renderValue()) >= 0 ? 'arrow-up.svg' : 'arrow-down.svg'}
                           width={'8rem'}
                     />
                     %{Number(props.renderValue()).toFixed(2)}
@@ -179,7 +179,7 @@ export default function PricesTable(): JSX.Element {
             accessorKey: 'watchlist',
             header: '',
             cell: (props: CellContext<any, any>) => <ColumnCellSpan>
-                <Icon width={'20rem'} icon_src={props.renderValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
+                <Icon width={'20rem'} iconSrc={props.renderValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
             </ColumnCellSpan>
         },
     ], []);
@@ -250,17 +250,17 @@ export default function PricesTable(): JSX.Element {
                     :
                     <SearchBar>
                         <div className={'left-col'}>
-                            <Input place_holder={'Search crypto'}
-                                   icon_src={'search-gray.svg'}
-                                   focus_icon_src={'search-gray-active.svg'}
-                                   on_change_handler={value => setSearch(value)}/>
+                            <Input placeHolder={'Search crypto'}
+                                   iconSrc={'search-gray.svg'}
+                                   focusIconSrc={'search-gray-active.svg'}
+                                   onChangeHandler={value => setSearch(value)}/>
                         </div>
                         <div className={'right-col'}>
                             {
                                 showOnlyWatchlist ?
                                     <Button icon={'watchlist-purple.svg'}
                                             borderRadius={'md'}
-                                            on_click_handler={watchlistBtnHandler}
+                                            onClickHandler={watchlistBtnHandler}
                                             btnType={'primary'}
                                             outline>
                                         Watchlist
@@ -268,7 +268,7 @@ export default function PricesTable(): JSX.Element {
                                     :
                                     <Button icon={'watchlist-gray.svg'}
                                             borderRadius={'md'}
-                                            on_click_handler={watchlistBtnHandler}
+                                            onClickHandler={watchlistBtnHandler}
                                             btnType={'gray'}
                                             outline>
                                         Watchlist
@@ -276,7 +276,7 @@ export default function PricesTable(): JSX.Element {
                             }
                             <Button icon={'portfolio-purple.svg'}
                                     borderRadius={'md'}
-                                    on_click_handler={portfolioBtnHandler}
+                                    onClickHandler={portfolioBtnHandler}
                                     outline>
                                 Portfolio
                             </Button>

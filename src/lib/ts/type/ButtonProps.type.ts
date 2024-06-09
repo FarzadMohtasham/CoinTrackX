@@ -14,12 +14,12 @@ export type Properties = {
     tabletMedia: string | RuleSet<object>;
     desktopMedia: string | RuleSet<object>;
     cursor: string | RuleSet<object>;
-    no_border: boolean;
+    noBorder: boolean;
 }
 
 export type ButtonPropsType = {
     children: React.ReactNode;
-    class_name?: string;
+    className?: string;
     btnType?: 'primary' | 'secondary' | 'black' | 'white' | 'danger' | 'gray';
     icon?: string | null;
     iconDir?: 'left' | 'right';
@@ -29,9 +29,9 @@ export type ButtonPropsType = {
     borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
     outline?: boolean;
     hideOn?: 'mobile' | 'tablet' | 'desktop' | 'none';
-    on_click_handler?: () => void;
-    remove_padding?: boolean;
+    onClickHandler?: () => void;
+    removePadding?: boolean;
     disabled?: boolean;
     isLoading?: boolean;
-    no_border?: boolean;
+    noBorder?: boolean;
 }

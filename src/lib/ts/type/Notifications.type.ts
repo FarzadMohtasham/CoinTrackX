@@ -11,7 +11,7 @@ export type NotificationStyledProps = {
 export type Notification = {
     id: number;
     title: string;
-    created_at: ReactNode;
+    createdAt: ReactNode;
     message: string;
     type: 'success' | 'error' | 'info' | 'warning';
     priority?: string;

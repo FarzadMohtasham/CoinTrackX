@@ -11,7 +11,7 @@ type SimpleNotifProps = {
     onNotifClose?: (notifId: number) => void;
     options: Notification & {
         closable?: boolean;
-        icon_src?: string;
+        iconSrc?: string;
         width?: NotifWidth;
     }
 }
@@ -82,10 +82,10 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
         id,
         title,
         type,
-        created_at,
+        createdAt,
         message,
         closable,
-        icon_src = 'rocket-lunch.svg',
+        iconSrc = 'rocket-lunch.svg',
         width = '100%',
     } = props.options
 
@@ -106,7 +106,7 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
             {
                 !closed && <SimpleNotifContainer $type={type} $width={width}>
                     <LeftColumnWrapper className={'left-col'}>
-                        <Icon icon_src={icon_src}
+                        <Icon iconSrc={iconSrc}
                               width={'25rem'}/>
                     </LeftColumnWrapper>
 
@@ -116,7 +116,7 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
                             <span
                                 className={'created-at'}>
                         {
-                            formatDistance(new Date(String(created_at)), new Date(), {addSuffix: true})
+                            formatDistance(new Date(String(createdAt)), new Date(), {addSuffix: true})
                         }
                     </span>
                         </div>
@@ -125,9 +125,9 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
 
                     {
                         closable && <RightColumnWrapper className={'right-col'}>
-                            <Icon icon_src={'close.svg'}
+                            <Icon iconSrc={'close.svg'}
                                   width={'20rem'}
-                                  on_click_handler={onCloseHandler}
+                                  onClickHandler={onCloseHandler}
                             />
                         </RightColumnWrapper>
                     }

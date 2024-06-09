@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 import Icon from '../ui/Icon.tsx'
 
-import {useNotificationsQuery} from '@query/useNotifications.query.tsx'
+import {useNotificationsQuery} from '@query/useNotifications.query.ts'
 
 import {
     Notification,
@@ -89,17 +89,16 @@ export default function Notifications(): JSX.Element {
                     <Skeleton width={'4rem'} height={'4rem'} style={{borderRadius: '.8rem'}}/>
                     :
                     notifications.length > 0 && <NotificationsContainer ref={notificationRef}>
-                        <Icon icon_src={'notifications.svg'}
-                              icon_alt={'notification icon'}
+                        <Icon iconSrc={'notifications.svg'}
+                              iconAlt={'notification icon'}
                               width={'30rem'}
-                              class_name={'notifications-icon'}
-                              on_click_handler={onNotificationsClickHandler}/>
+                              className={'notifications-icon'}
+                              onClickHandler={onNotificationsClickHandler}/>
 
                         {
                             notifIsOpen && <NotificationsWrapper>
                                 {
                                     notifications.map((notificationOptions: Notification, index: number) => {
-                                        console.log(notificationOptions.id)
                                         return (
                                             <SimpleNotification options={notificationOptions}
                                                                 onNotifClose={removeNotification}

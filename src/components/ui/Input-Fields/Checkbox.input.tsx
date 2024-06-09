@@ -31,16 +31,16 @@ const CheckBoxContainer = styled.div<CheckboxStyledProps>`
 export default function CheckboxInput(props: CheckboxProps): JSX.Element {
     const {
         label = null,
-        check_box_setter,
-        default_value = false,
+        checkBoxSetter,
+        defaultValue = false,
         type = 'primary'
     } = props
 
-    const [checked, setChecked] = useState<boolean>(default_value)
+    const [checked, setChecked] = useState<boolean>(defaultValue)
 
     const checkboxOnClickHandler = (): void => {
         setChecked((currentChecked: boolean) => !currentChecked)
-        check_box_setter(!checked)
+        checkBoxSetter(!checked)
     }
 
     const checkboxDataAccessKey = (key: CheckboxTypes) => {

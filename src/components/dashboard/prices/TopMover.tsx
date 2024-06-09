@@ -66,11 +66,11 @@ const TopMoverRightCol = styled.div`
 
 export default function TopMover(props: TopMoverProps): JSX.Element {
     const {
-        coin_id = 'undefined',
-        coin_symbol = 'undefined',
+        coinId = 'undefined',
+        coinSymbol = 'undefined',
         price = 'undefined',
         changePercent24Hr = 'undefined',
-        is_loading = false,
+        isLoading = false,
     }: TopMoverProps = props
 
     const calc24HChangeAmount = (): string => {
@@ -100,7 +100,7 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
     return (
         <TopMoverContainer>
             {
-                is_loading ?
+                isLoading ?
                     <Skeleton height={'100%'}
                               width={'100%'}
                               borderRadius={'.8rem'}
@@ -109,14 +109,14 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
                     <TopMoverWrapper>
                         <TopMoverLeftCol>
                             <div className={'coin-icon-wrapper'}>
-                                <Icon icon_src={`crypto/${coin_symbol.toLowerCase()}.svg`}
+                                <Icon iconSrc={`crypto/${coinSymbol.toLowerCase()}.svg`}
                                       width={'40rem'}
                                 />
                             </div>
 
                             <div className={'coin-info-wrapper'}>
-                                <span className={'coin-id'}>{coin_id}</span>
-                                <span className={'coin-symbol'}>{coin_symbol}</span>
+                                <span className={'coin-id'}>{coinId}</span>
+                                <span className={'coin-symbol'}>{coinSymbol}</span>
                             </div>
                         </TopMoverLeftCol>
 

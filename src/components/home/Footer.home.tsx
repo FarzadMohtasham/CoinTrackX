@@ -108,8 +108,8 @@ const ColumnItem = styled.li`
 
 export default function Footer(): JSX.Element {
     return (
-        <Container tag_type={'footer'}
-                   background_style={css`background-color: #f7f6fe;`}>
+        <Container tagType={'footer'}
+                   backgroundStyle={css`background-color: #f7f6fe;`}>
             <FooterWrapper>
                 <FooterStyled>
                     <div className={'footer-column footer-column-1 brand-info'}>
@@ -131,9 +131,9 @@ export default function Footer(): JSX.Element {
                     </div>
 
                     <div className={'footer-column footer-column-2'}>
-                        <Heading class_name={'footer-heading'}
-                                 heading_type={'h6'}
-                                 font_weight={'500'}>
+                        <Heading className={'footer-heading'}
+                                 headingType={'h6'}
+                                 fontWeight={'500'}>
                             Company
                         </Heading>
 
@@ -153,9 +153,9 @@ export default function Footer(): JSX.Element {
                     </div>
 
                     <div className={'footer-column footer-column-3'}>
-                        <Heading class_name={'footer-heading'}
-                                 heading_type={'h6'}
-                                 font_weight={'500'}>
+                        <Heading className={'footer-heading'}
+                                 headingType={'h6'}
+                                 fontWeight={'500'}>
                             Features
                         </Heading>
 
@@ -175,9 +175,9 @@ export default function Footer(): JSX.Element {
                     </div>
 
                     <div className={'footer-column footer-column-4'}>
-                        <Heading class_name={'footer-heading'}
-                                 heading_type={'h6'}
-                                 font_weight={'500'}>
+                        <Heading className={'footer-heading'}
+                                 headingType={'h6'}
+                                 fontWeight={'500'}>
                             Resources
                         </Heading>
 

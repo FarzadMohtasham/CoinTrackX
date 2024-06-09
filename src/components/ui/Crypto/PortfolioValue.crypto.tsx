@@ -45,7 +45,7 @@ export default function PortfolioValueCrypto(): JSX.Element {
         <Container>
             <LeftCol>
                 <div className={'top-bar'}>
-                    <Icon icon_src={'portfolio-value.svg'}
+                    <Icon iconSrc={'portfolio-value.svg'}
                           width={'20rem'}
                     />
                     <span>PORTFOLIO VALUE</span>
@@ -62,7 +62,7 @@ export default function PortfolioValueCrypto(): JSX.Element {
                 <Badge borderRadius={'full'}
                        type={'success'}
                        outline>
-                    <Icon icon_src={'arrow-up.svg'} width={'12rem'}/>
+                    <Icon iconSrc={'arrow-up.svg'} width={'12rem'}/>
                     1.37%
                 </Badge>
             </RightCol>

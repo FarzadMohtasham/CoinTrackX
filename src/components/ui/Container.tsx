@@ -9,7 +9,7 @@ const ContainerStyled = styled.div<ContainerStyledProps>`
   flex-direction: column;
   align-items: center;
 
-  ${(props: any) => props.$background_style}
+  ${(props: any) => props.$backgroundStyle}
   .wrapper {
     width: 95%;
     max-width: 95%;
@@ -54,13 +54,13 @@ const ContainerStyled = styled.div<ContainerStyledProps>`
 export default function Container(props: ContainerPropsType): JSX.Element {
     const {
         children,
-        background_style = '',
-        tag_type = 'div'
+        backgroundStyle = '',
+        tagType = 'div'
     } = props
 
     return (
-        <ContainerStyled $background_style={background_style}
-                         as={tag_type}>
+        <ContainerStyled $backgroundStyle={backgroundStyle}
+                         as={tagType}>
             <div className={'wrapper'}>
                 {children}
             </div>

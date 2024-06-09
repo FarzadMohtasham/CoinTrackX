@@ -37,7 +37,7 @@ const InputStyled = styled.div`
 `
 
 const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
-  border-color: ${props => props.$input_selected === 'true' ? 'var(--color-black-200)' : 'var(--color-black-50)'};
+  border-color: ${props => props.$inputSelected === 'true' ? 'var(--color-black-200)' : 'var(--color-black-50)'};
 `
 
 const ErrorContainer = styled.span`
@@ -49,18 +49,18 @@ export default function Input(props: InputProps): JSX.Element {
     const [inputValue, setInputValue] = useState<string>('')
 
     const {
-        place_holder = 'Undefined',
-        on_change_handler = (): void => {
+        placeHolder = 'Undefined',
+        onChangeHandler = (): void => {
         },
-        icon_src = 'email-icon.svg',
-        focus_icon_src = 'email-icon.svg',
-        icon_width = '20rem',
-        error_message = null,
-        invalid_error_messages = []
+        iconSrc = 'email-icon.svg',
+        focusIconSrc = 'email-icon.svg',
+        iconWidth = '20rem',
+        errorMessage = null,
+        invalidErrorMessages = []
     } = props
 
     useEffect((): void => {
-        on_change_handler(inputValue)
+        onChangeHandler(inputValue)
     }, [inputValue])
 
     const inputOnFocusHandler = () => setInputFieldSelected(true)
@@ -68,21 +68,21 @@ export default function Input(props: InputProps): JSX.Element {
 
     return (
         <FieldContainer>
-            <InputFieldContainer $input_selected={inputFieldSelected.toString()}>
-                {!inputFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
-                {inputFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
+            <InputFieldContainer $inputSelected={inputFieldSelected.toString()}>
+                {!inputFieldSelected && <Icon width={iconWidth} iconSrc={iconSrc}/>}
+                {inputFieldSelected && <Icon width={iconWidth} iconSrc={focusIconSrc}/>}
                 <input type={'text'}
                        name={'input'}
-                       placeholder={place_holder}
+                       placeholder={placeHolder}
                        value={inputValue}
                        onFocus={inputOnFocusHandler}
                        onBlur={inputOnBlurHandler}
                        onChange={e => setInputValue(e.target.value)}/>
             </InputFieldContainer>
             {
-                (invalid_error_messages.length !== 0 && error_message) && (
-                    invalid_error_messages.find((val: string): boolean => val === error_message) === undefined &&
-                    <ErrorContainer>{error_message}</ErrorContainer>
+                (invalidErrorMessages.length !== 0 && errorMessage) && (
+                    invalidErrorMessages.find((val: string): boolean => val === errorMessage) === undefined &&
+                    <ErrorContainer>{errorMessage}</ErrorContainer>
                 )
             }
         </FieldContainer>

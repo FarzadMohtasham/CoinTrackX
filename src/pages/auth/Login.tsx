@@ -95,13 +95,13 @@ export default function Login(): JSX.Element {
                     <Link to={'/'}>
                         <Button btnType={'white'}
                                 icon={'back-icon.png'}
-                                class_name={'back-btn'}
-                                remove_padding>
+                                className={'back-btn'}
+                                removePadding>
                             Back
                         </Button>
                     </Link>
-                    <Heading class_name={'heading'}
-                             heading_type={'h3'}>Log In</Heading>
+                    <Heading className={'heading'}
+                             headingType={'h3'}>Log In</Heading>
                     <span className={'heading-desc'}>Welcome back, you’ve been missed!</span>
                 </HeadContent>
 
@@ -110,7 +110,7 @@ export default function Login(): JSX.Element {
                         <Button expanded
                                 outline
                                 borderRadius={'lg'}
-                                on_click_handler={onGoogleAuthHandler}
+                                onClickHandler={onGoogleAuthHandler}
                                 icon={'google-logo.png'}
                                 btnType={'black'}>
                             Google
@@ -118,32 +118,32 @@ export default function Login(): JSX.Element {
                         <Button expanded
                                 outline
                                 borderRadius={'lg'}
-                                on_click_handler={onAppleAuthHandler}
+                                onClickHandler={onAppleAuthHandler}
                                 icon={'apple-logo.png'}
                                 btnType={'black'}>
                             Apple
                         </Button>
                     </div>
                     <Separator title={'OR'}/>
-                    <InputField place_holder={'email'}
-                                on_change_handler={setEmail}
-                                icon_src={'email-icon.svg'}
-                                focus_icon_src={'email-focus-icon.svg'}
-                                error_message={emailFieldError}
-                                invalid_error_messages={['email is a required field']}
+                    <InputField placeHolder={'email'}
+                                onChangeHandler={setEmail}
+                                iconSrc={'email-icon.svg'}
+                                focusIconSrc={'email-focus-icon.svg'}
+                                errorMessage={emailFieldError}
+                                invalidErrorMessages={['email is a required field']}
                     />
-                    <PasswordFieldInput place_holder={'Password'}
-                                        invalid_error_messages={['password is a required field']}
-                                        icon_src={'password-icon.svg'}
-                                        error_message={passwordFieldError}
-                                        focus_icon_src={'password-focus-icon.svg'}
-                                        on_change_handler={setPassword}
+                    <PasswordFieldInput placeHolder={'Password'}
+                                        invalidErrorMessages={['password is a required field']}
+                                        iconSrc={'password-icon.svg'}
+                                        errorMessage={passwordFieldError}
+                                        focusIconSrc={'password-focus-icon.svg'}
+                                        onChangeHandler={setPassword}
                     />
                     <CheckboxInput label={'Remember me'}
-                                   check_box_setter={setRememberMe}/>
+                                   checkBoxSetter={setRememberMe}/>
                     <Button borderRadius={'lg'}
                             disabled={emailFieldError !== null || passwordFieldError !== null}
-                            on_click_handler={onLoginHandler}
+                            onClickHandler={onLoginHandler}
                             isLoading={authLoading}
                             expanded>
                         Log in

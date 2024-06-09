@@ -1,14 +1,14 @@
 export type TopMoverProps = {
-    coin_id: string;
-    coin_symbol: string;
+    coinId: string;
+    coinSymbol: string;
     price: string;
     changePercent24Hr: string;
-    is_loading: boolean;
+    isLoading: boolean;
 }
 
 export type TopMover = {
-    coin_id: string;
-    coin_symbol: string;
+    coinId: string;
+    coinSymbol: string;
     price: string;
     changePercent24Hr: string;
 }

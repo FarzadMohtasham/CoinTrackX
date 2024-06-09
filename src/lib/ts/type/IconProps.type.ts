@@ -1,8 +1,8 @@
 export type IconProps = {
-    icon_src: string;
-    icon_alt?: string;
+    iconSrc: string;
+    iconAlt?: string;
     width?: string;
     height?: string;
-    class_name?: string;
-    on_click_handler?: () => void;
+    className?: string;
+    onClickHandler?: () => void;
 }

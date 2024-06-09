@@ -70,7 +70,7 @@ const TestimonialsWrapper = styled.div.attrs({
 
 export default function Testimonials(): JSX.Element {
     return (
-        <Container background_style={css`background: linear-gradient(to top, #f7f6fe, #ffffff);`}>
+        <Container backgroundStyle={css`background: linear-gradient(to top, #f7f6fe, #ffffff);`}>
             <TestimonialsWrapper>
                 <HeadingBox label={'TESTIMONIALS'}
                             heading={'Trusted by more than 100K+ people'}

@@ -56,20 +56,20 @@ export default function TopMovers(): JSX.Element {
         {
             price: '1200430',
             changePercent24Hr: '323.45',
-            coin_id: 'btc',
-            coin_symbol: 'btc'
+            coinId: 'btc',
+            coinSymbol: 'btc'
         },
         {
             price: '1200430',
             changePercent24Hr: '323.45',
-            coin_id: 'btc',
-            coin_symbol: 'btc'
+            coinId: 'btc',
+            coinSymbol: 'btc'
         },
         {
             price: '1200430',
             changePercent24Hr: '323.45',
-            coin_id: 'btc',
-            coin_symbol: 'btc'
+            coinId: 'btc',
+            coinSymbol: 'btc'
         },
     ])
     const {data, error, refetch, isLoading} = useGetAssetsQuery()
@@ -91,8 +91,8 @@ export default function TopMovers(): JSX.Element {
                 return {
                     price: Number(asset.priceUsd).toFixed(3).toString(),
                     changePercent24Hr: Number(asset.changePercent24Hr).toFixed(2).toString(),
-                    coin_id: asset.id,
-                    coin_symbol: asset.symbol,
+                    coinId: asset.id,
+                    coinSymbol: asset.symbol,
                 }
             })
 
@@ -103,17 +103,17 @@ export default function TopMovers(): JSX.Element {
     return (
         <TopMoversContainer>
             <TopMoversHeaderWrapper>
-                <Heading heading_type={'h6'}
-                         font_weight={'500'}>
+                <Heading headingType={'h6'}
+                         fontWeight={'500'}>
                     Top Movers
                 </Heading>
 
                 <Button btnType={error ? 'primary' : 'gray'}
                         icon={isLoading ? null : 'refresh-gray.svg'}
-                        on_click_handler={onReloadHandler}
+                        onClickHandler={onReloadHandler}
                         isLoading={isLoading}
-                        no_border
                         outline={!error}
+                        noBorder
                 >
                     Reload
                 </Button>
@@ -121,9 +121,9 @@ export default function TopMovers(): JSX.Element {
             {
                 error ?
                     <ErrorBox>
-                        <Heading heading_type={'h6'}
-                                 class_name={'error-title'}
-                                 font_weight={'500'}>
+                        <Heading headingType={'h6'}
+                                 className={'error-title'}
+                                 fontWeight={'500'}>
                             Oops, Something went wrong!
                         </Heading>
                         <span className={'error-desc'}>Please reload...</span>
@@ -134,7 +134,7 @@ export default function TopMovers(): JSX.Element {
                             topMovers?.map((topMover: TopMoverT, i: number) => {
                                 return (
                                     <TopMover {...topMover}
-                                              is_loading={isLoading}
+                                              isLoading={isLoading}
                                               key={'top-mover-' + i}/>
                                 )
                             })

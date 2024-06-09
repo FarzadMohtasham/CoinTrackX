@@ -32,7 +32,7 @@ const PasswordInputStyled = styled.div`
 `
 
 const PasswordFieldContainer = styled(PasswordInputStyled)<InputStyledProps>`
-  border-color: ${props => props.$input_selected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
+  border-color: ${props => props.$inputSelected === 'true' ? 'var(--color-black-400)' : 'var(--color-black-50)'};
 
   .visible-icon, .invisible-icon {
     cursor: pointer;
@@ -49,18 +49,18 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false)
 
     const {
-        place_holder = 'Undefined',
-        on_change_handler = (): void => {
+        placeHolder = 'Undefined',
+        onChangeHandler = (): void => {
         },
-        icon_src = 'email-focus-icon.svg',
-        focus_icon_src = 'password-focus-icon.svg',
-        icon_width = '20rem',
-        error_message = null,
-        invalid_error_messages = []
+        iconSrc = 'email-focus-icon.svg',
+        focusIconSrc = 'password-focus-icon.svg',
+        iconWidth = '20rem',
+        errorMessage = null,
+        invalidErrorMessages = []
     }: InputProps = props
 
     useEffect((): void => {
-        on_change_handler(passwordValue)
+        onChangeHandler(passwordValue)
     }, [passwordValue])
 
     const handlePasswordVisible = (): void => {
@@ -69,33 +69,33 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
 
     return (
         <Fragment>
-            <PasswordFieldContainer $input_selected={passwordFieldSelected.toString()}>
-                {!passwordFieldSelected && <Icon width={icon_width} icon_src={icon_src}/>}
-                {passwordFieldSelected && <Icon width={icon_width} icon_src={focus_icon_src}/>}
+            <PasswordFieldContainer $inputSelected={passwordFieldSelected.toString()}>
+                {!passwordFieldSelected && <Icon width={iconWidth} iconSrc={iconSrc}/>}
+                {passwordFieldSelected && <Icon width={iconWidth} iconSrc={focusIconSrc}/>}
                 <input type={passwordVisible ? 'text' : 'password'}
                        name={'input'}
-                       placeholder={place_holder}
+                       placeholder={placeHolder}
                        value={passwordValue}
                        onFocus={() => setInputFieldSelected(true)}
                        onBlur={() => setInputFieldSelected(false)}
                        onChange={e => setPasswordValue(e.target.value)}/>
                 {
                     passwordVisible ?
-                        <Icon width={icon_width} icon_alt={'visible icon'}
-                              class_name={'visible-icon'}
-                              on_click_handler={handlePasswordVisible}
-                              icon_src={'invisible-icon.svg'}/>
+                        <Icon width={iconWidth} iconAlt={'visible icon'}
+                              className={'visible-icon'}
+                              onClickHandler={handlePasswordVisible}
+                              iconSrc={'invisible-icon.svg'}/>
                         :
-                        <Icon width={icon_width} icon_alt={'invisible icon'}
-                              class_name={'invisible-icon'}
-                              on_click_handler={handlePasswordVisible}
-                              icon_src={'visible-icon.svg'}/>
+                        <Icon width={iconWidth} iconAlt={'invisible icon'}
+                              className={'invisible-icon'}
+                              onClickHandler={handlePasswordVisible}
+                              iconSrc={'visible-icon.svg'}/>
                 }
             </PasswordFieldContainer>
             {
-                (invalid_error_messages.length !== 0 && error_message) && (
-                    invalid_error_messages.find((val: string): boolean => val === error_message) === undefined &&
-                    <ErrorContainer>{error_message}</ErrorContainer>
+                (invalidErrorMessages.length !== 0 && errorMessage) && (
+                    invalidErrorMessages.find((val: string): boolean => val === errorMessage) === undefined &&
+                    <ErrorContainer>{errorMessage}</ErrorContainer>
                 )
             }
         </Fragment>

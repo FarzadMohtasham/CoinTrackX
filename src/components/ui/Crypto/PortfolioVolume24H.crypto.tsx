@@ -44,7 +44,7 @@ export default function PortfolioVolume24HCrypto(): JSX.Element {
         <Container>
             <LeftCol>
                 <div className={'top-bar'}>
-                    <Icon icon_src={'portfolio-volume.svg'}
+                    <Icon iconSrc={'portfolio-volume.svg'}
                           width={'20rem'}
                     />
                     <span>VOLUME (24H)</span>
@@ -61,7 +61,7 @@ export default function PortfolioVolume24HCrypto(): JSX.Element {
                 <Badge borderRadius={'full'}
                        type={'success'}
                        outline>
-                    <Icon icon_src={'arrow-up.svg'} width={'12rem'}/>
+                    <Icon iconSrc={'arrow-up.svg'} width={'12rem'}/>
                     1.37%
                 </Badge>
             </RightCol>

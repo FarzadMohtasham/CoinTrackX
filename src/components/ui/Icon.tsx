@@ -5,27 +5,27 @@ export default function Icon(props: IconProps): JSX.Element {
     const iconPath = '/icons'
 
     let {
-        icon_src = '',
-        icon_alt = 'icon',
+        iconSrc = '',
+        iconAlt = 'icon',
         width = '2rem',
         height = null,
-        class_name = 'icon',
-        on_click_handler = (): void => {
+        className = 'icon',
+        onClickHandler = (): void => {
         },
     } = props
 
     if (height === null) height = width
 
-    if (icon_src === '') icon_src = `${iconPath}/default.png`
-    else icon_src = `${iconPath}/${icon_src}`
+    if (iconSrc === '') iconSrc = `${iconPath}/default.png`
+    else iconSrc = `${iconPath}/${iconSrc}`
 
     return (
-        <img src={`${icon_src}`}
-             alt={icon_alt}
+        <img src={`${iconSrc}`}
+             alt={iconAlt}
              width={width}
              height={height}
-             className={class_name}
-             onClick={on_click_handler}
+             className={className}
+             onClick={onClickHandler}
         />
     )
 }
