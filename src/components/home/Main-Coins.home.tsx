@@ -1,8 +1,8 @@
 import {JSX} from 'react'
 import {css, styled} from 'styled-components'
 
-import Container from '@components/ui/Container.tsx'
-import HeadingBox from '@components/ui/HeadingBox.tsx'
+import Container from '@components/ui/stuff/Container.tsx'
+import HeadingBox from '@components/ui/stuff/HeadingBox.tsx'
 
 const coinsSrcList = [
     '/images/dogecoin.coin.home.svg',
@@ -59,7 +59,7 @@ export default function Coins(): JSX.Element {
             <CoinsWrapperStyled>
                 <HeadingBox label={'Coins'}
                             heading={'A lot of coin & tokens!'}
-                            desc={'As a Crypto-Currency tracking platform, We should support a lot of coin and tokens for make customers and clients happy'}/>
+                            desc={'As a crypto-Currency tracking platform, We should support a lot of coin and tokens for make customers and clients happy'}/>
 
                 <CoinsListStyled>
                     {

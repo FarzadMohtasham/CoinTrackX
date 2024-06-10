@@ -29,10 +29,10 @@ export default defineConfig({
             "@services": path.resolve(__dirname, "./src/services"),
             "@styles": path.resolve(__dirname, "./src/styles"),
             "@tests": path.resolve(__dirname, "./src/tests"),
-            "@ts": path.resolve(__dirname, "./src/lib/ts"),
+            "@typings": path.resolve(__dirname, "./src/lib/typings"),
             "@utils": path.resolve(__dirname, "./src/lib/utils"),
             "@lib": path.resolve(__dirname, "./src/lib"),
-            "@validation": path.resolve(__dirname, "./src/lib/validation"),
+            "@validations": path.resolve(__dirname, "./src/lib/validations"),
             "@themes": path.resolve(__dirname, "./src/lib/themes"),
         }
     },

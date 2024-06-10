@@ -2,13 +2,13 @@ import {JSX} from 'react'
 import {Link} from 'react-router-dom'
 import {styled, css, ExecutionContext, FastOmit} from 'styled-components'
 
-import Container from '@components/ui/Container.tsx'
-import Logo from '@components/ui/Logo.tsx'
-import CopyRight from '@components/ui/CopyRight.tsx'
-import Heading from '@components/ui/Heading.tsx'
+import Container from '@components/ui/stuff/Container.tsx'
+import Logo from '@components/ui/stuff/Logo.tsx'
+import CopyRight from '@components/ui/stuff/CopyRight.tsx'
+import Heading from '@components/ui/stuff/Heading.tsx'
 
 // Type
-import {ColumnItem as ColumnItemType} from '@ts/type/Footer.type.ts'
+import {ColumnItem as ColumnItemType} from '@typings/type/Footer.type.ts'
 import {IStyledComponentBase} from "styled-components/dist/types";
 
 // Data

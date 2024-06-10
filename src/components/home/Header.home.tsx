@@ -2,11 +2,11 @@ import {JSX} from 'react'
 import {NavLink} from 'react-router-dom'
 import {styled} from 'styled-components'
 
-import Logo from '@components/ui/Logo.tsx'
-import Button from '@components/ui/Button.tsx'
+import Logo from '@components/ui/stuff/Logo.tsx'
+import Button from '@components/ui/stuff/Button.tsx'
 import scrollTo from '@utils/scroller.ts'
 import useUserLoggedIn from '@hooks/useUserLoggedIn.ts'
-import Icon from '@components/ui/Icon.tsx'
+import Icon from '@components/ui/stuff/Icon.tsx'
 
 import {removeLetter} from '@utils/helpers.ts'
 

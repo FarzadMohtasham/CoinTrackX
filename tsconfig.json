@@ -65,14 +65,14 @@
       "@tests/*": [
         "./src/tests/*"
       ],
-      "@ts/*": [
-        "./src/lib/ts/*"
+      "@typings/*": [
+        "./src/lib/typings/*"
       ],
       "@utils/*": [
         "./src/lib/utils/*"
       ],
-      "@validation/*": [
-        "./src/lib/validation/*"
+      "@validations/*": [
+        "./src/lib/validations/*"
       ],
       "@themes/*": [
         "./src/lib/themes/*"

@@ -1,9 +1,9 @@
 import {styled} from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
 
-import Icon from '@components/ui/Icon.tsx'
+import Icon from '@components/ui/stuff/Icon.tsx'
 
-import {TopMoverProps} from '@ts/type/TopMover.type.ts'
+import {TopMoverProps} from '@typings/type/TopMover.type.ts'
 import {JSX} from "react";
 
 const TopMoverContainer = styled.div`

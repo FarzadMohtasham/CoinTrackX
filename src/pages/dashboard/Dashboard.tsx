@@ -2,7 +2,7 @@ import {JSX} from 'react'
 import {styled} from 'styled-components'
 
 import PortfolioSummary from '@components/dashboard/PortfolioSummary.tsx'
-import CurrencyPrice from '@components/ui/Crypto/CurrencyPrice.tsx'
+import CurrencyPrice from '@components/ui/crypto/CurrencyPrice.tsx'
 
 const DashboardContainer = styled.div`
   display: grid;

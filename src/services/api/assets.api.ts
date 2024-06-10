@@ -5,7 +5,7 @@ import {
     getAssetHistoryResponse,
     getAssetResponse,
     getAssetsResponse
-} from "@ts/type/Assets.api.type.ts";
+} from "@typings/type/Assets.api.type.ts";
 
 const axiosInstance = axios.create({
     baseURL: 'https://api.coincap.io/v2/assets/',

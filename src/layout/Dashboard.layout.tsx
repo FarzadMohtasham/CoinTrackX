@@ -2,16 +2,16 @@ import {JSX, useEffect, useState} from 'react'
 import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom'
 import {styled} from 'styled-components'
 
-import Heading from '@components/ui/Heading.tsx'
-import Logo from '@components/ui/Logo.tsx'
-import NavigationItem from '@components/ui/NavigationItem.tsx'
-import Profile from '@components/ui/Profile.tsx'
+import Heading from '@components/ui/stuff/Heading.tsx'
+import Logo from '@components/ui/stuff/Logo.tsx'
+import NavigationItem from '@components/ui/stuff/NavigationItem.tsx'
+import Profile from '@components/ui/stuff/Profile.tsx'
 import Alert from '@components/dashboard/Notifications.tsx'
 
 import {NavigationListData} from '@data/NavigationList.data.ts'
-import {NavigationItemType, NavigationProps} from '@ts/type/NavigationItem.type.ts'
+import {NavigationItemType, NavigationProps} from '@typings/type/NavigationItem.type.ts'
 import useDashboardProtectRoute from '@hooks/useDashboardProtectRoute.ts'
-import Icon from '@components/ui/Icon.tsx'
+import Icon from '@components/ui/stuff/Icon.tsx'
 
 const LayoutContainer = styled.div`
   height: 100vh;

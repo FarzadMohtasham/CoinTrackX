@@ -1,4 +1,4 @@
-import {StyledThemeProps} from '@ts/type/StyledTheme.type.ts'
+import {StyledThemeProps} from '@typings/type/StyledTheme.type.ts'
 
 const defaultProps: StyledThemeProps = {
     responsive: {

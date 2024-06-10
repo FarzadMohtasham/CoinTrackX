@@ -11,8 +11,8 @@ export async function login(email: string, password: string): Promise<LoginRetur
     return data
 }
 
-// @ts-ignore
-export async function signup({firstName, lastName}: {
+// @typings-ignore
+export async function signup({}: {
     firstName: string,
     lastName: string
 }, email: string, password: string): Promise<LoginReturnT> {

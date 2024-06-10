@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'verdana';
+    src: local('verdana'), url(fonts/verdana.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'verdana';
+    src: local('verdana'), url(verdana-bold.ttf) format('ttf');
+}
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Sora", sans-serif;
+    user-select: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    padding: 0;
+}
+
+h1 {
+    font-size: var(--font-size-heading-1);
+}
+
+h2 {
+    font-size: var(--font-size-heading-2);
+}
+
+h3 {
+    font-size: var(--font-size-heading-3);
+}
+
+h4 {
+    font-size: var(--font-size-heading-4);
+}
+
+h5 {
+    font-size: var(--font-size-heading-5);
+}
+
+h6 {
+    font-size: var(--font-size-heading-6);
+}
+
+p, span, li, a, button {
+    font-size: var(--font-size-body-md);
+}
+
+h1, h2, h3, h4, button {
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    font-family: "verdana", sans-serif;
+}

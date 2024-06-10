@@ -1,4 +1,4 @@
-import {SocialMediaLogo} from '@ts/type/Footer.type.ts'
+import {SocialMediaLogo} from '@typings/type/Footer.type.ts'
 
 export const socialMediaLogoList: SocialMediaLogo[] = [
     {
@@ -52,7 +52,7 @@ export const footerColumnItemsList = {
     ],
     column2: [
         {
-            name: 'Buy & Sell Crypto',
+            name: 'Buy & Sell crypto',
             address: '#'
         },
         {

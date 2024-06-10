@@ -3,15 +3,15 @@ import {styled} from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
 import _ from 'lodash'
 
-import Icon from '../ui/Icon.tsx'
+import Icon from '../ui/stuff/Icon.tsx'
 
 import {useNotificationsQuery} from '@query/useNotifications.query.ts'
 
 import {
     Notification,
     NotificationContainerProps
-} from "@ts/type/Notifications.type.ts"
-import SimpleNotification from "@components/ui/Notifs/Simple-Notification.notif.tsx";
+} from "@typings/type/Notifications.type.ts"
+import SimpleNotification from "@components/ui/notifs/Simple-Notification.notif.tsx";
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
   display: grid;
@@ -89,10 +89,10 @@ export default function Notifications(): JSX.Element {
                     <Skeleton width={'4rem'} height={'4rem'} style={{borderRadius: '.8rem'}}/>
                     :
                     notifications.length > 0 && <NotificationsContainer ref={notificationRef}>
-                        <Icon iconSrc={'notifications.svg'}
+                        <Icon iconSrc={'notifs.svg'}
                               iconAlt={'notification icon'}
                               width={'30rem'}
-                              className={'notifications-icon'}
+                              className={'notifs-icon'}
                               onClickHandler={onNotificationsClickHandler}/>
 
                         {

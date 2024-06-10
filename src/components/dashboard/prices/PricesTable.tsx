@@ -18,16 +18,16 @@ import {NavigateFunction, useNavigate} from "react-router-dom";
 import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
 
-import Icon from '@components/ui/Icon.tsx'
-import Badge from '@components/ui/Badge.tsx'
+import Icon from '@components/ui/stuff/Icon.tsx'
+import Badge from '@components/ui/stuff/Badge.tsx'
 import PaginationRow from '@components/dashboard/prices/PaginationRow.tsx'
 
-import {Asset} from '@ts/type/Assets.api.type.ts'
-import {AssetPriceTable} from '@ts/type/Tables.type.ts'
-import {PaginationRowProps} from '@ts/type/PricesPage.type.ts'
+import {Asset} from '@typings/type/Assets.api.type.ts'
+import {AssetPriceTable} from '@typings/type/Tables.type.ts'
+import {PaginationRowProps} from '@typings/type/PricesPage.type.ts'
 
-import Input from '@components/ui/Input-Fields/InputField.input.tsx'
-import Button from '@components/ui/Button.tsx'
+import Input from '@components/ui/input-fields/InputField.input.tsx'
+import Button from '@components/ui/stuff/Button.tsx'
 
 import {getTimeFormatted} from '@utils/helpers.ts'
 

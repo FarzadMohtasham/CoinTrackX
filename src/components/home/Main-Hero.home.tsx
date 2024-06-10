@@ -2,9 +2,9 @@ import {JSX} from 'react'
 import {styled, css} from 'styled-components'
 import {Link} from 'react-router-dom'
 
-import Heading from '@components/ui/Heading.tsx'
-import Button from '@components/ui/Button.tsx'
-import Container from '@components/ui/Container.tsx'
+import Heading from '@components/ui/stuff/Heading.tsx'
+import Button from '@components/ui/stuff/Button.tsx'
+import Container from '@components/ui/stuff/Container.tsx'
 import useUserLoggedIn from '@hooks/useUserLoggedIn.ts'
 
 const HeroStyled = styled.section`

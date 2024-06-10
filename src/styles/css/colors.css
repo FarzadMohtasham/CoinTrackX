@@ -2,6 +2,7 @@
     --color-primary: #5235E8;
     --color-primary-50: rgba(82, 53, 232, 0.05);
     --color-primary-100: rgba(82, 53, 232, 0.1);
+    --color-primary-150: rgba(82, 53, 232, 0.15);
     --color-primary-200: rgba(82, 53, 232, 0.2);
     --color-primary-300: rgba(82, 53, 232, 0.3);
     --color-primary-400: rgba(82, 53, 232, 0.4);
@@ -82,4 +83,15 @@
     --color-gray-700: rgba(134, 134, 134, 0.7);
     --color-gray-800: rgba(134, 134, 134, 0.8);
     --color-gray-900: rgba(134, 134, 134, 0.9);
+
+    --color-neutral-50: #F7F6FE;
+    --color-neutral-100: #EFEDFD;
+    --color-neutral-200: #E7E3FC;
+    --color-neutral-300: #DEDAFB;
+    --color-neutral-400: #D6D1FA;
+    --color-neutral-500: #F7F6FE;
+    --color-neutral-600: #EFEDFD;
+    --color-neutral-700: #E7E3FC;
+    --color-neutral-800: #DEDAFB;
+    --color-neutral-900: #D6D1FA;
 }

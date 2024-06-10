@@ -2,13 +2,13 @@ import {JSX, useEffect, useState} from 'react'
 import {styled} from 'styled-components'
 
 import TopMover from '@components/dashboard/prices/TopMover.tsx'
-import Heading from '@components/ui/Heading.tsx'
-import Button from '@components/ui/Button.tsx'
+import Heading from '@components/ui/stuff/Heading.tsx'
+import Button from '@components/ui/stuff/Button.tsx'
 
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
 
-import {TopMover as TopMoverT} from '@ts/type/TopMover.type.ts'
-import {Asset} from '@ts/type/Assets.api.type.ts'
+import {TopMover as TopMoverT} from '@typings/type/TopMover.type.ts'
+import {Asset} from '@typings/type/Assets.api.type.ts'
 
 const TopMoversContainer = styled.div`
   display: flex;

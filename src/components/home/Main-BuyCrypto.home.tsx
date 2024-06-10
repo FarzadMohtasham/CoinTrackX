@@ -1,9 +1,9 @@
 import {JSX} from 'react';
 import {styled} from 'styled-components'
 
-import Container from '@components/ui/Container.tsx'
-import HeadingBox from '@components/ui/HeadingBox.tsx'
-import SuperchargeCard from '@components/ui/Card/Supercharge.card.tsx'
+import Container from '@components/ui/stuff/Container.tsx'
+import HeadingBox from '@components/ui/stuff/HeadingBox.tsx'
+import SuperchargeCard from '@components/ui/cards/Supercharge.card.tsx'
 
 const BuyCryptoWrapperStyled = styled.section.attrs({
     id: 'buy-crypto'
@@ -33,7 +33,7 @@ export default function BuyCrypto(): JSX.Element {
     return (
         <Container>
             <BuyCryptoWrapperStyled>
-                <HeadingBox label={'Buy Crypto'}
+                <HeadingBox label={'Buy crypto'}
                             heading={'Supercharge your trades with advanced features'}/>
 
                 <CardWrapperStyled>
