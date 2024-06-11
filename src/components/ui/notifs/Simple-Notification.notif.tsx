@@ -1,36 +1,30 @@
 import {JSX, useState} from 'react'
 import {styled} from 'styled-components'
 import Icon from '@components/ui/stuff/Icon.tsx'
-import {Notification, NotificationStyledProps} from '@typings/type/Notifications.type.ts'
+import {NotificationStyledProps} from '@typings/type/Notifications.type.ts'
 import {formatDistance} from "date-fns";
 import {toast} from "react-hot-toast";
-
-type NotifWidth = string | '100%' | 'min-content' | 'max-content';
-
-type SimpleNotifProps = {
-    onNotifClose?: (notifId: number) => void;
-    options: Notification & {
-        closable?: boolean;
-        iconSrc?: string;
-        width?: NotifWidth;
-    }
-}
-
-type SimpleNotifStyled = {
-    $type: string;
-    $width: string;
-}
+import {SimpleNotifProps, SimpleNotifStyled} from "@typings/type/Notification.type.ts";
 
 const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNotifStyled>`
   display: flex;
   justify-content: space-between;
-  height: max-content;
   border-radius: .8rem;
-  border: .2rem solid ${props => props.theme.notif.border_color};
-  z-index: 99;
-  width: ${props => props.$width};
-  background-color: ${props => props.theme.notif[props.$type + '_color']};
   overflow: hidden;
+  width: ${props => props.$width};
+  height: ${props => props.$height};
+  border: .2rem solid ${props => props.theme.notif.border_color};
+  background-color: ${props => props.theme.notif[props.$type + '_color']};
+
+  .notif-icon {
+    width: ${props => props.$iconSize};
+  }
+
+  .close-icon {
+    width: ${props => props.$closeIconSize};
+  }
+
+
 `
 
 const LeftColumnWrapper: any = styled.div`
@@ -44,8 +38,10 @@ const LeftColumnWrapper: any = styled.div`
 const CenterColumnWrapper: any = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: .5rem;
   padding: 2rem;
+  justify-content: center;
 
   .top-section {
     display: flex;
@@ -79,14 +75,17 @@ const RightColumnWrapper: any = styled.div`
 
 export default function SimpleNotification(props: SimpleNotifProps): JSX.Element {
     const {
-        id,
-        title,
-        type,
-        createdAt,
-        message,
-        closable,
+        id = 1,
+        title = 'title',
+        type = 'success',
+        createdAt = new Date(),
+        message = '',
+        closable = false,
         iconSrc = 'rocket-lunch.svg',
         width = '100%',
+        height = 'max-content',
+        iconSize = '10rem',
+        closeIconSize = '10rem',
     } = props.options
 
     const {onNotifClose} = props
@@ -104,9 +103,14 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
     return (
         <>
             {
-                !closed && <SimpleNotifContainer $type={type} $width={width}>
+                !closed && <SimpleNotifContainer $type={type}
+                                                 $iconSize={iconSize}
+                                                 $closeIconSize={closeIconSize}
+                                                 $height={height}
+                                                 $width={width}>
                     <LeftColumnWrapper className={'left-col'}>
                         <Icon iconSrc={iconSrc}
+                              className={'notif-icon'}
                               width={'25rem'}/>
                     </LeftColumnWrapper>
 
@@ -126,6 +130,7 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
                     {
                         closable && <RightColumnWrapper className={'right-col'}>
                             <Icon iconSrc={'close.svg'}
+                                  className={'close-icon'}
                                   width={'20rem'}
                                   onClickHandler={onCloseHandler}
                             />

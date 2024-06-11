@@ -12,6 +12,7 @@ import {
     NotificationContainerProps
 } from "@typings/type/Notifications.type.ts"
 import SimpleNotification from "@components/ui/notifs/Simple-Notification.notif.tsx";
+import {NotificationOptions} from "@typings/type/Notification.type.ts";
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
   display: grid;
@@ -34,6 +35,7 @@ const NotificationsWrapper = styled.div`
   right: 0;
   padding: 1rem;
   border-radius: 1.4rem;
+  z-index: 50;
 `
 
 export default function Notifications(): JSX.Element {
@@ -99,8 +101,15 @@ export default function Notifications(): JSX.Element {
                             notifIsOpen && <NotificationsWrapper>
                                 {
                                     notifications.map((notificationOptions: Notification, index: number) => {
+                                        const notifOptions: NotificationOptions = {
+                                            ...notificationOptions,
+                                            height: 'max-content',
+                                            iconSize: '3.5rem',
+                                            closeIconSize: '2rem',
+                                        }
+
                                         return (
-                                            <SimpleNotification options={notificationOptions}
+                                            <SimpleNotification options={notifOptions}
                                                                 onNotifClose={removeNotification}
                                                                 key={index}/>
                                         )
