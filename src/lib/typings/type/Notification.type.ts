@@ -2,9 +2,9 @@ import {ReactNode} from "react";
 
 export type NotificationOptions = {
     id: number;
-    title: string;
+    title: string | ReactNode;
     createdAt: ReactNode | Date;
-    message: string;
+    message?: string | ReactNode;
     type: 'success' | 'error' | 'info' | 'warning';
     closable?: boolean;
     iconSrc?: string;

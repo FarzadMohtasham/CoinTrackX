@@ -7,79 +7,79 @@ import {toast} from "react-hot-toast";
 import {SimpleNotifProps, SimpleNotifStyled} from "@typings/type/Notification.type.ts";
 
 const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNotifStyled>`
-  display: flex;
-  justify-content: space-between;
-  border-radius: .8rem;
-  overflow: hidden;
-  width: ${props => props.$width};
-  height: ${props => props.$height};
-  border: .2rem solid ${props => props.theme.notif.border_color};
-  background-color: ${props => props.theme.notif[props.$type + '_color']};
+    display: flex;
+    justify-content: space-between;
+    border-radius: .8rem;
+    overflow: hidden;
+    width: ${props => props.$width};
+    height: ${props => props.$height};
+    border: .2rem solid ${props => props.theme.notif.border_color};
+    background-color: ${props => props.theme.notif[props.$type + '_color']};
 
-  .notif-icon {
-    width: ${props => props.$iconSize};
-  }
+    .notif-icon {
+        width: ${props => props.$iconSize};
+    }
 
-  .close-icon {
-    width: ${props => props.$closeIconSize};
-  }
+    .close-icon {
+        width: ${props => props.$closeIconSize};
+    }
 
 
 `
 
 const LeftColumnWrapper: any = styled.div`
-  display: grid;
-  place-content: center;
-  border-right: .2rem solid ${props => props.theme.notif.border_color};
-  padding: 0 1.5rem;
-  background-color: ${props => props.theme.notif.icon_wrapper_bg_color};
+    display: grid;
+    place-content: center;
+    border-right: .2rem solid ${props => props.theme.notif.border_color};
+    padding: 0 1.5rem;
+    background-color: ${props => props.theme.notif.icon_wrapper_bg_color};
 `
 
 const CenterColumnWrapper: any = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: .5rem;
-  padding: 2rem;
-  justify-content: center;
-
-  .top-section {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: .5rem;
+    padding: 2rem;
+    justify-content: center;
 
-    .title {
-      font-size: var(--font-size-body-sm);
-      font-weight: 500;
+    .top-section {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        .title {
+            font-size: var(--font-size-body-sm);
+            font-weight: 500;
+        }
+
+        .created-at {
+            font-size: var(--font-size-body-xsm);
+        }
     }
 
-    .created-at {
-      font-size: var(--font-size-body-xsm);
+    .message {
+        font-size: var(--font-size-body-xsm);
     }
-  }
-
-  .message {
-    font-size: var(--font-size-body-xsm);
-  }
 `
 
 const RightColumnWrapper: any = styled.div`
-  width: max-content;
-  height: 100%;
-  padding: 1.5rem 1.5rem 0 0;
+    width: max-content;
+    height: 100%;
+    padding: 1.5rem 1.5rem 0 0;
 
-  img {
-    cursor: pointer;
-  }
+    img {
+        cursor: pointer;
+    }
 `
 
 export default function SimpleNotification(props: SimpleNotifProps): JSX.Element {
     const {
         id = 1,
-        title = 'title',
+        title = null,
         type = 'success',
-        createdAt = new Date(),
-        message = '',
+        createdAt = null,
+        message = null,
         closable = false,
         iconSrc = 'rocket-lunch.svg',
         width = '100%',
@@ -117,14 +117,20 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
                     <CenterColumnWrapper className={'center-col'}>
                         <div className={'top-section'}>
                             <span className={'title'}>{title}</span>
-                            <span
-                                className={'created-at'}>
-                        {
-                            formatDistance(new Date(String(createdAt)), new Date(), {addSuffix: true})
-                        }
-                    </span>
+                            {
+                                createdAt !== null && <span
+                                    className={'created-at'}>
+                                    {
+                                        formatDistance(new Date(String(createdAt)), new Date(), {addSuffix: true})
+                                    }
+                                </span>
+                            }
                         </div>
-                        <span className={'message'}>{message}</span>
+                        {
+                            message && <span className={'message'}>
+                            {message}
+                            </span>
+                        }
                     </CenterColumnWrapper>
 
                     {

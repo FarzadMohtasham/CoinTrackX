@@ -1,5 +1,10 @@
 import {JSX} from 'react'
 import {IconProps} from '@typings/type/IconProps.type.ts'
+import {styled} from "styled-components";
+
+const IconImg = styled.img`
+    display: inline;
+`
 
 export default function Icon(props: IconProps): JSX.Element {
     const iconPath = '/icons'
@@ -20,7 +25,7 @@ export default function Icon(props: IconProps): JSX.Element {
     else iconSrc = `${iconPath}/${iconSrc}`
 
     return (
-        <img src={`${iconSrc}`}
+        <IconImg src={`${iconSrc}`}
              alt={iconAlt}
              width={width}
              height={height}
