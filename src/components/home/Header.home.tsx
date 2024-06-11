@@ -108,7 +108,7 @@ export default function Header(): JSX.Element {
                             borderRadius={'lg'}
                             outline>
                         {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20rem'}/>}
-                        {userLoggedIn ? 'Go To Index' : 'Login'}
+                        {userLoggedIn ? 'Go To Dashboard' : 'Login'}
                     </Button>
                 </NavLink>
                 {

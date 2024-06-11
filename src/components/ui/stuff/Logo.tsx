@@ -1,23 +1,21 @@
-import { styled } from 'styled-components'
+import {styled} from 'styled-components'
 
-import logo from '/images/logo.svg'
-import logoType from '/images/logo-type.svg'
-
-const StyledLogo = styled.div`
-  display: flex;
-  width: min-content;
-  gap: .8rem;
+const LogoContainer = styled.div`
+    display: flex;
+    gap: .8rem;
 `
 
 export default function Logo() {
     return (
-        <StyledLogo className={'brand-logo'}>
-            <img src={logo}
-                 alt="logo"
-                 width={24}/>
-            <img src={logoType}
-                 alt="logo type"
-                 width={116}/>
-        </StyledLogo>
+        <LogoContainer className={'brand-logo'}>
+            <img src={'/images/logo.svg'}
+                 className={'logo'}
+                 width={24}
+                 alt="logo"/>
+            <img src={'/images/logo-type.svg'}
+                 className={'logo-type'}
+                 width={115}
+                 alt="logo type"/>
+        </LogoContainer>
     )
 }

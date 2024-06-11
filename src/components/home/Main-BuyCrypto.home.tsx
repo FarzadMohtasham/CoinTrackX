@@ -33,7 +33,7 @@ export default function BuyCrypto(): JSX.Element {
     return (
         <Container>
             <BuyCryptoWrapperStyled>
-                <HeadingBox label={'Index crypto'}
+                <HeadingBox label={'Buy crypto'}
                             heading={'Supercharge your trades with advanced features'}/>
 
                 <CardWrapperStyled>
