@@ -6,5 +6,5 @@ export default function useUser(): Object | boolean {
 
     if (!userLoggedIn) return false
 
-    return JSON.parse(useLocaleStorage('sb-zwrleecsvygsftotatty-auth-token'))
+    return JSON.parse(useLocaleStorage(import.meta.env.VITE_User_Auth_Local_Storage_KEY))
 }

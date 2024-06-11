@@ -12,18 +12,17 @@ import PasswordFieldInput from '@components/ui/input-fields/PasswordField.input.
 
 import {signupInputValidator} from '@validations/signup.validator.ts'
 import {signup} from '@services/api/auth.api.ts'
-import useAutoRedirectOnAuth from '@hooks/useAutoRedirectOnAuth.ts'
+import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts'
 
 import {
-    AuthStyled,
     AuthInnerWrapper,
     HeadContent as HeadContentStyled,
     MainContent as MainContentStyled,
-    AuthLink,
+    AuthLink, AuthContainer,
 } from '@pages/auth/Auth.styled.tsx'
 import {ValidationResult} from "@typings/type/Auth.type.ts";
 
-const LoginContainer = styled(AuthStyled)``
+const LoginContainer = styled(AuthContainer)``
 const LoginWrapper = styled(AuthInnerWrapper)``
 const HeadContent = styled(HeadContentStyled)``
 const MainContent = styled(MainContentStyled)`
@@ -58,10 +57,11 @@ export default function Login(): JSX.Element {
     const [passwordFieldError, setPasswordFieldError] = useState<string | null>(null)
 
     const [authLoading, setAuthLoading] = useState<boolean>(false)
+    const [signupButtonDisabled, setSignupButtonDisabled] = useState<boolean>(true)
 
     const navigate = useNavigate()
 
-    useAutoRedirectOnAuth('dashboard', true)
+    useRedirectIfAuthenticated('dashboard', true)
 
     const onSignupHandler = async (): Promise<void> => {
         if (!agreeTerms) {
@@ -83,12 +83,12 @@ export default function Login(): JSX.Element {
         setAuthLoading(false)
     }
 
-    const onGoogleAuthHandler = (): void => {
-        toast.error('Google Auth service will add soon...', {
-            icon: <img src={'/icons/google-logo.png'}
+    const onGithubAuthHandler = (): void => {
+        toast.error('Github Auth service will add soon...', {
+            icon: <img src={'/icons/github-logo.svg'}
                        width={15}
                        height={15}
-                       alt={'google icon'}/>,
+                       alt={'github icon'}/>,
         })
     }
 
@@ -102,7 +102,10 @@ export default function Login(): JSX.Element {
     }
 
     useEffect((): void => {
-        signupInputValidator({type: 'firstName', payload: firstName}).then((validationResult: ValidationResult): void => {
+        signupInputValidator({
+            type: 'firstName',
+            payload: firstName
+        }).then((validationResult: ValidationResult): void => {
             if (validationResult.isValid) setFirstNameFieldError(null)
             else setFirstNameFieldError(validationResult.errorMessage)
         })
@@ -129,7 +132,13 @@ export default function Login(): JSX.Element {
         })
     }, [password])
 
-    const signUpButtonDisabled = firstNameFieldError !== null || lastNameFieldError !== null || emailFieldError !== null || passwordFieldError !== null
+    useEffect(() => {
+        const signUpButtonDisabledState = firstNameFieldError !== null || lastNameFieldError !== null || emailFieldError !== null || passwordFieldError !== null || !agreeTerms
+
+        if (signUpButtonDisabledState) setSignupButtonDisabled(true)
+        else setSignupButtonDisabled(false)
+    }, [firstNameFieldError, lastNameFieldError, emailFieldError, passwordFieldError, agreeTerms]);
+
 
     return (
         <LoginContainer>
@@ -153,10 +162,10 @@ export default function Login(): JSX.Element {
                         <Button expanded
                                 outline
                                 borderRadius={'lg'}
-                                onClickHandler={onGoogleAuthHandler}
-                                icon={'google-logo.png'}
+                                onClickHandler={onGithubAuthHandler}
+                                icon={'github-logo.svg'}
                                 btnType={'black'}>
-                            Google
+                            Github
                         </Button>
                         <Button expanded
                                 outline
@@ -201,7 +210,7 @@ export default function Login(): JSX.Element {
                     <CheckboxInput label={'I agree to the Terms & Conditions'}
                                    checkBoxSetter={setAgreeTerms}/>
                     <Button borderRadius={'lg'}
-                            disabled={signUpButtonDisabled}
+                            disabled={signupButtonDisabled}
                             onClickHandler={onSignupHandler}
                             isLoading={authLoading}
                             expanded>

@@ -5,7 +5,7 @@ type FetchNotificationsResponse = { data: Notification | any, error: any }
 
 export async function fetchNotifications(): Promise<FetchNotificationsResponse> {
     const {data: response, error}: FetchNotificationsResponse = await supabaseClient
-        .from('notifs')
+        .from('notifications')
         .select('*')
 
     return {data: response, error}

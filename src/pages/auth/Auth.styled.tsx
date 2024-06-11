@@ -1,6 +1,6 @@
 import {styled} from 'styled-components'
 
-export const AuthStyled = styled.main`
+export const AuthContainer = styled.main`
   background-color: #F9F8FF;
   height: 100dvh;
   display: grid;

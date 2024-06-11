@@ -29,7 +29,7 @@ import {PaginationRowProps} from '@typings/type/PricesPage.type.ts'
 import Input from '@components/ui/input-fields/InputField.input.tsx'
 import Button from '@components/ui/stuff/Button.tsx'
 
-import {getTimeFormatted} from '@utils/helpers.ts'
+import {getCurrentTimeFormatted} from '@utils/helpers.ts'
 
 const PricesTableContainer = styled.div`
   display: flex;
@@ -100,7 +100,7 @@ const ColumnCellSpan = styled.span`
 `
 
 export default function PricesTable(): JSX.Element {
-    const [lastRefetchTime, setLastRefetchTime] = useState<string>(getTimeFormatted())
+    const [lastRefetchTime, setLastRefetchTime] = useState<string>(getCurrentTimeFormatted())
     const [pagination, setPagination]= useState<PaginationState>({pageIndex: 0, pageSize: 20})
     const [search, setSearch] = useState<string>('')
     const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false)
@@ -234,7 +234,7 @@ export default function PricesTable(): JSX.Element {
     useEffect(() => {
         const tableRefetchInterval: NodeJS.Timeout = setInterval(() => {
             refetchTableData()
-            setLastRefetchTime(getTimeFormatted())
+            setLastRefetchTime(getCurrentTimeFormatted())
         }, 1000 * 10)
 
         return () => {

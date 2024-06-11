@@ -14,15 +14,14 @@ import {loginInputValidator} from "@validations/login.validator.ts"
 import {login} from "@services/api/auth.api.ts"
 
 import {
-    AuthStyled,
     AuthInnerWrapper,
     HeadContent as HeadContentStyled,
     MainContent as MainContentStyled,
-    AuthLink,
+    AuthLink, AuthContainer,
 } from "./Auth.styled.tsx"
-import useAutoRedirectOnAuth from "@hooks/useAutoRedirectOnAuth.ts";
+import useRedirectIfAuthenticated from "@hooks/useRedirectIfAuthenticated.ts";
 
-const Container = styled(AuthStyled)``
+const Container = styled(AuthContainer)``
 const Wrapper = styled(AuthInnerWrapper)``
 const HeadContent = styled(HeadContentStyled)``
 const MainContent = styled(MainContentStyled)``
@@ -39,7 +38,7 @@ export default function Login(): JSX.Element {
 
     const navigate = useNavigate()
 
-    useAutoRedirectOnAuth()
+    useRedirectIfAuthenticated()
 
     const onLoginHandler = async (): Promise<void> => {
         setAuthLoading(true)

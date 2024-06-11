@@ -13,7 +13,7 @@ export function removeLetter(str: string, letterToRemove: string): string {
     return str.split(letterToRemove).join('');
 }
 
-export function getTime() {
+export function getCurrentTime() {
     const date = new Date()
 
     const hour = date.getHours() <= 9 ? '0' + date.getHours() : date.getHours()
@@ -23,7 +23,7 @@ export function getTime() {
     return {hour, min, sec}
 }
 
-export function getTimeFormatted(): string {
-    const currentTime = getTime()
+export function getCurrentTimeFormatted(): string {
+    const currentTime = getCurrentTime()
     return `${currentTime.hour}:${currentTime.min}:${currentTime.sec}`
 }
