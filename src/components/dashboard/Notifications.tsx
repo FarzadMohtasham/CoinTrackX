@@ -104,7 +104,7 @@ export default function Notifications(): JSX.Element {
                                         const notifOptions: NotificationOptions = {
                                             ...notificationOptions,
                                             height: 'max-content',
-                                            iconSize: '3.5rem',
+                                            iconSize: '2rem',
                                             closeIconSize: '2rem',
                                         }
 

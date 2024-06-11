@@ -2,9 +2,9 @@ import {JSX, useState} from 'react'
 import {styled} from 'styled-components'
 import Icon from '@components/ui/stuff/Icon.tsx'
 import {NotificationStyledProps} from '@typings/type/Notifications.type.ts'
-import {formatDistance} from "date-fns";
-import {toast} from "react-hot-toast";
-import {SimpleNotifProps, SimpleNotifStyled} from "@typings/type/Notification.type.ts";
+import {formatDistance} from 'date-fns'
+import {toast} from 'react-hot-toast'
+import {SimpleNotifProps, SimpleNotifStyled} from '@typings/type/Notification.type.ts'
 
 const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNotifStyled>`
     display: flex;
@@ -24,10 +24,14 @@ const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNot
         width: ${props => props.$closeIconSize};
     }
 
-
+    .left-column-wrapper {
+        flex: 0 0 auto;
+    }
 `
 
-const LeftColumnWrapper: any = styled.div`
+const LeftColumnWrapper: any = styled.div.attrs({
+    className: 'left-column-wrapper',
+})`
     display: grid;
     place-content: center;
     border-right: .2rem solid ${props => props.theme.notif.border_color};
@@ -35,7 +39,9 @@ const LeftColumnWrapper: any = styled.div`
     background-color: ${props => props.theme.notif.icon_wrapper_bg_color};
 `
 
-const CenterColumnWrapper: any = styled.div`
+const CenterColumnWrapper: any = styled.div.attrs({
+    className: 'center-column-wrapper',
+})`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -63,7 +69,9 @@ const CenterColumnWrapper: any = styled.div`
     }
 `
 
-const RightColumnWrapper: any = styled.div`
+const RightColumnWrapper: any = styled.div.attrs({
+    className: 'right-column-wrapper',
+})`
     width: max-content;
     height: 100%;
     padding: 1.5rem 1.5rem 0 0;

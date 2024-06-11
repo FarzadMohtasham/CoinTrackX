@@ -27,7 +27,8 @@ const SimpleNotifOptions: NotificationOptions = {
     id: 0,
     iconSrc: 'watchlist.svg',
     title: 'Follow your favorite cryptos with Watchlist',
-    message: <>Tap the <Icon iconSrc={'watchlist-gray.svg'} width={'10rem'}/> at the right of an asset’s list to add to your Watchlist.</>,
+    message: <>Tap the <Icon iconSrc={'watchlist-gray.svg'} width={'15rem'}/> at the right of an asset’s list to add to
+        your Watchlist.</>,
     type: 'info',
     closable: false,
     createdAt: null,
