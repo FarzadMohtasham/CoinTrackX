@@ -14,7 +14,7 @@ import {
     buttonPaddingVariations,
     buttonFontSizeVariations,
     buttonBorderRadius
-} from '@data/Button.data.ts'
+} from '@data/button.data.ts'
 
 type ButtonStyledProps = {
     $properties: Properties;

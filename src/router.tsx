@@ -3,12 +3,13 @@ import Home from './pages/Home.tsx'
 import Login from './pages/auth/Login.tsx'
 import Signup from './pages/auth/Signup.tsx'
 import DashboardLayout from './layout/Dashboard.layout.tsx'
-import Dashboard from './pages/dashboard/Dashboard.tsx'
-import AssetsPortfolio from './pages/dashboard/AssetsPortfolio.tsx'
-import Prices from '@pages/dashboard/Prices.tsx'
-import Buy from './pages/dashboard/Buy.tsx'
-import Transactions from './pages/dashboard/Transactions.tsx'
-import Settings from './pages/dashboard/Settings.tsx'
+import DashboardPage from '@pages/dashboard/dashboard'
+import AssetsPortfolioPage from '@pages/dashboard/assets-portfolio'
+import PricesPage from '@pages/dashboard/prices'
+import BuyPage from '@pages/dashboard/buy'
+import TransactionsPage from '@pages/dashboard/transactions'
+import SettingsPage from '@pages/dashboard/settings'
+import AssetPrice from "@pages/dashboard/prices/AssetPrice.tsx";
 
 const router = createBrowserRouter([
     {
@@ -28,28 +29,32 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                Component: Dashboard,
+                Component: DashboardPage,
                 index: true,
             },
             {
                 path: '/dashboard/assets-portfolio',
-                Component: AssetsPortfolio,
+                Component: AssetsPortfolioPage,
             },
             {
                 path: '/dashboard/prices',
-                Component: Prices,
+                Component: PricesPage,
+            },
+            {
+                path: '/dashboard/prices/:assetName',
+                Component: AssetPrice,
             },
             {
                 path: '/dashboard/buy',
-                Component: Buy,
+                Component: BuyPage,
             },
             {
                 path: '/dashboard/transactions',
-                Component: Transactions,
+                Component: TransactionsPage,
             },
             {
                 path: '/dashboard/settings',
-                Component: Settings,
+                Component: SettingsPage,
             },
         ]
     }

@@ -5,63 +5,64 @@ import Icon from '@components/ui/stuff/Icon.tsx'
 
 import {TopMoverProps} from '@typings/type/TopMover.type.ts'
 import {JSX} from "react";
+import {Link} from "react-router-dom";
 
 const TopMoverContainer = styled.div`
-  width: 100%;
-  height: 8rem;
+    width: 100%;
+    height: 8rem;
 `
 
 const TopMoverWrapper = styled.div`
-  border: .2rem solid var(--color-black-50);
-  border-radius: .8rem;
-  padding: 1.6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
+    border: .2rem solid var(--color-black-50);
+    border-radius: .8rem;
+    padding: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 `
 
 const TopMoverLeftCol = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-
-  .coin-icon-wrapper {
-  }
-
-  .coin-info-wrapper {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
 
-    .coin-id {
-      font-size: var(--font-size-body-sm);
-      font-weight: 500;
+    .coin-icon-wrapper {
     }
 
-    .coin-symbol {
-      font-size: var(--font-size-body-xsm);
-      color: var(--color-black-300);
-      font-weight: 500;
+    .coin-info-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        .coin-id {
+            font-size: var(--font-size-body-sm);
+            font-weight: 500;
+        }
+
+        .coin-symbol {
+            font-size: var(--font-size-body-xsm);
+            color: var(--color-black-300);
+            font-weight: 500;
+        }
     }
-  }
 `
 
 const TopMoverRightCol = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .5rem;
 
-  .coin-price {
-    font-size: var(--font-size-body-sm);
-    font-weight: 500;
-  }
+    .coin-price {
+        font-size: var(--font-size-body-sm);
+        font-weight: 500;
+    }
 
-  .coin-price-24h-change {
-    font-size: var(--font-size-body-xsm);
-    color: var(--color-black-400);
-    font-weight: 400;
-  }
+    .coin-price-24h-change {
+        font-size: var(--font-size-body-xsm);
+        color: var(--color-black-400);
+        font-weight: 400;
+    }
 `
 
 export default function TopMover(props: TopMoverProps): JSX.Element {
@@ -106,30 +107,32 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
                               borderRadius={'.8rem'}
                     />
                     :
-                    <TopMoverWrapper>
-                        <TopMoverLeftCol>
-                            <div className={'coin-icon-wrapper'}>
-                                <Icon iconSrc={`crypto/${coinSymbol.toLowerCase()}.svg`}
-                                      width={'40rem'}
-                                />
-                            </div>
+                    <Link to={`/dashboard/prices/${coinSymbol}`}>
+                        <TopMoverWrapper>
+                            <TopMoverLeftCol>
+                                <div className={'coin-icon-wrapper'}>
+                                    <Icon iconSrc={`crypto/${coinSymbol.toLowerCase()}.svg`}
+                                          width={'40rem'}
+                                    />
+                                </div>
 
-                            <div className={'coin-info-wrapper'}>
-                                <span className={'coin-id'}>{coinId}</span>
-                                <span className={'coin-symbol'}>{coinSymbol}</span>
-                            </div>
-                        </TopMoverLeftCol>
+                                <div className={'coin-info-wrapper'}>
+                                    <span className={'coin-id'}>{coinId}</span>
+                                    <span className={'coin-symbol'}>{coinSymbol}</span>
+                                </div>
+                            </TopMoverLeftCol>
 
-                        <TopMoverRightCol>
+                            <TopMoverRightCol>
                             <span className={'coin-price'}>
                                 {price}$
                             </span>
 
-                            <span className={'coin-price-24h-change'}>
+                                <span className={'coin-price-24h-change'}>
                                 {changePercent24Hr}%({calc24HChangeAmount()}$)
                             </span>
-                        </TopMoverRightCol>
-                    </TopMoverWrapper>
+                            </TopMoverRightCol>
+                        </TopMoverWrapper>
+                    </Link>
             }
         </TopMoverContainer>
     )

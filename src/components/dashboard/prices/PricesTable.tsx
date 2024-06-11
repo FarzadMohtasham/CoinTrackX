@@ -13,7 +13,7 @@ import {
 import Skeleton from 'react-loading-skeleton'
 import {styled} from 'styled-components'
 import {v4 as uuidv4} from 'uuid'
-import {NavigateFunction, useNavigate} from "react-router-dom";
+import {Link, NavigateFunction, useNavigate} from "react-router-dom";
 
 import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
@@ -32,76 +32,76 @@ import Button from '@components/ui/stuff/Button.tsx'
 import {getCurrentTimeFormatted} from '@utils/helpers.ts'
 
 const PricesTableContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
-  & .table-head {
-    background-color: var(--color-black-100);
-  }
+    & .table-head {
+        background-color: var(--color-black-100);
+    }
 `
 
 const SearchBar = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-
-  .left-col {
-    flex-grow: 1;
-  }
-
-  .right-col {
     display: flex;
+    align-items: center;
     gap: 1rem;
-  }
+    margin-bottom: 2rem;
+
+    .left-col {
+        flex-grow: 1;
+    }
+
+    .right-col {
+        display: flex;
+        gap: 1rem;
+    }
 `
 
 const SkeletonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 `
 
 const ColumnName = styled.div`
-  display: flex;
-  gap: 1.2rem;
-  align-items: center;
-
-  .left-col {
-  }
-
-  .right-col {
     display: flex;
-    flex-direction: column;
-    gap: .8rem;
+    gap: 1.2rem;
+    align-items: center;
 
-    .name {
-      font-size: var(--font-size-body-sm);
-      font-weight: 500;
+    .left-col {
     }
 
-    .symbol {
-      font-size: var(--font-size-body-xsm);
-      font-weight: 400;
+    .right-col {
+        display: flex;
+        flex-direction: column;
+        gap: .8rem;
+
+        .name {
+            font-size: var(--font-size-body-sm);
+            font-weight: 500;
+        }
+
+        .symbol {
+            font-size: var(--font-size-body-xsm);
+            font-weight: 400;
+        }
     }
-  }
 `
 
 const ColumnHeaderSpan = styled.span`
-  font-size: var(--font-size-body-xsm);
-  color: var(--color-black-700);
-  font-weight: 500;
+    font-size: var(--font-size-body-xsm);
+    color: var(--color-black-700);
+    font-weight: 500;
 `
 
 const ColumnCellSpan = styled.span`
-  font-size: var(--font-size-body-xsm);
-  font-weight: 400;
+    font-size: var(--font-size-body-xsm);
+    font-weight: 400;
 `
 
 export default function PricesTable(): JSX.Element {
     const [lastRefetchTime, setLastRefetchTime] = useState<string>(getCurrentTimeFormatted())
-    const [pagination, setPagination]= useState<PaginationState>({pageIndex: 0, pageSize: 20})
+    const [pagination, setPagination] = useState<PaginationState>({pageIndex: 0, pageSize: 20})
     const [search, setSearch] = useState<string>('')
     const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false)
 
@@ -124,16 +124,18 @@ export default function PricesTable(): JSX.Element {
             header: 'Name',
             cell: (props: CellContext<any, any>) => {
                 return (
-                    <ColumnName>
-                        <Icon iconSrc={props.renderValue().logoSrc}
-                              className={'left-col'}
-                              width={'35rem'}
-                        />
-                        <div className={'right-col'}>
-                            <span className={'name'}>{props.renderValue().name}</span>
-                            <span className={'symbol'}>{props.renderValue().symbol}</span>
-                        </div>
-                    </ColumnName>
+                    <Link to={`/dashboard/prices/${props.getValue().symbol}`}>
+                        <ColumnName>
+                            <Icon iconSrc={props.renderValue().logoSrc}
+                                  className={'left-col'}
+                                  width={'35rem'}
+                            />
+                            <div className={'right-col'}>
+                                <span className={'name'}>{props.renderValue().name}</span>
+                                <span className={'symbol'}>{props.renderValue().symbol}</span>
+                            </div>
+                        </ColumnName>
+                    </Link>
                 )
             }
         },

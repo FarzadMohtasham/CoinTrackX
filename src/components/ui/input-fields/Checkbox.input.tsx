@@ -1,7 +1,7 @@
 import {JSX, useState} from 'react'
 import {styled} from 'styled-components'
 
-import checkboxData from '@data/CheckBox.data.ts'
+import checkBoxData from '@data/checkBox.data.ts'
 
 import {CheckboxProps, CheckboxStyledProps, CheckboxTypes, Properties} from '@typings/type/CheckBox.type.ts'
 
@@ -44,7 +44,7 @@ export default function CheckboxInput(props: CheckboxProps): JSX.Element {
     }
 
     const checkboxDataAccessKey = (key: CheckboxTypes) => {
-        return checkboxData[key]
+        return checkBoxData[key]
     }
 
     const checkboxProperties: Properties = checkboxDataAccessKey(type)

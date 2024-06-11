@@ -3,7 +3,7 @@ import {styled} from 'styled-components'
 
 const BuyContainer = styled.div``
 
-export default function Buy(): JSX.Element {
+export default function Index(): JSX.Element {
     return (
         <BuyContainer>
             Buy

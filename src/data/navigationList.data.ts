@@ -3,7 +3,7 @@ import {NavigationItemType} from "@typings/type/NavigationItem.type.ts";
 export const NavigationListData: NavigationItemType[] = [
     {
         name: 'dashboard',
-        title: 'Dashboard',
+        title: 'Index',
         link: '/dashboard',
         iconSrc: 'dashboard.svg',
         activeIconSrc: 'active-dashboard.svg',
@@ -27,7 +27,7 @@ export const NavigationListData: NavigationItemType[] = [
     },
     {
         name: 'buy',
-        title: 'Buy',
+        title: 'Index',
         link: '/dashboard/buy',
         iconSrc: 'buy.svg',
         activeIconSrc: 'active-buy.svg',
@@ -35,7 +35,7 @@ export const NavigationListData: NavigationItemType[] = [
     },
     {
         name: 'transactions',
-        title: 'Transactions',
+        title: 'Index',
         link: '/dashboard/transactions',
         iconSrc: 'transactions.svg',
         activeIconSrc: 'active-transactions.svg',
@@ -43,7 +43,7 @@ export const NavigationListData: NavigationItemType[] = [
     },
     {
         name: 'settings',
-        title: 'Settings',
+        title: 'Index',
         link: '/dashboard/settings',
         iconSrc: 'settings.svg',
         activeIconSrc: 'active-settings.svg',

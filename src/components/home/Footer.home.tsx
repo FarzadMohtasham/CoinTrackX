@@ -12,7 +12,7 @@ import {ColumnItem as ColumnItemType} from '@typings/type/Footer.type.ts'
 import {IStyledComponentBase} from "styled-components/dist/types";
 
 // Data
-import {footerColumnItemsList, socialMediaLogoList} from '@data/Footer.data.ts'
+import {footerColumnItemsList, socialMediaLogoList} from '@data/footer.data.ts'
 
 const FooterWrapper: IStyledComponentBase<any> = styled.div`
   padding-bottom: 10rem;

@@ -22,7 +22,7 @@ const PricesWrapper = styled.div`
 
 const TopMoversWrapper = styled.div``
 
-export default function Prices(): JSX.Element {
+export default function Index(): JSX.Element {
     const SimpleNotifOptions: NotificationOptions = {
         id: 0,
         iconSrc: 'watchlist.svg',

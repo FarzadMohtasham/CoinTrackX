@@ -1,6 +1,6 @@
 import {css} from 'styled-components'
 
-const checkboxData = {
+const checkBoxData = {
     primary: {
         active: css`var(--color-primary)`,
         'active-inner': `#fff`,
@@ -33,4 +33,4 @@ const checkboxData = {
     }
 }
 
-export default checkboxData
+export default checkBoxData

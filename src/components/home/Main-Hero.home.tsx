@@ -94,7 +94,7 @@ export default function Hero(): JSX.Element {
                     <Link to={'login'}>
                         <Button borderRadius={'lg'}>
                             {
-                                userLoggedIn ? 'Dashboard' : 'Get Started'
+                                userLoggedIn ? 'Index' : 'Get Started'
                             }
                         </Button>
                     </Link>

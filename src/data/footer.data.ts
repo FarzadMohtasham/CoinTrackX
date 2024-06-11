@@ -52,7 +52,7 @@ export const footerColumnItemsList = {
     ],
     column2: [
         {
-            name: 'Buy & Sell crypto',
+            name: 'Index & Sell crypto',
             address: '#'
         },
         {
@@ -64,7 +64,7 @@ export const footerColumnItemsList = {
             address: '#'
         },
         {
-            name: 'Dashboard',
+            name: 'Index',
             address: '#'
         },
         {

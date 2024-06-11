@@ -30,7 +30,7 @@ const PortfolioSummaryWrapper = styled.div.attrs({
   }
 `
 
-export default function Dashboard(): JSX.Element {
+export default function Index(): JSX.Element {
     return (
         <DashboardContainer>
             <PortfolioSummaryWrapper>
