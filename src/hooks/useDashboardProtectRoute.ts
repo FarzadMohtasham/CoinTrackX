@@ -1,14 +1,14 @@
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import useUser from "@hooks/useUser.ts";
+import useUserLoggedIn from "@hooks/useUserLoggedIn.ts";
 
 export default function useDashboardProtectRoute(path: string = 'dashboard', routerReplace: boolean = false): void {
     const navigate = useNavigate()
 
     useEffect((): void => {
-        const user = useUser()
+        const user = useUserLoggedIn()
 
-        if (user === null) {
+        if (!user) {
             navigate(path, {
                 replace: routerReplace
             })
