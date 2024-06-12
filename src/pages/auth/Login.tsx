@@ -11,7 +11,7 @@ import PasswordFieldInput from "@components/ui/input-fields/PasswordField.input.
 import CheckboxInput from "@components/ui/input-fields/Checkbox.input.tsx"
 
 import {loginInputValidator} from "@validations/login.validator.ts"
-import {login} from "@services/api/auth.api.ts"
+import {login} from "@services/api/auth/auth.api.ts"
 
 import {
     AuthInnerWrapper,

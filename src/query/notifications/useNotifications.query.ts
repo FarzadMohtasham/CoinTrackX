@@ -1,5 +1,5 @@
 import {useQuery, UseQueryResult} from '@tanstack/react-query'
-import {fetchNotifications} from '@services/api/notifications.api.ts'
+import {fetchNotifications} from '@services/api/notifications/notifications.api.ts'
 import {Notification} from '@typings/type/Notifications.type.ts'
 
 export function useNotificationsQuery() {

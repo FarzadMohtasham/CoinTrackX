@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query'
 
-import {getAssets} from '@services/api/assets.api.ts'
+import {getAssets} from '@services/api/assets/assets.api.ts'
 
 import {Asset} from "@typings/type/Assets.api.type.ts";
 

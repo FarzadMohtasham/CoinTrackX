@@ -11,7 +11,7 @@ import CheckboxInput from '@components/ui/input-fields/Checkbox.input.tsx'
 import PasswordFieldInput from '@components/ui/input-fields/PasswordField.input.tsx'
 
 import {signupInputValidator} from '@validations/signup.validator.ts'
-import {signup} from '@services/api/auth.api.ts'
+import {signup} from '@services/api/auth/auth.api.ts'
 import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts'
 
 import {
