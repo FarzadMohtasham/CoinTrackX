@@ -1,4 +1,4 @@
-import {Dispatch, JSX, SetStateAction, useEffect, useState} from 'react'
+import {JSX, useEffect, useState} from 'react'
 import Skeleton from 'react-loading-skeleton'
 import {styled} from 'styled-components'
 import {Line} from 'react-chartjs-2'
@@ -20,7 +20,7 @@ import Button from '@components/ui/stuff/Button.tsx'
 
 import {SelectMenuItem} from '@typings/type/Select.type.ts'
 import useGetAssetHistory from '@query/assets/useGetAssetHistory.query.ts'
-import {AssetHistoryInterval} from '@typings/type/Assets.api.type.ts'
+import {AssetHistoryInterval, AssetName} from '@typings/type/Assets.api.type.ts'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
@@ -120,53 +120,53 @@ const chartIntervals: SelectMenuItem[] = [
 ]
 
 const CurrencyPriceContainer = styled.div`
-  display: grid;
+    display: grid;
 `
 
 const Header = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-
-  span {
-    font-weight: bold;
-    font-size: var(--font-size-body-lg);
-  }
-
-  div.options {
     display: flex;
     align-items: center;
-    gap: 1rem;
-  }
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    span {
+        font-weight: bold;
+        font-size: var(--font-size-body-lg);
+    }
+
+    div.options {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 `
 
 const ContentWrapper = styled.div``
 
 const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 99.99%;
-  transition: max-width 0s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 99.99%;
+    transition: max-width 0s ease-in-out;
 
-  span {
-    font-size: var(--font-size-body-sm);
-  }
+    span {
+        font-size: var(--font-size-body-sm);
+    }
 `
 
 const RequestError = styled.div`
-  width: 100%;
-  height: 10rem;
+    width: 100%;
+    height: 10rem;
 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 5rem 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 5rem 0;
 
-  span {
-    margin-bottom: 2rem;
-  }
+    span {
+        margin-bottom: 2rem;
+    }
 `
 
 type Labels = string[];
@@ -178,13 +178,11 @@ type CryptoHistoryRecord = {
 }
 
 export default function CurrencyPrice(): JSX.Element {
-    const [labels, setLabels]: [Labels | null, Dispatch<SetStateAction<Labels | null>>] = useState<Labels | null>(null)
+    const [labels, setLabels] = useState<Labels | null>(null)
+    const [datasets, setDatasets] = useState<number[] | null>(null)
+    const [selectedCurrency, setSelectedCurrency] = useState<string>('bitcoin')
 
-    const [datasets, setDatasets]: [number[] | null, Dispatch<SetStateAction<number[] | null>>] = useState<number[] | null>(null)
-
-    const [selectedCurrency, setSelectedCurrency]: [string, Dispatch<SetStateAction<string>>] = useState<string>('bitcoin')
-
-    const [selectedChartInterval, setSelectedChartInterval]: [AssetHistoryInterval, Dispatch<SetStateAction<AssetHistoryInterval>>] = useState<AssetHistoryInterval>(() => {
+    const [selectedChartInterval, setSelectedChartInterval] = useState<AssetHistoryInterval>(() => {
         return chartIntervals.filter((interval: SelectMenuItem) => interval.default)[0].value as AssetHistoryInterval
     })
 
@@ -193,7 +191,7 @@ export default function CurrencyPrice(): JSX.Element {
         error,
         refetch,
         isLoading
-    } = useGetAssetHistory(selectedCurrency, selectedChartInterval)
+    } = useGetAssetHistory(selectedCurrency as AssetName, selectedChartInterval)
 
     const options: ChartOptions<'line'> = {
         animation: false,

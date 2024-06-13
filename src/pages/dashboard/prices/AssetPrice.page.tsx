@@ -1,11 +1,16 @@
+import {JSX} from "react";
 import {useParams} from "react-router-dom";
 import {styled} from "styled-components";
+
 import AssetInfo from "@components/dashboard/prices/assetPrice/AssetInfo.tsx";
-import useGetAssetQuery from "@query/assets/useGetAsset.query.ts";
-import {AssetName} from "@typings/type/Assets.api.type.ts";
 import AssetSummary from "@components/dashboard/prices/assetPrice/AssetSummary.tsx";
-import useGetAssetSummaryQuery from "@query/assetSummary/useGetAssetSummary.query.ts";
 import GoBack from "@components/ui/stuff/GoBack.tsx";
+
+import {AssetName} from "@typings/type/Assets.api.type.ts";
+
+import useGetAssetSummaryQuery from "@query/assetSummary/useGetAssetSummary.query.ts";
+import useGetAssetQuery from "@query/assets/useGetAsset.query.ts";
+import AssetChart from "@components/dashboard/prices/assetPrice/AssetChart.tsx";
 
 const AssetPriceContainer = styled.div`
     display: grid;
@@ -37,8 +42,10 @@ const AssetPriceWrapper = styled.div.attrs({
     }
 `
 
-export default function AssetPricePage() {
+export default function AssetPricePage(): JSX.Element {
     const {assetName} = useParams<Readonly<string>>()
+
+    // Asset Query
     const {
         data: assetData,
         error: assetError,
@@ -48,6 +55,7 @@ export default function AssetPricePage() {
         gcTime: 0,
     })
 
+    // Asset Summary Query
     const {
         data: assetSummaryData,
         error: assetSummaryError,
@@ -64,6 +72,7 @@ export default function AssetPricePage() {
                               error={assetSummaryError}
                               refresh={assetSummaryRefresh}
                               isLoading={assetSummaryIsLoading}/>
+                <AssetChart assetName={assetName as AssetName}/>
             </AssetPriceWrapper>
         </AssetPriceContainer>
     )
