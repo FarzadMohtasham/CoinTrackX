@@ -58,7 +58,7 @@ export default function AssetPricePage() {
     return (
         <AssetPriceContainer>
             <AssetPriceWrapper>
-                <GoBack link={'/dashboard/prices'}/>
+                <GoBack link={'/dashboard/prices'}>Go Back</GoBack>
                 <AssetInfo assetInfo={assetData} error={assetError} refresh={assetRefresh} isLoading={assetIsLoading}/>
                 <AssetSummary assetSummaryInfo={assetSummaryData}
                               error={assetSummaryError}
