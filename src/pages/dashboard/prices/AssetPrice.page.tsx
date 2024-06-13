@@ -5,6 +5,7 @@ import useGetAssetQuery from "@query/assets/useGetAsset.query.ts";
 import {AssetName} from "@typings/type/Assets.api.type.ts";
 import AssetSummary from "@components/dashboard/prices/assetPrice/AssetSummary.tsx";
 import useGetAssetSummaryQuery from "@query/assetSummary/useGetAssetSummary.query.ts";
+import GoBack from "@components/ui/stuff/GoBack.tsx";
 
 const AssetPriceContainer = styled.div`
     display: grid;
@@ -22,7 +23,7 @@ const AssetPriceWrapper = styled.div.attrs({
     display: flex;
     flex-direction: column;
     gap: 4rem;
-    
+
     @media screen and (max-width: ${(props: any) => props.theme.responsive.sm}) {
         grid-column: 1 / 10;
     }
@@ -57,6 +58,7 @@ export default function AssetPricePage() {
     return (
         <AssetPriceContainer>
             <AssetPriceWrapper>
+                <GoBack link={'/dashboard/prices'}/>
                 <AssetInfo assetInfo={assetData} error={assetError} refresh={assetRefresh} isLoading={assetIsLoading}/>
                 <AssetSummary assetSummaryInfo={assetSummaryData}
                               error={assetSummaryError}
