@@ -3,13 +3,13 @@ import Home from './pages/Home.tsx'
 import Login from './pages/auth/Login.tsx'
 import Signup from './pages/auth/Signup.tsx'
 import DashboardLayout from './layout/Dashboard.layout.tsx'
-import DashboardPage from '@pages/dashboard/dashboard'
-import AssetsPortfolioPage from '@pages/dashboard/assets-portfolio'
+import DashboardPage from '@pages/dashboard/dashboard/dashboard.page.tsx'
+import AssetsPortfolioPage from '@pages/dashboard/assets-portfolio/AssetsPortfolio.page.tsx'
 import PricesPage from '@pages/dashboard/prices'
-import BuyPage from '@pages/dashboard/buy'
-import TransactionsPage from '@pages/dashboard/transactions'
-import SettingsPage from '@pages/dashboard/settings'
-import AssetPrice from "@pages/dashboard/prices/AssetPrice.tsx";
+import BuyPage from '@pages/dashboard/buy/buy.page.tsx'
+import TransactionsPage from '@pages/dashboard/transactions/transactions.page.tsx'
+import SettingsPage from '@pages/dashboard/settings/settings.page.tsx'
+import AssetPricePage from "@pages/dashboard/prices/AssetPrice.page.tsx";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/prices/:assetName',
-                Component: AssetPrice,
+                Component: AssetPricePage,
             },
             {
                 path: '/dashboard/buy',

@@ -17,6 +17,7 @@ export type AssetPriceTable = {
         name: string;
         symbol: string;
         logoSrc: string;
+        id: string;
     };
     price: string;
     marketCap: string;

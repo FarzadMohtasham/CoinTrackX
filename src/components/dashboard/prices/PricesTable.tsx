@@ -124,7 +124,7 @@ export default function PricesTable(): JSX.Element {
             header: 'Name',
             cell: (props: CellContext<any, any>) => {
                 return (
-                    <Link to={`/dashboard/prices/${props.getValue().symbol}`}>
+                    <Link to={`/dashboard/prices/${props.getValue().id}`}>
                         <ColumnName>
                             <Icon iconSrc={props.renderValue().logoSrc}
                                   className={'left-col'}
@@ -220,6 +220,7 @@ export default function PricesTable(): JSX.Element {
                     name: assetData.name,
                     symbol: assetData.symbol,
                     logoSrc: `crypto/${assetData.symbol.toLowerCase()}.svg`,
+                    id: assetData.id,
                 },
                 price: assetData.priceUsd,
                 changePercent: assetData.changePercent24Hr,

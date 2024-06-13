@@ -34,3 +34,22 @@ export function getCurrentTimeFormatted(): string {
 export function assetExists(assetName: AssetName) {
     return assetList.findIndex(asset => asset === assetName) >= 1
 }
+
+export function amountToBeFixed(toBeFixedAmount: number) {
+    switch (true) {
+        case toBeFixedAmount < 0.00001:
+            return toBeFixedAmount.toFixed(7)
+        case toBeFixedAmount < 0.0001:
+            return toBeFixedAmount.toFixed(6)
+        case toBeFixedAmount < 0.001:
+            return toBeFixedAmount.toFixed(5)
+        case toBeFixedAmount < 0.01:
+            return toBeFixedAmount.toFixed(4)
+        case toBeFixedAmount < 0.1:
+            return toBeFixedAmount.toFixed(3)
+        case toBeFixedAmount <= 1 || toBeFixedAmount >= 1:
+            return toBeFixedAmount.toFixed(2)
+        default:
+            return ''
+    }
+}

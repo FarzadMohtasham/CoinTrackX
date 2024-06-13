@@ -33,21 +33,20 @@ export const getAssets = async (): Promise<getAssetsResponse | null> => {
 export const getAsset = async (assetName: AssetName): Promise<getAssetsResponse> => {
     const response: getAssetResponse = {
         data: null,
-        error: null
     }
 
     try {
-        const {data}: AxiosResponse = await axiosInstance.get(assetName, {
+        const {data}: AxiosResponse = await axiosInstance.get(assetName || 'bitcoin', {
             headers: {
                 Accept: 'application/json',
             },
         })
         response.data = data.data
-    } catch (e) {
-        response.error = e
+    } catch (e: any) {
+        throw new Error(e.message)
     }
 
-    return response
+    return response.data as AxiosResponse
 }
 
 type HistoryLength = number | 0

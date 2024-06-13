@@ -1,5 +1,8 @@
 import {useParams} from "react-router-dom";
 import {styled} from "styled-components";
+import AssetInfo from "@components/dashboard/prices/assetPrice/AssetInfo.tsx";
+import useGetAssetQuery from "@query/assets/useGetAsset.query.ts";
+import {AssetName} from "@typings/type/Assets.api.type.ts";
 
 const AssetPriceContainer = styled.div`
     display: grid;
@@ -27,13 +30,21 @@ const AssetPriceWrapper = styled.div.attrs({
     }
 `
 
-export default function AssetPrice() {
-    const {assetName} = useParams()
+export default function AssetPricePage() {
+    const {assetName} = useParams<Readonly<string>>()
+    const {
+        data: assetData,
+        error: assetError,
+        refetch: assetRefresh,
+        isLoading: assetIsLoading
+    } = useGetAssetQuery(assetName as AssetName, {
+        gcTime: 0,
+    })
 
     return (
         <AssetPriceContainer>
             <AssetPriceWrapper>
-                {assetName}
+                <AssetInfo assetInfo={assetData} error={assetError} refresh={assetRefresh} isLoading={assetIsLoading}/>
             </AssetPriceWrapper>
         </AssetPriceContainer>
     )

@@ -6,6 +6,7 @@ import Icon from '@components/ui/stuff/Icon.tsx'
 import {TopMoverProps} from '@typings/type/TopMover.type.ts'
 import {JSX} from "react";
 import {Link} from "react-router-dom";
+import {amountToBeFixed} from "@utils/helpers.ts";
 
 const TopMoverContainer = styled.div`
     width: 100%;
@@ -80,22 +81,7 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
 
         const calcResult: number = ((priceToCalc / 100) * changePercent24HrToCalc)
 
-        switch (true) {
-            case priceToCalc < 0.00001:
-                return calcResult.toFixed(7)
-            case priceToCalc < 0.0001:
-                return calcResult.toFixed(6)
-            case priceToCalc < 0.001:
-                return calcResult.toFixed(5)
-            case priceToCalc < 0.01:
-                return calcResult.toFixed(4)
-            case priceToCalc < 0.1:
-                return calcResult.toFixed(3)
-            case priceToCalc <= 1 || priceToCalc >= 1:
-                return calcResult.toFixed(2)
-            default:
-                return ''
-        }
+        return amountToBeFixed(calcResult)
     }
 
     return (
@@ -107,7 +93,7 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
                               borderRadius={'.8rem'}
                     />
                     :
-                    <Link to={`/dashboard/prices/${coinSymbol}`}>
+                    <Link to={`/dashboard/prices/${coinId}`}>
                         <TopMoverWrapper>
                             <TopMoverLeftCol>
                                 <div className={'coin-icon-wrapper'}>
