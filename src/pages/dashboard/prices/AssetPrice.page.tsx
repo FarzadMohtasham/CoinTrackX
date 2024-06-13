@@ -3,6 +3,8 @@ import {styled} from "styled-components";
 import AssetInfo from "@components/dashboard/prices/assetPrice/AssetInfo.tsx";
 import useGetAssetQuery from "@query/assets/useGetAsset.query.ts";
 import {AssetName} from "@typings/type/Assets.api.type.ts";
+import AssetSummary from "@components/dashboard/prices/assetPrice/AssetSummary.tsx";
+import useGetAssetSummaryQuery from "@query/assetSummary/useGetAssetSummary.query.ts";
 
 const AssetPriceContainer = styled.div`
     display: grid;
@@ -17,6 +19,10 @@ const AssetPriceContainer = styled.div`
 const AssetPriceWrapper = styled.div.attrs({
     className: 'asset-price-wrapper',
 })`
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    
     @media screen and (max-width: ${(props: any) => props.theme.responsive.sm}) {
         grid-column: 1 / 10;
     }
@@ -41,10 +47,21 @@ export default function AssetPricePage() {
         gcTime: 0,
     })
 
+    const {
+        data: assetSummaryData,
+        error: assetSummaryError,
+        isLoading: assetSummaryIsLoading,
+        refetch: assetSummaryRefresh,
+    } = useGetAssetSummaryQuery(assetName as AssetName)
+
     return (
         <AssetPriceContainer>
             <AssetPriceWrapper>
                 <AssetInfo assetInfo={assetData} error={assetError} refresh={assetRefresh} isLoading={assetIsLoading}/>
+                <AssetSummary assetSummaryInfo={assetSummaryData}
+                              error={assetSummaryError}
+                              refresh={assetSummaryRefresh}
+                              isLoading={assetSummaryIsLoading}/>
             </AssetPriceWrapper>
         </AssetPriceContainer>
     )
