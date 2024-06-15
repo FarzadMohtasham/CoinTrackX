@@ -138,10 +138,32 @@ export type AssetAPIQueryReturnOptions<DataT> = {
     isLoading: boolean;
 }
 
+export type AssetMarketsAPIQueryReturnProps = {
+    data: AssetMarketProps[];
+    error: any;
+    refetch: any;
+    isLoading: boolean;
+}
+
 export type QueryGetAssetOptions = {
     staleTime?: number;
     gcTime?: number;
     retry?: boolean;
     refetchOnWindowFocus?: boolean;
     refetchOnReconnect?: boolean;
+}
+
+export type AssetMarketProps = {
+    baseId: string;
+    baseSymbol: string;
+    exchangeId: string;
+    percentExchangeVolume: string;
+    priceQuote: string;
+    priceUsd: string;
+    quoteId: string;
+    quoteSymbol: string;
+    rank: string;
+    tradesCount24Hr: string;
+    updated: number;
+    volumeUsd24Hr: string;
 }

@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from "axios"
 import {
-    AssetHistoryInterval,
+    AssetHistoryInterval, AssetMarketProps,
     AssetName,
     getAssetHistoryResponse,
     getAssetResponse,
@@ -8,7 +8,7 @@ import {
 } from "@typings/type/Assets.api.type.ts";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://api.coincap.io/v2/assets/',
+    baseURL: 'https://api.coincap.io/v2',
     timeout: 10000,
     headers: {
         'Accept': 'application/json',
@@ -21,7 +21,7 @@ export const getAssets = async (): Promise<getAssetsResponse | null> => {
     }
 
     try {
-        const {data}: AxiosResponse = await axiosInstance.get('')
+        const {data}: AxiosResponse = await axiosInstance.get('/assets')
         response.data = data.data
     } catch (e: any) {
         throw new Error(e.message)
@@ -36,7 +36,7 @@ export const getAsset = async (assetName: AssetName): Promise<getAssetsResponse>
     }
 
     try {
-        const {data}: AxiosResponse = await axiosInstance.get(assetName || 'bitcoin', {
+        const {data}: AxiosResponse = await axiosInstance.get(`/assets/${assetName}`, {
             headers: {
                 Accept: 'application/json',
             },
@@ -57,7 +57,11 @@ export const getAssetHistory = async (assetName: AssetName | string, interval: A
     }
 
     try {
-        const {data}: AxiosResponse = await axiosInstance.get(assetName + '/history?interval=' + interval)
+        const {data}: AxiosResponse = await axiosInstance.get(`/assets/${assetName}/history`, {
+            params: {
+                interval: interval,
+            }
+        })
         const historyData = data.data
 
         if (historyData.length >= 1 && historyLength <= historyData.length) {
@@ -72,28 +76,22 @@ export const getAssetHistory = async (assetName: AssetName | string, interval: A
     return response.data
 }
 
-
-type getAssetMarketsT = {
-    data: AxiosResponse | null;
-    error: any;
-}
-
-export const getAssetMarket = async (assetName: AssetName): Promise<getAssetMarketsT> => {
-    const response: getAssetMarketsT = {
-        data: null,
-        error: null
-    }
+export const getAssetMarkets = async (assetName: AssetName | string): Promise<AssetMarketProps[] | null> => {
+    let assetMarkets = []
 
     try {
-        const {data}: AxiosResponse = await axios.get(assetName + '/markets', {
+        const {data}: AxiosResponse = await axiosInstance.get('/markets', {
             headers: {
                 'Content-Type': 'application/json'
+            },
+            params: {
+                baseSymbol: assetName,
             }
         })
-        response.data = data
-    } catch (e) {
-        response.error = e
+        assetMarkets = data.data
+    } catch (e: any) {
+        throw new Error(e.message)
     }
 
-    return response
+    return assetMarkets
 }

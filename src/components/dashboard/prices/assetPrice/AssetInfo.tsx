@@ -86,12 +86,12 @@ export default function AssetInfo(props: AssetInfoProps) {
                     <AssetInfoContainer>
                         <AssetInfoLeftCol>
                             <div className={'asset-image-wrapper'}>
-                                <Icon iconSrc={`crypto/${assetInfo.symbol.toLowerCase()}.svg`} width={'60rem'}/>
+                                <Icon iconSrc={`crypto/${assetInfo?.symbol.toLowerCase()}.svg`} width={'60rem'}/>
                             </div>
                             <div className={'asset-details-wrapper'}>
                                 <div className="details">
-                                    <span className={'asset-name'}>{assetInfo.name}</span>
-                                    <span className={'asset-symbol'}>{assetInfo.symbol}</span>
+                                    <span className={'asset-name'}>{assetInfo?.name}</span>
+                                    <span className={'asset-symbol'}>{assetInfo?.symbol}</span>
                                 </div>
                                 <span className={'asset-desc'}>Currency in USD. Market Open</span>
                             </div>
@@ -99,20 +99,20 @@ export default function AssetInfo(props: AssetInfoProps) {
 
                         <AssetInfoRightCol>
                             <div className={'asset-price-details'}>
-                                <span className="asset-price">${amountToBeFixed(Number(assetInfo.priceUsd))}</span>
+                                <span className="asset-price">${amountToBeFixed(Number(assetInfo?.priceUsd))}</span>
                                 <Badge type={'success'}
                                        borderRadius={'full'}
                                        outline
                                 >
                                     <Icon iconSrc={'arrow-up.svg'} width={'6rem'}/>
-                                    {amountToBeFixed(Number(assetInfo.changePercent24Hr))} %
+                                    {amountToBeFixed(Number(assetInfo?.changePercent24Hr))} %
                                 </Badge>
                             </div>
                             <div className="asset-price-sub-details">
                                 <span className={'asset-24h-change-amount'}>
-                                    {Number(assetInfo.changePercent24Hr) >= 0 && '+'}
+                                    {Number(assetInfo?.changePercent24Hr) >= 0 && '+'}
                                     {
-                                        amountToBeFixed(Number(assetInfo.priceUsd) / 100 * Number(assetInfo.changePercent24Hr))
+                                        amountToBeFixed(Number(assetInfo?.priceUsd) / 100 * Number(assetInfo?.changePercent24Hr))
                                     }$
                                 </span>
                             </div>

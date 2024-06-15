@@ -11,6 +11,7 @@ import {AssetName} from "@typings/type/Assets.api.type.ts";
 import useGetAssetSummaryQuery from "@query/assetSummary/useGetAssetSummary.query.ts";
 import useGetAssetQuery from "@query/assets/useGetAsset.query.ts";
 import AssetChart from "@components/dashboard/prices/assetPrice/AssetChart.tsx";
+import AssetMarkets from "@components/dashboard/prices/assetPrice/AssetMarkets.tsx";
 
 const AssetPriceContainer = styled.div`
     display: grid;
@@ -73,6 +74,7 @@ export default function AssetPricePage(): JSX.Element {
                               refresh={assetSummaryRefresh}
                               isLoading={assetSummaryIsLoading}/>
                 <AssetChart assetName={assetName as AssetName}/>
+                <AssetMarkets/>
             </AssetPriceWrapper>
         </AssetPriceContainer>
     )
