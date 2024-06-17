@@ -30,7 +30,7 @@ export default function useGetAssetMarketsQuery(assetName: AssetName, options: Q
         refetch: any,
         isLoading: any
     } = useQuery({
-        queryKey: ['use-get-asset', assetName],
+        queryKey: ['use-get-market', assetName],
         queryFn: () => getAssetMarkets(assetNamesWithSymbols[assetName]),
         staleTime: queryOptions.staleTime,
         gcTime: queryOptions.gcTime,

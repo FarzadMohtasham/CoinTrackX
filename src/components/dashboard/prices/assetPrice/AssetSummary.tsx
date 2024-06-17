@@ -1,13 +1,11 @@
 import {JSX} from "react";
-import {AssetSummary as AssetSummaryT} from "@typings/type/AssetSummary.type.ts";
 import {styled} from "styled-components";
 import Skeleton from "react-loading-skeleton";
+import useGetAssetSummaryQuery from "@query/assetSummary/useGetAssetSummary.query.ts";
+import {AssetName} from "@typings/type/Assets.api.type.ts";
 
 type AssetSummaryProps = {
-    assetSummaryInfo: AssetSummaryT | undefined;
-    error: Error | null,
-    isLoading: boolean,
-    refresh: Function;
+    assetName: AssetName,
 }
 
 const AssetSummaryContainer = styled.div`
@@ -32,16 +30,16 @@ const AssetSummaryContainer = styled.div`
 
 export default function AssetSummary(props: AssetSummaryProps): JSX.Element {
     const {
-        assetSummaryInfo,
-        error,
-        refresh,
-        isLoading,
-    } = props
+        data: assetSummaryData,
+        error: assetSummaryError,
+        isLoading: assetSummaryIsLoading,
+        refetch: assetSummaryRefresh,
+    } = useGetAssetSummaryQuery(props.assetName)
 
     return (
         <>
             {
-                isLoading ?
+                assetSummaryIsLoading ?
                     <Skeleton height={'3rem'} count={5}/>
                     :
                     <AssetSummaryContainer>
@@ -49,7 +47,7 @@ export default function AssetSummary(props: AssetSummaryProps): JSX.Element {
                             About
                         </span>
                         <span className={'summary-info'}>
-                            {assetSummaryInfo?.asset_summary}
+                            {assetSummaryData?.asset_summary}
                         </span>
                     </AssetSummaryContainer>
             }

@@ -61,7 +61,7 @@ function Button(props: ButtonPropsType): JSX.Element {
     let {
         children = 'ERROR - No Value',
         className = '',
-        btnType = 'primary',
+        variant = 'primary',
         icon = null,
         iconDir = 'left',
         size = 'sm',
@@ -88,38 +88,38 @@ function Button(props: ButtonPropsType): JSX.Element {
             !outline ?
                 (
                     disabled ?
-                        css`var(--color-${btnType + '-500)'}`
+                        css`var(--color-${variant + '-500)'}`
                         :
-                        buttonTypeVariations[btnType].backgroundColor
+                        buttonTypeVariations[variant].backgroundColor
                 )
                 :
                 'rgba(0, 0, 0, 0)'
         }`
 
-    const color: RuleSet = css`${!outline ? buttonTypeVariations[btnType].color : buttonTypeVariations[btnType].backgroundColor}`
+    const color: RuleSet = css`${!outline ? buttonTypeVariations[variant].color : buttonTypeVariations[variant].backgroundColor}`
     const borderRadiusS = css`${buttonBorderRadius[borderRadius]}`
 
     const border: RuleSet = css`${
         outline ?
-            css`var(--color-${btnType + '-100)'}`
+            css`var(--color-${variant + '-100)'}`
             :
             (
                 disabled ?
-                    css`var(--color-${btnType + '-50)'}`
+                    css`var(--color-${variant + '-50)'}`
                     :
-                    `${buttonTypeVariations[btnType].backgroundColor}`
+                    `${buttonTypeVariations[variant].backgroundColor}`
             )
     }`
 
     const hover: RuleSet = css`
-      ${outline && css`background-color: var(--color-${btnType + '-50)'};`}
+      ${outline && css`background-color: var(--color-${variant + '-50)'};`}
 
-      ${!outline && (disabled ? '' : css`background-color: var(--color-${btnType + '-900)'};`)}
+      ${!outline && (disabled ? '' : css`background-color: var(--color-${variant + '-900)'};`)}
       ${
               !outline ?
-                      css`border: ${noBorder ? '0' : '.2rem'} solid var(--color-${btnType + '-50)'};`
+                      css`border: ${noBorder ? '0' : '.2rem'} solid var(--color-${variant + '-50)'};`
                       :
-                      css`border: ${noBorder ? '0' : '.2rem'} solid var(--color-${btnType + '-100)'};`
+                      css`border: ${noBorder ? '0' : '.2rem'} solid var(--color-${variant + '-100)'};`
       }
     `
     const mobileMedia: RuleSet | string = `${hideOn === 'mobile' ? css`display: none;` : ''}`
@@ -154,7 +154,7 @@ function Button(props: ButtonPropsType): JSX.Element {
             {icon && (iconDir === 'left' &&
                 <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15rem'}/>)}
             {isLoading &&
-                <HashLoader size={18} color={`var(--color-${btnType + '-500)'}`}/>}
+                <HashLoader size={18} color={`var(--color-${variant + '-500)'}`}/>}
             {children}
             {icon && (iconDir === 'right' &&
                 <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15rem'}/>)}

@@ -16,6 +16,7 @@ import {AssetMarketProps, AssetName} from "@typings/type/Assets.api.type.ts";
 import {amountToBeFixed} from "@utils/helpers.ts";
 import Button from "@components/ui/stuff/Button.tsx";
 import Skeleton from "react-loading-skeleton";
+import {object} from "yup";
 
 type AssetMarketColumnDef = {
     accessorKey: string;
@@ -34,11 +35,11 @@ type TableAssetMarket = {
     tradesCount24Hr: number;
 }
 
-const ColumnContainer = styled.div`
-    border: .1rem solid var(--color-black-100);
-    border-radius: 1.2rem;
-    padding: 2.4rem;
-
+const AssetMarketsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
     .table-head {
         background-color: var(--color-black-100);
 
@@ -50,10 +51,11 @@ const ColumnContainer = styled.div`
     }
 `
 
+const ColumnContainer = styled.div``
+
 const Heading = styled.span`
     font-size: var(--font-size-body-md);
     font-weight: 500;
-    margin-bottom: 1.6rem;
     display: block;
 `
 
@@ -124,15 +126,15 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
     const {data: assetMarketsData, error, isLoading, refetch} = useGetAssetMarketsQuery(assetName as AssetName)
 
     const handleShowMoreButton = () => {
-        setTableShowCount(tableShowCount + 10)
+        setTableShowCount(tableShowCount + 5)
     }
 
     const handleShowLessButton = () => {
-        setTableShowCount(tableShowCount - 10)
+        setTableShowCount(tableShowCount - 5)
     }
 
     useEffect(() => {
-        if (!assetMarketsData) return
+        if (typeof assetMarketsData !== typeof object()) return
 
         const assetMarkets: TableAssetMarket[] = assetMarketsData.slice(0, tableShowCount).map((assetMarket: AssetMarketProps) => {
             return {
@@ -152,7 +154,7 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                 isLoading ?
                     <Skeleton height={'5rem'} count={10}/>
                     :
-                    <ColumnContainer>
+                    <AssetMarketsContainer>
                         <Heading>Market Stats</Heading>
                         <TableContainer>
                             <Table>
@@ -202,13 +204,14 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                             </Table>
                         </TableContainer>
                         <TableButtonsContainer>
-                            <Button onClickHandler={handleShowLessButton} disabled={tableShowCount === 10}>Show
+                            <Button onClickHandler={handleShowLessButton}
+                                    disabled={tableShowCount === 10}>Show
                                 less</Button>
                             <Button onClickHandler={handleShowMoreButton}
                                     disabled={tableShowCount === assetMarketsData?.length}>Show
                                 more</Button>
                         </TableButtonsContainer>
-                    </ColumnContainer>
+                    </AssetMarketsContainer>
             }
         </>
     )

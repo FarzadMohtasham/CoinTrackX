@@ -1,16 +1,13 @@
 import {styled} from 'styled-components'
-import {Asset} from "@typings/type/Assets.api.type.ts";
-import {QueryError} from "@supabase/supabase-js";
+import {AssetName} from "@typings/type/Assets.api.type.ts";
 import Icon from "@components/ui/stuff/Icon.tsx";
 import Skeleton from "react-loading-skeleton";
 import {amountToBeFixed} from "@utils/helpers.ts";
 import Badge from "@components/ui/stuff/Badge.tsx";
+import useGetAssetQuery from "@query/assets/useGetAsset.query.ts";
 
 type AssetInfoProps = {
-    assetInfo: Asset;
-    error: QueryError,
-    isLoading: boolean,
-    refresh: Function;
+    assetName: AssetName;
 }
 
 const AssetInfoContainer = styled.div`
@@ -75,23 +72,31 @@ const AssetInfoRightCol = styled.div`
 `
 
 export default function AssetInfo(props: AssetInfoProps) {
-    const {assetInfo, error, refresh, isLoading}: AssetInfoProps = props
+// Asset Query
+    const {
+        data: assetData,
+        error: assetError,
+        refetch: assetRefresh,
+        isLoading: assetDataIsLoading
+    } = useGetAssetQuery(props.assetName as AssetName, {
+        gcTime: 0,
+    })
 
     return (
         <>
             {
-                isLoading ?
+                assetDataIsLoading ?
                     <Skeleton height={'10rem'}/>
                     :
                     <AssetInfoContainer>
                         <AssetInfoLeftCol>
                             <div className={'asset-image-wrapper'}>
-                                <Icon iconSrc={`crypto/${assetInfo?.symbol.toLowerCase()}.svg`} width={'60rem'}/>
+                                <Icon iconSrc={`crypto/${assetData?.symbol.toLowerCase()}.svg`} width={'60rem'}/>
                             </div>
                             <div className={'asset-details-wrapper'}>
                                 <div className="details">
-                                    <span className={'asset-name'}>{assetInfo?.name}</span>
-                                    <span className={'asset-symbol'}>{assetInfo?.symbol}</span>
+                                    <span className={'asset-name'}>{assetData?.name}</span>
+                                    <span className={'asset-symbol'}>{assetData?.symbol}</span>
                                 </div>
                                 <span className={'asset-desc'}>Currency in USD. Market Open</span>
                             </div>
@@ -99,20 +104,20 @@ export default function AssetInfo(props: AssetInfoProps) {
 
                         <AssetInfoRightCol>
                             <div className={'asset-price-details'}>
-                                <span className="asset-price">${amountToBeFixed(Number(assetInfo?.priceUsd))}</span>
+                                <span className="asset-price">${amountToBeFixed(Number(assetData?.priceUsd))}</span>
                                 <Badge type={'success'}
                                        borderRadius={'full'}
                                        outline
                                 >
                                     <Icon iconSrc={'arrow-up.svg'} width={'6rem'}/>
-                                    {amountToBeFixed(Number(assetInfo?.changePercent24Hr))} %
+                                    {amountToBeFixed(Number(assetData?.changePercent24Hr))} %
                                 </Badge>
                             </div>
                             <div className="asset-price-sub-details">
                                 <span className={'asset-24h-change-amount'}>
-                                    {Number(assetInfo?.changePercent24Hr) >= 0 && '+'}
+                                    {Number(assetData?.changePercent24Hr) >= 0 && '+'}
                                     {
-                                        amountToBeFixed(Number(assetInfo?.priceUsd) / 100 * Number(assetInfo?.changePercent24Hr))
+                                        amountToBeFixed(Number(assetData?.priceUsd) / 100 * Number(assetData?.changePercent24Hr))
                                     }$
                                 </span>
                             </div>

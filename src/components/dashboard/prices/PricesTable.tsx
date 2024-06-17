@@ -264,7 +264,7 @@ export default function PricesTable(): JSX.Element {
                                     <Button icon={'watchlist-purple.svg'}
                                             borderRadius={'md'}
                                             onClickHandler={watchlistBtnHandler}
-                                            btnType={'primary'}
+                                            variant={'primary'}
                                             outline>
                                         Watchlist
                                     </Button>
@@ -272,7 +272,7 @@ export default function PricesTable(): JSX.Element {
                                     <Button icon={'watchlist-gray.svg'}
                                             borderRadius={'md'}
                                             onClickHandler={watchlistBtnHandler}
-                                            btnType={'gray'}
+                                            variant={'gray'}
                                             outline>
                                         Watchlist
                                     </Button>

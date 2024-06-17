@@ -35,7 +35,7 @@ export default function PaginationRow(props: PaginationRowProps): JSX.Element {
 
     return (
         <PaginationRowContainer>
-            <Button btnType={'primary'}
+            <Button variant={'primary'}
                     onClickHandler={onPreviousPageHandler}
                     disabled={!getCanPreviousPage}>
                 <Icon iconSrc={'arrow-left.svg'} width={'20rem'}/>
@@ -44,7 +44,7 @@ export default function PaginationRow(props: PaginationRowProps): JSX.Element {
 
             <span>{pageIndex} of {totalPageCount}</span>
 
-            <Button btnType={'primary'}
+            <Button variant={'primary'}
                     onClickHandler={onNextPageHandler}
                     disabled={!getCanNextPage}>
                 Next

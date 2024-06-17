@@ -104,7 +104,7 @@ export default function Header(): JSX.Element {
 
             <ButtonsCTAStyled className='cta-buttons'>
                 <NavLink to={'/login'}>
-                    <Button btnType={'black'}
+                    <Button variant={'black'}
                             borderRadius={'lg'}
                             outline>
                         {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20rem'}/>}

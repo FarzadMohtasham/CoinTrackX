@@ -145,7 +145,7 @@ export default function Login(): JSX.Element {
             <LoginWrapper>
                 <HeadContent>
                     <Link to={'/'}>
-                        <Button btnType={'white'}
+                        <Button variant={'white'}
                                 icon={'back-icon.png'}
                                 className={'back-btn'}
                                 removePadding>
@@ -164,7 +164,7 @@ export default function Login(): JSX.Element {
                                 borderRadius={'lg'}
                                 onClickHandler={onGithubAuthHandler}
                                 icon={'github-logo.svg'}
-                                btnType={'black'}>
+                                variant={'black'}>
                             Github
                         </Button>
                         <Button expanded
@@ -172,7 +172,7 @@ export default function Login(): JSX.Element {
                                 borderRadius={'lg'}
                                 onClickHandler={onAppleAuthHandler}
                                 icon={'apple-logo.png'}
-                                btnType={'black'}>
+                                variant={'black'}>
                             Apple
                         </Button>
                     </div>

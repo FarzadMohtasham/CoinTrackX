@@ -1,4 +1,4 @@
-import {JSX} from "react";
+import {JSX, useState} from "react";
 import {useParams} from "react-router-dom";
 import {styled} from "styled-components";
 
@@ -44,37 +44,17 @@ const AssetPriceWrapper = styled.div.attrs({
 `
 
 export default function AssetPricePage(): JSX.Element {
+    const {hasError, setHasError} = useState()
     const {assetName} = useParams<Readonly<string>>()
-
-    // Asset Query
-    const {
-        data: assetData,
-        error: assetError,
-        refetch: assetRefresh,
-        isLoading: assetIsLoading
-    } = useGetAssetQuery(assetName as AssetName, {
-        gcTime: 0,
-    })
-
-    // Asset Summary Query
-    const {
-        data: assetSummaryData,
-        error: assetSummaryError,
-        isLoading: assetSummaryIsLoading,
-        refetch: assetSummaryRefresh,
-    } = useGetAssetSummaryQuery(assetName as AssetName)
 
     return (
         <AssetPriceContainer>
             <AssetPriceWrapper>
                 <GoBack link={'/dashboard/prices'}>Go Back</GoBack>
-                <AssetInfo assetInfo={assetData} error={assetError} refresh={assetRefresh} isLoading={assetIsLoading}/>
-                <AssetSummary assetSummaryInfo={assetSummaryData}
-                              error={assetSummaryError}
-                              refresh={assetSummaryRefresh}
-                              isLoading={assetSummaryIsLoading}/>
+                <AssetInfo assetName={assetName as AssetName}/>
+                <AssetSummary assetName={assetName as AssetName}/>
                 <AssetChart assetName={assetName as AssetName}/>
-                <AssetMarkets/>
+                <AssetMarkets assetName={assetName as AssetName}/>
             </AssetPriceWrapper>
         </AssetPriceContainer>
     )

@@ -108,7 +108,7 @@ export default function TopMovers(): JSX.Element {
                     Top Movers
                 </Heading>
 
-                <Button btnType={assetsDataLoadError ? 'primary' : 'gray'}
+                <Button variant={assetsDataLoadError ? 'primary' : 'gray'}
                         icon={isLoading ? null : 'refresh-gray.svg'}
                         onClickHandler={onReloadHandler}
                         isLoading={isLoading}
