@@ -72,7 +72,7 @@ export default function TopMovers(): JSX.Element {
             coinSymbol: 'btc'
         },
     ])
-    const {data, error, refetch, isLoading} = useGetAssetsQuery()
+    const {data: assetsData, error: assetsDataLoadError, refetch, isLoading} = useGetAssetsQuery()
 
     const onReloadHandler = (): void => {
         refetch()
@@ -80,7 +80,7 @@ export default function TopMovers(): JSX.Element {
 
     useEffect((): void => {
 
-        const assets: Asset[] = data
+        const assets: Asset[] = assetsData
 
         if (assets) {
             const sortedAssets: Asset[] = assets.sort((assetA: Asset, assetB: Asset) => {
@@ -98,7 +98,7 @@ export default function TopMovers(): JSX.Element {
 
             setTopMovers(newTopMovers)
         }
-    }, [data, isLoading])
+    }, [assetsData, isLoading])
 
     return (
         <TopMoversContainer>
@@ -108,18 +108,18 @@ export default function TopMovers(): JSX.Element {
                     Top Movers
                 </Heading>
 
-                <Button btnType={error ? 'primary' : 'gray'}
+                <Button btnType={assetsDataLoadError ? 'primary' : 'gray'}
                         icon={isLoading ? null : 'refresh-gray.svg'}
                         onClickHandler={onReloadHandler}
                         isLoading={isLoading}
-                        outline={!error}
+                        outline={!assetsDataLoadError}
                         noBorder
                 >
                     Reload
                 </Button>
             </TopMoversHeaderWrapper>
             {
-                error ?
+                assetsDataLoadError ?
                     <ErrorBox>
                         <Heading headingType={'h6'}
                                  className={'error-title'}

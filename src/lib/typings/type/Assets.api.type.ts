@@ -1,17 +1,5 @@
 import {AxiosResponse} from 'axios'
 
-export type getAssetsResponse = {
-    data: AxiosResponse | null;
-}
-
-export type getAssetResponse = {
-    data: AxiosResponse | null;
-}
-
-export type getAssetHistoryResponse = {
-    data: AxiosResponse | null;
-}
-
 export type Asset = {
     "id": string;
     "rank": string;
@@ -25,6 +13,18 @@ export type Asset = {
     "changePercent24Hr": string;
     "vwap24Hr": string;
     "explorer": string;
+}
+
+export type getAssetsResponse = {
+    data: AxiosResponse | null;
+}
+
+export type getAssetResponse = {
+    data: AxiosResponse | null;
+}
+
+export type getAssetHistoryResponse = {
+    data: AxiosResponse | null;
 }
 
 export type AssetName =

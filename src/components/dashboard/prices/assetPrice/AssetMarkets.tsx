@@ -6,7 +6,6 @@ import {
     getCoreRowModel,
     Header,
     HeaderGroup, Row,
-    RowModel,
     useReactTable
 } from '@tanstack/react-table'
 import {v4 as uuidv4} from 'uuid'
@@ -14,6 +13,9 @@ import {styled} from 'styled-components'
 import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
 import useGetAssetMarketsQuery from "@query/assets/useGetAssetMarkets.query.ts";
 import {AssetMarketProps, AssetName} from "@typings/type/Assets.api.type.ts";
+import {amountToBeFixed} from "@utils/helpers.ts";
+import Button from "@components/ui/stuff/Button.tsx";
+import Skeleton from "react-loading-skeleton";
 
 type AssetMarketColumnDef = {
     accessorKey: string;
@@ -26,10 +28,10 @@ type AssetMarketsProps = {
 }
 
 type TableAssetMarket = {
-    marketCap: string;
-    volume24h: string;
-    circulatingSupply: string;
-    maxSupply: number;
+    exchangeId: string;
+    volumeUsd24Hr: string;
+    percentExchangeVolume: string;
+    tradesCount24Hr: number;
 }
 
 const ColumnContainer = styled.div`
@@ -55,6 +57,12 @@ const Heading = styled.span`
     display: block;
 `
 
+const TableButtonsContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+
 export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
     const {
         assetName,
@@ -64,8 +72,8 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
     const [tableData, setTableData] = useState<TableAssetMarket[]>([])
     const tableColumn: ColumnDef<AssetMarketColumnDef>[] = useMemo(() => [
         {
-            accessorKey: 'marketCap',
-            header: 'Market Cap',
+            accessorKey: 'exchangeId',
+            header: 'Exchange ID',
             cell: (props: CellContext<any, any>) => {
                 return (
                     <ColumnContainer>
@@ -75,32 +83,32 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
             },
         },
         {
-            accessorKey: 'volume24h',
+            accessorKey: 'volumeUsd24Hr',
             header: 'Volume (24H)',
             cell: (props: CellContext<any, any>) => {
                 return (
                     <ColumnContainer>
-                        {props.getValue()}
+                        ${amountToBeFixed(Number(props.getValue()))}
                     </ColumnContainer>
                 )
             },
         },
         {
-            accessorKey: 'circulatingSupply',
-            header: 'Circulating Supply',
+            accessorKey: 'percentExchangeVolume',
+            header: 'Percent Exchange Volume',
             cell: (props: CellContext<any, any>) => {
                 return (
                     <ColumnContainer>
-                        {props.getValue()}
+                        %{amountToBeFixed(Number(props.getValue()))}
                     </ColumnContainer>
                 )
             },
         },
         {
-            accessorKey: 'maxSupply',
-            header: 'Max Supply',
+            accessorKey: 'tradesCount24Hr',
+            header: 'Trades Count 24Hr',
             cell: (props: CellContext<any, any>) => <ColumnContainer>
-                {props.getValue()}
+                {props.getValue()} Trade
             </ColumnContainer>
         },
     ], [])
@@ -115,73 +123,93 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
 
     const {data: assetMarketsData, error, isLoading, refetch} = useGetAssetMarketsQuery(assetName as AssetName)
 
+    const handleShowMoreButton = () => {
+        setTableShowCount(tableShowCount + 10)
+    }
+
+    const handleShowLessButton = () => {
+        setTableShowCount(tableShowCount - 10)
+    }
+
     useEffect(() => {
         if (!assetMarketsData) return
 
-        const assetMarkets = assetMarketsData.slice(0, tableShowCount).map((assetMarket: AssetMarketProps) => {
+        const assetMarkets: TableAssetMarket[] = assetMarketsData.slice(0, tableShowCount).map((assetMarket: AssetMarketProps) => {
             return {
-                marketCap: '13',
-                volume24h: '123',
-                circulatingSupply: '213',
-                maxSupply: 123,
+                exchangeId: assetMarket.exchangeId,
+                volumeUsd24Hr: assetMarket.volumeUsd24Hr,
+                percentExchangeVolume: assetMarket.percentExchangeVolume,
+                tradesCount24Hr: Number(assetMarket.tradesCount24Hr),
             }
         })
 
-        console.log(assetMarkets)
-
         setTableData(assetMarkets)
-    }, [assetMarketsData]);
-
-    console.log(tableData)
+    }, [assetMarketsData, tableShowCount]);
 
     return (
-        <ColumnContainer>
-            <Heading>Market Stats</Heading>
-            <TableContainer>
-                <Table>
-                    <Thead className={'table-head'}>
-                        {
-                            assetMarketsTable.getHeaderGroups().map((headerGroup: HeaderGroup<any>) => {
-                                return (
-                                    <Tr key={headerGroup.id}>
-                                        {
-                                            headerGroup.headers.map((header: Header<any, any>) => {
-                                                return (
-                                                    <Td key={header.id}
-                                                        className={'table-details'}>
-                                                        {String(header.column.columnDef.header)}
-                                                    </Td>
-                                                )
-                                            })
-                                        }
-                                    </Tr>
-                                )
-                            })
-                        }
-                    </Thead>
-                    <Tbody>
-                        {
-                            assetMarketsTable.getRowModel().rows.map((row: Row<any>) => {
-                                return (
-                                    <Tr key={row.id}>
-                                        {
-                                            row.getVisibleCells().map((cell: Cell<any, any>) => {
-                                                return (
-                                                    <Td key={cell.id}>
-                                                        {
-                                                            flexRender(cell.column.columnDef.cell, cell.getContext())
-                                                        }
-                                                    </Td>
-                                                )
-                                            })
-                                        }
-                                    </Tr>
-                                )
-                            })
-                        }
-                    </Tbody>
-                </Table>
-            </TableContainer>
-        </ColumnContainer>
+        <>
+            {
+                isLoading ?
+                    <Skeleton height={'5rem'} count={10}/>
+                    :
+                    <ColumnContainer>
+                        <Heading>Market Stats</Heading>
+                        <TableContainer>
+                            <Table>
+                                <TableCaption>Showing {tableShowCount} of {assetMarketsData?.length} table
+                                    rows!</TableCaption>
+                                <Thead className={'table-head'}>
+                                    {
+                                        assetMarketsTable.getHeaderGroups().map((headerGroup: HeaderGroup<any>) => {
+                                            return (
+                                                <Tr key={headerGroup.id}>
+                                                    {
+                                                        headerGroup.headers.map((header: Header<any, any>) => {
+                                                            return (
+                                                                <Td key={header.id}
+                                                                    className={'table-details'}>
+                                                                    {String(header.column.columnDef.header)}
+                                                                </Td>
+                                                            )
+                                                        })
+                                                    }
+                                                </Tr>
+                                            )
+                                        })
+                                    }
+                                </Thead>
+                                <Tbody>
+                                    {
+                                        assetMarketsTable.getRowModel().rows.map((row: Row<any>) => {
+                                            return (
+                                                <Tr key={row.id}>
+                                                    {
+                                                        row.getVisibleCells().map((cell: Cell<any, any>) => {
+                                                            return (
+                                                                <Td key={cell.id}>
+                                                                    {
+                                                                        flexRender(cell.column.columnDef.cell, cell.getContext())
+                                                                    }
+                                                                </Td>
+                                                            )
+                                                        })
+                                                    }
+                                                </Tr>
+                                            )
+                                        })
+                                    }
+                                </Tbody>
+                            </Table>
+                        </TableContainer>
+                        <TableButtonsContainer>
+                            <Button onClickHandler={handleShowLessButton} disabled={tableShowCount === 10}>Show
+                                less</Button>
+                            <Button onClickHandler={handleShowMoreButton}
+                                    disabled={tableShowCount === assetMarketsData?.length}>Show
+                                more</Button>
+                        </TableButtonsContainer>
+                    </ColumnContainer>
+            }
+        </>
     )
 }

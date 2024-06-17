@@ -1,5 +1,6 @@
 import axios, {AxiosResponse} from "axios"
 import {
+    Asset,
     AssetHistoryInterval, AssetMarketProps,
     AssetName,
     getAssetHistoryResponse,
@@ -15,19 +16,17 @@ const axiosInstance = axios.create({
     }
 })
 
-export const getAssets = async (): Promise<getAssetsResponse | null> => {
-    const response: getAssetsResponse = {
-        data: null,
-    }
+export const getAssets = async (): Promise<Asset[] | null> => {
+    let assets: Asset[] | null = null
 
     try {
         const {data}: AxiosResponse = await axiosInstance.get('/assets')
-        response.data = data.data
+        assets = data.data
     } catch (e: any) {
         throw new Error(e.message)
     }
 
-    return response.data
+    return assets
 }
 
 export const getAsset = async (assetName: AssetName): Promise<getAssetsResponse> => {
