@@ -21,6 +21,9 @@ import {styled} from "styled-components";
 
 type AssetChartProps = {
     assetName: AssetName;
+    hasErrorHandler: () => void;
+    hasNoErrorHandler: () => void;
+    refetchListener: number;
 }
 
 type CryptoHistoryRecord = {
@@ -109,11 +112,23 @@ export default function AssetChart(props: AssetChartProps) {
     const [chartInterval, setChartInterval] = useState<AssetHistoryInterval>('d1')
 
     const {
+        assetName,
+        hasErrorHandler,
+        hasNoErrorHandler,
+        refetchListener,
+    } = props
+
+    const {
         currencyPriceHistoryData,
-        error,
-        refetch,
-        isLoading,
-    } = useGetAssetHistory(props.assetName, chartInterval)
+        error: assetChartError,
+        refetch: assetChartRefetch,
+        isLoading: assetChartLoading,
+    } = useGetAssetHistory(assetName, chartInterval)
+
+    useEffect(() => {
+        if (assetChartError) hasErrorHandler()
+        else hasNoErrorHandler()
+    }, [assetChartError]);
 
     useEffect(function updateLabelsAndDatasets(): void {
         if (currencyPriceHistoryData) {
@@ -132,16 +147,25 @@ export default function AssetChart(props: AssetChartProps) {
     }, [currencyPriceHistoryData]);
 
     useEffect(() => {
-        refetch()
+        assetChartRefetch()
     }, [chartInterval]);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            refetch()
+            assetChartRefetch()
         }, 1000 * 60)
 
         return () => clearInterval(interval)
     }, []);
+
+    useEffect(() => {
+        if (assetChartError) hasErrorHandler()
+        else hasNoErrorHandler()
+    }, [assetChartError]);
+
+    useEffect(() => {
+        assetChartRefetch()
+    }, [refetchListener]);
 
     const chartOptions: ChartOptions = {
         animation: false,
@@ -170,7 +194,7 @@ export default function AssetChart(props: AssetChartProps) {
     return (
         <>
             {
-                isLoading ?
+                assetChartLoading ?
                     <Skeleton height={'30rem'} count={1}/>
                     :
                     <AssetChartContainer>

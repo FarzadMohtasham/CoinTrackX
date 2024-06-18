@@ -5,9 +5,13 @@ import Skeleton from "react-loading-skeleton";
 import {amountToBeFixed} from "@utils/helpers.ts";
 import Badge from "@components/ui/stuff/Badge.tsx";
 import useGetAssetQuery from "@query/assets/useGetAsset.query.ts";
+import {useEffect} from "react";
 
 type AssetInfoProps = {
     assetName: AssetName;
+    hasErrorHandler: () => void;
+    hasNoErrorHandler: () => void;
+    refetchListener: number;
 }
 
 const AssetInfoContainer = styled.div`
@@ -72,15 +76,30 @@ const AssetInfoRightCol = styled.div`
 `
 
 export default function AssetInfo(props: AssetInfoProps) {
-// Asset Query
+    const {
+        assetName,
+        hasErrorHandler,
+        hasNoErrorHandler,
+        refetchListener,
+    } = props
+
     const {
         data: assetData,
         error: assetError,
         refetch: assetRefresh,
         isLoading: assetDataIsLoading
-    } = useGetAssetQuery(props.assetName as AssetName, {
+    } = useGetAssetQuery(assetName as AssetName, {
         gcTime: 0,
     })
+
+    useEffect(() => {
+        if (assetError) hasErrorHandler()
+        else hasNoErrorHandler()
+    }, [assetError]);
+
+    useEffect(() => {
+        assetRefresh()
+    }, [refetchListener]);
 
     return (
         <>

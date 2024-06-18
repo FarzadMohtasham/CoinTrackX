@@ -14,18 +14,22 @@ import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakr
 import useGetAssetMarketsQuery from "@query/assets/useGetAssetMarkets.query.ts";
 import {AssetMarketProps, AssetName} from "@typings/type/Assets.api.type.ts";
 import {amountToBeFixed} from "@utils/helpers.ts";
-import Button from "@components/ui/stuff/Button.tsx";
 import Skeleton from "react-loading-skeleton";
 import {object} from "yup";
+import Select from "@components/ui/stuff/Select.tsx";
+import {SelectMenuItem} from "@typings/type/Select.type.ts";
+
+type AssetMarketsProps = {
+    assetName: string;
+    hasErrorHandler: () => void;
+    hasNoErrorHandler: () => void;
+    refetchListener: number;
+}
 
 type AssetMarketColumnDef = {
     accessorKey: string;
     header: string;
     cell: Cell<any, any>,
-}
-
-type AssetMarketsProps = {
-    assetName: string;
 }
 
 type TableAssetMarket = {
@@ -39,7 +43,7 @@ const AssetMarketsContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    
+
     .table-head {
         background-color: var(--color-black-100);
 
@@ -53,24 +57,41 @@ const AssetMarketsContainer = styled.div`
 
 const ColumnContainer = styled.div``
 
-const Heading = styled.span`
-    font-size: var(--font-size-body-md);
-    font-weight: 500;
-    display: block;
-`
-
-const TableButtonsContainer = styled.div`
+const Heading = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    span.title {
+        font-size: var(--font-size-body-md);
+        font-weight: 500;
+    }
 `
+
+const SelectTableShowStatusList: SelectMenuItem[] = [
+    {
+        default: true,
+        name: 'Show less',
+        value: 'less',
+        iconSrc: ''
+    },
+    {
+        default: false,
+        name: 'Show all',
+        value: 'all',
+        iconSrc: ''
+    },
+]
 
 export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
     const {
         assetName,
+        hasErrorHandler,
+        hasNoErrorHandler,
+        refetchListener,
     }: AssetMarketsProps = props
 
-    const [tableShowCount, setTableShowCount] = useState<number>(10)
+    const [tableShowStatus, setTableShowStatus] = useState<'less' | 'all'>('less')
     const [tableData, setTableData] = useState<TableAssetMarket[]>([])
     const tableColumn: ColumnDef<AssetMarketColumnDef>[] = useMemo(() => [
         {
@@ -114,7 +135,6 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
             </ColumnContainer>
         },
     ], [])
-    const [assetMarkets, setAssetMarkets] = useState<AssetMarketColumnDef[]>([])
 
     const assetMarketsTable = useReactTable({
         data: tableData,
@@ -123,20 +143,25 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
         getRowId: () => uuidv4(),
     })
 
-    const {data: assetMarketsData, error, isLoading, refetch} = useGetAssetMarketsQuery(assetName as AssetName)
+    const {
+        data: assetMarketsData,
+        error: assetMarketsError,
+        isLoading,
+        refetch: assetMarketsRefetch
+    } = useGetAssetMarketsQuery(assetName as AssetName)
 
-    const handleShowMoreButton = () => {
-        setTableShowCount(tableShowCount + 5)
-    }
-
-    const handleShowLessButton = () => {
-        setTableShowCount(tableShowCount - 5)
-    }
+    const showLessCount = Math.floor(assetMarketsData?.length / 2)
+    const showAllCount = assetMarketsData?.length
 
     useEffect(() => {
+        if (assetMarketsError) hasErrorHandler()
+        else hasNoErrorHandler()
+    }, [assetMarketsError]);
+
+    useEffect(function processAssetMarketsData() {
         if (typeof assetMarketsData !== typeof object()) return
 
-        const assetMarkets: TableAssetMarket[] = assetMarketsData.slice(0, tableShowCount).map((assetMarket: AssetMarketProps) => {
+        const assetMarkets: TableAssetMarket[] = assetMarketsData.slice(0, tableShowStatus === 'less' ? showLessCount : showAllCount).map((assetMarket: AssetMarketProps) => {
             return {
                 exchangeId: assetMarket.exchangeId,
                 volumeUsd24Hr: assetMarket.volumeUsd24Hr,
@@ -146,7 +171,16 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
         })
 
         setTableData(assetMarkets)
-    }, [assetMarketsData, tableShowCount]);
+    }, [assetMarketsData, tableShowStatus]);
+
+    useEffect(() => {
+        if (assetMarketsError) hasErrorHandler()
+        else hasNoErrorHandler()
+    }, [assetMarketsError]);
+
+    useEffect(() => {
+        assetMarketsRefetch()
+    }, [refetchListener]);
 
     return (
         <>
@@ -155,10 +189,13 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                     <Skeleton height={'5rem'} count={10}/>
                     :
                     <AssetMarketsContainer>
-                        <Heading>Market Stats</Heading>
+                        <Heading>
+                            <span className={'title'}>Market Stats</span>
+                            <Select $menuItems={SelectTableShowStatusList} $newValueSetter={setTableShowStatus}/>
+                        </Heading>
                         <TableContainer>
                             <Table>
-                                <TableCaption>Showing {tableShowCount} of {assetMarketsData?.length} table
+                                <TableCaption>Showing {tableShowStatus === 'less' ? showLessCount : showAllCount} of {assetMarketsData?.length} table
                                     rows!</TableCaption>
                                 <Thead className={'table-head'}>
                                     {
@@ -203,14 +240,6 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                                 </Tbody>
                             </Table>
                         </TableContainer>
-                        <TableButtonsContainer>
-                            <Button onClickHandler={handleShowLessButton}
-                                    disabled={tableShowCount === 10}>Show
-                                less</Button>
-                            <Button onClickHandler={handleShowMoreButton}
-                                    disabled={tableShowCount === assetMarketsData?.length}>Show
-                                more</Button>
-                        </TableButtonsContainer>
                     </AssetMarketsContainer>
             }
         </>

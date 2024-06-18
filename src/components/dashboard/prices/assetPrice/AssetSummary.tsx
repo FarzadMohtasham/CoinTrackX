@@ -1,4 +1,4 @@
-import {JSX} from "react";
+import {JSX, useEffect} from "react";
 import {styled} from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import useGetAssetSummaryQuery from "@query/assetSummary/useGetAssetSummary.query.ts";
@@ -6,6 +6,9 @@ import {AssetName} from "@typings/type/Assets.api.type.ts";
 
 type AssetSummaryProps = {
     assetName: AssetName,
+    hasErrorHandler: () => void;
+    hasNoErrorHandler: () => void;
+    refetchListener: number;
 }
 
 const AssetSummaryContainer = styled.div`
@@ -30,11 +33,27 @@ const AssetSummaryContainer = styled.div`
 
 export default function AssetSummary(props: AssetSummaryProps): JSX.Element {
     const {
+        assetName,
+        hasErrorHandler,
+        hasNoErrorHandler,
+        refetchListener,
+    } = props
+
+    const {
         data: assetSummaryData,
         error: assetSummaryError,
         isLoading: assetSummaryIsLoading,
         refetch: assetSummaryRefresh,
-    } = useGetAssetSummaryQuery(props.assetName)
+    } = useGetAssetSummaryQuery(assetName)
+
+    useEffect(() => {
+        if (assetSummaryError) hasErrorHandler()
+        else hasNoErrorHandler()
+    }, [assetSummaryError]);
+
+    useEffect(() => {
+        assetSummaryRefresh()
+    }, [refetchListener]);
 
     return (
         <>
