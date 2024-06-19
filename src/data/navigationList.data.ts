@@ -26,14 +26,6 @@ export const NavigationListData: NavigationItemType[] = [
         active: false,
     },
     {
-        name: 'buy',
-        title: 'Buy',
-        link: '/dashboard/buy',
-        iconSrc: 'buy.svg',
-        activeIconSrc: 'active-buy.svg',
-        active: false,
-    },
-    {
         name: 'transactions',
         title: 'Transactions',
         link: '/dashboard/transactions',
