@@ -25,9 +25,8 @@ type DispatchProps = {
 }
 
 const AssetPriceContainer = styled.div.attrs<{ $hasError: boolean }>(({$hasError}) => ({
-    style: {display: $hasError ? 'none' : 'block'}
+    style: {display: $hasError ? 'none' : 'grid'}
 }))`
-    display: grid;
     grid-template-columns: repeat(9, 1fr);
     padding: 3.2rem 2rem;
 
