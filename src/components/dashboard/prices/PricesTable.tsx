@@ -15,7 +15,7 @@ import {styled} from 'styled-components'
 import {v4 as uuidv4} from 'uuid'
 import {Link, NavigateFunction, useNavigate} from "react-router-dom";
 
-import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
+import {Table, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
 
 import Icon from '@components/ui/stuff/Icon.tsx'
@@ -28,8 +28,6 @@ import {PaginationRowProps} from '@typings/type/PricesPage.type.ts'
 
 import Input from '@components/ui/input-fields/InputField.input.tsx'
 import Button from '@components/ui/stuff/Button.tsx'
-
-import {getCurrentTimeFormatted} from '@utils/helpers.ts'
 
 const PricesTableContainer = styled.div`
     display: flex;
@@ -100,12 +98,11 @@ const ColumnCellSpan = styled.span`
 `
 
 export default function PricesTable(): JSX.Element {
-    const [lastRefetchTime, setLastRefetchTime] = useState<string>(getCurrentTimeFormatted())
     const [pagination, setPagination] = useState<PaginationState>({pageIndex: 0, pageSize: 20})
     const [search, setSearch] = useState<string>('')
     const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false)
 
-    const {data, refetch: refetchTableData, isLoading} = useGetAssetsQuery()
+    const {data, refetch: _, isLoading} = useGetAssetsQuery()
     // const user = useUser()
 
     const navigate: NavigateFunction = useNavigate()
@@ -234,17 +231,6 @@ export default function PricesTable(): JSX.Element {
         setTableData(tabledData)
     }, [data]);
 
-    useEffect(() => {
-        const tableRefetchInterval: NodeJS.Timeout = setInterval(() => {
-            refetchTableData()
-            setLastRefetchTime(getCurrentTimeFormatted())
-        }, 1000 * 10)
-
-        return () => {
-            clearInterval(tableRefetchInterval)
-        }
-    }, []);
-
     return (
         <PricesTableContainer>
             {
@@ -301,7 +287,6 @@ export default function PricesTable(): JSX.Element {
                     :
                     <TableContainer>
                         <Table className={'table'}>
-                            <TableCaption>Data will reload every 10s: last refetch: {lastRefetchTime}</TableCaption>
                             <Thead className={'table-head'}>
                                 {
                                     table.getHeaderGroups().map((headerGroup: HeaderGroup<any>): JSX.Element => {
