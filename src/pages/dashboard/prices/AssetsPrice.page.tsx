@@ -1,4 +1,4 @@
-import {JSX} from "react";
+import {JSX, useState} from "react";
 import {styled} from 'styled-components'
 
 import TopMovers from '@components/dashboard/prices/TopMovers.tsx'
@@ -39,17 +39,22 @@ const SimpleNotifOptions: NotificationOptions = {
 }
 
 export default function Prices(): JSX.Element {
+    const [hasError, setHasError] = useState<boolean>(false)
+
     return (
         <PricesContainer>
             <SimpleNotification options={SimpleNotifOptions}/>
 
             <TopMoversWrapper>
-                <TopMovers/>
+                <TopMovers setHasError={setHasError}/>
             </TopMoversWrapper>
 
-            <PricesWrapper>
-                <PricesTable/>
-            </PricesWrapper>
+            {
+                !hasError &&
+                <PricesWrapper>
+                    <PricesTable/>
+                </PricesWrapper>
+            }
         </PricesContainer>
     )
 }

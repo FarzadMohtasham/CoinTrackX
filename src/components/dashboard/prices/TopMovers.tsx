@@ -11,47 +11,55 @@ import {TopMover as TopMoverT} from '@typings/type/TopMover.type.ts'
 import {Asset} from '@typings/type/Assets.api.type.ts'
 
 const TopMoversContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
 
 `
 
 const TopMoversHeaderWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `
 
 const TopMoversWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
 
-  @media screen and (min-width: ${props => props.theme.responsive.sm}) {
-    flex-direction: row;
-  }
+    @media screen and (min-width: ${props => props.theme.responsive.sm}) {
+        flex-direction: row;
+    }
 
-  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
-    flex-direction: column;
-  }
+    @media screen and (max-width: ${props => props.theme.responsive.sm}) {
+        flex-direction: column;
+    }
 `
 
 const ErrorBox = styled.div`
-  display: grid;
-  place-content: center;
+    display: grid;
+    place-content: center;
 
-  .error-title {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
+    .error-title {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
 
-  .error-desc {
-    text-align: center;
-  }
+    .error-desc {
+        text-align: center;
+    }
 `
 
-export default function TopMovers(): JSX.Element {
+type TopMoversProps = {
+    setHasError: (val: boolean) => void;
+}
+
+export default function TopMovers(props: TopMoversProps): JSX.Element {
+    const {
+        setHasError,
+    } = props
+
     const [topMovers, setTopMovers] = useState<TopMoverT[] | null>([
         {
             price: '1200430',
@@ -99,6 +107,11 @@ export default function TopMovers(): JSX.Element {
             setTopMovers(newTopMovers)
         }
     }, [assetsData, isLoading])
+
+    useEffect(() => {
+        if (assetsDataLoadError) setHasError(true)
+        else setHasError(false)
+    }, [assetsDataLoadError]);
 
     return (
         <TopMoversContainer>
