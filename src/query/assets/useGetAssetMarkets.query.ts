@@ -7,8 +7,8 @@ import {
     AssetMarketsAPIQueryReturnProps,
     AssetName,
     QueryGetAssetOptions,
-} from '@typings/type/Assets.api.type.ts'
-import {assetNamesWithSymbols} from "@data/assetsList.ts";
+} from '@typings/Assets.api.type.ts'
+import {assetNamesWithSymbols} from '@data/assetsList.ts'
 
 const defaultOptions: QueryGetAssetOptions = {
     staleTime: 1000 * 60 * 60,

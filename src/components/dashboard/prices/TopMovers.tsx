@@ -7,8 +7,8 @@ import Button from '@components/ui/stuff/Button.tsx'
 
 import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts'
 
-import {TopMover as TopMoverT} from '@typings/type/component-types/TopMover.type.ts'
-import {Asset} from '@typings/type/Assets.api.type.ts'
+import {TopMover as TopMoverT} from '@typings/component-types/TopMover.type.ts'
+import {Asset} from '@typings/Assets.api.type.ts'
 
 const TopMoversContainer = styled.div`
     display: flex;

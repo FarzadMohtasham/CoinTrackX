@@ -1,10 +1,10 @@
+import {JSX} from 'react'
 import {styled} from 'styled-components'
-
-import {BadgeProps, BadgePropsType} from "@typings/type/component-types/BadgeProps.type.ts"
 
 // Component
 import Icon from './Icon.tsx'
-import {JSX} from "react";
+
+import {BadgeProps, BadgePropsType} from '@typings/component-types/BadgeProps.type.ts'
 
 const borderRadiusVariations = {
     none: '0',

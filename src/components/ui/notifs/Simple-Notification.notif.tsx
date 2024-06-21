@@ -1,10 +1,10 @@
 import {JSX, useState} from 'react'
 import {styled} from 'styled-components'
 import Icon from '@components/ui/stuff/Icon.tsx'
-import {NotificationStyledProps} from '@typings/type/component-types/Notifications.type.ts'
+import {NotificationStyledProps} from '@typings/component-types/Notifications.type.ts'
 import {formatDistance} from 'date-fns'
 import {toast} from 'react-hot-toast'
-import {SimpleNotifProps, SimpleNotifStyled} from '@typings/type/component-types/Notification.type.ts'
+import {SimpleNotifProps, SimpleNotifStyled} from '@typings/component-types/Notification.type.ts'
 
 const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNotifStyled>`
     display: flex;

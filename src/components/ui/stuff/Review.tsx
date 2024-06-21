@@ -1,8 +1,9 @@
+import {JSX} from "react";
 import {styled} from 'styled-components'
 
-import {Review as ReviewProps} from '@typings/type/component-types/Review.type.ts'
 import Heading from './Heading.tsx'
-import {JSX} from "react";
+
+import {Review as ReviewProps} from '@typings/component-types/Review.type.ts'
 
 const FILLED_STAR_ICON_URL = '/icons/star-filled.svg'
 const UNFILLED_STAR_ICON_URL = '/icons/star-unfilled.svg'

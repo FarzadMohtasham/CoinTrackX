@@ -7,7 +7,7 @@ import {
     AssetAPIQueryReturnOptions,
     AssetName,
     QueryGetAssetOptions,
-} from "@typings/type/Assets.api.type.ts"
+} from '@typings/Assets.api.type.ts'
 
 const defaultOptions: QueryGetAssetOptions = {
     staleTime: 1000 * 60 * 60,

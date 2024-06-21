@@ -3,7 +3,7 @@ import {styled} from 'styled-components'
 
 import Icon from '@components/ui/stuff/Icon.tsx'
 
-import {InputProps, InputStyledProps} from '@typings/type/component-types/InputFieldProps.type.ts'
+import {InputProps, InputStyledProps} from '@typings/component-types/InputFieldProps.type.ts'
 
 const FieldContainer = styled.div`
   display: flex;

@@ -11,13 +11,14 @@ import {
 import {v4 as uuidv4} from 'uuid'
 import {styled} from 'styled-components'
 import {Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr,} from '@chakra-ui/react'
-import useGetAssetMarketsQuery from "@query/assets/useGetAssetMarkets.query.ts";
-import {AssetMarketProps, AssetName} from "@typings/type/Assets.api.type.ts";
-import {amountToBeFixed} from "@utils/helpers.ts";
-import Skeleton from "react-loading-skeleton";
-import {object} from "yup";
-import Select from "@components/ui/stuff/Select.tsx";
-import {SelectMenuItem} from "@typings/type/component-types/Select.type.ts";
+import useGetAssetMarketsQuery from '@query/assets/useGetAssetMarkets.query.ts'
+import {amountToBeFixed} from '@utils/helpers.ts'
+import Skeleton from 'react-loading-skeleton'
+import {object} from 'yup'
+import Select from '@components/ui/stuff/Select.tsx'
+
+import {AssetMarketProps, AssetName} from '@typings/Assets.api.type.ts'
+import {SelectMenuItem} from '@typings/component-types/Select.type.ts'
 
 type AssetMarketsProps = {
     assetName: string;

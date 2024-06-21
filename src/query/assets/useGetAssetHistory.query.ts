@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query'
 import {getAssetHistory} from '@services/api/assets/assets.api.ts'
-import {AssetHistoryInterval, AssetName} from '@typings/type/Assets.api.type.ts'
+import {AssetHistoryInterval, AssetName} from '@typings/Assets.api.type.ts'
 
 export default function useGetAssetHistory(assetName: AssetName, chartInterval: AssetHistoryInterval = 'd1', historyLength: number = 10) {
     const {data: currencyPriceHistoryData, error, refetch, isLoading}: {

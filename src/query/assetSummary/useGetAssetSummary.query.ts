@@ -1,6 +1,6 @@
-import {useQuery} from "@tanstack/react-query";
-import {AssetName} from "@typings/type/Assets.api.type.ts";
-import {getAssetSummaryApi} from "@services/api/assets/assetSummary.api.ts";
+import {useQuery} from '@tanstack/react-query'
+import {AssetName} from '@typings/Assets.api.type.ts'
+import {getAssetSummaryApi} from '@services/api/assets/assetSummary.api.ts'
 
 export default function useGetAssetSummaryQuery(assetName: AssetName) {
     return useQuery({

@@ -10,9 +10,9 @@ import {useNotificationsQuery} from '@query/notifications/useNotifications.query
 import {
     Notification,
     NotificationContainerProps
-} from "@typings/type/component-types/Notifications.type.ts"
-import SimpleNotification from "@components/ui/notifs/Simple-Notification.notif.tsx";
-import {NotificationOptions} from "@typings/type/component-types/Notification.type.ts";
+} from '@typings/component-types/Notifications.type.ts'
+import SimpleNotification from '@components/ui/notifs/Simple-Notification.notif.tsx'
+import {NotificationOptions} from '@typings/component-types/Notification.type.ts'
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
   display: grid;

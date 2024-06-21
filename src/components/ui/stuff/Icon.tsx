@@ -1,6 +1,7 @@
 import {JSX} from 'react'
-import {IconProps} from '@typings/type/component-types/IconProps.type.ts'
 import {styled} from "styled-components";
+
+import {IconProps} from '@typings/component-types/IconProps.type.ts'
 
 const IconImg = styled.img`
     display: inline;

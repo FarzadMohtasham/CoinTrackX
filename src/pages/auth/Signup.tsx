@@ -20,7 +20,7 @@ import {
     MainContent as MainContentStyled,
     AuthLink, AuthContainer,
 } from '@pages/auth/Auth.styled.tsx'
-import {ValidationResult} from "@typings/type/Auth.type.ts";
+import {ValidationResult} from '@typings/Auth.type.ts'
 
 const LoginContainer = styled(AuthContainer)``
 const LoginWrapper = styled(AuthInnerWrapper)``

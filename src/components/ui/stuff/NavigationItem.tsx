@@ -3,7 +3,7 @@ import {css, styled} from 'styled-components'
 
 import Icon from '@components/ui/stuff/Icon.tsx'
 
-import {NavigationProps, NavigationItemStyledProps} from '@typings/type/NavigationItem.type.ts'
+import {NavigationProps, NavigationItemStyledProps} from '@typings/NavigationItem.type.ts'
 
 const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
   display: flex;

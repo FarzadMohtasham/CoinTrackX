@@ -18,9 +18,9 @@ import {
 import Select from '@components/ui/stuff/Select.tsx'
 import Button from '@components/ui/stuff/Button.tsx'
 
-import {SelectMenuItem} from '@typings/type/component-types/Select.type.ts'
+import {SelectMenuItem} from '@typings/component-types/Select.type.ts'
 import useGetAssetHistory from '@query/assets/useGetAssetHistory.query.ts'
-import {AssetHistoryInterval, AssetName} from '@typings/type/Assets.api.type.ts'
+import {AssetHistoryInterval, AssetName} from '@typings/Assets.api.type.ts'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 

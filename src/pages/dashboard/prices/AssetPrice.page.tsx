@@ -1,17 +1,17 @@
-import {JSX, useReducer, useState} from "react";
-import {useParams} from "react-router-dom";
-import {styled} from "styled-components";
+import {JSX, useReducer, useState} from 'react'
+import {useParams} from 'react-router-dom'
+import {styled} from 'styled-components'
 
-import AssetInfo from "@components/dashboard/prices/assetPrice/AssetInfo.tsx";
-import AssetSummary from "@components/dashboard/prices/assetPrice/AssetSummary.tsx";
-import GoBack from "@components/ui/stuff/GoBack.tsx";
+import AssetInfo from '@components/dashboard/prices/assetPrice/AssetInfo.tsx'
+import AssetSummary from '@components/dashboard/prices/assetPrice/AssetSummary.tsx'
+import GoBack from '@components/ui/stuff/GoBack.tsx'
 
-import {AssetName} from "@typings/type/Assets.api.type.ts";
+import {AssetName} from '@typings/Assets.api.type.ts'
 
-import AssetChart from "@components/dashboard/prices/assetPrice/AssetChart.tsx";
-import AssetMarkets from "@components/dashboard/prices/assetPrice/AssetMarkets.tsx";
-import Heading from "@components/ui/stuff/Heading.tsx";
-import Button from "@components/ui/stuff/Button.tsx";
+import AssetChart from '@components/dashboard/prices/assetPrice/AssetChart.tsx'
+import AssetMarkets from '@components/dashboard/prices/assetPrice/AssetMarkets.tsx'
+import Heading from '@components/ui/stuff/Heading.tsx'
+import Button from '@components/ui/stuff/Button.tsx'
 
 type ErrorStatesProps = {
     assetInfoHasError: boolean;

@@ -1,5 +1,5 @@
 import {styled} from 'styled-components'
-import {AssetName} from "@typings/type/Assets.api.type.ts";
+import {AssetName} from "@typings/Assets.api.type.ts";
 import Icon from "@components/ui/stuff/Icon.tsx";
 import Skeleton from "react-loading-skeleton";
 import {amountToBeFixed} from "@utils/helpers.ts";

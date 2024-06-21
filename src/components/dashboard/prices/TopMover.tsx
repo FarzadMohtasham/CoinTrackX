@@ -1,12 +1,13 @@
+import {JSX} from 'react'
+import {Link} from 'react-router-dom'
 import {styled} from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
 
 import Icon from '@components/ui/stuff/Icon.tsx'
 
-import {TopMoverProps} from '@typings/type/component-types/TopMover.type.ts'
-import {JSX} from "react";
-import {Link} from "react-router-dom";
-import {amountToBeFixed} from "@utils/helpers.ts";
+import {amountToBeFixed} from '@utils/helpers.ts'
+
+import {TopMoverProps} from '@typings/component-types/TopMover.type.ts'
 
 const TopMoverContainer = styled.div`
     width: 100%;

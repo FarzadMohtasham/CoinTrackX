@@ -1,7 +1,7 @@
 import {JSX} from 'react'
 import {styled} from 'styled-components'
 
-import {HeadingPropsType, HeadingStyledProps} from '@typings/type/component-types/HeadingProps.type.ts'
+import {HeadingPropsType, HeadingStyledProps} from '@typings/component-types/HeadingProps.type.ts'
 
 const HeadingStyled = styled.h1<HeadingStyledProps>`
   font-weight: ${(props: any) => props.$fontWeight};

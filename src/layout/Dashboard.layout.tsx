@@ -9,7 +9,7 @@ import Profile from '@components/ui/stuff/Profile.tsx'
 import Alert from '@components/dashboard/Notifications.tsx'
 
 import {NavigationListData} from '@data/navigationList.data.ts'
-import {NavigationItemType, NavigationProps} from '@typings/type/NavigationItem.type.ts'
+import {NavigationItemType, NavigationProps} from '@typings/NavigationItem.type.ts'
 import useDashboardProtectRoute from '@hooks/useDashboardProtectRoute.ts'
 import Icon from '@components/ui/stuff/Icon.tsx'
 

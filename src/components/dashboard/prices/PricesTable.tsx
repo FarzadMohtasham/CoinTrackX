@@ -22,9 +22,9 @@ import Icon from '@components/ui/stuff/Icon.tsx'
 import Badge from '@components/ui/stuff/Badge.tsx'
 import PaginationRow from '@components/dashboard/prices/PaginationRow.tsx'
 
-import {Asset} from '@typings/type/Assets.api.type.ts'
-import {AssetPriceTable} from '@typings/type/Tables.type.ts'
-import {PaginationRowProps} from '@typings/type/PricesPage.type.ts'
+import {Asset} from '@typings/Assets.api.type.ts'
+import {AssetPriceTable} from '@typings/Tables.type.ts'
+import {PaginationRowProps} from '@typings/PricesPage.type.ts'
 
 import Input from '@components/ui/input-fields/InputField.input.tsx'
 import Button from '@components/ui/stuff/Button.tsx'

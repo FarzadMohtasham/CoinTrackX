@@ -4,7 +4,7 @@ import {styled} from 'styled-components'
 import Button from '@components/ui/stuff/Button.tsx'
 import Icon from '@components/ui/stuff/Icon.tsx'
 
-import {PaginationRowProps} from '@typings/type/PricesPage.type.ts'
+import {PaginationRowProps} from '@typings/PricesPage.type.ts'
 
 const PaginationRowContainer = styled.div`
   display: flex;

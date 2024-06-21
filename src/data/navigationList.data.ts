@@ -1,4 +1,4 @@
-import {NavigationItemType} from "@typings/type/NavigationItem.type.ts";
+import {NavigationItemType} from '@typings/NavigationItem.type.ts'
 
 export const NavigationListData: NavigationItemType[] = [
     {
