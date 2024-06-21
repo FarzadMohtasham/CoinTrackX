@@ -6,7 +6,7 @@ import {HashLoader} from 'react-spinners'
 import Icon from '@components/ui/stuff/Icon.tsx'
 
 //  Types
-import {ButtonPropsType, Properties} from '@typings/type/component-props/ButtonProps.type.ts';
+import {ButtonPropsType, Properties} from '@typings/type/component-types/ButtonProps.type.ts';
 
 // Data
 import {

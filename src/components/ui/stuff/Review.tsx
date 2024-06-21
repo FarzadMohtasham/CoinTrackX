@@ -1,6 +1,6 @@
 import {styled} from 'styled-components'
 
-import {Review as ReviewProps} from '@typings/type/component-props/Review.type.ts'
+import {Review as ReviewProps} from '@typings/type/component-types/Review.type.ts'
 import Heading from './Heading.tsx'
 import {JSX} from "react";
 

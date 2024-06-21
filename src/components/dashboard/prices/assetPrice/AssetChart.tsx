@@ -13,7 +13,7 @@ import {
     Title,
     Tooltip
 } from 'chart.js'
-import {SelectMenuItem} from "@typings/type/component-props/Select.type.ts";
+import {SelectMenuItem} from "@typings/type/component-types/Select.type.ts";
 import {Line} from "react-chartjs-2";
 import Skeleton from "react-loading-skeleton";
 import Select from "@components/ui/stuff/Select.tsx";

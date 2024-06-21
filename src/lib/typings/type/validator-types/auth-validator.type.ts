@@ -1,9 +1,9 @@
-export interface ValidatorProps {
+export type ValidatorProps = {
     type: 'email' | 'password';
     payload: string;
 };
 
-export interface ValidationResult {
+export type ValidationResult =  {
     isValid: boolean;
     errorMessage: string;
 }
