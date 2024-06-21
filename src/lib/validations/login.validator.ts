@@ -1,5 +1,5 @@
 import {object, string, ValidationError} from 'yup'
-import {ValidationResult, ValidatorProps} from '@typings/type/validator-types/auth-validator.type.ts'
+import {ValidationResult, ValidatorProps} from '@typings/validator-types/auth-validator.type.ts'
 
 const emailValidationSchema = object({
     email: string().required().max(100).email().trim(),
