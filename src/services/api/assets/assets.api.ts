@@ -1,11 +1,10 @@
 import axios, {AxiosResponse} from "axios"
 import {
     Asset,
-    AssetHistoryInterval, AssetMarketProps,
+    AssetHistoryInterval,
+    AssetMarketProps,
     AssetName,
-    getAssetHistoryResponse,
-    getAssetResponse,
-    getAssetsResponse
+    AssetsApiResponse,
 } from "@typings/type/Assets.api.type.ts";
 
 const axiosInstance = axios.create({
@@ -29,8 +28,8 @@ export const getAssets = async (): Promise<Asset[] | null> => {
     return assets
 }
 
-export const getAsset = async (assetName: AssetName): Promise<getAssetsResponse> => {
-    const response: getAssetResponse = {
+export const getAsset = async (assetName: AssetName): Promise<AssetsApiResponse> => {
+    const response: AssetsApiResponse = {
         data: null,
     }
 
@@ -45,13 +44,13 @@ export const getAsset = async (assetName: AssetName): Promise<getAssetsResponse>
         throw new Error(e.message)
     }
 
-    return response.data as AxiosResponse
+    return response.data as AssetsApiResponse
 }
 
 type HistoryLength = number | 0
 
-export const getAssetHistory = async (assetName: AssetName | string, interval: AssetHistoryInterval = 'd1', historyLength: HistoryLength): Promise<getAssetHistoryResponse | null> => {
-    const response: getAssetHistoryResponse = {
+export const getAssetHistory = async (assetName: AssetName | string, interval: AssetHistoryInterval = 'd1', historyLength: HistoryLength): Promise<AssetsApiResponse | null> => {
+    const response: AssetsApiResponse = {
         data: null,
     }
 

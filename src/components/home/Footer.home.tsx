@@ -8,7 +8,7 @@ import CopyRight from '@components/ui/stuff/CopyRight.tsx'
 import Heading from '@components/ui/stuff/Heading.tsx'
 
 // Type
-import {ColumnItem as ColumnItemType} from '@typings/type/Footer.type.ts'
+import {ColumnItem as ColumnItemType} from '@typings/type/component-props/Footer.type.ts'
 import {IStyledComponentBase} from "styled-components/dist/types";
 
 // Data

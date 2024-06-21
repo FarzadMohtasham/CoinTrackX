@@ -1,7 +1,7 @@
 import {MutableRefObject, ReactNode} from 'react'
 
 export type NotificationContainerProps = {
-    ref: MutableRefObject<any>
+    ref: MutableRefObject<any>;
 }
 
 export type NotificationStyledProps = {

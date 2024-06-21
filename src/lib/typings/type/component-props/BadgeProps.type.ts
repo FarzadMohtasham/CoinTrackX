@@ -6,8 +6,8 @@ export type BadgePropsType = {
     hasIcon?: boolean;
     icon?: any;
     iconDir?: 'left' | 'right';
-    borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full',
-    outline?: boolean,
+    borderRadius?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+    outline?: boolean;
 }
 
 export type BadgeProps = {

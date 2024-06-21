@@ -1,7 +1,7 @@
 import {JSX} from 'react'
 import {styled} from 'styled-components'
 
-import {CopyRightProps, CopyRightStyledProps} from '@typings/type/CopyRightProps.type.ts'
+import {CopyRightProps, CopyRightStyledProps} from '@typings/type/component-props/CopyRightProps.type.ts'
 
 const date: Date = new Date()
 

@@ -15,17 +15,48 @@ export type Asset = {
     "explorer": string;
 }
 
-export type getAssetsResponse = {
+export type AssetsApiResponse = {
     data: AxiosResponse | null;
 }
 
-export type getAssetResponse = {
-    data: AxiosResponse | null;
+export type AssetAPIQueryReturnOptions<DataT> = {
+    data: DataT;
+    error: any;
+    refetch: any;
+    isLoading: boolean;
 }
 
-export type getAssetHistoryResponse = {
-    data: AxiosResponse | null;
+export type AssetMarketsAPIQueryReturnProps = {
+    data: AssetMarketProps[];
+    error: any;
+    refetch: any;
+    isLoading: boolean;
 }
+
+export type QueryGetAssetOptions = {
+    staleTime?: number;
+    gcTime?: number;
+    retry?: boolean;
+    refetchOnWindowFocus?: boolean;
+    refetchOnReconnect?: boolean;
+}
+
+export type AssetMarketProps = {
+    baseId: string;
+    baseSymbol: string;
+    exchangeId: string;
+    percentExchangeVolume: string;
+    priceQuote: string;
+    priceUsd: string;
+    quoteId: string;
+    quoteSymbol: string;
+    rank: string;
+    tradesCount24Hr: string;
+    updated: number;
+    volumeUsd24Hr: string;
+}
+
+export type AssetHistoryInterval = 'm1' | 'm5' | 'm15' | 'm30' | 'h1' | 'h2' | 'h6' | 'h12' | 'd1';
 
 export type AssetName =
     'bitcoin'
@@ -128,42 +159,3 @@ export type AssetName =
     | 'raydium'
     | 'trust-wallet-token'
     | 'ankr';
-
-export type AssetHistoryInterval = 'm1' | 'm5' | 'm15' | 'm30' | 'h1' | 'h2' | 'h6' | 'h12' | 'd1';
-
-export type AssetAPIQueryReturnOptions<DataT> = {
-    data: DataT;
-    error: any;
-    refetch: any;
-    isLoading: boolean;
-}
-
-export type AssetMarketsAPIQueryReturnProps = {
-    data: AssetMarketProps[];
-    error: any;
-    refetch: any;
-    isLoading: boolean;
-}
-
-export type QueryGetAssetOptions = {
-    staleTime?: number;
-    gcTime?: number;
-    retry?: boolean;
-    refetchOnWindowFocus?: boolean;
-    refetchOnReconnect?: boolean;
-}
-
-export type AssetMarketProps = {
-    baseId: string;
-    baseSymbol: string;
-    exchangeId: string;
-    percentExchangeVolume: string;
-    priceQuote: string;
-    priceUsd: string;
-    quoteId: string;
-    quoteSymbol: string;
-    rank: string;
-    tradesCount24Hr: string;
-    updated: number;
-    volumeUsd24Hr: string;
-}

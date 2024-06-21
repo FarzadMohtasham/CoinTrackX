@@ -7,6 +7,6 @@ export type Author = {
 export type Review = {
     numberOfStars: number;
     quote: string;
-    author: Author
+    author: Author;
 }
 

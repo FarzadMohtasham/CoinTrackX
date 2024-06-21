@@ -17,7 +17,7 @@ import {amountToBeFixed} from "@utils/helpers.ts";
 import Skeleton from "react-loading-skeleton";
 import {object} from "yup";
 import Select from "@components/ui/stuff/Select.tsx";
-import {SelectMenuItem} from "@typings/type/Select.type.ts";
+import {SelectMenuItem} from "@typings/type/component-props/Select.type.ts";
 
 type AssetMarketsProps = {
     assetName: string;

@@ -1,5 +1,5 @@
 import {JSX} from 'react'
-import {IconProps} from '@typings/type/IconProps.type.ts'
+import {IconProps} from '@typings/type/component-props/IconProps.type.ts'
 import {styled} from "styled-components";
 
 const IconImg = styled.img`

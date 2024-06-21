@@ -4,7 +4,7 @@ import {styled} from 'styled-components'
 import TopMovers from '@components/dashboard/prices/TopMovers.tsx'
 import PricesTable from '@components/dashboard/prices/PricesTable.tsx'
 import SimpleNotification from "@components/ui/notifs/Simple-Notification.notif.tsx";
-import {NotificationOptions} from "@typings/type/Notification.type.ts";
+import {NotificationOptions} from "@typings/type/component-props/Notification.type.ts";
 import Icon from "@components/ui/stuff/Icon.tsx";
 
 const PricesContainer = styled.div`

@@ -16,7 +16,7 @@ export type NotificationOptions = {
 
 export type SimpleNotifProps = {
     onNotifClose?: (notifId: number) => void;
-    options: NotificationOptions
+    options: NotificationOptions;
 }
 
 export type SimpleNotifStyled = {

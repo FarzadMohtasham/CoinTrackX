@@ -8,7 +8,7 @@ import {
     SelectMenuItem as SelectMenuItemT,
     SelectedMenuItemProps,
     SelectMenuWrapperProps
-} from '@typings/type/Select.type.ts'
+} from '@typings/type/component-props/Select.type.ts'
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
   width: max-content;

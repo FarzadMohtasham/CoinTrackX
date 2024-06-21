@@ -19,5 +19,5 @@ export type SelectMenuWrapperProps = {
 
 export type SelectedMenuItemProps = {
     $selected?: boolean;
-    onClick?: any
+    onClick?: any;
 }

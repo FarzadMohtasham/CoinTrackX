@@ -3,7 +3,7 @@ import {styled} from 'styled-components'
 
 import checkBoxData from '@data/checkBox.data.ts'
 
-import {CheckboxProps, CheckboxStyledProps, CheckboxTypes, Properties} from '@typings/type/CheckBox.type.ts'
+import {CheckboxProps, CheckboxStyledProps, CheckboxTypes, Properties} from '@typings/type/component-props/CheckBox.type.ts'
 
 const CheckBoxContainer = styled.div<CheckboxStyledProps>`
   display: flex;
