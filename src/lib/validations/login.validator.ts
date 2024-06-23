@@ -1,5 +1,5 @@
 import {object, string, ValidationError} from 'yup'
-import {ValidationResult, ValidatorProps} from '@typings/validator-types/auth-validator.type.ts'
+import {LoginValidatorProps, LoginValidationResult} from '@typings/validator-types/auth-validator.type.ts'
 
 const emailValidationSchema = object({
     email: string().required().max(100).email().trim(),
@@ -12,8 +12,8 @@ const passwordValidationSchema = object({
         .test('max-length', 'Password length can\'t be lower than 16', val => val.length <= 16)
 });
 
-export const loginInputValidator = async (props: ValidatorProps): Promise<ValidationResult> => {
-    const validationResult: ValidationResult = {
+export const loginInputValidator = async (props: LoginValidatorProps): Promise<LoginValidationResult> => {
+    const validationResult: LoginValidationResult = {
         isValid: true,
         errorMessage: ''
     }
