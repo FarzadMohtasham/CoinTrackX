@@ -35,7 +35,7 @@ const NotificationsWrapper = styled.div`
   right: 0;
   padding: 1rem;
   border-radius: 1.4rem;
-  z-index: 50;
+  z-index: 11;
 `
 
 export default function Notifications(): JSX.Element {

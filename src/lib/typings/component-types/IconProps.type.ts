@@ -5,4 +5,5 @@ export type IconProps = {
     height?: string;
     className?: string;
     onClickHandler?: () => void;
+    clickable?: boolean;
 }

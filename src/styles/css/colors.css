@@ -1,6 +1,7 @@
 :root {
     --color-primary: #5235E8;
     --color-primary-50: rgba(82, 53, 232, 0.05);
+    --color-primary-75: rgba(82, 53, 232, 0.075);
     --color-primary-100: rgba(82, 53, 232, 0.1);
     --color-primary-150: rgba(82, 53, 232, 0.15);
     --color-primary-200: rgba(82, 53, 232, 0.2);

@@ -3,8 +3,9 @@ import {styled} from "styled-components";
 
 import {IconProps} from '@typings/component-types/IconProps.type.ts'
 
-const IconImg = styled.img`
+const IconImg = styled.img<{$clickable: boolean}>`
     display: inline;
+    ${props => props.$clickable && 'cursor: pointer;'}
 `
 
 export default function Icon(props: IconProps): JSX.Element {
@@ -18,6 +19,7 @@ export default function Icon(props: IconProps): JSX.Element {
         className = 'icon',
         onClickHandler = (): void => {
         },
+        clickable = false,
     } = props
 
     if (height === null) height = width
@@ -27,11 +29,12 @@ export default function Icon(props: IconProps): JSX.Element {
 
     return (
         <IconImg src={`${iconSrc}`}
-             alt={iconAlt}
-             width={width}
-             height={height}
-             className={className}
-             onClick={onClickHandler}
+                 alt={iconAlt}
+                 width={width}
+                 height={height}
+                 className={className}
+                 $clickable={clickable}
+                 onClick={onClickHandler}
         />
     )
 }

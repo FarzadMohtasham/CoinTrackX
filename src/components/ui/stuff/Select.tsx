@@ -43,7 +43,7 @@ const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
   ${(props: any): string => props.$menuXDirStartPosition === 'right' ? 'right: 0' : 'left: 0'};
   top: 5rem;
   border-radius: .8rem;
-  z-index: 99;
+  z-index: 10;
 
   li {
     padding: .8rem 10rem .8rem 1rem;
