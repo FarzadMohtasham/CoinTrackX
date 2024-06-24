@@ -230,7 +230,7 @@ export default function DashboardLayout() {
     const [navigationList, setNavigationList] = useState<NavigationItemType[]>(NavigationListData)
     const [selectedNavName, setSelectedNavName] = useState<string>('dashboard')
     const [selectedSettingsChildNavName, setSelectedSettingsChildNavName] = useState<string>('security')
-    const sidebarOverlayRef = useRef<HTMLDivElement>()
+    const sidebarOverlayRef = useRef<null | HTMLElement>(null)
 
     const location = useLocation()
     const navigate = useNavigate()
