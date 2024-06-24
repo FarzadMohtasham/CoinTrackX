@@ -1,6 +1,6 @@
-import {JSX, useEffect, useRef, useState} from 'react'
+import {JSX, MutableRefObject, useEffect, useRef, useState} from 'react'
 import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom'
-import {styled} from 'styled-components'
+import {css, styled} from 'styled-components'
 
 import Heading from '@components/ui/stuff/Heading.tsx'
 import Logo from '@components/ui/stuff/Logo.tsx'
@@ -20,6 +20,7 @@ const LayoutContainer = styled.div`
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
     position: relative;
+    overflow: hidden;
 
     /*Very Small devices (landscape phones, 576px and down)*/
     @media screen and (max-width: ${(props: any) => props.theme.responsive.sm}) {
@@ -157,7 +158,10 @@ const LayoutMain = styled.div.attrs({className: 'layout-main'})`
     overflow-y: scroll;
 `
 
-const MobileSideBar = styled.div.attrs<{ $navIsOpen: boolean }>({className: 'mobile-side-bar'})`
+const MobileSideBar = styled.div.attrs<{
+    $navIsOpen: boolean;
+    $navStatusWithDelay: boolean;
+}>({className: 'mobile-side-bar'})`
     background-color: white;
     position: absolute;
     width: 75vw;
@@ -173,30 +177,59 @@ const MobileSideBar = styled.div.attrs<{ $navIsOpen: boolean }>({className: 'mob
         justify-content: space-between;
         align-items: center;
         margin-bottom: 2rem;
-        
+
         .close-navbar-icon {
             font-size: var(--font-size-heading-2);
             cursor: pointer;
         }
     }
-    
+
     .navigation-items {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
     }
+
+    .mobile-sidebar-overlay {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100vh;
+        height: 100vw;
+        background-color: red;
+        transition: opacity 0.3s ease-in-out;
+        ${props => props.$navIsOpen ? 'opacity: 100;' : 'opacity: 0;'}
+    }
+`
+
+const MobileNavOverlay = styled.div<{
+    $navIsOpen: boolean;
+    $navStatusWithDelay: boolean;
+}>`
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-black-300);
+    z-index: 11;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+    ${props => props.$navStatusWithDelay ? 'opacity: 100;' : 'opacity: 0;'}
+    ${props => props.$navIsOpen ? css`transform: translateX(0);` : css`transform: translateX(100vw);`}
 `
 
 export default function DashboardLayout() {
     const [navigationList, setNavigationList] = useState<NavigationItemType[]>(NavigationListData)
     const [selectedNavName, setSelectedNavName] = useState<string>('dashboard')
-    const outsideMobileNavRef = useRef()
+    const sidebarOverlayRef = useRef<HTMLDivElement>()
 
     const location = useLocation()
     const navigate = useNavigate()
-    const {navStatus, setNavStatus} = useUiStore(state => ({
-        setNavStatus: state.setNavStatus,
+    const {navStatus, navStatusWithDelay, setNavStatus} = useUiStore(state => ({
         navStatus: state.navStatus,
+        navStatusWithDelay: state.navStatusWithDelay,
+        setNavStatus: state.setNavStatus,
     }))
 
     useDashboardProtectRoute('/login', true)
@@ -254,13 +287,21 @@ export default function DashboardLayout() {
         }
     }, [location.pathname]);
 
+    useEffect(() => {
+        if (sidebarOverlayRef.current) {
+            sidebarOverlayRef.current.addEventListener('click', (): void => {
+                setNavStatus(false)
+            })
+        }
+    }, [])
+
     return (
         <LayoutContainer>
-            <MobileSideBar $navIsOpen={navStatus}>
+            <MobileSideBar $navIsOpen={navStatus} $navStatusWithDelay={navStatusWithDelay}>
                 <div className={'navbar-heading-container'}>
                     <Logo/>
                     <span className={'close-navbar-icon'}
-                            onClick={() => setNavStatus(false)}>
+                          onClick={() => setNavStatus(false)}>
                         &times;
                     </span>
                 </div>
@@ -287,6 +328,12 @@ export default function DashboardLayout() {
                     }
                 </div>
             </MobileSideBar>
+
+            <MobileNavOverlay $navIsOpen={navStatus}
+                              $navStatusWithDelay={navStatusWithDelay}
+                              ref={sidebarOverlayRef}
+            >
+            </MobileNavOverlay>
 
             <LayoutHeader>
                 <div className={'left-col'}>
