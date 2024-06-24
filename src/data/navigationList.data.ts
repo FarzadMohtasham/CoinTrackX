@@ -40,5 +40,56 @@ export const NavigationListData: NavigationItemType[] = [
         iconSrc: 'settings.svg',
         activeIconSrc: 'active-settings.svg',
         active: false,
+        childItems: [
+            {
+                name: 'security',
+                title: 'Security',
+                link: '/dashboard/settings/security',
+                iconSrc: 'transactions.svg',
+                activeIconSrc: 'active-transactions.svg',
+                active: false,
+            },
+            {
+                name: 'payment-methods',
+                title: 'Payment Methods',
+                link: '/dashboard/settings/payment-methods',
+                iconSrc: 'transactions.svg',
+                activeIconSrc: 'active-transactions.svg',
+                active: false,
+            },
+            {
+                name: 'profile',
+                title: 'Profile',
+                link: '/dashboard/settings/profile',
+                iconSrc: 'transactions.svg',
+                activeIconSrc: 'active-transactions.svg',
+                active: false,
+            },
+            {
+                name: 'preferences',
+                title: 'Preferences',
+                link: '/dashboard/settings/preferences',
+                iconSrc: 'transactions.svg',
+                activeIconSrc: 'active-transactions.svg',
+                active: false,
+            },
+            {
+                name: 'password',
+                title: 'Password',
+                link: '/dashboard/settings/profile',
+                iconSrc: 'transactions.svg',
+                activeIconSrc: 'active-transactions.svg',
+                active: false,
+            },
+        ]
     },
 ]
+
+
+
+
+
+
+
+
+

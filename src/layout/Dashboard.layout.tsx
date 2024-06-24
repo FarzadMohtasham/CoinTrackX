@@ -1,4 +1,4 @@
-import {JSX, MutableRefObject, useEffect, useRef, useState} from 'react'
+import {JSX, useEffect, useRef, useState} from 'react'
 import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom'
 import {css, styled} from 'styled-components'
 
@@ -219,9 +219,17 @@ const MobileNavOverlay = styled.div<{
     ${props => props.$navIsOpen ? css`transform: translateX(0);` : css`transform: translateX(100vw);`}
 `
 
+const ChildNavItemsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 1rem;
+`
+
 export default function DashboardLayout() {
     const [navigationList, setNavigationList] = useState<NavigationItemType[]>(NavigationListData)
     const [selectedNavName, setSelectedNavName] = useState<string>('dashboard')
+    const [selectedSettingsChildNavName, setSelectedSettingsChildNavName] = useState<string>('security')
     const sidebarOverlayRef = useRef<HTMLDivElement>()
 
     const location = useLocation()
@@ -260,11 +268,22 @@ export default function DashboardLayout() {
             return navList
         })
 
-        navigate(navigationList[newSelectedNavIndex].link)
+        if (navItemName === 'settings') {
+            navigate('/dashboard/settings/security')
+            setSelectedSettingsChildNavName('security')
+        } else {
+            navigate(navigationList[newSelectedNavIndex].link)
+            setSelectedSettingsChildNavName('security')
+        }
     }
 
     const onMenuBurgerHandler = () => {
         setNavStatus(true)
+    }
+
+    const onSettingsChildNavHandler = (childNavLink: string, childNavName: string) => {
+        setSelectedSettingsChildNavName(childNavName)
+        navigate(childNavLink)
     }
 
     // Nav name update
@@ -320,9 +339,37 @@ export default function DashboardLayout() {
                             }
 
                             return (
-                                <NavigationItem
-                                    key={navItem.name + index} {...navItemProps}>{navItem.title}
-                                </NavigationItem>
+                                <>
+                                    <NavigationItem
+                                        key={navItem.name + index} {...navItemProps}>{navItem.title}
+                                    </NavigationItem>
+                                    {
+                                        (navItem.childItems && selectedNavName.toLowerCase() === navItem.name) &&
+                                        <ChildNavItemsContainer>
+                                            {
+                                                navItem.childItems.map((childNavItem: NavigationItemType, index: number) => {
+                                                    const childNavItemProps: NavigationProps = {
+                                                        iconSrc: childNavItem.iconSrc,
+                                                        activeIconSrc: childNavItem.activeIconSrc,
+                                                        iconAlt: childNavItem.name,
+                                                        iconWidth: '20rem',
+                                                        onClick: () => onSettingsChildNavHandler(childNavItem.link, childNavItem.name),
+                                                        children: null,
+                                                    }
+
+                                                    return <>
+                                                        <NavigationItem {...childNavItemProps}
+                                                                        active={selectedSettingsChildNavName === childNavItem.name}
+                                                                        key={childNavItem.name + index}
+                                                        >
+                                                            {childNavItem.title}
+                                                        </NavigationItem>
+                                                    </>
+                                                })
+                                            }
+                                        </ChildNavItemsContainer>
+                                    }
+                                </>
                             )
                         })
                     }
@@ -372,9 +419,37 @@ export default function DashboardLayout() {
                             }
 
                             return (
-                                <NavigationItem
-                                    key={navItem.name + index} {...navItemProps}>{navItem.title}
-                                </NavigationItem>
+                                <>
+                                    <NavigationItem
+                                        key={navItem.name + index} {...navItemProps}>{navItem.title}
+                                    </NavigationItem>
+                                    {
+                                        (navItem.childItems && selectedNavName.toLowerCase() === navItem.name) &&
+                                        <ChildNavItemsContainer>
+                                            {
+                                                navItem.childItems.map((childNavItem: NavigationItemType, index: number) => {
+                                                    const childNavItemProps: NavigationProps = {
+                                                        iconSrc: childNavItem.iconSrc,
+                                                        activeIconSrc: childNavItem.activeIconSrc,
+                                                        iconAlt: childNavItem.name,
+                                                        iconWidth: '20rem',
+                                                        onClick: () => onSettingsChildNavHandler(childNavItem.link, childNavItem.name),
+                                                        children: null,
+                                                    }
+
+                                                    return <>
+                                                        <NavigationItem {...childNavItemProps}
+                                                                        active={selectedSettingsChildNavName === childNavItem.name}
+                                                                        key={childNavItem.name + index}
+                                                        >
+                                                            {childNavItem.title}
+                                                        </NavigationItem>
+                                                    </>
+                                                })
+                                            }
+                                        </ChildNavItemsContainer>
+                                    }
+                                </>
                             )
                         })
                     }

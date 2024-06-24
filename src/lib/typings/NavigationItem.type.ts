@@ -15,11 +15,15 @@ export type NavigationProps = {
     onClick?: (navItemName: string) => void;
 }
 
-export type NavigationItemType = {
+type NavigationItem = {
     name: string;
     title: string;
     link: string;
     iconSrc: string;
     activeIconSrc: string;
     active: boolean;
+}
+
+export type NavigationItemType = NavigationItem & {
+    childItems?: NavigationItem[]
 }
