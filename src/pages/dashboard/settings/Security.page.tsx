@@ -65,29 +65,39 @@ const TwoStepVerificationWrapper = styled.div`
 
     div.step2-auth-options-wrapper {
         display: flex;
+        flex-direction: row;
         gap: 3.2rem;
-        
+        border: .1rem solid var(--color-black-100);
+        border-radius: 1rem;
+        padding: 3rem;
+
         div.step2-auth-option {
             display: flex;
             justify-content: space-between;
             gap: 2rem;
             align-items: center;
-            
+
             div.desc-wrapper {
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
-                
+
                 span.title {
                     font-size: var(--font-size-body-sm);
                     font-weight: bold;
                 }
-                
+
                 span.desc {
                     font-size: var(--font-size-body-xsm);
                     color: var(--color-gray-800);
                 }
             }
+        }
+    }
+
+    @media screen and (max-width: ${props => props.theme.responsive.md}) {
+        div.step2-auth-options-wrapper {
+            flex-direction: column;
         }
     }
 `
