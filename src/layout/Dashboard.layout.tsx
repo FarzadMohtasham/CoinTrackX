@@ -231,8 +231,12 @@ export default function DashboardLayout() {
     const [selectedNavName, setSelectedNavName] = useState<string>('dashboard')
     const [selectedSettingsChildNavName, setSelectedSettingsChildNavName] = useState<string>('security')
     const sidebarOverlayRef = useRef<null | HTMLDivElement>(null)
+    const sidebarSettingsNavOpenedRef = useRef<boolean>(false)
 
     const location = useLocation()
+    const appUrlPath = location.pathname.split('/')
+    appUrlPath.shift()
+
     const navigate = useNavigate()
     const {navStatus, navStatusWithDelay, setNavStatus} = useUiStore(state => ({
         navStatus: state.navStatus,
@@ -257,8 +261,6 @@ export default function DashboardLayout() {
     }
 
     const onNavigationItemHandler = (navItemName: string): void => {
-        if (navStatus) setNavStatus(false)
-
         const currentSelectedNavIndex = navigationList.findIndex((nav: NavigationItemType) => nav.active)
         const newSelectedNavIndex = navigationList.findIndex((nav: NavigationItemType): boolean => nav.name === navItemName)
 
@@ -306,6 +308,7 @@ export default function DashboardLayout() {
         }
     }, [location.pathname]);
 
+    // Adding click handler to sidebar Overlay to close sidebar on outside click
     useEffect(() => {
         if (sidebarOverlayRef.current) {
             sidebarOverlayRef.current.addEventListener('click', (): void => {
@@ -316,10 +319,8 @@ export default function DashboardLayout() {
 
     // Update selectedSettingsChildNavName on First dashboard render
     useEffect(() => {
-        const urlPaths = location.pathname.split('/')
-        urlPaths.shift()
-        if (urlPaths[1] === 'settings') {
-            setSelectedSettingsChildNavName(urlPaths[2])
+        if (appUrlPath[1] === 'settings') {
+            setSelectedSettingsChildNavName(appUrlPath[2])
         }
     }, []);
 

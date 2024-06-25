@@ -60,6 +60,11 @@ a {
     text-decoration: none;
 }
 
-input {
+input, input:focus {
     font-family: "verdana", sans-serif;
+    outline: none;
+}
+
+select:focus, textarea:focus {
+    outline: none;
 }
