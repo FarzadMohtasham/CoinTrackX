@@ -223,7 +223,7 @@ const ChildNavItemsContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding-left: 1rem;
+    padding: 1.5rem 0 0 1rem;
 `
 
 export default function DashboardLayout() {
@@ -314,6 +314,15 @@ export default function DashboardLayout() {
         }
     }, [])
 
+    // Update selectedSettingsChildNavName on First dashboard render
+    useEffect(() => {
+        const urlPaths = location.pathname.split('/')
+        urlPaths.shift()
+        if (urlPaths[1] === 'settings') {
+            setSelectedSettingsChildNavName(urlPaths[2])
+        }
+    }, []);
+
     return (
         <LayoutContainer>
             <MobileSideBar $navIsOpen={navStatus} $navStatusWithDelay={navStatusWithDelay}>
@@ -339,9 +348,9 @@ export default function DashboardLayout() {
                             }
 
                             return (
-                                <>
+                                <div key={navItem.name + index}>
                                     <NavigationItem
-                                        key={navItem.name + index} {...navItemProps}>{navItem.title}
+                                        {...navItemProps}>{navItem.title}
                                     </NavigationItem>
                                     {
                                         (navItem.childItems && selectedNavName.toLowerCase() === navItem.name) &&
@@ -357,19 +366,20 @@ export default function DashboardLayout() {
                                                         children: null,
                                                     }
 
-                                                    return <>
-                                                        <NavigationItem {...childNavItemProps}
-                                                                        active={selectedSettingsChildNavName === childNavItem.name}
-                                                                        key={childNavItem.name + index}
-                                                        >
-                                                            {childNavItem.title}
-                                                        </NavigationItem>
-                                                    </>
+                                                    return (
+                                                        <div key={childNavItem.name + index}>
+                                                            <NavigationItem {...childNavItemProps}
+                                                                            active={selectedSettingsChildNavName === childNavItem.name}
+                                                            >
+                                                                {childNavItem.title}
+                                                            </NavigationItem>
+                                                        </div>
+                                                    )
                                                 })
                                             }
                                         </ChildNavItemsContainer>
                                     }
-                                </>
+                                </div>
                             )
                         })
                     }
@@ -419,9 +429,9 @@ export default function DashboardLayout() {
                             }
 
                             return (
-                                <>
+                                <div key={navItem.name + index}>
                                     <NavigationItem
-                                        key={navItem.name + index} {...navItemProps}>{navItem.title}
+                                        {...navItemProps}>{navItem.title}
                                     </NavigationItem>
                                     {
                                         (navItem.childItems && selectedNavName.toLowerCase() === navItem.name) &&
@@ -437,19 +447,20 @@ export default function DashboardLayout() {
                                                         children: null,
                                                     }
 
-                                                    return <>
-                                                        <NavigationItem {...childNavItemProps}
-                                                                        active={selectedSettingsChildNavName === childNavItem.name}
-                                                                        key={childNavItem.name + index}
-                                                        >
-                                                            {childNavItem.title}
-                                                        </NavigationItem>
-                                                    </>
+                                                    return (
+                                                        <div key={childNavItem.name + index}>
+                                                            <NavigationItem {...childNavItemProps}
+                                                                            active={selectedSettingsChildNavName === childNavItem.name}
+                                                            >
+                                                                {childNavItem.title}
+                                                            </NavigationItem>
+                                                        </div>
+                                                    )
                                                 })
                                             }
                                         </ChildNavItemsContainer>
                                     }
-                                </>
+                                </div>
                             )
                         })
                     }
