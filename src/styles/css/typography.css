@@ -11,7 +11,7 @@
     --font-size-body-xsm: 1rem;
 }
 
-@media screen and (min-width: 57.6rem) {
+@media screen and (min-width: 76.8rem) {
     :root {
         --font-size-heading-1: 6.4rem;
         --font-size-heading-2: 4.0rem;
