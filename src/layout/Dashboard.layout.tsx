@@ -131,6 +131,8 @@ const LayoutSidebar = styled.aside.attrs({className: 'layout-sidebar'})`
     padding: 3.2rem 2.4rem;
     width: 100%;
     height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
 
     .navigation-list {
         display: flex;
