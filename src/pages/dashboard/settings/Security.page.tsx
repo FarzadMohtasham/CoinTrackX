@@ -134,7 +134,7 @@ export default function SecurityPage() {
                                 Text Message
                             </span>
                             <span className={'desc'}>
-                                When you sign in, you will receive OTP code to approve your login to your number (+44) 5673 436 4xxx
+                                When you sign in, you will receive OTP code to approve your login to your number <em>(+44) 5673 436 4xxx</em>
                             </span>
                         </div>
                         <Switch size='lg'
@@ -152,7 +152,7 @@ export default function SecurityPage() {
                                 Email
                             </span>
                             <span className={'desc'}>
-                                When you sign in, you will receive notification to approve your login on your email andresamosa@mail.com
+                                When you sign in, you will receive notification to approve your login on your email <em>andresamosa@mail.com</em>
                             </span>
                         </div>
                         <Switch size='lg'
