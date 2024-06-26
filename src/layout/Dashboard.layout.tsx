@@ -231,7 +231,6 @@ export default function DashboardLayout() {
     const [selectedNavName, setSelectedNavName] = useState<string>('dashboard')
     const [selectedSettingsChildNavName, setSelectedSettingsChildNavName] = useState<string>('security')
     const sidebarOverlayRef = useRef<null | HTMLDivElement>(null)
-    const sidebarSettingsNavOpenedRef = useRef<boolean>(false)
 
     const location = useLocation()
     const appUrlPath = location.pathname.split('/')

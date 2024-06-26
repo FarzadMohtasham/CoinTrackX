@@ -138,7 +138,11 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
     ], [])
 
     const assetMarketsTable = useReactTable({
+        // Todo: Fix This later
+        // @ts-ignore
         data: tableData,
+        // Todo: Fix This later
+        // @ts-ignore
         columns: tableColumn,
         getCoreRowModel: getCoreRowModel(),
         getRowId: () => uuidv4(),

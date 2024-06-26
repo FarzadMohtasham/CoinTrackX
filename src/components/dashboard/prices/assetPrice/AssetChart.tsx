@@ -207,6 +207,8 @@ export default function AssetChart(props: AssetChartProps) {
                         <Line
                             className={'asset-price'}
                             data={chartData}
+                            // Todo: Fix this later
+                            // @ts-ignore
                             options={chartOptions}
                         />
                     </AssetChartContainer>

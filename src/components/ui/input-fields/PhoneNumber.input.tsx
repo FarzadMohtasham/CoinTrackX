@@ -60,6 +60,7 @@ const PhoneNumberInputContainer = styled.div`
 export default function PhoneNumberInput(props: PhoneNumberInputProps) {
     const {} = props
 
+    // @ts-ignore
     const [PhoneNumberInput, setPhoneNumberInput] = useState<string>()
     const [countryCode, setCountryCode] = useState<string>('+93')
 

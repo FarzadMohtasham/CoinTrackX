@@ -20,7 +20,7 @@ import {
     MainContent as MainContentStyled,
     AuthLink, AuthContainer,
 } from '@pages/auth/Auth.styled.tsx'
-import {ValidationResult} from '@typings/Auth.type.ts'
+import {SignupValidationResult} from '@typings/validator-types/auth-validator.type.ts'
 
 const LoginContainer = styled(AuthContainer)``
 const LoginWrapper = styled(AuthInnerWrapper)``
@@ -105,14 +105,14 @@ export default function Login(): JSX.Element {
         signupInputValidator({
             type: 'firstName',
             payload: firstName
-        }).then((validationResult: ValidationResult): void => {
+        }).then((validationResult: SignupValidationResult): void => {
             if (validationResult.isValid) setFirstNameFieldError(null)
             else setFirstNameFieldError(validationResult.errorMessage)
         })
     }, [firstName])
 
     useEffect((): void => {
-        signupInputValidator({type: 'lastName', payload: lastName}).then((validationResult: ValidationResult): void => {
+        signupInputValidator({type: 'lastName', payload: lastName}).then((validationResult: SignupValidationResult): void => {
             if (validationResult.isValid) setLastNameFieldError(null)
             else setLastNameFieldError(validationResult.errorMessage)
         })
@@ -126,7 +126,7 @@ export default function Login(): JSX.Element {
     }, [email])
 
     useEffect((): void => {
-        signupInputValidator({type: 'password', payload: password}).then((validationResult: ValidationResult): void => {
+        signupInputValidator({type: 'password', payload: password}).then((validationResult: SignupValidationResult): void => {
             if (validationResult.isValid) setPasswordFieldError(null)
             else setPasswordFieldError(validationResult.errorMessage)
         })
