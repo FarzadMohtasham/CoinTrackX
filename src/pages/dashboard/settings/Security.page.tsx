@@ -76,6 +76,7 @@ const TwoStepVerificationWrapper = styled.div`
             justify-content: space-between;
             gap: 2rem;
             align-items: center;
+            flex-grow: 1;
 
             div.desc-wrapper {
                 display: flex;
