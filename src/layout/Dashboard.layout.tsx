@@ -173,6 +173,8 @@ const MobileSideBar = styled.div.attrs<{
     box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
     z-index: 15;
     padding: 1rem 3rem;
+    overflow: scroll;
+    overflow-x: hidden;
 
     .navbar-heading-container {
         display: flex;
