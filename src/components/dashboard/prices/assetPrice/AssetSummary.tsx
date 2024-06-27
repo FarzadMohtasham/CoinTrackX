@@ -16,7 +16,7 @@ type AssetSummaryProps = {
 const AssetSummaryContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 16px;
 
     .summary-title {
         font-size: var(--font-size-body-lg);
@@ -61,7 +61,7 @@ export default function AssetSummary(props: AssetSummaryProps): JSX.Element {
         <>
             {
                 assetSummaryIsLoading ?
-                    <Skeleton height={'3rem'} count={5}/>
+                    <Skeleton height={'30px'} count={5}/>
                     :
                     <AssetSummaryContainer>
                         <span className={'summary-title'}>

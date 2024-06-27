@@ -17,24 +17,24 @@ const coinsSrcList = [
 const CoinsWrapperStyled = styled.section.attrs({
     id: 'coins'
 })`
-  padding-top: 10rem;
-  padding-bottom: 4.8rem;
+  padding-top: 100px;
+  padding-bottom: 48px;
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 80px;
   align-items: center;
 `
 
 const CoinsListStyled = styled.div`
   display: grid;
-  gap: 5rem;
-  padding: 3rem 4rem;
+  gap: 50px;
+  padding: 30px 40px;
   background-color: white;
   width: max-content;
   height: max-content;
 
   img {
-    width: 8rem;
+    width: 80px;
   }
 
   /*Very Small devices (landscape phones, 768px and down)*/
@@ -43,13 +43,13 @@ const CoinsListStyled = styled.div`
                          "c d"
                          "e f"
                          "g .";
-    border-radius: 3rem;
+    border-radius: 30px;
   }
 
   /*Medium devices (tablets, 768px and up)*/
   @media screen and (min-width: ${props => props.theme.breakpoints.md}) {
     grid-template-areas: 'a b c d e f g';
-    border-radius: 100rem;
+    border-radius: 1000px;
   }
 `
 

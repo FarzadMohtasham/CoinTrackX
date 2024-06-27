@@ -7,14 +7,14 @@ import styles from './Tip.module.scss'
 import {TipPropsType} from '@typings/component-types/TipProps.type.ts'
 
 const TipContainer = styled.div`
-  padding: 2.4rem;
-  border: .1rem solid var(--color-neutral-200);
-  border-radius: .8rem;
+  padding: 24px;
+  border: 10px solid var(--color-neutral-200);
+  border-radius: 8px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 20px;
   background-color: var(--color-primary-150);
 
   &::after {
@@ -23,7 +23,7 @@ const TipContainer = styled.div`
     position: absolute;
     right: 0;
     top: 0;
-    width: 10rem;
+    width: 100px;
     height: 100%;
     z-index: 0;
   }
@@ -38,7 +38,7 @@ const TipContainer = styled.div`
     top: 0;
     right: 0;
     cursor: pointer;
-    font-size: 2.4rem;
+    font-size: 24px;
     font-weight: bold;
     color: black;
     z-index: 1;

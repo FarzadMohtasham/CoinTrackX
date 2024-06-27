@@ -5,16 +5,16 @@ import {ChangeEvent, useState} from "react";
 import {Switch} from "@chakra-ui/react";
 
 const SecurityPageContainer = styled.div`
-    padding: 4rem;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 30px;
 `
 
 const PhoneNumberWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 20px;
 
     div.heading-wrapper {
         span.title {
@@ -31,15 +31,15 @@ const PhoneNumberWrapper = styled.div`
     }
 
     div.input-wrapper {
-        border: .1rem solid var(--color-black-100);
-        border-radius: 1rem;
-        padding: 3rem;
+        border: 1px solid var(--color-black-100);
+        border-radius: 10px;
+        padding: 30px;
 
         span.title {
             font-size: var(--font-size-body-sm);
             font-weight: 500;
             display: block;
-            margin-bottom: .8rem;
+            margin-bottom: 8px;
         }
     }
 `
@@ -47,7 +47,7 @@ const PhoneNumberWrapper = styled.div`
 const TwoStepVerificationWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 20px;
 
     div.heading-wrapper {
         span.title {
@@ -66,15 +66,15 @@ const TwoStepVerificationWrapper = styled.div`
     div.step2-auth-options-wrapper {
         display: flex;
         flex-direction: row;
-        gap: 3.2rem;
-        border: .1rem solid var(--color-black-100);
-        border-radius: 1rem;
-        padding: 3rem;
+        gap: 32px;
+        border: 1px solid var(--color-black-100);
+        border-radius: 10px;
+        padding: 30px;
 
         div.step2-auth-option {
             display: flex;
             justify-content: space-between;
-            gap: 2rem;
+            gap: 20px;
             align-items: center;
             flex-grow: 1;
 
@@ -129,7 +129,7 @@ export default function SecurityPage() {
 
                 <div className="step2-auth-options-wrapper">
                     <div className={'step2-auth-option text-message'}>
-                        <Icon iconSrc={'text-message-with-bg.svg'} width={'4rem'}/>
+                        <Icon iconSrc={'text-message-with-bg.svg'} width={'40px'}/>
                         <div className={'desc-wrapper'}>
                             <span className={'title'}>
                                 Text Message
@@ -147,7 +147,7 @@ export default function SecurityPage() {
                     </div>
 
                     <div className={'step2-auth-option email'}>
-                        <Icon iconSrc={'email-with-bg.svg'} width={'4rem'}/>
+                        <Icon iconSrc={'email-with-bg.svg'} width={'40px'}/>
                         <div className={'desc-wrapper'}>
                             <span className={'title'}>
                                 Email

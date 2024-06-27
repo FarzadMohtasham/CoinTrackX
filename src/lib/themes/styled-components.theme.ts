@@ -2,12 +2,12 @@ import {StyledThemeProps} from '@typings/StyledTheme.type.ts'
 
 const defaultProps: StyledThemeProps = {
     breakpoints: {
-        xsm: '27.4rem',
-        sm: '57.6rem',
-        md: '76.8rem',
-        lg: '99.2rem',
-        xl: '120.0rem',
-        xxl: '140.0rem',
+        xsm: '274px',
+        sm: '576px',
+        md: '768px',
+        lg: '992px',
+        xl: '1200px',
+        xxl: '1400px',
     },
     colors: {
         primary: {

@@ -127,7 +127,7 @@ const Header = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: 15px;
 
     span {
         font-weight: bold;
@@ -137,7 +137,7 @@ const Header = styled.div`
     div.options {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 10px;
     }
 `
 
@@ -146,7 +146,7 @@ const ContentWrapper = styled.div``
 const Content = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 10px;
     max-width: 99.99%;
     transition: max-width 0s ease-in-out;
 
@@ -157,15 +157,15 @@ const Content = styled.div`
 
 const RequestError = styled.div`
     width: 100%;
-    height: 10rem;
+    height: 100px;
 
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 5rem 0;
+    padding: 50px 0;
 
     span {
-        margin-bottom: 2rem;
+        margin-bottom: 20px;
     }
 `
 
@@ -260,8 +260,8 @@ export default function CurrencyPrice(): JSX.Element {
 
             {
                 isLoading ? <Skeleton width={'100%'}
-                                      height={'40rem'}
-                                      borderRadius={'2rem'}
+                                      height={'400px'}
+                                      borderRadius={'20px'}
                     />
                     :
                     <ContentWrapper>

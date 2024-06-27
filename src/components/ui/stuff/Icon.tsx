@@ -16,7 +16,7 @@ export default function Icon(props: IconProps): JSX.Element {
     let {
         iconSrc = '',
         iconAlt = 'icon',
-        width = '2rem',
+        width = '20px',
         height = null,
         className = 'icon',
         onClickHandler = (): void => {

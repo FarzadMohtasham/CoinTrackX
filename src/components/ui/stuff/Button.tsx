@@ -23,7 +23,7 @@ type ButtonStyledProps = {
 const ButtonStyled = styled.button<ButtonStyledProps>`
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 12px;
   justify-content: center;
   text-align: center;
   cursor: ${(props: any) => props.$properties.cursor};
@@ -33,9 +33,9 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   background-color: ${(props: any) => props.$properties.backgroundColor};
   color: ${(props: any) => props.$properties.color};
   border-radius: ${(props: any) => props.$properties.borderRadiusS};
-  border: ${(props: any): string => props.$properties.noBorder ? '0' : '.2rem'} solid ${(props: any) => props.$properties.border};
+  border: ${(props: any): string => props.$properties.noBorder ? '0' : '2px'} solid ${(props: any) => props.$properties.border};
   transition: background-color .3s ease-in-out, border .3s ease-in-out;
-  height: 5rem;
+  height: 50px;
 
   &:hover {
     ${(props: any) => props.$properties.hover}
@@ -117,9 +117,9 @@ function Button(props: ButtonPropsType): JSX.Element {
       ${!outline && (disabled ? '' : css`background-color: var(--color-${variant + '-900)'};`)}
       ${
               !outline ?
-                      css`border: ${noBorder ? '0' : '.2rem'} solid var(--color-${variant + '-50)'};`
+                      css`border: ${noBorder ? '0' : '2px'} solid var(--color-${variant + '-50)'};`
                       :
-                      css`border: ${noBorder ? '0' : '.2rem'} solid var(--color-${variant + '-100)'};`
+                      css`border: ${noBorder ? '0' : '2px'} solid var(--color-${variant + '-100)'};`
       }
     `
     const mobileMedia: RuleSet | string = `${hideOn === 'mobile' ? css`display: none;` : ''}`
@@ -152,12 +152,12 @@ function Button(props: ButtonPropsType): JSX.Element {
                       $properties={buttonProperties}
                       onClick={onButtonClickHandler}>
             {icon && (iconDir === 'left' &&
-                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'1.5rem'}/>)}
+                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15px'}/>)}
             {isLoading &&
                 <HashLoader size={18} color={`var(--color-${variant + '-500)'}`}/>}
             {children}
             {icon && (iconDir === 'right' &&
-                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'1.5rem'}/>)}
+                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15px'}/>)}
         </ButtonStyled>
     )
 }

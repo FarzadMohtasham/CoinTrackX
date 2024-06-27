@@ -15,35 +15,35 @@ import {IStyledComponentBase} from "styled-components/dist/types";
 import {footerColumnItemsList, socialMediaLogoList} from '@data/footer.data.ts'
 
 const FooterWrapper: IStyledComponentBase<any> = styled.div`
-  padding-bottom: 10rem;
+  padding-bottom: 100px;
 `
 
 const FooterStyled: IStyledComponentBase<any> = styled.div`
   background: white;
-  border-radius: 2.4rem;
-  padding: 6.4rem;
+  border-radius: 24px;
+  padding: 64px;
   display: grid;
   width: 100%;
 
   .brand-info {
     .brand-logo {
-      margin-bottom: 2.4rem;
+      margin-bottom: 24px;
     }
 
     .social-media {
       display: flex;
-      gap: 1.6rem;
-      margin-bottom: 4.8rem;
+      gap: 16px;
+      margin-bottom: 48px;
 
       img {
-        width: 2rem;
+        width: 20px;
       }
     }
   }
 
   .footer-column {
     .footer-heading {
-      margin-bottom: 1.6rem;
+      margin-bottom: 16px;
     }
   }
 
@@ -69,20 +69,20 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
                          'footer-column-2'
                          'footer-column-3'
                          'footer-column-4';
-    gap: 1.5rem;
+    gap: 15px;
   }
 
   /*Medium devices (tablets, 768px and up)*/
   @media screen and (min-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.breakpoints.md}) {
     grid-template-areas: 'footer-column-1 footer-column-2'
                           'footer-column-3 footer-column-4';
-    gap: 2.5rem;
+    gap: 25px;
   }
 
   /*Large devices (desktops, 992px and up)*/
   @media screen and (min-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.breakpoints.lg}) {
     grid-template-areas: 'footer-column-1 footer-column-2 footer-column-3 footer-column-4';
-    gap: 4rem;
+    gap: 40px;
   }
 `
 
@@ -90,7 +90,7 @@ const ColumnList = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: .8rem;
+  gap: 8px;
 `
 
 const ColumnItem = styled.li`

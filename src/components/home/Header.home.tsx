@@ -34,7 +34,7 @@ const navItems = [
 ]
 
 const HeaderStyled = styled.header`
-    padding: 2.4rem 4.8rem;
+    padding: 24px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +53,7 @@ const NavBarStyled = styled.nav`
 const NavItemsStyled = styled.ul`
     list-style: none;
     display: flex;
-    gap: 4rem;
+    gap: 40px;
 `
 
 const NavItemStyled = styled.li`
@@ -74,7 +74,7 @@ const NavItemStyled = styled.li`
 
 const ButtonsCTAStyled = styled.div`
     display: flex;
-    gap: 1.6rem;
+    gap: 16px;
 
     @media screen and (max-width: var(--breakpoint-md)) {
         .cta-buttons {
@@ -125,7 +125,7 @@ export default function Header(): JSX.Element {
                     <Button variant={'black'}
                             borderRadius={'lg'}
                             outline>
-                        {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'2rem'}/>}
+                        {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20px'}/>}
                         <CTABtnText>
                             {userLoggedIn ? 'Go To Dashboard' : 'Login'}
                         </CTABtnText>

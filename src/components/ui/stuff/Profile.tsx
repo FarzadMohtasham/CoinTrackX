@@ -11,8 +11,8 @@ type ProfileProps = {
 }
 
 const ProfileStyled = styled.div<ProfileStyledProps>`
-  width: 4rem;
-  height: 4rem;
+  width: 40px;
+  height: 40px;
   background-image: url(${(props: any) => props.$imgSrc}), linear-gradient(to top, black, black);
   background-position: center center;
   background-size: 100% 100%;

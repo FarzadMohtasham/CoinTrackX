@@ -1,11 +1,11 @@
 export const buttonPaddingVariations = {
     sm: {
-        x: '2.4rem',
-        y: '1.4rem',
+        x: '24px',
+        y: '14px',
     },
     lg: {
-        x: '2.4rem',
-        y: '1.8rem',
+        x: '24px',
+        y: '18px',
     }
 }
 export const buttonFontSizeVariations = {
@@ -44,8 +44,8 @@ export const buttonTypeVariations = {
 }
 export const buttonBorderRadius = {
     none: '0',
-    sm: '0.5rem',
-    md: '0.8rem',
-    lg: '1rem',
-    full: '10rem',
+    sm: '5px',
+    md: '8px',
+    lg: '10px',
+    full: '100px',
 }

@@ -38,7 +38,7 @@ export default function PaginationRow(props: PaginationRowProps): JSX.Element {
             <Button variant={'primary'}
                     onClickHandler={onPreviousPageHandler}
                     disabled={!getCanPreviousPage}>
-                <Icon iconSrc={'arrow-left.svg'} width={'2rem'}/>
+                <Icon iconSrc={'arrow-left.svg'} width={'20px'}/>
                 Previous
             </Button>
 

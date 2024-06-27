@@ -15,34 +15,34 @@ const ReviewStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   background: white;
-  border-radius: 1.6rem;
-  padding: 4.8rem;
+  border-radius: 16px;
+  padding: 48px;
 
   .stars {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    gap: 1.2rem;
-    margin-bottom: 4.8rem;
+    gap: 12px;
+    margin-bottom: 48px;
 
     img {
-      width: 1.8rem;
+      width: 18px;
     }
 
   }
 
   .quote {
     text-align: center;
-    margin-bottom: 4.2rem;
+    margin-bottom: 42px;
   }
 
   .review-author {
     display: flex;
     align-items: center;
-    gap: 1.6rem;
+    gap: 16px;
 
     img {
-      width: 4rem;
+      width: 40px;
     }
 
     .author-info {

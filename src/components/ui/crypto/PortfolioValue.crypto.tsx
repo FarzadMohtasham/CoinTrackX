@@ -14,12 +14,12 @@ const Container = styled.div`
 const LeftCol = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 15px;
   
   .top-bar {
     display: flex;
     align-items: center;
-    gap: .8rem;
+    gap: 8px;
 
     span {
       color: var(--color-black-500);
@@ -46,7 +46,7 @@ export default function PortfolioValueCrypto(): JSX.Element {
             <LeftCol>
                 <div className={'top-bar'}>
                     <Icon iconSrc={'portfolio-value.svg'}
-                          width={'2rem'}
+                          width={'20px'}
                     />
                     <span>PORTFOLIO VALUE</span>
                 </div>
@@ -62,7 +62,7 @@ export default function PortfolioValueCrypto(): JSX.Element {
                 <Badge borderRadius={'full'}
                        type={'success'}
                        outline>
-                    <Icon iconSrc={'arrow-up.svg'} width={'1.2rem'}/>
+                    <Icon iconSrc={'arrow-up.svg'} width={'12px'}/>
                     1.37%
                 </Badge>
             </RightCol>

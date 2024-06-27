@@ -8,17 +8,17 @@ import {NavigationProps, NavigationItemStyledProps} from '@typings/NavigationIte
 const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
     display: flex;
     align-items: center;
-    gap: .8rem;
+    gap: 8px;
     cursor: pointer;
-    padding: 1.4rem 0 1.4rem 1.2rem;
+    padding: 14px 0 14px 12px;
     width: 100%;
     transition: all .3s ease-in-out;
-    border: .2rem white solid;
-    border-radius: .8rem;
+    border: 2px white solid;
+    border-radius: 8px;
 
     ${props => props.$active && css`
         background-color: var(--color-primary-75);
-        border: .2rem var(--color-black-50) solid !important;
+        border: 2px var(--color-black-50) solid !important;
     `}
     span {
         font-size: var(--font-size-body-sm);
@@ -38,7 +38,7 @@ export default function NavigationItem(props: NavigationProps): JSX.Element {
         activeIconSrc,
         iconAlt = 'navigation-icon',
         active = false,
-        iconWidth = '2rem',
+        iconWidth = '20px',
         onClick,
     } = props
 

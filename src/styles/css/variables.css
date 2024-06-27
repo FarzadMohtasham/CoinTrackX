@@ -1,20 +1,20 @@
 :root {
-    --breakpoint-sm: 57.6rem;
-    --breakpoint-md: 76.8rem;
-    --breakpoint-lg: 99.2rem;
-    --breakpoint-xl: 120.0rem;
-    --breakpoint-xxl: 140.0rem;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1400px;
 
-    --font-size-heading-1: 6.4rem;
-    --font-size-heading-2: 4.0rem;
-    --font-size-heading-3: 3.2rem;
-    --font-size-heading-4: 2.4rem;
-    --font-size-heading-5: 2.1rem;
-    --font-size-heading-6: 1.8rem;
+    --font-size-heading-1: 64px;
+    --font-size-heading-2: 40px;
+    --font-size-heading-3: 32px;
+    --font-size-heading-4: 24px;
+    --font-size-heading-5: 21px;
+    --font-size-heading-6: 18px;
 
-    --font-size-body-xlg: 2rem;
-    --font-size-body-lg: 1.8rem;
-    --font-size-body-md: 1.6rem;
-    --font-size-body-sm: 1.4rem;
-    --font-size-body-xsm: 1.2rem;
+    --font-size-body-xlg: 2px;
+    --font-size-body-lg: 18px;
+    --font-size-body-md: 16px;
+    --font-size-body-sm: 14px;
+    --font-size-body-xsm: 12px;
 }

@@ -28,10 +28,10 @@ const AssetPriceContainer = styled.div.attrs<{ $hasError: boolean }>(({$hasError
     style: {display: $hasError ? 'none' : 'grid'}
 }))`
     grid-template-columns: repeat(9, 1fr);
-    padding: 3.2rem 2rem;
+    padding: 32px 20px;
 
     .asset-price-wrapper {
-        margin-bottom: 2.4rem;
+        margin-bottom: 24px;
     }
 `
 
@@ -40,7 +40,7 @@ const AssetPriceWrapper = styled.div.attrs({
 })`
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 40px;
 
     @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
         grid-column: 1 / 10;
@@ -67,10 +67,10 @@ const ErrorWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .5rem;
+    gap: 5px;
 
     span.error-message {
-        margin-bottom: 1rem;
+        margin-bottom: 10px;
         text-align: center;
     }
 `

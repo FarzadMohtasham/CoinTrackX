@@ -21,12 +21,12 @@ const numbersList: {title: string, desc: string}[] = [
 const NumbersContainerStyled = styled.section`
   display: flex;
   justify-content: space-around;
-  padding: 4.8rem 0;
+  padding: 48px 0;
 
   /*Very Small devices (landscape phones, 576px and down)*/
   @media screen and (max-width: ${props => props.theme.breakpoints.md}) {
     flex-direction: column;
-    gap: 5rem;
+    gap: 50px;
   }
 
   /*Medium devices (tablets, 768px and up)*/
@@ -39,7 +39,7 @@ const NumberStyled = styled.div`
   text-align: center;
 
   .title {
-    padding-bottom: .8rem;
+    padding-bottom: 8px;
     font-weight: 500;
   }
 

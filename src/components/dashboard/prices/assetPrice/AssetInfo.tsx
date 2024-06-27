@@ -23,13 +23,13 @@ const AssetInfoContainer = styled.div`
 const AssetInfoLeftCol = styled.div`
     display: flex;
     align-items: center;
-    gap: 1.6rem;
+    gap: 16px;
 
     div.asset-details-wrapper {
         div.details {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 10px;
 
             span.asset-name {
                 font-weight: 500;
@@ -53,12 +53,12 @@ const AssetInfoLeftCol = styled.div`
 const AssetInfoRightCol = styled.div`
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 5px;
 
     div.asset-price-details {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 10px;
 
         span.asset-price {
             font-size: var(--font-size-heading-4);
@@ -105,13 +105,13 @@ export default function AssetInfo(props: AssetInfoProps) {
         <>
             {
                 assetDataIsLoading ?
-                    <Skeleton height={'10rem'}/>
+                    <Skeleton height={'100px'}/>
                     :
                     <AssetInfoContainer>
                         <AssetInfoLeftCol>
                             <div className={'asset-image-wrapper'}>
                                 <Icon iconSrc={`crypto/${assetData?.symbol.toLowerCase()}.svg`}
-                                      width={'6rem'}
+                                      width={'60px'}
                                 />
                             </div>
                             <div className={'asset-details-wrapper'}>
@@ -130,7 +130,7 @@ export default function AssetInfo(props: AssetInfoProps) {
                                        borderRadius={'full'}
                                        outline
                                 >
-                                    <Icon iconSrc={'arrow-up.svg'} width={'.6rem'}/>
+                                    <Icon iconSrc={'arrow-up.svg'} width={'6px'}/>
                                     {amountToBeFixed(Number(assetData?.changePercent24Hr))} %
                                 </Badge>
                             </div>

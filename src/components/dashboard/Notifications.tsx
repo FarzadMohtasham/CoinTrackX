@@ -25,16 +25,16 @@ const NotificationsContainer = styled.div<NotificationContainerProps>`
 `
 
 const NotificationsWrapper = styled.div`
-  width: 40rem;
+  width: 400px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
   background-color: ${props => props.theme.notif.notifs_container_bg_color};
   position: absolute;
-  top: 4rem;
+  top: 40px;
   right: 0;
-  padding: 1rem;
-  border-radius: 1.4rem;
+  padding: 10px;
+  border-radius: 14px;
   z-index: 11;
 `
 
@@ -88,12 +88,12 @@ export default function Notifications(): JSX.Element {
         <>
             {
                 isLoading ?
-                    <Skeleton width={'4rem'} height={'4rem'} style={{borderRadius: '.8rem'}}/>
+                    <Skeleton width={'40px'} height={'40px'} style={{borderRadius: '8px'}}/>
                     :
                     notifications.length > 0 && <NotificationsContainer ref={notificationRef}>
                         <Icon iconSrc={'notifications.svg'}
                               iconAlt={'notifications icon'}
-                              width={'3rem'}
+                              width={'30px'}
                               className={'notifications-icon'}
                               onClickHandler={onNotificationsClickHandler}/>
 
@@ -104,8 +104,8 @@ export default function Notifications(): JSX.Element {
                                         const notifOptions: NotificationOptions = {
                                             ...notificationOptions,
                                             height: 'max-content',
-                                            iconSize: '2rem',
-                                            closeIconSize: '2rem',
+                                            iconSize: '20px',
+                                            closeIconSize: '20px',
                                         }
 
                                         return (

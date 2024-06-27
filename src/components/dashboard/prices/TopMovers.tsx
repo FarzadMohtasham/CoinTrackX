@@ -13,7 +13,7 @@ import {Asset} from '@typings/Assets.api.type.ts'
 const TopMoversContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2.4rem;
+    gap: 24px;
 
 `
 
@@ -26,7 +26,7 @@ const TopMoversHeaderWrapper = styled.div`
 const TopMoversWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 10px;
 
     @media screen and (min-width: ${props => props.theme.breakpoints.sm}) {
         flex-direction: row;
@@ -43,7 +43,7 @@ const ErrorBox = styled.div`
 
     .error-title {
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 10px;
     }
 
     .error-desc {

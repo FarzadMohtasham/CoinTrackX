@@ -8,15 +8,15 @@ import SuperchargeCard from '@components/ui/cards/Supercharge.card.tsx'
 const BuyCryptoWrapperStyled = styled.section.attrs({
     id: 'buy-crypto'
 })`
-  padding: 10rem 0;
+  padding: 100px 0;
   display: flex;
   flex-direction: column;
-  gap: 8.8rem;
+  gap: 88px;
 `
 
 const CardWrapperStyled = styled.div`
   display: flex;
-  gap: 3.2rem;
+  gap: 32px;
 
   /*Very Small devices (landscape phones, 768px and down)*/
   @media screen and (max-width: ${props => props.theme.breakpoints.md}) {

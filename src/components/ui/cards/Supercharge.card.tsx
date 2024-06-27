@@ -10,21 +10,21 @@ type SuperchargePropsType = {
 }
 
 const SuperChargedStyled = styled.div`
-  padding: 4.8rem;
-  border-radius: 2.4rem;
+  padding: 48px;
+  border-radius: 24px;
   -webkit-box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
   -moz-box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
   box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
-  border: #EFEDFD .2rem solid;
+  border: #EFEDFD 2px solid;
 
   img {
     width: 100%;
-    border-radius: 2.4rem;
-    margin-bottom: 3.2rem;
+    border-radius: 24px;
+    margin-bottom: 32px;
   }
 
   .card-heading {
-    margin-bottom: 1.6rem;
+    margin-bottom: 16px;
   }
 `
 

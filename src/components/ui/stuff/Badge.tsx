@@ -8,23 +8,23 @@ import {BadgeProps, BadgePropsType} from '@typings/component-types/BadgeProps.ty
 
 const borderRadiusVariations = {
     none: '0',
-    sm: '.5rem',
-    md: '.8rem',
-    lg: '1.1rem',
-    full: '10rem',
+    sm: '5px',
+    md: '8px',
+    lg: '11px',
+    full: '100px',
 }
 
 const BadgeStyled = styled.span<BadgeProps>`
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 5px;
   width: max-content;
   background-color: ${(props: any) => props.$bgColor};
-  padding: .6rem .8rem;
+  padding: 6px 8px;
   font-size: var(--font-size-body-xsm);
   color: ${(props: any) => props.$textColor};
   border-radius: ${(props: any) => props.$borderRadiusVariations[props.$borderRadius]};
-  border: .1rem solid ${(props: any) => props.$borderColor};
+  border: 1px solid ${(props: any) => props.$borderColor};
   font-weight: 500;
 `
 
@@ -57,9 +57,9 @@ export default function Badge(props: BadgePropsType): JSX.Element {
                      $textColor={textColor}
                      $borderRadiusVariations={borderRadiusVariations}
                      $borderRadius={borderRadius}>
-            {hasIcon && (iconDir === 'left' ? <Icon width={'2rem'} iconSrc={icon}/> : '')}
+            {hasIcon && (iconDir === 'left' ? <Icon width={'20px'} iconSrc={icon}/> : '')}
             {children}
-            {hasIcon && (iconDir === 'right' ? <Icon width={'2rem'} iconSrc={icon}/> : '')}
+            {hasIcon && (iconDir === 'right' ? <Icon width={'20px'} iconSrc={icon}/> : '')}
         </BadgeStyled>
     )
 }

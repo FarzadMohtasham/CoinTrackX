@@ -9,11 +9,11 @@ import {SimpleNotifProps, SimpleNotifStyled} from '@typings/component-types/Noti
 const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNotifStyled>`
     display: flex;
     justify-content: space-between;
-    border-radius: .8rem;
+    border-radius: 8px;
     overflow: hidden;
     width: ${props => props.$width};
     height: ${props => props.$height};
-    border: .2rem solid ${props => props.theme.notif.border_color};
+    border: 2px solid ${props => props.theme.notif.border_color};
     background-color: ${props => props.theme.notif[props.$type + '_color']};
 
     .notif-icon {
@@ -34,8 +34,8 @@ const LeftColumnWrapper: any = styled.div.attrs({
 })`
     display: grid;
     place-content: center;
-    border-right: .2rem solid ${props => props.theme.notif.border_color};
-    padding: 0 1.5rem;
+    border-right: 2px solid ${props => props.theme.notif.border_color};
+    padding: 0 15px;
     background-color: ${props => props.theme.notif.icon_wrapper_bg_color};
 `
 
@@ -45,13 +45,13 @@ const CenterColumnWrapper: any = styled.div.attrs({
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    gap: .5rem;
-    padding: 2rem;
+    gap: 5px;
+    padding: 20px;
     justify-content: center;
 
     .top-section {
         display: flex;
-        gap: 1rem;
+        gap: 10px;
         align-items: center;
 
         .title {
@@ -74,7 +74,7 @@ const RightColumnWrapper: any = styled.div.attrs({
 })`
     width: max-content;
     height: 100%;
-    padding: 1.5rem 1.5rem 0 0;
+    padding: 15px 15px 0 0;
 
     img {
         cursor: pointer;
@@ -92,8 +92,8 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
         iconSrc = 'rocket-lunch.svg',
         width = '100%',
         height = 'max-content',
-        iconSize = '5rem',
-        closeIconSize = '5rem',
+        iconSize = '50px',
+        closeIconSize = '50px',
     } = props.options
 
     const {onNotifClose} = props
@@ -146,7 +146,7 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
                         closable && <RightColumnWrapper className={'right-col'}>
                             <Icon iconSrc={'close.svg'}
                                   className={'close-icon'}
-                                  width={'2rem'}
+                                  width={'20px'}
                                   onClickHandler={onCloseHandler}
                             />
                         </RightColumnWrapper>

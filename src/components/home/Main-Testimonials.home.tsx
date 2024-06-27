@@ -40,14 +40,14 @@ const reviewsList: ReviewType[] = [
 const TestimonialsWrapper = styled.div.attrs({
     id: 'testimonials'
 })`
-  padding: 10rem 0;
+  padding: 100px 0;
   display: flex;
   flex-direction: column;
 
   .reviews {
     display: flex;
     justify-content: space-between;
-    gap: 3.2rem;
+    gap: 32px;
 
     .review {
     }

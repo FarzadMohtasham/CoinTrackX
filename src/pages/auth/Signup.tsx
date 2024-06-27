@@ -30,7 +30,7 @@ const MainContent = styled(MainContentStyled)`
 
   .name-inputs-wrapper {
     display: flex;
-    gap: 2.4rem;
+    gap: 24px;
     flex-direction: row;
     width: 100%;
   }
@@ -38,7 +38,7 @@ const MainContent = styled(MainContentStyled)`
   @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
     .name-inputs-wrapper {
       flex-direction: column;
-      gap: 3.2rem;
+      gap: 32px;
     }
   }
 `

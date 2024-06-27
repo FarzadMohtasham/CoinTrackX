@@ -9,7 +9,7 @@ const PlatformWrapper = styled.div.attrs({
 })`
   display: flex;
   flex-direction: column;
-  padding-top: 10rem;
+  padding-top: 100px;
 
   img {
     width: 100%;

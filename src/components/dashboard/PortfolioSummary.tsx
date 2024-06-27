@@ -12,10 +12,10 @@ const PortfolioSummaryContainer: IStyledComponentBase<any> = styled.div.attrs({
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 5rem;
-  border: .2rem solid var(--color-black-50);
-  border-radius: 2.5rem;
-  padding: 2.4rem;
+  gap: 50px;
+  border: 2px solid var(--color-black-50);
+  border-radius: 25px;
+  padding: 24px;
 
   /*Very Small devices (landscape phones, 576px and down)*/
   @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {

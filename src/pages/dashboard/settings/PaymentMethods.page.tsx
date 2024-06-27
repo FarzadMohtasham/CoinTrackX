@@ -24,13 +24,13 @@ const NoPaymentMethodContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 3.2rem;
+        gap: 32px;
 
         .title-desc-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: .8rem;
+            gap: 8px;
 
             .title {
                 font-weight: bold;
@@ -53,7 +53,7 @@ export default function PaymentMethodsPage() {
                 paymentMethods ?
                     <NoPaymentMethodContainer className={'no-payment-methods'}>
                         <div className={'content-wrapper'}>
-                            <Icon iconSrc={'payment-method-with-bg.svg'} width={'16rem'}/>
+                            <Icon iconSrc={'payment-method-with-bg.svg'} width={'160px'}/>
                             <div className={'title-desc-wrapper'}>
                                 <Heading headingType={'h4'} className={'title'}>No Payment Methods Yet</Heading>
                                 <span>Please add your payment methods.</span>

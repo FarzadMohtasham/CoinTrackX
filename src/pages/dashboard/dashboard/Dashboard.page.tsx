@@ -7,10 +7,10 @@ import CurrencyPrice from '@components/ui/crypto/CurrencyPrice.tsx'
 const DashboardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  padding: 3.2rem 2rem;
+  padding: 32px 20px;
 
   .portfolio-summary {
-    margin-bottom: 2.4rem;
+    margin-bottom: 24px;
   }
 `
 

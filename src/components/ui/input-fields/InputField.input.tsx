@@ -13,15 +13,15 @@ const FieldContainer = styled.div`
 const InputStyled = styled.div`
   display: flex;
   align-items: center;
-  gap: .8rem;
-  border-radius: 1.2rem;
-  border: .2rem solid var(--color-black-50);
-  padding: 1.2rem;
+  gap: 8px;
+  border-radius: 12px;
+  border: 2px solid var(--color-black-50);
+  padding: 12px;
   transition: border-color .3s ease-in-out;
 
   input {
     width: 100%;
-    height: 2.4rem;
+    height: 24px;
     border: none;
     font-size: var(--font-size-body-md);
 
@@ -54,7 +54,7 @@ export default function Input(props: InputProps): JSX.Element {
         },
         iconSrc = 'email-icon.svg',
         focusIconSrc = 'email-icon.svg',
-        iconWidth = '2rem',
+        iconWidth = '20px',
         errorMessage = null,
         invalidErrorMessages = []
     } = props

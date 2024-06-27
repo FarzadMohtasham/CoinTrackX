@@ -7,16 +7,16 @@ type PhoneNumberInputProps = {}
 
 const PhoneNumberInputContainer = styled.div`
     width: 100%;
-    height: 5rem;
+    height: 50px;
     background-color: var(--color-gray-100);
-    border-radius: .8rem;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 10px;
     align-items: center;
 
     .country-select-wrapper {
-        padding: 0 0 0 1rem;
+        padding: 0 0 0 10px;
         height: 100%;
 
         .country-select {
@@ -28,17 +28,17 @@ const PhoneNumberInputContainer = styled.div`
 
     .separator {
         height: 70%;
-        width: .2rem;
+        width: 2px;
         background-color: var(--color-gray-300);
     }
 
     .input-field-wrapper {
         flex-grow: 1;
         height: 60%;
-        padding: 0 1rem 0 0;
+        padding: 0 10px 0 0;
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 10px;
 
         .input-field-wrapper {
             font-size: var(--font-size-body-sm);

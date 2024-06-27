@@ -6,8 +6,8 @@ import {HeadingBoxType} from '@typings/component-types/HeadingBox.type.ts'
 const HeadingBoxStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
-  padding-bottom: 4.8rem;
+  gap: 16px;
+  padding-bottom: 48px;
 `
 
 const LabelStyled = styled.span`

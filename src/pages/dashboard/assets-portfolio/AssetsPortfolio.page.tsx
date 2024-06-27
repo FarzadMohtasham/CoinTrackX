@@ -4,13 +4,13 @@ import {JSX} from 'react'
 const AssetsPortfolioContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    padding: 3.2rem 2rem;
+    padding: 32px 20px;
 `
 
 const AssetsPortfolioWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 40px;
 
     @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
         grid-column: 1 / 10;

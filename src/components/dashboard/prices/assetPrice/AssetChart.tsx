@@ -96,7 +96,7 @@ const AssetChartContainer = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 3rem;
+        margin-bottom: 30px;
 
         .title {
             font-size: var(--font-size-body-lg);
@@ -195,7 +195,7 @@ export default function AssetChart(props: AssetChartProps) {
         <>
             {
                 assetChartLoading ?
-                    <Skeleton height={'30rem'} count={1}/>
+                    <Skeleton height={'300px'} count={1}/>
                     :
                     <AssetChartContainer>
                         <div className={'heading-content'}>

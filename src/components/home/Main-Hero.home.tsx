@@ -12,8 +12,8 @@ const HeroStyled = styled.section`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 6.8rem;
-  padding: 8rem 0;
+  gap: 68px;
+  padding: 80px 0;
 
   .left-col {
     display: flex;
@@ -23,20 +23,20 @@ const HeroStyled = styled.section`
 
     span {
       display: block;
-      padding-bottom: 2.4rem;
+      padding-bottom: 24px;
       color: var(--color-primary);
     }
 
     h1 {
       display: block;
       line-height: 1.1;
-      margin-bottom: 3.2rem;
+      margin-bottom: 32px;
     }
 
     p {
       color: var(--color-black-600);
       line-height: 1.55;
-      margin-bottom: 4.8rem;
+      margin-bottom: 48px;
       display: block;
     }
   }
@@ -61,7 +61,7 @@ const HeroStyled = styled.section`
   /*Medium devices (tablets, 768px and up)*/
   @media screen and (min-width: ${props => props.theme.breakpoints.md}) {
     flex-direction: row;
-    gap: 11.8rem;
+    gap: 118px;
 
     .left-col {
       width: 50%;

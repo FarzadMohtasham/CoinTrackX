@@ -18,35 +18,35 @@ const ContainerStyled = styled.div<ContainerStyledProps>`
   /*Small devices (landscape phones, 576px and up)*/
   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
     .wrapper {
-      width: 57.6rem;
+      width: 576px;
     }
   }
 
   /*Medium devices (tablets, 768px and up)*/
   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
     .wrapper {
-      width: 76.8rem;
+      width: 768px;
     }
   }
 
   /*Large devices (desktops, 992px and up)*/
   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
     .wrapper {
-      width: 99.2rem;
+      width: 992px;
     }
   }
 
   /*X-Large devices (large desktops, 1200px and up)*/
   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.xl}) {
     .wrapper {
-      width: 120.0rem;
+      width: 1200px;
     }
   }
 
   /*XX-Large devices (larger desktops, 1400px and up)*/
   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.xxl}) {
     .wrapper {
-      width: 140.0rem;
+      width: 1400px;
     }
   }
 `

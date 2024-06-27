@@ -32,7 +32,7 @@ import Button from '@components/ui/stuff/Button.tsx'
 const PricesTableContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 10px;
 
     & .table-head {
         background-color: var(--color-black-100);
@@ -42,8 +42,8 @@ const PricesTableContainer = styled.div`
 const SearchBar = styled.div`
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 10px;
+    margin-bottom: 20px;
 
     .left-col {
         flex-grow: 1;
@@ -51,19 +51,19 @@ const SearchBar = styled.div`
 
     .right-col {
         display: flex;
-        gap: 1rem;
+        gap: 10px;
     }
 `
 
 const SkeletonContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 10px;
 `
 
 const ColumnName = styled.div`
     display: flex;
-    gap: 1.2rem;
+    gap: 12px;
     align-items: center;
 
     .left-col {
@@ -72,7 +72,7 @@ const ColumnName = styled.div`
     .right-col {
         display: flex;
         flex-direction: column;
-        gap: .8rem;
+        gap: 8px;
 
         .name {
             font-size: var(--font-size-body-sm);
@@ -125,7 +125,7 @@ export default function PricesTable(): JSX.Element {
                         <ColumnName>
                             <Icon iconSrc={props.renderValue().logoSrc}
                                   className={'left-col'}
-                                  width={'3.5rem'}
+                                  width={'35px'}
                             />
                             <div className={'right-col'}>
                                 <span className={'name'}>{props.renderValue().name}</span>
@@ -162,7 +162,7 @@ export default function PricesTable(): JSX.Element {
                        outline
                        borderRadius={'full'}>
                     <Icon iconSrc={Number(props.renderValue()) >= 0 ? 'arrow-up.svg' : 'arrow-down.svg'}
-                          width={'.8rem'}
+                          width={'8px'}
                     />
                     %{Number(props.renderValue()).toFixed(2)}
                 </Badge>
@@ -178,7 +178,7 @@ export default function PricesTable(): JSX.Element {
             accessorKey: 'watchlist',
             header: '',
             cell: (props: CellContext<any, any>) => <ColumnCellSpan>
-                <Icon width={'2rem'} iconSrc={props.renderValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
+                <Icon width={'20px'} iconSrc={props.renderValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
             </ColumnCellSpan>
         },
     ], []);
@@ -235,7 +235,7 @@ export default function PricesTable(): JSX.Element {
         <PricesTableContainer>
             {
                 isLoading ?
-                    <Skeleton height={'7rem'}/>
+                    <Skeleton height={'70px'}/>
                     :
                     <SearchBar>
                         <div className={'left-col'}>
@@ -279,7 +279,7 @@ export default function PricesTable(): JSX.Element {
                         {
                             [...Array(10)].map((_, i: number) => {
                                 return (
-                                    <Skeleton key={'sk-' + i} height={'6rem'}/>
+                                    <Skeleton key={'sk-' + i} height={'60px'}/>
                                 )
                             })
                         }

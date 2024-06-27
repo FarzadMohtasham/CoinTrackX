@@ -8,14 +8,14 @@ type SeparatorProps = {
 const VerticalLine = styled.div`
   background-color: var(--color-black-100);
   width: 100%;
-  height: .1rem;
-  border-radius: 10rem;
+  height: 1px;
+  border-radius: 100px;
 `
 
 const SeparatorContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 10px;
 
   span {
     color: var(--color-black-200);

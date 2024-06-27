@@ -43,7 +43,7 @@ type TableAssetMarket = {
 const AssetMarketsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 10px;
 
     .table-head {
         background-color: var(--color-black-100);
@@ -191,7 +191,7 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
         <>
             {
                 isLoading ?
-                    <Skeleton height={'5rem'} count={10}/>
+                    <Skeleton height={'50px'} count={10}/>
                     :
                     <AssetMarketsContainer>
                         <Heading>

@@ -8,7 +8,7 @@ import {CheckboxProps, CheckboxStyledProps, CheckboxTypes, Properties} from '@ty
 const CheckBoxContainer = styled.div<CheckboxStyledProps>`
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 12px;
 
   label {
     font-size: var(--font-size-body-md);

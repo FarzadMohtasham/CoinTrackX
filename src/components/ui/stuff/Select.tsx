@@ -19,10 +19,10 @@ const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
 const SelectBtnWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 1.1rem;
-  padding: .8rem 1.6rem;
-  border: .2rem solid var(--color-black-100);
-  border-radius: .8rem;
+  gap: 11px;
+  padding: 8px 16px;
+  border: 2px solid var(--color-black-100);
+  border-radius: 8px;
   cursor: pointer;
 
   .selected-item-text {
@@ -35,18 +35,18 @@ const SelectBtnWrapper = styled.div`
 const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
   list-style: none;
   background-color: #2f343e;
-  padding: 1rem;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 10px;
   position: absolute;
   ${(props: any): string => props.$menuXDirStartPosition === 'right' ? 'right: 0' : 'left: 0'};
-  top: 5rem;
-  border-radius: .8rem;
+  top: 50px;
+  border-radius: 8px;
   z-index: 10;
 
   li {
-    padding: .8rem 10rem .8rem 1rem;
+    padding: 8px 100px 8px 10px;
     color: white;
     cursor: pointer;
     font-weight: 400;
@@ -57,9 +57,9 @@ const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
 
 const SelectMenuItem = styled.li<SelectedMenuItemProps>`
     display: flex;
-    gap: 1rem;
+    gap: 10px;
     text-transform: uppercase;
-    border-radius: .6rem;
+    border-radius: 6px;
     transition: background-color .3s ease-in-out;
 
     ${(props: any) => props.$selected && css`background-color: #22242a`};
@@ -123,9 +123,9 @@ export default function Select(props: SelectProps): JSX.Element {
     return (
         <SelectContainer ref={selectRef}>
             <SelectBtnWrapper onClick={handleSelectBtn}>
-                {hasIcon && <Icon iconSrc={selectedItem?.iconSrc || ''} width={'1.8rem'}/>}
+                {hasIcon && <Icon iconSrc={selectedItem?.iconSrc || ''} width={'18px'}/>}
                 <span className={'selected-item-text'}>{selectedItem?.name}</span>
-                <Icon iconSrc={'arrow-down-simple.svg'} width={'1rem'}/>
+                <Icon iconSrc={'arrow-down-simple.svg'} width={'10px'}/>
             </SelectBtnWrapper>
 
             {
@@ -136,7 +136,7 @@ export default function Select(props: SelectProps): JSX.Element {
                                 <SelectMenuItem key={item.name + i}
                                                 onClick={() => menuItemOnClickHandler(item)}
                                                 $selected={item.name === selectedItem?.name}>
-                                    {hasIcon && <Icon iconSrc={item.iconSrc} width={'2rem'}/>}
+                                    {hasIcon && <Icon iconSrc={item.iconSrc} width={'20px'}/>}
                                     {item.name}
                                 </SelectMenuItem>
                             )

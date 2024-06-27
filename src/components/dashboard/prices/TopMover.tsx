@@ -11,13 +11,13 @@ import {TopMoverProps} from '@typings/component-types/TopMover.type.ts'
 
 const TopMoverContainer = styled.div`
     width: 100%;
-    height: 8rem;
+    height: 80px;
 `
 
 const TopMoverWrapper = styled.div`
-    border: .2rem solid var(--color-black-50);
-    border-radius: .8rem;
-    padding: 1.6rem;
+    border: 2px solid var(--color-black-50);
+    border-radius: 8px;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +27,7 @@ const TopMoverWrapper = styled.div`
 const TopMoverLeftCol = styled.div`
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 12px;
 
     .coin-icon-wrapper {
     }
@@ -53,7 +53,7 @@ const TopMoverRightCol = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: .5rem;
+    gap: 5px;
 
     .coin-price {
         font-size: var(--font-size-body-sm);
@@ -91,7 +91,7 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
                 isLoading ?
                     <Skeleton height={'100%'}
                               width={'100%'}
-                              borderRadius={'.8rem'}
+                              borderRadius={'8px'}
                     />
                     :
                     <Link to={`/dashboard/prices/${coinId}`}>
@@ -99,7 +99,7 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
                             <TopMoverLeftCol>
                                 <div className={'coin-icon-wrapper'}>
                                     <Icon iconSrc={`crypto/${coinSymbol.toLowerCase()}.svg`}
-                                          width={'4rem'}
+                                          width={'40px'}
                                     />
                                 </div>
 

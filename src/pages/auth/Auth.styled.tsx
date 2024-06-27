@@ -9,8 +9,8 @@ export const AuthContainer = styled.main`
 
 export const AuthInnerWrapper = styled.div`
   background-color: white;
-  padding: 5rem;
-  border-radius: 2rem;
+  padding: 50px;
+  border-radius: 20px;
   width: 95dvw;
 
   /*Very Small devices (landscape phones, 274px and up)*/
@@ -35,16 +35,16 @@ export const AuthInnerWrapper = styled.div`
 `
 
 export const HeadContent = styled.div`
-  margin-bottom: 3.8rem;
+  margin-bottom: 38px;
 
   a {
     .back-btn {
-      margin-bottom: 1rem;
+      margin-bottom: 10px;
     }
   }
 
   .heading {
-    margin-bottom: 1.2rem;
+    margin-bottom: 12px;
   }
 
   .heading-desc {
@@ -58,22 +58,22 @@ export const HeadContent = styled.div`
 export const MainContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 32px;
   width: 100%;
 
   .google-apple-login {
     display: flex;
-    gap: 1.6rem;
+    gap: 16px;
   }
   
   @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
-    gap: 1.2rem;
+    gap: 12px;
   }
 `
 
 export const AuthLink = styled.div`
   display: flex;
-  gap: .5rem;
+  gap: 5px;
 
   .prefix {
     color: var(--color-black-500);

@@ -95,13 +95,13 @@ const LayoutHeader = styled.div.attrs({className: 'layout-header'})`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: .2rem var(--color-black-100) solid;
-    padding: 0 2.4rem;
+    border-bottom: 2px var(--color-black-100) solid;
+    padding: 0 24px;
 
     .left-col {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 20px;
 
         .menu-burger {
             display: block;
@@ -111,7 +111,7 @@ const LayoutHeader = styled.div.attrs({className: 'layout-header'})`
     .right-col {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 20px;
     }
 
     @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
@@ -126,9 +126,9 @@ const LayoutHeader = styled.div.attrs({className: 'layout-header'})`
 const LayoutSidebar = styled.aside.attrs({className: 'layout-sidebar'})`
     display: flex;
     flex-direction: column;
-    gap: 4.8rem;
-    border-right: .2rem var(--color-black-100) solid;
-    padding: 3.2rem 2.4rem;
+    gap: 48px;
+    border-right: 2px var(--color-black-100) solid;
+    padding: 32px 24px;
     width: 100%;
     height: 100%;
     overflow: scroll;
@@ -137,7 +137,7 @@ const LayoutSidebar = styled.aside.attrs({className: 'layout-sidebar'})`
     .navigation-list {
         display: flex;
         flex-direction: column;
-        gap: 1.2rem;
+        gap: 12px;
     }
 
     /*Very Small devices (landscape phones, 576px and down)*/
@@ -172,7 +172,7 @@ const MobileSideBar = styled.div.attrs<{
     transition: transform 0.3s ease-in-out;
     box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
     z-index: 15;
-    padding: 1rem 3rem;
+    padding: 10px 30px;
     overflow: scroll;
     overflow-x: hidden;
 
@@ -180,7 +180,7 @@ const MobileSideBar = styled.div.attrs<{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 2rem;
+        margin-bottom: 20px;
 
         .close-navbar-icon {
             font-size: var(--font-size-heading-2);
@@ -191,7 +191,7 @@ const MobileSideBar = styled.div.attrs<{
     .navigation-items {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 15px;
     }
 
     .mobile-sidebar-overlay {
@@ -226,8 +226,8 @@ const MobileNavOverlay = styled.div<{
 const ChildNavItemsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1.5rem 0 0 1rem;
+    gap: 10px;
+    padding: 15px 0 0 10px;
 `
 
 export default function DashboardLayout() {
@@ -353,7 +353,7 @@ export default function DashboardLayout() {
                                 iconSrc: navItem.iconSrc,
                                 activeIconSrc: navItem.activeIconSrc,
                                 iconAlt: navItem.name,
-                                iconWidth: '2rem',
+                                iconWidth: '20px',
                                 active: navItem.active,
                                 onClick: () => onNavigationItemHandler(navItem.name),
                                 children: null,
@@ -373,7 +373,7 @@ export default function DashboardLayout() {
                                                         iconSrc: childNavItem.iconSrc,
                                                         activeIconSrc: childNavItem.activeIconSrc,
                                                         iconAlt: childNavItem.name,
-                                                        iconWidth: '2rem',
+                                                        iconWidth: '20px',
                                                         onClick: () => onSettingsChildNavHandler(childNavItem.link, childNavItem.name),
                                                         children: null,
                                                     }
@@ -408,7 +408,7 @@ export default function DashboardLayout() {
                 <div className={'left-col'}>
                     <Icon iconSrc={'menu-burger.svg'}
                           onClickHandler={onMenuBurgerHandler}
-                          width={'2.5rem'}
+                          width={'25px'}
                           className={'menu-burger'}
                           clickable/>
                     <Heading headingType={'h5'}
@@ -434,7 +434,7 @@ export default function DashboardLayout() {
                                 iconSrc: navItem.iconSrc,
                                 activeIconSrc: navItem.activeIconSrc,
                                 iconAlt: navItem.name,
-                                iconWidth: '2rem',
+                                iconWidth: '20px',
                                 active: navItem.active,
                                 onClick: () => onNavigationItemHandler(navItem.name),
                                 children: null,
@@ -454,7 +454,7 @@ export default function DashboardLayout() {
                                                         iconSrc: childNavItem.iconSrc,
                                                         activeIconSrc: childNavItem.activeIconSrc,
                                                         iconAlt: childNavItem.name,
-                                                        iconWidth: '2rem',
+                                                        iconWidth: '20px',
                                                         onClick: () => onSettingsChildNavHandler(childNavItem.link, childNavItem.name),
                                                         children: null,
                                                     }

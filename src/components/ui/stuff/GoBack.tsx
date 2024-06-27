@@ -13,7 +13,7 @@ const GoBackContainer = styled.div`
     a.go-back-link {
         display: flex;
         align-items: center;
-        gap: .5rem;
+        gap: 5px;
     }
 `
 
@@ -25,7 +25,7 @@ export default function GoBack(props: GoBackProps) {
     return (
         <GoBackContainer>
             <Link to={props.link} className={'go-back-link'}>
-                <Icon iconSrc={'arrow-left-black.svg'} width={'1.5rem'}/>
+                <Icon iconSrc={'arrow-left-black.svg'} width={'15px'}/>
                 <GoBackSpan>
                     {props.children}
                 </GoBackSpan>
