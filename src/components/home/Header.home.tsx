@@ -34,47 +34,65 @@ const navItems = [
 ]
 
 const HeaderStyled = styled.header`
-  padding: 2.4rem 4.8rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    padding: 2.4rem 4.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `
 
 const NavBarStyled = styled.nav`
-  display: none;
+    display: none;
 
-  @media screen and (min-width: 992px) {
-    & {
-      display: block;
+    @media screen and (min-width: 992px) {
+        & {
+            display: block;
+        }
     }
-  }
 `
 
 const NavItemsStyled = styled.ul`
-  list-style: none;
-  display: flex;
-  gap: 4rem;
+    list-style: none;
+    display: flex;
+    gap: 4rem;
 `
 
 const NavItemStyled = styled.li`
-  cursor: pointer;
-  font-weight: 400;
+    cursor: pointer;
+    font-weight: 400;
 
-  a {
-    color: var(--color-black-600);
-    transition: color .3s ease-in-out;
-  }
-
-  &:hover {
     a {
-      color: var(--color-black-800);
+        color: var(--color-black-600);
+        transition: color .3s ease-in-out;
     }
-  }
+
+    &:hover {
+        a {
+            color: var(--color-black-800);
+        }
+    }
 `
 
 const ButtonsCTAStyled = styled.div`
-  display: flex;
-  gap: 1.6rem;
+    display: flex;
+    gap: 1.6rem;
+
+    @media screen and (max-width: var(--breakpoint-md)) {
+        .cta-buttons {
+            span.btn-text {
+                display: none;
+            }
+        }
+    }
+`
+
+const CTABtnText = styled.span`
+    @media screen and (min-width: ${props => props.theme.breakpoints.md}) {
+        display: inline;
+    }
+    
+    @media screen and (max-width: ${props => props.theme.breakpoints.md}) {
+        display: none;
+    }
 `
 
 export default function Header(): JSX.Element {
@@ -108,7 +126,9 @@ export default function Header(): JSX.Element {
                             borderRadius={'lg'}
                             outline>
                         {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20rem'}/>}
-                        {userLoggedIn ? 'Go To Dashboard' : 'Login'}
+                        <CTABtnText>
+                            {userLoggedIn ? 'Go To Dashboard' : 'Login'}
+                        </CTABtnText>
                     </Button>
                 </NavLink>
                 {

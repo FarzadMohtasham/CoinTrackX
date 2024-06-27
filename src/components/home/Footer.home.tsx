@@ -64,7 +64,7 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (max-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.responsive.md}) {
+  @media screen and (max-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.breakpoints.md}) {
     grid-template-areas: 'footer-column-1'
                          'footer-column-2'
                          'footer-column-3'
@@ -73,14 +73,14 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.responsive.md}) {
+  @media screen and (min-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.breakpoints.md}) {
     grid-template-areas: 'footer-column-1 footer-column-2'
                           'footer-column-3 footer-column-4';
     gap: 2.5rem;
   }
 
   /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${(props: ExecutionContext & FastOmit<any, any>) => props.theme.breakpoints.lg}) {
     grid-template-areas: 'footer-column-1 footer-column-2 footer-column-3 footer-column-4';
     gap: 4rem;
   }

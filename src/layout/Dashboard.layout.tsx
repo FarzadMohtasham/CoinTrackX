@@ -23,7 +23,7 @@ const LayoutContainer = styled.div`
     overflow: hidden;
 
     /*Very Small devices (landscape phones, 576px and down)*/
-    @media screen and (max-width: ${(props: any) => props.theme.responsive.sm}) {
+    @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
         .layout-header {
             grid-column: 1 / 13;
             grid-row: 1 / 2;
@@ -40,7 +40,7 @@ const LayoutContainer = styled.div`
         }
     }
     /*Small devices (landscape phones, 576px and up)*/
-    @media screen and (min-width: ${(props: any) => props.theme.responsive.sm}) {
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
         .layout-header {
             grid-column: 1 / 13;
             grid-row: 1 / 2;
@@ -57,7 +57,7 @@ const LayoutContainer = styled.div`
         }
     }
     /*Medium devices (tablets, 768px and up)*/
-    @media screen and (min-width: ${(props: any) => props.theme.responsive.md}) {
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
         .layout-header {
             grid-column: 4 / 13;
             grid-row: 1 / 2;
@@ -74,7 +74,7 @@ const LayoutContainer = styled.div`
         }
     }
     /*Large devices (desktops, 992px and up)*/
-    @media screen and (min-width: ${(props: any) => props.theme.responsive.lg}) {
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
         .layout-header {
             grid-column: 3 / 13;
             grid-row: 1 / 2;
@@ -114,7 +114,7 @@ const LayoutHeader = styled.div.attrs({className: 'layout-header'})`
         gap: 2rem;
     }
 
-    @media screen and (min-width: ${(props: any) => props.theme.responsive.md}) {
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
         .left-col {
             .menu-burger {
                 display: none;
@@ -141,17 +141,17 @@ const LayoutSidebar = styled.aside.attrs({className: 'layout-sidebar'})`
     }
 
     /*Very Small devices (landscape phones, 576px and down)*/
-    @media screen and (max-width: ${(props: any) => props.theme.responsive.sm}) {
+    @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
         display: none;
     }
 
     /*Small devices (landscape phones, 576px and up)*/
-    @media screen and (min-width: ${(props: any) => props.theme.responsive.sm}) {
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
         display: none;
     }
 
     /*Medium devices (tablets, 768px and up)*/
-    @media screen and (min-width: ${(props: any) => props.theme.responsive.md}) {
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
         display: flex;
     }
 `

@@ -1,7 +1,7 @@
 import {StyledThemeProps} from '@typings/StyledTheme.type.ts'
 
 const defaultProps: StyledThemeProps = {
-    responsive: {
+    breakpoints: {
         xsm: '27.4rem',
         sm: '57.6rem',
         md: '76.8rem',

@@ -18,7 +18,7 @@ const PortfolioSummaryContainer: IStyledComponentBase<any> = styled.div.attrs({
   padding: 2.4rem;
 
   /*Very Small devices (landscape phones, 576px and down)*/
-  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
     flex-direction: column;
   }
 `

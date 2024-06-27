@@ -96,7 +96,7 @@ const TwoStepVerificationWrapper = styled.div`
         }
     }
 
-    @media screen and (max-width: ${props => props.theme.responsive.md}) {
+    @media screen and (max-width: ${props => props.theme.breakpoints.md}) {
         div.step2-auth-options-wrapper {
             flex-direction: column;
         }

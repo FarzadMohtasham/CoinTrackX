@@ -28,11 +28,11 @@ const TopMoversWrapper = styled.div`
     justify-content: space-between;
     gap: 1rem;
 
-    @media screen and (min-width: ${props => props.theme.responsive.sm}) {
+    @media screen and (min-width: ${props => props.theme.breakpoints.sm}) {
         flex-direction: row;
     }
 
-    @media screen and (max-width: ${props => props.theme.responsive.sm}) {
+    @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
         flex-direction: column;
     }
 `

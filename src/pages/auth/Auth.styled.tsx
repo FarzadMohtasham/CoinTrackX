@@ -14,22 +14,22 @@ export const AuthInnerWrapper = styled.div`
   width: 95dvw;
 
   /*Very Small devices (landscape phones, 274px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.xsm}) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.xsm}) {
     width: 70dvw;
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.sm}) {
     width: 57dvw;
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.md}) {
     width: 45dvw;
   }
 
   /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.lg}) {
     width: 30dvw;
   }
 `
@@ -66,7 +66,7 @@ export const MainContent = styled.div`
     gap: 1.6rem;
   }
   
-  @media screen and (max-width: ${props => props.theme.responsive.sm}) {
+  @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
     gap: 1.2rem;
   }
 `

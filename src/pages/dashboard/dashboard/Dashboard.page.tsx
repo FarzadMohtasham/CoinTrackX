@@ -17,15 +17,15 @@ const DashboardContainer = styled.div`
 const PortfolioSummaryWrapper = styled.div.attrs({
     className: 'portfolio-summary-wrapper',
 })`
-  @media screen and (max-width: ${(props: any) => props.theme.responsive.sm}) {
+  @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
     grid-column: 1 / 10;
   }
 
-  @media screen and (min-width: ${(props: any) => props.theme.responsive.sm}) {
+  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
     grid-column: 2 / 9;
   }
 
-  @media screen and (min-width: ${(props: any) => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
     grid-column: 3 / 8;
   }
 `

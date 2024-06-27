@@ -16,35 +16,35 @@ const ContainerStyled = styled.div<ContainerStyledProps>`
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.responsive.sm}) {
+  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
     .wrapper {
       width: 57.6rem;
     }
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.responsive.md}) {
+  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
     .wrapper {
       width: 76.8rem;
     }
   }
 
   /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
     .wrapper {
       width: 99.2rem;
     }
   }
 
   /*X-Large devices (large desktops, 1200px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.responsive.xl}) {
+  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.xl}) {
     .wrapper {
       width: 120.0rem;
     }
   }
 
   /*XX-Large devices (larger desktops, 1400px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.responsive.xxl}) {
+  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.xxl}) {
     .wrapper {
       width: 140.0rem;
     }

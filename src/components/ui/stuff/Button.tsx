@@ -42,17 +42,17 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   }
 
   /*Very Small devices (landscape phones, 576px and down)*/
-  @media screen and (max-width: ${props => props.theme.responsive.md}) {
+  @media screen and (max-width: ${props => props.theme.breakpoints.md}) {
     ${(props: any) => props.$properties.mobileMedia}
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.md}) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.md}) {
     ${(props: any) => props.$properties.tabletMedia}
   }
 
   /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${props => props.theme.responsive.lg}) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.lg}) {
     ${(props: any) => props.$properties.desktopMedia}
   }
 `

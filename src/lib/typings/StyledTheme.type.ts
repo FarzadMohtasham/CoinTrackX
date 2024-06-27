@@ -1,5 +1,5 @@
 export type StyledThemeProps = {
-    responsive: {
+    breakpoints: {
         xsm: string;
         sm: string;
         md: string;
