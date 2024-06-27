@@ -311,6 +311,14 @@ export default function DashboardLayout() {
         }
     }, [location.pathname]);
 
+    // Close mobile Navbar except settings nav item click
+    useEffect(() => {
+        console.log(selectedNavName)
+        if (selectedNavName !== 'settings' && location.pathname[1] !== 'settings') {
+            setNavStatus(false)
+        }
+    }, [selectedNavName, location.pathname])
+
     // Adding click handler to sidebar Overlay to close sidebar on outside click
     useEffect(() => {
         if (sidebarOverlayRef.current) {
