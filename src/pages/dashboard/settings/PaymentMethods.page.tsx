@@ -3,6 +3,15 @@ import {styled} from "styled-components";
 import Icon from "@components/ui/stuff/Icon.tsx";
 import Heading from "@components/ui/stuff/Heading.tsx";
 import Button from "@components/ui/stuff/Button.tsx";
+import {
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay, useDisclosure
+} from "@chakra-ui/react";
 
 type PaymentMethod = {}
 
@@ -22,7 +31,7 @@ const NoPaymentMethodContainer = styled.div`
             flex-direction: column;
             align-items: center;
             gap: .8rem;
-            
+
             .title {
                 font-weight: bold;
             }
@@ -35,7 +44,8 @@ const PaymentMethodsContainer = styled.div`
 `
 
 export default function PaymentMethodsPage() {
-    const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([])
+    const [paymentMethods, _] = useState<PaymentMethod[]>([])
+    const {isOpen, onOpen, onClose} = useDisclosure()
 
     return (
         <>
@@ -48,7 +58,7 @@ export default function PaymentMethodsPage() {
                                 <Heading headingType={'h4'} className={'title'}>No Payment Methods Yet</Heading>
                                 <span>Please add your payment methods.</span>
                             </div>
-                            <Button icon={'plus.svg'}>
+                            <Button icon={'plus.svg'} onClickHandler={() => onOpen()}>
                                 Add A Payment Method
                             </Button>
                         </div>
@@ -57,8 +67,22 @@ export default function PaymentMethodsPage() {
                     <PaymentMethodsContainer>
 
                     </PaymentMethodsContainer>
-
             }
+
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay/>
+                <ModalContent>
+                    <ModalHeader>Modal Title</ModalHeader>
+                    <ModalCloseButton/>
+                    <ModalBody>
+                        Modal body
+                    </ModalBody>
+
+                    <ModalFooter>
+
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </>
     )
 }
