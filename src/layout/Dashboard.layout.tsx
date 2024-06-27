@@ -353,7 +353,7 @@ export default function DashboardLayout() {
                                 iconSrc: navItem.iconSrc,
                                 activeIconSrc: navItem.activeIconSrc,
                                 iconAlt: navItem.name,
-                                iconWidth: '20rem',
+                                iconWidth: '2rem',
                                 active: navItem.active,
                                 onClick: () => onNavigationItemHandler(navItem.name),
                                 children: null,
@@ -373,7 +373,7 @@ export default function DashboardLayout() {
                                                         iconSrc: childNavItem.iconSrc,
                                                         activeIconSrc: childNavItem.activeIconSrc,
                                                         iconAlt: childNavItem.name,
-                                                        iconWidth: '20rem',
+                                                        iconWidth: '2rem',
                                                         onClick: () => onSettingsChildNavHandler(childNavItem.link, childNavItem.name),
                                                         children: null,
                                                     }
@@ -408,7 +408,7 @@ export default function DashboardLayout() {
                 <div className={'left-col'}>
                     <Icon iconSrc={'menu-burger.svg'}
                           onClickHandler={onMenuBurgerHandler}
-                          width={'25rem'}
+                          width={'2.5rem'}
                           className={'menu-burger'}
                           clickable/>
                     <Heading headingType={'h5'}
@@ -434,7 +434,7 @@ export default function DashboardLayout() {
                                 iconSrc: navItem.iconSrc,
                                 activeIconSrc: navItem.activeIconSrc,
                                 iconAlt: navItem.name,
-                                iconWidth: '20rem',
+                                iconWidth: '2rem',
                                 active: navItem.active,
                                 onClick: () => onNavigationItemHandler(navItem.name),
                                 children: null,
@@ -454,7 +454,7 @@ export default function DashboardLayout() {
                                                         iconSrc: childNavItem.iconSrc,
                                                         activeIconSrc: childNavItem.activeIconSrc,
                                                         iconAlt: childNavItem.name,
-                                                        iconWidth: '20rem',
+                                                        iconWidth: '2rem',
                                                         onClick: () => onSettingsChildNavHandler(childNavItem.link, childNavItem.name),
                                                         children: null,
                                                     }

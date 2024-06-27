@@ -99,7 +99,7 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
                             <TopMoverLeftCol>
                                 <div className={'coin-icon-wrapper'}>
                                     <Icon iconSrc={`crypto/${coinSymbol.toLowerCase()}.svg`}
-                                          width={'40rem'}
+                                          width={'4rem'}
                                     />
                                 </div>
 

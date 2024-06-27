@@ -56,19 +56,19 @@ const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
 `
 
 const SelectMenuItem = styled.li<SelectedMenuItemProps>`
-  display: flex;
-  gap: 1rem;
-  text-transform: uppercase;
-  border-radius: .6rem;
-  transition: background-color .3s ease-in-out;
+    display: flex;
+    gap: 1rem;
+    text-transform: uppercase;
+    border-radius: .6rem;
+    transition: background-color .3s ease-in-out;
 
-  ${(props: any) => props.$selected && css`background-color: #22242a`};
+    ${(props: any) => props.$selected && css`background-color: #22242a`};
 
-  ${(props: any) => !props.$selected && css`
-    &:hover {
-      background-color: var(--color-white-50);
-    }
-  `}
+    ${(props: any) => !props.$selected && css`
+        &:hover {
+            background-color: var(--color-white-50);
+        }
+    `}
 `
 
 export default function Select(props: SelectProps): JSX.Element {
@@ -123,9 +123,9 @@ export default function Select(props: SelectProps): JSX.Element {
     return (
         <SelectContainer ref={selectRef}>
             <SelectBtnWrapper onClick={handleSelectBtn}>
-                {hasIcon && <Icon iconSrc={selectedItem?.iconSrc || ''} width={'18rem'}/>}
+                {hasIcon && <Icon iconSrc={selectedItem?.iconSrc || ''} width={'1.8rem'}/>}
                 <span className={'selected-item-text'}>{selectedItem?.name}</span>
-                <Icon iconSrc={'arrow-down-simple.svg'} width={'10rem'}/>
+                <Icon iconSrc={'arrow-down-simple.svg'} width={'1rem'}/>
             </SelectBtnWrapper>
 
             {
@@ -136,7 +136,7 @@ export default function Select(props: SelectProps): JSX.Element {
                                 <SelectMenuItem key={item.name + i}
                                                 onClick={() => menuItemOnClickHandler(item)}
                                                 $selected={item.name === selectedItem?.name}>
-                                    {hasIcon && <Icon iconSrc={item.iconSrc} width={'20rem'}/>}
+                                    {hasIcon && <Icon iconSrc={item.iconSrc} width={'2rem'}/>}
                                     {item.name}
                                 </SelectMenuItem>
                             )

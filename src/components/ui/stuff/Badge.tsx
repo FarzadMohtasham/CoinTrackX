@@ -57,9 +57,9 @@ export default function Badge(props: BadgePropsType): JSX.Element {
                      $textColor={textColor}
                      $borderRadiusVariations={borderRadiusVariations}
                      $borderRadius={borderRadius}>
-            {hasIcon && (iconDir === 'left' ? <Icon iconSrc={icon}/> : '')}
+            {hasIcon && (iconDir === 'left' ? <Icon width={'2rem'} iconSrc={icon}/> : '')}
             {children}
-            {hasIcon && (iconDir === 'right' ? <Icon iconSrc={icon}/> : '')}
+            {hasIcon && (iconDir === 'right' ? <Icon width={'2rem'} iconSrc={icon}/> : '')}
         </BadgeStyled>
     )
 }

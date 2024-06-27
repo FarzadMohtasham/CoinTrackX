@@ -129,7 +129,7 @@ export default function SecurityPage() {
 
                 <div className="step2-auth-options-wrapper">
                     <div className={'step2-auth-option text-message'}>
-                        <Icon iconSrc={'text-message-with-bg.svg'} width={'40rem'}/>
+                        <Icon iconSrc={'text-message-with-bg.svg'} width={'4rem'}/>
                         <div className={'desc-wrapper'}>
                             <span className={'title'}>
                                 Text Message
@@ -147,7 +147,7 @@ export default function SecurityPage() {
                     </div>
 
                     <div className={'step2-auth-option email'}>
-                        <Icon iconSrc={'email-with-bg.svg'} width={'40rem'}/>
+                        <Icon iconSrc={'email-with-bg.svg'} width={'4rem'}/>
                         <div className={'desc-wrapper'}>
                             <span className={'title'}>
                                 Email

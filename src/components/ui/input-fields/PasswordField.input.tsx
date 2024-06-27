@@ -54,7 +54,7 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
         },
         iconSrc = 'email-focus-icon.svg',
         focusIconSrc = 'password-focus-icon.svg',
-        iconWidth = '20rem',
+        iconWidth = '2rem',
         errorMessage = null,
         invalidErrorMessages = []
     }: InputProps = props

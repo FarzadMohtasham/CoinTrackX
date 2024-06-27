@@ -93,7 +93,7 @@ export default function Notifications(): JSX.Element {
                     notifications.length > 0 && <NotificationsContainer ref={notificationRef}>
                         <Icon iconSrc={'notifications.svg'}
                               iconAlt={'notifications icon'}
-                              width={'30rem'}
+                              width={'3rem'}
                               className={'notifications-icon'}
                               onClickHandler={onNotificationsClickHandler}/>
 

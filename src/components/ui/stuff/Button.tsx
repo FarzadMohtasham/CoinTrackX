@@ -152,12 +152,12 @@ function Button(props: ButtonPropsType): JSX.Element {
                       $properties={buttonProperties}
                       onClick={onButtonClickHandler}>
             {icon && (iconDir === 'left' &&
-                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15rem'}/>)}
+                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'1.5rem'}/>)}
             {isLoading &&
                 <HashLoader size={18} color={`var(--color-${variant + '-500)'}`}/>}
             {children}
             {icon && (iconDir === 'right' &&
-                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15rem'}/>)}
+                <Icon iconSrc={icon} iconAlt={'button-icon'} width={'1.5rem'}/>)}
         </ButtonStyled>
     )
 }

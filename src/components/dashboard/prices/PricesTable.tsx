@@ -125,7 +125,7 @@ export default function PricesTable(): JSX.Element {
                         <ColumnName>
                             <Icon iconSrc={props.renderValue().logoSrc}
                                   className={'left-col'}
-                                  width={'35rem'}
+                                  width={'3.5rem'}
                             />
                             <div className={'right-col'}>
                                 <span className={'name'}>{props.renderValue().name}</span>
@@ -162,7 +162,7 @@ export default function PricesTable(): JSX.Element {
                        outline
                        borderRadius={'full'}>
                     <Icon iconSrc={Number(props.renderValue()) >= 0 ? 'arrow-up.svg' : 'arrow-down.svg'}
-                          width={'8rem'}
+                          width={'.8rem'}
                     />
                     %{Number(props.renderValue()).toFixed(2)}
                 </Badge>
@@ -178,7 +178,7 @@ export default function PricesTable(): JSX.Element {
             accessorKey: 'watchlist',
             header: '',
             cell: (props: CellContext<any, any>) => <ColumnCellSpan>
-                <Icon width={'20rem'} iconSrc={props.renderValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
+                <Icon width={'2rem'} iconSrc={props.renderValue() ? 'star-filled.svg' : 'star-unfilled.svg'}/>
             </ColumnCellSpan>
         },
     ], []);

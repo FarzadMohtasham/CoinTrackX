@@ -125,7 +125,7 @@ export default function Header(): JSX.Element {
                     <Button variant={'black'}
                             borderRadius={'lg'}
                             outline>
-                        {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20rem'}/>}
+                        {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'2rem'}/>}
                         <CTABtnText>
                             {userLoggedIn ? 'Go To Dashboard' : 'Login'}
                         </CTABtnText>

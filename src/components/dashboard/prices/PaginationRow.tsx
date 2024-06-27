@@ -38,7 +38,7 @@ export default function PaginationRow(props: PaginationRowProps): JSX.Element {
             <Button variant={'primary'}
                     onClickHandler={onPreviousPageHandler}
                     disabled={!getCanPreviousPage}>
-                <Icon iconSrc={'arrow-left.svg'} width={'20rem'}/>
+                <Icon iconSrc={'arrow-left.svg'} width={'2rem'}/>
                 Previous
             </Button>
 
@@ -48,7 +48,7 @@ export default function PaginationRow(props: PaginationRowProps): JSX.Element {
                     onClickHandler={onNextPageHandler}
                     disabled={!getCanNextPage}>
                 Next
-                <Icon iconSrc={'arrow-right.svg'} width={'20rem'}/>
+                <Icon iconSrc={'arrow-right.svg'} width={'2rem'}/>
             </Button>
         </PaginationRowContainer>
     )

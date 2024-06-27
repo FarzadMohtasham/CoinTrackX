@@ -38,16 +38,18 @@ export default function NavigationItem(props: NavigationProps): JSX.Element {
         activeIconSrc,
         iconAlt = 'navigation-icon',
         active = false,
-        iconWidth = '20rem',
+        iconWidth = '2rem',
         onClick,
     } = props
+
+    console.log(iconWidth)
 
     return (
         <NavigationItemContainer $active={active}
                                  onClick={onClick}>
             <Icon iconSrc={active ? activeIconSrc : iconSrc}
-                  iconAlt={iconAlt}
                   width={iconWidth}
+                  iconAlt={iconAlt}
             />
             <span>
                 {children}

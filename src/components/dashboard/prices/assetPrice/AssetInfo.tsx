@@ -110,7 +110,9 @@ export default function AssetInfo(props: AssetInfoProps) {
                     <AssetInfoContainer>
                         <AssetInfoLeftCol>
                             <div className={'asset-image-wrapper'}>
-                                <Icon iconSrc={`crypto/${assetData?.symbol.toLowerCase()}.svg`} width={'60rem'}/>
+                                <Icon iconSrc={`crypto/${assetData?.symbol.toLowerCase()}.svg`}
+                                      width={'6rem'}
+                                />
                             </div>
                             <div className={'asset-details-wrapper'}>
                                 <div className="details">
@@ -128,7 +130,7 @@ export default function AssetInfo(props: AssetInfoProps) {
                                        borderRadius={'full'}
                                        outline
                                 >
-                                    <Icon iconSrc={'arrow-up.svg'} width={'6rem'}/>
+                                    <Icon iconSrc={'arrow-up.svg'} width={'.6rem'}/>
                                     {amountToBeFixed(Number(assetData?.changePercent24Hr))} %
                                 </Badge>
                             </div>

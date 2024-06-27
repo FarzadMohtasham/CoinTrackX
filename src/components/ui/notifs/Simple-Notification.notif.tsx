@@ -92,8 +92,8 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
         iconSrc = 'rocket-lunch.svg',
         width = '100%',
         height = 'max-content',
-        iconSize = '10rem',
-        closeIconSize = '10rem',
+        iconSize = '5rem',
+        closeIconSize = '5rem',
     } = props.options
 
     const {onNotifClose} = props
@@ -119,7 +119,8 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
                     <LeftColumnWrapper className={'left-col'}>
                         <Icon iconSrc={iconSrc}
                               className={'notif-icon'}
-                              width={'25rem'}/>
+                              height={iconSize}
+                              width={iconSize}/>
                     </LeftColumnWrapper>
 
                     <CenterColumnWrapper className={'center-col'}>
@@ -145,7 +146,7 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
                         closable && <RightColumnWrapper className={'right-col'}>
                             <Icon iconSrc={'close.svg'}
                                   className={'close-icon'}
-                                  width={'20rem'}
+                                  width={'2rem'}
                                   onClickHandler={onCloseHandler}
                             />
                         </RightColumnWrapper>

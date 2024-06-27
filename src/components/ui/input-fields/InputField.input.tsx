@@ -54,7 +54,7 @@ export default function Input(props: InputProps): JSX.Element {
         },
         iconSrc = 'email-icon.svg',
         focusIconSrc = 'email-icon.svg',
-        iconWidth = '20rem',
+        iconWidth = '2rem',
         errorMessage = null,
         invalidErrorMessages = []
     } = props
