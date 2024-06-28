@@ -1,17 +1,22 @@
-import {useState} from "react";
-import {styled} from "styled-components";
-import Icon from "@components/ui/stuff/Icon.tsx";
-import Heading from "@components/ui/stuff/Heading.tsx";
-import Button from "@components/ui/stuff/Button.tsx";
+import {JSX, useState} from "react";
+import {styled} from "styled-components"
 import {
     Modal,
     ModalBody,
     ModalCloseButton,
     ModalContent,
-    ModalFooter,
     ModalHeader,
     ModalOverlay, useDisclosure
-} from "@chakra-ui/react";
+} from "@chakra-ui/react"
+
+import {paymentMethodOptions} from '@data/paymentMethodOptions.data.ts'
+
+import Icon from "@components/ui/stuff/Icon.tsx"
+import Heading from "@components/ui/stuff/Heading.tsx"
+import Button from "@components/ui/stuff/Button.tsx"
+
+import PaymentMethodOption from "@components/dashboard/settings/payment-methods/PaymentMethodOption.tsx"
+import {PaymentMethodOptionProps, PaymentMethodTitle} from "@typings/PaymentMethodOption.type.ts"
 
 type PaymentMethod = {}
 
@@ -45,7 +50,19 @@ const PaymentMethodsContainer = styled.div`
 
 export default function PaymentMethodsPage() {
     const [paymentMethods, _] = useState<PaymentMethod[]>([])
+    const [paymentMethodStep, setPaymentMethodStep] = useState<PaymentMethodTitle | null>(null)
+
     const {isOpen, onOpen, onClose} = useDisclosure()
+
+    // ---------- onClick Handlers ----------
+    const onModalOpenHandler = () => {
+        onOpen()
+    }
+
+    const onModalCloseHandler = () => {
+        onClose()
+        setPaymentMethodStep(null)
+    }
 
     return (
         <>
@@ -58,7 +75,7 @@ export default function PaymentMethodsPage() {
                                 <Heading headingType={'h4'} className={'title'}>No Payment Methods Yet</Heading>
                                 <span>Please add your payment methods.</span>
                             </div>
-                            <Button icon={'plus.svg'} onClickHandler={() => onOpen()}>
+                            <Button icon={'plus.svg'} onClickHandler={onModalOpenHandler}>
                                 Add A Payment Method
                             </Button>
                         </div>
@@ -69,18 +86,33 @@ export default function PaymentMethodsPage() {
                     </PaymentMethodsContainer>
             }
 
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen}
+                   onClose={onModalCloseHandler}
+                   size={'xl'}
+            >
                 <ModalOverlay/>
                 <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
+                    <ModalHeader>Add A Payment Method</ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
-                        Modal body
+                        {
+                            paymentMethodStep === null ?
+                                <>
+                                    {
+                                        paymentMethodOptions.map((paymentMethodOption: PaymentMethodOptionProps, index: number): JSX.Element => {
+                                            return (
+                                                <PaymentMethodOption {...paymentMethodOption}
+                                                                     key={paymentMethodOption.title + index}
+                                                                     onClick={() => setPaymentMethodStep(paymentMethodOption.title)}/>
+                                            )
+                                        })
+                                    }
+                                </>
+                                :
+                                <div>payment form</div>
+                        }
+                        <br/>
                     </ModalBody>
-
-                    <ModalFooter>
-
-                    </ModalFooter>
                 </ModalContent>
             </Modal>
         </>
