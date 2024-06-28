@@ -1,6 +1,6 @@
 import {JSX} from 'react'
 import {NavLink} from 'react-router-dom'
-import {styled} from 'styled-components'
+import {css, styled} from 'styled-components'
 
 import Logo from '@components/ui/stuff/Logo.tsx'
 import Button from '@components/ui/stuff/Button.tsx'
@@ -120,13 +120,13 @@ const ButtonsCTAStyled = styled.div`
     }
 `
 
-const CTABtnText = styled.span`
+const CTABtnText = styled.span<{$userLoggedIn: boolean;}>`
     @media screen and (min-width: ${props => props.theme.breakpoints.md}) {
         display: inline;
     }
 
     @media screen and (max-width: ${props => props.theme.breakpoints.md}) {
-        display: none;
+        ${props => props.$userLoggedIn && css`display: none`};
     }
 `
 
@@ -160,7 +160,7 @@ export default function Header(): JSX.Element {
                                 borderRadius={'lg'}
                                 outline>
                             {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20px'}/>}
-                            <CTABtnText>
+                            <CTABtnText $userLoggedIn={userLoggedIn}>
                                 {userLoggedIn ? 'Go To Dashboard' : 'Login'}
                             </CTABtnText>
                         </Button>
