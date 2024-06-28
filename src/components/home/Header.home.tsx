@@ -34,16 +34,50 @@ const navItems = [
 ]
 
 const HeaderStyled = styled.header`
-    padding: 24px 48px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    position: fixed;
+    background-color: white;
+    box-shadow: rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;
+
+    .header-items-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        width: 90%;
+
+        @media screen and (max-width: 0) {
+            width: 97%;
+        }
+
+        @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
+            width: 94%;
+        }
+
+        @media screen and (max-width: ${props => props.theme.breakpoints.md}) {
+            width: 91%;
+        }
+
+        @media screen and (max-width: ${props => props.theme.breakpoints.lg}) {
+            width: 88%;
+        }
+
+        @media screen and (min-width: ${props => props.theme.breakpoints.xl}) {
+            width: 85%;
+        }
+
+        @media screen and (min-width: ${props => props.theme.breakpoints.xxl}) {
+            width: 75%;
+        }
+    }
 `
 
 const NavBarStyled = styled.nav`
     display: none;
 
-    @media screen and (min-width: 992px) {
+    @media screen and (min-width: 1200px) {
         & {
             display: block;
         }
@@ -75,6 +109,7 @@ const NavItemStyled = styled.li`
 const ButtonsCTAStyled = styled.div`
     display: flex;
     gap: 16px;
+    padding: 20px 0;
 
     @media screen and (max-width: var(--breakpoint-md)) {
         .cta-buttons {
@@ -89,7 +124,7 @@ const CTABtnText = styled.span`
     @media screen and (min-width: ${props => props.theme.breakpoints.md}) {
         display: inline;
     }
-    
+
     @media screen and (max-width: ${props => props.theme.breakpoints.md}) {
         display: none;
     }
@@ -100,47 +135,47 @@ export default function Header(): JSX.Element {
 
     return (
         <HeaderStyled>
-            <Logo/>
-
-            <NavBarStyled>
-                <NavItemsStyled>
-                    {
-                        navItems.map((nav: { name: string, link: string }, index: number) => {
-                            return (
-                                <NavItemStyled key={nav.name + index}>
-                                    <a onClick={() => {
-                                        scrollTo(removeLetter(nav.link, '#'))
-                                    }}>
-                                        {nav.name.toUpperCase()}
-                                    </a>
-                                </NavItemStyled>
-                            )
-                        })
-                    }
-                </NavItemsStyled>
-            </NavBarStyled>
-
-            <ButtonsCTAStyled className='cta-buttons'>
-                <NavLink to={'/login'}>
-                    <Button variant={'black'}
-                            borderRadius={'lg'}
-                            outline>
-                        {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20px'}/>}
-                        <CTABtnText>
-                            {userLoggedIn ? 'Go To Dashboard' : 'Login'}
-                        </CTABtnText>
-                    </Button>
-                </NavLink>
-                {
-                    !userLoggedIn && <NavLink to={'/login'}>
-                        <Button borderRadius={'lg'}
-                                hideOn={'mobile'}
+            <div className={'header-items-wrapper'}>
+                <Logo/>
+                <NavBarStyled>
+                    <NavItemsStyled>
+                        {
+                            navItems.map((nav: { name: string, link: string }, index: number) => {
+                                return (
+                                    <NavItemStyled key={nav.name + index}>
+                                        <a onClick={() => {
+                                            scrollTo(removeLetter(nav.link, '#'))
+                                        }}>
+                                            {nav.name.toUpperCase()}
+                                        </a>
+                                    </NavItemStyled>
+                                )
+                            })
+                        }
+                    </NavItemsStyled>
+                </NavBarStyled>
+                <ButtonsCTAStyled className='cta-buttons'>
+                    <NavLink to={'/login'}>
+                        <Button variant={'black'}
+                                borderRadius={'lg'}
                                 outline>
-                            Get Started
+                            {userLoggedIn && <Icon iconSrc={'dashboard.svg'} width={'20px'}/>}
+                            <CTABtnText>
+                                {userLoggedIn ? 'Go To Dashboard' : 'Login'}
+                            </CTABtnText>
                         </Button>
                     </NavLink>
-                }
-            </ButtonsCTAStyled>
+                    {
+                        !userLoggedIn && <NavLink to={'/login'}>
+                            <Button borderRadius={'lg'}
+                                    hideOn={'mobile'}
+                                    outline>
+                                Get Started
+                            </Button>
+                        </NavLink>
+                    }
+                </ButtonsCTAStyled>
+            </div>
         </HeaderStyled>
     )
 }
