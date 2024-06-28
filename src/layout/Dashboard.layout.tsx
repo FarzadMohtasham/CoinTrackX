@@ -313,7 +313,6 @@ export default function DashboardLayout() {
 
     // Close mobile Navbar except settings nav item click
     useEffect(() => {
-        console.log(selectedNavName)
         if (selectedNavName !== 'settings' && location.pathname[1] !== 'settings') {
             setNavStatus(false)
         }

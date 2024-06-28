@@ -42,8 +42,6 @@ export default function NavigationItem(props: NavigationProps): JSX.Element {
         onClick,
     } = props
 
-    console.log(iconWidth)
-
     return (
         <NavigationItemContainer $active={active}
                                  onClick={onClick}>
