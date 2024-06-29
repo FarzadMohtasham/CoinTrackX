@@ -125,14 +125,16 @@ export default function Login(): JSX.Element {
                     </div>
                     <Separator title={'OR'}/>
                     <InputField placeHolder={'email'}
+                                label={'email'}
                                 onChangeHandler={setEmail}
                                 iconSrc={'email-icon.svg'}
                                 focusIconSrc={'email-focus-icon.svg'}
                                 errorMessage={emailFieldError}
-                                invalidErrorMessages={['email is a required field']}
+                                unAllowedErrorMessages={['email is a required field']}
                     />
                     <PasswordFieldInput placeHolder={'Password'}
-                                        invalidErrorMessages={['password is a required field']}
+                                        label={'password'}
+                                        unAllowedErrorMessages={['password is a required field']}
                                         iconSrc={'password-icon.svg'}
                                         errorMessage={passwordFieldError}
                                         focusIconSrc={'password-focus-icon.svg'}

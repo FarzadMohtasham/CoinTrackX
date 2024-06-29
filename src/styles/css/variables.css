@@ -17,4 +17,15 @@
     --font-size-body-md: 16px;
     --font-size-body-sm: 14px;
     --font-size-body-xsm: 12px;
+
+
+    --spacing-xsm: 7px;
+    --spacing-sm: 10px;
+    --spacing-md: 14px;
+    --spacing-lg: 18px;
+    --spacing-xl: 24px;
+    --spacing-xxl: 30px;
+    --spacing-xxxl: 38px;
+    --spacing-xxxxl: 48px;
+    --spacing-xxxxxl: 60px;
 }

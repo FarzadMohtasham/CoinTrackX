@@ -1,11 +1,12 @@
 export type InputProps = {
     placeHolder: string;
+    label: string;
     onChangeHandler: (value: string) => void;
-    iconSrc?: string;
+    iconSrc?: string | null;
     focusIconSrc?: string;
     iconWidth?: string;
     errorMessage?: string | null;
-    invalidErrorMessages?: string[];
+    unAllowedErrorMessages?: string[];
 }
 
 export type InputStyledProps = {

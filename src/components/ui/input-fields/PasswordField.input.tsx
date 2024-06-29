@@ -56,7 +56,7 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
         focusIconSrc = 'password-focus-icon.svg',
         iconWidth = '20px',
         errorMessage = null,
-        invalidErrorMessages = []
+        unAllowedErrorMessages = []
     }: InputProps = props
 
     useEffect((): void => {
@@ -70,7 +70,7 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
     return (
         <Fragment>
             <PasswordFieldContainer $inputSelected={passwordFieldSelected.toString()}>
-                {!passwordFieldSelected && <Icon width={iconWidth} iconSrc={iconSrc}/>}
+                {!passwordFieldSelected && <Icon width={iconWidth} iconSrc={iconSrc || ''}/>}
                 {passwordFieldSelected && <Icon width={iconWidth} iconSrc={focusIconSrc}/>}
                 <input type={passwordVisible ? 'text' : 'password'}
                        name={'input'}
@@ -93,8 +93,8 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
                 }
             </PasswordFieldContainer>
             {
-                (invalidErrorMessages.length !== 0 && errorMessage) && (
-                    invalidErrorMessages.find((val: string): boolean => val === errorMessage) === undefined &&
+                (unAllowedErrorMessages.length !== 0 && errorMessage) && (
+                    unAllowedErrorMessages.find((val: string): boolean => val === errorMessage) === undefined &&
                     <ErrorContainer>{errorMessage}</ErrorContainer>
                 )
             }

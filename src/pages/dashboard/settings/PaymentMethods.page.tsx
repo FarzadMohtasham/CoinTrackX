@@ -17,6 +17,7 @@ import Button from "@components/ui/stuff/Button.tsx"
 
 import PaymentMethodOption from "@components/dashboard/settings/payment-methods/PaymentMethodOption.tsx"
 import {PaymentMethodOptionProps, PaymentMethodTitle} from "@typings/PaymentMethodOption.type.ts"
+import LinkYourCard from "@components/dashboard/settings/payment-methods/LinkYourCard.tsx";
 
 type PaymentMethod = {}
 
@@ -109,7 +110,12 @@ export default function PaymentMethodsPage() {
                                     }
                                 </>
                                 :
-                                <div>payment form</div>
+                                <div>
+                                    {
+                                        paymentMethodStep === 'Credit/Debit Card' &&
+                                        <LinkYourCard/>
+                                    }
+                                </div>
                         }
                         <br/>
                     </ModalBody>

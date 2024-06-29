@@ -240,6 +240,7 @@ export default function PricesTable(): JSX.Element {
                     <SearchBar>
                         <div className={'left-col'}>
                             <Input placeHolder={'Search crypto'}
+                                   label={'search-crypto'}
                                    iconSrc={'search-gray.svg'}
                                    focusIconSrc={'search-gray-active.svg'}
                                    onChangeHandler={value => setSearch(value)}/>

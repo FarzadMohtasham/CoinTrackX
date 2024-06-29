@@ -20,7 +20,7 @@ import {
     MainContent as MainContentStyled,
     AuthLink, AuthContainer,
 } from '@pages/auth/Auth.styled.tsx'
-import {SignupValidationResult} from '@typings/validator-types/auth-validator.type.ts'
+import {SignupValidationResult} from '@typings/validator-types/Auth.validator.type.ts'
 
 const LoginContainer = styled(AuthContainer)``
 const LoginWrapper = styled(AuthInnerWrapper)``
@@ -179,29 +179,33 @@ export default function Login(): JSX.Element {
                     <Separator title={'OR'}/>
                     <div className={'name-inputs-wrapper'}>
                         <InputField placeHolder={'First name'}
+                                    label={'first-name'}
                                     onChangeHandler={setFirstName}
                                     iconSrc={'user-icon.svg'}
                                     focusIconSrc={'user-focus-icon.svg'}
                                     errorMessage={firstNameFieldError}
-                                    invalidErrorMessages={['first name is a required field']}
+                                    unAllowedErrorMessages={['first name is a required field']}
                         />
                         <InputField placeHolder={'Last name'}
+                                    label={'last-name'}
                                     onChangeHandler={setLastName}
                                     iconSrc={'user-icon.svg'}
                                     focusIconSrc={'user-focus-icon.svg'}
                                     errorMessage={lastNameFieldError}
-                                    invalidErrorMessages={['last name is a required field']}
+                                    unAllowedErrorMessages={['last name is a required field']}
                         />
                     </div>
                     <InputField placeHolder={'email'}
+                                label={'email'}
                                 onChangeHandler={setEmail}
                                 iconSrc={'email-icon.svg'}
                                 focusIconSrc={'email-focus-icon.svg'}
                                 errorMessage={emailFieldError}
-                                invalidErrorMessages={['email is a required field']}
+                                unAllowedErrorMessages={['email is a required field']}
                     />
                     <PasswordFieldInput placeHolder={'Password'}
-                                        invalidErrorMessages={['password is a required field']}
+                                        label={'password'}
+                                        unAllowedErrorMessages={['password is a required field']}
                                         iconSrc={'password-icon.svg'}
                                         errorMessage={passwordFieldError}
                                         focusIconSrc={'password-focus-icon.svg'}

@@ -1,5 +1,5 @@
 import {object, string, ValidationError} from 'yup'
-import {SignupValidatorProps, SignupValidationResult} from '@typings/validator-types/auth-validator.type.ts'
+import {SignupValidatorProps, SignupValidationResult} from '@typings/validator-types/Auth.validator.type.ts'
 
 const firstNameValidationSchema = object({
     'first name': string().required().min(1).max(30).trim(),
