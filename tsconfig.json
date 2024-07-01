@@ -42,7 +42,7 @@
         "./src/feature/*"
       ],
       "@hooks/*": [
-        "./src/hooks/*"
+        "./src/lib/hooks/*"
       ],
       "@jest/*": [
         "./src/jest/*"

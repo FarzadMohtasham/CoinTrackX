@@ -21,7 +21,7 @@ export default defineConfig({
             "@config": path.resolve(__dirname, "./src/config"),
             "@data": path.resolve(__dirname, "./src/data"),
             "@feature": path.resolve(__dirname, "./src/feature"),
-            "@hooks": path.resolve(__dirname, "./src/hooks"),
+            "@hooks": path.resolve(__dirname, "./src/lib/hooks"),
             "@jest": path.resolve(__dirname, "./src/jest"),
             "@layout": path.resolve(__dirname, "./src/layout"),
             "@pages": path.resolve(__dirname, "./src/pages"),
