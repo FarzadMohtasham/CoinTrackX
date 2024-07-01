@@ -9,6 +9,7 @@ import CheckboxInput from '@components/ui/input-fields/Checkbox.input.tsx'
 import {InputFieldValidator} from '@validations/InputField.validator.ts'
 
 import {InputFieldValidatorResult} from '@typings/validator-types/Input.validator.type.ts'
+import CardNumberInput from "@components/ui/input-fields/CardNumber.input.tsx";
 
 const LinkYouCardContainer = styled.div`
     display: flex;
@@ -51,6 +52,8 @@ export default function LinkYourCard() {
     const [cardholderName, setCardholderName] = useState<string>('')
     const [cardholderNameErrorMsg, setCardholderNameErrorMsg] = useState<string>('')
 
+    const [__, setCardNumber] = useState<string>('')
+
     const [_, setAsMainPaymentMethods] = useState<boolean>(false)
 
     const [hasFieldsError, setFieldsHasError] = useState(true);
@@ -60,7 +63,7 @@ export default function LinkYourCard() {
         InputFieldValidator({
             fieldName: 'Cardholder Name',
             minLength: 1,
-            maxLength: 5,
+            maxLength: 40,
             inputValue: cardholderName,
         }).then((result: InputFieldValidatorResult) => {
             setFieldsHasError(!result.isValid)
@@ -81,7 +84,9 @@ export default function LinkYourCard() {
                        unAllowedErrorMessages={['Cardholder Name is a required field']}
                 />
             </RowWrapper>
-            <RowWrapper className={''}></RowWrapper>
+            <RowWrapper className={'card-number'}>
+                <CardNumberInput setterFn={setCardNumber}/>
+            </RowWrapper>
             <RowWrapper className={''}></RowWrapper>
             <RowWrapper className={'set-as-main-payment-wrapper'}>
                 <CheckboxInput label={'Set as a main payment'}

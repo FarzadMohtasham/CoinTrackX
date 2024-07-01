@@ -18,7 +18,7 @@ export const InputFieldValidator = async (props: InputFieldValidatorProps): Prom
         inputValue: string()
             .required(`${fieldName} is a required field`)
             .test('min-length', `${fieldName} length can\'t be lower than ${minLength}`, val => val.length >= minLength)
-            .test('max-length', `${fieldName} length can\'t be lower than ${maxLength}`, val => val.length <= maxLength)
+            .test('max-length', `${fieldName} length can\'t be higher than ${maxLength}`, val => val.length <= maxLength)
     });
 
     try {

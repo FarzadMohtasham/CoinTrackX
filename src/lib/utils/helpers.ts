@@ -1,5 +1,7 @@
 import {AssetName} from '@typings/Assets.api.type.ts'
 import {assetList} from '@data/assetsList.ts'
+import creditCardPatternsData from '@data/cardProviderPatterns.data.ts'
+import {CardNumberProvider} from "@typings/component-types/CardNumberInput.type.ts";
 
 export function titleCase(str: string): string {
     const splitStr = str.toLowerCase().split(' ');
@@ -53,3 +55,27 @@ export function amountToBeFixed(toBeFixedAmount: number) {
             return ''
     }
 }
+
+export const formatCardNumber = (val: string): string => {
+    if (!val) return ''
+    return val.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+}
+
+export const checkCardProvider = (cardNumber: string): CardNumberProvider | '' => {
+    let result: CardNumberProvider | '' = ''
+
+    for (const [provider, pattern] of Object.entries(creditCardPatternsData)) {
+        if (pattern.test(cardNumber)) {
+            console.log(pattern.test(cardNumber))
+            result = provider as CardNumberProvider
+        }
+    }
+
+    return result
+}
+
+
+
+
+
+
