@@ -1,8 +1,10 @@
-# CoinTrackX => React + TypeScript + Vite
+# CoinTrackX
 
-# Project Name
+![License](https://img.shields.io/github/license/FarzadMohtasham/CoinTrackX)
+![Stars](https://img.shields.io/github/stars/FarzadMohtasham/CoinTrackX)
+![Issues](https://img.shields.io/github/issues/FarzadMohtasham/CoinTrackX)
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+CoinTrackX is a simple and open-source platform for tracking your coins profit/loss, made with React.js and TypeScript.
 
 ## Table of Contents
 
@@ -17,28 +19,26 @@
 
 ## Introduction
 
-Welcome to the Project Name! This project is built using modern web technologies to provide a seamless and efficient user experience. The goal of this project is to ...
+Welcome to CoinTrackX! This project is designed to help you track the profit and loss of your cryptocurrency investments. It offers a clean and intuitive interface built with modern web technologies.
 
 ## Features
 
-- Feature 1
-- Feature 2
-- Feature 3
-- ...
+- Track multiple cryptocurrencies
+- View profit/loss in real-time
+- Simple and intuitive UI
+- Secure and private
 
 ## Installation
 
-To get started with the project, follow these steps:
+To get started with CoinTrackX, follow these steps:
 
 1. **Clone the repository:**
-
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/FarzadMohtasham/CoinTrackX.git
+    cd CoinTrackX
     ```
 
 2. **Install dependencies:**
-
     ```bash
     npm install
     # or
@@ -46,64 +46,80 @@ To get started with the project, follow these steps:
     ```
 
 3. **Set up environment variables:**
-
-    Create a `.env` file in the root directory and add the necessary environment variables. Refer to `.env.example` for the required variables.
+   Create a `.env` file in the root directory and add the necessary environment variables. Refer to `.env.example` for the required variables.
 
 4. **Run the development server:**
-
     ```bash
     npm run dev
     # or
     yarn dev
     ```
 
-**Tech Stack**
-The project is built with the following technologies:
+## Usage
 
-- React
-- Zustand
-- Styled-Components
-- Recharts
-- Chakra UI
-- Supabase
-- TanStack Query
-- Axios
-- React Hook Form
-- React Hot Toast
-- TypeScript
-- Vite
-  
-**Project Structure**
-Outline the structure of your project and briefly describe the purpose of each directory/file.
-/your-project-name
+Once the server is running, open your browser and navigate to `http://localhost:3000`. Here, you can start tracking your cryptocurrency investments.
+
+## Tech Stack
+
+- **Frontend:**
+  - React
+  - Zustand
+  - Styled-Components
+  - Recharts
+  - Chakra UI
+
+- **Backend:**
+  - Supabase
+
+- **Utilities:**
+  - TanStack Query
+  - Axios
+  - React Hook Form
+  - React Hot Toast
+
+- **Build Tools:**
+  - TypeScript
+  - Vite
+
+## Project Structure
+
+The project structure is as follows:
 ├── public
-│   ├── index.html
-│   └── ...
+│ ├── index.html
+│ └── ...
 ├── src
-│   ├── components
-│   │   └── YourComponent.tsx
-│   ├── hooks
-│   ├── pages
-│   ├── services
-│   ├── store
-│   ├── styles
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── ...
+│ ├── components
+│ │ └── YourComponent.tsx
+│ ├── hooks
+│ ├── pages
+│ ├── services
+│ ├── store
+│ ├── styles
+│ ├── App.tsx
+│ ├── main.tsx
+│ └── ...
 ├── .env.example
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts
 
-**Contributing**
-Contributions are welcome! Please follow these steps to contribute:
 
-**Fork the repository**
-Create a new branch (git checkout -b feature/your-feature)
-Commit your changes (git commit -m 'Add some feature')
-Push to the branch (git push origin feature/your-feature)
-Open a Pull Request
-Please make sure to update tests as appropriate.
+## Contributing
 
-**License**
-This project is licensed under the MIT License - see the LICENSE file for details.
+Contributions are welcome! Follow these steps to contribute:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+Please ensure to update tests as appropriate.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+Feel free to explore, use, and contribute to CoinTrackX! Happy coding!
