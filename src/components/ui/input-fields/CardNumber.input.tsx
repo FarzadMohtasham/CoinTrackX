@@ -1,14 +1,16 @@
-import React, {JSX, useEffect, useState} from 'react'
+import React, {Dispatch, JSX, SetStateAction, useEffect, useState} from 'react'
 import {styled} from 'styled-components'
 
-import {checkCardProvider, formatCardNumber} from "@utils/helpers.ts";
-import Icon from "@components/ui/stuff/Icon.tsx";
-import {CardNumberProvider} from "@typings/component-types/CardNumberInput.type.ts";
+import {checkCardProvider, formatCardNumber} from '@utils/helpers.ts'
+import Icon from '@components/ui/stuff/Icon.tsx'
+import {CardNumberProvider} from '@typings/component-types/CardNumberInput.type.ts'
 
 type CardNumberProps = {
-    setterFn: (value: string) => void;
+    cardNumberSetterFn: (value: string) => void;
     disabled?: boolean;
     separated?: boolean;
+    cardNumberHasErrorSetterFn: Dispatch<SetStateAction<boolean>>;
+    creditCardProviderSetterFn: Dispatch<SetStateAction<CardNumberProvider | ''>>;
 }
 
 const CardNumberInputContainer = styled.div`
@@ -47,14 +49,16 @@ const CreditProvidersWrapper = styled.div<{ $creditCardProvider: CardNumberProvi
 
 export default function CardNumberInput(props: CardNumberProps): JSX.Element {
     const {
-        setterFn,
+        cardNumberSetterFn,
+        cardNumberHasErrorSetterFn,
+        creditCardProviderSetterFn,
         // separated = true,
         // disabled = false,
     } = props
 
-    const [inputValue, setInputValue] = useState<string>('');
-    const [creditCardProvider, setCreditCardProvider] = useState<'Visa' | 'MasterCard' | ''>('');
-    const [inputHasError, _] = useState<boolean>(false);
+    const [inputValue, setInputValue] = useState<string>('')
+    const [creditCardProvider, setCreditCardProvider] = useState<'Visa' | 'MasterCard' | ''>('')
+    const [inputHasError, setInputHasError] = useState<boolean>(false)
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {value} = e.target
@@ -70,8 +74,8 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
 
     // Update inputValue on parent component
     useEffect(() => {
-        setterFn(inputValue)
-    }, [])
+        cardNumberSetterFn(inputValue.split(' ').join(''))
+    }, [inputValue])
 
     // Update credit card provider
     useEffect(() => {
@@ -79,8 +83,22 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
 
         if (inputValue.length !== 19 || inputHasError) return
         const cardProvider = checkCardProvider(inputValue.split(' ').join(''))
-        console.log(cardProvider)
         setCreditCardProvider(cardProvider || '')
+    }, [inputValue])
+
+    // Check CardNumber Error
+    useEffect(() => {
+        cardNumberHasErrorSetterFn(inputHasError)
+    }, [inputHasError])
+
+    // Set cardNumberProvider
+    useEffect(() => {
+        creditCardProviderSetterFn(creditCardProvider)
+    }, [creditCardProvider])
+
+    // Updating inputHasError
+    useEffect(() => {
+        setInputHasError(inputValue.length !== 19 || creditCardProvider === '')
     }, [inputValue]);
 
     return (

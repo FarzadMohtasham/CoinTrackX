@@ -73,9 +73,3 @@ export const checkCardProvider = (cardNumber: string): CardNumberProvider | '' =
 
     return result
 }
-
-
-
-
-
-

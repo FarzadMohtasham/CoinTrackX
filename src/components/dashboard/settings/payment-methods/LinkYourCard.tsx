@@ -9,7 +9,10 @@ import CheckboxInput from '@components/ui/input-fields/Checkbox.input.tsx'
 import {InputFieldValidator} from '@validations/InputField.validator.ts'
 
 import {InputFieldValidatorResult} from '@typings/validator-types/Input.validator.type.ts'
-import CardNumberInput from "@components/ui/input-fields/CardNumber.input.tsx";
+import CardNumberInput from "@components/ui/input-fields/CardNumber.input.tsx"
+import {CardNumberProvider} from "@typings/component-types/CardNumberInput.type.ts"
+import SimpleNotification from "@components/ui/notifs/Simple-Notification.notif.tsx"
+import {NotificationOptions} from "@typings/component-types/Notification.type.ts"
 
 const LinkYouCardContainer = styled.div`
     display: flex;
@@ -48,15 +51,29 @@ const RowWrapper = styled.div`
 
 `
 
+const simpleNotifOptions: NotificationOptions = {
+    id: 0,
+    createdAt: null,
+    title: 'Read me!',
+    message: 'Credit card provider(CCP) should be MasterCard or Visa.',
+    closable: true,
+    height: 'min-content',
+    type: 'info',
+    iconSize: '30px',
+    closeIconSize: '12px',
+}
+
 export default function LinkYourCard() {
-    const [cardholderName, setCardholderName] = useState<string>('')
     const [cardholderNameErrorMsg, setCardholderNameErrorMsg] = useState<string>('')
 
+    const [cardholderName, setCardholderName] = useState<string>('')
+    const [hasFieldsError, setFieldsHasError] = useState(true);
+
     const [__, setCardNumber] = useState<string>('')
+    const [cardNumberIsValid, setCardNumberIsValid] = useState<boolean>(false)
+    const [creditCardProvider, setCreditCardProvider] = useState<CardNumberProvider | ''>('')
 
     const [_, setAsMainPaymentMethods] = useState<boolean>(false)
-
-    const [hasFieldsError, setFieldsHasError] = useState(true);
 
     // ---------- Input Validations ----------
     useEffect(function cardholderNameValidator() {
@@ -71,9 +88,9 @@ export default function LinkYourCard() {
         })
     }, [cardholderName])
 
-
     return (
         <LinkYouCardContainer>
+            <SimpleNotification options={simpleNotifOptions}/>
             <RowWrapper className={'cardholder-name-wrapper'}>
                 <span className={'label'}>Cardholder name</span>
                 <Input placeHolder={'Enter your Cardholder name'}
@@ -85,7 +102,10 @@ export default function LinkYourCard() {
                 />
             </RowWrapper>
             <RowWrapper className={'card-number'}>
-                <CardNumberInput setterFn={setCardNumber}/>
+                <CardNumberInput cardNumberSetterFn={setCardNumber}
+                                 cardNumberHasErrorSetterFn={setCardNumberIsValid}
+                                 creditCardProviderSetterFn={setCreditCardProvider}
+                />
             </RowWrapper>
             <RowWrapper className={''}></RowWrapper>
             <RowWrapper className={'set-as-main-payment-wrapper'}>
@@ -97,7 +117,7 @@ export default function LinkYourCard() {
                 <span>By adding a new card, you agree to our terms.</span>
             </RowWrapper>
             <RowWrapper className={'add-card-btn-wrapper'}>
-                <Button disabled={hasFieldsError}>
+                <Button disabled={hasFieldsError || cardNumberIsValid || creditCardProvider === ''}>
                     Add Card
                 </Button>
                 <Icon iconSrc={'processed-by-cointrackx.svg'} width={'160px'} height={'auto'}/>

@@ -3,7 +3,7 @@ import {ReactNode} from "react";
 export type NotificationOptions = {
     id: number;
     title: string | ReactNode;
-    createdAt: ReactNode | Date;
+    createdAt: Date | null;
     message?: string | ReactNode;
     type: 'success' | 'error' | 'info' | 'warning';
     closable?: boolean;

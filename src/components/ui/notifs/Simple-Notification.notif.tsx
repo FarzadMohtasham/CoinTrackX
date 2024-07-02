@@ -3,7 +3,6 @@ import {styled} from 'styled-components'
 import Icon from '@components/ui/stuff/Icon.tsx'
 import {NotificationStyledProps} from '@typings/component-types/Notifications.type.ts'
 import {formatDistance} from 'date-fns'
-import {toast} from 'react-hot-toast'
 import {SimpleNotifProps, SimpleNotifStyled} from '@typings/component-types/Notification.type.ts'
 
 const SimpleNotifContainer: any = styled.div<NotificationStyledProps & SimpleNotifStyled>`
@@ -46,7 +45,7 @@ const CenterColumnWrapper: any = styled.div.attrs({
     flex-direction: column;
     flex-grow: 1;
     gap: 5px;
-    padding: 20px;
+    padding: 12px;
     justify-content: center;
 
     .top-section {
@@ -84,16 +83,16 @@ const RightColumnWrapper: any = styled.div.attrs({
 export default function SimpleNotification(props: SimpleNotifProps): JSX.Element {
     const {
         id = 1,
-        title = null,
-        type = 'success',
         createdAt = null,
+        title = null,
         message = null,
+        type = 'success',
         closable = false,
         iconSrc = 'rocket-lunch.svg',
-        width = '100%',
-        height = 'max-content',
         iconSize = '50px',
         closeIconSize = '50px',
+        width = '100%',
+        height = 'max-content',
     } = props.options
 
     const {onNotifClose} = props
@@ -105,7 +104,6 @@ export default function SimpleNotification(props: SimpleNotifProps): JSX.Element
         if (onNotifClose) {
             onNotifClose(id)
         }
-        toast.success('Notification closed successfully')
     }
 
     return (
