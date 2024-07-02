@@ -15,27 +15,34 @@ import SimpleNotification from '@components/ui/notifs/Simple-Notification.notif.
 import {NotificationOptions} from '@typings/component-types/Notification.type.ts'
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
-  display: grid;
-  place-content: center;
-  position: relative;
+    display: grid;
+    place-content: center;
+    position: relative;
 
-  .notifications-icon {
-    cursor: pointer;
-  }
+    .notifications-icon {
+        cursor: pointer;
+    }
 `
 
 const NotificationsWrapper = styled.div`
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: ${props => props.theme.notif.notifs_container_bg_color};
-  position: absolute;
-  top: 40px;
-  right: 0;
-  padding: 10px;
-  border-radius: 14px;
-  z-index: 11;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: ${props => props.theme.notif.notifs_container_bg_color};
+    position: absolute;
+    top: 40px;
+    padding: 10px;
+    border-radius: 14px;
+    z-index: 11;
+
+    @media screen and (min-width: ${props => props.theme.breakpoints.sm}) {
+        right: 0;
+    }
+
+    @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
+        right: -80px;
+    }
 `
 
 export default function Notifications(): JSX.Element {
