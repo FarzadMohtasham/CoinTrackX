@@ -66,7 +66,6 @@ export const checkCardProvider = (cardNumber: string): CardNumberProvider | '' =
 
     for (const [provider, pattern] of Object.entries(creditCardPatternsData)) {
         if (pattern.test(cardNumber)) {
-            console.log(pattern.test(cardNumber))
             result = provider as CardNumberProvider
         }
     }

@@ -80,7 +80,6 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
     // Update credit card provider
     useEffect(() => {
         setCreditCardProvider('')
-
         if (inputValue.length !== 19 || inputHasError) return
         const cardProvider = checkCardProvider(inputValue.split(' ').join(''))
         setCreditCardProvider(cardProvider || '')
