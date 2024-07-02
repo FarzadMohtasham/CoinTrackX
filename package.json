@@ -8,7 +8,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "commit": "git commit",
+    "release": "standard-version",
+    "push": "git push --follow-tags origin main"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
