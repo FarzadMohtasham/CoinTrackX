@@ -1,5 +1,5 @@
-import React, {Dispatch, JSX, SetStateAction, useEffect, useState} from 'react'
-import {styled} from 'styled-components'
+import React, {Dispatch, JSX, SetStateAction, useEffect, useRef, useState} from 'react'
+import {css, styled} from 'styled-components'
 
 import {checkCardProvider, formatCardNumber} from '@utils/helpers.ts'
 import Icon from '@components/ui/stuff/Icon.tsx'
@@ -13,13 +13,15 @@ type CardNumberProps = {
     creditCardProviderSetterFn: Dispatch<SetStateAction<CardNumberProvider | ''>>;
 }
 
-const CardNumberInputContainer = styled.div`
+const CardNumberInputContainer = styled.div<{$inputFocused: boolean;}>`
     background-color: var(--color-gray-100);
     padding: 10px;
     border-radius: 8px;
     display: flex;
     align-items: center;
     height: 52px;
+    transition: border-color .3s ease-in-out;
+    border: 2px solid ${props => props.$inputFocused ? css`var(--color-gray-400)` : css`var(--color-gray-100)`};
 
     input {
         width: 100%;
@@ -56,9 +58,11 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
         // disabled = false,
     } = props
 
+    const inputRef = useRef<HTMLInputElement | null>(null)
     const [inputValue, setInputValue] = useState<string>('')
     const [creditCardProvider, setCreditCardProvider] = useState<'Visa' | 'MasterCard' | ''>('')
     const [inputHasError, setInputHasError] = useState<boolean>(false)
+    const [inputFocused, setInputFocused] = useState<boolean>(false)
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {value} = e.target
@@ -98,11 +102,26 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
     // Updating inputHasError
     useEffect(() => {
         setInputHasError(inputValue.length !== 19 || creditCardProvider === '')
-    }, [inputValue]);
+    }, [inputValue])
+
+    // Adding eventHandlers to input
+    useEffect(() => {
+        const onFocusIn = () => setInputFocused(true)
+        const onFocusOut = () => setInputFocused(false)
+
+        inputRef.current?.addEventListener('focusin', onFocusIn)
+        inputRef.current?.addEventListener('focusout', onFocusOut)
+
+        return () => {
+            inputRef.current?.removeEventListener('focusout', onFocusOut)
+            inputRef.current?.removeEventListener('focusin', onFocusIn)
+        }
+    }, []);
 
     return (
-        <CardNumberInputContainer>
+        <CardNumberInputContainer $inputFocused={inputFocused}>
             <input value={inputValue}
+                   ref={inputRef}
                    onChange={onInputChange}
                    maxLength={19}
                    placeholder="XXXX XXXX XXXX XXXX"
@@ -123,6 +142,7 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
                       height={'auto'}
                 />
             </CreditProvidersWrapper>
+            {String(inputFocused)}
         </CardNumberInputContainer>
     )
 }
