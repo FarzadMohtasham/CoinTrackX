@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.7...v0.0.8) (2024-07-03)
+
+
+### Features
+
+* Added inputFocused state and border to CardNumberInput container ([6df6ffc](https://github.com/FarzadMohtasham/CoinTrackX/commit/6df6ffc47d34af5ccae1fcabb7c49744fdfaf53d))
+
 ### [0.0.7](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.6...v0.0.7) (2024-07-03)
 
 
