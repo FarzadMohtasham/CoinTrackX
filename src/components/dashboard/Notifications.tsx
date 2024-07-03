@@ -41,7 +41,7 @@ const NotificationsWrapper = styled.div`
     }
 
     @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
-        right: -80px;   
+        right: -80px;
     }
 `
 
