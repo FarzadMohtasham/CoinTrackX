@@ -3,6 +3,10 @@ import {assetList} from '@data/assetsList.ts'
 import creditCardPatternsData from '@data/cardProviderPatterns.data.ts'
 import {CardNumberProvider} from "@typings/component-types/CardNumberInput.type.ts";
 
+export const expDatePattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+export const numbersOnlyPattern = /^[0-9]+$/;
+export const maxPostalCodePattern = /^[A-Za-z0-9\s-]{1,10}$/;
+
 export function titleCase(str: string): string {
     const splitStr = str.toLowerCase().split(' ');
     for (let i = 0; i < splitStr.length; i++) {
@@ -71,4 +75,16 @@ export const checkCardProvider = (cardNumber: string): CardNumberProvider | '' =
     }
 
     return result
+}
+
+export const validateCardExpDate = (val: string) => {
+    return expDatePattern.test(val)
+}
+
+export const validateNumbersOnly = (val: string) => {
+    return numbersOnlyPattern.test(val)
+}
+
+export const validatePostalCode = (val: string) => {
+    return maxPostalCodePattern.test(val)
 }
