@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.9...v0.0.10) (2024-07-03)
+
+
+### Features
+
+* Developed Exp, CVV, and Postal component ([8e74d34](https://github.com/FarzadMohtasham/CoinTrackX/commit/8e74d34f27843e523ead6148a42a50d1e3e61fbb))
+
 ### [0.0.9](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.8...v0.0.9) (2024-07-03)
 
 
