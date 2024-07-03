@@ -142,7 +142,6 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
                       height={'auto'}
                 />
             </CreditProvidersWrapper>
-            {String(inputFocused)}
         </CardNumberInputContainer>
     )
 }
