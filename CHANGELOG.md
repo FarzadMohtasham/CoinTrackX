@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.6...v0.0.7) (2024-07-03)
+
+
+### Features
+
+* Added minLength & maxLength to InputField Component ([691dadd](https://github.com/FarzadMohtasham/CoinTrackX/commit/691dadd3fd0681f03b571948d81ad356a6bfdf65))
+
 ### [0.0.6](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.5...v0.0.6) (2024-07-03)
 
 
