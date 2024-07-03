@@ -61,6 +61,8 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
         iconWidth = '20px',
         errorMessage = null,
         unAllowedErrorMessages = [],
+        maxLength = 200,
+        minLength = 0,
     } = props
 
     const inputOnFocusHandler = () => setInputFieldSelected(true)
@@ -89,6 +91,8 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
                     </>
                 }
                 <input type={'text'}
+                       maxLength={maxLength}
+                       minLength={minLength}
                        name={label}
                        ref={inputRef}
                        placeholder={placeHolder}

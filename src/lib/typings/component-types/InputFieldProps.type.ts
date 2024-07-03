@@ -7,6 +7,8 @@ export type InputProps = {
     iconWidth?: string;
     errorMessage?: string | null;
     unAllowedErrorMessages?: string[];
+    maxLength?: number;
+    minLength?: number;
 }
 
 export type InputStyledProps = {
