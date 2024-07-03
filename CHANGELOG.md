@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.5...v0.0.6) (2024-07-03)
+
+
+### Features
+
+* Added some new features to the InputField ([c4675bc](https://github.com/FarzadMohtasham/CoinTrackX/commit/c4675bcde56ceeb2cdbc0ef95dc020336160cb12))
+
 ### [0.0.5](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.4...v0.0.5) (2024-07-03)
 
 
