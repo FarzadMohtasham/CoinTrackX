@@ -12,3 +12,8 @@ export type InputProps = {
 export type InputStyledProps = {
     $inputSelected: string;
 }
+
+export type InputRefProps = {
+    clearInput: () => void;
+    focusInput: () => void;
+}

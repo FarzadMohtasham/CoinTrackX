@@ -1,9 +1,9 @@
-import {JSX, useEffect, useState} from 'react'
+import {forwardRef, JSX, Ref, useEffect, useImperativeHandle, useRef, useState} from 'react'
 import {styled} from 'styled-components'
 
 import Icon from '@components/ui/stuff/Icon.tsx'
 
-import {InputProps, InputStyledProps} from '@typings/component-types/InputFieldProps.type.ts'
+import {InputProps, InputRefProps, InputStyledProps} from '@typings/component-types/InputFieldProps.type.ts'
 
 const FieldContainer = styled.div`
     display: flex;
@@ -46,9 +46,10 @@ const ErrorContainer = styled.span`
     font-size: var(--font-size-body-sm);
 `
 
-export default function Input(props: InputProps): JSX.Element {
+function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
     const [inputFieldSelected, setInputFieldSelected] = useState<boolean>(false)
     const [inputValue, setInputValue] = useState<string>('')
+    const inputRef = useRef<HTMLInputElement | null>(null)
 
     const {
         placeHolder = 'Undefined',
@@ -64,6 +65,14 @@ export default function Input(props: InputProps): JSX.Element {
 
     const inputOnFocusHandler = () => setInputFieldSelected(true)
     const inputOnBlurHandler = () => setInputFieldSelected(false)
+
+    const clearInput = () => setInputValue('')
+    const focusInput = () => inputRef.current?.focus()
+
+    useImperativeHandle(ref, () => ({
+        clearInput,
+        focusInput,
+    }))
 
     useEffect((): void => {
         onChangeHandler(inputValue)
@@ -81,11 +90,12 @@ export default function Input(props: InputProps): JSX.Element {
                 }
                 <input type={'text'}
                        name={label}
+                       ref={inputRef}
                        placeholder={placeHolder}
                        value={inputValue}
                        onFocus={inputOnFocusHandler}
                        onBlur={inputOnBlurHandler}
-                       onChange={e => setInputValue(e.target.value)}/>
+                       onChange={e => setInputValue(e.target.value.trim())}/>
             </InputFieldContainer>
             {
                 (unAllowedErrorMessages.length !== 0 && errorMessage) && (
@@ -96,3 +106,5 @@ export default function Input(props: InputProps): JSX.Element {
         </FieldContainer>
     )
 }
+
+export default forwardRef(Input)
