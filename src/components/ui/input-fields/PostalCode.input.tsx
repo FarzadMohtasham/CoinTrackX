@@ -63,7 +63,6 @@ export default function PostalCodeInput(props: PostalInputProps) {
         }
 
         const validationResult = validatePostalCode(inputValue)
-        console.log(validationResult)
         if (validationResult) postalErrorMsgSetterFn(null)
         else postalErrorMsgSetterFn('Enter valid CVV')
     }, [inputValue])

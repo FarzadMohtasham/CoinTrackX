@@ -8,7 +8,6 @@ import {CardNumberProvider} from '@typings/component-types/CardNumberInput.type.
 type CardNumberProps = {
     cardNumberSetterFn: (value: string) => void;
     disabled?: boolean;
-    separated?: boolean;
     cardNumberHasErrorSetterFn: Dispatch<SetStateAction<boolean>>;
     creditCardProviderSetterFn: Dispatch<SetStateAction<CardNumberProvider | ''>>;
 }
@@ -54,8 +53,7 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
         cardNumberSetterFn,
         cardNumberHasErrorSetterFn,
         creditCardProviderSetterFn,
-        // separated = true,
-        // disabled = false,
+        disabled = false,
     } = props
 
     const inputRef = useRef<HTMLInputElement | null>(null)
@@ -84,7 +82,7 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
     // Update credit card provider
     useEffect(() => {
         setCreditCardProvider('')
-        if (inputValue.length !== 19 || inputHasError) return
+        if (inputValue.length < (13 + 2)) return
         const cardProvider = checkCardProvider(inputValue.split(' ').join(''))
         setCreditCardProvider(cardProvider || '')
     }, [inputValue])
@@ -101,8 +99,8 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
 
     // Updating inputHasError
     useEffect(() => {
-        setInputHasError(inputValue.length !== 19 || creditCardProvider === '')
-    }, [inputValue])
+        setInputHasError(inputValue.length < (13 + 2) || creditCardProvider.length === 0)
+    }, [inputValue, creditCardProvider])
 
     // Adding eventHandlers to input
     useEffect(() => {
@@ -123,6 +121,7 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
             <input value={inputValue}
                    ref={inputRef}
                    onChange={onInputChange}
+                   disabled={disabled}
                    maxLength={19}
                    placeholder="XXXX XXXX XXXX XXXX"
             />

@@ -63,10 +63,10 @@ export default function LinkYourCard() {
     const [cardholderNameErrorMsg, setCardholderNameErrorMsg] = useState<string>('')
 
     const [cardholderName, setCardholderName] = useState<string>('')
-    const [hasFieldsError, setFieldsHasError] = useState(true);
+    const [hasCardHolderNameInputError, setHasCardHolderNameInputError] = useState(true);
 
     const [__, setCardNumber] = useState<string>('')
-    const [cardNumberIsValid, setCardNumberIsValid] = useState<boolean>(false)
+    const [cardNumberHasValid, setCardNumberHasValid] = useState<boolean>(false)
     const [creditCardProvider, setCreditCardProvider] = useState<CardNumberProvider | ''>('')
 
     const [cardExpInput, setCardExpInput] = useState<string>('')
@@ -80,6 +80,8 @@ export default function LinkYourCard() {
 
     const [_, setAsMainPaymentMethods] = useState<boolean>(false)
 
+    const buttonDisabled = hasCardHolderNameInputError || typeof cardExpInputErrorMsg === 'string' || typeof cardCVVInputErrorMsg === 'string' || typeof postalInputErrorMsg === 'string' || cardNumberHasValid
+
     // ---------- Input Validations ----------
     useEffect(function cardholderNameValidator() {
         InputFieldValidator({
@@ -88,7 +90,7 @@ export default function LinkYourCard() {
             maxLength: 40,
             inputValue: cardholderName,
         }).then((result: InputFieldValidatorResult) => {
-            setFieldsHasError(!result.isValid)
+            setHasCardHolderNameInputError(!result.isValid)
             setCardholderNameErrorMsg(result.errorMessage)
         })
     }, [cardholderName])
@@ -109,7 +111,7 @@ export default function LinkYourCard() {
             <RowWrapper className={'card-number'}>
                 <span className={'label'}>Card number</span>
                 <CardNumberInput cardNumberSetterFn={setCardNumber}
-                                 cardNumberHasErrorSetterFn={setCardNumberIsValid}
+                                 cardNumberHasErrorSetterFn={setCardNumberHasValid}
                                  creditCardProviderSetterFn={setCreditCardProvider}
                 />
             </RowWrapper>
@@ -161,7 +163,7 @@ export default function LinkYourCard() {
                 <span className={'agree-terms'}>By adding a new card, you agree to our terms.</span>
             </RowWrapper>
             <RowWrapper className={'add-card-btn-wrapper'}>
-                <Button disabled={hasFieldsError || cardNumberIsValid || creditCardProvider === ''}>
+                <Button disabled={buttonDisabled}>
                     Add Card
                 </Button>
                 <Icon iconSrc={'processed-by-cointrackx.svg'} width={'160px'} height={'auto'}/>
