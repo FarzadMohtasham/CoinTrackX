@@ -59,7 +59,7 @@ const simpleNotifOptions: NotificationOptions = {
     closeIconSize: '12px',
 }
 
-export default function LinkYourCard() {
+export default function CreditDebitCardModal() {
     const [cardholderNameErrorMsg, setCardholderNameErrorMsg] = useState<string>('')
 
     const [cardholderName, setCardholderName] = useState<string>('')

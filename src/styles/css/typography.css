@@ -9,6 +9,7 @@
     --font-size-body-md: 14px;
     --font-size-body-sm: 12px;
     --font-size-body-xsm: 11px;
+    --font-size-body-xxsm: 9px;
 }
 
 @media screen and (min-width: 768px) {
@@ -23,5 +24,6 @@
         --font-size-body-md: 16px;
         --font-size-body-sm: 14px;
         --font-size-body-xsm: 12px;
+        --font-size-body-xxsm: 10px;
     }
 }

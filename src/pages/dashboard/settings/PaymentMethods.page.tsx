@@ -1,4 +1,4 @@
-import {JSX, useState} from "react";
+import {JSX, useState} from "react"
 import {styled} from "styled-components"
 import {
     Modal,
@@ -17,9 +17,11 @@ import Button from "@components/ui/stuff/Button.tsx"
 
 import PaymentMethodOption from "@components/dashboard/settings/payment-methods/PaymentMethodOption.tsx"
 import {PaymentMethodOptionProps, PaymentMethodTitle} from "@typings/PaymentMethodOption.type.ts"
-import LinkYourCard from "@components/dashboard/settings/payment-methods/LinkYourCard.tsx";
-
-type PaymentMethod = {}
+import {useCreditDebitStore} from "@services/store/payment-methods/creditDebitCard.store.ts"
+import CreditDebitCard from "@components/ui/cards/CreditDebit.card.tsx"
+import {CreditDebitCard as CreditDebitCardT} from '@typings/component-types/CreditDebitCard.type'
+import CreditDebitCardModal from "@components/dashboard/settings/payment-methods/CreditDebitCardModal.tsx";
+import AddCreditDebitCard from "@components/ui/cards/AddCreditDebit.card.tsx";
 
 const NoPaymentMethodContainer = styled.div`
     display: grid;
@@ -47,10 +49,17 @@ const NoPaymentMethodContainer = styled.div`
 
 const PaymentMethodsContainer = styled.div`
 
+    .creditDebitCards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        width: 100%;
+        padding: 30px;
+    }
 `
 
 export default function PaymentMethodsPage() {
-    const [paymentMethods, _] = useState<PaymentMethod[]>([])
+    const {creditDebitCards} = useCreditDebitStore()
     const [paymentMethodStep, setPaymentMethodStep] = useState<PaymentMethodTitle | null>(null)
 
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -68,7 +77,7 @@ export default function PaymentMethodsPage() {
     return (
         <>
             {
-                paymentMethods ?
+                !creditDebitCards ?
                     <NoPaymentMethodContainer className={'no-payment-methods'}>
                         <div className={'content-wrapper'}>
                             <Icon iconSrc={'payment-method-with-bg.svg'} width={'160px'}/>
@@ -83,7 +92,20 @@ export default function PaymentMethodsPage() {
                     </NoPaymentMethodContainer>
                     :
                     <PaymentMethodsContainer>
-
+                        {
+                            creditDebitCards &&
+                            <div className="creditDebitCards">
+                                {
+                                    creditDebitCards.map((creditDebitCard: CreditDebitCardT, index: number) => {
+                                        return (
+                                            <CreditDebitCard key={creditDebitCard.cardholder_name + index}
+                                                             creditDebitCardInfo={creditDebitCard}/>
+                                        )
+                                    })
+                                }
+                                <AddCreditDebitCard onClick={onOpen}/>
+                            </div>
+                        }
                     </PaymentMethodsContainer>
             }
 
@@ -113,7 +135,7 @@ export default function PaymentMethodsPage() {
                                 <div>
                                     {
                                         paymentMethodStep === 'Credit/Debit Card' &&
-                                        <LinkYourCard/>
+                                        <CreditDebitCardModal/>
                                     }
                                 </div>
                         }
