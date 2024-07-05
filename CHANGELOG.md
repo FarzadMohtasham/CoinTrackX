@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.11...v0.0.12) (2024-07-05)
+
+
+### Features
+
+* Added some component and completed taks about CreditDebitCards ([b6e3d63](https://github.com/FarzadMohtasham/CoinTrackX/commit/b6e3d63ff0e538e4d8c9c28c5c2a83fd35ace27d))
+
 ### [0.0.11](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.10...v0.0.11) (2024-07-04)
 
 
