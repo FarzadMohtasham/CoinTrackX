@@ -1,4 +1,4 @@
-export default function PreferencesPage() {
+export function Component() {
     return (
         <div>PreferencesPage</div>
     )

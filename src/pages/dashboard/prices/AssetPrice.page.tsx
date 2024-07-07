@@ -97,7 +97,7 @@ const reducer = (state: ErrorStatesProps, dispatch: DispatchProps) => {
     }
 }
 
-export default function AssetPricePage(): JSX.Element {
+export function Component(): JSX.Element {
     const [errorStates, dispatchError] = useReducer(reducer, {
         assetInfoHasError: false,
         assetSummaryHasError: false,

@@ -38,7 +38,7 @@ const SimpleNotifOptions: NotificationOptions = {
     closeIconSize: '100px',
 }
 
-export default function Prices(): JSX.Element {
+export function Component(): JSX.Element {
     const [hasError, setHasError] = useState<boolean>(false)
 
     return (

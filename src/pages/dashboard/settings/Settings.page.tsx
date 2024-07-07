@@ -3,7 +3,7 @@ import {styled} from 'styled-components'
 
 const SettingsContainer = styled.div``
 
-export default function Settings(): JSX.Element {
+export function Component(): JSX.Element {
     return (
         <SettingsContainer>
             Settings

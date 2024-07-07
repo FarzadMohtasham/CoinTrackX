@@ -1,80 +1,65 @@
 import {createBrowserRouter} from 'react-router-dom'
-import Home from './pages/Home.tsx'
-import Login from './pages/auth/Login.tsx'
-import Signup from './pages/auth/Signup.tsx'
-import DashboardLayout from './layout/Dashboard.layout.tsx'
-import DashboardPage from '@pages/dashboard/dashboard/Dashboard.page.tsx'
-import AssetsPortfolioPage from '@pages/dashboard/assets-portfolio/AssetsPortfolio.page.tsx'
-import PricesPage from '@pages/dashboard/prices/AssetsPrice.page.tsx'
-import TransactionsPage from '@pages/dashboard/transactions/Transactions.page.tsx'
-import SettingsPage from '@pages/dashboard/settings/Settings.page.tsx'
-import AssetPricePage from "@pages/dashboard/prices/AssetPrice.page.tsx";
-import SecurityPage from "@pages/dashboard/settings/Security.page.tsx";
-import PaymentMethodsPage from "@pages/dashboard/settings/PaymentMethods.page.tsx";
-import ProfilePage from "@pages/dashboard/settings/Profile.page.tsx";
-import PreferencesPage from "@pages/dashboard/settings/Preferences.page.tsx";
-import PasswordPage from "@pages/dashboard/settings/Password.page.tsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        Component: Home,
+        lazy: () => import('./pages/Home.tsx'),
     },
     {
         path: "/login",
-        Component: Login,
+        lazy: () => import('./pages/auth/Login.tsx'),
     },
     {
         path: "/signup",
-        Component: Signup,
+        lazy: () => import('./pages/auth/Signup.tsx'),
     },
     {
-        Component: DashboardLayout,
+        lazy: () => import('./layout/Dashboard.layout.tsx'),
         children: [
             {
                 path: '/dashboard',
-                Component: DashboardPage,
+                lazy: () => import('@pages/dashboard/dashboard/Dashboard.page.tsx'),
                 index: true,
             },
             {
                 path: '/dashboard/assets-portfolio',
-                Component: AssetsPortfolioPage,
+                lazy: () => import('@pages/dashboard/assets-portfolio/AssetsPortfolio.page.tsx'),
             },
             {
                 path: '/dashboard/prices',
-                Component: PricesPage,
+                lazy: () => import('@pages/dashboard/prices/AssetsPrice.page.tsx'),
             },
             {
                 path: '/dashboard/prices/:assetName',
-                Component: AssetPricePage,
+                lazy: () => import('@pages/dashboard/prices/AssetPrice.page.tsx'),
             },
             {
                 path: '/dashboard/transactions',
-                Component: TransactionsPage,
+                lazy: () => import('@pages/dashboard/transactions/Transactions.page.tsx'),
             },
             {
                 path: '/dashboard/settings',
-                Component: SettingsPage,
+                lazy: () => import('@pages/dashboard/settings/Settings.page.tsx'),
             },
             {
                 path: '/dashboard/settings/security',
-                Component: SecurityPage,
+                lazy: () => import('@pages/dashboard/settings/Security.page.tsx'),
             },
             {
                 path: '/dashboard/settings/payment-methods',
-                Component: PaymentMethodsPage,
+                lazy: () => import('@pages/dashboard/settings/PaymentMethods.page.tsx'),
             },
             {
                 path: '/dashboard/settings/profile',
-                Component: ProfilePage,
+                lazy: () => import('@pages/dashboard/settings/Profile.page.tsx'),
             },
             {
                 path: '/dashboard/settings/preferences',
-                Component: PreferencesPage,
+                lazy: () => import('@pages/dashboard/settings/Preferences.page.tsx'),
             },
             {
                 path: '/dashboard/settings/password',
-                Component: PasswordPage,
+                lazy: () => import('@pages/dashboard/settings/Password.page.tsx'),
             },
         ]
     }

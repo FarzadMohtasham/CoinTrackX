@@ -1,4 +1,4 @@
-export default function PasswordPage() {
+export function Component() {
     return (
         <div>SecurityPage</div>
     )

@@ -25,7 +25,7 @@ const AssetsPortfolioWrapper = styled.div`
     }
 `
 
-export default function AssetsPortfolio(): JSX.Element {
+export function Component(): JSX.Element {
     return (
         <AssetsPortfolioContainer>
             <AssetsPortfolioWrapper>

@@ -3,7 +3,7 @@ import {styled} from 'styled-components'
 
 const TransactionsContainer = styled.div``
 
-export default function Transactions(): JSX.Element {
+export function Component(): JSX.Element {
     return (
         <TransactionsContainer>
             Transactions

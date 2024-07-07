@@ -27,7 +27,7 @@ const HeadContent = styled(HeadContentStyled)``
 const MainContent = styled(MainContentStyled)``
 const SingUpLink = styled(AuthLink)``
 
-export default function Login(): JSX.Element {
+export function Component(): JSX.Element {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [emailFieldError, setEmailFieldError] = useState<string | null>(null)

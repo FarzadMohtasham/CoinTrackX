@@ -44,7 +44,7 @@ const MainContent = styled(MainContentStyled)`
 `
 const SingUpLink = styled(AuthLink)``
 
-export default function Login(): JSX.Element {
+export function Component(): JSX.Element {
     const [firstName, setFirstName] = useState<string>('')
     const [lastName, setLastName] = useState<string>('')
     const [email, setEmail] = useState<string>('')

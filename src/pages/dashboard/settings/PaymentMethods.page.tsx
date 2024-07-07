@@ -58,7 +58,7 @@ const PaymentMethodsContainer = styled.div`
     }
 `
 
-export default function PaymentMethodsPage() {
+export function Component() {
     const {creditDebitCards} = useCreditDebitStore()
     const [paymentMethodStep, setPaymentMethodStep] = useState<PaymentMethodTitle | null>(null)
 
