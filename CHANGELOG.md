@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.12...v0.0.13) (2024-07-07)
+
+
+### Features
+
+* Added lazy loading to application router components ([85e63b0](https://github.com/FarzadMohtasham/CoinTrackX/commit/85e63b06e1b68ab21a1a436a06638aa7499b687c))
+
 ### [0.0.12](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.11...v0.0.12) (2024-07-05)
 
 
