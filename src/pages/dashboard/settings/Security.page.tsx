@@ -138,7 +138,7 @@ export function Component() {
                                 When you sign in, you will receive OTP code to approve your login to your number <em>(+44) 5673 436 4xxx</em>
                             </span>
                         </div>
-                        <Switch size='lg'
+                        <Switch size='md'
                                 colorScheme={'green'}
                                 isChecked={textMessageCheckBox}
                                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
@@ -156,7 +156,7 @@ export function Component() {
                                 When you sign in, you will receive notification to approve your login on your email <em>andresamosa@mail.com</em>
                             </span>
                         </div>
-                        <Switch size='lg'
+                        <Switch size='md'
                                 colorScheme={'green'}
                                 checked={emailCheckBox}
                                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
