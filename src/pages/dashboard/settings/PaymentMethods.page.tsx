@@ -1,5 +1,5 @@
-import {JSX, useState} from "react"
-import {styled} from "styled-components"
+import {JSX, useEffect, useState} from 'react'
+import {styled} from 'styled-components'
 import {
     Modal,
     ModalBody,
@@ -7,21 +7,22 @@ import {
     ModalContent,
     ModalHeader,
     ModalOverlay, useDisclosure
-} from "@chakra-ui/react"
+} from '@chakra-ui/react'
 
 import {paymentMethodOptions} from '@data/paymentMethodOptions.data.ts'
 
-import Icon from "@components/ui/stuff/Icon.tsx"
-import Heading from "@components/ui/stuff/Heading.tsx"
-import Button from "@components/ui/stuff/Button.tsx"
+import Icon from '@components/ui/stuff/Icon.tsx'
+import Heading from '@components/ui/stuff/Heading.tsx'
+import Button from '@components/ui/stuff/Button.tsx'
 
-import PaymentMethodOption from "@components/dashboard/settings/payment-methods/PaymentMethodOption.tsx"
-import {PaymentMethodOptionProps, PaymentMethodTitle} from "@typings/PaymentMethodOption.type.ts"
-import {useCreditDebitStore} from "@services/store/payment-methods/creditDebitCard.store.ts"
-import CreditDebitCard from "@components/ui/cards/CreditDebit.card.tsx"
+import PaymentMethodOption from '@components/dashboard/settings/payment-methods/PaymentMethodOption.tsx'
+import {PaymentMethodOptionProps, PaymentMethodTitle} from '@typings/PaymentMethodOption.type.ts'
+import CreditDebitCard from '@components/ui/cards/CreditDebit.card.tsx'
 import {CreditDebitCard as CreditDebitCardT} from '@typings/component-types/CreditDebitCard.type'
-import CreditDebitCardModal from "@components/dashboard/settings/payment-methods/CreditDebitCardModal.tsx";
-import AddCreditDebitCard from "@components/ui/cards/AddCreditDebit.card.tsx";
+import CreditDebitCardModal from '@components/dashboard/settings/payment-methods/CreditDebitCardModal.tsx'
+import AddCreditDebitCard from '@components/ui/cards/AddCreditDebit.card.tsx'
+import useGetCreditDebitCardsQuery from '@query/paymentMethods/useGetCreditDebitCards.query.ts'
+import Skeleton from "react-loading-skeleton";
 
 const NoPaymentMethodContainer = styled.div`
     display: grid;
@@ -51,15 +52,44 @@ const PaymentMethodsContainer = styled.div`
 
     .creditDebitCards {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
         gap: 25px;
         width: 100%;
         padding: 30px;
+
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(auto-fill, 185px);
+
+        @media screen and (max-width: ${props => props.theme.breakpoints.xxl}) {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(auto-fill, 185px);
+        }
+
+        @media screen and (max-width: ${props => props.theme.breakpoints.xl}) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(auto-fill, 185px);
+        }
+        
+        @media screen and (max-width: ${props => props.theme.breakpoints.lg}) {
+            padding: 12px;
+        }
+
+        @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(auto-fill, 185px);
+        }
+    }
+`
+
+const PaymentMethodsIsLoadingContainer = styled.div`
+    padding: 30px;
+
+    @media screen and (max-width: ${props => props.theme.breakpoints.lg}) {
+        padding: 12px;
     }
 `
 
 export function Component() {
-    const {creditDebitCards} = useCreditDebitStore()
+    const {creditDebitCards, error: _, refetch, isLoading} = useGetCreditDebitCardsQuery()
     const [paymentMethodStep, setPaymentMethodStep] = useState<PaymentMethodTitle | null>(null)
 
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -74,39 +104,60 @@ export function Component() {
         setPaymentMethodStep(null)
     }
 
+    /*
+    * Refetch on modal close
+    * */
+    useEffect(() => {
+        refetch()
+    }, [isOpen]);
+
     return (
         <>
             {
-                !creditDebitCards ?
-                    <NoPaymentMethodContainer className={'no-payment-methods'}>
-                        <div className={'content-wrapper'}>
-                            <Icon iconSrc={'payment-method-with-bg.svg'} width={'160px'}/>
-                            <div className={'title-desc-wrapper'}>
-                                <Heading headingType={'h4'} className={'title'}>No Payment Methods Yet</Heading>
-                                <span>Please add your payment methods.</span>
-                            </div>
-                            <Button icon={'plus.svg'} onClickHandler={onModalOpenHandler}>
-                                Add A Payment Method
-                            </Button>
-                        </div>
-                    </NoPaymentMethodContainer>
+                isLoading ?
+                    <PaymentMethodsIsLoadingContainer>
+                        <Skeleton count={5}
+                                  width={'100%'}
+                                  height={'185px'}
+                                  borderRadius={'12px'}
+                        />
+                    </PaymentMethodsIsLoadingContainer>
                     :
-                    <PaymentMethodsContainer>
+                    <>
                         {
-                            creditDebitCards &&
-                            <div className="creditDebitCards">
-                                {
-                                    creditDebitCards.map((creditDebitCard: CreditDebitCardT, index: number) => {
-                                        return (
-                                            <CreditDebitCard key={creditDebitCard.cardholder_name + index}
-                                                             creditDebitCardInfo={creditDebitCard}/>
-                                        )
-                                    })
-                                }
-                                <AddCreditDebitCard onClick={onOpen}/>
-                            </div>
+                            creditDebitCards ?
+                                <PaymentMethodsContainer>
+                                    {
+                                        creditDebitCards &&
+                                        <div className="creditDebitCards">
+                                            {
+                                                creditDebitCards.map((creditDebitCard: CreditDebitCardT, index: number) => {
+                                                    return (
+                                                        <CreditDebitCard key={creditDebitCard.cardholder_name + index}
+                                                                         creditDebitCardInfo={creditDebitCard}/>
+                                                    )
+                                                })
+                                            }
+                                            <AddCreditDebitCard onClick={onOpen}/>
+                                        </div>
+                                    }
+                                </PaymentMethodsContainer>
+                                :
+                                <NoPaymentMethodContainer className={'no-payment-methods'}>
+                                    <div className={'content-wrapper'}>
+                                        <Icon iconSrc={'payment-method-with-bg.svg'} width={'160px'}/>
+                                        <div className={'title-desc-wrapper'}>
+                                            <Heading headingType={'h4'} className={'title'}>No Payment Methods
+                                                Yet</Heading>
+                                            <span>Please add your payment methods.</span>
+                                        </div>
+                                        <Button icon={'plus.svg'} onClickHandler={onModalOpenHandler}>
+                                            Add A Payment Method
+                                        </Button>
+                                    </div>
+                                </NoPaymentMethodContainer>
                         }
-                    </PaymentMethodsContainer>
+                    </>
             }
 
             <Modal isOpen={isOpen}
@@ -135,7 +186,7 @@ export function Component() {
                                 <div>
                                     {
                                         paymentMethodStep === 'Credit/Debit Card' &&
-                                        <CreditDebitCardModal/>
+                                        <CreditDebitCardModal onClose={onClose}/>
                                     }
                                 </div>
                         }

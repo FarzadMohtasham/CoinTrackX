@@ -1,13 +1,16 @@
 import {create} from "zustand";
 
-export type UiStoreStates = {
+type States = {
     navStatus: boolean;
     navStatusWithDelay: boolean;
+}
+
+type Actions = {
     setNavStatus: (status: boolean) => void;
     resetEverything: any;
 }
 
-export const useUiStore = create<UiStoreStates>((set) => ({
+export const useUiStore = create<States & Actions>((set) => ({
     // True: Nav is open | False: Nav is close
     navStatus: false,
     navStatusWithDelay: false,

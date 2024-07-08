@@ -1,7 +1,9 @@
-import useUserLoggedIn from "@hooks/useUserLoggedIn.ts";
-import useLocaleStorage from "@hooks/useLocaleStorage.ts";
+import {AuthUser} from '@supabase/supabase-js'
 
-export default function useUser(): Object | boolean {
+import useUserLoggedIn from '@hooks/useUserLoggedIn.ts'
+import useLocaleStorage from '@hooks/useLocaleStorage.ts'
+
+export default function useUser(): AuthUser | boolean {
     const userLoggedIn = useUserLoggedIn()
 
     if (!userLoggedIn) return false

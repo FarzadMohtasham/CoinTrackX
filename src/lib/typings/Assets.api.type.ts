@@ -33,7 +33,7 @@ export type AssetMarketsAPIQueryReturnProps = {
     isLoading: boolean;
 }
 
-export type QueryGetAssetOptions = {
+export type QueryOptions = {
     staleTime?: number;
     gcTime?: number;
     retry?: boolean;

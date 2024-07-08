@@ -1,13 +1,10 @@
 import {useQuery} from '@tanstack/react-query'
 
-import {getAsset} from "@services/api/assets/assets.api.ts"
-
 import {
-    Asset,
-    AssetAPIQueryReturnOptions,
-    AssetName,
     QueryOptions,
 } from '@typings/Assets.api.type.ts'
+import {getCreditDebitCards} from "@services/api/payment-methods/creditDebitPayments.api.ts";
+import {CreditDebitCard} from "@typings/component-types/CreditDebitCard.type.ts";
 
 const defaultOptions: QueryOptions = {
     staleTime: 1000 * 60 * 60,
@@ -17,20 +14,20 @@ const defaultOptions: QueryOptions = {
     refetchOnReconnect: true
 }
 
-export default function useGetAssetQuery(assetName: AssetName, options: QueryOptions = defaultOptions) {
+export default function useGetCreditDebitCardsQuery(options: QueryOptions = defaultOptions) {
     const queryOptions: QueryOptions = {
         ...defaultOptions,
         ...options,
     }
 
     const {data, error, refetch, isLoading}: {
-        data: Asset | any,
+        data: CreditDebitCard[] | any,
         error: any,
         refetch: any,
         isLoading: any
     } = useQuery({
-        queryKey: ['use-get-asset', assetName],
-        queryFn: () => getAsset(assetName),
+        queryKey: ['use-get-credit-debit-cards'],
+        queryFn: () => getCreditDebitCards(),
         staleTime: queryOptions.staleTime,
         gcTime: queryOptions.gcTime,
         retry: queryOptions.retry,
@@ -38,5 +35,5 @@ export default function useGetAssetQuery(assetName: AssetName, options: QueryOpt
         refetchOnReconnect: queryOptions.refetchOnReconnect,
     })
 
-    return {data, error, refetch, isLoading} as AssetAPIQueryReturnOptions<Asset>
+    return {creditDebitCards: data, error, refetch, isLoading}
 }

@@ -9,13 +9,22 @@ import CheckboxInput from '@components/ui/input-fields/Checkbox.input.tsx'
 import {InputFieldValidator} from '@validations/InputField.validator.ts'
 
 import {InputFieldValidatorResult} from '@typings/validator-types/Input.validator.type.ts'
-import CardNumberInput from "@components/ui/input-fields/CardNumber.input.tsx"
-import {CardNumberProvider} from "@typings/component-types/CardNumberInput.type.ts"
-import SimpleNotification from "@components/ui/notifs/Simple-Notification.notif.tsx"
-import {NotificationOptions} from "@typings/component-types/Notification.type.ts"
-import CreditCardExpInput from "@components/ui/input-fields/CreditCardExp.input.tsx";
-import CreditCardCVVInput from "@components/ui/input-fields/CreditCardCVV.input.tsx";
-import PostalCodeInput from "@components/ui/input-fields/PostalCode.input.tsx";
+import CardNumberInput from '@components/ui/input-fields/CardNumber.input.tsx'
+import {CardNumberProvider} from '@typings/component-types/CardNumberInput.type.ts'
+import SimpleNotification from '@components/ui/notifs/Simple-Notification.notif.tsx'
+import {NotificationOptions} from '@typings/component-types/Notification.type.ts'
+import CreditCardExpInput from '@components/ui/input-fields/CreditCardExp.input.tsx'
+import CreditCardCVVInput from '@components/ui/input-fields/CreditCardCVV.input.tsx'
+import PostalCodeInput from '@components/ui/input-fields/PostalCode.input.tsx'
+import {insertCreditDebitCard} from '@services/api/payment-methods/creditDebitPayments.api.ts'
+import {CreditDebitCard} from '@typings/component-types/CreditDebitCard.type.ts'
+import useUser from '@hooks/useUser.ts'
+import {AuthUser} from '@supabase/supabase-js'
+import {toast} from "react-hot-toast";
+
+type CreditDebitCardModalProps = {
+    onClose: () => void;
+}
 
 const LinkYouCardContainer = styled.div`
     display: flex;
@@ -59,13 +68,13 @@ const simpleNotifOptions: NotificationOptions = {
     closeIconSize: '12px',
 }
 
-export default function CreditDebitCardModal() {
+export default function CreditDebitCardModal(props: CreditDebitCardModalProps) {
     const [cardholderNameErrorMsg, setCardholderNameErrorMsg] = useState<string>('')
 
     const [cardholderName, setCardholderName] = useState<string>('')
     const [hasCardHolderNameInputError, setHasCardHolderNameInputError] = useState(true);
 
-    const [__, setCardNumber] = useState<string>('')
+    const [cardNumber, setCardNumber] = useState<string>('')
     const [cardNumberHasValid, setCardNumberHasValid] = useState<boolean>(false)
     const [creditCardProvider, setCreditCardProvider] = useState<CardNumberProvider | ''>('')
 
@@ -78,7 +87,21 @@ export default function CreditDebitCardModal() {
     const [postalInput, setPostalInput] = useState<string>('')
     const [postalInputErrorMsg, setPostalInputErrorMsg] = useState<string | null>('')
 
-    const [_, setAsMainPaymentMethods] = useState<boolean>(false)
+    const [asMainPaymentMethod, setAsMainPaymentMethods] = useState<boolean>(false)
+
+    // @ts-ignore
+    const {user}: { user: AuthUser } = useUser()
+
+    const cardInfo = {
+        email: user.email,
+        cardholder_name: cardholderName,
+        card_provider: creditCardProvider,
+        card_number: cardNumber,
+        exp: cardExpInput,
+        cvv: cardCVVInput,
+        postal_code: postalInput,
+        as_main_payment: asMainPaymentMethod,
+    } as CreditDebitCard
 
     const buttonDisabled = hasCardHolderNameInputError || typeof cardExpInputErrorMsg === 'string' || typeof cardCVVInputErrorMsg === 'string' || typeof postalInputErrorMsg === 'string' || cardNumberHasValid
 
@@ -94,6 +117,17 @@ export default function CreditDebitCardModal() {
             setCardholderNameErrorMsg(result.errorMessage)
         })
     }, [cardholderName])
+
+    // ---------- Handlers ----------
+    const onAddCreditDebitCardHandler = async () => {
+        const {error} = await insertCreditDebitCard(cardInfo)
+        if (!error) {
+            props.onClose()
+            toast.success('New credit/debit card added')
+        } else {
+            toast.error(error.message)
+        }
+    }
 
     return (
         <LinkYouCardContainer>
@@ -163,7 +197,7 @@ export default function CreditDebitCardModal() {
                 <span className={'agree-terms'}>By adding a new card, you agree to our terms.</span>
             </RowWrapper>
             <RowWrapper className={'add-card-btn-wrapper'}>
-                <Button disabled={buttonDisabled}>
+                <Button disabled={buttonDisabled} onClickHandler={onAddCreditDebitCardHandler}>
                     Add Card
                 </Button>
                 <Icon iconSrc={'processed-by-cointrackx.svg'} width={'160px'} height={'auto'}/>

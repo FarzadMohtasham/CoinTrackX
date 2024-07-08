@@ -6,11 +6,11 @@ import {
     AssetMarketProps,
     AssetMarketsAPIQueryReturnProps,
     AssetName,
-    QueryGetAssetOptions,
+    QueryOptions,
 } from '@typings/Assets.api.type.ts'
 import {assetNamesWithSymbols} from '@data/assetsList.ts'
 
-const defaultOptions: QueryGetAssetOptions = {
+const defaultOptions: QueryOptions = {
     staleTime: 1000 * 60 * 60,
     gcTime: 1000 * 60 * 60,
     retry: false,
@@ -18,8 +18,8 @@ const defaultOptions: QueryGetAssetOptions = {
     refetchOnReconnect: true
 }
 
-export default function useGetAssetMarketsQuery(assetName: AssetName, options: QueryGetAssetOptions = defaultOptions) {
-    const queryOptions: QueryGetAssetOptions = {
+export default function useGetAssetMarketsQuery(assetName: AssetName, options: QueryOptions = defaultOptions) {
+    const queryOptions: QueryOptions = {
         ...defaultOptions,
         ...options,
     }
