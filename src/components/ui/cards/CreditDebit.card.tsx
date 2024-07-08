@@ -1,7 +1,7 @@
 import {CreditDebitCard as CreditDebitCardT} from '@typings/component-types/CreditDebitCard.type.ts'
 import {styled} from 'styled-components'
-import copy from 'copy-to-clipboard'
 import {toast} from 'react-hot-toast'
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 
 import Icon from '@components/ui/stuff/Icon.tsx'
 
@@ -10,9 +10,10 @@ type CreditDebitCardProps = {
 }
 
 const CreditDebitCardContainer = styled.div`
-    background-color: var(--color-primary-800);
+    background-image: url("/images/credit-debit-card-bg.svg");
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
+    object-fit: cover;
 
     .top-section {
         display: flex;
@@ -75,8 +76,8 @@ export default function CreditDebitCard(props: CreditDebitCardProps) {
     } = props
 
     const onCardNumberClickHandler = () => {
-        copy(creditDebitCardInfo.card_number, {
-            onCopy: () => toast.success('Card number copied'),
+        toast.success('Credit/Debit card number copied', {
+            icon: <Icon iconSrc={'copy.svg'} width={'25px'}/>,
         })
     }
 
@@ -105,12 +106,14 @@ export default function CreditDebitCard(props: CreditDebitCardProps) {
                 </div>
             </div>
             <div className="middle-section">
-                <span className={'card-number'}
-                      onClick={onCardNumberClickHandler}>
-                    {
-                        creditDebitCardInfo.card_number.match(/.{1,4}/g)?.map((cardNumber) => cardNumber + ' ')
-                    }
-                </span>
+                <CopyToClipboard text={creditDebitCardInfo.card_number}
+                                 onCopy={onCardNumberClickHandler}>
+                    <span className={'card-number'}>
+                        {
+                            creditDebitCardInfo.card_number.match(/.{1,4}/g)?.map((cardNumber) => cardNumber + ' ')
+                        }
+                    </span>
+                </CopyToClipboard>
             </div>
             <div className="bottom-section">
                 <span className={'cardholder-name'}>{creditDebitCardInfo.cardholder_name}</span>

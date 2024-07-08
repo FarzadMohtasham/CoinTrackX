@@ -26,6 +26,7 @@ const AddCreditDebitCardContainer = styled.div`
         span {
             font-size: var(--font-size-body-md);
             color: var(--color-primary);
+            font-weight: 500;
         }
     }
     
