@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.15...v0.0.16) (2024-07-08)
+
+
+### Bug Fixes
+
+* Credit/Debit card number copy bug fix ([2e82551](https://github.com/FarzadMohtasham/CoinTrackX/commit/2e82551ad58e52fa3106ed47b0319102f6b0aed4))
+
 ### [0.0.15](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.14...v0.0.15) (2024-07-08)
 
 
