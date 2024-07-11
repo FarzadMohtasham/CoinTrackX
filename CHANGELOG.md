@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.16...v0.0.17) (2024-07-11)
+
+
+### Bug Fixes
+
+* Deleted semicolons and double quotation ([27fc11d](https://github.com/FarzadMohtasham/CoinTrackX/commit/27fc11d2e9b9b1c323763ce10a9fb7fecc50f3bc))
+
 ### [0.0.16](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.15...v0.0.16) (2024-07-08)
 
 

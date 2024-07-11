@@ -1,7 +1,7 @@
 {
   "name": "vite-project",
   "private": true,
-  "version": "0.0.16",
+  "version": "0.0.17",
   "type": "module",
   "scripts": {
     "test": "jest --watch",
@@ -73,6 +73,7 @@
     "jest-transformer-svg": "^2.0.2",
     "sass": "^1.72.0",
     "sass-loader": "^14.1.1",
+    "standard-version": "^9.5.0",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
