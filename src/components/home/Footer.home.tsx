@@ -9,7 +9,7 @@ import Heading from '@components/ui/stuff/Heading.tsx'
 
 // Type
 import {ColumnItem as ColumnItemType} from '@typings/component-types/Footer.type.ts'
-import {IStyledComponentBase} from "styled-components/dist/types";
+import {IStyledComponentBase} from 'styled-components/dist/types'
 
 // Data
 import {footerColumnItemsList, socialMediaLogoList} from '@data/footer.data.ts'

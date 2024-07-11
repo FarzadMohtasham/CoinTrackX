@@ -12,7 +12,7 @@ import {NavigationListData} from '@data/navigationList.data.ts'
 import {NavigationItemType, NavigationProps} from '@typings/NavigationItem.type.ts'
 import useDashboardProtectRoute from '@hooks/useDashboardProtectRoute.ts'
 import Icon from '@components/ui/stuff/Icon.tsx'
-import {useUiStore} from "@services/store/ui.store.ts";
+import {useUiStore} from '@services/store/ui.store.ts'
 
 const LayoutContainer = styled.div`
     height: 100vh;

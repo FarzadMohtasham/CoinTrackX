@@ -1,6 +1,6 @@
-import {useEffect} from "react";
-import {useNavigate} from "react-router-dom";
-import useLocaleStorage from "./useLocaleStorage.ts";
+import {useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
+import useLocaleStorage from './useLocaleStorage.ts'
 
 export default function useRedirectIfAuthenticated(path: string = '/dashboard', routerReplace: boolean = false) {
     const navigate = useNavigate()

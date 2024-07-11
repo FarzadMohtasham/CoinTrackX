@@ -1,17 +1,17 @@
-import {JSX, useEffect, useState} from "react"
-import {Link, useNavigate} from "react-router-dom"
-import {styled} from "styled-components"
+import {JSX, useEffect, useState} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
+import {styled} from 'styled-components'
 import {toast} from 'react-hot-toast'
 
-import Heading from "@components/ui/stuff/Heading.tsx"
-import Button from "@components/ui/stuff/Button.tsx"
-import Separator from "@components/ui/stuff/Separator.tsx"
-import InputField from "@components/ui/input-fields/InputField.input.tsx"
-import PasswordFieldInput from "@components/ui/input-fields/PasswordField.input.tsx"
-import CheckboxInput from "@components/ui/input-fields/Checkbox.input.tsx"
+import Heading from '@components/ui/stuff/Heading.tsx'
+import Button from '@components/ui/stuff/Button.tsx'
+import Separator from '@components/ui/stuff/Separator.tsx'
+import InputField from '@components/ui/input-fields/InputField.input.tsx'
+import PasswordFieldInput from '@components/ui/input-fields/PasswordField.input.tsx'
+import CheckboxInput from '@components/ui/input-fields/Checkbox.input.tsx'
 
-import {loginInputValidator} from "@validations/login.validator.ts"
-import {login} from "@services/api/auth/auth.api.ts"
+import {loginInputValidator} from '@validations/login.validator.ts'
+import {login} from '@services/api/auth/auth.api.ts'
 
 import {
     AuthInnerWrapper,
@@ -19,7 +19,7 @@ import {
     MainContent as MainContentStyled,
     AuthLink, AuthContainer,
 } from "./Auth.styled.tsx"
-import useRedirectIfAuthenticated from "@hooks/useRedirectIfAuthenticated.ts";
+import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts'
 
 const Container = styled(AuthContainer)``
 const Wrapper = styled(AuthInnerWrapper)``

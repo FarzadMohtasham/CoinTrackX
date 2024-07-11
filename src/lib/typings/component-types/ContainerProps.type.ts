@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {RuleSet} from 'styled-components'
 
 export type ContainerPropsType = {

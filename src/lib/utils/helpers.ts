@@ -1,21 +1,21 @@
 import {AssetName} from '@typings/Assets.api.type.ts'
 import {assetList} from '@data/assetsList.ts'
 import creditCardPatternsData from '@data/cardProviderPatterns.data.ts'
-import {CardNumberProvider} from "@typings/component-types/CardNumberInput.type.ts";
+import {CardNumberProvider} from '@typings/component-types/CardNumberInput.type.ts'
 
-export const expDatePattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
-export const numbersOnlyPattern = /^[0-9]+$/;
-export const maxPostalCodePattern = /^[A-Za-z0-9\s-]{1,10}$/;
+export const expDatePattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/
+export const numbersOnlyPattern = /^[0-9]+$/
+export const maxPostalCodePattern = /^[A-Za-z0-9\s-]{1,10}$/
 
 export function titleCase(str: string): string {
-    const splitStr = str.toLowerCase().split(' ');
+    const splitStr = str.toLowerCase().split(' ')
     for (let i = 0; i < splitStr.length; i++) {
         // You do not need to check if i is larger than splitStr length, as your for does that for you
         // Assign it back to the array
-        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1)
     }
     // Directly return the joined string
-    return splitStr.join(' ');
+    return splitStr.join(' ')
 }
 
 export function removeLetter(str: string, letterToRemove: string): string {

@@ -1,5 +1,5 @@
-import {create} from "zustand";
-import {AuthUser} from "@supabase/supabase-js";
+import {create} from 'zustand'
+import {AuthUser} from '@supabase/supabase-js'
 
 type States = {
     user: AuthUser | null;

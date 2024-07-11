@@ -1,5 +1,5 @@
 import {object, string, ValidationError} from 'yup'
-import {InputFieldValidatorProps, InputFieldValidatorResult} from "@typings/validator-types/Input.validator.type.ts";
+import {InputFieldValidatorProps, InputFieldValidatorResult} from '@typings/validator-types/Input.validator.type.ts';
 
 export const InputFieldValidator = async (props: InputFieldValidatorProps): Promise<InputFieldValidatorResult> => {
     const validationResult: InputFieldValidatorResult = {
