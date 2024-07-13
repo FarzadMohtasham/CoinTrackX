@@ -1,12 +1,12 @@
-import {JSX} from "react";
-import {styled} from 'styled-components'
+import { JSX } from 'react';
+import { styled } from 'styled-components';
 
-import Heading from './Heading.tsx'
+import Heading from './Heading.tsx';
 
-import {Review as ReviewProps} from '@typings/component-types/Review.type.ts'
+import { Review as ReviewProps } from '@typings/component-types/Review.type.ts';
 
-const FILLED_STAR_ICON_URL = '/icons/star-filled.svg'
-const UNFILLED_STAR_ICON_URL = '/icons/star-unfilled.svg'
+const FILLED_STAR_ICON_URL = '/icons/star-filled.svg';
+const UNFILLED_STAR_ICON_URL = '/icons/star-unfilled.svg';
 
 const ReviewStyled = styled.div`
   width: 100%;
@@ -28,7 +28,6 @@ const ReviewStyled = styled.div`
     img {
       width: 18px;
     }
-
   }
 
   .quote {
@@ -59,47 +58,46 @@ const ReviewStyled = styled.div`
       }
     }
   }
-`
+`;
 
 export default function Review(props: ReviewProps): JSX.Element {
-    const {numberOfStars, quote, author} = props
+  const { numberOfStars, quote, author } = props;
 
-    return (
-        <ReviewStyled className={'review'}>
-            <div className="stars">
-                {
-                    [...Array((5 - numberOfStars) + numberOfStars).keys()].map((_: unknown, index: number): JSX.Element => {
-                        return (
-                            (index + 1) <= numberOfStars ?
-                                <img src={FILLED_STAR_ICON_URL}
-                                     alt={'filled star'}
-                                     key={'star-filled-' + index}/>
-                                :
-                                <img src={UNFILLED_STAR_ICON_URL}
-                                     alt={'filled star'}
-                                     key={'star-filled-' + index}/>
-                        )
-                    })
-                }
-            </div>
+  return (
+    <ReviewStyled className={'review'}>
+      <div className="stars">
+        {[...Array(5 - numberOfStars + numberOfStars).keys()].map(
+          (_: unknown, index: number): JSX.Element => {
+            return index + 1 <= numberOfStars ? (
+              <img
+                src={FILLED_STAR_ICON_URL}
+                alt={'filled star'}
+                key={'star-filled-' + index}
+              />
+            ) : (
+              <img
+                src={UNFILLED_STAR_ICON_URL}
+                alt={'filled star'}
+                key={'star-filled-' + index}
+              />
+            );
+          },
+        )}
+      </div>
 
-            <Heading className={'quote'} headingType={'h6'}>
-                {quote}
-            </Heading>
+      <Heading className={'quote'} headingType={'h6'}>
+        {quote}
+      </Heading>
 
-            <div className="review-author">
-                <img src={author.imgSrc} alt=""/>
+      <div className="review-author">
+        <img src={author.imgSrc} alt="" />
 
-                <div className="author-info">
-                    <span className="name">
-                        {author.name}
-                    </span>
+        <div className="author-info">
+          <span className="name">{author.name}</span>
 
-                    <span className="job">
-                        {author.job}
-                    </span>
-                </div>
-            </div>
-        </ReviewStyled>
-    )
+          <span className="job">{author.job}</span>
+        </div>
+      </div>
+    </ReviewStyled>
+  );
 }

@@ -1,21 +1,21 @@
-import {JSX} from 'react'
-import {styled} from 'styled-components'
+import { JSX } from 'react';
+import { styled } from 'styled-components';
 
-import Icon from '@components/ui/stuff/Icon.tsx'
-import Badge from '@components/ui/stuff/Badge.tsx'
+import Icon from '@components/ui/stuff/Icon.tsx';
+import Badge from '@components/ui/stuff/Badge.tsx';
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-`
+`;
 
 const LeftCol = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  
+
   .top-bar {
     display: flex;
     align-items: center;
@@ -34,38 +34,30 @@ const LeftCol = styled.div`
       font-weight: bold;
     }
   }
-`
+`;
 
-const RightCol = styled.div`
-
-`
+const RightCol = styled.div``;
 
 export default function PortfolioValueCrypto(): JSX.Element {
-    return (
-        <Container>
-            <LeftCol>
-                <div className={'top-bar'}>
-                    <Icon iconSrc={'portfolio-value.svg'}
-                          width={'20px'}
-                    />
-                    <span>PORTFOLIO VALUE</span>
-                </div>
+  return (
+    <Container>
+      <LeftCol>
+        <div className={'top-bar'}>
+          <Icon iconSrc={'portfolio-value.svg'} width={'20px'} />
+          <span>PORTFOLIO VALUE</span>
+        </div>
 
-                <div className={'content'}>
-                    <span>
-                        $5,260
-                    </span>
-                </div>
-            </LeftCol>
+        <div className={'content'}>
+          <span>$5,260</span>
+        </div>
+      </LeftCol>
 
-            <RightCol>
-                <Badge borderRadius={'full'}
-                       type={'success'}
-                       outline>
-                    <Icon iconSrc={'arrow-up.svg'} width={'12px'}/>
-                    1.37%
-                </Badge>
-            </RightCol>
-        </Container>
-    )
+      <RightCol>
+        <Badge borderRadius={'full'} type={'success'} outline>
+          <Icon iconSrc={'arrow-up.svg'} width={'12px'} />
+          1.37%
+        </Badge>
+      </RightCol>
+    </Container>
+  );
 }

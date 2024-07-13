@@ -1,5 +1,3 @@
 export function Component() {
-    return (
-        <div>PreferencesPage</div>
-    )
+  return <div>PreferencesPage</div>;
 }

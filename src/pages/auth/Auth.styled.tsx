@@ -1,11 +1,11 @@
-import {styled} from 'styled-components'
+import { styled } from 'styled-components';
 
 export const AuthContainer = styled.main`
-  background-color: #F9F8FF;
+  background-color: #f9f8ff;
   height: 100dvh;
   display: grid;
   place-content: center;
-`
+`;
 
 export const AuthInnerWrapper = styled.div`
   background-color: white;
@@ -14,25 +14,25 @@ export const AuthInnerWrapper = styled.div`
   width: 95dvw;
 
   /*Very Small devices (landscape phones, 274px and up)*/
-  @media screen and (min-width: ${props => props.theme.breakpoints.xsm}) {
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.xsm}) {
     width: 70dvw;
   }
 
   /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (min-width: ${props => props.theme.breakpoints.sm}) {
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.sm}) {
     width: 57dvw;
   }
 
   /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${props => props.theme.breakpoints.md}) {
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.md}) {
     width: 45dvw;
   }
 
   /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${props => props.theme.breakpoints.lg}) {
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.lg}) {
     width: 30dvw;
   }
-`
+`;
 
 export const HeadContent = styled.div`
   margin-bottom: 38px;
@@ -53,7 +53,7 @@ export const HeadContent = styled.div`
     font-weight: 500;
     display: block;
   }
-`
+`;
 
 export const MainContent = styled.div`
   display: flex;
@@ -65,11 +65,11 @@ export const MainContent = styled.div`
     display: flex;
     gap: 16px;
   }
-  
-  @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
+
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
     gap: 12px;
   }
-`
+`;
 
 export const AuthLink = styled.div`
   display: flex;
@@ -88,4 +88,4 @@ export const AuthLink = styled.div`
       color: var(--color-primary);
     }
   }
-`
+`;

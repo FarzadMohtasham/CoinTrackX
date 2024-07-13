@@ -1,12 +1,8 @@
-import {JSX} from 'react'
-import {styled} from 'styled-components'
+import { JSX } from 'react';
+import { styled } from 'styled-components';
 
-const TransactionsContainer = styled.div``
+const TransactionsContainer = styled.div``;
 
 export function Component(): JSX.Element {
-    return (
-        <TransactionsContainer>
-            Transactions
-        </TransactionsContainer>
-    )
+  return <TransactionsContainer>Transactions</TransactionsContainer>;
 }

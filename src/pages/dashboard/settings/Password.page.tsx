@@ -1,5 +1,3 @@
 export function Component() {
-    return (
-        <div>SecurityPage</div>
-    )
+  return <div>SecurityPage</div>;
 }

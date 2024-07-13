@@ -1,13 +1,13 @@
-import {JSX} from 'react'
-import {styled} from 'styled-components'
+import { JSX } from 'react';
+import { styled } from 'styled-components';
 
-import PortfolioValueCrypto from '@components/ui/crypto/PortfolioValue.crypto.tsx'
-import PortfolioVolume24HCrypto from '@components/ui/crypto/PortfolioVolume24H.crypto.tsx'
+import PortfolioValueCrypto from '@components/ui/crypto/PortfolioValue.crypto.tsx';
+import PortfolioVolume24HCrypto from '@components/ui/crypto/PortfolioVolume24H.crypto.tsx';
 
-import {IStyledComponentBase} from 'styled-components/dist/types'
+import { IStyledComponentBase } from 'styled-components/dist/types';
 
 const PortfolioSummaryContainer: IStyledComponentBase<any> = styled.div.attrs({
-    className: 'portfolio-summary'
+  className: 'portfolio-summary',
 })`
   display: flex;
   flex-direction: row;
@@ -18,16 +18,16 @@ const PortfolioSummaryContainer: IStyledComponentBase<any> = styled.div.attrs({
   padding: 24px;
 
   /*Very Small devices (landscape phones, 576px and down)*/
-  @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
     flex-direction: column;
   }
-`
+`;
 
 export default function PortfolioSummary(): JSX.Element {
-    return (
-        <PortfolioSummaryContainer>
-            <PortfolioValueCrypto/>
-            <PortfolioVolume24HCrypto/>
-        </PortfolioSummaryContainer>
-    )
+  return (
+    <PortfolioSummaryContainer>
+      <PortfolioValueCrypto />
+      <PortfolioVolume24HCrypto />
+    </PortfolioSummaryContainer>
+  );
 }

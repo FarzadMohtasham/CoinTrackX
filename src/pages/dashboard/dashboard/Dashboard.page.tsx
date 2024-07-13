@@ -1,8 +1,8 @@
-import {JSX} from 'react'
-import {styled} from 'styled-components'
+import { JSX } from 'react';
+import { styled } from 'styled-components';
 
-import PortfolioSummary from '@components/dashboard/PortfolioSummary.tsx'
-import CurrencyPrice from '@components/ui/crypto/CurrencyPrice.tsx'
+import PortfolioSummary from '@components/dashboard/PortfolioSummary.tsx';
+import CurrencyPrice from '@components/ui/crypto/CurrencyPrice.tsx';
 
 const DashboardContainer = styled.div`
   display: grid;
@@ -12,10 +12,10 @@ const DashboardContainer = styled.div`
   .portfolio-summary {
     margin-bottom: 24px;
   }
-`
+`;
 
 const PortfolioSummaryWrapper = styled.div.attrs({
-    className: 'portfolio-summary-wrapper',
+  className: 'portfolio-summary-wrapper',
 })`
   @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
     grid-column: 1 / 10;
@@ -28,15 +28,15 @@ const PortfolioSummaryWrapper = styled.div.attrs({
   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
     grid-column: 3 / 8;
   }
-`
+`;
 
 export function Component(): JSX.Element {
-    return (
-        <DashboardContainer>
-            <PortfolioSummaryWrapper>
-                <PortfolioSummary/>
-                <CurrencyPrice/>
-            </PortfolioSummaryWrapper>
-        </DashboardContainer>
-    )
+  return (
+    <DashboardContainer>
+      <PortfolioSummaryWrapper>
+        <PortfolioSummary />
+        <CurrencyPrice />
+      </PortfolioSummaryWrapper>
+    </DashboardContainer>
+  );
 }

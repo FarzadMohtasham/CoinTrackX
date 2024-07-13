@@ -1,14 +1,21 @@
-import {useQuery, UseQueryResult} from '@tanstack/react-query'
-import {fetchNotifications} from '@services/api/notifications/notifications.api.ts'
-import {Notification} from '@typings/component-types/Notifications.type.ts'
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
+import { fetchNotifications } from '@services/api/notifications/notifications.api.ts';
+import { Notification } from '@typings/component-types/Notifications.type.ts';
 
 export function useNotificationsQuery() {
-    const {data, isLoading}: UseQueryResult<{ data: Notification[] | undefined, error: string }, Error> = useQuery({
-        queryKey: ['notifs'],
-        queryFn: fetchNotifications
-    })
+  const {
+    data,
+    isLoading,
+  }: UseQueryResult<
+    { data: Notification[] | undefined; error: string },
+    Error
+  > = useQuery({
+    queryKey: ['notifs'],
+    queryFn: fetchNotifications,
+  });
 
-    return {
-        data, isLoading
-    }
+  return {
+    data,
+    isLoading,
+  };
 }

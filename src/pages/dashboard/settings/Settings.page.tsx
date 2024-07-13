@@ -1,12 +1,8 @@
-import {JSX} from 'react'
-import {styled} from 'styled-components'
+import { JSX } from 'react';
+import { styled } from 'styled-components';
 
-const SettingsContainer = styled.div``
+const SettingsContainer = styled.div``;
 
 export function Component(): JSX.Element {
-    return (
-        <SettingsContainer>
-            Settings
-        </SettingsContainer>
-    )
+  return <SettingsContainer>Settings</SettingsContainer>;
 }

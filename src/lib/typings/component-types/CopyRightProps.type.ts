@@ -1,7 +1,7 @@
 export type CopyRightProps = {
-    color?: string;
-}
+  color?: string;
+};
 
 export type CopyRightStyledProps = {
-    color: string;
-}
+  color: string;
+};

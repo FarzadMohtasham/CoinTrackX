@@ -1,1 +1,1 @@
-export type CardNumberProvider = 'Visa' | 'MasterCard'
+export type CardNumberProvider = 'Visa' | 'MasterCard';

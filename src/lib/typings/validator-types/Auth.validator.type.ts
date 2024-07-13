@@ -1,19 +1,19 @@
 export type LoginValidatorProps = {
-    type: 'email' | 'password';
-    payload: string;
+  type: 'email' | 'password';
+  payload: string;
 };
 
-export type LoginValidationResult =  {
-    isValid: boolean;
-    errorMessage: string;
-}
+export type LoginValidationResult = {
+  isValid: boolean;
+  errorMessage: string;
+};
 
 export type SignupValidatorProps = {
-    type: 'firstName' | 'lastName' | 'email' | 'password';
-    payload: string;
+  type: 'firstName' | 'lastName' | 'email' | 'password';
+  payload: string;
 };
 
 export type SignupValidationResult = {
-    isValid: boolean;
-    errorMessage: string;
-}
+  isValid: boolean;
+  errorMessage: string;
+};

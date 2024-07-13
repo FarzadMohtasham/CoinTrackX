@@ -1,11 +1,14 @@
-import {scroller} from 'react-scroll'
+import { scroller } from 'react-scroll';
 
 const scrollOptions = {
-    duration: 800,
-    smooth: true,
-    offset: 50,
-}
+  duration: 800,
+  smooth: true,
+  offset: 50,
+};
 
-export default function scrollTo(targetName: string, options: object = scrollOptions): void {
-    scroller.scrollTo(targetName, options)
+export default function scrollTo(
+  targetName: string,
+  options: object = scrollOptions,
+): void {
+  scroller.scrollTo(targetName, options);
 }
