@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.20](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.19...v0.0.20) (2024-07-13)
+
+
+### Features
+
+* Cleanup code + Reformat ([46d2b88](https://github.com/FarzadMohtasham/CoinTrackX/commit/46d2b88756a71bcc955379b98f7cbfdc9a0684bf))
+
 ### [0.0.19](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.18...v0.0.19) (2024-07-13)
 
 
