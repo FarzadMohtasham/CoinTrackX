@@ -22,7 +22,7 @@ import {CreditDebitCard as CreditDebitCardT} from '@typings/component-types/Cred
 import CreditDebitCardModal from '@components/dashboard/settings/payment-methods/CreditDebitCardModal.tsx'
 import AddCreditDebitCard from '@components/ui/cards/AddCreditDebit.card.tsx'
 import useGetCreditDebitCardsQuery from '@query/paymentMethods/useGetCreditDebitCards.query.ts'
-import Skeleton from "react-loading-skeleton";
+import Skeleton from 'react-loading-skeleton'
 
 const NoPaymentMethodContainer = styled.div`
     display: grid;

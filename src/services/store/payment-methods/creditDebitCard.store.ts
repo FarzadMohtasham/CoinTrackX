@@ -1,5 +1,5 @@
-import {create} from "zustand";
-import {CreditDebitCard} from "@typings/component-types/CreditDebitCard.type.ts";
+import { create, StoreApi, UseBoundStore } from 'zustand';
+import {CreditDebitCard} from '@typings/component-types/CreditDebitCard.type.ts'
 
 type CreditDebitCardPaymentMethodStates = {
     creditDebitCards: CreditDebitCard[];
@@ -8,7 +8,7 @@ type CreditDebitCardPaymentMethodStates = {
     removeCreditDebitCard: (creditDebitCardId: number) => void;
 }
 
-export const useCreditDebitStore = create<CreditDebitCardPaymentMethodStates>((set) => ({
+export const useCreditDebitStore: UseBoundStore<StoreApi<CreditDebitCardPaymentMethodStates>> = create<CreditDebitCardPaymentMethodStates>((set) => ({
     creditDebitCards: [{
         id: 0,
         card_number: '4111111111111111',
@@ -45,15 +45,15 @@ export const useCreditDebitStore = create<CreditDebitCardPaymentMethodStates>((s
             email: 'farzad@gmail.com',
             postal_code: '12345-4321',
         },],
-    setCreditDebitCards: (paymentMethodsList) => {
+    setCreditDebitCards: (paymentMethodsList: CreditDebitCard[]): void => {
         set({creditDebitCards: paymentMethodsList})
     },
-    addCreditDebitCard: (creditDebitCard) => {
+    addCreditDebitCard: (creditDebitCard: CreditDebitCard): void => {
         set((state) => ({
             creditDebitCards: [...state.creditDebitCards, creditDebitCard]
         }))
     },
-    removeCreditDebitCard: (creditDebitCardId) => {
+    removeCreditDebitCard: (creditDebitCardId: number): void => {
         set((state) => ({
             creditDebitCards: state.creditDebitCards.filter(card => card.id !== creditDebitCardId)
         }))

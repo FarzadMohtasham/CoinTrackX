@@ -1,4 +1,5 @@
-import axios, {AxiosResponse} from "axios"
+import axios, {AxiosResponse} from 'axios'
+
 import {
     Asset,
     AssetHistoryInterval,

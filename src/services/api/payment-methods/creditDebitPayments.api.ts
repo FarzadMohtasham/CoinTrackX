@@ -1,12 +1,14 @@
-import {supabaseClient as supabase} from "@config/supabase.ts"
-import {CreditDebitCard} from "@typings/component-types/CreditDebitCard.type.ts"
-import useUser from "@hooks/useUser.ts";
-import {AuthUser} from "@supabase/supabase-js";
+import { AuthUser, PostgrestError } from '@supabase/supabase-js';
+import {supabaseClient as supabase} from '@config/supabase.ts'
+
+import {CreditDebitCard} from '@typings/component-types/CreditDebitCard.type.ts'
+
+import useUser from '@hooks/useUser.ts'
 
 /*
 * This API will insert a creditDebitCard to the DB
 * */
-export const insertCreditDebitCard = async (cardInfo: CreditDebitCard) => {
+export const insertCreditDebitCard = async (cardInfo: CreditDebitCard): Promise<any> => {
     const {
         email,
         card_number,
@@ -18,7 +20,7 @@ export const insertCreditDebitCard = async (cardInfo: CreditDebitCard) => {
         postal_code,
     } = cardInfo
 
-    const {data, error} = await supabase
+    const {data, error}: {data: any[] | null, error: PostgrestError | null} = await supabase
         .from('creditDebitCards')
         .insert([
             {
@@ -37,11 +39,11 @@ export const insertCreditDebitCard = async (cardInfo: CreditDebitCard) => {
     return {data, error}
 }
 
-export const getCreditDebitCards = async () => {
+export const getCreditDebitCards = async (): Promise<any> => {
     // @ts-ignore
     const {user}: {user: AuthUser} = useUser()
 
-    let { data, error } = await supabase
+    let { data, error }: {data: CreditDebitCard[] | null, error: PostgrestError | null} = await supabase
         .from('creditDebitCards')
         .select("*")
         // Filters

@@ -1,8 +1,9 @@
+import {ChangeEvent, useState} from 'react'
 import {styled} from 'styled-components'
-import PhoneNumberInput from '@components/ui/input-fields/PhoneNumber.input.tsx';
-import Icon from '@components/ui/stuff/Icon.tsx';
-import {ChangeEvent, useState} from "react";
 import {Switch} from '@chakra-ui/react'
+
+import PhoneNumberInput from '@components/ui/input-fields/PhoneNumber.input.tsx'
+import Icon from '@components/ui/stuff/Icon.tsx'
 
 const SecurityPageContainer = styled.div`
     padding: 40px;

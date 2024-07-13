@@ -1,4 +1,4 @@
-import {JSX, useState} from "react";
+import {JSX, useState} from 'react'
 import {styled} from 'styled-components'
 
 import TopMovers from '@components/dashboard/prices/TopMovers.tsx'

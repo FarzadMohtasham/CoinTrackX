@@ -1,16 +1,16 @@
-import {JSX, useEffect} from 'react'
-import {styled} from 'styled-components'
+import { JSX, useEffect } from 'react'
+import { styled } from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
 
 import useGetAssetSummaryQuery from '@query/assetSummary/useGetAssetSummary.query.ts'
 
-import {AssetName} from '@typings/Assets.api.type.ts'
+import { AssetName } from '@typings/Assets.api.type.ts'
 
 type AssetSummaryProps = {
-    assetName: AssetName,
-    hasErrorHandler: () => void;
-    hasNoErrorHandler: () => void;
-    refetchListener: number;
+  assetName: AssetName,
+  hasErrorHandler: () => void;
+  hasNoErrorHandler: () => void;
+  refetchListener: number;
 }
 
 const AssetSummaryContainer = styled.div`
@@ -31,47 +31,47 @@ const AssetSummaryContainer = styled.div`
         font-weight: 400;
         text-align: justify;
     }
-`
+`;
 
 export default function AssetSummary(props: AssetSummaryProps): JSX.Element {
-    const {
-        assetName,
-        hasErrorHandler,
-        hasNoErrorHandler,
-        refetchListener,
-    } = props
+  const {
+    assetName,
+    hasErrorHandler,
+    hasNoErrorHandler,
+    refetchListener
+  } = props;
 
-    const {
-        data: assetSummaryData,
-        error: assetSummaryError,
-        isLoading: assetSummaryIsLoading,
-        refetch: assetSummaryRefresh,
-    } = useGetAssetSummaryQuery(assetName)
+  const {
+    data: assetSummaryData,
+    error: assetSummaryError,
+    isLoading: assetSummaryIsLoading,
+    refetch: assetSummaryRefresh
+  } = useGetAssetSummaryQuery(assetName);
 
-    useEffect(() => {
-        if (assetSummaryError) hasErrorHandler()
-        else hasNoErrorHandler()
-    }, [assetSummaryError]);
+  useEffect((): void => {
+    if (assetSummaryError) hasErrorHandler();
+    else hasNoErrorHandler();
+  }, [assetSummaryError]);
 
-    useEffect(() => {
-        assetSummaryRefresh()
-    }, [refetchListener]);
+  useEffect((): void => {
+      assetSummaryRefresh().then()
+  }, [refetchListener]);
 
-    return (
-        <>
-            {
-                assetSummaryIsLoading ?
-                    <Skeleton height={'30px'} count={5}/>
-                    :
-                    <AssetSummaryContainer>
+  return (
+    <>
+      {
+        assetSummaryIsLoading ?
+          <Skeleton height={'30px'} count={5} />
+          :
+          <AssetSummaryContainer>
                         <span className={'summary-title'}>
                             About
                         </span>
-                        <span className={'summary-info'}>
+            <span className={'summary-info'}>
                             {assetSummaryData?.asset_summary}
                         </span>
-                    </AssetSummaryContainer>
-            }
-        </>
-    )
+          </AssetSummaryContainer>
+      }
+    </>
+  );
 }

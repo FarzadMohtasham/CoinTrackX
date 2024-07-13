@@ -5,15 +5,18 @@ module.exports = {
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react-hooks/recommended',
-        'plugin:@tanstack/eslint-plugin-query/recommended'
+        'plugin:@tanstack/eslint-plugin-query/recommended',
+        'prettier',
+        'plugin:prettier/recommended',
     ],
     ignorePatterns: ['dist', '.eslintrc.cjs'],
     parser: '@typescript-eslint/parser',
-    plugins: ['react-refresh'],
+    plugins: ['react-refresh', '@typescript-eslint', '@tanstack/eslint-plugin-query'],
     rules: {
         'react-refresh/only-export-components': [
             'warn',
             {allowConstantExport: true},
         ],
+        'quotes': ['error', 'single'],
     },
 }
