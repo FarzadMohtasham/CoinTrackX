@@ -15,11 +15,11 @@ import { signup } from '@services/api/auth/auth.api.ts';
 import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts';
 
 import {
+  AuthContainer,
   AuthInnerWrapper,
+  AuthLink,
   HeadContent as HeadContentStyled,
   MainContent as MainContentStyled,
-  AuthLink,
-  AuthContainer,
 } from '@pages/auth/Auth.styled.tsx';
 import { SignupValidationResult } from '@typings/validator-types/Auth.validator.type.ts';
 

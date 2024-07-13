@@ -4,8 +4,8 @@ import { css, styled } from 'styled-components';
 import Icon from '@components/ui/stuff/Icon.tsx';
 
 import {
-  NavigationProps,
   NavigationItemStyledProps,
+  NavigationProps,
 } from '@typings/NavigationItem.type.ts';
 
 const NavigationItemContainer = styled.div<NavigationItemStyledProps>`

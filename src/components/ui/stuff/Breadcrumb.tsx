@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { useLocation, Location, Link } from 'react-router-dom';
+import { Link, Location, useLocation } from 'react-router-dom';
 
 export default function Breadcrumb(): JSX.Element {
   const location: Location<any> = useLocation();

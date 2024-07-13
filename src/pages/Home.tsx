@@ -1,4 +1,4 @@
-import { JSX, Fragment } from 'react';
+import { Fragment, JSX } from 'react';
 
 // @typings-ignore
 import Header from '@components/home/Header.home.tsx';

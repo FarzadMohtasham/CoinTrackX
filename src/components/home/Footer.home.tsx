@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import { Link } from 'react-router-dom';
-import { styled, css, ExecutionContext, FastOmit } from 'styled-components';
+import { css, ExecutionContext, FastOmit, styled } from 'styled-components';
 
 import Container from '@components/ui/stuff/Container.tsx';
 import Logo from '@components/ui/stuff/Logo.tsx';

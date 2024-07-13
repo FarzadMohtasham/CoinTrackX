@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { styled, css, RuleSet } from 'styled-components';
+import { css, RuleSet, styled } from 'styled-components';
 import { HashLoader } from 'react-spinners';
 
 // Components
@@ -13,10 +13,10 @@ import {
 
 // Data
 import {
-  buttonTypeVariations,
-  buttonPaddingVariations,
-  buttonFontSizeVariations,
   buttonBorderRadius,
+  buttonFontSizeVariations,
+  buttonPaddingVariations,
+  buttonTypeVariations,
 } from '@data/button.data.ts';
 
 type ButtonStyledProps = {

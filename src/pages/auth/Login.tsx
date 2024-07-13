@@ -14,11 +14,11 @@ import { loginInputValidator } from '@validations/login.validator.ts';
 import { login } from '@services/api/auth/auth.api.ts';
 
 import {
+  AuthContainer,
   AuthInnerWrapper,
+  AuthLink,
   HeadContent as HeadContentStyled,
   MainContent as MainContentStyled,
-  AuthLink,
-  AuthContainer,
 } from './Auth.styled.tsx';
 import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts';
 

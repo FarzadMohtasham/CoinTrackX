@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { styled, css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Heading from '@components/ui/stuff/Heading.tsx';

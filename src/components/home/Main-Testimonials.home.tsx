@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { styled, css } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 import Container from '@components/ui/stuff/Container.tsx';
 import HeadingBox from '@components/ui/stuff/HeadingBox.tsx';

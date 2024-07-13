@@ -4,10 +4,10 @@ import { css, styled } from 'styled-components';
 import Icon from '@components/ui/stuff/Icon.tsx';
 
 import {
-  SelectProps,
-  SelectMenuItem as SelectMenuItemT,
   SelectedMenuItemProps,
+  SelectMenuItem as SelectMenuItemT,
   SelectMenuWrapperProps,
+  SelectProps,
 } from '@typings/component-types/Select.type.ts';
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
