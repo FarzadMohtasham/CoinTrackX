@@ -136,10 +136,10 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
   const onEditCreditDebitCardHandler = async () => {
     try {
       await updateCreditDebitCard(creditDebitCardInfo.id, cardInfo);
-      toast.success('Credit/Debit Card Updated')
-      onClose()
+      toast.success('Credit/Debit Card Updated');
+      onClose();
     } catch (e: PostgrestError | any) {
-      toast.error(e.message)
+      toast.error(e.message);
     }
   };
 
