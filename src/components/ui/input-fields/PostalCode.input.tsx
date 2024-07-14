@@ -9,6 +9,7 @@ type PostalInputProps = {
   disabled?: boolean;
   maxLength?: number;
   minLength?: number;
+  initialValue?: string;
 };
 
 const PostalCodeInputContainer = styled.div<{ $inputFocused: boolean }>`
@@ -43,10 +44,11 @@ export default function PostalCodeInput(props: PostalInputProps) {
     disabled = false,
     maxLength = 5,
     minLength = 0,
+    initialValue = ''
   } = props;
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>(initialValue);
   const [inputFocused, setInputFocused] = useState<boolean>(false);
 
   // ---------- Handlers ----------
@@ -95,6 +97,7 @@ export default function PostalCodeInput(props: PostalInputProps) {
         placeholder={placeholder}
         maxLength={maxLength}
         minLength={minLength}
+        value={inputValue}
       />
     </PostalCodeInputContainer>
   );

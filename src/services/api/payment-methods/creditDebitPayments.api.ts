@@ -9,7 +9,7 @@ import useUser from '@hooks/useUser.ts';
  * This API will insert a creditDebitCard to the DB
  * */
 export const insertCreditDebitCard = async (
-  cardInfo: CreditDebitCard,
+  cardInfo: CreditDebitCard
 ): Promise<any> => {
   const {
     email,
@@ -19,7 +19,7 @@ export const insertCreditDebitCard = async (
     cvv,
     cardholder_name,
     as_main_payment,
-    postal_code,
+    postal_code
   } = cardInfo;
 
   const { data, error }: { data: any[] | null; error: PostgrestError | null } =
@@ -34,8 +34,8 @@ export const insertCreditDebitCard = async (
           exp: exp,
           cvv: cvv,
           postal_code: postal_code,
-          as_main_payment: as_main_payment,
-        },
+          as_main_payment: as_main_payment
+        }
       ])
       .select();
 
@@ -48,13 +48,42 @@ export const getCreditDebitCards = async (): Promise<any> => {
 
   let {
     data,
-    error,
+    error
   }: { data: CreditDebitCard[] | null; error: PostgrestError | null } =
     await supabase
       .from('creditDebitCards')
       .select('*')
       // Filters
       .eq('email', user.email);
+
+  if (error) throw error;
+
+  return data;
+};
+
+export const updateCreditDebitCard = async (id: number, newCreditDebitCardInfo: CreditDebitCard): Promise<any> => {
+  // @ts-ignore
+  const { user }: { user: AuthUser } = useUser();
+
+  let {
+    data,
+    error
+  }: { data: CreditDebitCard[] | null; error: PostgrestError | null } = await supabase
+    .from('creditDebitCards')
+    .update({
+      email: newCreditDebitCardInfo.email,
+      cardholder_name: newCreditDebitCardInfo.cardholder_name,
+      card_provider: newCreditDebitCardInfo.card_provider,
+      card_number: newCreditDebitCardInfo.card_number,
+      exp: newCreditDebitCardInfo.exp,
+      cvv: newCreditDebitCardInfo.cvv,
+      postal_code: newCreditDebitCardInfo
+        .postal_code,
+      as_main_payment: newCreditDebitCardInfo.as_main_payment
+    })
+    .eq('id', id)
+    .eq('email', user.email)
+    .select();
 
   if (error) throw error;
 

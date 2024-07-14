@@ -9,6 +9,7 @@ export type InputProps = {
   unAllowedErrorMessages?: string[];
   maxLength?: number;
   minLength?: number;
+  initialValue?: string;
 };
 
 export type InputStyledProps = {

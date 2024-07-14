@@ -62,10 +62,6 @@ const ErrorContainer = styled.span`
 `;
 
 function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
-  const [inputFieldSelected, setInputFieldSelected] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>('');
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
   const {
     placeHolder = 'Undefined',
     label,
@@ -77,7 +73,12 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
     unAllowedErrorMessages = [],
     maxLength = 200,
     minLength = 0,
+    initialValue = '',
   } = props;
+
+  const [inputFieldSelected, setInputFieldSelected] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState<string>(initialValue);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const inputOnFocusHandler = () => setInputFieldSelected(true);
   const inputOnBlurHandler = () => setInputFieldSelected(false);

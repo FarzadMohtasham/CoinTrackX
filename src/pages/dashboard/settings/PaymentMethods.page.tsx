@@ -16,14 +16,14 @@ import Icon from '@components/ui/stuff/Icon.tsx';
 import Heading from '@components/ui/stuff/Heading.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
 
-import PaymentMethodOption from '@components/dashboard/settings/payment-methods/PaymentMethodOption.tsx';
+import PaymentMethodOptionComponent from '@components/dashboard/settings/payment-methods/PaymentMethodOption.component.tsx';
 import {
   PaymentMethodOptionProps,
   PaymentMethodTitle,
 } from '@typings/PaymentMethodOption.type.ts';
 import CreditDebitCard from '@components/ui/cards/CreditDebit.card.tsx';
 import { CreditDebitCard as CreditDebitCardT } from '@typings/component-types/CreditDebitCard.type';
-import CreditDebitCardModal from '@components/dashboard/settings/payment-methods/CreditDebitCardModal.tsx';
+import AddCreditDebitCardModal from '@components/dashboard/settings/payment-methods/AddCreditDebitCard.modal.tsx';
 import AddCreditDebitCard from '@components/ui/cards/AddCreditDebit.card.tsx';
 import useGetCreditDebitCardsQuery from '@query/paymentMethods/useGetCreditDebitCards.query.ts';
 import Skeleton from 'react-loading-skeleton';
@@ -113,8 +113,6 @@ export function Component() {
     setPaymentMethodStep(null);
   };
 
-  const onCardEditClickHandler = () => {};
-
   /*
    * Refetch on modal close
    * */
@@ -129,7 +127,7 @@ export function Component() {
       PaymentStepComponent = () => (
         <div>
           {paymentMethodStep === 'Credit/Debit Card' && (
-            <CreditDebitCardModal onClose={onClose} />
+            <AddCreditDebitCardModal onClose={onClose} />
           )}
         </div>
       );
@@ -159,7 +157,6 @@ export function Component() {
                         <CreditDebitCard
                           key={creditDebitCard.cardholder_name + index}
                           creditDebitCardInfo={creditDebitCard}
-                          onCardEditClickHandler={onCardEditClickHandler}
                         />
                       );
                     },
@@ -201,7 +198,7 @@ export function Component() {
                     index: number,
                   ): JSX.Element => {
                     return (
-                      <PaymentMethodOption
+                      <PaymentMethodOptionComponent
                         {...paymentMethodOption}
                         key={paymentMethodOption.title + index}
                         onClick={() =>

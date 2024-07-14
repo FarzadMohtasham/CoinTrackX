@@ -9,6 +9,7 @@ type CreditCardExpInputProps = {
   disabled?: boolean;
   maxLength?: number;
   minLength?: number;
+  initialValue?: string;
 };
 
 const CreditCardExpContainer = styled.div<{ $inputFocused: boolean }>`
@@ -43,10 +44,11 @@ export default function CreditCardExpInput(props: CreditCardExpInputProps) {
     disabled = false,
     maxLength = 5,
     minLength = 0,
+    initialValue = ''
   } = props;
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>(initialValue);
   const [inputFocused, setInputFocused] = useState<boolean>(false);
 
   // ---------- Handlers ----------

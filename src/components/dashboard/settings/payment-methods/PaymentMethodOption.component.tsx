@@ -46,7 +46,7 @@ const PaymentMethodOptionContainer = styled.div<{ $disabled: boolean }>`
     `}
 `;
 
-export default function PaymentMethodOption(props: PaymentMethodOptionProps) {
+export default function PaymentMethodOptionComponent(props: PaymentMethodOptionProps) {
   const { title, description, onClick, iconSrc, disabled } = props;
 
   const onPaymentMethodOptionClick = () => {

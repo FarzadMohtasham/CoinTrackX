@@ -68,7 +68,9 @@ const simpleNotifOptions: NotificationOptions = {
   closeIconSize: '12px',
 };
 
-export default function CreditDebitCardModal(props: CreditDebitCardModalProps) {
+export default function AddCreditDebitCardModal(
+  props: CreditDebitCardModalProps,
+) {
   const [cardholderNameErrorMsg, setCardholderNameErrorMsg] =
     useState<string>('');
 

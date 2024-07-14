@@ -17,6 +17,7 @@ type CardNumberProps = {
   disabled?: boolean;
   cardNumberHasErrorSetterFn: Dispatch<SetStateAction<boolean>>;
   creditCardProviderSetterFn: Dispatch<SetStateAction<CardNumberProvider | ''>>;
+  initialValue?: string;
 };
 
 const CardNumberInputContainer = styled.div<{ $inputFocused: boolean }>`
@@ -68,10 +69,11 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
     cardNumberHasErrorSetterFn,
     creditCardProviderSetterFn,
     disabled = false,
+    initialValue = '',
   } = props;
 
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>(initialValue);
   const [creditCardProvider, setCreditCardProvider] = useState<
     'Visa' | 'MasterCard' | ''
   >('');
