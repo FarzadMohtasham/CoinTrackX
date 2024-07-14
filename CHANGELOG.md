@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.21](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.20...v0.0.21) (2024-07-14)
+
+
+### Features
+
+* Added CreditDebitCard edit option ([f4607d7](https://github.com/FarzadMohtasham/CoinTrackX/commit/f4607d7b6967a3070388c762cefb610dd5cb4594))
+
 ### [0.0.20](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.19...v0.0.20) (2024-07-13)
 
 
