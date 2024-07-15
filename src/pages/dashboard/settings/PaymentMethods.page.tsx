@@ -153,6 +153,7 @@ export function Component() {
                     (creditDebitCard: CreditDebitCardT, index: number) => {
                       return (
                         <CreditDebitCard
+                          CreditDebitCardsRefetchFn={refetch}
                           key={creditDebitCard.cardholder_name + index}
                           creditDebitCardInfo={creditDebitCard}
                         />

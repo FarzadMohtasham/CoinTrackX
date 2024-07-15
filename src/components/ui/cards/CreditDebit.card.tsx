@@ -18,6 +18,7 @@ import EditCreditDebitCardModal from '@components/dashboard/settings/payment-met
 
 type CreditDebitCardProps = {
   creditDebitCardInfo: CreditDebitCardT;
+  CreditDebitCardsRefetchFn: () => void;
 };
 
 const CreditDebitCardContainer = styled.div`
@@ -87,7 +88,10 @@ const CreditDebitCardContainer = styled.div`
 `;
 
 export default function CreditDebitCard(props: CreditDebitCardProps) {
-  const { creditDebitCardInfo } = props;
+  const {
+    creditDebitCardInfo,
+    CreditDebitCardsRefetchFn
+  } = props;
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -163,6 +167,7 @@ export default function CreditDebitCard(props: CreditDebitCardProps) {
           <ModalBody>
             <EditCreditDebitCardModal onClose={onClose}
                                       creditDebitCardInfo={creditDebitCardInfo}
+                                      creditDebitCardRefetchFn={CreditDebitCardsRefetchFn}
             />
           </ModalBody>
         </ModalContent>
