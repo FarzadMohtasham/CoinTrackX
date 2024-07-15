@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.24](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.23...v0.0.24) (2024-07-15)
+
+
+### Bug Fixes
+
+* Refetch CreditDebitCards on card edit submit ([302cfd4](https://github.com/FarzadMohtasham/CoinTrackX/commit/302cfd4936310e10f49a48fdecf1cb93ae401c07))
+
 ### [0.0.23](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.22...v0.0.23) (2024-07-15)
 
 
