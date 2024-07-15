@@ -28,7 +28,7 @@ export const insertCreditDebitCard = async (
       .insert([
         {
           email: email,
-          cardholder_name: cardholder_name,
+          cardholder_name: cardholder_name.trim(),
           card_provider: card_provider,
           card_number: card_number,
           exp: exp,
@@ -72,7 +72,7 @@ export const updateCreditDebitCard = async (id: number, newCreditDebitCardInfo: 
     .from('creditDebitCards')
     .update({
       email: newCreditDebitCardInfo.email,
-      cardholder_name: newCreditDebitCardInfo.cardholder_name,
+      cardholder_name: newCreditDebitCardInfo.cardholder_name.trim(),
       card_provider: newCreditDebitCardInfo.card_provider,
       card_number: newCreditDebitCardInfo.card_number,
       exp: newCreditDebitCardInfo.exp,

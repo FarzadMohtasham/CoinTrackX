@@ -107,7 +107,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
           value={inputValue}
           onFocus={inputOnFocusHandler}
           onBlur={inputOnBlurHandler}
-          onChange={(e) => setInputValue(e.target.value.trim())}
+          onChange={(e) => setInputValue(e.target.value)}
         />
       </InputFieldContainer>
       {unAllowedErrorMessages.length !== 0 &&
