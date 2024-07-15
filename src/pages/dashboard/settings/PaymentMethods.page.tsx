@@ -123,11 +123,11 @@ export function Component() {
   switch (paymentMethodStep) {
     case 'Credit/Debit Card':
       PaymentStepComponent = () => (
-        <div>
+        <>
           {paymentMethodStep === 'Credit/Debit Card' && (
             <AddCreditDebitCardModal onClose={onClose} />
           )}
-        </div>
+        </>
       );
       break;
   }
@@ -145,7 +145,7 @@ export function Component() {
         </PaymentMethodsIsLoadingContainer>
       ) : (
         <>
-          {creditDebitCards ? (
+          {creditDebitCards.length ? (
             <PaymentMethodsContainer>
               {creditDebitCards && (
                 <div className="creditDebitCards">
