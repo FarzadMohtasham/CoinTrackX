@@ -12,7 +12,7 @@ import {
   LineElement,
   PointElement,
   Title,
-  Tooltip,
+  Tooltip
 } from 'chart.js';
 
 import Select from '@components/ui/stuff/Select.tsx';
@@ -29,7 +29,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 
 const currencyList: SelectMenuItem[] = [
@@ -37,94 +37,94 @@ const currencyList: SelectMenuItem[] = [
     name: 'btc',
     value: 'bitcoin',
     default: true,
-    iconSrc: 'crypto/btc.svg',
+    iconSrc: 'crypto/btc.svg'
   },
   {
     name: 'eth',
     value: 'ethereum',
     default: false,
-    iconSrc: 'crypto/eth.svg',
+    iconSrc: 'crypto/eth.svg'
   },
   {
     name: 'bnb',
     value: 'binance-coin',
     default: false,
-    iconSrc: 'crypto/bnb.svg',
+    iconSrc: 'crypto/bnb.svg'
   },
   {
     name: 'xrp',
     value: 'xrp',
     default: false,
-    iconSrc: 'crypto/xrp.svg',
+    iconSrc: 'crypto/xrp.svg'
   },
   {
     name: 'sol',
     value: 'solana',
     default: false,
-    iconSrc: 'crypto/sol.svg',
+    iconSrc: 'crypto/sol.svg'
   },
   {
     name: 'dogecoin',
     value: 'dogecoin',
     default: false,
-    iconSrc: 'crypto/doge.svg',
-  },
+    iconSrc: 'crypto/doge.svg'
+  }
 ];
 const chartIntervals: SelectMenuItem[] = [
   {
     name: '1 Min',
     value: 'm1',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '5 Min',
     value: 'm5',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '15 Min',
     value: 'm15',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '30 Min',
     value: 'm30',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '1 Hour',
     value: 'h1',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '2 Hour',
     value: 'h2',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '6 Hour',
     value: 'h6',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '12 Hour',
     value: 'h12',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '1 Day',
     value: 'd1',
     iconSrc: '',
-    default: true,
-  },
+    default: true
+  }
 ];
 
 const CurrencyPriceContainer = styled.div`
@@ -193,7 +193,7 @@ export default function CurrencyPrice(): JSX.Element {
   const [selectedChartInterval, setSelectedChartInterval] =
     useState<AssetHistoryInterval>(() => {
       return chartIntervals.filter(
-        (interval: SelectMenuItem) => interval.default,
+        (interval: SelectMenuItem) => interval.default
       )[0].value as AssetHistoryInterval;
     });
 
@@ -204,13 +204,13 @@ export default function CurrencyPrice(): JSX.Element {
     animation: false,
     plugins: {
       tooltip: {
-        enabled: true,
+        enabled: true
       },
       legend: {
-        position: 'bottom',
-      },
+        position: 'bottom'
+      }
     },
-    responsive: true,
+    responsive: true
   };
 
   const fake_data: ChartData<'line'> = {
@@ -219,9 +219,9 @@ export default function CurrencyPrice(): JSX.Element {
       {
         label: 'Price of ' + selectedCurrency.toUpperCase(),
         data: datasets || [],
-        borderColor: 'gray',
-      },
-    ],
+        borderColor: 'gray'
+      }
+    ]
   };
 
   const reloadChartHandler = (): void => {
@@ -232,7 +232,7 @@ export default function CurrencyPrice(): JSX.Element {
     function onSelectedCurrencyUpdate(): void {
       reloadChartHandler();
     },
-    [selectedCurrency, selectedChartInterval],
+    [selectedCurrency, selectedChartInterval]
   );
 
   useEffect(
@@ -240,7 +240,7 @@ export default function CurrencyPrice(): JSX.Element {
       if (currencyPriceHistoryData) {
         setDatasets(() => {
           return currencyPriceHistoryData.map(
-            (priceHistory: CryptoHistoryRecord) => priceHistory.priceUsd,
+            (priceHistory: CryptoHistoryRecord) => priceHistory.priceUsd
           );
         });
 
@@ -250,12 +250,12 @@ export default function CurrencyPrice(): JSX.Element {
           return currencyPriceHistoryData.map(
             (priceHistory: CryptoHistoryRecord) => {
               return priceHistory.date.split('T')[0];
-            },
+            }
           );
         });
       }
     },
-    [currencyPriceHistoryData],
+    [currencyPriceHistoryData]
   );
 
   return (

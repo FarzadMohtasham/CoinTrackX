@@ -22,7 +22,7 @@ export const useCreditDebitStore: UseBoundStore<
       exp: '12/26',
       created_at: new Date(),
       email: 'farzad@gmail.com',
-      postal_code: '12345-4321',
+      postal_code: '12345-4321'
     },
     {
       id: 0,
@@ -34,7 +34,7 @@ export const useCreditDebitStore: UseBoundStore<
       exp: '12/26',
       created_at: new Date(),
       email: 'farzad@gmail.com',
-      postal_code: '12345-4321',
+      postal_code: '12345-4321'
     },
     {
       id: 0,
@@ -46,22 +46,22 @@ export const useCreditDebitStore: UseBoundStore<
       exp: '12/26',
       created_at: new Date(),
       email: 'farzad@gmail.com',
-      postal_code: '12345-4321',
-    },
+      postal_code: '12345-4321'
+    }
   ],
   setCreditDebitCards: (paymentMethodsList: CreditDebitCard[]): void => {
     set({ creditDebitCards: paymentMethodsList });
   },
   addCreditDebitCard: (creditDebitCard: CreditDebitCard): void => {
     set((state) => ({
-      creditDebitCards: [...state.creditDebitCards, creditDebitCard],
+      creditDebitCards: [...state.creditDebitCards, creditDebitCard]
     }));
   },
   removeCreditDebitCard: (creditDebitCardId: number): void => {
     set((state) => ({
       creditDebitCards: state.creditDebitCards.filter(
-        (card) => card.id !== creditDebitCardId,
-      ),
+        (card) => card.id !== creditDebitCardId
+      )
     }));
-  },
+  }
 }));

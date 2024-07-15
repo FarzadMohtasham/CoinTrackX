@@ -13,24 +13,24 @@ import { removeLetter } from '@utils/helpers.ts';
 const navItems = [
   {
     name: 'partners',
-    link: '#partners',
+    link: '#partners'
   },
   {
     name: 'platforms',
-    link: '#platforms',
+    link: '#platforms'
   },
   {
     name: 'coins',
-    link: '#coins',
+    link: '#coins'
   },
   {
     name: 'buy crypto',
-    link: '#buy-crypto',
+    link: '#buy-crypto'
   },
   {
     name: 'testimonials',
-    link: '#testimonials',
-  },
+    link: '#testimonials'
+  }
 ];
 
 const HeaderStyled = styled.header`
@@ -127,8 +127,8 @@ const CTABtnText = styled.span<{ $userLoggedIn: boolean }>`
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     ${(props) =>
-      props.$userLoggedIn &&
-      css`
+  props.$userLoggedIn &&
+  css`
         display: none;
       `};
   }
@@ -156,7 +156,7 @@ export default function Header(): JSX.Element {
                     </a>
                   </NavItemStyled>
                 );
-              },
+              }
             )}
           </NavItemsStyled>
         </NavBarStyled>

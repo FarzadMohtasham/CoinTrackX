@@ -7,7 +7,7 @@ import PortfolioVolume24HCrypto from '@components/ui/crypto/PortfolioVolume24H.c
 import { IStyledComponentBase } from 'styled-components/dist/types';
 
 const PortfolioSummaryContainer: IStyledComponentBase<any> = styled.div.attrs({
-  className: 'portfolio-summary',
+  className: 'portfolio-summary'
 })`
   display: flex;
   flex-direction: row;

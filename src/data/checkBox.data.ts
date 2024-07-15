@@ -9,7 +9,7 @@ const checkBoxData = {
     'border-hover': `#275EFE`,
     background: `#fff`,
     disabled: `#F6F8FF`,
-    'disabled-inner': `#E1E6F9`,
+    'disabled-inner': `#E1E6F9`
   },
   danger: {
     active: css`var(--color-danger)`,
@@ -19,7 +19,7 @@ const checkBoxData = {
     'border-hover': `#275EFE`,
     background: `#fff`,
     disabled: `#F6F8FF`,
-    'disabled-inner': `#E1E6F9`,
+    'disabled-inner': `#E1E6F9`
   },
   black: {
     active: css`var(--color-black)`,
@@ -29,8 +29,8 @@ const checkBoxData = {
     'border-hover': `#275EFE`,
     background: `#fff`,
     disabled: `#F6F8FF`,
-    'disabled-inner': `#E1E6F9`,
-  },
+    'disabled-inner': `#E1E6F9`
+  }
 };
 
 export default checkBoxData;

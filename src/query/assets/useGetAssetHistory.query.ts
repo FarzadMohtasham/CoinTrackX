@@ -5,13 +5,13 @@ import { AssetHistoryInterval, AssetName } from '@typings/Assets.api.type.ts';
 export default function useGetAssetHistory(
   assetName: AssetName,
   chartInterval: AssetHistoryInterval = 'd1',
-  historyLength: number = 10,
+  historyLength: number = 10
 ) {
   const {
     data: currencyPriceHistoryData,
     error,
     refetch,
-    isLoading,
+    isLoading
   }: {
     data: object[] | any;
     error: any;
@@ -23,7 +23,7 @@ export default function useGetAssetHistory(
     staleTime: 1000 * 10,
     retry: false,
     refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
+    refetchOnReconnect: true
   });
 
   return { currencyPriceHistoryData, error, refetch, isLoading };

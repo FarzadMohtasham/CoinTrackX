@@ -4,7 +4,7 @@ import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
 
 export default function useDashboardProtectRoute(
   path: string = '/dashboard',
-  routerReplace: boolean = false,
+  routerReplace: boolean = false
 ): void {
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ export default function useDashboardProtectRoute(
 
     if (!userLoggedIn) {
       navigate(path, {
-        replace: routerReplace,
+        replace: routerReplace
       });
     }
   }, []);

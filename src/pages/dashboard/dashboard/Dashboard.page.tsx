@@ -15,7 +15,7 @@ const DashboardContainer = styled.div`
 `;
 
 const PortfolioSummaryWrapper = styled.div.attrs({
-  className: 'portfolio-summary-wrapper',
+  className: 'portfolio-summary-wrapper'
 })`
   @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
     grid-column: 1 / 10;

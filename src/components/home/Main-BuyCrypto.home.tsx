@@ -6,7 +6,7 @@ import HeadingBox from '@components/ui/stuff/HeadingBox.tsx';
 import SuperchargeCard from '@components/ui/cards/Supercharge.card.tsx';
 
 const BuyCryptoWrapperStyled = styled.section.attrs({
-  id: 'buy-crypto',
+  id: 'buy-crypto'
 })`
   padding: 100px 0;
   display: flex;

@@ -19,7 +19,7 @@ import {
   AuthInnerWrapper,
   AuthLink,
   HeadContent as HeadContentStyled,
-  MainContent as MainContentStyled,
+  MainContent as MainContentStyled
 } from '@pages/auth/Auth.styled.tsx';
 import { SignupValidationResult } from '@typings/validator-types/Auth.validator.type.ts';
 
@@ -53,14 +53,14 @@ export function Component(): JSX.Element {
   const [agreeTerms, setAgreeTerms] = useState<boolean>(false);
 
   const [firstNameFieldError, setFirstNameFieldError] = useState<string | null>(
-    null,
+    null
   );
   const [lastNameFieldError, setLastNameFieldError] = useState<string | null>(
-    null,
+    null
   );
   const [emailFieldError, setEmailFieldError] = useState<string | null>(null);
   const [passwordFieldError, setPasswordFieldError] = useState<string | null>(
-    null,
+    null
   );
 
   const [authLoading, setAuthLoading] = useState<boolean>(false);
@@ -100,7 +100,7 @@ export function Component(): JSX.Element {
           height={15}
           alt={'github icon'}
         />
-      ),
+      )
     });
   };
 
@@ -113,14 +113,14 @@ export function Component(): JSX.Element {
           height={15}
           alt={'apple icon'}
         />
-      ),
+      )
     });
   };
 
   useEffect((): void => {
     signupInputValidator({
       type: 'firstName',
-      payload: firstName,
+      payload: firstName
     }).then((validationResult: SignupValidationResult): void => {
       if (validationResult.isValid) setFirstNameFieldError(null);
       else setFirstNameFieldError(validationResult.errorMessage);
@@ -130,7 +130,7 @@ export function Component(): JSX.Element {
   useEffect((): void => {
     signupInputValidator({
       type: 'lastName',
-      payload: lastName,
+      payload: lastName
     }).then((validationResult: SignupValidationResult): void => {
       if (validationResult.isValid) setLastNameFieldError(null);
       else setLastNameFieldError(validationResult.errorMessage);
@@ -142,14 +142,14 @@ export function Component(): JSX.Element {
       (validationResult) => {
         if (validationResult.isValid) setEmailFieldError(null);
         else setEmailFieldError(validationResult.errorMessage);
-      },
+      }
     );
   }, [email]);
 
   useEffect((): void => {
     signupInputValidator({
       type: 'password',
-      payload: password,
+      payload: password
     }).then((validationResult: SignupValidationResult): void => {
       if (validationResult.isValid) setPasswordFieldError(null);
       else setPasswordFieldError(validationResult.errorMessage);
@@ -171,7 +171,7 @@ export function Component(): JSX.Element {
     lastNameFieldError,
     emailFieldError,
     passwordFieldError,
-    agreeTerms,
+    agreeTerms
   ]);
 
   return (

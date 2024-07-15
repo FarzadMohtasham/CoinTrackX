@@ -41,7 +41,7 @@ export default function AssetSummary(props: AssetSummaryProps): JSX.Element {
     data: assetSummaryData,
     error: assetSummaryError,
     isLoading: assetSummaryIsLoading,
-    refetch: assetSummaryRefresh,
+    refetch: assetSummaryRefresh
   } = useGetAssetSummaryQuery(assetName);
 
   useEffect((): void => {

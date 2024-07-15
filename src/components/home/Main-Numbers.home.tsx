@@ -6,16 +6,16 @@ import Container from '@components/ui/stuff/Container.tsx';
 const numbersList: { title: string; desc: string }[] = [
   {
     title: '+100 Coin/Token',
-    desc: 'supported',
+    desc: 'supported'
   },
   {
     title: '50+',
-    desc: 'countries supported',
+    desc: 'countries supported'
   },
   {
     title: '#1 platform',
-    desc: 'crypto tracking',
-  },
+    desc: 'crypto tracking'
+  }
 ];
 
 const NumbersContainerStyled = styled.section`
@@ -61,7 +61,7 @@ export default function Numbers(): JSX.Element {
                 <span className={'desc'}>{numberItem.desc}</span>
               </NumberStyled>
             );
-          },
+          }
         )}
       </NumbersContainerStyled>
     </Container>

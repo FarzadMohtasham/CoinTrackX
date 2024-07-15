@@ -9,10 +9,7 @@ import Profile from '@components/ui/stuff/Profile.tsx';
 import Alert from '@components/dashboard/Notifications.tsx';
 
 import { NavigationListData } from '@data/navigationList.data.ts';
-import {
-  NavigationItemType,
-  NavigationProps,
-} from '@typings/NavigationItem.type.ts';
+import { NavigationItemType, NavigationProps } from '@typings/NavigationItem.type.ts';
 import useDashboardProtectRoute from '@hooks/useDashboardProtectRoute.ts';
 import Icon from '@components/ui/stuff/Icon.tsx';
 import { useUiStore } from '@services/store/ui.store.ts';
@@ -224,11 +221,11 @@ const MobileNavOverlay = styled.div<{
   cursor: pointer;
   ${(props) => (props.$navStatusWithDelay ? 'opacity: 100;' : 'opacity: 0;')}
   ${(props) =>
-    props.$navIsOpen
-      ? css`
+  props.$navIsOpen
+    ? css`
           transform: translateX(0);
         `
-      : css`
+    : css`
           transform: translateX(100vw);
         `}
 `;
@@ -257,8 +254,8 @@ export function Component() {
     (state) => ({
       navStatus: state.navStatus,
       navStatusWithDelay: state.navStatusWithDelay,
-      setNavStatus: state.setNavStatus,
-    }),
+      setNavStatus: state.setNavStatus
+    })
   );
 
   useDashboardProtectRoute('/login', true);
@@ -268,7 +265,7 @@ export function Component() {
       navList.map((nav: NavigationItemType) => {
         nav.active = false;
         return nav;
-      }),
+      })
     );
   };
 
@@ -277,16 +274,16 @@ export function Component() {
       navList.map((nav: NavigationItemType) => {
         if (nav.name === navName) nav.active = true;
         return nav;
-      }),
+      })
     );
   };
 
   const onNavigationItemHandler = (navItemName: string): void => {
     const currentSelectedNavIndex = navigationList.findIndex(
-      (nav: NavigationItemType) => nav.active,
+      (nav: NavigationItemType) => nav.active
     );
     const newSelectedNavIndex = navigationList.findIndex(
-      (nav: NavigationItemType): boolean => nav.name === navItemName,
+      (nav: NavigationItemType): boolean => nav.name === navItemName
     );
 
     setNavigationList((navList: NavigationItemType[]) => {
@@ -310,7 +307,7 @@ export function Component() {
 
   const onSettingsChildNavHandler = (
     childNavLink: string,
-    childNavName: string,
+    childNavName: string
   ) => {
     setSelectedSettingsChildNavName(childNavName);
     navigate(childNavLink);
@@ -319,7 +316,7 @@ export function Component() {
   // Nav name update
   useEffect((): void => {
     const selectedNavIndex = navigationList.findIndex(
-      (nav: NavigationItemType) => nav.active,
+      (nav: NavigationItemType) => nav.active
     );
     setSelectedNavName(navigationList[selectedNavIndex].title);
   }, [navigationList]);
@@ -387,7 +384,7 @@ export function Component() {
                 iconWidth: '20px',
                 active: navItem.active,
                 onClick: () => onNavigationItemHandler(navItem.name),
-                children: null,
+                children: null
               };
 
               return (
@@ -408,9 +405,9 @@ export function Component() {
                               onClick: () =>
                                 onSettingsChildNavHandler(
                                   childNavItem.link,
-                                  childNavItem.name,
+                                  childNavItem.name
                                 ),
-                              children: null,
+                              children: null
                             };
 
                             return (
@@ -426,13 +423,13 @@ export function Component() {
                                 </NavigationItem>
                               </div>
                             );
-                          },
+                          }
                         )}
                       </ChildNavItemsContainer>
                     )}
                 </div>
               );
-            },
+            }
           )}
         </div>
       </MobileSideBar>
@@ -477,7 +474,7 @@ export function Component() {
                 iconWidth: '20px',
                 active: navItem.active,
                 onClick: () => onNavigationItemHandler(navItem.name),
-                children: null,
+                children: null
               };
 
               return (
@@ -498,9 +495,9 @@ export function Component() {
                               onClick: () =>
                                 onSettingsChildNavHandler(
                                   childNavItem.link,
-                                  childNavItem.name,
+                                  childNavItem.name
                                 ),
-                              children: null,
+                              children: null
                             };
 
                             return (
@@ -516,13 +513,13 @@ export function Component() {
                                 </NavigationItem>
                               </div>
                             );
-                          },
+                          }
                         )}
                       </ChildNavItemsContainer>
                     )}
                 </div>
               );
-            },
+            }
           )}
         </div>
       </LayoutSidebar>

@@ -11,11 +11,11 @@ const coinsSrcList = [
   '/images/eth.coin.home.svg',
   '/images/gusd.coin.home.svg',
   '/images/ogn.coin.home.svg',
-  '/images/xrp.coin.home.svg',
+  '/images/xrp.coin.home.svg'
 ];
 
 const CoinsWrapperStyled = styled.section.attrs({
-  id: 'coins',
+  id: 'coins'
 })`
   padding-top: 100px;
   padding-bottom: 48px;

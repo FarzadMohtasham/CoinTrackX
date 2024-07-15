@@ -5,15 +5,15 @@ import { AssetSummary } from '@typings/AssetSummary.type.ts';
 const defaultAssetSummary: AssetSummary = {
   asset_name: 'default',
   asset_summary:
-    'There is no any summary for this asset, Please contact with website support.',
+    'There is no any summary for this asset, Please contact with website support.'
 };
 
 export const getAssetSummaryApi = async (
-  assetName: AssetName,
+  assetName: AssetName
 ): Promise<any> => {
   let {
     data,
-    error,
+    error
   }: {
     data: AssetSummary | any;
     error: Error | any;

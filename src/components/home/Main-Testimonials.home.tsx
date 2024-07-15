@@ -15,8 +15,8 @@ const reviewsList: ReviewType[] = [
     author: {
       imgSrc: '/images/review1.author.home.png',
       name: 'Abel Sheldon',
-      job: 'Entrepreneur',
-    },
+      job: 'Entrepreneur'
+    }
   },
   {
     numberOfStars: 5,
@@ -25,8 +25,8 @@ const reviewsList: ReviewType[] = [
     author: {
       imgSrc: '/images/review2.author.home.png',
       name: 'John Clayton',
-      job: 'Investor',
-    },
+      job: 'Investor'
+    }
   },
   {
     numberOfStars: 4,
@@ -35,13 +35,13 @@ const reviewsList: ReviewType[] = [
     author: {
       imgSrc: '/images/review3.author.home.png',
       name: 'Savanna Bridgers',
-      job: 'Founder',
-    },
-  },
+      job: 'Founder'
+    }
+  }
 ];
 
 const TestimonialsWrapper = styled.div.attrs({
-  id: 'testimonials',
+  id: 'testimonials'
 })`
   padding: 100px 0;
   display: flex;

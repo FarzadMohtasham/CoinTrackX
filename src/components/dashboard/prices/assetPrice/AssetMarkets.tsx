@@ -8,19 +8,11 @@ import {
   Header,
   HeaderGroup,
   Row,
-  useReactTable,
+  useReactTable
 } from '@tanstack/react-table';
 import { v4 as uuidv4 } from 'uuid';
 import { styled } from 'styled-components';
-import {
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Thead,
-  Tr,
-} from '@chakra-ui/react';
+import { Table, TableCaption, TableContainer, Tbody, Td, Thead, Tr } from '@chakra-ui/react';
 import useGetAssetMarketsQuery from '@query/assets/useGetAssetMarkets.query.ts';
 import { amountToBeFixed } from '@utils/helpers.ts';
 import Skeleton from 'react-loading-skeleton';
@@ -84,14 +76,14 @@ const SelectTableShowStatusList: SelectMenuItem[] = [
     default: true,
     name: 'Show less',
     value: 'less',
-    iconSrc: '',
+    iconSrc: ''
   },
   {
     default: false,
     name: 'Show all',
     value: 'all',
-    iconSrc: '',
-  },
+    iconSrc: ''
+  }
 ];
 
 export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
@@ -99,11 +91,11 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
     assetName,
     hasErrorHandler,
     hasNoErrorHandler,
-    refetchListener,
+    refetchListener
   }: AssetMarketsProps = props;
 
   const [tableShowStatus, setTableShowStatus] = useState<'less' | 'all'>(
-    'less',
+    'less'
   );
   const [tableData, setTableData] = useState<TableAssetMarket[]>([]);
   const tableColumn: ColumnDef<AssetMarketColumnDef>[] = useMemo(
@@ -113,7 +105,7 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
         header: 'Exchange ID',
         cell: (props: CellContext<any, any>) => {
           return <ColumnContainer>{props.getValue()}</ColumnContainer>;
-        },
+        }
       },
       {
         accessorKey: 'volumeUsd24Hr',
@@ -124,7 +116,7 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
               ${amountToBeFixed(Number(props.getValue()))}
             </ColumnContainer>
           );
-        },
+        }
       },
       {
         accessorKey: 'percentExchangeVolume',
@@ -135,17 +127,17 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
               %{amountToBeFixed(Number(props.getValue()))}
             </ColumnContainer>
           );
-        },
+        }
       },
       {
         accessorKey: 'tradesCount24Hr',
         header: 'Trades Count 24Hr',
         cell: (props: CellContext<any, any>) => (
           <ColumnContainer>{props.getValue()} Trade</ColumnContainer>
-        ),
-      },
+        )
+      }
     ],
-    [],
+    []
   );
 
   const assetMarketsTable = useReactTable({
@@ -156,14 +148,14 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
     // @ts-ignore
     columns: tableColumn,
     getCoreRowModel: getCoreRowModel(),
-    getRowId: () => uuidv4(),
+    getRowId: () => uuidv4()
   });
 
   const {
     data: assetMarketsData,
     error: assetMarketsError,
     isLoading,
-    refetch: assetMarketsRefetch,
+    refetch: assetMarketsRefetch
   } = useGetAssetMarketsQuery(assetName as AssetName);
 
   const showLessCount = Math.floor(assetMarketsData?.length / 2);
@@ -185,13 +177,13 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
             exchangeId: assetMarket.exchangeId,
             volumeUsd24Hr: assetMarket.volumeUsd24Hr,
             percentExchangeVolume: assetMarket.percentExchangeVolume,
-            tradesCount24Hr: Number(assetMarket.tradesCount24Hr),
+            tradesCount24Hr: Number(assetMarket.tradesCount24Hr)
           };
         });
 
       setTableData(assetMarkets);
     },
-    [assetMarketsData, tableShowStatus],
+    [assetMarketsData, tableShowStatus]
   );
 
   useEffect(() => {
@@ -249,7 +241,7 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                           <Td key={cell.id}>
                             {flexRender(
                               cell.column.columnDef.cell,
-                              cell.getContext(),
+                              cell.getContext()
                             )}
                           </Td>
                         );

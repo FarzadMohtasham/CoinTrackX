@@ -13,7 +13,7 @@ const userStore = create<States & Actions>((set) => ({
   user: null,
   setUser: (user) => {
     set({ user: user });
-  },
+  }
 }));
 
 export default userStore;

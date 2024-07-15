@@ -7,7 +7,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  useDisclosure,
+  useDisclosure
 } from '@chakra-ui/react';
 
 import { paymentMethodOptions } from '@data/paymentMethodOptions.data.ts';
@@ -16,11 +16,9 @@ import Icon from '@components/ui/stuff/Icon.tsx';
 import Heading from '@components/ui/stuff/Heading.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
 
-import PaymentMethodOptionComponent from '@components/dashboard/settings/payment-methods/PaymentMethodOption.component.tsx';
-import {
-  PaymentMethodOptionProps,
-  PaymentMethodTitle,
-} from '@typings/PaymentMethodOption.type.ts';
+import PaymentMethodOptionComponent
+  from '@components/dashboard/settings/payment-methods/PaymentMethodOption.component.tsx';
+import { PaymentMethodOptionProps, PaymentMethodTitle } from '@typings/PaymentMethodOption.type.ts';
 import CreditDebitCard from '@components/ui/cards/CreditDebit.card.tsx';
 import { CreditDebitCard as CreditDebitCardT } from '@typings/component-types/CreditDebitCard.type';
 import AddCreditDebitCardModal from '@components/dashboard/settings/payment-methods/AddCreditDebitCard.modal.tsx';
@@ -96,7 +94,7 @@ export function Component() {
     creditDebitCards,
     error: _,
     refetch,
-    isLoading,
+    isLoading
   } = useGetCreditDebitCardsQuery();
   const [paymentMethodStep, setPaymentMethodStep] =
     useState<PaymentMethodTitle | null>(null);
@@ -159,7 +157,7 @@ export function Component() {
                           creditDebitCardInfo={creditDebitCard}
                         />
                       );
-                    },
+                    }
                   )}
                   <AddCreditDebitCard onClick={onOpen} />
                 </div>
@@ -195,7 +193,7 @@ export function Component() {
                 {paymentMethodOptions.map(
                   (
                     paymentMethodOption: PaymentMethodOptionProps,
-                    index: number,
+                    index: number
                   ): JSX.Element => {
                     return (
                       <PaymentMethodOptionComponent
@@ -206,7 +204,7 @@ export function Component() {
                         }
                       />
                     );
-                  },
+                  }
                 )}
               </>
             ) : (

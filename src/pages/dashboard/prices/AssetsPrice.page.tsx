@@ -38,7 +38,7 @@ const SimpleNotifOptions: NotificationOptions = {
   width: '100%',
   height: 'max-content',
   iconSize: '40px',
-  closeIconSize: '100px',
+  closeIconSize: '100px'
 };
 
 export function Component(): JSX.Element {

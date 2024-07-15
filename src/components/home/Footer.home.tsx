@@ -12,10 +12,7 @@ import { ColumnItem as ColumnItemType } from '@typings/component-types/Footer.ty
 import { IStyledComponentBase } from 'styled-components/dist/types';
 
 // Data
-import {
-  footerColumnItemsList,
-  socialMediaLogoList,
-} from '@data/footer.data.ts';
+import { footerColumnItemsList, socialMediaLogoList } from '@data/footer.data.ts';
 
 const FooterWrapper: IStyledComponentBase<any> = styled.div`
   padding-bottom: 100px;
@@ -68,8 +65,8 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
 
   /*Small devices (landscape phones, 576px and up)*/
   @media screen and (max-width: ${(
-      props: ExecutionContext & FastOmit<any, any>,
-    ) => props.theme.breakpoints.md}) {
+  props: ExecutionContext & FastOmit<any, any>
+) => props.theme.breakpoints.md}) {
     grid-template-areas:
       'footer-column-1'
       'footer-column-2'
@@ -80,8 +77,8 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
 
   /*Medium devices (tablets, 768px and up)*/
   @media screen and (min-width: ${(
-      props: ExecutionContext & FastOmit<any, any>,
-    ) => props.theme.breakpoints.md}) {
+  props: ExecutionContext & FastOmit<any, any>
+) => props.theme.breakpoints.md}) {
     grid-template-areas:
       'footer-column-1 footer-column-2'
       'footer-column-3 footer-column-4';
@@ -90,8 +87,8 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
 
   /*Large devices (desktops, 992px and up)*/
   @media screen and (min-width: ${(
-      props: ExecutionContext & FastOmit<any, any>,
-    ) => props.theme.breakpoints.lg}) {
+  props: ExecutionContext & FastOmit<any, any>
+) => props.theme.breakpoints.lg}) {
     grid-template-areas: 'footer-column-1 footer-column-2 footer-column-3 footer-column-4';
     gap: 40px;
   }
@@ -162,7 +159,7 @@ export default function Footer(): JSX.Element {
                       <Link to={item.address}>{item.name}</Link>
                     </ColumnItem>
                   );
-                },
+                }
               )}
             </ColumnList>
           </div>
@@ -184,7 +181,7 @@ export default function Footer(): JSX.Element {
                       <Link to={item.address}>{item.name}</Link>
                     </ColumnItem>
                   );
-                },
+                }
               )}
             </ColumnList>
           </div>
@@ -206,7 +203,7 @@ export default function Footer(): JSX.Element {
                       <Link to={item.address}>{item.name}</Link>
                     </ColumnItem>
                   );
-                },
+                }
               )}
             </ColumnList>
           </div>

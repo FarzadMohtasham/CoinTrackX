@@ -29,7 +29,7 @@ const SuperChargedStyled = styled.div`
 `;
 
 export default function SuperchargeCard(
-  props: SuperchargePropsType,
+  props: SuperchargePropsType
 ): JSX.Element {
   const { imgSrc = '', title = '', desc = '' }: SuperchargePropsType = props;
 

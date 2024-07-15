@@ -20,7 +20,7 @@ export default function PaginationRow(props: PaginationRowProps): JSX.Element {
     getCanPreviousPage,
     nextPageHandler,
     previousPageHandler,
-    totalPageCount,
+    totalPageCount
   }: PaginationRowProps = props;
 
   const onNextPageHandler = (): void => {

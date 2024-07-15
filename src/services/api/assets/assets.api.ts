@@ -5,15 +5,15 @@ import {
   AssetHistoryInterval,
   AssetMarketProps,
   AssetName,
-  AssetsApiResponse,
+  AssetsApiResponse
 } from '@typings/Assets.api.type.ts';
 
 const axiosInstance = axios.create({
   baseURL: 'https://api.coincap.io/v2',
   timeout: 10000,
   headers: {
-    Accept: 'application/json',
-  },
+    Accept: 'application/json'
+  }
 });
 
 export const getAssets = async (): Promise<Asset[] | null> => {
@@ -30,10 +30,10 @@ export const getAssets = async (): Promise<Asset[] | null> => {
 };
 
 export const getAsset = async (
-  assetName: AssetName,
+  assetName: AssetName
 ): Promise<AssetsApiResponse> => {
   const response: AssetsApiResponse = {
-    data: null,
+    data: null
   };
 
   try {
@@ -41,9 +41,9 @@ export const getAsset = async (
       `/assets/${assetName}`,
       {
         headers: {
-          Accept: 'application/json',
-        },
-      },
+          Accept: 'application/json'
+        }
+      }
     );
     response.data = data.data;
   } catch (e: any) {
@@ -58,10 +58,10 @@ type HistoryLength = number | 0;
 export const getAssetHistory = async (
   assetName: AssetName | string,
   interval: AssetHistoryInterval = 'd1',
-  historyLength: HistoryLength,
+  historyLength: HistoryLength
 ): Promise<AssetsApiResponse | null> => {
   const response: AssetsApiResponse = {
-    data: null,
+    data: null
   };
 
   try {
@@ -69,16 +69,16 @@ export const getAssetHistory = async (
       `/assets/${assetName}/history`,
       {
         params: {
-          interval: interval,
-        },
-      },
+          interval: interval
+        }
+      }
     );
     const historyData = data.data;
 
     if (historyData.length >= 1 && historyLength <= historyData.length) {
       response.data = historyData.slice(
         historyData.length - historyLength,
-        historyData.length,
+        historyData.length
       );
     } else {
       response.data = historyData;
@@ -91,18 +91,18 @@ export const getAssetHistory = async (
 };
 
 export const getAssetMarkets = async (
-  assetName: AssetName | string,
+  assetName: AssetName | string
 ): Promise<AssetMarketProps[] | null> => {
   let assetMarkets = [];
 
   try {
     const { data }: AxiosResponse = await axiosInstance.get('/markets', {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       params: {
-        baseSymbol: assetName,
-      },
+        baseSymbol: assetName
+      }
     });
     assetMarkets = data.data;
   } catch (e: any) {

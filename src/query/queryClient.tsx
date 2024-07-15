@@ -8,13 +8,13 @@ type ReactQueryClientProps = {
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 60 * 1000,
-    },
-  },
+      staleTime: 60 * 1000
+    }
+  }
 });
 
 export default function ReactQueryClient(
-  props: ReactQueryClientProps,
+  props: ReactQueryClientProps
 ): JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>

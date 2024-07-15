@@ -28,5 +28,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </ThemeProvider>
       </ReactQueryClient>
     </ChakraProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

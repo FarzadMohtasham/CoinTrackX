@@ -8,13 +8,13 @@ export default function useGetAssetsQuery(
   staleTime: number = 1000 * 60 * 60,
   retry: boolean = false,
   refetchOnWindowFocus: boolean = true,
-  refetchOnReconnect: boolean = true,
+  refetchOnReconnect: boolean = true
 ) {
   const {
     data,
     error,
     refetch,
-    isLoading,
+    isLoading
   }: {
     data: Asset[] | any;
     error: any;
@@ -26,7 +26,7 @@ export default function useGetAssetsQuery(
     staleTime: staleTime,
     retry: retry,
     refetchOnWindowFocus: refetchOnWindowFocus,
-    refetchOnReconnect: refetchOnReconnect,
+    refetchOnReconnect: refetchOnReconnect
   });
 
   return { data, error, refetch, isLoading };

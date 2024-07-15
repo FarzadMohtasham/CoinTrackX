@@ -1,15 +1,12 @@
 import { object, string, ValidationError } from 'yup';
-import {
-  InputFieldValidatorProps,
-  InputFieldValidatorResult,
-} from '@typings/validator-types/Input.validator.type.ts';
+import { InputFieldValidatorProps, InputFieldValidatorResult } from '@typings/validator-types/Input.validator.type.ts';
 
 export const InputFieldValidator = async (
-  props: InputFieldValidatorProps,
+  props: InputFieldValidatorProps
 ): Promise<InputFieldValidatorResult> => {
   const validationResult: InputFieldValidatorResult = {
     isValid: true,
-    errorMessage: '',
+    errorMessage: ''
   };
 
   const { inputValue, fieldName, minLength = 1, maxLength = 10 } = props;
@@ -20,18 +17,18 @@ export const InputFieldValidator = async (
       .test(
         'min-length',
         `${fieldName} length can\'t be lower than ${minLength}`,
-        (val) => val.length >= minLength,
+        (val) => val.length >= minLength
       )
       .test(
         'max-length',
         `${fieldName} length can\'t be higher than ${maxLength}`,
-        (val) => val.length <= maxLength,
-      ),
+        (val) => val.length <= maxLength
+      )
   });
 
   try {
     await inputFieldValidationSchema.validate({
-      inputValue: inputValue,
+      inputValue: inputValue
     });
   } catch (e: any) {
     const error: ValidationError = e;

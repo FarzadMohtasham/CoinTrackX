@@ -7,7 +7,7 @@ import {
   CheckboxProps,
   CheckboxStyledProps,
   CheckboxTypes,
-  Properties,
+  Properties
 } from '@typings/component-types/CheckBox.type.ts';
 
 const CheckBoxContainer = styled.div<CheckboxStyledProps>`
@@ -38,7 +38,7 @@ export default function CheckboxInput(props: CheckboxProps): JSX.Element {
     label = null,
     checkBoxSetter,
     defaultValue = false,
-    type = 'primary',
+    type = 'primary'
   } = props;
 
   const [checked, setChecked] = useState<boolean>(defaultValue);
@@ -62,7 +62,8 @@ export default function CheckboxInput(props: CheckboxProps): JSX.Element {
       <input
         type={'checkbox'}
         checked={checked}
-        onChange={(): void => {}}
+        onChange={(): void => {
+        }}
         name={
           label !== null
             ? label.replace(' ', '-').toLowerCase().trim()

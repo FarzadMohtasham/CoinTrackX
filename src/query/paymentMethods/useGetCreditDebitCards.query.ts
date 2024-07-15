@@ -9,22 +9,22 @@ const defaultOptions: QueryOptions = {
   gcTime: 1000 * 60 * 60,
   retry: false,
   refetchOnWindowFocus: true,
-  refetchOnReconnect: true,
+  refetchOnReconnect: true
 };
 
 export default function useGetCreditDebitCardsQuery(
-  options: QueryOptions = defaultOptions,
+  options: QueryOptions = defaultOptions
 ) {
   const queryOptions: QueryOptions = {
     ...defaultOptions,
-    ...options,
+    ...options
   };
 
   const {
     data,
     error,
     refetch,
-    isLoading,
+    isLoading
   }: {
     data: CreditDebitCard[] | any;
     error: any;
@@ -37,7 +37,7 @@ export default function useGetCreditDebitCardsQuery(
     gcTime: queryOptions.gcTime,
     retry: queryOptions.retry,
     refetchOnWindowFocus: queryOptions.refetchOnWindowFocus,
-    refetchOnReconnect: queryOptions.refetchOnReconnect,
+    refetchOnReconnect: queryOptions.refetchOnReconnect
   });
 
   return { creditDebitCards: data, error, refetch, isLoading };

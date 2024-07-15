@@ -5,17 +5,17 @@ import { Notification } from '@typings/component-types/Notifications.type.ts';
 export function useNotificationsQuery() {
   const {
     data,
-    isLoading,
+    isLoading
   }: UseQueryResult<
     { data: Notification[] | undefined; error: string },
     Error
   > = useQuery({
     queryKey: ['notifs'],
-    queryFn: fetchNotifications,
+    queryFn: fetchNotifications
   });
 
   return {
     data,
-    isLoading,
+    isLoading
   };
 }

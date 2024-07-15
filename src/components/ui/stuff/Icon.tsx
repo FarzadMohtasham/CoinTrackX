@@ -23,8 +23,9 @@ export default function Icon(props: IconProps): JSX.Element {
     width = '20px',
     height = null,
     className = 'icon',
-    onClickHandler = (): void => {},
-    clickable = false,
+    onClickHandler = (): void => {
+    },
+    clickable = false
   } = props;
 
   if (height === null) {

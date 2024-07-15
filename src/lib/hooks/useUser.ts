@@ -9,6 +9,6 @@ export default function useUser(): AuthUser | boolean {
   if (!userLoggedIn) return false;
 
   return JSON.parse(
-    useLocaleStorage(import.meta.env.VITE_User_Auth_Local_Storage_KEY),
+    useLocaleStorage(import.meta.env.VITE_User_Auth_Local_Storage_KEY)
   );
 }

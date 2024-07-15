@@ -29,8 +29,8 @@ const PaymentMethodOptionContainer = styled.div<{ $disabled: boolean }>`
   }
 
   ${(props) =>
-    props.$disabled &&
-    css`
+  props.$disabled &&
+  css`
       &::after {
         content: '';
         width: 100%;

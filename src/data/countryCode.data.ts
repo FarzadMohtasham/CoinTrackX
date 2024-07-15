@@ -193,5 +193,5 @@ export const countriesCode = [
   { countryName: 'VN(+84)', code: '+84' },
   { countryName: 'YE(+967)', code: '+967' },
   { countryName: 'ZM(+260)', code: '+260' },
-  { countryName: 'ZW(+263)', code: '+263' },
+  { countryName: 'ZW(+263)', code: '+263' }
 ];

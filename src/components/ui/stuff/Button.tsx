@@ -6,17 +6,14 @@ import { HashLoader } from 'react-spinners';
 import Icon from '@components/ui/stuff/Icon.tsx';
 
 //  Types
-import {
-  ButtonPropsType,
-  Properties,
-} from '@typings/component-types/ButtonProps.type.ts';
+import { ButtonPropsType, Properties } from '@typings/component-types/ButtonProps.type.ts';
 
 // Data
 import {
   buttonBorderRadius,
   buttonFontSizeVariations,
   buttonPaddingVariations,
-  buttonTypeVariations,
+  buttonTypeVariations
 } from '@data/button.data.ts';
 
 type ButtonStyledProps = {
@@ -33,7 +30,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
   padding: ${(props: any) => props.$properties.padding};
   font-size: ${(props: any) => props.$properties.fontSize};
   width: ${(props: any): string =>
-    props.$properties.expanded ? '100%' : `max-content`};
+  props.$properties.expanded ? '100%' : `max-content`};
   background-color: ${(props: any) => props.$properties.backgroundColor};
   color: ${(props: any) => props.$properties.color};
   border-radius: ${(props: any) => props.$properties.borderRadiusS};
@@ -78,9 +75,10 @@ function Button(props: ButtonPropsType): JSX.Element {
     hideOn = 'none',
     disabled = false,
     isLoading = false,
-    onClickHandler = (): void => {},
+    onClickHandler = (): void => {
+    },
     removePadding = false,
-    noBorder = false,
+    noBorder = false
   }: ButtonPropsType = props;
 
   disabled = isLoading || disabled;
@@ -89,8 +87,8 @@ function Button(props: ButtonPropsType): JSX.Element {
     ? 0
     : css`
         ${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size][
-          'x'
-        ]}
+      'x'
+      ]}
       `;
   const fontSize: RuleSet = css`
     ${buttonFontSizeVariations[size].fontSize}
@@ -99,16 +97,16 @@ function Button(props: ButtonPropsType): JSX.Element {
 
   const backgroundColor: RuleSet = css`
     ${!outline
-      ? disabled
-        ? css`var(--color-${variant + '-500)'}`
-        : buttonTypeVariations[variant].backgroundColor
-      : 'rgba(0, 0, 0, 0)'}
+    ? disabled
+      ? css`var(--color-${variant + '-500)'}`
+      : buttonTypeVariations[variant].backgroundColor
+    : 'rgba(0, 0, 0, 0)'}
   `;
 
   const color: RuleSet = css`
     ${!outline
-      ? buttonTypeVariations[variant].color
-      : buttonTypeVariations[variant].backgroundColor}
+    ? buttonTypeVariations[variant].color
+    : buttonTypeVariations[variant].backgroundColor}
   `;
   const borderRadiusS = css`
     ${buttonBorderRadius[borderRadius]}
@@ -116,20 +114,20 @@ function Button(props: ButtonPropsType): JSX.Element {
 
   const border: RuleSet = css`
     ${outline
-      ? css`var(--color-${variant + '-100)'}`
-      : disabled
-        ? css`var(--color-${variant + '-50)'}`
-        : `${buttonTypeVariations[variant].backgroundColor}`}
+    ? css`var(--color-${variant + '-100)'}`
+    : disabled
+      ? css`var(--color-${variant + '-50)'}`
+      : `${buttonTypeVariations[variant].backgroundColor}`}
   `;
 
   const hover: RuleSet = css`
     ${outline && css`background-color: var(--color-${variant + '-50)'};`}
 
     ${!outline &&
-    (disabled ? '' : css`background-color: var(--color-${variant + '-900)'};`)}
+  (disabled ? '' : css`background-color: var(--color-${variant + '-900)'};`)}
       ${!outline
-      ? css`border: ${noBorder ? '0' : '2px'} solid var(--color-${variant + '-50)'};`
-      : css`border: ${noBorder ? '0' : '2px'} solid var(--color-${variant + '-100)'};`}
+    ? css`border: ${noBorder ? '0' : '2px'} solid var(--color-${variant + '-50)'};`
+    : css`border: ${noBorder ? '0' : '2px'} solid var(--color-${variant + '-100)'};`}
   `;
   const mobileMedia: RuleSet | string = `${
     hideOn === 'mobile'
@@ -166,7 +164,7 @@ function Button(props: ButtonPropsType): JSX.Element {
     desktopMedia,
     expanded,
     cursor,
-    noBorder,
+    noBorder
   };
 
   const onButtonClickHandler = (): void => {

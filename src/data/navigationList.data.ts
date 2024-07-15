@@ -7,7 +7,7 @@ export const NavigationListData: NavigationItemType[] = [
     link: '/dashboard',
     iconSrc: 'dashboard.svg',
     activeIconSrc: 'active-dashboard.svg',
-    active: true,
+    active: true
   },
   {
     name: 'assets-portfolio',
@@ -15,7 +15,7 @@ export const NavigationListData: NavigationItemType[] = [
     link: '/dashboard/assets-portfolio',
     iconSrc: 'assets-portfolio.svg',
     activeIconSrc: 'active-assets-portfolio.svg',
-    active: false,
+    active: false
   },
   {
     name: 'prices',
@@ -23,7 +23,7 @@ export const NavigationListData: NavigationItemType[] = [
     link: '/dashboard/prices',
     iconSrc: 'prices.svg',
     activeIconSrc: 'active-prices.svg',
-    active: false,
+    active: false
   },
   {
     name: 'transactions',
@@ -31,7 +31,7 @@ export const NavigationListData: NavigationItemType[] = [
     link: '/dashboard/transactions',
     iconSrc: 'transactions.svg',
     activeIconSrc: 'active-transactions.svg',
-    active: false,
+    active: false
   },
   {
     name: 'settings',
@@ -47,7 +47,7 @@ export const NavigationListData: NavigationItemType[] = [
         link: '/dashboard/settings/security',
         iconSrc: 'security-gray.svg',
         activeIconSrc: 'security-purple.svg',
-        active: false,
+        active: false
       },
       {
         name: 'payment-methods',
@@ -55,7 +55,7 @@ export const NavigationListData: NavigationItemType[] = [
         link: '/dashboard/settings/payment-methods',
         iconSrc: 'payment-methods-gray.svg',
         activeIconSrc: 'payment-methods-purple.svg',
-        active: false,
+        active: false
       },
       {
         name: 'profile',
@@ -63,7 +63,7 @@ export const NavigationListData: NavigationItemType[] = [
         link: '/dashboard/settings/profile',
         iconSrc: 'profile-gray.svg',
         activeIconSrc: 'profile-purple.svg',
-        active: false,
+        active: false
       },
       {
         name: 'preferences',
@@ -71,7 +71,7 @@ export const NavigationListData: NavigationItemType[] = [
         link: '/dashboard/settings/preferences',
         iconSrc: 'preferences-gray.svg',
         activeIconSrc: 'preferences-purple.svg',
-        active: false,
+        active: false
       },
       {
         name: 'password',
@@ -79,8 +79,8 @@ export const NavigationListData: NavigationItemType[] = [
         link: '/dashboard/settings/profile',
         iconSrc: 'password-gray.svg',
         activeIconSrc: 'password-purple.svg',
-        active: false,
-      },
-    ],
-  },
+        active: false
+      }
+    ]
+  }
 ];

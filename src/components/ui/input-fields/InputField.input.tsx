@@ -1,21 +1,9 @@
-import {
-  forwardRef,
-  JSX,
-  Ref,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, JSX, Ref, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 
 import Icon from '@components/ui/stuff/Icon.tsx';
 
-import {
-  InputProps,
-  InputRefProps,
-  InputStyledProps,
-} from '@typings/component-types/InputFieldProps.type.ts';
+import { InputProps, InputRefProps, InputStyledProps } from '@typings/component-types/InputFieldProps.type.ts';
 
 const FieldContainer = styled.div`
   display: flex;
@@ -50,9 +38,9 @@ const InputStyled = styled.div`
 
 const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
   border-color: ${(props) =>
-    props.$inputSelected === 'true'
-      ? 'var(--color-black-200)'
-      : 'var(--color-black-50)'};
+  props.$inputSelected === 'true'
+    ? 'var(--color-black-200)'
+    : 'var(--color-black-50)'};
   margin-bottom: 5px;
 `;
 
@@ -65,7 +53,8 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
   const {
     placeHolder = 'Undefined',
     label,
-    onChangeHandler = (): void => {},
+    onChangeHandler = (): void => {
+    },
     iconSrc = 'email-icon.svg',
     focusIconSrc = 'email-icon.svg',
     iconWidth = '20px',
@@ -73,7 +62,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
     unAllowedErrorMessages = [],
     maxLength = 200,
     minLength = 0,
-    initialValue = '',
+    initialValue = ''
   } = props;
 
   const [inputFieldSelected, setInputFieldSelected] = useState<boolean>(false);
@@ -88,7 +77,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
 
   useImperativeHandle(ref, () => ({
     clearInput,
-    focusInput,
+    focusInput
   }));
 
   useEffect((): void => {
@@ -124,7 +113,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
       {unAllowedErrorMessages.length !== 0 &&
         errorMessage &&
         unAllowedErrorMessages.find(
-          (val: string): boolean => val === errorMessage,
+          (val: string): boolean => val === errorMessage
         ) === undefined && <ErrorContainer>{errorMessage}</ErrorContainer>}
     </FieldContainer>
   );

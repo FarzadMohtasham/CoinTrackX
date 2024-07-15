@@ -3,95 +3,95 @@ import { SocialMediaLogo } from '@typings/component-types/Footer.type.ts';
 export const socialMediaLogoList: SocialMediaLogo[] = [
   {
     logoSrc: '/icons/instagram-logo.svg',
-    name: 'instagram logo',
+    name: 'instagram logo'
   },
   {
     logoSrc: '/icons/facebook-logo.svg',
-    name: 'facebook logo',
+    name: 'facebook logo'
   },
   {
     logoSrc: '/icons/discord-logo.svg',
-    name: 'discord logo',
+    name: 'discord logo'
   },
   {
     logoSrc: '/icons/linkedin-logo.svg',
-    name: 'linkedin logo',
+    name: 'linkedin logo'
   },
   {
     logoSrc: '/icons/twitter-logo.svg',
-    name: 'twitter logo',
-  },
+    name: 'twitter logo'
+  }
 ];
 
 export const footerColumnItemsList = {
   column1: [
     {
       name: 'About',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Careers',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Affiliates',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Press',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Investors',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Legal & Privacy',
-      address: '#',
-    },
+      address: '#'
+    }
   ],
   column2: [
     {
       name: 'Buy & Sell crypto',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Wallet',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Card',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Index',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Trading',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Portfolio',
-      address: '#',
-    },
+      address: '#'
+    }
   ],
   column3: [
     {
       name: 'Blog',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Help & Support',
-      address: '#',
+      address: '#'
     },
     {
       name: 'Customer Stories',
-      address: '#',
+      address: '#'
     },
     {
       name: 'FAQ',
-      address: '#',
-    },
-  ],
+      address: '#'
+    }
+  ]
 };

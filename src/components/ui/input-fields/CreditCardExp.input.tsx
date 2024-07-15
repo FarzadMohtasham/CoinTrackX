@@ -13,27 +13,26 @@ type CreditCardExpInputProps = {
 };
 
 const CreditCardExpContainer = styled.div<{ $inputFocused: boolean }>`
-  background-color: var(--color-gray-100);
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  height: 52px;
-  transition: border-color 0.3s ease-in-out;
-  border: 2px solid
-    ${(props) =>
-      props.$inputFocused
-        ? css`var(--color-gray-400)`
-        : css`var(--color-gray-100)`};
+    background-color: var(--color-gray-100);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    transition: border-color 0.3s ease-in-out;
+    border: 2px solid ${(props) =>
+            props.$inputFocused
+                    ? css`var(--color-gray-400)`
+                    : css`var(--color-gray-100)`};
 
-  input {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    input {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0);
 
-    &::placeholder {
-      color: var(--color-gray-300);
+        &::placeholder {
+            color: var(--color-gray-300);
+        }
     }
-  }
 `;
 
 export default function CreditCardExpInput(props: CreditCardExpInputProps) {

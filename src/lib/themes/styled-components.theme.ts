@@ -7,7 +7,7 @@ const defaultProps: StyledThemeProps = {
     md: '768px',
     lg: '992px',
     xl: '1200px',
-    xxl: '1400px',
+    xxl: '1400px'
   },
   colors: {
     primary: {
@@ -21,7 +21,7 @@ const defaultProps: StyledThemeProps = {
       color_primary_600: 'rgba(82, 53, 232, 0.6)',
       color_primary_700: 'rgba(82, 53, 232, 0.7)',
       color_primary_800: 'rgba(82, 53, 232, 0.8)',
-      color_primary_900: 'rgba(82, 53, 232, 0.9)',
+      color_primary_900: 'rgba(82, 53, 232, 0.9)'
     },
     secondary: {
       color_secondary: '#DAF727',
@@ -34,7 +34,7 @@ const defaultProps: StyledThemeProps = {
       color_secondary_600: 'rgba(218, 247, 39, 0.6)',
       color_secondary_700: 'rgba(218, 247, 39, 0.7)',
       color_secondary_800: 'rgba(218, 247, 39, 0.8)',
-      color_secondary_900: 'rgba(218, 247, 39, 0.9)',
+      color_secondary_900: 'rgba(218, 247, 39, 0.9)'
     },
     black: {
       color_black: '#0E0637',
@@ -47,7 +47,7 @@ const defaultProps: StyledThemeProps = {
       color_black_600: 'rgba(14, 6, 55, 0.6)',
       color_black_700: 'rgba(14, 6, 55, 0.7)',
       color_black_800: 'rgba(14, 6, 55, 0.8)',
-      color_black_900: 'rgba(14, 6, 55, 0.9)',
+      color_black_900: 'rgba(14, 6, 55, 0.9)'
     },
     white: {
       color_white: '#FFF',
@@ -60,7 +60,7 @@ const defaultProps: StyledThemeProps = {
       color_white_600: 'rgba(255, 255, 255, 0.6)',
       color_white_700: 'rgba(255, 255, 255, 0.7)',
       color_white_800: 'rgba(255, 255, 255, 0.8)',
-      color_white_900: 'rgba(255, 255, 255, 0.9)',
+      color_white_900: 'rgba(255, 255, 255, 0.9)'
     },
     danger: {
       color_danger: '#ff2e28',
@@ -73,7 +73,7 @@ const defaultProps: StyledThemeProps = {
       color_danger_600: 'rgba(255, 46, 40, 0.6)',
       color_danger_700: 'rgba(255, 46, 40, 0.7)',
       color_danger_800: 'rgba(255, 46, 40, 0.8)',
-      color_danger_900: 'rgba(255, 46, 40, 0.9)',
+      color_danger_900: 'rgba(255, 46, 40, 0.9)'
     },
     success: {
       color_success: '#11CF8B',
@@ -86,8 +86,8 @@ const defaultProps: StyledThemeProps = {
       color_success_600: 'rgba(17, 207, 139, 0.6)',
       color_success_700: 'rgba(17, 207, 139, 0.7)',
       color_success_800: 'rgba(17, 207, 139, 0.8)',
-      color_success_900: 'rgba(17, 207, 139, 0.09)',
-    },
+      color_success_900: 'rgba(17, 207, 139, 0.09)'
+    }
   },
   notif: {
     icon_wrapper_bg_color: '#f2f2f2',
@@ -96,13 +96,13 @@ const defaultProps: StyledThemeProps = {
     error_color: '#FFF0F0',
     info_color: '#EDF9FF',
     warning_color: '#FFF7ED',
-    notifs_container_bg_color: '#f8f8f8',
-  },
+    notifs_container_bg_color: '#f8f8f8'
+  }
 };
 
 const styledComponentTheme = {
   lightTheme: { ...defaultProps },
-  darkTheme: { ...defaultProps },
+  darkTheme: { ...defaultProps }
 };
 
 export default styledComponentTheme;

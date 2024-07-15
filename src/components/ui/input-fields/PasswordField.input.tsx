@@ -3,10 +3,7 @@ import { styled } from 'styled-components';
 
 import Icon from '@components/ui/stuff/Icon.tsx';
 
-import {
-  InputProps,
-  InputStyledProps,
-} from '@typings/component-types/InputFieldProps.type.ts';
+import { InputProps, InputStyledProps } from '@typings/component-types/InputFieldProps.type.ts';
 
 const PasswordInputStyled = styled.div`
   display: flex;
@@ -36,9 +33,9 @@ const PasswordInputStyled = styled.div`
 
 const PasswordFieldContainer = styled(PasswordInputStyled)<InputStyledProps>`
   border-color: ${(props) =>
-    props.$inputSelected === 'true'
-      ? 'var(--color-black-400)'
-      : 'var(--color-black-50)'};
+  props.$inputSelected === 'true'
+    ? 'var(--color-black-400)'
+    : 'var(--color-black-50)'};
 
   .visible-icon,
   .invisible-icon {
@@ -58,12 +55,13 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
 
   const {
     placeHolder = 'Undefined',
-    onChangeHandler = (): void => {},
+    onChangeHandler = (): void => {
+    },
     iconSrc = 'email-focus-icon.svg',
     focusIconSrc = 'password-focus-icon.svg',
     iconWidth = '20px',
     errorMessage = null,
-    unAllowedErrorMessages = [],
+    unAllowedErrorMessages = []
   }: InputProps = props;
 
   useEffect((): void => {
@@ -113,7 +111,7 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
       {unAllowedErrorMessages.length !== 0 &&
         errorMessage &&
         unAllowedErrorMessages.find(
-          (val: string): boolean => val === errorMessage,
+          (val: string): boolean => val === errorMessage
         ) === undefined && <ErrorContainer>{errorMessage}</ErrorContainer>}
     </Fragment>
   );

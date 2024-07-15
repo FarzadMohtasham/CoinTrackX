@@ -65,11 +65,11 @@ const simpleNotifOptions: NotificationOptions = {
   height: 'min-content',
   type: 'info',
   iconSize: '30px',
-  closeIconSize: '12px',
+  closeIconSize: '12px'
 };
 
 export default function AddCreditDebitCardModal(
-  props: CreditDebitCardModalProps,
+  props: CreditDebitCardModalProps
 ) {
   const [cardholderNameErrorMsg, setCardholderNameErrorMsg] =
     useState<string>('');
@@ -96,7 +96,7 @@ export default function AddCreditDebitCardModal(
 
   const [postalInput, setPostalInput] = useState<string>('');
   const [postalInputErrorMsg, setPostalInputErrorMsg] = useState<string | null>(
-    '',
+    ''
   );
 
   const [asMainPaymentMethod, setAsMainPaymentMethods] =
@@ -113,7 +113,7 @@ export default function AddCreditDebitCardModal(
     exp: cardExpInput,
     cvv: cardCVVInput,
     postal_code: postalInput,
-    as_main_payment: asMainPaymentMethod,
+    as_main_payment: asMainPaymentMethod
   } as CreditDebitCard;
 
   const buttonDisabled =
@@ -130,13 +130,13 @@ export default function AddCreditDebitCardModal(
         fieldName: 'Cardholder Name',
         minLength: 1,
         maxLength: 40,
-        inputValue: cardholderName,
+        inputValue: cardholderName
       }).then((result: InputFieldValidatorResult) => {
         setHasCardHolderNameInputError(!result.isValid);
         setCardholderNameErrorMsg(result.errorMessage);
       });
     },
-    [cardholderName],
+    [cardholderName]
   );
 
   // ---------- Handlers ----------

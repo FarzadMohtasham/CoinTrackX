@@ -36,7 +36,7 @@ const AddCreditDebitCardContainer = styled.div`
 `;
 
 export const AddCreditDebitCard: React.FC<AddCreditDebitCardProps> = (
-  props,
+  props
 ): JSX.Element => {
   return (
     <AddCreditDebitCardContainer onClick={props.onClick}>

@@ -5,7 +5,7 @@ import Container from '@components/ui/stuff/Container.tsx';
 import HeadingBox from '@components/ui/stuff/HeadingBox.tsx';
 
 const PartnersContainer = styled.section.attrs({
-  id: 'partners',
+  id: 'partners'
 })`
   padding-top: 100px;
   padding-bottom: 48px;

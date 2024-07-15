@@ -83,9 +83,9 @@ export default function AssetInfo(props: AssetInfoProps) {
     data: assetData,
     error: assetError,
     refetch: assetRefresh,
-    isLoading: assetDataIsLoading,
+    isLoading: assetDataIsLoading
   } = useGetAssetQuery(assetName as AssetName, {
-    gcTime: 0,
+    gcTime: 0
   });
 
   useEffect(() => {
@@ -134,7 +134,7 @@ export default function AssetInfo(props: AssetInfoProps) {
                 {Number(assetData?.changePercent24Hr) >= 0 && '+'}
                 {amountToBeFixed(
                   (Number(assetData?.priceUsd) / 100) *
-                    Number(assetData?.changePercent24Hr),
+                  Number(assetData?.changePercent24Hr)
                 )}
                 $
               </span>

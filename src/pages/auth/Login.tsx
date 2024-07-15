@@ -18,7 +18,7 @@ import {
   AuthInnerWrapper,
   AuthLink,
   HeadContent as HeadContentStyled,
-  MainContent as MainContentStyled,
+  MainContent as MainContentStyled
 } from './Auth.styled.tsx';
 import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts';
 
@@ -33,7 +33,7 @@ export function Component(): JSX.Element {
   const [password, setPassword] = useState<string>('');
   const [emailFieldError, setEmailFieldError] = useState<string | null>(null);
   const [passwordFieldError, setPasswordFieldError] = useState<string | null>(
-    null,
+    null
   );
   const [_, setRememberMe] = useState<boolean>(false);
 
@@ -50,7 +50,7 @@ export function Component(): JSX.Element {
       await login(email, password);
       toast.success('Good, Sign in was successful!');
       navigate('/dashboard', {
-        replace: true,
+        replace: true
       });
     } catch (e: string | any) {
       toast.error(e.toString());
@@ -67,7 +67,7 @@ export function Component(): JSX.Element {
           height={15}
           alt={'google icon'}
         />
-      ),
+      )
     });
   };
 
@@ -80,7 +80,7 @@ export function Component(): JSX.Element {
           height={15}
           alt={'apple icon'}
         />
-      ),
+      )
     });
   };
 
@@ -89,7 +89,7 @@ export function Component(): JSX.Element {
       (validationResult) => {
         if (validationResult.isValid) setEmailFieldError(null);
         else setEmailFieldError(validationResult.errorMessage);
-      },
+      }
     );
   }, [email]);
 
@@ -98,7 +98,7 @@ export function Component(): JSX.Element {
       (validationResult): void => {
         if (validationResult.isValid) setPasswordFieldError(null);
         else setPasswordFieldError(validationResult.errorMessage);
-      },
+      }
     );
   }, [password]);
 

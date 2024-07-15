@@ -1,19 +1,16 @@
 import { object, string, ValidationError } from 'yup';
-import {
-  SignupValidationResult,
-  SignupValidatorProps,
-} from '@typings/validator-types/Auth.validator.type.ts';
+import { SignupValidationResult, SignupValidatorProps } from '@typings/validator-types/Auth.validator.type.ts';
 
 const firstNameValidationSchema = object({
-  'first name': string().required().min(1).max(30).trim(),
+  'first name': string().required().min(1).max(30).trim()
 });
 
 const lastNameValidationSchema = object({
-  'last name': string().required().min(1).max(30).trim(),
+  'last name': string().required().min(1).max(30).trim()
 });
 
 const emailValidationSchema = object({
-  email: string().required().max(100).email().trim(),
+  email: string().required().max(100).email().trim()
 });
 
 const passwordValidationSchema = object({
@@ -21,44 +18,44 @@ const passwordValidationSchema = object({
     .required()
     .test(
       'min-length',
-      "Password length can't be lower than 8",
-      (val) => val.length >= 8,
+      'Password length can\'t be lower than 8',
+      (val) => val.length >= 8
     )
     .test(
       'max-length',
-      "Password length can't be lower than 16",
-      (val) => val.length <= 16,
-    ),
+      'Password length can\'t be lower than 16',
+      (val) => val.length <= 16
+    )
 });
 
 export const signupInputValidator = async (
-  props: SignupValidatorProps,
+  props: SignupValidatorProps
 ): Promise<SignupValidationResult> => {
   const validationResult: SignupValidationResult = {
     isValid: true,
-    errorMessage: '',
+    errorMessage: ''
   };
 
   try {
     switch (props.type) {
       case 'firstName':
         await firstNameValidationSchema.validate({
-          'first name': props.payload,
+          'first name': props.payload
         });
         break;
       case 'lastName':
         await lastNameValidationSchema.validate({
-          'last name': props.payload,
+          'last name': props.payload
         });
         break;
       case 'email':
         await emailValidationSchema.validate({
-          email: props.payload,
+          email: props.payload
         });
         break;
       case 'password':
         await passwordValidationSchema.validate({
-          password: props.payload,
+          password: props.payload
         });
         break;
     }

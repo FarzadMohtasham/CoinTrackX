@@ -5,7 +5,7 @@ import Container from '@components/ui/stuff/Container.tsx';
 import HeadingBox from '@components/ui/stuff/HeadingBox.tsx';
 
 const PlatformWrapper = styled.div.attrs({
-  id: 'platforms',
+  id: 'platforms'
 })`
   display: flex;
   flex-direction: column;

@@ -62,26 +62,26 @@ export default function TopMovers(props: TopMoversProps): JSX.Element {
       price: '1200430',
       changePercent24Hr: '323.45',
       coinId: 'btc',
-      coinSymbol: 'btc',
+      coinSymbol: 'btc'
     },
     {
       price: '1200430',
       changePercent24Hr: '323.45',
       coinId: 'btc',
-      coinSymbol: 'btc',
+      coinSymbol: 'btc'
     },
     {
       price: '1200430',
       changePercent24Hr: '323.45',
       coinId: 'btc',
-      coinSymbol: 'btc',
-    },
+      coinSymbol: 'btc'
+    }
   ]);
   const {
     data: assetsData,
     error: assetsDataLoadError,
     refetch,
-    isLoading,
+    isLoading
   } = useGetAssetsQuery();
 
   const onReloadHandler = (): void => {
@@ -109,9 +109,9 @@ export default function TopMovers(props: TopMoversProps): JSX.Element {
               .toFixed(2)
               .toString(),
             coinId: asset.id,
-            coinSymbol: asset.symbol,
+            coinSymbol: asset.symbol
           };
-        },
+        }
       );
 
       setTopMovers(newTopMovers);

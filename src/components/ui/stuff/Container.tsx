@@ -1,10 +1,7 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import {
-  ContainerPropsType,
-  ContainerStyledProps,
-} from '@typings/component-types/ContainerProps.type.ts';
+import { ContainerPropsType, ContainerStyledProps } from '@typings/component-types/ContainerProps.type.ts';
 
 const ContainerStyled = styled.div<ContainerStyledProps>`
   width: 100%;
@@ -48,7 +45,7 @@ const ContainerStyled = styled.div<ContainerStyledProps>`
 
   /*XX-Large devices (larger desktops, 1400px and up)*/
   @media screen and (min-width: ${(props: any) =>
-      props.theme.breakpoints.xxl}) {
+  props.theme.breakpoints.xxl}) {
     .wrapper {
       width: 1400px;
     }

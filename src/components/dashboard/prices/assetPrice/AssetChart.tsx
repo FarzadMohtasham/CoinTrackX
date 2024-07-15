@@ -11,7 +11,7 @@ import {
   LineElement,
   PointElement,
   Title,
-  Tooltip,
+  Tooltip
 } from 'chart.js';
 import { SelectMenuItem } from '@typings/component-types/Select.type.ts';
 import { Line } from 'react-chartjs-2';
@@ -39,7 +39,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 
 const chartIntervalsList: SelectMenuItem[] = [
@@ -47,56 +47,56 @@ const chartIntervalsList: SelectMenuItem[] = [
     name: '1 Min',
     value: 'm1',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '5 Min',
     value: 'm5',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '15 Min',
     value: 'm15',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '30 Min',
     value: 'm30',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '1 Hour',
     value: 'h1',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '2 Hour',
     value: 'h2',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '6 Hour',
     value: 'h6',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '12 Hour',
     value: 'h12',
     iconSrc: '',
-    default: false,
+    default: false
   },
   {
     name: '1 Day',
     value: 'd1',
     iconSrc: '',
-    default: true,
-  },
+    default: true
+  }
 ];
 
 const AssetChartContainer = styled.div`
@@ -127,7 +127,7 @@ export default function AssetChart(props: AssetChartProps) {
     currencyPriceHistoryData,
     error: assetChartError,
     refetch: assetChartRefetch,
-    isLoading: assetChartLoading,
+    isLoading: assetChartLoading
   } = useGetAssetHistory(assetName, chartInterval);
 
   useEffect(() => {
@@ -140,7 +140,7 @@ export default function AssetChart(props: AssetChartProps) {
       if (currencyPriceHistoryData) {
         setDatasets(() => {
           return currencyPriceHistoryData.map(
-            (priceHistory: CryptoHistoryRecord) => priceHistory.priceUsd,
+            (priceHistory: CryptoHistoryRecord) => priceHistory.priceUsd
           );
         });
 
@@ -150,12 +150,12 @@ export default function AssetChart(props: AssetChartProps) {
           return currencyPriceHistoryData.map(
             (priceHistory: CryptoHistoryRecord) => {
               return priceHistory.date.split('T')[0];
-            },
+            }
           );
         });
       }
     },
-    [currencyPriceHistoryData],
+    [currencyPriceHistoryData]
   );
 
   useEffect(() => {
@@ -183,13 +183,13 @@ export default function AssetChart(props: AssetChartProps) {
     animation: false,
     plugins: {
       tooltip: {
-        enabled: true,
+        enabled: true
       },
       legend: {
-        position: 'bottom',
-      },
+        position: 'bottom'
+      }
     },
-    responsive: true,
+    responsive: true
   };
 
   const chartData: ChartData<'line'> = {
@@ -198,9 +198,9 @@ export default function AssetChart(props: AssetChartProps) {
       {
         label: 'Price of ' + props.assetName.toUpperCase(),
         data: datasets || [],
-        borderColor: 'gray',
-      },
-    ],
+        borderColor: 'gray'
+      }
+    ]
   };
 
   return (

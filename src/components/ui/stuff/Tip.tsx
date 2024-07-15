@@ -50,7 +50,7 @@ const TipContainer = styled.div`
 `;
 
 export default function Tip(
-  props: TipPropsType,
+  props: TipPropsType
 ): React.JSX.Element | undefined {
   const [hide, setHide]: [hide: boolean, setHide: any] = useState(false);
 
@@ -58,7 +58,7 @@ export default function Tip(
     children,
     extended = false,
     // closable = false,
-    redirect = true,
+    redirect = true
     // link = '',
     // replaceHistory = false,
   } = props;
@@ -67,11 +67,11 @@ export default function Tip(
 
   const divStyle: object = {
     width: extended ? '100%' : 'max-content',
-    cursor: redirect ? 'pointer' : '',
+    cursor: redirect ? 'pointer' : ''
   };
 
   const closeIconStyle: object = {
-    display: redirect ? 'none' : '',
+    display: redirect ? 'none' : ''
   };
 
   function onCloseHandler(): void {

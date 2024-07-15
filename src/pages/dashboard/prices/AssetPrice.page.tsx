@@ -34,8 +34,8 @@ type DispatchProps = {
 
 const AssetPriceContainer = styled.div.attrs<{ $hasError: boolean }>(
   ({ $hasError }) => ({
-    style: { display: $hasError ? 'none' : 'grid' },
-  }),
+    style: { display: $hasError ? 'none' : 'grid' }
+  })
 )`
   grid-template-columns: repeat(9, 1fr);
   padding: 32px 20px;
@@ -46,7 +46,7 @@ const AssetPriceContainer = styled.div.attrs<{ $hasError: boolean }>(
 `;
 
 const AssetPriceWrapper = styled.div.attrs({
-  className: 'asset-price-wrapper',
+  className: 'asset-price-wrapper'
 })`
   display: flex;
   flex-direction: column;
@@ -67,8 +67,8 @@ const AssetPriceWrapper = styled.div.attrs({
 
 const ErrorContainer = styled.div.attrs<{ $hasError: boolean }>(
   ({ $hasError }) => ({
-    style: { display: $hasError ? 'block' : 'none' },
-  }),
+    style: { display: $hasError ? 'block' : 'none' }
+  })
 )`
   display: grid;
   place-content: center;
@@ -114,7 +114,7 @@ export function Component(): JSX.Element {
     assetInfoHasError: false,
     assetSummaryHasError: false,
     assetChartHasError: false,
-    assetMarketsHasError: false,
+    assetMarketsHasError: false
   } as ErrorStatesProps);
   const [refetchListener, setRefetchListener] = useState<number>(0);
   const { assetName } = useParams<Readonly<string>>();
@@ -123,7 +123,7 @@ export function Component(): JSX.Element {
     assetInfoHasError,
     assetSummaryHasError,
     assetChartHasError,
-    assetMarketsHasError,
+    assetMarketsHasError
   }: ErrorStatesProps = errorStates;
 
   const hasError =

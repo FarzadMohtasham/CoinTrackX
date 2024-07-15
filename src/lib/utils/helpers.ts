@@ -72,7 +72,7 @@ export const formatCardNumber = (val: string): string => {
 };
 
 export const checkCardProvider = (
-  cardNumber: string,
+  cardNumber: string
 ): CardNumberProvider | '' => {
   let result: CardNumberProvider | '' = '';
 

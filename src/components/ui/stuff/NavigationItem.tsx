@@ -3,10 +3,7 @@ import { css, styled } from 'styled-components';
 
 import Icon from '@components/ui/stuff/Icon.tsx';
 
-import {
-  NavigationItemStyledProps,
-  NavigationProps,
-} from '@typings/NavigationItem.type.ts';
+import { NavigationItemStyledProps, NavigationProps } from '@typings/NavigationItem.type.ts';
 
 const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
   display: flex;
@@ -20,8 +17,8 @@ const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
   border-radius: 8px;
 
   ${(props) =>
-    props.$active &&
-    css`
+  props.$active &&
+  css`
       background-color: var(--color-primary-75);
       border: 2px var(--color-black-50) solid !important;
     `}
@@ -35,8 +32,8 @@ const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
 
   &:hover {
     ${(props) =>
-      !props.$active &&
-      css`
+  !props.$active &&
+  css`
         background-color: var(--color-primary-50);
       `}
   }
@@ -50,7 +47,7 @@ export default function NavigationItem(props: NavigationProps): JSX.Element {
     iconAlt = 'navigation-icon',
     active = false,
     iconWidth = '20px',
-    onClick,
+    onClick
   } = props;
 
   return (

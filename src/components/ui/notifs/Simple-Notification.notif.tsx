@@ -3,10 +3,7 @@ import { styled } from 'styled-components';
 import Icon from '@components/ui/stuff/Icon.tsx';
 import { NotificationStyledProps } from '@typings/component-types/Notifications.type.ts';
 import { formatDistance } from 'date-fns';
-import {
-  SimpleNotifProps,
-  SimpleNotifStyled,
-} from '@typings/component-types/Notification.type.ts';
+import { SimpleNotifProps, SimpleNotifStyled } from '@typings/component-types/Notification.type.ts';
 
 const SimpleNotifContainer: any = styled.div<
   NotificationStyledProps & SimpleNotifStyled
@@ -34,7 +31,7 @@ const SimpleNotifContainer: any = styled.div<
 `;
 
 const LeftColumnWrapper: any = styled.div.attrs({
-  className: 'left-column-wrapper',
+  className: 'left-column-wrapper'
 })`
   display: grid;
   place-content: center;
@@ -44,7 +41,7 @@ const LeftColumnWrapper: any = styled.div.attrs({
 `;
 
 const CenterColumnWrapper: any = styled.div.attrs({
-  className: 'center-column-wrapper',
+  className: 'center-column-wrapper'
 })`
   display: flex;
   flex-direction: column;
@@ -74,7 +71,7 @@ const CenterColumnWrapper: any = styled.div.attrs({
 `;
 
 const RightColumnWrapper: any = styled.div.attrs({
-  className: 'right-column-wrapper',
+  className: 'right-column-wrapper'
 })`
   width: max-content;
   height: 100%;
@@ -86,7 +83,7 @@ const RightColumnWrapper: any = styled.div.attrs({
 `;
 
 export default function SimpleNotification(
-  props: SimpleNotifProps,
+  props: SimpleNotifProps
 ): JSX.Element {
   const {
     id = 1,
@@ -99,7 +96,7 @@ export default function SimpleNotification(
     iconSize = '50px',
     closeIconSize = '50px',
     width = '100%',
-    height = 'max-content',
+    height = 'max-content'
   } = props.options;
 
   const { onNotifClose } = props;
@@ -138,7 +135,7 @@ export default function SimpleNotification(
               {createdAt !== null && (
                 <span className={'created-at'}>
                   {formatDistance(new Date(String(createdAt)), new Date(), {
-                    addSuffix: true,
+                    addSuffix: true
                   })}
                 </span>
               )}

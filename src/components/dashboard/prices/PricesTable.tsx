@@ -11,7 +11,7 @@ import {
   HeaderGroup,
   PaginationState,
   Row,
-  useReactTable,
+  useReactTable
 } from '@tanstack/react-table';
 import Skeleton from 'react-loading-skeleton';
 import { styled } from 'styled-components';
@@ -103,7 +103,7 @@ const ColumnCellSpan = styled.span`
 export default function PricesTable(): JSX.Element {
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 20,
+    pageSize: 20
   });
   const [search, setSearch] = useState<string>('');
   const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false);
@@ -142,7 +142,7 @@ export default function PricesTable(): JSX.Element {
               </ColumnName>
             </Link>
           );
-        },
+        }
       },
       {
         accessorKey: 'price',
@@ -151,7 +151,7 @@ export default function PricesTable(): JSX.Element {
           <ColumnCellSpan>
             ${Number(props.renderValue()).toFixed(2)}
           </ColumnCellSpan>
-        ),
+        )
       },
       {
         accessorKey: 'marketCap',
@@ -160,7 +160,7 @@ export default function PricesTable(): JSX.Element {
           <ColumnCellSpan>
             ${Number(props.renderValue()).toFixed(2)}M
           </ColumnCellSpan>
-        ),
+        )
       },
       {
         accessorKey: 'circulatingSupply',
@@ -169,7 +169,7 @@ export default function PricesTable(): JSX.Element {
           <ColumnCellSpan>
             {Number(props.renderValue()).toFixed(2)}M
           </ColumnCellSpan>
-        ),
+        )
       },
       {
         accessorKey: 'changePercent',
@@ -192,7 +192,7 @@ export default function PricesTable(): JSX.Element {
               %{Number(props.renderValue()).toFixed(2)}
             </Badge>
           </ColumnCellSpan>
-        ),
+        )
       },
       {
         accessorKey: 'last24H',
@@ -201,7 +201,7 @@ export default function PricesTable(): JSX.Element {
           <ColumnCellSpan>
             {Number(props.renderValue()).toFixed(2)}
           </ColumnCellSpan>
-        ),
+        )
       },
       {
         accessorKey: 'watchlist',
@@ -215,10 +215,10 @@ export default function PricesTable(): JSX.Element {
               }
             />
           </ColumnCellSpan>
-        ),
-      },
+        )
+      }
     ],
-    [],
+    []
   );
 
   const [tableData, setTableData] = useState<AssetPriceTable[]>([]);
@@ -231,11 +231,11 @@ export default function PricesTable(): JSX.Element {
     getPaginationRowModel: getPaginationRowModel(),
     state: {
       globalFilter: search,
-      pagination: pagination,
+      pagination: pagination
     },
     onGlobalFilterChange: setSearch,
     onPaginationChange: setPagination,
-    getRowId: () => uuidv4(),
+    getRowId: () => uuidv4()
   });
 
   const PaginationRowComponentProps: PaginationRowProps = {
@@ -243,7 +243,7 @@ export default function PricesTable(): JSX.Element {
     previousPageHandler: table.previousPage,
     getCanNextPage: table.getCanNextPage(),
     getCanPreviousPage: table.getCanPreviousPage(),
-    totalPageCount: table.getPageCount(),
+    totalPageCount: table.getPageCount()
   };
 
   useEffect((): void => {
@@ -255,14 +255,14 @@ export default function PricesTable(): JSX.Element {
           name: assetData.name,
           symbol: assetData.symbol,
           logoSrc: `crypto/${assetData.symbol.toLowerCase()}.svg`,
-          id: assetData.id,
+          id: assetData.id
         },
         price: assetData.priceUsd,
         changePercent: assetData.changePercent24Hr,
         circulatingSupply: assetData.supply,
         last24H: assetData.vwap24Hr,
         marketCap: assetData.marketCapUsd,
-        watchList: false,
+        watchList: false
       } as AssetPriceTable;
     });
 
@@ -341,7 +341,7 @@ export default function PricesTable(): JSX.Element {
                               </ColumnHeaderSpan>
                             </Td>
                           );
-                        },
+                        }
                       )}
                     </Tr>
                   );
@@ -356,7 +356,7 @@ export default function PricesTable(): JSX.Element {
                         <Td key={cell.id}>
                           {flexRender(
                             cell.column.columnDef.cell,
-                            cell.getContext(),
+                            cell.getContext()
                           )}
                         </Td>
                       );

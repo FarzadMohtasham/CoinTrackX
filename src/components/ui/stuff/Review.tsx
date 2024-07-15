@@ -81,7 +81,7 @@ export default function Review(props: ReviewProps): JSX.Element {
                 key={'star-filled-' + index}
               />
             );
-          },
+          }
         )}
       </div>
 

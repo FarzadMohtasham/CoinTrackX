@@ -5,7 +5,7 @@ type LoginReturnT = { user: User | null; session: Session | null };
 
 export async function login(
   email: string,
-  password: string,
+  password: string
 ): Promise<LoginReturnT> {
   const { data, error }: AuthResponse =
     await supabaseClient.auth.signInWithPassword({ email, password });
@@ -22,11 +22,11 @@ export async function signup(
     lastName: string;
   },
   email: string,
-  password: string,
+  password: string
 ): Promise<LoginReturnT> {
   const { data, error }: AuthResponse = await supabaseClient.auth.signUp({
     email,
-    password,
+    password
   });
 
   if (error) throw new Error(error.message);

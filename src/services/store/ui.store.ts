@@ -20,5 +20,5 @@ export const useUiStore = create<States & Actions>((set) => ({
       set({ navStatusWithDelay: status });
     }, 300);
   },
-  resetEverything: set({}, true),
+  resetEverything: set({}, true)
 }));

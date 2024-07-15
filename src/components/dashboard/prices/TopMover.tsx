@@ -73,13 +73,13 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
     coinSymbol = 'undefined',
     price = 'undefined',
     changePercent24Hr = 'undefined',
-    isLoading = false,
+    isLoading = false
   }: TopMoverProps = props;
 
   const calc24HChangeAmount = (): string => {
     const priceToCalc: number = Number(Number(price).toFixed(3));
     const changePercent24HrToCalc: number = Number(
-      Number(changePercent24Hr).toFixed(2),
+      Number(changePercent24Hr).toFixed(2)
     );
 
     const calcResult: number = (priceToCalc / 100) * changePercent24HrToCalc;

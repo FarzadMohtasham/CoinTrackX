@@ -9,6 +9,6 @@ export default function useGetAssetSummaryQuery(assetName: AssetName) {
     staleTime: 1000 * 60 * 60,
     gcTime: 1000 * 60 * 60,
     retry: true,
-    refetchOnWindowFocus: true,
+    refetchOnWindowFocus: true
   });
 }

@@ -34,7 +34,7 @@ export default function HeadingBox(props: HeadingBoxType): JSX.Element {
     label = null,
     heading = null,
     desc = null,
-    headingTag = 'h3',
+    headingTag = 'h3'
   }: HeadingBoxType = props;
 
   return (

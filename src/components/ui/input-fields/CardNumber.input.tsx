@@ -1,11 +1,4 @@
-import React, {
-  Dispatch,
-  JSX,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { Dispatch, JSX, SetStateAction, useEffect, useRef, useState } from 'react';
 import { css, styled } from 'styled-components';
 
 import { checkCardProvider, formatCardNumber } from '@utils/helpers.ts';
@@ -30,9 +23,9 @@ const CardNumberInputContainer = styled.div<{ $inputFocused: boolean }>`
   transition: border-color 0.3s ease-in-out;
   border: 2px solid
     ${(props) =>
-      props.$inputFocused
-        ? css`var(--color-gray-400)`
-        : css`var(--color-gray-100)`};
+  props.$inputFocused
+    ? css`var(--color-gray-400)`
+    : css`var(--color-gray-100)`};
 
   input {
     width: 100%;
@@ -59,7 +52,7 @@ const CreditProvidersWrapper = styled.div<{
 
   .mastercard-icon {
     opacity: ${(props) =>
-      props.$creditCardProvider === 'MasterCard' ? '1' : '.25'};
+  props.$creditCardProvider === 'MasterCard' ? '1' : '.25'};
   }
 `;
 
@@ -69,7 +62,7 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
     cardNumberHasErrorSetterFn,
     creditCardProviderSetterFn,
     disabled = false,
-    initialValue = '',
+    initialValue = ''
   } = props;
 
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -118,7 +111,7 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
   // Updating inputHasError
   useEffect(() => {
     setInputHasError(
-      inputValue.length < 13 + 2 || creditCardProvider.length === 0,
+      inputValue.length < 13 + 2 || creditCardProvider.length === 0
     );
   }, [inputValue, creditCardProvider]);
 

@@ -100,7 +100,7 @@ export const assetList: AssetName[] = [
   '0x',
   'raydium',
   'trust-wallet-token',
-  'ankr',
+  'ankr'
 ];
 
 export const assetNamesWithSymbols = {
@@ -203,5 +203,5 @@ export const assetNamesWithSymbols = {
   '0x': 'zrx',
   raydium: 'ray',
   'trust-wallet-token': 'twt',
-  ankr: 'ankr',
+  ankr: 'ankr'
 };

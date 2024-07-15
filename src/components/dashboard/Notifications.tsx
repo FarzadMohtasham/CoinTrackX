@@ -7,10 +7,7 @@ import Icon from '../ui/stuff/Icon.tsx';
 
 import { useNotificationsQuery } from '@query/notifications/useNotifications.query.ts';
 
-import {
-  Notification,
-  NotificationContainerProps,
-} from '@typings/component-types/Notifications.type.ts';
+import { Notification, NotificationContainerProps } from '@typings/component-types/Notifications.type.ts';
 import SimpleNotification from '@components/ui/notifs/Simple-Notification.notif.tsx';
 import { NotificationOptions } from '@typings/component-types/Notification.type.ts';
 
@@ -68,7 +65,7 @@ export default function Notifications(): JSX.Element {
 
   const removeNotification = (notifId: number): void => {
     setNotifications((notifs: Notification[]) =>
-      notifs.filter((notif) => notif.id !== notifId),
+      notifs.filter((notif) => notif.id !== notifId)
     );
     setNotifIsOpen(false);
   };
@@ -76,10 +73,10 @@ export default function Notifications(): JSX.Element {
   useEffect((): void => {
     function filterNotifByPriority(
       priority: string,
-      data: Notification[] = response?.data || [],
+      data: Notification[] = response?.data || []
     ): Notification[] {
       return data.filter(
-        (notif: Notification): boolean => notif.priority === priority,
+        (notif: Notification): boolean => notif.priority === priority
       );
     }
 
@@ -92,7 +89,7 @@ export default function Notifications(): JSX.Element {
     const filteredNotifications: Notification[] = _.union(
       filterByHigh,
       filterByMiddle,
-      filterByLow,
+      filterByLow
     );
 
     setNotifications(filteredNotifications);
@@ -133,7 +130,7 @@ export default function Notifications(): JSX.Element {
                       ...notificationOptions,
                       height: 'max-content',
                       iconSize: '20px',
-                      closeIconSize: '20px',
+                      closeIconSize: '20px'
                     };
 
                     return (
@@ -143,7 +140,7 @@ export default function Notifications(): JSX.Element {
                         key={index}
                       />
                     );
-                  },
+                  }
                 )}
               </NotificationsWrapper>
             )}

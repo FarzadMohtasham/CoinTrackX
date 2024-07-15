@@ -1,11 +1,8 @@
 import { object, string, ValidationError } from 'yup';
-import {
-  LoginValidationResult,
-  LoginValidatorProps,
-} from '@typings/validator-types/Auth.validator.type.ts';
+import { LoginValidationResult, LoginValidatorProps } from '@typings/validator-types/Auth.validator.type.ts';
 
 const emailValidationSchema = object({
-  email: string().required().max(100).email().trim(),
+  email: string().required().max(100).email().trim()
 });
 
 const passwordValidationSchema = object({
@@ -13,33 +10,33 @@ const passwordValidationSchema = object({
     .required()
     .test(
       'min-length',
-      "Password length can't be lower than 8",
-      (val) => val.length >= 8,
+      'Password length can\'t be lower than 8',
+      (val) => val.length >= 8
     )
     .test(
       'max-length',
-      "Password length can't be lower than 16",
-      (val) => val.length <= 16,
-    ),
+      'Password length can\'t be lower than 16',
+      (val) => val.length <= 16
+    )
 });
 
 export const loginInputValidator = async (
-  props: LoginValidatorProps,
+  props: LoginValidatorProps
 ): Promise<LoginValidationResult> => {
   const validationResult: LoginValidationResult = {
     isValid: true,
-    errorMessage: '',
+    errorMessage: ''
   };
 
   try {
     if (props.type === 'email')
       await emailValidationSchema.validate({
-        email: props.payload,
+        email: props.payload
       });
 
     if (props.type === 'password')
       await passwordValidationSchema.validate({
-        password: props.payload,
+        password: props.payload
       });
   } catch (e: any) {
     const error: ValidationError = e;

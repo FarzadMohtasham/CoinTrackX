@@ -4,17 +4,14 @@ import { styled } from 'styled-components';
 // Component
 import Icon from './Icon.tsx';
 
-import {
-  BadgeProps,
-  BadgePropsType,
-} from '@typings/component-types/BadgeProps.type.ts';
+import { BadgeProps, BadgePropsType } from '@typings/component-types/BadgeProps.type.ts';
 
 const borderRadiusVariations = {
   none: '0',
   sm: '5px',
   md: '8px',
   lg: '11px',
-  full: '100px',
+  full: '100px'
 };
 
 const BadgeStyled = styled.span<BadgeProps>`
@@ -27,7 +24,7 @@ const BadgeStyled = styled.span<BadgeProps>`
   font-size: var(--font-size-body-xsm);
   color: ${(props: any) => props.$textColor};
   border-radius: ${(props: any) =>
-    props.$borderRadiusVariations[props.$borderRadius]};
+  props.$borderRadiusVariations[props.$borderRadius]};
   border: 1px solid ${(props: any) => props.$borderColor};
   font-weight: 500;
 `;
@@ -40,7 +37,7 @@ export default function Badge(props: BadgePropsType): JSX.Element {
     hasIcon = false,
     iconDir = 'left',
     outline = false,
-    borderRadius = 'none',
+    borderRadius = 'none'
   } = props;
 
   const bgColor =

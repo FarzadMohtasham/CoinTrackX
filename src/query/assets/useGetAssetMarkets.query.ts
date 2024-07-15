@@ -6,7 +6,7 @@ import {
   AssetMarketProps,
   AssetMarketsAPIQueryReturnProps,
   AssetName,
-  QueryOptions,
+  QueryOptions
 } from '@typings/Assets.api.type.ts';
 import { assetNamesWithSymbols } from '@data/assetsList.ts';
 
@@ -15,23 +15,23 @@ const defaultOptions: QueryOptions = {
   gcTime: 1000 * 60 * 60,
   retry: false,
   refetchOnWindowFocus: true,
-  refetchOnReconnect: true,
+  refetchOnReconnect: true
 };
 
 export default function useGetAssetMarketsQuery(
   assetName: AssetName,
-  options: QueryOptions = defaultOptions,
+  options: QueryOptions = defaultOptions
 ) {
   const queryOptions: QueryOptions = {
     ...defaultOptions,
-    ...options,
+    ...options
   };
 
   const {
     data,
     error,
     refetch,
-    isLoading,
+    isLoading
   }: {
     data: AssetMarketProps[] | any;
     error: any;
@@ -44,7 +44,7 @@ export default function useGetAssetMarketsQuery(
     gcTime: queryOptions.gcTime,
     retry: queryOptions.retry,
     refetchOnWindowFocus: queryOptions.refetchOnWindowFocus,
-    refetchOnReconnect: queryOptions.refetchOnReconnect,
+    refetchOnReconnect: queryOptions.refetchOnReconnect
   });
 
   return { data, error, refetch, isLoading } as AssetMarketsAPIQueryReturnProps;

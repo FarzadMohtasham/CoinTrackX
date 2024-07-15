@@ -7,7 +7,7 @@ import {
   SelectedMenuItemProps,
   SelectMenuItem as SelectMenuItemT,
   SelectMenuWrapperProps,
-  SelectProps,
+  SelectProps
 } from '@typings/component-types/Select.type.ts';
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
@@ -41,7 +41,7 @@ const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
   gap: 10px;
   position: absolute;
   ${(props: any): string =>
-    props.$menuXDirStartPosition === 'right' ? 'right: 0' : 'left: 0'};
+  props.$menuXDirStartPosition === 'right' ? 'right: 0' : 'left: 0'};
   top: 50px;
   border-radius: 8px;
   z-index: 10;
@@ -64,14 +64,14 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
   transition: background-color 0.3s ease-in-out;
 
   ${(props: any) =>
-    props.$selected &&
-    css`
+  props.$selected &&
+  css`
       background-color: #22242a;
     `};
 
   ${(props: any) =>
-    !props.$selected &&
-    css`
+  !props.$selected &&
+  css`
       &:hover {
         background-color: var(--color-white-50);
       }
@@ -84,11 +84,11 @@ export default function Select(props: SelectProps): JSX.Element {
     $hasIcon: hasIcon = false,
     $closeAfterSelect = true,
     $menuXDirStartPosition = 'right',
-    $newValueSetter,
+    $newValueSetter
   } = props;
 
   const [selectedItem, setSelectedItem] = useState<null | SelectMenuItemT>(
-    null,
+    null
   );
   const [selectMenuIsOpen, setSelectMenuIsOpen] = useState<boolean>(false);
   const selectRef = useRef<HTMLElement | null>(null);
@@ -124,7 +124,7 @@ export default function Select(props: SelectProps): JSX.Element {
   // Set default menu item to the selectedItem
   useEffect((): void => {
     const defaultMenuItem = menuItems.filter(
-      (item: SelectMenuItemT) => item.default,
+      (item: SelectMenuItemT) => item.default
     )[0];
     setSelectedItem(defaultMenuItem);
   }, []);
