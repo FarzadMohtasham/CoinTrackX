@@ -48,7 +48,7 @@ export function Component(): JSX.Element {
     try {
       // const data = await login(email, password)
       await login(email, password);
-      toast.success('Good, Sign in was successful!');
+      toast.success('Good, Sign in.html was successful!');
       navigate('/dashboard', {
         replace: true
       });

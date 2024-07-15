@@ -1,8 +1,7 @@
 import { styled } from 'styled-components';
-import { toast } from 'react-hot-toast';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import Icon from '@components/ui/stuff/Icon.tsx';
+import CopyToClipboard from '@components/ui/stuff/CopyToClipboard.tsx';
 
 import { CreditDebitCard as CreditDebitCardT } from '@typings/component-types/CreditDebitCard.type.ts';
 import {
@@ -15,6 +14,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 import EditCreditDebitCardModal from '@components/dashboard/settings/payment-methods/EditCreditDebitCard.modal.tsx';
+import onSuccessCopyHandler from '@/lib/handlers/onSuccessCopyHandler.tsx';
 
 type CreditDebitCardProps = {
   creditDebitCardInfo: CreditDebitCardT;
@@ -76,13 +76,19 @@ const CreditDebitCardContainer = styled.div`
         border-radius: 0 0 12px 12px;
 
         .cardholder-name {
-            color: white;
-            font-weight: 400;
+            span {
+                color: white;
+                font-weight: 400;
+            }
         }
 
-        .cointrackx {
-            color: white;
-            font-size: var(--font-size-body-xsm);
+        .exp, .cvv {
+            cursor: pointer;
+
+            span {
+                color: white;
+                font-size: var(--font-size-body-xsm);
+            }
         }
     }
 `;
@@ -96,11 +102,7 @@ export default function CreditDebitCard(props: CreditDebitCardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Handlers
-  const onCardNumberClickHandler = () => {
-    toast.success('Credit/Debit card number copied', {
-      icon: <Icon iconSrc={'copy.svg'} width={'25px'} />
-    });
-  };
+  // ----------
 
   const onEditClickHandler = () => {
     onOpen();
@@ -141,22 +143,42 @@ export default function CreditDebitCard(props: CreditDebitCardProps) {
         </div>
       </div>
       <div className="middle-section">
-        <CopyToClipboard
-          text={creditDebitCardInfo.card_number}
-          onCopy={onCardNumberClickHandler}
-        >
-          <span className={'card-number'}>
-            {creditDebitCardInfo.card_number
-              .match(/.{1,4}/g)
-              ?.map((cardNumber) => cardNumber + ' ')}
-          </span>
-        </CopyToClipboard>
+        <span className={'card-number'}>
+          <CopyToClipboard
+            onCopyClick={() => onSuccessCopyHandler('Credit/Debit card number copied')}
+            textToCopy={creditDebitCardInfo.card_number}
+            tooltipText={'Copy CardNumber'}>
+            {
+              creditDebitCardInfo.card_number
+                .match(/.{1,4}/g)
+                ?.map((cardNumber) => cardNumber + ' ')
+            }
+          </CopyToClipboard>
+        </span>
       </div>
       <div className="bottom-section">
-        <span className={'cardholder-name'}>
-          {creditDebitCardInfo.cardholder_name}
-        </span>
-        <span className={'cointrackx'}>CoinTrackX</span>
+        <div className={'cardholder-name'}>
+          <span>
+            <CopyToClipboard tooltipText={'Copy Card Holder Name'}
+                             onCopyClick={() => onSuccessCopyHandler('Card Holdername Copied')}>
+              {creditDebitCardInfo.cardholder_name}
+            </CopyToClipboard>
+          </span>
+        </div>
+        <div className={'exp'}>
+          <CopyToClipboard tooltipText={'Copy EXP'}
+                           textToCopy={creditDebitCardInfo.exp}
+                           onCopyClick={() => onSuccessCopyHandler('EXP Copied')}>
+            EXP:&nbsp;{creditDebitCardInfo.exp}
+          </CopyToClipboard>
+        </div>
+        <div className={'cvv'}>
+          <CopyToClipboard tooltipText={'Copy CVV'}
+                           textToCopy={creditDebitCardInfo.cvv}
+                           onCopyClick={() => onSuccessCopyHandler('CVV Copied')}>
+            CVV:&nbsp;{creditDebitCardInfo.cvv}
+          </CopyToClipboard>
+        </div>
       </div>
 
       <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>

@@ -1,9 +1,9 @@
 /* eslint-disable */
 var jumpToCode = (function init() {
-    // Classes of code we would like to highlight in the file view
+    // Classes of code we would like to highlight in.html the file view
     var missingCoverageClasses = ['.cbranch-no', '.cstat-no', '.fstat-no'];
 
-    // Elements to highlight in the file listing view
+    // Elements to highlight in.html the file listing view
     var fileListingElements = ['td.pct.low'];
 
     // We don't want to select elements that are direct descendants of another match
