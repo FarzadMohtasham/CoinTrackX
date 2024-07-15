@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.27](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.26...v0.0.27) (2024-07-15)
+
+
+### Features
+
+* Added CopyToClipboard to Credit/Debit Card Component ([19da606](https://github.com/FarzadMohtasham/CoinTrackX/commit/19da606bcaa93a9de5fcad55eafd557d60298c3c))
+
 ### [0.0.26](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.25...v0.0.26) (2024-07-15)
 
 
