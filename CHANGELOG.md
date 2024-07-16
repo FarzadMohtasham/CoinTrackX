@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.28](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.27...v0.0.28) (2024-07-16)
+
+
+### Features
+
+* Added abilty to delete CreditDebit Cards ([9d86e15](https://github.com/FarzadMohtasham/CoinTrackX/commit/9d86e15a242fe7eec40c92f6549f7a6a5b9915dd))
+
 ### [0.0.27](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.26...v0.0.27) (2024-07-15)
 
 
