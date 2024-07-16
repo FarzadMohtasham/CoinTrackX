@@ -19,7 +19,7 @@ import PostalCodeInput from '@components/ui/input-fields/PostalCode.input.tsx';
 import { CreditDebitCard } from '@typings/component-types/CreditDebitCard.type.ts';
 import useUser from '@hooks/useUser.ts';
 import { AuthUser, PostgrestError } from '@supabase/supabase-js';
-import { updateCreditDebitCard } from '@services/api/payment-methods/creditDebitPayments.api.ts';
+import { deleteCreditDebitCard, updateCreditDebitCard } from '@services/api/payment-methods/creditDebitPayments.api.ts';
 import { toast } from 'react-hot-toast';
 
 type EditCreditDebitCardModalProps = {
@@ -97,6 +97,8 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
 
   const [asMainPaymentMethod, setAsMainPaymentMethods] = useState<boolean>(false);
 
+  const [actionButtonsDisabled, setActionButtonsDisabled] = useState(false);
+
   // @ts-ignore
   const { user }: { user: AuthUser } = useUser();
 
@@ -136,6 +138,7 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
 
   // ---------- Handlers ----------
   const onEditCreditDebitCardHandler = async () => {
+    setActionButtonsDisabled(true)
     try {
       await updateCreditDebitCard(creditDebitCardInfo.id, cardInfo);
       toast.success('Credit/Debit Card Updated');
@@ -144,6 +147,20 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
     } catch (e: PostgrestError | any) {
       toast.error(e.message);
     }
+    setActionButtonsDisabled(false)
+  };
+
+  const onCreditDebitCardDelete = async () => {
+    setActionButtonsDisabled(true)
+    try {
+      await deleteCreditDebitCard(creditDebitCardInfo.id);
+      toast.success('Credit/Debit Card Removed');
+      onClose();
+      creditDebitCardRefetchFn();
+    } catch (e: PostgrestError | any) {
+      toast.error(e.message);
+    }
+    setActionButtonsDisabled(false)
   };
 
 
@@ -222,16 +239,18 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
       </RowWrapper>
       <RowWrapper className={'add-card-btn-wrapper'}>
         <Button
-          disabled={buttonDisabled}
+          disabled={buttonDisabled || actionButtonsDisabled}
           onClickHandler={onEditCreditDebitCardHandler}
         >
           Save changes
         </Button>
         <Button
-          variant={'white'}
-          onClickHandler={onClose}
+          disabled={actionButtonsDisabled}
+          variant={'danger'}
+          outline={true}
+          onClickHandler={onCreditDebitCardDelete}
         >
-          Close
+          Delete Card
         </Button>
       </RowWrapper>
       <RowWrapper>

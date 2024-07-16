@@ -89,3 +89,20 @@ export const updateCreditDebitCard = async (id: number, newCreditDebitCardInfo: 
 
   return data;
 };
+
+export const deleteCreditDebitCard = async (id: number): Promise<any> => {
+  // @ts-ignore
+  const { user }: { user: AuthUser } = useUser();
+
+  let {
+    error
+  }: { error: PostgrestError | null } = await supabase
+    .from('creditDebitCards')
+    .delete()
+    .eq('id', id)
+    .eq('email', user.email);
+
+  if (error) throw error;
+
+  return undefined
+};
