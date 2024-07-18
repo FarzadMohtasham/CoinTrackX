@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import Heading from '@components/ui/stuff/Heading.tsx';
-import UploadProfilePhoto from '@components/dashboard/settings/profile/_UploadProfilePhoto.tsx';
-import UpdateContactInfo from '@components/dashboard/settings/profile/_UpdateContactInfo.tsx';
+import UploadProfilePhoto from '@components/dashboard/settings/profile/ContactInfo_UploadProfilePhoto.tsx';
+import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInfo_UpdateContactInfo.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
 
 const ContactInfoContainer = styled.div`
@@ -33,6 +33,7 @@ const ActionsContainer = styled.div`
 `;
 
 export default function ContactInfo() {
+  
 
   return (
     <ContactInfoContainer>
