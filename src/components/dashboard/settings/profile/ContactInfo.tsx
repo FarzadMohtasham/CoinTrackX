@@ -3,11 +3,12 @@ import Heading from '@components/ui/stuff/Heading.tsx';
 import UploadProfilePhoto from '@components/dashboard/settings/profile/ContactInfo_UploadProfilePhoto.tsx';
 import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInfo_UpdateContactInfo.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
+import { useState } from 'react';
 
 const ContactInfoContainer = styled.div`
     border-radius: 8px;
     border: 1px solid var(--color-black-100);
-    padding: 8px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -20,11 +21,14 @@ const ContentWrapper = styled.div`
 `;
 
 const LeftCol = styled.div`
-
+    padding-top: 32px;
 `;
 
 const RightCol = styled.div`
-
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 `;
 
 const ActionsContainer = styled.div`
@@ -33,7 +37,8 @@ const ActionsContainer = styled.div`
 `;
 
 export default function ContactInfo() {
-  
+  const [displayName, setDisplayName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
 
   return (
     <ContactInfoContainer>
@@ -49,7 +54,7 @@ export default function ContactInfo() {
 
         <RightCol>
           <UploadProfilePhoto />
-          <UpdateContactInfo />
+          <UpdateContactInfo setEmail={setEmail} setDisplayName={setDisplayName}/>
         </RightCol>
       </ContentWrapper>
 

@@ -1,6 +1,6 @@
 export type InputProps = {
   placeHolder: string;
-  label: string;
+  label?: string;
   onChangeHandler: (value: string) => void;
   iconSrc?: string | null;
   focusIconSrc?: string;
