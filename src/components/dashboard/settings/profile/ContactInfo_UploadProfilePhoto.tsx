@@ -96,7 +96,9 @@ export default function UploadProfilePhoto({ setImageFile, imageFile }: UploadPr
       </LeftCol>
 
       <RightCol>
-        <UploadImageInput setImageFile={handleFileChange} />
+        <UploadImageInput setImageFile={handleFileChange}>
+          Upload file
+        </UploadImageInput>
       </RightCol>
     </UploadProfilePhotoContainer>
   );
