@@ -3,7 +3,7 @@ import Heading from '@components/ui/stuff/Heading.tsx';
 import UploadProfilePhoto from '@components/dashboard/settings/profile/ContactInfo_UploadProfilePhoto.tsx';
 import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInfo_UpdateContactInfo.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ContactInfoContainer = styled.div`
     border-radius: 8px;
@@ -39,9 +39,17 @@ const ActionsContainer = styled.div`
 export default function ContactInfo() {
   const [displayName, setDisplayName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
+  const [profileImageFile, setProfileImageFile] = useState<File | undefined>();
+
+  const [changes, setChanges] = useState<number>(0);
+
+  useEffect(() => {
+    setChanges(prevChanges => prevChanges + 1);
+  }, [displayName, email]);
 
   return (
     <ContactInfoContainer>
+      {changes}
       <ContentWrapper>
         <LeftCol>
           <Heading headingType={'h6'}>
@@ -53,19 +61,24 @@ export default function ContactInfo() {
         </LeftCol>
 
         <RightCol>
-          <UploadProfilePhoto />
-          <UpdateContactInfo setEmail={setEmail} setDisplayName={setDisplayName}/>
+          <UploadProfilePhoto imageFile={profileImageFile}
+                              setImageFile={setProfileImageFile}
+          />
+          <UpdateContactInfo setEmail={setEmail}
+                             setDisplayName={setDisplayName}
+          />
         </RightCol>
       </ContentWrapper>
 
-      <ActionsContainer>
-        <Button>
-          Save Changes
-        </Button>
-        <Button outline={true}>
-          Reset Changes
-        </Button>
-      </ActionsContainer>
+      {changes >= 1 &&
+        <ActionsContainer>
+          <Button>
+            Save Changes
+          </Button>
+          <Button outline={true}>
+            Reset Changes
+          </Button>
+        </ActionsContainer>}
     </ContactInfoContainer>
   );
 }

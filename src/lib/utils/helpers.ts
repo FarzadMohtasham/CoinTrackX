@@ -6,6 +6,10 @@ import { CardNumberProvider } from '@typings/component-types/CardNumberInput.typ
 export const expDatePattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
 export const numbersOnlyPattern = /^[0-9]+$/;
 export const maxPostalCodePattern = /^[A-Za-z0-9\s-]{1,10}$/;
+export const DefaultValidImageFileTypes = [
+  'image/jpeg',
+  'image/png'
+];
 
 export function titleCase(str: string): string {
   const splitStr = str.toLowerCase().split(' ');
@@ -95,4 +99,22 @@ export const validateNumbersOnly = (val: string) => {
 
 export const validatePostalCode = (val: string) => {
   return maxPostalCodePattern.test(val);
+};
+
+type ImageFileTypeValidatorProps = {
+  fileType: string,
+  options?: {
+    ValidImageFileTypes: string[];
+
+  }
+}
+
+export const ImageFileTypeValidator = (props: ImageFileTypeValidatorProps) => {
+  const { fileType, options } = props;
+
+  if (options?.ValidImageFileTypes) {
+    return options.ValidImageFileTypes.includes(fileType);
+  }
+
+  return DefaultValidImageFileTypes.includes(fileType);
 };
