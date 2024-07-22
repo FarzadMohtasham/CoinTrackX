@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.34](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.33...v0.0.34) (2024-07-22)
+
+
+### Features
+
+* Redesigned UploadImage input component ([0c06c6f](https://github.com/FarzadMohtasham/CoinTrackX/commit/0c06c6fc3827b77fd498a5a46890e1237b5ba64b))
+
 ### [0.0.33](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.32...v0.0.33) (2024-07-22)
 
 
