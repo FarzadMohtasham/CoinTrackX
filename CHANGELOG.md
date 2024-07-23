@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.36](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.35...v0.0.36) (2024-07-23)
+
+
+### Features
+
+* Added Better LazyLoading ([9a1e434](https://github.com/FarzadMohtasham/CoinTrackX/commit/9a1e434f90f154cb1e82165c02a17e9968c3ec34))
+
 ### [0.0.35](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.34...v0.0.35) (2024-07-23)
 
 
