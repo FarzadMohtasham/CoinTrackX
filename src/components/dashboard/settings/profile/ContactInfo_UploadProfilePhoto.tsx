@@ -45,7 +45,7 @@ const RightCol = styled.div`
 
 `;
 
-const maxFileSizeMB = 2;
+const maxFileSizeMB = 3;
 
 export default function UploadProfilePhoto({ setImageFile, imageFile }: UploadProfilePhotoProps) {
 

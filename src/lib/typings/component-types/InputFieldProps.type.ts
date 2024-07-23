@@ -10,10 +10,12 @@ export type InputProps = {
   maxLength?: number;
   minLength?: number;
   initialValue?: string;
+  hasError?: boolean;
 };
 
 export type InputStyledProps = {
-  $inputSelected: string;
+  $inputIsActive: boolean;
+  $hasError: boolean;
 };
 
 export type InputRefProps = {
