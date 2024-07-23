@@ -20,7 +20,7 @@ const PreferencesPage = lazy(() => import('@pages/dashboard/settings/Preferences
 const PasswordPage = lazy(() => import('@pages/dashboard/settings/PasswordPage.tsx'));
 
 const SuspenseWrapper = ({ children }: { children: ReactNode }) => (
-  <Suspense fallback={<LazyRouteFallbackLoading/>}>
+  <Suspense fallback={<LazyRouteFallbackLoading />}>
     {children}
   </Suspense>
 );
@@ -104,49 +104,47 @@ const router = createBrowserRouter([
           <SuspenseWrapper>
             <SettingsPage />
           </SuspenseWrapper>
-        ),
-        children: [
-          {
-            path: 'security',
-            element: (
-              <SuspenseWrapper>
-                <SecurityPage />
-              </SuspenseWrapper>
-            )
-          },
-          {
-            path: 'payment-methods',
-            element: (
-              <SuspenseWrapper>
-                <PaymentMethodsPage />
-              </SuspenseWrapper>
-            )
-          },
-          {
-            path: 'profile',
-            element: (
-              <SuspenseWrapper>
-                <ProfilePage />
-              </SuspenseWrapper>
-            )
-          },
-          {
-            path: 'preferences',
-            element: (
-              <SuspenseWrapper>
-                <PreferencesPage />
-              </SuspenseWrapper>
-            )
-          },
-          {
-            path: 'password',
-            element: (
-              <SuspenseWrapper>
-                <PasswordPage />
-              </SuspenseWrapper>
-            )
-          }
-        ]
+        )
+      },
+      {
+        path: 'settings/security',
+        element: (
+          <SuspenseWrapper>
+            <SecurityPage />
+          </SuspenseWrapper>
+        )
+      },
+      {
+        path: 'settings/payment-methods',
+        element: (
+          <SuspenseWrapper>
+            <PaymentMethodsPage />
+          </SuspenseWrapper>
+        )
+      },
+      {
+        path: 'settings/profile',
+        element: (
+          <SuspenseWrapper>
+            <ProfilePage />
+          </SuspenseWrapper>
+        )
+      },
+      {
+        path: 'settings/preferences',
+        element: (
+          <SuspenseWrapper>
+            <PreferencesPage />
+          </SuspenseWrapper>
+        )
+      },
+      {
+        path: 'settings/password',
+        element: (
+          <SuspenseWrapper>
+            <PasswordPage />
+          </SuspenseWrapper>
+        )
       }
     ]
   }
