@@ -17,7 +17,7 @@ const ProfileContainer = styled.div`
     }
 `
 
-export function Component() {
+export default function ProfilePage() {
   return (
     <ProfileContainer>
       <ContactInfo/>

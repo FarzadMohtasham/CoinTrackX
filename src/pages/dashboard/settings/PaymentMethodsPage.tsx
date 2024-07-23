@@ -89,7 +89,7 @@ const PaymentMethodsIsLoadingContainer = styled.div`
   }
 `;
 
-export function Component() {
+export default function PaymentMethodsPage() {
   const {
     creditDebitCards,
     error: _,

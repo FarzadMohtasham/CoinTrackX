@@ -19,7 +19,7 @@ import {
   AuthLink,
   HeadContent as HeadContentStyled,
   MainContent as MainContentStyled
-} from './Auth.styled.tsx';
+} from './AuthShared.tsx';
 import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts';
 
 const Container = styled(AuthContainer)``;
@@ -28,7 +28,7 @@ const HeadContent = styled(HeadContentStyled)``;
 const MainContent = styled(MainContentStyled)``;
 const SingUpLink = styled(AuthLink)``;
 
-export function Component(): JSX.Element {
+export default function LoginPage(): JSX.Element {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [emailFieldError, setEmailFieldError] = useState<string | null>(null);

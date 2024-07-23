@@ -237,7 +237,7 @@ const ChildNavItemsContainer = styled.div`
   padding: 15px 0 0 10px;
 `;
 
-export function Component() {
+export default function DashboardLayout() {
   const [navigationList, setNavigationList] =
     useState<NavigationItemType[]>(NavigationListData);
   const [selectedNavName, setSelectedNavName] = useState<string>('dashboard');

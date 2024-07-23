@@ -20,7 +20,7 @@ import {
   AuthLink,
   HeadContent as HeadContentStyled,
   MainContent as MainContentStyled
-} from '@pages/auth/Auth.styled.tsx';
+} from '@pages/auth/AuthShared.tsx';
 import { SignupValidationResult } from '@typings/validator-types/Auth.validator.type.ts';
 
 const LoginContainer = styled(AuthContainer)``;
@@ -45,7 +45,7 @@ const MainContent = styled(MainContentStyled)`
 `;
 const SingUpLink = styled(AuthLink)``;
 
-export function Component(): JSX.Element {
+export default function SignupPage(): JSX.Element {
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');

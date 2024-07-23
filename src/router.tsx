@@ -1,67 +1,152 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { lazy, ReactNode, Suspense } from 'react';
+import LazyRouteFallbackLoading from '@components/fallbacks/LazyRouteFallbackLoading.tsx';
+
+// Lazy-loaded components
+const HomePage = lazy(() => import('@pages/Home.tsx'));
+const LoginPage = lazy(() => import('@pages/auth/LoginPage.tsx'));
+const SignupPage = lazy(() => import('@pages/auth/SignupPage.tsx'));
+const DashboardLayout = lazy(() => import('@layout/Dashboard.layout.tsx'));
+const DashboardPage = lazy(() => import('@pages/dashboard/dashboard/DashboardPage.tsx'));
+const AssetsPortfolioPage = lazy(() => import('@pages/dashboard/assets-portfolio/AssetsPortfolioPage.tsx'));
+const AssetsPricePage = lazy(() => import('@pages/dashboard/prices/AssetsPricePage.tsx'));
+const AssetPricePage = lazy(() => import('@pages/dashboard/prices/AssetPricePage.tsx'));
+const TransactionsPage = lazy(() => import('@pages/dashboard/transactions/TransactionsPage.tsx'));
+const SettingsPage = lazy(() => import('@pages/dashboard/settings/SettingsPage.tsx'));
+const SecurityPage = lazy(() => import('@pages/dashboard/settings/SecurityPage.tsx'));
+const PaymentMethodsPage = lazy(() => import('@pages/dashboard/settings/PaymentMethodsPage.tsx'));
+const ProfilePage = lazy(() => import('@pages/dashboard/settings/ProfilePage.tsx'));
+const PreferencesPage = lazy(() => import('@pages/dashboard/settings/PreferencesPage.tsx'));
+const PasswordPage = lazy(() => import('@pages/dashboard/settings/PasswordPage.tsx'));
+
+const SuspenseWrapper = ({ children }: { children: ReactNode }) => (
+  <Suspense fallback={<LazyRouteFallbackLoading/>}>
+    {children}
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
     path: '/',
-    lazy: () => import('./pages/Home.tsx')
+    element: (
+      <SuspenseWrapper>
+        <HomePage />
+      </SuspenseWrapper>
+    )
   },
   {
     path: 'login',
-    lazy: () => import('./pages/auth/Login.tsx')
+    element: (
+      <SuspenseWrapper>
+        <LoginPage />
+      </SuspenseWrapper>
+    )
   },
   {
     path: 'signup',
-    lazy: () => import('./pages/auth/Signup.tsx')
+    element: (
+      <SuspenseWrapper>
+        <SignupPage />
+      </SuspenseWrapper>
+    )
   },
   {
     path: 'dashboard',
-    lazy: () => import('./layout/Dashboard.layout.tsx'),
+    element: (
+      <SuspenseWrapper>
+        <DashboardLayout />
+      </SuspenseWrapper>
+    ),
     children: [
       {
         index: true,
-        lazy: () => import('@pages/dashboard/dashboard/Dashboard.page.tsx')
+        element: (
+          <SuspenseWrapper>
+            <DashboardPage />
+          </SuspenseWrapper>
+        )
       },
       {
         path: 'assets-portfolio',
-        lazy: () =>
-          import('@pages/dashboard/assets-portfolio/AssetsPortfolio.page.tsx')
+        element: (
+          <SuspenseWrapper>
+            <AssetsPortfolioPage />
+          </SuspenseWrapper>
+        )
       },
       {
         path: 'prices',
-        lazy: () => import('@pages/dashboard/prices/AssetsPrice.page.tsx')
+        element: (
+          <SuspenseWrapper>
+            <AssetsPricePage />
+          </SuspenseWrapper>
+        )
       },
       {
         path: 'prices/:assetName',
-        lazy: () => import('@pages/dashboard/prices/AssetPrice.page.tsx')
+        element: (
+          <SuspenseWrapper>
+            <AssetPricePage />
+          </SuspenseWrapper>
+        )
       },
       {
         path: 'transactions',
-        lazy: () =>
-          import('@pages/dashboard/transactions/Transactions.page.tsx')
+        element: (
+          <SuspenseWrapper>
+            <TransactionsPage />
+          </SuspenseWrapper>
+        )
       },
       {
         path: 'settings',
-        lazy: () => import('@pages/dashboard/settings/Settings.page.tsx')
-      },
-      {
-        path: 'settings/security',
-        lazy: () => import('@pages/dashboard/settings/Security.page.tsx')
-      },
-      {
-        path: 'settings/payment-methods',
-        lazy: () => import('@pages/dashboard/settings/PaymentMethods.page.tsx')
-      },
-      {
-        path: 'settings/profile',
-        lazy: () => import('@pages/dashboard/settings/Profile.page.tsx')
-      },
-      {
-        path: 'settings/preferences',
-        lazy: () => import('@pages/dashboard/settings/Preferences.page.tsx')
-      },
-      {
-        path: 'settings/password',
-        lazy: () => import('@pages/dashboard/settings/Password.page.tsx')
+        element: (
+          <SuspenseWrapper>
+            <SettingsPage />
+          </SuspenseWrapper>
+        ),
+        children: [
+          {
+            path: 'security',
+            element: (
+              <SuspenseWrapper>
+                <SecurityPage />
+              </SuspenseWrapper>
+            )
+          },
+          {
+            path: 'payment-methods',
+            element: (
+              <SuspenseWrapper>
+                <PaymentMethodsPage />
+              </SuspenseWrapper>
+            )
+          },
+          {
+            path: 'profile',
+            element: (
+              <SuspenseWrapper>
+                <ProfilePage />
+              </SuspenseWrapper>
+            )
+          },
+          {
+            path: 'preferences',
+            element: (
+              <SuspenseWrapper>
+                <PreferencesPage />
+              </SuspenseWrapper>
+            )
+          },
+          {
+            path: 'password',
+            element: (
+              <SuspenseWrapper>
+                <PasswordPage />
+              </SuspenseWrapper>
+            )
+          }
+        ]
       }
     ]
   }

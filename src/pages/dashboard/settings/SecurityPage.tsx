@@ -104,7 +104,7 @@ const TwoStepVerificationWrapper = styled.div`
   }
 `;
 
-export function Component() {
+export default function SecurityPage() {
   const [textMessageCheckBox, setTextMessageCheckBox] = useState<boolean>();
   const [emailCheckBox, setEmailCheckBox] = useState<boolean>();
 
