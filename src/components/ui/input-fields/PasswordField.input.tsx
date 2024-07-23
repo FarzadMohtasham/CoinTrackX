@@ -33,7 +33,7 @@ const PasswordInputStyled = styled.div`
 
 const PasswordFieldContainer = styled(PasswordInputStyled)<InputStyledProps>`
   border-color: ${(props) =>
-  props.$inputSelected === 'true'
+  props.$inputIsActive
     ? 'var(--color-black-400)'
     : 'var(--color-black-50)'};
 
@@ -74,7 +74,7 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
 
   return (
     <Fragment>
-      <PasswordFieldContainer $inputSelected={passwordFieldSelected.toString()}>
+      <PasswordFieldContainer $inputIsActive={passwordFieldSelected} $hasError={false}>
         {!passwordFieldSelected && (
           <Icon width={iconWidth} iconSrc={iconSrc || ''} />
         )}
