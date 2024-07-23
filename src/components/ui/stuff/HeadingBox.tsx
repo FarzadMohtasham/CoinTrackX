@@ -4,29 +4,29 @@ import { styled } from 'styled-components';
 import { HeadingBoxType } from '@typings/component-types/HeadingBox.type.ts';
 
 const HeadingBoxStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 48px;
 `;
 
 const LabelStyled = styled.span`
-  text-transform: uppercase;
-  color: var(--color-primary);
-  display: block;
-  text-align: center;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    display: block;
+    text-align: center;
 `;
 
 const HeadingStyled = styled.h2`
-  text-align: center;
-  font-weight: 500;
+    text-align: center;
+    font-weight: 500;
 `;
 
 const DescStyled = styled.p`
-  text-align: center;
-  color: var(--color-black-500);
-  font-size: var(--font-size-body-md);
-  font-weight: 500;
+    text-align: center;
+    color: var(--color-black-500);
+    font-size: var(--font-size-body-md);
+    font-weight: 500;
 `;
 
 export default function HeadingBox(props: HeadingBoxType): JSX.Element {

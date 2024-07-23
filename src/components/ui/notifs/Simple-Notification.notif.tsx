@@ -8,78 +8,78 @@ import { SimpleNotifProps, SimpleNotifStyled } from '@typings/component-types/No
 const SimpleNotifContainer: any = styled.div<
   NotificationStyledProps & SimpleNotifStyled
 >`
-  display: flex;
-  justify-content: space-between;
-  border-radius: 8px;
-  overflow: hidden;
-  width: ${(props) => props.$width};
-  height: ${(props) => props.$height};
-  border: 2px solid ${(props) => props.theme.notif.border_color};
-  background-color: ${(props) => props.theme.notif[props.$type + '_color']};
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    overflow: hidden;
+    width: ${(props) => props.$width};
+    height: ${(props) => props.$height};
+    border: 2px solid ${(props) => props.theme.notif.border_color};
+    background-color: ${(props) => props.theme.notif[props.$type + '_color']};
 
-  .notif-icon {
-    width: ${(props) => props.$iconSize};
-  }
+    .notif-icon {
+        width: ${(props) => props.$iconSize};
+    }
 
-  .close-icon {
-    width: ${(props) => props.$closeIconSize};
-  }
+    .close-icon {
+        width: ${(props) => props.$closeIconSize};
+    }
 
-  .left-column-wrapper {
-    flex: 0 0 auto;
-  }
+    .left-column-wrapper {
+        flex: 0 0 auto;
+    }
 `;
 
 const LeftColumnWrapper: any = styled.div.attrs({
   className: 'left-column-wrapper'
 })`
-  display: grid;
-  place-content: center;
-  border-right: 2px solid ${(props) => props.theme.notif.border_color};
-  padding: 0 15px;
-  background-color: ${(props) => props.theme.notif.icon_wrapper_bg_color};
+    display: grid;
+    place-content: center;
+    border-right: 2px solid ${(props) => props.theme.notif.border_color};
+    padding: 0 15px;
+    background-color: ${(props) => props.theme.notif.icon_wrapper_bg_color};
 `;
 
 const CenterColumnWrapper: any = styled.div.attrs({
   className: 'center-column-wrapper'
 })`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 5px;
-  padding: 12px;
-  justify-content: center;
-
-  .top-section {
     display: flex;
-    gap: 10px;
-    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 5px;
+    padding: 12px;
+    justify-content: center;
 
-    .title {
-      font-size: var(--font-size-body-sm);
-      font-weight: 500;
+    .top-section {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        .title {
+            font-size: var(--font-size-body-sm);
+            font-weight: 500;
+        }
+
+        .created-at {
+            font-size: var(--font-size-body-xsm);
+        }
     }
 
-    .created-at {
-      font-size: var(--font-size-body-xsm);
+    .message {
+        font-size: var(--font-size-body-xsm);
     }
-  }
-
-  .message {
-    font-size: var(--font-size-body-xsm);
-  }
 `;
 
 const RightColumnWrapper: any = styled.div.attrs({
   className: 'right-column-wrapper'
 })`
-  width: max-content;
-  height: 100%;
-  padding: 15px 15px 0 0;
+    width: max-content;
+    height: 100%;
+    padding: 15px 15px 0 0;
 
-  img {
-    cursor: pointer;
-  }
+    img {
+        cursor: pointer;
+    }
 `;
 
 export default function SimpleNotification(

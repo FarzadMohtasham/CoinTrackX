@@ -11,26 +11,26 @@ import {
 } from '@typings/component-types/CheckBox.type.ts';
 
 const CheckBoxContainer = styled.div<CheckboxStyledProps>`
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-  label {
-    font-size: var(--font-size-body-md);
-    color: var(--color-black-400);
-    font-weight: 500;
-  }
+    label {
+        font-size: var(--font-size-body-md);
+        color: var(--color-black-400);
+        font-weight: 500;
+    }
 
-  input {
-    --active: ${(props) => props.$properties.active};
-    --active-inner: ${(props) => props.$properties['active-inner']};
-    --focus: ${(props) => props.$properties.focus};
-    --border: ${(props) => props.$properties.border};
-    --border-hover: ${(props) => props.$properties['border-hover']};
-    --background: ${(props) => props.$properties.background};
-    --disabled: ${(props) => props.$properties.disabled};
-    --disabled-inner: ${(props) => props.$properties['disabled-inner']};
-  }
+    input {
+        --active: ${(props) => props.$properties.active};
+        --active-inner: ${(props) => props.$properties['active-inner']};
+        --focus: ${(props) => props.$properties.focus};
+        --border: ${(props) => props.$properties.border};
+        --border-hover: ${(props) => props.$properties['border-hover']};
+        --background: ${(props) => props.$properties.background};
+        --disabled: ${(props) => props.$properties.disabled};
+        --disabled-inner: ${(props) => props.$properties['disabled-inner']};
+    }
 `;
 
 export default function CheckboxInput(props: CheckboxProps): JSX.Element {

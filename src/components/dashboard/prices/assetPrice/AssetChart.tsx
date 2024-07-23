@@ -100,18 +100,18 @@ const chartIntervalsList: SelectMenuItem[] = [
 ];
 
 const AssetChartContainer = styled.div`
-  .heading-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    .heading-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
 
-    .title {
-      font-size: var(--font-size-body-lg);
-      font-weight: 500;
-      text-transform: capitalize;
+        .title {
+            font-size: var(--font-size-body-lg);
+            font-weight: 500;
+            text-transform: capitalize;
+        }
     }
-  }
 `;
 
 export default function AssetChart(props: AssetChartProps) {

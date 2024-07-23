@@ -19,7 +19,8 @@ CoinTrackX is a simple and open-source platform for tracking your coins profit/l
 
 ## Introduction
 
-Welcome to CoinTrackX! This project is designed to help you track the profit and loss of your cryptocurrency investments. It offers a clean and intuitive interface built with modern web technologies.
+Welcome to CoinTrackX! This project is designed to help you track the profit and loss of your cryptocurrency
+investments. It offers a clean and intuitive interface built with modern web technologies.
 
 ## Features
 
@@ -46,7 +47,8 @@ To get started with CoinTrackX, follow these steps:
     ```
 
 3. **Set up environment variables:**
-   Create a `.env` file in the root directory and add the necessary environment variables. Refer to `.env.example` for the required variables.
+   Create a `.env` file in the root directory and add the necessary environment variables. Refer to `.env.example` for
+   the required variables.
 
 4. **Run the development server:**
     ```bash
@@ -57,29 +59,30 @@ To get started with CoinTrackX, follow these steps:
 
 ## Usage
 
-Once the server is running, open your browser and navigate to `http://localhost:3000`. Here, you can start tracking your cryptocurrency investments.
+Once the server is running, open your browser and navigate to `http://localhost:3000`. Here, you can start tracking your
+cryptocurrency investments.
 
 ## Tech Stack
 
 - **Frontend:**
-  - React
-  - Zustand
-  - Styled-Components
-  - Recharts
-  - Chakra UI
+    - React
+    - Zustand
+    - Styled-Components
+    - Recharts
+    - Chakra UI
 
 - **Backend:**
-  - Supabase
+    - Supabase
 
 - **Utilities:**
-  - TanStack Query
-  - Axios
-  - React Hook Form
-  - React Hot Toast
+    - TanStack Query
+    - Axios
+    - React Hook Form
+    - React Hot Toast
 
 - **Build Tools:**
-  - TypeScript
-  - Vite
+    - TypeScript
+    - Vite
 
 ## Project Structure
 
@@ -102,7 +105,6 @@ The project structure is as follows:
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts
-
 
 ## Contributing
 

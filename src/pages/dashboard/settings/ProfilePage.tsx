@@ -15,14 +15,14 @@ const ProfileContainer = styled.div`
     @media screen and (max-width: ${props => props.theme.breakpoints.md}) {
         padding: 16px;
     }
-`
+`;
 
 export default function ProfilePage() {
   return (
     <ProfileContainer>
-      <ContactInfo/>
-      <PersonalInfo/>
-      <CloseAccount/>
+      <ContactInfo />
+      <PersonalInfo />
+      <CloseAccount />
     </ProfileContainer>
   );
 }

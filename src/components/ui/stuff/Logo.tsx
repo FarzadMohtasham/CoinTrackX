@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 
 const LogoContainer = styled.div`
-  display: flex;
-  gap: 8px;
+    display: flex;
+    gap: 8px;
 `;
 
 export default function Logo() {

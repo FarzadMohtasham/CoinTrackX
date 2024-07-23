@@ -138,7 +138,7 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
 
   // ---------- Handlers ----------
   const onEditCreditDebitCardHandler = async () => {
-    setActionButtonsDisabled(true)
+    setActionButtonsDisabled(true);
     try {
       await updateCreditDebitCard(creditDebitCardInfo.id, cardInfo);
       toast.success('Credit/Debit Card Updated');
@@ -147,11 +147,11 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
     } catch (e: PostgrestError | any) {
       toast.error(e.message);
     }
-    setActionButtonsDisabled(false)
+    setActionButtonsDisabled(false);
   };
 
   const onCreditDebitCardDelete = async () => {
-    setActionButtonsDisabled(true)
+    setActionButtonsDisabled(true);
     try {
       await deleteCreditDebitCard(creditDebitCardInfo.id);
       toast.success('Credit/Debit Card Removed');
@@ -160,7 +160,7 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
     } catch (e: PostgrestError | any) {
       toast.error(e.message);
     }
-    setActionButtonsDisabled(false)
+    setActionButtonsDisabled(false);
   };
 
 

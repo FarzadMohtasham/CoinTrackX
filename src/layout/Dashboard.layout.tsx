@@ -210,22 +210,22 @@ const MobileNavOverlay = styled.div<{
   $navIsOpen: boolean;
   $navStatusWithDelay: boolean;
 }>`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--color-black-300);
-  z-index: 11;
-  transition: opacity 0.3s ease-in-out;
-  cursor: pointer;
-  ${(props) => (props.$navStatusWithDelay ? 'opacity: 100;' : 'opacity: 0;')}
-  ${(props) =>
-  props.$navIsOpen
-    ? css`
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-black-300);
+    z-index: 11;
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+    ${(props) => (props.$navStatusWithDelay ? 'opacity: 100;' : 'opacity: 0;')}
+    ${(props) =>
+            props.$navIsOpen
+                    ? css`
           transform: translateX(0);
         `
-    : css`
+                    : css`
           transform: translateX(100vw);
         `}
 `;

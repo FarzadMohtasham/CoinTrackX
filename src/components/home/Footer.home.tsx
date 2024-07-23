@@ -19,79 +19,79 @@ const FooterWrapper: IStyledComponentBase<any> = styled.div`
 `;
 
 const FooterStyled: IStyledComponentBase<any> = styled.div`
-  background: white;
-  border-radius: 24px;
-  padding: 64px;
-  display: grid;
-  width: 100%;
+    background: white;
+    border-radius: 24px;
+    padding: 64px;
+    display: grid;
+    width: 100%;
 
-  .brand-info {
-    .brand-logo {
-      margin-bottom: 24px;
+    .brand-info {
+        .brand-logo {
+            margin-bottom: 24px;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 48px;
+
+            img {
+                width: 20px;
+            }
+        }
     }
 
-    .social-media {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 48px;
-
-      img {
-        width: 20px;
-      }
+    .footer-column {
+        .footer-heading {
+            margin-bottom: 16px;
+        }
     }
-  }
 
-  .footer-column {
-    .footer-heading {
-      margin-bottom: 16px;
+    .footer-column-1 {
+        grid-area: footer-column-1;
     }
-  }
 
-  .footer-column-1 {
-    grid-area: footer-column-1;
-  }
+    .footer-column-2 {
+        grid-area: footer-column-2;
+    }
 
-  .footer-column-2 {
-    grid-area: footer-column-2;
-  }
+    .footer-column-3 {
+        grid-area: footer-column-3;
+    }
 
-  .footer-column-3 {
-    grid-area: footer-column-3;
-  }
+    .footer-column-4 {
+        grid-area: footer-column-4;
+    }
 
-  .footer-column-4 {
-    grid-area: footer-column-4;
-  }
-
-  /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (max-width: ${(
-  props: ExecutionContext & FastOmit<any, any>
-) => props.theme.breakpoints.md}) {
-    grid-template-areas:
+    /*Small devices (landscape phones, 576px and up)*/
+    @media screen and (max-width: ${(
+            props: ExecutionContext & FastOmit<any, any>
+    ) => props.theme.breakpoints.md}) {
+        grid-template-areas:
       'footer-column-1'
       'footer-column-2'
       'footer-column-3'
       'footer-column-4';
-    gap: 15px;
-  }
+        gap: 15px;
+    }
 
-  /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${(
-  props: ExecutionContext & FastOmit<any, any>
-) => props.theme.breakpoints.md}) {
-    grid-template-areas:
+    /*Medium devices (tablets, 768px and up)*/
+    @media screen and (min-width: ${(
+            props: ExecutionContext & FastOmit<any, any>
+    ) => props.theme.breakpoints.md}) {
+        grid-template-areas:
       'footer-column-1 footer-column-2'
       'footer-column-3 footer-column-4';
-    gap: 25px;
-  }
+        gap: 25px;
+    }
 
-  /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${(
-  props: ExecutionContext & FastOmit<any, any>
-) => props.theme.breakpoints.lg}) {
-    grid-template-areas: 'footer-column-1 footer-column-2 footer-column-3 footer-column-4';
-    gap: 40px;
-  }
+    /*Large devices (desktops, 992px and up)*/
+    @media screen and (min-width: ${(
+            props: ExecutionContext & FastOmit<any, any>
+    ) => props.theme.breakpoints.lg}) {
+        grid-template-areas: 'footer-column-1 footer-column-2 footer-column-3 footer-column-4';
+        gap: 40px;
+    }
 `;
 
 const ColumnList = styled.ul`

@@ -14,46 +14,45 @@ type CardNumberProps = {
 };
 
 const CardNumberInputContainer = styled.div<{ $inputFocused: boolean }>`
-  background-color: var(--color-gray-100);
-  padding: 10px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  height: 52px;
-  transition: border-color 0.3s ease-in-out;
-  border: 2px solid
-    ${(props) =>
-  props.$inputFocused
-    ? css`var(--color-gray-400)`
-    : css`var(--color-gray-100)`};
+    background-color: var(--color-gray-100);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    transition: border-color 0.3s ease-in-out;
+    border: 2px solid ${(props) =>
+            props.$inputFocused
+                    ? css`var(--color-gray-400)`
+                    : css`var(--color-gray-100)`};
 
-  input {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    input {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0);
 
-    &::placeholder {
-      color: var(--color-gray-300);
+        &::placeholder {
+            color: var(--color-gray-300);
+        }
     }
-  }
 `;
 
 const CreditProvidersWrapper = styled.div<{
   $creditCardProvider: CardNumberProvider | '';
 }>`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5px;
-  margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    margin-right: 10px;
 
-  .visa-icon {
-    opacity: ${(props) => (props.$creditCardProvider === 'Visa' ? '1' : '.25')};
-  }
+    .visa-icon {
+        opacity: ${(props) => (props.$creditCardProvider === 'Visa' ? '1' : '.25')};
+    }
 
-  .mastercard-icon {
-    opacity: ${(props) =>
-  props.$creditCardProvider === 'MasterCard' ? '1' : '.25'};
-  }
+    .mastercard-icon {
+        opacity: ${(props) =>
+                props.$creditCardProvider === 'MasterCard' ? '1' : '.25'};
+    }
 `;
 
 export default function CardNumberInput(props: CardNumberProps): JSX.Element {

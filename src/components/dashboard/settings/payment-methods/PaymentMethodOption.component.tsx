@@ -4,33 +4,33 @@ import { PaymentMethodOptionProps } from '@typings/PaymentMethodOption.type.ts';
 import Icon from '@components/ui/stuff/Icon.tsx';
 
 const PaymentMethodOptionContainer = styled.div<{ $disabled: boolean }>`
-  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
-  padding: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  position: relative;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    padding: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
 
-  .wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    .wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
 
-    .info-wrapper {
-      .title {
-        font-size: var(--font-size-body-sm);
-        font-weight: bold;
-      }
+        .info-wrapper {
+            .title {
+                font-size: var(--font-size-body-sm);
+                font-weight: bold;
+            }
 
-      .description {
-        font-size: var(--font-size-body-xsm);
-        text-align: justify-all;
-      }
+            .description {
+                font-size: var(--font-size-body-xsm);
+                text-align: justify-all;
+            }
+        }
     }
-  }
 
-  ${(props) =>
-  props.$disabled &&
-  css`
+    ${(props) =>
+            props.$disabled &&
+            css`
       &::after {
         content: '';
         width: 100%;

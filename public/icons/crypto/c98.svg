@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="c98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<svg version="1.1" id="c98" xmlns="http://www.w3.org/2000/svg" x="0px"
+     y="0px"
+     viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#D9B432;}
 </style>
-<path class="st0" d="M408.7,4H91.3C40.7,4,0,43.9,0,93.6v311.6c0,49.7,40.7,89.6,91.3,89.6h317.4c49.9,0,91.3-39.9,91.3-89.6V93.6
+    <path class="st0" d="M408.7,4H91.3C40.7,4,0,43.9,0,93.6v311.6c0,49.7,40.7,89.6,91.3,89.6h317.4c49.9,0,91.3-39.9,91.3-89.6V93.6
 	C500,43.9,459.3,4,408.7,4L408.7,4z M331.7,126.6c37.1,0,67,29.4,67,65.8c0,11.2-2.9,21.7-7.9,31.5c-8.6-6.3-17.8-11.9-27.8-15.4
 	c2.8-4.9,4.3-10.5,4.3-16.1c0-18.9-15.7-34.3-35-34.3c-19.3,0-35,15.4-35,34.3c0,5.6,1.4,11.2,4.3,16.1c-10,3.5-20,8.4-27.8,15.4
 	c-5.7-9.8-7.9-20.3-7.9-31.5C264.6,156,294.6,126.6,331.7,126.6z M168.3,372.4c-37.1,0-67-29.4-67-65.8h32.1

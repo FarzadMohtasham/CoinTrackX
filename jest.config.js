@@ -1,13 +1,13 @@
 export default {
-    testEnvironment: "jsdom",
-    transform: {
-        "^.+\\.tsx?$": "ts-jest",
-    },
+  testEnvironment: 'jsdom',
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest'
+  },
 
-    moduleNameMapper: {
-        "\\.(css|less|sass|scss)$": "identity-obj-proxy",
-        "^.+\\.svg$": "jest-transformer-svg",
-    },
+  moduleNameMapper: {
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    '^.+\\.svg$': 'jest-transformer-svg'
+  },
 
-    setupFilesAfterEnv: ["<rootDir>/jest.setup.typings"],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.typings']
 };

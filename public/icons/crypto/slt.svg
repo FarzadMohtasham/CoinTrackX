@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="slt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+<svg version="1.1" id="slt" xmlns="http://www.w3.org/2000/svg" x="0px"
+     y="0px"
+     viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#3BB46C;}
 </style>
-<title>Asset 1</title>
-<path class="st0" d="M408.6,77.9L299.2,14.7c-28.7-16.5-64.1-16.5-92.8,0L96.9,77.9c-28.7,16.6-46.4,47.3-46.4,80.4v126.2
+    <title>Asset 1</title>
+    <path class="st0" d="M408.6,77.9L299.2,14.7c-28.7-16.5-64.1-16.5-92.8,0L96.9,77.9c-28.7,16.6-46.4,47.3-46.4,80.4v126.2
 	c0.1,33.1,17.7,63.8,46.4,80.4l109.4,63.3c9.5,5.5,20,9.2,30.8,11v58.5h34.2v-59c9.8-2,19.2-5.5,27.8-10.5L408.6,365
 	c28.7-16.6,46.4-47.3,46.4-80.5V158.3C454.9,125.1,437.3,94.5,408.6,77.9z M223.5,44.4c18.1-10.4,40.5-10.4,58.6,0l22.8,13.2
 	l-86.2,55.6c-8.2,4.6-11.1,15.1-6.5,23.3c4.6,8.2,15.1,11.1,23.3,6.5c0.6-0.3,1.2-0.7,1.7-1.1l101-65.1l53.3,30.8

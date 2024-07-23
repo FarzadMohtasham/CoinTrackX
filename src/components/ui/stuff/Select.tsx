@@ -57,21 +57,21 @@ const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
 `;
 
 const SelectMenuItem = styled.li<SelectedMenuItemProps>`
-  display: flex;
-  gap: 10px;
-  text-transform: uppercase;
-  border-radius: 6px;
-  transition: background-color 0.3s ease-in-out;
+    display: flex;
+    gap: 10px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    transition: background-color 0.3s ease-in-out;
 
-  ${(props: any) =>
-  props.$selected &&
-  css`
+    ${(props: any) =>
+            props.$selected &&
+            css`
       background-color: #22242a;
     `};
 
-  ${(props: any) =>
-  !props.$selected &&
-  css`
+    ${(props: any) =>
+            !props.$selected &&
+            css`
       &:hover {
         background-color: var(--color-white-50);
       }

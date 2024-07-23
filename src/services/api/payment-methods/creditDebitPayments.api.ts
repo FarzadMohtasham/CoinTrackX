@@ -104,5 +104,5 @@ export const deleteCreditDebitCard = async (id: number): Promise<any> => {
 
   if (error) throw error;
 
-  return undefined
+  return undefined;
 };

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="1000 -1000 2500 2500" style="enable-background:new 1000 -1000 2500 2500;" xml:space="preserve">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px"
+     y="0px"
+     viewBox="1000 -1000 2500 2500" style="enable-background:new 1000 -1000 2500 2500;" xml:space="preserve">
 <g id="Substratum">
 	<g id="sub">
 		<g id="Group">
@@ -9,7 +10,7 @@
 				<path id="path0_fill" style="fill:#E53431;" d="M2407,1764.544c675.034,0,1222.544-547.51,1222.544-1222.544
 					S3082.034-680.544,2407-680.544S1184.456-133.034,1184.456,542S1731.966,1764.544,2407,1764.544z"/>
 			</g>
-			<g id="Vector_1_" transform="translate(-149 -286.738)">
+            <g id="Vector_1_" transform="translate(-149 -286.738)">
 				<path id="path1_fill" style="fill:#FFFFFF;" d="M2144.479-252.32c3.162-2.635,7.377-3.689,11.593-3.689
 					s8.431,1.054,11.593,3.689l95.906,72.193c5.27,4.216,8.431,11.066,7.377,17.39c-1.054,6.85-5.27,12.647-11.593,15.282
 					c-6.323,2.635-13.701,1.581-18.97-2.108l-84.313-63.235L1881-6.757l1207.263,905.842c4.743,3.689,7.905,9.485,7.905,15.282

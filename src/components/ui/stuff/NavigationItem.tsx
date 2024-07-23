@@ -6,37 +6,37 @@ import Icon from '@components/ui/stuff/Icon.tsx';
 import { NavigationItemStyledProps, NavigationProps } from '@typings/NavigationItem.type.ts';
 
 const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 14px 0 14px 12px;
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  border: 2px white solid;
-  border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 14px 0 14px 12px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    border: 2px white solid;
+    border-radius: 8px;
 
-  ${(props) =>
-  props.$active &&
-  css`
+    ${(props) =>
+            props.$active &&
+            css`
       background-color: var(--color-primary-75);
       border: 2px var(--color-black-50) solid !important;
     `}
-  span {
-    font-size: var(--font-size-body-sm);
-    color: var(
-      ${(props) => (props.$active ? `--color-black-900` : `--color-black-600`)}
-    );
-    font-weight: ${(props) => (props.$active ? `bold` : '400')};
-  }
+    span {
+        font-size: var(--font-size-body-sm);
+        color: var(
+                ${(props) => (props.$active ? `--color-black-900` : `--color-black-600`)}
+        );
+        font-weight: ${(props) => (props.$active ? `bold` : '400')};
+    }
 
-  &:hover {
-    ${(props) =>
-  !props.$active &&
-  css`
+    &:hover {
+        ${(props) =>
+                !props.$active &&
+                css`
         background-color: var(--color-primary-50);
       `}
-  }
+    }
 `;
 
 export default function NavigationItem(props: NavigationProps): JSX.Element {

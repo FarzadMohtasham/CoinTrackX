@@ -21,44 +21,42 @@ type ButtonStyledProps = {
 };
 
 const ButtonStyled = styled.button<ButtonStyledProps>`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  justify-content: center;
-  text-align: center;
-  cursor: ${(props: any) => props.$properties.cursor};
-  padding: ${(props: any) => props.$properties.padding};
-  font-size: ${(props: any) => props.$properties.fontSize};
-  width: ${(props: any): string =>
-  props.$properties.expanded ? '100%' : `max-content`};
-  background-color: ${(props: any) => props.$properties.backgroundColor};
-  color: ${(props: any) => props.$properties.color};
-  border-radius: ${(props: any) => props.$properties.borderRadiusS};
-  border: ${(props: any): string => (props.$properties.noBorder ? '0' : '2px')}
-    solid ${(props: any) => props.$properties.border};
-  transition:
-    background-color 0.3s ease-in-out,
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    text-align: center;
+    cursor: ${(props: any) => props.$properties.cursor};
+    padding: ${(props: any) => props.$properties.padding};
+    font-size: ${(props: any) => props.$properties.fontSize};
+    width: ${(props: any): string =>
+            props.$properties.expanded ? '100%' : `max-content`};
+    background-color: ${(props: any) => props.$properties.backgroundColor};
+    color: ${(props: any) => props.$properties.color};
+    border-radius: ${(props: any) => props.$properties.borderRadiusS};
+    border: ${(props: any): string => (props.$properties.noBorder ? '0' : '2px')} solid ${(props: any) => props.$properties.border};
+    transition: background-color 0.3s ease-in-out,
     border 0.3s ease-in-out;
-  height: 50px;
+    height: 50px;
 
-  &:hover {
-    ${(props: any) => props.$properties.hover}
-  }
+    &:hover {
+        ${(props: any) => props.$properties.hover}
+    }
 
-  /*Very Small devices (landscape phones, 576px and down)*/
-  @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
-    ${(props: any) => props.$properties.mobileMedia}
-  }
+    /*Very Small devices (landscape phones, 576px and down)*/
+    @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
+        ${(props: any) => props.$properties.mobileMedia}
+    }
 
-  /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.md}) {
-    ${(props: any) => props.$properties.tabletMedia}
-  }
+    /*Medium devices (tablets, 768px and up)*/
+    @media screen and (min-width: ${(props) => props.theme.breakpoints.md}) {
+        ${(props: any) => props.$properties.tabletMedia}
+    }
 
-  /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.lg}) {
-    ${(props: any) => props.$properties.desktopMedia}
-  }
+    /*Large devices (desktops, 992px and up)*/
+    @media screen and (min-width: ${(props) => props.theme.breakpoints.lg}) {
+        ${(props: any) => props.$properties.desktopMedia}
+    }
 `;
 
 function Button(props: ButtonPropsType): JSX.Element {

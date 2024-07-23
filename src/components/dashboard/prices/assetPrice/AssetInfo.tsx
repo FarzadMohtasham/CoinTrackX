@@ -15,64 +15,64 @@ type AssetInfoProps = {
 };
 
 const AssetInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const AssetInfoLeftCol = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 
-  div.asset-details-wrapper {
-    div.details {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    div.asset-details-wrapper {
+        div.details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-      span.asset-name {
-        font-weight: 500;
-        font-size: var(--font-size-heading-3);
-      }
+            span.asset-name {
+                font-weight: 500;
+                font-size: var(--font-size-heading-3);
+            }
 
-      span.asset-symbol {
-        font-size: var(--font-size-body-sm);
-        color: var(--color-black-300);
-        font-weight: 500;
-      }
+            span.asset-symbol {
+                font-size: var(--font-size-body-sm);
+                color: var(--color-black-300);
+                font-weight: 500;
+            }
+        }
+
+        span.asset-desc {
+            font-size: var(--font-size-body-xsm);
+            color: var(--color-black-700);
+        }
     }
-
-    span.asset-desc {
-      font-size: var(--font-size-body-xsm);
-      color: var(--color-black-700);
-    }
-  }
 `;
 
 const AssetInfoRightCol = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-
-  div.asset-price-details {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 5px;
 
-    span.asset-price {
-      font-size: var(--font-size-heading-4);
-      font-weight: 500;
+    div.asset-price-details {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        span.asset-price {
+            font-size: var(--font-size-heading-4);
+            font-weight: 500;
+        }
     }
-  }
 
-  div.asset-price-sub-details {
-    text-align: right;
+    div.asset-price-sub-details {
+        text-align: right;
 
-    span.asset-24h-change-amount {
-      font-size: var(--font-size-body-sm);
+        span.asset-24h-change-amount {
+            font-size: var(--font-size-body-sm);
+        }
     }
-  }
 `;
 
 export default function AssetInfo(props: AssetInfoProps) {

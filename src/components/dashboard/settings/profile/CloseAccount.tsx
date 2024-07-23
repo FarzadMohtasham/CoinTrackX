@@ -4,5 +4,5 @@ export default function CloseAccount() {
     <div>
       CloseAccount
     </div>
-  )
+  );
 }

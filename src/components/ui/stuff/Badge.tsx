@@ -15,18 +15,18 @@ const borderRadiusVariations = {
 };
 
 const BadgeStyled = styled.span<BadgeProps>`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  width: max-content;
-  background-color: ${(props: any) => props.$bgColor};
-  padding: 6px 8px;
-  font-size: var(--font-size-body-xsm);
-  color: ${(props: any) => props.$textColor};
-  border-radius: ${(props: any) =>
-  props.$borderRadiusVariations[props.$borderRadius]};
-  border: 1px solid ${(props: any) => props.$borderColor};
-  font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: max-content;
+    background-color: ${(props: any) => props.$bgColor};
+    padding: 6px 8px;
+    font-size: var(--font-size-body-xsm);
+    color: ${(props: any) => props.$textColor};
+    border-radius: ${(props: any) =>
+            props.$borderRadiusVariations[props.$borderRadius]};
+    border: 1px solid ${(props: any) => props.$borderColor};
+    font-weight: 500;
 `;
 
 export default function Badge(props: BadgePropsType): JSX.Element {

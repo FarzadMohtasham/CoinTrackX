@@ -4,5 +4,5 @@ export default function PersonalInfo() {
     <div>
       PersonalInfo
     </div>
-  )
+  );
 }
