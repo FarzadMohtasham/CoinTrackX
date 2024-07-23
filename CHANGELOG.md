@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.37](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.36...v0.0.37) (2024-07-23)
+
+
+### Bug Fixes
+
+* Bug fix ([f4d55ef](https://github.com/FarzadMohtasham/CoinTrackX/commit/f4d55ef65f8f2d8ecd37357b73d64ad2c9d72c1b))
+* Bug fix ([1f641b9](https://github.com/FarzadMohtasham/CoinTrackX/commit/1f641b99650e4f176f76f4e84afe5679c28a59d9))
+
 ### [0.0.36](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.35...v0.0.36) (2024-07-23)
 
 
