@@ -1,7 +1,13 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.0.38](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.37...v0.0.38) (2024-07-23)
+
+
+### Bug Fixes
+
+* Project Code Reformating & Cleanup ([dac3535](https://github.com/FarzadMohtasham/CoinTrackX/commit/dac3535881c9554d819aaa89936d163ab2f5473e))
 
 ### [0.0.37](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.36...v0.0.37) (2024-07-23)
 
