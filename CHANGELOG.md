@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.35](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.34...v0.0.35) (2024-07-23)
+
+
+### Features
+
+* Added validation to inputs ([47d1254](https://github.com/FarzadMohtasham/CoinTrackX/commit/47d12544c7be673033f65c6065560cccfed4fb35))
+
 ### [0.0.34](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.33...v0.0.34) (2024-07-22)
 
 
