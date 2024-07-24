@@ -1,5 +1,5 @@
 import { JSX, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { toast } from 'react-hot-toast';
 
@@ -12,7 +12,6 @@ import PasswordFieldInput from '@components/ui/input-fields/PasswordField.input.
 
 import { signupInputValidator } from '@validations/signup.validator.ts';
 import { signup } from '@services/api/auth/auth.api.ts';
-import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts';
 
 import {
   AuthContainer,
@@ -22,6 +21,7 @@ import {
   MainContent as MainContentStyled
 } from '@pages/auth/AuthShared.tsx';
 import { SignupValidationResult } from '@typings/validator-types/Auth.validator.type.ts';
+import useLocaleStorage from '@hooks/useLocaleStorage.ts';
 
 const LoginContainer = styled(AuthContainer)``;
 const LoginWrapper = styled(AuthInnerWrapper)``;
@@ -68,8 +68,6 @@ export default function SignupPage(): JSX.Element {
     useState<boolean>(true);
 
   const navigate = useNavigate();
-
-  useRedirectIfAuthenticated('dashboard', true);
 
   const onSignupHandler = async (): Promise<void> => {
     if (!agreeTerms) {
@@ -283,4 +281,18 @@ export default function SignupPage(): JSX.Element {
       </LoginWrapper>
     </LoginContainer>
   );
+}
+
+export const loader = async () => {
+  const userLocalStorage: object | null = useLocaleStorage(
+    import.meta.env.VITE_User_Auth_Local_Storage_KEY
+  );
+
+  if (userLocalStorage !== null) {
+    if (JSON.parse(String(userLocalStorage)).access_token) {
+      return redirect('/dashboard');
+    }
+  }
+
+  return null;
 }

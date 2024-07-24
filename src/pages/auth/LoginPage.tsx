@@ -1,5 +1,5 @@
 import { JSX, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { toast } from 'react-hot-toast';
 
@@ -20,7 +20,7 @@ import {
   HeadContent as HeadContentStyled,
   MainContent as MainContentStyled
 } from './AuthShared.tsx';
-import useRedirectIfAuthenticated from '@hooks/useRedirectIfAuthenticated.ts';
+import useLocaleStorage from '@hooks/useLocaleStorage.ts';
 
 const Container = styled(AuthContainer)``;
 const Wrapper = styled(AuthInnerWrapper)``;
@@ -40,8 +40,6 @@ export default function LoginPage(): JSX.Element {
   const [authLoading, setAuthLoading] = useState<boolean>(false);
 
   const navigate = useNavigate();
-
-  useRedirectIfAuthenticated();
 
   const onLoginHandler = async (): Promise<void> => {
     setAuthLoading(true);
@@ -189,3 +187,36 @@ export default function LoginPage(): JSX.Element {
     </Container>
   );
 }
+
+export const loader = async () => {
+  const userLocalStorage: object | null = useLocaleStorage(
+    import.meta.env.VITE_User_Auth_Local_Storage_KEY
+  );
+
+  if (userLocalStorage !== null) {
+    if (JSON.parse(String(userLocalStorage)).access_token) {
+      return redirect('/dashboard');
+    }
+  }
+
+  return null;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

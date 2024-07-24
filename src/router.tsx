@@ -1,6 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, ReactNode, Suspense } from 'react';
 import LazyRouteFallbackLoading from '@components/fallbacks/LazyRouteFallbackLoading.tsx';
+// Loaders
+import { loader as loginPageLoader } from '@pages/auth/LoginPage.tsx';
+import { loader as signupPageLoader } from '@pages/auth/SignupPage.tsx';
 
 // Lazy-loaded components
 const HomePage = lazy(() => import('@pages/Home.tsx'));
@@ -40,7 +43,8 @@ const router = createBrowserRouter([
       <SuspenseWrapper>
         <LoginPage />
       </SuspenseWrapper>
-    )
+    ),
+    loader: loginPageLoader
   },
   {
     path: 'signup',
@@ -48,7 +52,8 @@ const router = createBrowserRouter([
       <SuspenseWrapper>
         <SignupPage />
       </SuspenseWrapper>
-    )
+    ),
+    loader: signupPageLoader
   },
   {
     path: 'dashboard',
