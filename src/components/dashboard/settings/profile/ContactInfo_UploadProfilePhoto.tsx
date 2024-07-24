@@ -27,6 +27,7 @@ const LeftCol = styled.div`
             width: 80px;
             height: 80px;
             border-radius: 50%;
+            object-fit: cover;
         }
     }
 
@@ -81,9 +82,16 @@ export default function UploadProfilePhoto({ setImageFile, imageFile }: UploadPr
     <UploadProfilePhotoContainer>
       <LeftCol>
         <div className="image-wrapper">
-          <img className={'user-profile'}
-               src={String(imageFile) || 'https://zwrleecsvygsftotatty.supabase.co/storage/v1/object/public/CoinTrackX/blank-profile.png?t=2024-07-19T12%3A39%3A44.706Z'}
-               alt={'user-profile-image'} />
+          {
+            imageFile ?
+              <img className={'user-profile'}
+                   src={URL.createObjectURL(imageFile)}
+                   alt={'user-profile-image'} />
+              :
+              <img className={'user-profile'}
+                   src={'https://zwrleecsvygsftotatty.supabase.co/storage/v1/object/public/CoinTrackX/blank-profile.png?t=2024-07-19T12%3A39%3A44.706Z'}
+                   alt={'user-profile-image'} />
+          }
         </div>
         <div className="profile-info-wrapper">
           <Heading headingType={'h6'} className={'username'}>

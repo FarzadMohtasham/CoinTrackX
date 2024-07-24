@@ -65,7 +65,7 @@ export default function ContactInfo() {
 
   const fieldsAreValid: boolean = !!(displayNameErrorMsg || emailErrorMsg);
 
-  // Input Validators
+  // Validation process of user inputs
   useEffect(() => {
     const runValidation = async () => {
       try {
@@ -100,9 +100,15 @@ export default function ContactInfo() {
     runValidation().then();
   }, [displayName, email]);
 
+  // Update Changes in every input change
   useEffect(() => {
     setChanges(prevChanges => prevChanges + 1);
   }, [displayName, email, profileImageFile]);
+
+  // Set initial data about user profile
+  useEffect(() => {
+
+  })
 
   return (
     <ContactInfoContainer>
