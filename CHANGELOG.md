@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.43](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.42...v0.0.43) (2024-07-24)
+
+
+### Bug Fixes
+
+* react-scroll offset fixed ([ca507e6](https://github.com/FarzadMohtasham/CoinTrackX/commit/ca507e65623956c2b50623807a46e95fe2d3be60))
+
 ### [0.0.42](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.41...v0.0.42) (2024-07-24)
 
 
