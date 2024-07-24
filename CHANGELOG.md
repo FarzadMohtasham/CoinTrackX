@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.39](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.38...v0.0.39) (2024-07-24)
+
+
+### Bug Fixes
+
+* New profile photo not showing fixed ([5944497](https://github.com/FarzadMohtasham/CoinTrackX/commit/5944497acdd10e08f7e8cef1fc1983cea09f45c4))
+
 ### [0.0.38](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.37...v0.0.38) (2024-07-23)
 
 
