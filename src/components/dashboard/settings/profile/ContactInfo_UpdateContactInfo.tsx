@@ -7,6 +7,8 @@ type UpdateContactInfoProps = {
   setEmail: Dispatch<SetStateAction<string>>;
   displayNameErrorMsg: string;
   emailErrorMsg: string;
+  displayName: string;
+  email: string;
 }
 
 const UploadProfilePhotoContainer = styled.div`
@@ -42,10 +44,10 @@ export default function UpdateContactInfo(props: UpdateContactInfoProps) {
         <span className="label display-name-label">
           Display name
         </span>
-        <Input initialValue={''}
-               iconSrc={null}
+        <Input iconSrc={null}
                placeHolder={'Please enter display name'}
                hasError={props.displayNameErrorMsg.length > 0}
+               inputValue={props.displayName}
                onChangeHandler={props.setDisplayName} />
         <span className={'error-msg'}>{props.displayNameErrorMsg}</span>
       </FieldWrapper>
@@ -54,10 +56,10 @@ export default function UpdateContactInfo(props: UpdateContactInfoProps) {
         <span className="label email-label">
           Email
         </span>
-        <Input initialValue={''}
-               iconSrc={null}
-               placeHolder={'Please enter display name'}
+        <Input iconSrc={null}
+               placeHolder={'Please enter email'}
                hasError={props.emailErrorMsg.length > 0}
+               inputValue={props.email}
                onChangeHandler={props.setEmail} />
         <span className={'error-msg'}>{props.emailErrorMsg}</span>
       </FieldWrapper>

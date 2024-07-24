@@ -220,18 +220,20 @@ export default function SignupPage(): JSX.Element {
           <Separator title={'OR'} />
           <div className={'name-inputs-wrapper'}>
             <InputField
+              inputValue={firstName}
+              onChangeHandler={setFirstName}
               placeHolder={'First name'}
               label={'first-name'}
-              onChangeHandler={setFirstName}
               iconSrc={'user-icon.svg'}
               focusIconSrc={'user-focus-icon.svg'}
               errorMessage={firstNameFieldError}
               unAllowedErrorMessages={['first name is a required field']}
             />
             <InputField
+              inputValue={lastName}
+              onChangeHandler={setLastName}
               placeHolder={'Last name'}
               label={'last-name'}
-              onChangeHandler={setLastName}
               iconSrc={'user-icon.svg'}
               focusIconSrc={'user-focus-icon.svg'}
               errorMessage={lastNameFieldError}
@@ -239,22 +241,24 @@ export default function SignupPage(): JSX.Element {
             />
           </div>
           <InputField
+            inputValue={email}
+            onChangeHandler={setEmail}
             placeHolder={'email'}
             label={'email'}
-            onChangeHandler={setEmail}
             iconSrc={'email-icon.svg'}
             focusIconSrc={'email-focus-icon.svg'}
             errorMessage={emailFieldError}
             unAllowedErrorMessages={['email is a required field']}
           />
           <PasswordFieldInput
+            inputValue={password}
+            onChangeHandler={setPassword}
             placeHolder={'Password'}
             label={'password'}
             unAllowedErrorMessages={['password is a required field']}
             iconSrc={'password-icon.svg'}
             errorMessage={passwordFieldError}
             focusIconSrc={'password-focus-icon.svg'}
-            onChangeHandler={setPassword}
           />
           <CheckboxInput
             label={'I agree to the Terms & Conditions'}

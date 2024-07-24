@@ -149,22 +149,24 @@ export default function LoginPage(): JSX.Element {
           </div>
           <Separator title={'OR'} />
           <InputField
+            inputValue={email}
+            onChangeHandler={setEmail}
             placeHolder={'email'}
             label={'email'}
-            onChangeHandler={setEmail}
             iconSrc={'email-icon.svg'}
             focusIconSrc={'email-focus-icon.svg'}
             errorMessage={emailFieldError}
             unAllowedErrorMessages={['email is a required field']}
           />
           <PasswordFieldInput
+            inputValue={password}
+            onChangeHandler={setPassword}
             placeHolder={'Password'}
             label={'password'}
             unAllowedErrorMessages={['password is a required field']}
             iconSrc={'password-icon.svg'}
             errorMessage={passwordFieldError}
             focusIconSrc={'password-focus-icon.svg'}
-            onChangeHandler={setPassword}
           />
           <CheckboxInput label={'Remember me'} checkBoxSetter={setRememberMe} />
           <Button

@@ -173,7 +173,7 @@ export default function EditCreditDebitCardModal(props: EditCreditDebitCardModal
           placeHolder={'Enter your Cardholder name'}
           label={'cardholder-name'}
           iconSrc={null}
-          initialValue={creditDebitCardInfo.cardholder_name}
+          inputValue={cardholderName || creditDebitCardInfo.cardholder_name}
           onChangeHandler={setCardholderName}
           errorMessage={cardholderNameErrorMsg}
           unAllowedErrorMessages={['Cardholder Name is a required field']}

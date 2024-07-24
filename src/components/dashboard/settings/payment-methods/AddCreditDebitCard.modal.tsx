@@ -159,6 +159,7 @@ export default function AddCreditDebitCardModal(
           placeHolder={'Enter your Cardholder name'}
           label={'cardholder-name'}
           iconSrc={null}
+          inputValue={cardholderName}
           onChangeHandler={setCardholderName}
           errorMessage={cardholderNameErrorMsg}
           unAllowedErrorMessages={['Cardholder Name is a required field']}

@@ -55,6 +55,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
     label,
     onChangeHandler = (): void => {
     },
+    inputValue,
     iconSrc = 'email-icon.svg',
     focusIconSrc = 'email-icon.svg',
     iconWidth = '20px',
@@ -62,18 +63,16 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
     unAllowedErrorMessages = [],
     maxLength = 200,
     minLength = 0,
-    initialValue = '',
-    hasError = false
+    hasError = false,
   } = props;
 
   const [inputFieldIsActive, setInputFieldIsActive] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>(initialValue);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const inputOnFocusHandler = () => setInputFieldIsActive(true);
   const inputOnBlurHandler = () => setInputFieldIsActive(false);
 
-  const clearInput = () => setInputValue('');
+  const clearInput = () => onChangeHandler('');
   const focusInput = () => inputRef.current?.focus();
 
   useImperativeHandle(ref, () => ({
@@ -106,9 +105,9 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
           ref={inputRef}
           placeholder={placeHolder}
           value={inputValue}
+          onChange={(e) => onChangeHandler(e.target.value)}
           onFocus={inputOnFocusHandler}
           onBlur={inputOnBlurHandler}
-          onChange={(e) => setInputValue(e.target.value)}
         />
       </InputFieldContainer>
       {unAllowedErrorMessages.length !== 0 &&

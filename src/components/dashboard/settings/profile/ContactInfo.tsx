@@ -6,6 +6,7 @@ import Button from '@components/ui/stuff/Button.tsx';
 import { useEffect, useState } from 'react';
 import { contactInputSchema } from '@/lib/schema/ContactInput.schema.ts';
 import { ValidationError } from 'yup';
+import useUser from '@hooks/useUser.ts';
 
 const ContactInfoContainer = styled.div`
     border-radius: 8px;
@@ -42,8 +43,14 @@ const ActionsContainer = styled.div`
 const defaultMinChangesNumber = 3;
 
 export default function ContactInfo() {
-  const [displayName, setDisplayName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
+  const user = useUser();
+  const defaultContactInfo = {
+    displayName: user?.user.aud || '',
+    email: user?.user.email || ''
+  }
+
+  const [displayName, setDisplayName] = useState<string>(() => defaultContactInfo.displayName);
+  const [email, setEmail] = useState<string>(() => defaultContactInfo.email);
   const [profileImageFile, setProfileImageFile] = useState<File | undefined>();
 
   const [displayNameErrorMsg, setDisplayNameErrorMsg] = useState<string>('');
@@ -51,11 +58,13 @@ export default function ContactInfo() {
 
   const [changes, setChanges] = useState<number>(0);
 
+  // Constants
+  const fieldsAreValid: boolean = !!(displayNameErrorMsg || emailErrorMsg);
+
+  // Handlers
   const handleResetChangesClick = () => {
-    setDisplayName('');
-    setEmail('');
-    setProfileImageFile(undefined);
-    setChanges(defaultMinChangesNumber);
+    setDisplayName(defaultContactInfo.displayName);
+    setEmail(defaultContactInfo.email);
   };
 
   const resetErrorMessages = () => {
@@ -63,7 +72,9 @@ export default function ContactInfo() {
     setEmailErrorMsg('');
   };
 
-  const fieldsAreValid: boolean = !!(displayNameErrorMsg || emailErrorMsg);
+  const saveChangesClick = async () => {
+
+  };
 
   // Validation process of user inputs
   useEffect(() => {
@@ -105,11 +116,6 @@ export default function ContactInfo() {
     setChanges(prevChanges => prevChanges + 1);
   }, [displayName, email, profileImageFile]);
 
-  // Set initial data about user profile
-  useEffect(() => {
-
-  })
-
   return (
     <ContactInfoContainer>
       {changes}
@@ -127,7 +133,9 @@ export default function ContactInfo() {
           <UploadProfilePhoto imageFile={profileImageFile}
                               setImageFile={setProfileImageFile}
           />
-          <UpdateContactInfo setEmail={setEmail}
+          <UpdateContactInfo email={email}
+                             setEmail={setEmail}
+                             displayName={displayName}
                              setDisplayName={setDisplayName}
                              displayNameErrorMsg={displayNameErrorMsg}
                              emailErrorMsg={emailErrorMsg}
@@ -137,7 +145,8 @@ export default function ContactInfo() {
 
       {changes >= defaultMinChangesNumber &&
         <ActionsContainer>
-          <Button disabled={fieldsAreValid}>
+          <Button disabled={fieldsAreValid}
+                  onClickHandler={saveChangesClick}>
             Save Changes
           </Button>
           <Button outline={true}

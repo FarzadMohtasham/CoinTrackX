@@ -281,6 +281,7 @@ export default function PricesTable(): JSX.Element {
               label={'search-crypto'}
               iconSrc={'search-gray.svg'}
               focusIconSrc={'search-gray-active.svg'}
+              inputValue={search}
               onChangeHandler={(value) => setSearch(value)}
             />
           </div>

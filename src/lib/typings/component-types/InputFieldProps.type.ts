@@ -2,6 +2,7 @@ export type InputProps = {
   placeHolder: string;
   label?: string;
   onChangeHandler: (value: string) => void;
+  inputValue: string;
   iconSrc?: string | null;
   focusIconSrc?: string;
   iconWidth?: string;
@@ -9,7 +10,6 @@ export type InputProps = {
   unAllowedErrorMessages?: string[];
   maxLength?: number;
   minLength?: number;
-  initialValue?: string;
   hasError?: boolean;
 };
 
