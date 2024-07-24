@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.42](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.41...v0.0.42) (2024-07-24)
+
+
+### Features
+
+* Added Route Protection for DashboardLayout ([595d98d](https://github.com/FarzadMohtasham/CoinTrackX/commit/595d98d3097544118e7d6999091696bc2a0c70c0))
+
 ### [0.0.41](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.40...v0.0.41) (2024-07-24)
 
 
