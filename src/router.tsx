@@ -4,6 +4,7 @@ import LazyRouteFallbackLoading from '@components/fallbacks/LazyRouteFallbackLoa
 // Loaders
 import { loader as loginPageLoader } from '@pages/auth/LoginPage.tsx';
 import { loader as signupPageLoader } from '@pages/auth/SignupPage.tsx';
+import { loader as DashboardLayoutLoader } from '@layout/Dashboard.layout.tsx';
 
 // Lazy-loaded components
 const HomePage = lazy(() => import('@pages/Home.tsx'));
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </SuspenseWrapper>
     ),
+    loader: DashboardLayoutLoader,
     children: [
       {
         index: true,

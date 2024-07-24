@@ -1,5 +1,5 @@
 import { JSX, useEffect, useRef, useState } from 'react';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Outlet, redirect, useLocation, useNavigate } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
 import Heading from '@components/ui/stuff/Heading.tsx';
@@ -10,200 +10,200 @@ import Alert from '@components/dashboard/Notifications.tsx';
 
 import { NavigationListData } from '@data/navigationList.data.ts';
 import { NavigationItemType, NavigationProps } from '@typings/NavigationItem.type.ts';
-import useDashboardProtectRoute from '@hooks/useDashboardProtectRoute.ts';
 import Icon from '@components/ui/stuff/Icon.tsx';
 import { useUiStore } from '@services/store/ui.store.ts';
+import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
 
 const LayoutContainer = styled.div`
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(12, 1fr);
-  position: relative;
-  overflow: hidden;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    position: relative;
+    overflow: hidden;
 
-  /*Very Small devices (landscape phones, 576px and down)*/
-  @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
-    .layout-header {
-      grid-column: 1 / 13;
-      grid-row: 1 / 2;
-    }
+    /*Very Small devices (landscape phones, 576px and down)*/
+    @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
+        .layout-header {
+            grid-column: 1 / 13;
+            grid-row: 1 / 2;
+        }
 
-    .layout-main {
-      grid-column: 1 / 13;
-      grid-row: 2 / 13;
-    }
+        .layout-main {
+            grid-column: 1 / 13;
+            grid-row: 2 / 13;
+        }
 
-    .layout-sidebar {
-      grid-column: 1 / 3;
-      grid-row: 1 / 13;
+        .layout-sidebar {
+            grid-column: 1 / 3;
+            grid-row: 1 / 13;
+        }
     }
-  }
-  /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
-    .layout-header {
-      grid-column: 1 / 13;
-      grid-row: 1 / 2;
-    }
+    /*Small devices (landscape phones, 576px and up)*/
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
+        .layout-header {
+            grid-column: 1 / 13;
+            grid-row: 1 / 2;
+        }
 
-    .layout-main {
-      grid-column: 1 / 13;
-      grid-row: 2 / 13;
-    }
+        .layout-main {
+            grid-column: 1 / 13;
+            grid-row: 2 / 13;
+        }
 
-    .layout-sidebar {
-      grid-column: 1 / 3;
-      grid-row: 1 / 13;
+        .layout-sidebar {
+            grid-column: 1 / 3;
+            grid-row: 1 / 13;
+        }
     }
-  }
-  /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
-    .layout-header {
-      grid-column: 4 / 13;
-      grid-row: 1 / 2;
-    }
+    /*Medium devices (tablets, 768px and up)*/
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
+        .layout-header {
+            grid-column: 4 / 13;
+            grid-row: 1 / 2;
+        }
 
-    .layout-main {
-      grid-column: 4 / 13;
-      grid-row: 2 / 13;
-    }
+        .layout-main {
+            grid-column: 4 / 13;
+            grid-row: 2 / 13;
+        }
 
-    .layout-sidebar {
-      grid-column: 1 / 4;
-      grid-row: 1 / 13;
+        .layout-sidebar {
+            grid-column: 1 / 4;
+            grid-row: 1 / 13;
+        }
     }
-  }
-  /*Large devices (desktops, 992px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
-    .layout-header {
-      grid-column: 3 / 13;
-      grid-row: 1 / 2;
-    }
+    /*Large devices (desktops, 992px and up)*/
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
+        .layout-header {
+            grid-column: 3 / 13;
+            grid-row: 1 / 2;
+        }
 
-    .layout-main {
-      grid-column: 3 / 13;
-      grid-row: 2 / 13;
-    }
+        .layout-main {
+            grid-column: 3 / 13;
+            grid-row: 2 / 13;
+        }
 
-    .layout-sidebar {
-      grid-column: 1 / 3;
-      grid-row: 1 / 13;
+        .layout-sidebar {
+            grid-column: 1 / 3;
+            grid-row: 1 / 13;
+        }
     }
-  }
 `;
 const LayoutHeader = styled.div.attrs({ className: 'layout-header' })`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 2px var(--color-black-100) solid;
-  padding: 0 24px;
-
-  .left-col {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+    border-bottom: 2px var(--color-black-100) solid;
+    padding: 0 24px;
 
-    .menu-burger {
-      display: block;
-    }
-  }
-
-  .right-col {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
     .left-col {
-      .menu-burger {
-        display: none;
-      }
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .menu-burger {
+            display: block;
+        }
     }
-  }
+
+    .right-col {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
+        .left-col {
+            .menu-burger {
+                display: none;
+            }
+        }
+    }
 `;
 
 const LayoutSidebar = styled.aside.attrs({ className: 'layout-sidebar' })`
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  border-right: 2px var(--color-black-100) solid;
-  padding: 32px 24px;
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-  overflow-x: hidden;
-
-  .navigation-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-  }
+    gap: 48px;
+    border-right: 2px var(--color-black-100) solid;
+    padding: 32px 24px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
 
-  /*Very Small devices (landscape phones, 576px and down)*/
-  @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
-    display: none;
-  }
+    .navigation-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-  /*Small devices (landscape phones, 576px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
-    display: none;
-  }
+    /*Very Small devices (landscape phones, 576px and down)*/
+    @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
+        display: none;
+    }
 
-  /*Medium devices (tablets, 768px and up)*/
-  @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
-    display: flex;
-  }
+    /*Small devices (landscape phones, 576px and up)*/
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
+        display: none;
+    }
+
+    /*Medium devices (tablets, 768px and up)*/
+    @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
+        display: flex;
+    }
 `;
 
 const LayoutMain = styled.div.attrs({ className: 'layout-main' })`
-  overflow-y: scroll;
+    overflow-y: scroll;
 `;
 
 const MobileSideBar = styled.div.attrs<{
   $navIsOpen: boolean;
   $navStatusWithDelay: boolean;
 }>({ className: 'mobile-side-bar' })`
-  background-color: white;
-  position: absolute;
-  width: 75vw;
-  height: 100vh;
-  transform: translateX(${(props) => (props.$navIsOpen ? '0' : '-75')}vw);
-  transition: transform 0.3s ease-in-out;
-  box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
-  z-index: 15;
-  padding: 10px 30px;
-  overflow: scroll;
-  overflow-x: hidden;
-
-  .navbar-heading-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-
-    .close-navbar-icon {
-      font-size: var(--font-size-heading-2);
-      cursor: pointer;
-    }
-  }
-
-  .navigation-items {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .mobile-sidebar-overlay {
+    background-color: white;
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100vh;
-    height: 100vw;
-    background-color: red;
-    transition: opacity 0.3s ease-in-out;
-    ${(props) => (props.$navIsOpen ? 'opacity: 100;' : 'opacity: 0;')}
-  }
+    width: 75vw;
+    height: 100vh;
+    transform: translateX(${(props) => (props.$navIsOpen ? '0' : '-75')}vw);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+    z-index: 15;
+    padding: 10px 30px;
+    overflow: scroll;
+    overflow-x: hidden;
+
+    .navbar-heading-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .close-navbar-icon {
+            font-size: var(--font-size-heading-2);
+            cursor: pointer;
+        }
+    }
+
+    .navigation-items {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .mobile-sidebar-overlay {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100vh;
+        height: 100vw;
+        background-color: red;
+        transition: opacity 0.3s ease-in-out;
+        ${(props) => (props.$navIsOpen ? 'opacity: 100;' : 'opacity: 0;')}
+    }
 `;
 
 const MobileNavOverlay = styled.div<{
@@ -223,18 +223,18 @@ const MobileNavOverlay = styled.div<{
     ${(props) =>
             props.$navIsOpen
                     ? css`
-          transform: translateX(0);
-        `
+                        transform: translateX(0);
+                    `
                     : css`
-          transform: translateX(100vw);
-        `}
+                        transform: translateX(100vw);
+                    `}
 `;
 
 const ChildNavItemsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 15px 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 0 0 10px;
 `;
 
 export default function DashboardLayout() {
@@ -257,8 +257,6 @@ export default function DashboardLayout() {
       setNavStatus: state.setNavStatus
     })
   );
-
-  useDashboardProtectRoute('/login', true);
 
   const resetNavListActiveProp = (): void => {
     setNavigationList((navList: NavigationItemType[]) =>
@@ -530,3 +528,11 @@ export default function DashboardLayout() {
     </LayoutContainer>
   );
 }
+
+export const loader = async () => {
+  const userLoggedIn = useUserLoggedIn();
+  if (!userLoggedIn) {
+    return redirect('/login');
+  }
+  return null;
+};
