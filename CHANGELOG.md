@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.41](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.40...v0.0.41) (2024-07-24)
+
+
+### Features
+
+* Added Redirecting for loggedIn users loader for Login & Signup ([a153d07](https://github.com/FarzadMohtasham/CoinTrackX/commit/a153d07c068562b0569b9a5757f420c13aa246e0))
+
 ### [0.0.40](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.39...v0.0.40) (2024-07-24)
 
 
