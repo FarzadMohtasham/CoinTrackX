@@ -1,7 +1,7 @@
+import { styled } from 'styled-components';
+
 import ContactInfo from '@components/dashboard/settings/profile/ContactInfo.tsx';
 import PersonalInfo from '@components/dashboard/settings/profile/PersonalInfo.tsx';
-import CloseAccount from '@components/dashboard/settings/profile/CloseAccount.tsx';
-import { styled } from 'styled-components';
 
 const ProfileContainer = styled.div`
     display: flex;
@@ -22,7 +22,6 @@ export default function ProfilePage() {
     <ProfileContainer>
       <ContactInfo />
       <PersonalInfo />
-      <CloseAccount />
     </ProfileContainer>
   );
 }

@@ -42,12 +42,13 @@ const ActionsContainer = styled.div`
 // Constants
 const defaultMinChangesNumber = 3;
 
+const user = useUser();
+const defaultContactInfo = {
+  displayName: user?.user.confirmed_at || '',
+  email: user?.user.email || ''
+};
+
 export default function ContactInfo() {
-  const user = useUser();
-  const defaultContactInfo = {
-    displayName: user?.user.aud || '',
-    email: user?.user.email || ''
-  }
 
   const [displayName, setDisplayName] = useState<string>(() => defaultContactInfo.displayName);
   const [email, setEmail] = useState<string>(() => defaultContactInfo.email);
