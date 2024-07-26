@@ -1,7 +1,7 @@
 {
    "name": "vite-project",
    "private": true,
-   "version": "0.0.44",
+   "version": "0.0.45",
    "type": "module",
    "scripts": {
       "test": "jest --watch",
@@ -12,7 +12,7 @@
       "preview": "vite preview",
       "commit": "git commit",
       "release": "standard-version",
-      "push": "git push --follow-tags origin main",
+      "push": "git push --follow-tags origin main"
    },
    "dependencies": {
       "@chakra-ui/react": "^2.8.2",
