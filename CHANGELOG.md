@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.46](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.45...v0.0.46) (2024-07-26)
+
+
+### Bug Fixes
+
+* Tabsize Bug fix ([e849b2c](https://github.com/FarzadMohtasham/CoinTrackX/commit/e849b2ca67ba2aca5bfe1b8f3fd548bdda2ce4cd))
+
 ### [0.0.45](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.44...v0.0.45) (2024-07-26)
 
 
