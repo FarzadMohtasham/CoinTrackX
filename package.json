@@ -7,7 +7,6 @@
       "test": "jest --watch",
       "dev": "vite",
       "build": "tsc && vite build",
-      "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
       "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
       "preview": "vite preview",
       "commit": "git commit",

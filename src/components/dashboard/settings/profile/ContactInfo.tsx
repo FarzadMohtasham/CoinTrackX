@@ -8,6 +8,10 @@ import { contactInputSchema } from '@/lib/schema/ContactInput.schema.ts';
 import { ValidationError } from 'yup';
 import useUser from '@hooks/useUser.ts';
 
+type ValidationErrorT = {
+   inner?: ValidationError[];
+};
+
 const ContactInfoContainer = styled.div`
    border-radius: 8px;
    border: 1px solid var(--color-black-100);
@@ -93,14 +97,15 @@ export default function ContactInfo() {
                { abortEarly: false },
             );
             resetErrorMessages();
-         } catch (e: { inner: ValidationError[] } | any) {
-            if (!e) {
-               return;
-            }
+         } catch (e: unknown) {
+            if (!e) return;
 
+            const error: ValidationErrorT = e;
             let displayNameFieldError = null;
             let emailFieldError = null;
-            e.inner.map((err: ValidationError) => {
+
+            const innerError = error.inner || [];
+            innerError.map((err: ValidationError) => {
                switch (err.path) {
                   case 'displayName':
                      displayNameFieldError = err.message;
