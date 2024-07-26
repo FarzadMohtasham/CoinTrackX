@@ -4,46 +4,45 @@ import { styled } from 'styled-components';
 import { IconProps } from '@typings/component-types/IconProps.type.ts';
 
 const IconImg = styled.img<{
-  $clickable: boolean;
-  $width: string;
-  $height: string;
+   $clickable: boolean;
+   $width: string;
+   $height: string;
 }>`
-  display: inline;
-  width: ${(props) => props.$width};
-  height: ${(props) => props.$height};
-  cursor: ${(props) => (props.$clickable ? 'pointer' : 'cursor')};
+   display: inline;
+   width: ${(props) => props.$width};
+   height: ${(props) => props.$height};
+   cursor: ${(props) => (props.$clickable ? 'pointer' : 'cursor')};
 `;
 
 export default function Icon(props: IconProps): JSX.Element {
-  const iconPath = '/icons';
+   const iconPath = '/icons';
 
-  let {
-    iconSrc = '',
-    iconAlt = 'icon',
-    width = '20px',
-    height = null,
-    className = 'icon',
-    onClickHandler = (): void => {
-    },
-    clickable = false
-  } = props;
+   let {
+      iconSrc = '',
+      iconAlt = 'icon',
+      width = '20px',
+      height = null,
+      className = 'icon',
+      onClickHandler = (): void => {},
+      clickable = false,
+   } = props;
 
-  if (height === null) {
-    height = width;
-  }
+   if (height === null) {
+      height = width;
+   }
 
-  if (iconSrc === '') iconSrc = `${iconPath}/default.png`;
-  else iconSrc = `${iconPath}/${iconSrc}`;
+   if (iconSrc === '') iconSrc = `${iconPath}/default.png`;
+   else iconSrc = `${iconPath}/${iconSrc}`;
 
-  return (
-    <IconImg
-      src={`${iconSrc}`}
-      alt={iconAlt}
-      $width={width}
-      $height={height}
-      className={className}
-      $clickable={clickable}
-      onClick={onClickHandler}
-    />
-  );
+   return (
+      <IconImg
+         src={`${iconSrc}`}
+         alt={iconAlt}
+         $width={width}
+         $height={height}
+         className={className}
+         $clickable={clickable}
+         onClick={onClickHandler}
+      />
+   );
 }

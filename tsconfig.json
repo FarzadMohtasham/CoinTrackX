@@ -1,91 +1,49 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@config/*": [
-        "./src/config/*"
-      ],
-      "@data/*": [
-        "./src/data/*"
-      ],
-      "@feature/*": [
-        "./src/feature/*"
-      ],
-      "@hooks/*": [
-        "./src/lib/hooks/*"
-      ],
-      "@jest/*": [
-        "./src/jest/*"
-      ],
-      "@layout/*": [
-        "./src/layout/*"
-      ],
-      "@pages/*": [
-        "./src/pages/*"
-      ],
-      "@query/*": [
-        "./src/query/*"
-      ],
-      "@services/*": [
-        "./src/services/*"
-      ],
-      "@styles/*": [
-        "./src/styles/*"
-      ],
-      "@tests/*": [
-        "./src/tests/*"
-      ],
-      "@typings/*": [
-        "./src/lib/typings/*"
-      ],
-      "@utils/*": [
-        "./src/lib/utils/*"
-      ],
-      "@validations/*": [
-        "./src/lib/validations/*"
-      ],
-      "@themes/*": [
-        "./src/lib/themes/*"
-      ]
-    }
-  },
-  "include": [
-    "src",
-    "./jest.setup.ts"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+   "compilerOptions": {
+      "target": "ES2020",
+      "useDefineForClassFields": true,
+      "lib": ["ES2020", "DOM", "DOM.Iterable"],
+      "module": "ESNext",
+      "skipLibCheck": true,
+      /* Bundler mode */
+      "moduleResolution": "bundler",
+      "allowImportingTsExtensions": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+      "jsx": "react-jsx",
+      /* Linting */
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+      "baseUrl": ".",
+      "paths": {
+         "@/*": ["./src/*"],
+         "@assets/*": ["./src/assets/*"],
+         "@components/*": ["./src/components/*"],
+         "@config/*": ["./src/config/*"],
+         "@data/*": ["./src/data/*"],
+         "@feature/*": ["./src/feature/*"],
+         "@hooks/*": ["./src/lib/hooks/*"],
+         "@jest/*": ["./src/jest/*"],
+         "@layout/*": ["./src/layout/*"],
+         "@pages/*": ["./src/pages/*"],
+         "@query/*": ["./src/query/*"],
+         "@services/*": ["./src/services/*"],
+         "@styles/*": ["./src/styles/*"],
+         "@tests/*": ["./src/tests/*"],
+         "@typings/*": ["./src/lib/typings/*"],
+         "@utils/*": ["./src/lib/utils/*"],
+         "@validations/*": ["./src/lib/validations/*"],
+         "@themes/*": ["./src/lib/themes/*"]
+      },
+      "useUnknownInCatchVariables": false
+   },
+   "include": ["src", "./jest.setup.ts"],
+   "references": [
+      {
+         "path": "./tsconfig.node.json"
+      }
+   ]
 }

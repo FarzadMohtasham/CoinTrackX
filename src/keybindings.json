@@ -1,0 +1,5 @@
+{
+   "key": "shift+alt+l", // You can set this to any key combination you prefer
+   "command": "workbench.action.tasks.runTask",
+   "args": "lint"
+}

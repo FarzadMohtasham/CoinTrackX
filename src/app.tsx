@@ -16,17 +16,17 @@ import ReactQueryClient from '@query/queryClient.tsx';
 import styledComponentTheme from '@/lib/themes/styled-components.theme.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ChakraProvider theme={chakraTheme}>
-      <ReactQueryClient>
-        {import.meta.env.VITE_NODE_ENV === 'development' && (
-          <ReactQueryDevtools initialIsOpen={false} />
-        )}
-        <Toaster position="top-center" />
-        <ThemeProvider theme={styledComponentTheme.lightTheme}>
-          <RouterProvider router={router} />
-        </ThemeProvider>
-      </ReactQueryClient>
-    </ChakraProvider>
-  </React.StrictMode>
+   <React.StrictMode>
+      <ChakraProvider theme={chakraTheme}>
+         <ReactQueryClient>
+            {import.meta.env.VITE_NODE_ENV === 'development' && (
+               <ReactQueryDevtools initialIsOpen={false} />
+            )}
+            <Toaster position="top-center" />
+            <ThemeProvider theme={styledComponentTheme.lightTheme}>
+               <RouterProvider router={router} />
+            </ThemeProvider>
+         </ReactQueryClient>
+      </ChakraProvider>
+   </React.StrictMode>,
 );

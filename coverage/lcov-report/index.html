@@ -1,101 +1,161 @@
 <!doctype html>
 <html lang="en">
+   <head>
+      <title>Code coverage report for All files</title>
+      <meta charset="utf-8" />
+      <link href="prettify.css" rel="stylesheet" />
+      <link href="base.css" rel="stylesheet" />
+      <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
+      <style type="text/css">
+         .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+         }
+      </style>
+   </head>
 
-<head>
-  <title>Code coverage report for All files</title>
-  <meta charset="utf-8" />
-  <link href="prettify.css" rel="stylesheet" />
-  <link href="base.css" rel="stylesheet" />
-  <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <style type='text/css'>
-      .coverage-summary .sorter {
-          background-image: url(sort-arrow-sprite.png);
-      }
-  </style>
-</head>
+   <body>
+      <div class="wrapper">
+         <div class="pad1">
+            <h1>All files</h1>
+            <div class="clearfix">
+               <div class="fl pad1y space-right2">
+                  <span class="strong">Unknown% </span>
+                  <span class="quiet">Statements</span>
+                  <span class="fraction">0/0</span>
+               </div>
 
-<body>
-<div class='wrapper'>
-  <div class='pad1'>
-    <h1>All files</h1>
-    <div class='clearfix'>
+               <div class="fl pad1y space-right2">
+                  <span class="strong">Unknown% </span>
+                  <span class="quiet">Branches</span>
+                  <span class="fraction">0/0</span>
+               </div>
 
-      <div class='fl pad1y space-right2'>
-        <span class="strong">Unknown% </span>
-        <span class="quiet">Statements</span>
-        <span class='fraction'>0/0</span>
+               <div class="fl pad1y space-right2">
+                  <span class="strong">Unknown% </span>
+                  <span class="quiet">Functions</span>
+                  <span class="fraction">0/0</span>
+               </div>
+
+               <div class="fl pad1y space-right2">
+                  <span class="strong">Unknown% </span>
+                  <span class="quiet">Lines</span>
+                  <span class="fraction">0/0</span>
+               </div>
+            </div>
+            <p class="quiet">
+               Press <em>n</em> or <em>j</em> to go to the next uncovered block,
+               <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+            </p>
+            <template id="filterTemplate">
+               <div class="quiet">
+                  Filter:
+                  <input id="fileSearch" type="search" />
+               </div>
+            </template>
+         </div>
+         <div class="status-line medium"></div>
+         <div class="pad1">
+            <table class="coverage-summary">
+               <thead>
+                  <tr>
+                     <th
+                        class="file"
+                        data-col="file"
+                        data-fmt="html"
+                        data-html="true"
+                     >
+                        File
+                     </th>
+                     <th
+                        class="pic"
+                        data-col="pic"
+                        data-fmt="html"
+                        data-html="true"
+                        data-type="number"
+                     ></th>
+                     <th
+                        class="pct"
+                        data-col="statements"
+                        data-fmt="pct"
+                        data-type="number"
+                     >
+                        Statements
+                     </th>
+                     <th
+                        class="abs"
+                        data-col="statements_raw"
+                        data-fmt="html"
+                        data-type="number"
+                     ></th>
+                     <th
+                        class="pct"
+                        data-col="branches"
+                        data-fmt="pct"
+                        data-type="number"
+                     >
+                        Branches
+                     </th>
+                     <th
+                        class="abs"
+                        data-col="branches_raw"
+                        data-fmt="html"
+                        data-type="number"
+                     ></th>
+                     <th
+                        class="pct"
+                        data-col="functions"
+                        data-fmt="pct"
+                        data-type="number"
+                     >
+                        Functions
+                     </th>
+                     <th
+                        class="abs"
+                        data-col="functions_raw"
+                        data-fmt="html"
+                        data-type="number"
+                     ></th>
+                     <th
+                        class="pct"
+                        data-col="lines"
+                        data-fmt="pct"
+                        data-type="number"
+                     >
+                        Lines
+                     </th>
+                     <th
+                        class="abs"
+                        data-col="lines_raw"
+                        data-fmt="html"
+                        data-type="number"
+                     ></th>
+                  </tr>
+               </thead>
+               <tbody></tbody>
+            </table>
+         </div>
+         <div class="push"></div>
+         <!-- for sticky footer -->
       </div>
-
-
-      <div class='fl pad1y space-right2'>
-        <span class="strong">Unknown% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+      <!-- /wrapper -->
+      <div class="footer quiet pad2 space-top1 center small">
+         Code coverage generated by
+         <a
+            href="https://istanbul.js.org/"
+            rel="noopener noreferrer"
+            target="_blank"
+            >istanbul</a
+         >
+         at 2024-04-24T20:09:06.876Z
       </div>
-
-
-      <div class='fl pad1y space-right2'>
-        <span class="strong">Unknown% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
-      </div>
-
-
-      <div class='fl pad1y space-right2'>
-        <span class="strong">Unknown% </span>
-        <span class="quiet">Lines</span>
-        <span class='fraction'>0/0</span>
-      </div>
-
-
-    </div>
-    <p class="quiet">
-      Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the
-      previous block.
-    </p>
-    <template id="filterTemplate">
-      <div class="quiet">
-        Filter:
-        <input id="fileSearch" type="search">
-      </div>
-    </template>
-  </div>
-  <div class='status-line medium'></div>
-  <div class="pad1">
-    <table class="coverage-summary">
-      <thead>
-      <tr>
-        <th class="file" data-col="file" data-fmt="html" data-html="true">File</th>
-        <th class="pic" data-col="pic" data-fmt="html" data-html="true" data-type="number"></th>
-        <th class="pct" data-col="statements" data-fmt="pct" data-type="number">Statements</th>
-        <th class="abs" data-col="statements_raw" data-fmt="html" data-type="number"></th>
-        <th class="pct" data-col="branches" data-fmt="pct" data-type="number">Branches</th>
-        <th class="abs" data-col="branches_raw" data-fmt="html" data-type="number"></th>
-        <th class="pct" data-col="functions" data-fmt="pct" data-type="number">Functions</th>
-        <th class="abs" data-col="functions_raw" data-fmt="html" data-type="number"></th>
-        <th class="pct" data-col="lines" data-fmt="pct" data-type="number">Lines</th>
-        <th class="abs" data-col="lines_raw" data-fmt="html" data-type="number"></th>
-      </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-  <div class='push'></div><!-- for sticky footer -->
-</div><!-- /wrapper -->
-<div class='footer quiet pad2 space-top1 center small'>
-  Code coverage generated by
-  <a href="https://istanbul.js.org/" rel="noopener noreferrer" target="_blank">istanbul</a>
-  at 2024-04-24T20:09:06.876Z
-</div>
-<script src="prettify.js"></script>
-<script>
-  window.onload = function() {
-    prettyPrint();
-  };
-</script>
-<script src="sorter.js"></script>
-<script src="block-navigation.js"></script>
-</body>
+      <script src="prettify.js"></script>
+      <script>
+         window.onload = function () {
+            prettyPrint();
+         };
+      </script>
+      <script src="sorter.js"></script>
+      <script src="block-navigation.js"></script>
+   </body>
 </html>
-    

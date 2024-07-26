@@ -9,15 +9,15 @@ import Testimonials from './Main-Testimonials.home.tsx';
 import Platform from './Main-Platform.home.tsx';
 
 export default function Main(): JSX.Element {
-  return (
-    <div>
-      <Hero />
-      <Numbers />
-      <Partners />
-      <Platform />
-      <Coins />
-      <BuyCrypto />
-      <Testimonials />
-    </div>
-  );
+   return (
+      <div>
+         <Hero />
+         <Numbers />
+         <Partners />
+         <Platform />
+         <Coins />
+         <BuyCrypto />
+         <Testimonials />
+      </div>
+   );
 }

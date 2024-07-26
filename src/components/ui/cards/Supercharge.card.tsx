@@ -4,42 +4,46 @@ import { styled } from 'styled-components';
 import Heading from '@components/ui/stuff/Heading.tsx';
 
 type SuperchargePropsType = {
-  imgSrc: string;
-  title: string;
-  desc: string;
+   imgSrc: string;
+   title: string;
+   desc: string;
 };
 
 const SuperChargedStyled = styled.div`
-  padding: 48px;
-  border-radius: 24px;
-  -webkit-box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
-  -moz-box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
-  box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
-  border: #efedfd 2px solid;
+   padding: 48px;
+   border-radius: 24px;
+   -webkit-box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
+   -moz-box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
+   box-shadow: 0 0 80px 0 rgba(82, 53, 232, 0.1);
+   border: #efedfd 2px solid;
 
-  img {
-    width: 100%;
-    border-radius: 24px;
-    margin-bottom: 32px;
-  }
+   img {
+      width: 100%;
+      border-radius: 24px;
+      margin-bottom: 32px;
+   }
 
-  .card-heading {
-    margin-bottom: 16px;
-  }
+   .card-heading {
+      margin-bottom: 16px;
+   }
 `;
 
 export default function SuperchargeCard(
-  props: SuperchargePropsType
+   props: SuperchargePropsType,
 ): JSX.Element {
-  const { imgSrc = '', title = '', desc = '' }: SuperchargePropsType = props;
+   const { imgSrc = '', title = '', desc = '' }: SuperchargePropsType = props;
 
-  return (
-    <SuperChargedStyled>
-      <img src={imgSrc} alt={title} />
-      <Heading fontWeight={'500'} className={'card-heading'} headingType={'h4'}>
-        {title}
-      </Heading>
-      <p>{desc}</p>
-    </SuperChargedStyled>
-  );
+   return (
+      <SuperChargedStyled>
+         <img src={imgSrc} alt={title} />
+         <Heading
+            fontWeight={'500'}
+            className={'card-heading'}
+            headingType={'h4'}
+         >
+            {title}
+         </Heading>
+         <p>{desc}</p>
+      </SuperChargedStyled>
+   );
 }

@@ -1,17 +1,17 @@
 :root {
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --breakpoint-xxl: 1400px;
+   --breakpoint-sm: 576px;
+   --breakpoint-md: 768px;
+   --breakpoint-lg: 992px;
+   --breakpoint-xl: 1200px;
+   --breakpoint-xxl: 1400px;
 
-    --spacing-xsm: 7px;
-    --spacing-sm: 10px;
-    --spacing-md: 14px;
-    --spacing-lg: 18px;
-    --spacing-xl: 24px;
-    --spacing-xxl: 30px;
-    --spacing-xxxl: 38px;
-    --spacing-xxxxl: 48px;
-    --spacing-xxxxxl: 60px;
+   --spacing-xsm: 7px;
+   --spacing-sm: 10px;
+   --spacing-md: 14px;
+   --spacing-lg: 18px;
+   --spacing-xl: 24px;
+   --spacing-xxl: 30px;
+   --spacing-xxxl: 38px;
+   --spacing-xxxxl: 48px;
+   --spacing-xxxxxl: 60px;
 }

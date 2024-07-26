@@ -8,14 +8,14 @@ CoinTrackX is a simple and open-source platform for tracking your coins profit/l
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
+-  [Introduction](#introduction)
+-  [Features](#features)
+-  [Installation](#installation)
+-  [Usage](#usage)
+-  [Tech Stack](#tech-stack)
+-  [Project Structure](#project-structure)
+-  [Contributing](#contributing)
+-  [License](#license)
 
 ## Introduction
 
@@ -24,38 +24,40 @@ investments. It offers a clean and intuitive interface built with modern web tec
 
 ## Features
 
-- Track multiple cryptocurrencies
-- View profit/loss in real-time
-- Simple and intuitive UI
-- Secure and private
+-  Track multiple cryptocurrencies
+-  View profit/loss in real-time
+-  Simple and intuitive UI
+-  Secure and private
 
 ## Installation
 
 To get started with CoinTrackX, follow these steps:
 
 1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/FarzadMohtasham/CoinTrackX.git
-    cd CoinTrackX
-    ```
+
+   ```bash
+   git clone https://github.com/FarzadMohtasham/CoinTrackX.git
+   cd CoinTrackX
+   ```
 
 2. **Install dependencies:**
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
 3. **Set up environment variables:**
    Create a `.env` file in the root directory and add the necessary environment variables. Refer to `.env.example` for
    the required variables.
 
 4. **Run the development server:**
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
 ## Usage
 
@@ -64,25 +66,28 @@ cryptocurrency investments.
 
 ## Tech Stack
 
-- **Frontend:**
-    - React
-    - Zustand
-    - Styled-Components
-    - Recharts
-    - Chakra UI
+-  **Frontend:**
 
-- **Backend:**
-    - Supabase
+   -  React
+   -  Zustand
+   -  Styled-Components
+   -  Recharts
+   -  Chakra UI
 
-- **Utilities:**
-    - TanStack Query
-    - Axios
-    - React Hook Form
-    - React Hot Toast
+-  **Backend:**
 
-- **Build Tools:**
-    - TypeScript
-    - Vite
+   -  Supabase
+
+-  **Utilities:**
+
+   -  TanStack Query
+   -  Axios
+   -  React Hook Form
+   -  React Hot Toast
+
+-  **Build Tools:**
+   -  TypeScript
+   -  Vite
 
 ## Project Structure
 
