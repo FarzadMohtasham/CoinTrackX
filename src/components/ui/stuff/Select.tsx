@@ -11,7 +11,6 @@ import {
 } from '@typings/component-types/Select.type.ts';
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
-   width: 100%;
    display: block;
    position: relative;
 
@@ -160,7 +159,7 @@ export default function Select(props: SelectProps): JSX.Element {
       if (selectedItem?.value) {
          $newValueSetter(selectedItem.value);
       }
-   }, []);
+   }, [selectedItem]);
 
    return (
       <SelectContainer ref={selectRef}>

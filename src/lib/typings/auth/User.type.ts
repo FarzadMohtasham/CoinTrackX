@@ -46,6 +46,9 @@ interface UserType {
    is_anonymous: boolean;
 }
 
+/* The `AuthResponse` interface in the TypeScript code snippet defines the structure of an
+authentication response object. It specifies the properties that an authentication response object
+should have: */
 interface AuthResponse {
    access_token: string;
    token_type: string;

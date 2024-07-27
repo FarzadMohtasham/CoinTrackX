@@ -1,5 +1,5 @@
 import { AuthUser, PostgrestError } from '@supabase/supabase-js';
-import { supabaseClient as supabase } from '@config/supabase.ts';
+import { supabaseClient as supabase } from '@/lib/config/supabase/supabase.ts';
 
 import { CreditDebitCard } from '@typings/component-types/CreditDebitCard.type.ts';
 

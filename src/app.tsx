@@ -10,7 +10,7 @@ import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ChakraProvider, theme as chakraTheme } from '@chakra-ui/react';
 
-import router from './router.tsx';
+import router from './lib/config/router/router.tsx';
 import ReactQueryClient from '@query/queryClient.tsx';
 
 import styledComponentTheme from '@/lib/themes/styled-components.theme.ts';

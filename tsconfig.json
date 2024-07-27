@@ -22,7 +22,7 @@
          "@/*": ["./src/*"],
          "@assets/*": ["./src/assets/*"],
          "@components/*": ["./src/components/*"],
-         "@config/*": ["./src/config/*"],
+         "@config/*": ["src/lib/config/*"],
          "@data/*": ["./src/data/*"],
          "@feature/*": ["./src/feature/*"],
          "@hooks/*": ["./src/lib/hooks/*"],
@@ -40,7 +40,7 @@
       },
       "useUnknownInCatchVariables": false
    },
-   "include": ["src", "./jest.setup.ts"],
+   "include": ["src/**/*", "./jest.setup.ts"],
    "references": [
       {
          "path": "./tsconfig.node.json"
