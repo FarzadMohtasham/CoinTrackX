@@ -157,8 +157,6 @@ export default function PersonalInfo() {
       personalInfoState.dateOfBirth.changed ||
       personalInfoState.countryOfResidence.changed;
 
-   console.log(showActionButtons);
-
    // Handlers
    const handleFirstNameChange = (inputValue: string) =>
       personalInfoDispatch({
