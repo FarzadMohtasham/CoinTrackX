@@ -1,8 +1,10 @@
 import { styled } from 'styled-components';
 import Heading from '@components/ui/stuff/Heading.tsx';
 import Input from '@components/ui/input-fields/InputField.input.tsx';
-import { Dispatch, useEffect, useReducer } from 'react';
+import { Dispatch, useCallback, useEffect, useReducer } from 'react';
 import Button from '@components/ui/stuff/Button.tsx';
+import Select from '@/components/ui/stuff/Select';
+import countryOfResidenceList from '@/data/countryOfResidence.data';
 
 const PersonalInfoContainer = styled.div`
    border-radius: 8px;
@@ -26,11 +28,18 @@ const LeftCol = styled.div`
 `;
 
 const RightCol = styled.div`
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+
    .name-inputs-wrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 25px;
+   }
+
+   .country-of-residence-wrapper {
    }
 `;
 
@@ -187,7 +196,7 @@ export default function PersonalInfo() {
 
    const handleCountryOfResidenceChange = (inputValue: string) =>
       personalInfoDispatch({
-         type: 'setDateOfBirth',
+         type: 'setCountryOfResidence',
          payload: {
             value: inputValue,
             reset: false,
@@ -267,12 +276,13 @@ export default function PersonalInfo() {
                </div>
 
                <div className="country-of-residence-wrapper">
-                  <Input
-                     inputValue={personalInfoState.countryOfResidence.value}
-                     label={'Country of Residence'}
-                     onChangeHandler={handleCountryOfResidenceChange}
-                     placeHolder={'Country of Residence'}
-                     iconSrc={null}
+                  <Select
+                     $menuItems={countryOfResidenceList}
+                     $newValueSetter={handleCountryOfResidenceChange}
+                     $menuXDirStartPosition="left"
+                     $label={'Select your country of residence'}
+                     $hasIcon
+                     $closeAfterSelect
                   />
                </div>
             </RightCol>

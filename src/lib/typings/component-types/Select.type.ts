@@ -11,6 +11,7 @@ export type SelectProps = {
    $hasIcon?: boolean;
    $closeAfterSelect?: boolean;
    $menuXDirStartPosition?: 'right' | 'left';
+   $label?: string | null;
 };
 
 export type SelectMenuWrapperProps = {

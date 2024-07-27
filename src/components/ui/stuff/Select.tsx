@@ -11,9 +11,16 @@ import {
 } from '@typings/component-types/Select.type.ts';
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
-   width: max-content;
+   width: 100%;
    display: block;
    position: relative;
+
+   span.label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--color-black);
+      font-size: var(--font-size-body-md);
+   }
 `;
 
 const SelectBtnWrapper = styled.div`
@@ -45,14 +52,30 @@ const SelectMenuWrapper = styled.ul<SelectMenuWrapperProps>`
    top: 50px;
    border-radius: 8px;
    z-index: 10;
+   height: min-content;
+   max-height: 200px;
+   overflow: hidden;
 
-   li {
-      padding: 8px 100px 8px 10px;
-      color: white;
-      cursor: pointer;
-      font-weight: 400;
-      font-size: var(--font-size-body-sm);
-      min-width: max-content;
+   ul.menu-items-wrapper {
+      overflow-y: scroll;
+      padding-right: 5px;
+
+      &::-webkit-scrollbar-track {
+         background-color: #2f343e;
+      }
+
+      &::-webkit-scrollbar-thumb {
+         background-color: var(--color-white-300);
+      }
+
+      li {
+         padding: 8px 100px 8px 10px;
+         color: white;
+         cursor: pointer;
+         font-weight: 400;
+         font-size: var(--font-size-body-sm);
+         min-width: max-content;
+      }
    }
 `;
 
@@ -62,6 +85,10 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
    text-transform: uppercase;
    border-radius: 6px;
    transition: background-color 0.3s ease-in-out;
+
+   .menu-arrow-icon {
+      
+   }
 
    ${(props: any) =>
       props.$selected &&
@@ -85,6 +112,7 @@ export default function Select(props: SelectProps): JSX.Element {
       $closeAfterSelect = true,
       $menuXDirStartPosition = 'right',
       $newValueSetter,
+      $label = null,
    } = props;
 
    const [selectedItem, setSelectedItem] = useState<null | SelectMenuItemT>(
@@ -133,10 +161,11 @@ export default function Select(props: SelectProps): JSX.Element {
       if (selectedItem?.value) {
          $newValueSetter(selectedItem.value);
       }
-   }, [selectedItem]);
+   }, []);
 
    return (
       <SelectContainer ref={selectRef}>
+         {$label && <span className="label">{$label}</span>}
          <SelectBtnWrapper onClick={handleSelectBtn}>
             {hasIcon && (
                <Icon iconSrc={selectedItem?.iconSrc || ''} width={'18px'} />
@@ -147,20 +176,24 @@ export default function Select(props: SelectProps): JSX.Element {
 
          {selectMenuIsOpen && (
             <SelectMenuWrapper $menuXDirStartPosition={$menuXDirStartPosition}>
-               {menuItems.map((item: SelectMenuItemT, i: number) => {
-                  return (
-                     <SelectMenuItem
-                        key={item.name + i}
-                        onClick={() => menuItemOnClickHandler(item)}
-                        $selected={item.name === selectedItem?.name}
-                     >
-                        {hasIcon && (
-                           <Icon iconSrc={item.iconSrc} width={'20px'} />
-                        )}
-                        {item.name}
-                     </SelectMenuItem>
-                  );
-               })}
+               <ul className="menu-items-wrapper">
+                  {menuItems.map((item: SelectMenuItemT, i: number) => {
+                     return (
+                        <SelectMenuItem
+                           key={item.name + i}
+                           onClick={() => menuItemOnClickHandler(item)}
+                           $selected={item.name === selectedItem?.name}
+                        >
+                           {hasIcon && (
+                              <Icon iconSrc={item.iconSrc}
+                              className='menu-arrow-icon'
+                                 width={'20px'} />
+                           )}
+                           {item.name}
+                        </SelectMenuItem>
+                     );
+                  })}
+               </ul>
             </SelectMenuWrapper>
          )}
       </SelectContainer>
