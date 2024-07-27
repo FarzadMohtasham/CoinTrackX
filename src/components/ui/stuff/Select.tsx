@@ -87,7 +87,6 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
    transition: background-color 0.3s ease-in-out;
 
    .menu-arrow-icon {
-      
    }
 
    ${(props: any) =>
@@ -185,9 +184,11 @@ export default function Select(props: SelectProps): JSX.Element {
                            $selected={item.name === selectedItem?.name}
                         >
                            {hasIcon && (
-                              <Icon iconSrc={item.iconSrc}
-                              className='menu-arrow-icon'
-                                 width={'20px'} />
+                              <Icon
+                                 iconSrc={item.iconSrc}
+                                 className="menu-arrow-icon"
+                                 width={'20px'}
+                              />
                            )}
                            {item.name}
                         </SelectMenuItem>

@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import Heading from '@components/ui/stuff/Heading.tsx';
 import Input from '@components/ui/input-fields/InputField.input.tsx';
-import { Dispatch, useCallback, useEffect, useReducer } from 'react';
+import { Dispatch, useEffect, useReducer } from 'react';
 import Button from '@components/ui/stuff/Button.tsx';
 import Select from '@/components/ui/stuff/Select';
 import countryOfResidenceList from '@/data/countryOfResidence.data';
