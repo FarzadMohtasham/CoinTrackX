@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.55](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.54...v0.0.55) (2024-07-28)
+
+
+### Features
+
+* Used TanStack Query Mutation instead of JS code ([f5c54a2](https://github.com/FarzadMohtasham/CoinTrackX/commit/f5c54a2907f6c2f34edb81ad65d3f6fd097c5d8d))
+
 ### [0.0.54](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.53...v0.0.54) (2024-07-28)
 
 
