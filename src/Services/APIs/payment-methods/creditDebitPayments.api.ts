@@ -11,6 +11,8 @@ import useUser from '@/Libs/Hooks/useUser';
 export const createCreditDebitCard = async (
    cardInfo: CreditDebitCard,
 ): Promise<any> => {
+   console.log(cardInfo)
+
    const {
       email,
       card_number,
@@ -39,7 +41,9 @@ export const createCreditDebitCard = async (
          ])
          .select();
 
-   return { data, error };
+   if (error) throw error;
+
+   return data
 };
 
 export const getCreditDebitCards = async (): Promise<any> => {
@@ -105,5 +109,5 @@ export const deleteCreditDebitCard = async (id: number): Promise<any> => {
 
    if (error) throw error;
 
-   return undefined;
+   return null;
 };

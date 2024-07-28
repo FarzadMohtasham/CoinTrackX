@@ -21,6 +21,7 @@ import { CreditDebitCard } from '@/Libs/Typings/Components/CreditDebitCard.type'
 import useUser from '@/Libs/Hooks/useUser';
 import { AuthUser } from '@supabase/supabase-js';
 import { toast } from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
 
 type CreditDebitCardModalProps = {
    onClose: () => void;
@@ -102,11 +103,29 @@ export default function AddCreditDebitCardModal(
    const [asMainPaymentMethod, setAsMainPaymentMethods] =
       useState<boolean>(false);
 
-   // @ts-ignore
-   const { user }: { user: AuthUser } = useUser();
+   const user: AuthResponse | null = useUser();
+
+   const { mutate, isPending } = useMutation({
+      mutationFn: createCreditDebitCard,
+      onSuccess: () => {
+         toast.success('New credit/debit card added');
+         props.onClose();
+      },
+      onError: ({ code: errorCode }: { code: string }) => {
+         switch (errorCode) {
+            case '23505':
+               toast.error(
+                  "You can't create credit/debit card with the same card number!",
+               );
+               break;
+            default:
+               toast.error('Unknown error, Please try again');
+         }
+      },
+   });
 
    const cardInfo = {
-      email: user.email,
+      email: user?.user.email || '',
       cardholder_name: cardholderName,
       card_provider: creditCardProvider,
       card_number: cardNumber,
@@ -140,14 +159,8 @@ export default function AddCreditDebitCardModal(
    );
 
    // ---------- Handlers ----------
-   const onAddCreditDebitCardHandler = async () => {
-      const { error } = await createCreditDebitCard(cardInfo);
-      if (!error) {
-         props.onClose();
-         toast.success('New credit/debit card added');
-      } else {
-         toast.error(error.message);
-      }
+   const onAddCreditDebitCardHandler = () => {
+      mutate(cardInfo);
    };
 
    return (
@@ -221,6 +234,7 @@ export default function AddCreditDebitCardModal(
          <RowWrapper className={'add-card-btn-wrapper'}>
             <Button
                disabled={buttonDisabled}
+               isLoading={isPending}
                onClickHandler={onAddCreditDebitCardHandler}
             >
                Add Card
