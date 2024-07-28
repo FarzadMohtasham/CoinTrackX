@@ -16,7 +16,7 @@ import { NotificationOptions } from '@/Libs/Typings/Components/Notification.type
 import CreditCardExpInput from '@/Components/UI/InputFields/CreditCardExp.input';
 import CreditCardCVVInput from '@/Components/UI/InputFields/CreditCardCVV.input';
 import PostalCodeInput from '@/Components/UI/InputFields/PostalCode.input';
-import { insertCreditDebitCard } from '@/Services/APIs/payment-methods/creditDebitPayments.api';
+import { createCreditDebitCard } from '@/Services/APIs/payment-methods/creditDebitPayments.api';
 import { CreditDebitCard } from '@/Libs/Typings/Components/CreditDebitCard.type';
 import useUser from '@/Libs/Hooks/useUser';
 import { AuthUser } from '@supabase/supabase-js';
@@ -141,7 +141,7 @@ export default function AddCreditDebitCardModal(
 
    // ---------- Handlers ----------
    const onAddCreditDebitCardHandler = async () => {
-      const { error } = await insertCreditDebitCard(cardInfo);
+      const { error } = await createCreditDebitCard(cardInfo);
       if (!error) {
          props.onClose();
          toast.success('New credit/debit card added');

@@ -8,7 +8,7 @@ import useUser from '@/Libs/Hooks/useUser';
 /*
  * This API will insert a creditDebitCard to the DB
  * */
-export const insertCreditDebitCard = async (
+export const createCreditDebitCard = async (
    cardInfo: CreditDebitCard,
 ): Promise<any> => {
    const {
