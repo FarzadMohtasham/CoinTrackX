@@ -2,16 +2,16 @@ import { JSX, useReducer, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import AssetInfo from '@components/dashboard/prices/assetPrice/AssetInfo.tsx';
-import AssetSummary from '@components/dashboard/prices/assetPrice/AssetSummary.tsx';
-import GoBack from '@components/ui/stuff/GoBack.tsx';
+import AssetInfo from '@/Components/Dashboard/Prices/AssetPrice/AssetInfo';
+import AssetSummary from '@/Components/Dashboard/Prices/AssetPrice/AssetSummary';
+import GoBack from '@/Components/UI/Stuff/GoBack';
 
-import { AssetName } from '@typings/Assets.api.type.ts';
+import { AssetName } from '@/Lib/Typings/Assets.api.type';
 
-import AssetChart from '@components/dashboard/prices/assetPrice/AssetChart.tsx';
-import AssetMarkets from '@components/dashboard/prices/assetPrice/AssetMarkets.tsx';
-import Heading from '@components/ui/stuff/Heading.tsx';
-import Button from '@components/ui/stuff/Button.tsx';
+import AssetChart from '@/Components/Dashboard/Prices/AssetPrice/AssetChart';
+import AssetMarkets from '@/Components/Dashboard/Prices/AssetPrice/AssetMarkets';
+import Heading from '@/Components/UI/Stuff/Heading';
+import Button from '@/Components/UI/Stuff/Button';
 
 type ErrorStatesProps = {
    assetInfoHasError: boolean;
@@ -52,18 +52,15 @@ const AssetPriceWrapper = styled.div.attrs({
    flex-direction: column;
    gap: 40px;
 
-   @media screen and (max-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (max-width: ${({ theme }: any) => theme.breakpoints.sm}) {
       grid-column: 1 / 10;
    }
 
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.sm}) {
       grid-column: 2 / 9;
    }
 
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.lg}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.lg}) {
       grid-column: 3 / 8;
    }
 `;

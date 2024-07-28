@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import {
    HeadingPropsType,
    HeadingStyledProps,
-} from '@typings/component-types/HeadingProps.type.ts';
+} from '@/Lib/Typings/Components/HeadingProps.type';
 
 const HeadingStyled = styled.h1<HeadingStyledProps>`
    font-weight: ${(props: any) => props.$fontWeight};

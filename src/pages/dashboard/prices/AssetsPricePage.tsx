@@ -1,11 +1,11 @@
 import { JSX, useState } from 'react';
 import { styled } from 'styled-components';
 
-import TopMovers from '@components/dashboard/prices/TopMovers.tsx';
-import PricesTable from '@components/dashboard/prices/PricesTable.tsx';
-import SimpleNotification from '@components/ui/notifs/Simple-Notification.notif.tsx';
-import { NotificationOptions } from '@typings/component-types/Notification.type.ts';
-import Icon from '@components/ui/stuff/Icon.tsx';
+import TopMovers from '@/Components/Dashboard/Prices/TopMovers';
+import PricesTable from '@/Components/Dashboard/Prices/PricesTable';
+import SimpleNotification from '@/Components/UI/Notifications/Simple-Notification.notif';
+import { NotificationOptions } from '@/Lib/Typings/Components/Notification.type';
+import Icon from '@/Components/UI/Stuff/Icon';
 
 const PricesContainer = styled.div`
    padding: 32px 20px;

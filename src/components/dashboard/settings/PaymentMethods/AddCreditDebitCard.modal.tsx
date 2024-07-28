@@ -1,34 +1,29 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
-import Input from '@components/ui/input-fields/InputField.input.tsx';
-import Button from '@components/ui/stuff/Button.tsx';
-import Icon from '@components/ui/stuff/Icon.tsx';
-import CheckboxInput from '@components/ui/input-fields/Checkbox.input.tsx';
+import Input from '@/Components/UI/InputFields/InputField.input';
+import Button from '@/Components/UI/Stuff/Button';
+import Icon from '@/Components/UI/Stuff/Icon';
+import CheckboxInput from '@/Components/UI/InputFields/Checkbox.input';
 
-import { InputFieldValidator } from '@validations/InputField.validator.ts';
+import { InputFieldValidator } from '@/Lib/Validations/InputField.validator';
 
-import { InputFieldValidatorResult } from '@typings/validator-types/Input.validator.type.ts';
-import CardNumberInput from '@components/ui/input-fields/CardNumber.input.tsx';
-import { CardNumberProvider } from '@typings/component-types/CardNumberInput.type.ts';
-import SimpleNotification from '@components/ui/notifs/Simple-Notification.notif.tsx';
-import { NotificationOptions } from '@typings/component-types/Notification.type.ts';
-import CreditCardExpInput from '@components/ui/input-fields/CreditCardExp.input.tsx';
-import CreditCardCVVInput from '@components/ui/input-fields/CreditCardCVV.input.tsx';
-import PostalCodeInput from '@components/ui/input-fields/PostalCode.input.tsx';
-import { CreditDebitCard } from '@typings/component-types/CreditDebitCard.type.ts';
-import useUser from '@hooks/useUser.ts';
-import { AuthUser, PostgrestError } from '@supabase/supabase-js';
-import {
-   deleteCreditDebitCard,
-   updateCreditDebitCard,
-} from '@services/api/payment-methods/creditDebitPayments.api.ts';
+import { InputFieldValidatorResult } from '@/Lib/Typings/Validator/Input.validator.type';
+import CardNumberInput from '@/Components/UI/InputFields/CardNumber.input';
+import { CardNumberProvider } from '@/Lib/Typings/Components/CardNumberInput.type';
+import SimpleNotification from '@/Components/UI/Notifications/Simple-Notification.notif';
+import { NotificationOptions } from '@/Lib/Typings/Components/Notification.type';
+import CreditCardExpInput from '@/Components/UI/InputFields/CreditCardExp.input';
+import CreditCardCVVInput from '@/Components/UI/InputFields/CreditCardCVV.input';
+import PostalCodeInput from '@/Components/UI/InputFields/PostalCode.input';
+import { insertCreditDebitCard } from '@/Services/API/payment-methods/creditDebitPayments.api';
+import { CreditDebitCard } from '@/Lib/Typings/Components/CreditDebitCard.type';
+import useUser from '@/Lib/Hooks/useUser';
+import { AuthUser } from '@supabase/supabase-js';
 import { toast } from 'react-hot-toast';
 
-type EditCreditDebitCardModalProps = {
+type CreditDebitCardModalProps = {
    onClose: () => void;
-   creditDebitCardInfo: CreditDebitCard;
-   creditDebitCardRefetchFn: () => void;
 };
 
 const LinkYouCardContainer = styled.div`
@@ -73,15 +68,13 @@ const simpleNotifOptions: NotificationOptions = {
    closeIconSize: '12px',
 };
 
-export default function EditCreditDebitCardModal(
-   props: EditCreditDebitCardModalProps,
+export default function AddCreditDebitCardModal(
+   props: CreditDebitCardModalProps,
 ) {
-   const { creditDebitCardInfo, onClose, creditDebitCardRefetchFn } = props;
-
    const [cardholderNameErrorMsg, setCardholderNameErrorMsg] =
-      useState<string>();
+      useState<string>('');
 
-   const [cardholderName, setCardholderName] = useState<string>();
+   const [cardholderName, setCardholderName] = useState<string>('');
    const [hasCardHolderNameInputError, setHasCardHolderNameInputError] =
       useState(true);
 
@@ -108,8 +101,6 @@ export default function EditCreditDebitCardModal(
 
    const [asMainPaymentMethod, setAsMainPaymentMethods] =
       useState<boolean>(false);
-
-   const [actionButtonsDisabled, setActionButtonsDisabled] = useState(false);
 
    // @ts-ignore
    const { user }: { user: AuthUser } = useUser();
@@ -139,7 +130,7 @@ export default function EditCreditDebitCardModal(
             fieldName: 'Cardholder Name',
             minLength: 1,
             maxLength: 40,
-            inputValue: cardholderName || '',
+            inputValue: cardholderName,
          }).then((result: InputFieldValidatorResult) => {
             setHasCardHolderNameInputError(!result.isValid);
             setCardholderNameErrorMsg(result.errorMessage);
@@ -149,30 +140,14 @@ export default function EditCreditDebitCardModal(
    );
 
    // ---------- Handlers ----------
-   const onEditCreditDebitCardHandler = async () => {
-      setActionButtonsDisabled(true);
-      try {
-         await updateCreditDebitCard(creditDebitCardInfo.id, cardInfo);
-         toast.success('Credit/Debit Card Updated');
-         onClose();
-         creditDebitCardRefetchFn();
-      } catch (e: PostgrestError | any) {
-         toast.error(e.message);
+   const onAddCreditDebitCardHandler = async () => {
+      const { error } = await insertCreditDebitCard(cardInfo);
+      if (!error) {
+         props.onClose();
+         toast.success('New credit/debit card added');
+      } else {
+         toast.error(error.message);
       }
-      setActionButtonsDisabled(false);
-   };
-
-   const onCreditDebitCardDelete = async () => {
-      setActionButtonsDisabled(true);
-      try {
-         await deleteCreditDebitCard(creditDebitCardInfo.id);
-         toast.success('Credit/Debit Card Removed');
-         onClose();
-         creditDebitCardRefetchFn();
-      } catch (e: PostgrestError | any) {
-         toast.error(e.message);
-      }
-      setActionButtonsDisabled(false);
    };
 
    return (
@@ -184,9 +159,7 @@ export default function EditCreditDebitCardModal(
                placeHolder={'Enter your Cardholder name'}
                label={'cardholder-name'}
                iconSrc={null}
-               inputValue={
-                  cardholderName || creditDebitCardInfo.cardholder_name
-               }
+               inputValue={cardholderName}
                onChangeHandler={setCardholderName}
                errorMessage={cardholderNameErrorMsg}
                unAllowedErrorMessages={['Cardholder Name is a required field']}
@@ -198,7 +171,6 @@ export default function EditCreditDebitCardModal(
                cardNumberSetterFn={setCardNumber}
                cardNumberHasErrorSetterFn={setCardNumberHasValid}
                creditCardProviderSetterFn={setCreditCardProvider}
-               initialValue={creditDebitCardInfo.card_number}
             />
          </RowWrapper>
          <div className={'credit-card-other-inputs'}>
@@ -208,7 +180,6 @@ export default function EditCreditDebitCardModal(
                   creditCardExpSetterFn={setCardExpInput}
                   creditCardExpErrorMsgSetterFn={setCardExpInputErrorMsg}
                   maxLength={5}
-                  initialValue={creditDebitCardInfo.exp}
                />
                {cardExpInputErrorMsg !== null &&
                   cardExpInputErrorMsg.length !== 0 && (
@@ -222,7 +193,6 @@ export default function EditCreditDebitCardModal(
                   creditCardCVVErrorMsgSetterFn={setCardCVVInputErrorMsg}
                   placeholder={'3-digit number'}
                   maxLength={3}
-                  initialValue={creditDebitCardInfo.cvv}
                />
                {<span className={'error-msg'}>{cardCVVInputErrorMsg}</span>}
             </RowWrapper>
@@ -233,7 +203,6 @@ export default function EditCreditDebitCardModal(
                   postalErrorMsgSetterFn={setPostalInputErrorMsg}
                   placeholder={'Postal'}
                   maxLength={10}
-                  initialValue={creditDebitCardInfo.postal_code}
                />
                <span className={'error-msg'}>{postalInputErrorMsg}</span>
             </RowWrapper>
@@ -242,7 +211,6 @@ export default function EditCreditDebitCardModal(
             <CheckboxInput
                label={'Set as a main payment'}
                checkBoxSetter={setAsMainPaymentMethods}
-               defaultValue={creditDebitCardInfo.as_main_payment}
             />
          </RowWrapper>
          <RowWrapper className={'agree-terms-wrapper'}>
@@ -252,21 +220,11 @@ export default function EditCreditDebitCardModal(
          </RowWrapper>
          <RowWrapper className={'add-card-btn-wrapper'}>
             <Button
-               disabled={buttonDisabled || actionButtonsDisabled}
-               onClickHandler={onEditCreditDebitCardHandler}
+               disabled={buttonDisabled}
+               onClickHandler={onAddCreditDebitCardHandler}
             >
-               Save changes
+               Add Card
             </Button>
-            <Button
-               disabled={actionButtonsDisabled}
-               variant={'danger'}
-               outline={true}
-               onClickHandler={onCreditDebitCardDelete}
-            >
-               Delete Card
-            </Button>
-         </RowWrapper>
-         <RowWrapper>
             <Icon
                iconSrc={'processed-by-cointrackx.svg'}
                width={'160px'}

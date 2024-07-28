@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import Heading from '@components/ui/stuff/Heading.tsx';
+import Heading from '@/Components/UI/Stuff/Heading';
 
 type SuperchargePropsType = {
    imgSrc: string;

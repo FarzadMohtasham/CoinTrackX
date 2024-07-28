@@ -8,20 +8,20 @@ import {
 } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
-import Heading from '@components/ui/stuff/Heading.tsx';
-import Logo from '@components/ui/stuff/Logo.tsx';
-import NavigationItem from '@components/ui/stuff/NavigationItem.tsx';
-import Profile from '@components/ui/stuff/Profile.tsx';
-import Alert from '@components/dashboard/Notifications.tsx';
+import Heading from '@/Components/UI/Stuff/Heading';
+import Logo from '@/Components/UI/Stuff/Logo';
+import NavigationItem from '@/Components/UI/Stuff/NavigationItem';
+import Profile from '@/Components/UI/Stuff/Profile';
+import Alert from '@/Components/Dashboard/Notifications';
 
-import { NavigationListData } from '@data/navigationList.data.ts';
+import { NavigationListData } from '@/Data/navigationList.data';
 import {
    NavigationItemType,
    NavigationProps,
-} from '@typings/NavigationItem.type.ts';
-import Icon from '@components/ui/stuff/Icon.tsx';
-import { useUiStore } from '@services/store/ui.store.ts';
-import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
+} from '@/Lib/Typings/NavigationItem.type';
+import Icon from '@/Components/UI/Stuff/Icon';
+import { useUiStore } from '@/Services/Store/ui.store';
+import useUserLoggedIn from '@/Lib/Hooks/useUserLoggedIn';
 
 const LayoutContainer = styled.div`
    height: 100vh;
@@ -32,8 +32,7 @@ const LayoutContainer = styled.div`
    overflow: hidden;
 
    /*Very Small devices (landscape phones, 576px and down)*/
-   @media screen and (max-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (max-width: ${({ theme }: any) => theme.breakpoints.sm}) {
       .layout-header {
          grid-column: 1 / 13;
          grid-row: 1 / 2;
@@ -50,8 +49,7 @@ const LayoutContainer = styled.div`
       }
    }
    /*Small devices (landscape phones, 576px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.sm}) {
       .layout-header {
          grid-column: 1 / 13;
          grid-row: 1 / 2;
@@ -68,8 +66,7 @@ const LayoutContainer = styled.div`
       }
    }
    /*Medium devices (tablets, 768px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.md}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.md}) {
       .layout-header {
          grid-column: 4 / 13;
          grid-row: 1 / 2;
@@ -86,8 +83,7 @@ const LayoutContainer = styled.div`
       }
    }
    /*Large devices (desktops, 992px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.lg}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.lg}) {
       .layout-header {
          grid-column: 3 / 13;
          grid-row: 1 / 2;
@@ -127,8 +123,7 @@ const LayoutHeader = styled.div.attrs({ className: 'layout-header' })`
       gap: 20px;
    }
 
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.md}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.md}) {
       .left-col {
          .menu-burger {
             display: none;
@@ -155,20 +150,17 @@ const LayoutSidebar = styled.aside.attrs({ className: 'layout-sidebar' })`
    }
 
    /*Very Small devices (landscape phones, 576px and down)*/
-   @media screen and (max-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (max-width: ${({ theme }: any) => theme.breakpoints.sm}) {
       display: none;
    }
 
    /*Small devices (landscape phones, 576px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.sm}) {
       display: none;
    }
 
    /*Medium devices (tablets, 768px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.md}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.md}) {
       display: flex;
    }
 `;

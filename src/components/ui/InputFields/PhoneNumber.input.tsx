@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
 
-import { countriesCode } from '@data/countryCode.data.ts';
+import { countriesCode } from '@/Data/countryCode.data';
 
 type PhoneNumberInputProps = {};
 

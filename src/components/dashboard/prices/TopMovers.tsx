@@ -1,14 +1,14 @@
 import { JSX, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
-import TopMover from '@components/dashboard/prices/TopMover.tsx';
-import Heading from '@components/ui/stuff/Heading.tsx';
-import Button from '@components/ui/stuff/Button.tsx';
+import TopMover from '@/Components/Dashboard/Prices/TopMover';
+import Heading from '@/Components/UI/Stuff/Heading';
+import Button from '@/Components/UI/Stuff/Button';
 
-import useGetAssetsQuery from '@query/assets/useGetAssets.query.ts';
+import useGetAssetsQuery from '@/Query/Assets/useGetAssets.query';
 
-import { TopMover as TopMoverT } from '@typings/component-types/TopMover.type.ts';
-import { Asset } from '@typings/Assets.api.type.ts';
+import { TopMover as TopMoverT } from '@/Lib/Typings/Components/TopMover.type';
+import { Asset } from '@/Lib/Typings/Assets.api.type';
 
 const TopMoversContainer = styled.div`
    display: flex;

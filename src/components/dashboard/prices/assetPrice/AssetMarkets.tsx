@@ -21,14 +21,14 @@ import {
    Thead,
    Tr,
 } from '@chakra-ui/react';
-import useGetAssetMarketsQuery from '@query/assets/useGetAssetMarkets.query.ts';
-import { amountToBeFixed } from '@utils/helpers.ts';
+import useGetAssetMarketsQuery from '@/Query/Assets/useGetAssetMarkets.query';
+import { amountToBeFixed } from '@/Lib/Utils/helpers';
 import Skeleton from 'react-loading-skeleton';
 import { object } from 'yup';
-import Select from '@components/ui/stuff/Select.tsx';
+import Select from '@/Components/UI/Stuff/Select';
 
-import { AssetMarketProps, AssetName } from '@typings/Assets.api.type.ts';
-import { SelectMenuItem } from '@typings/component-types/Select.type.ts';
+import { AssetMarketProps, AssetName } from '@/Lib/Typings/Assets.api.type';
+import { SelectMenuItem } from '@/Lib/Typings/Components/Select.type';
 
 type AssetMarketsProps = {
    assetName: string;

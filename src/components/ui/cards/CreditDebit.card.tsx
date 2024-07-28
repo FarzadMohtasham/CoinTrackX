@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
 
-import Icon from '@components/ui/stuff/Icon.tsx';
-import CopyToClipboard from '@components/ui/stuff/CopyToClipboard.tsx';
+import Icon from '@/Components/UI/Stuff/Icon';
+import CopyToClipboard from '@/Components/UI/Stuff/CopyToClipboard';
 
-import { CreditDebitCard as CreditDebitCardT } from '@typings/component-types/CreditDebitCard.type.ts';
+import { CreditDebitCard as CreditDebitCardT } from '@/Lib/Typings/Components/CreditDebitCard.type';
 import {
    Modal,
    ModalBody,
@@ -13,8 +13,8 @@ import {
    ModalOverlay,
    useDisclosure,
 } from '@chakra-ui/react';
-import EditCreditDebitCardModal from '@components/dashboard/settings/payment-methods/EditCreditDebitCard.modal.tsx';
-import onSuccessCopyHandler from '@/lib/handlers/onSuccessCopyHandler.tsx';
+import EditCreditDebitCardModal from '@/Components/Dashboard/Settings/PaymentMethods/EditCreditDebitCard.modal';
+import onSuccessCopyHandler from '@/Lib/Handlers/onSuccessCopyHandler';
 
 type CreditDebitCardProps = {
    creditDebitCardInfo: CreditDebitCardT;

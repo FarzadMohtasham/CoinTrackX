@@ -1,10 +1,10 @@
 import { css, styled } from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
-import { validatePostalCode } from '@utils/helpers.ts';
+import { validateNumbersOnly } from '@/Lib/Utils/helpers';
 
-type PostalInputProps = {
-   postalSetterFn: (value: string) => void;
-   postalErrorMsgSetterFn: (err: string | null) => void;
+type CreditCardCVVInputProps = {
+   creditCardCVVSetterFn: (value: string) => void;
+   creditCardCVVErrorMsgSetterFn: (err: string | null) => void;
    placeholder?: string;
    disabled?: boolean;
    maxLength?: number;
@@ -12,7 +12,7 @@ type PostalInputProps = {
    initialValue?: string;
 };
 
-const PostalCodeInputContainer = styled.div<{ $inputFocused: boolean }>`
+const CreditCardCVVInputContainer = styled.div<{ $inputFocused: boolean }>`
    background-color: var(--color-gray-100);
    padding: 10px;
    border-radius: 8px;
@@ -36,11 +36,11 @@ const PostalCodeInputContainer = styled.div<{ $inputFocused: boolean }>`
    }
 `;
 
-export default function PostalCodeInput(props: PostalInputProps) {
+export default function CreditCardCVVInput(props: CreditCardCVVInputProps) {
    const {
-      postalSetterFn,
-      postalErrorMsgSetterFn,
-      placeholder = 'Postal',
+      creditCardCVVSetterFn,
+      creditCardCVVErrorMsgSetterFn,
+      placeholder = '3-digit number',
       disabled = false,
       maxLength = 5,
       minLength = 0,
@@ -52,25 +52,25 @@ export default function PostalCodeInput(props: PostalInputProps) {
    const [inputFocused, setInputFocused] = useState<boolean>(false);
 
    // ---------- Handlers ----------
-   const onPostalInputHandler = (e: any) => {
+   const onCreditCardCVVInputHandler = (e: any) => {
       setInputValue(e.target.value);
    };
 
    // Update inputValue on parent used component
    useEffect(() => {
-      postalSetterFn(inputValue);
+      creditCardCVVSetterFn(inputValue);
    }, [inputValue]);
 
    // Validating CardExpDate
    useEffect(() => {
-      if (inputValue.length === 0) {
-         postalErrorMsgSetterFn('');
+      if (inputValue.length === 0 || inputValue.length !== 3) {
+         creditCardCVVErrorMsgSetterFn('');
          return;
       }
 
-      const validationResult = validatePostalCode(inputValue);
-      if (validationResult) postalErrorMsgSetterFn(null);
-      else postalErrorMsgSetterFn('Enter valid CVV');
+      const validationResult = validateNumbersOnly(inputValue);
+      if (validationResult) creditCardCVVErrorMsgSetterFn(null);
+      else creditCardCVVErrorMsgSetterFn('Enter valid CVV');
    }, [inputValue]);
 
    // Adding eventHandlers to input
@@ -88,17 +88,17 @@ export default function PostalCodeInput(props: PostalInputProps) {
    }, []);
 
    return (
-      <PostalCodeInputContainer $inputFocused={inputFocused}>
+      <CreditCardCVVInputContainer $inputFocused={inputFocused}>
          <input
             ref={inputRef}
-            name={'postal'}
-            onChange={onPostalInputHandler}
+            name={'cvv'}
+            onChange={onCreditCardCVVInputHandler}
             disabled={disabled}
             placeholder={placeholder}
             maxLength={maxLength}
             minLength={minLength}
             value={inputValue}
          />
-      </PostalCodeInputContainer>
+      </CreditCardCVVInputContainer>
    );
 }

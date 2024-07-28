@@ -1,7 +1,7 @@
 import { css, styled } from 'styled-components';
 
-import { PaymentMethodOptionProps } from '@typings/PaymentMethodOption.type.ts';
-import Icon from '@components/ui/stuff/Icon.tsx';
+import { PaymentMethodOptionProps } from '@/Lib/Typings/PaymentMethodOption.type';
+import Icon from '@/Components/UI/Stuff/Icon';
 
 const PaymentMethodOptionContainer = styled.div<{ $disabled: boolean }>`
    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;

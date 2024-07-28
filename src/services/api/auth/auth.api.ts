@@ -1,5 +1,5 @@
 import { AuthResponse, Session, User } from '@supabase/supabase-js';
-import { supabaseClient } from '@/lib/config/supabase/supabase.ts';
+import { supabaseClient } from '@/Lib/Config/Supabase/supabaseConfig';
 
 type LoginReturnT = { user: User | null; session: Session | null };
 

@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import styles from './Tip.module.scss';
 
 // Types
-import { TipPropsType } from '@typings/component-types/TipProps.type.ts';
+import { TipPropsType } from '@/Lib/Typings/Components/TipProps.type';
 
 const TipContainer = styled.div`
    padding: 24px;

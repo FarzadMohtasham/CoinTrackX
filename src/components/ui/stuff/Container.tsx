@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import {
    ContainerPropsType,
    ContainerStyledProps,
-} from '@typings/component-types/ContainerProps.type.ts';
+} from '@/Lib/Typings/Components/ContainerProps.type';
 
 const ContainerStyled = styled.div<ContainerStyledProps>`
    width: 100%;
@@ -19,40 +19,35 @@ const ContainerStyled = styled.div<ContainerStyledProps>`
    }
 
    /*Small devices (landscape phones, 576px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.sm}) {
       .wrapper {
          width: 576px;
       }
    }
 
    /*Medium devices (tablets, 768px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.md}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.md}) {
       .wrapper {
          width: 768px;
       }
    }
 
    /*Large devices (desktops, 992px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.lg}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.lg}) {
       .wrapper {
          width: 992px;
       }
    }
 
    /*X-Large devices (large desktops, 1200px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.xl}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.xl}) {
       .wrapper {
          width: 1200px;
       }
    }
 
    /*XX-Large devices (larger desktops, 1400px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.xxl}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.xxl}) {
       .wrapper {
          width: 1400px;
       }

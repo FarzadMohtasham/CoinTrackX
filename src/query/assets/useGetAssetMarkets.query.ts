@@ -1,14 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getAssetMarkets } from '@services/api/assets/assets.api.ts';
+import { getAssetMarkets } from '@/Services/API/assets/assets.api';
 
 import {
    AssetMarketProps,
    AssetMarketsAPIQueryReturnProps,
    AssetName,
    QueryOptions,
-} from '@typings/Assets.api.type.ts';
-import { assetNamesWithSymbols } from '@data/assetsList.ts';
+} from '@/Lib/Typings/Assets.api.type';
+import { assetNamesWithSymbols } from '@/Data/assetsList';
 
 const defaultOptions: QueryOptions = {
    staleTime: 1000 * 60 * 60,

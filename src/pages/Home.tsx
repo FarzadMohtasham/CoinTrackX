@@ -1,9 +1,9 @@
 import { Fragment, JSX } from 'react';
 
 // @typings-ignore
-import Header from '@components/home/Header.home.tsx';
-import Main from '@components/home/Main.tsx';
-import Footer from '@components/home/Footer.home.tsx';
+import Header from '@/Components/Home/Header.home';
+import Main from '@/Components/Home/Main';
+import Footer from '@/Components/Home/Footer.home';
 
 export default function HomePage(): JSX.Element {
    return (

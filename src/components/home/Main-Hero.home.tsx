@@ -2,10 +2,10 @@ import { JSX } from 'react';
 import { css, styled } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Heading from '@components/ui/stuff/Heading.tsx';
-import Button from '@components/ui/stuff/Button.tsx';
-import Container from '@components/ui/stuff/Container.tsx';
-import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
+import Heading from '@/Components/UI/Stuff/Heading';
+import Button from '@/Components/UI/Stuff/Button';
+import Container from '@/Components/UI/Stuff/Container';
+import useUserLoggedIn from '@/Lib/Hooks/useUserLoggedIn';
 
 const HeroStyled = styled.section`
    display: flex;

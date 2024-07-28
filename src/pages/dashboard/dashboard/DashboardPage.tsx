@@ -1,8 +1,8 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import PortfolioSummary from '@components/dashboard/PortfolioSummary.tsx';
-import CurrencyPrice from '@components/ui/crypto/CurrencyPrice.tsx';
+import PortfolioSummary from '@/Components/Dashboard/PortfolioSummary';
+import CurrencyPrice from '@/Components/UI/Crypto/CurrencyPrice';
 
 const DashboardContainer = styled.div`
    display: grid;
@@ -17,15 +17,15 @@ const DashboardContainer = styled.div`
 const PortfolioSummaryWrapper = styled.div.attrs({
    className: 'portfolio-summary-wrapper',
 })`
-   @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
+   @media screen and (max-width: ${({ theme }: any) => theme.breakpoints.sm}) {
       grid-column: 1 / 10;
    }
 
-   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
-    grid-column: 2 / 9;
-  }
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.sm}) {
+      grid-column: 2 / 9;
+   }
 
-   @media screen and (min-width: ${(props: any) =>props.theme.breakpoints.lg}) {
+   @media screen and (min-width: ${({ theme }: any) => theme.breakpoints.lg}) {
       grid-column: 3 / 8;
    }
 `;

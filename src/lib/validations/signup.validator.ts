@@ -2,7 +2,7 @@ import { object, string, ValidationError } from 'yup';
 import {
    SignupValidationResult,
    SignupValidatorProps,
-} from '@typings/validator-types/Auth.validator.type.ts';
+} from '@/Lib/Typings/Validator/Auth.validator.type';
 
 const firstNameValidationSchema = object({
    'first name': string().required().min(1).max(30).trim(),

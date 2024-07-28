@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
-import Heading from '@components/ui/stuff/Heading.tsx';
+import Heading from '@/Components/UI/Stuff/Heading';
 import { ChangeEventHandler, Dispatch, SetStateAction } from 'react';
-import UploadImageInput from '@components/ui/input-fields/UploadImage.input.tsx';
-import { ImageFileTypeValidator } from '@utils/helpers.ts';
+import UploadImageInput from '@/Components/UI/InputFields/UploadImage.input';
+import { ImageFileTypeValidator } from '@/Lib/Utils/helpers';
 import { toast } from 'react-hot-toast';
-import { ONE_MILLION } from '@data/bigNumbers.data.ts';
+import { ONE_MILLION } from '@/Data/bigNumbers.data';
 
 type UploadProfilePhotoProps = {
    imageFile: File | undefined;

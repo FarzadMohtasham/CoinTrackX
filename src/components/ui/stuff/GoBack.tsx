@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import Icon from '@components/ui/stuff/Icon.tsx';
+import Icon from '@/Components/UI/Stuff/Icon';
 
 type GoBackProps = {
    link?: string;

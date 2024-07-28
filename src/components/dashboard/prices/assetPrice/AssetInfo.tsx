@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
-import { AssetName } from '@typings/Assets.api.type.ts';
-import Icon from '@components/ui/stuff/Icon.tsx';
+import { AssetName } from '@/Lib/Typings/Assets.api.type';
+import Icon from '@/Components/UI/Stuff/Icon';
 import Skeleton from 'react-loading-skeleton';
-import { amountToBeFixed } from '@utils/helpers.ts';
-import Badge from '@components/ui/stuff/Badge.tsx';
-import useGetAssetQuery from '@query/assets/useGetAsset.query.ts';
+import { amountToBeFixed } from '@/Lib/Utils/helpers';
+import Badge from '@/Components/UI/Stuff/Badge';
+import useGetAssetQuery from '@/Query/Assets/useGetAsset.query';
 import { useEffect } from 'react';
 
 type AssetInfoProps = {

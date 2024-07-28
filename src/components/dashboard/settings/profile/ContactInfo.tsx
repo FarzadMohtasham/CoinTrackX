@@ -1,12 +1,12 @@
 import { styled } from 'styled-components';
-import Heading from '@components/ui/stuff/Heading.tsx';
-import UploadProfilePhoto from '@components/dashboard/settings/profile/ContactInfo_UploadProfilePhoto.tsx';
-import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInfo_UpdateContactInfo.tsx';
-import Button from '@components/ui/stuff/Button.tsx';
+import Heading from '@/Components/UI/Stuff/Heading';
+import UploadProfilePhoto from '@/Components/Dashboard/Settings/Profile/ContactInfo_UploadProfilePhoto';
+import UpdateContactInfo from '@/Components/Dashboard/Settings/Profile/ContactInfo_UpdateContactInfo';
+import Button from '@/Components/UI/Stuff/Button';
 import { useEffect, useState } from 'react';
-import { contactInputSchema } from '@/lib/schema/ContactInput.schema.ts';
+import { contactInputSchema } from '@/Lib/Schema/contactInput.schema';
 import { ValidationError } from 'yup';
-import useUser from '@hooks/useUser.ts';
+import useUser from '@/Lib/Hooks/useUser';
 
 type ValidationErrorT = {
    inner?: ValidationError[];

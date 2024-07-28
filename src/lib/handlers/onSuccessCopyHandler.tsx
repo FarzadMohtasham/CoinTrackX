@@ -1,5 +1,5 @@
 import { toast } from 'react-hot-toast';
-import Icon from '@components/ui/stuff/Icon.tsx';
+import Icon from '@/Components/UI/Stuff/Icon';
 
 export default function onSuccessCopyHandler(text = 'Copied!') {
    toast.success(text, {

@@ -1,4 +1,4 @@
-import { AssetName } from '@typings/Assets.api.type.ts';
+import { AssetName } from '@/Lib/Typings/Assets.api.type';
 
 export const assetList: AssetName[] = [
    'bitcoin',

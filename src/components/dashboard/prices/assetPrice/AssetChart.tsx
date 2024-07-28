@@ -1,5 +1,5 @@
-import { AssetHistoryInterval, AssetName } from '@typings/Assets.api.type.ts';
-import useGetAssetHistory from '@query/assets/useGetAssetHistory.query.ts';
+import { AssetHistoryInterval, AssetName } from '@/Lib/Typings/Assets.api.type';
+import useGetAssetHistory from '@/Query/Assets/useGetAssetHistory.query';
 import { useEffect, useState } from 'react';
 import {
    CategoryScale,
@@ -13,10 +13,10 @@ import {
    Title,
    Tooltip,
 } from 'chart.js';
-import { SelectMenuItem } from '@typings/component-types/Select.type.ts';
+import { SelectMenuItem } from '@/Lib/Typings/Components/Select.type';
 import { Line } from 'react-chartjs-2';
 import Skeleton from 'react-loading-skeleton';
-import Select from '@components/ui/stuff/Select.tsx';
+import Select from '@/Components/UI/Stuff/Select';
 import { styled } from 'styled-components';
 
 type AssetChartProps = {

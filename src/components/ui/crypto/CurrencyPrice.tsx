@@ -15,12 +15,12 @@ import {
    Tooltip,
 } from 'chart.js';
 
-import Select from '@components/ui/stuff/Select.tsx';
-import Button from '@components/ui/stuff/Button.tsx';
+import Select from '@/Components/UI/Stuff/Select';
+import Button from '@/Components/UI/Stuff/Button';
 
-import { SelectMenuItem } from '@typings/component-types/Select.type.ts';
-import useGetAssetHistory from '@query/assets/useGetAssetHistory.query.ts';
-import { AssetHistoryInterval, AssetName } from '@typings/Assets.api.type.ts';
+import { SelectMenuItem } from '@/Lib/Typings/Components/Select.type';
+import useGetAssetHistory from '@/Query/Assets/useGetAssetHistory.query';
+import { AssetHistoryInterval, AssetName } from '@/Lib/Typings/Assets.api.type';
 
 ChartJS.register(
    CategoryScale,
