@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.54](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.53...v0.0.54) (2024-07-28)
+
+
+### Bug Fixes
+
+* Fixed CreditDebitCard API name ([5ca7649](https://github.com/FarzadMohtasham/CoinTrackX/commit/5ca764926ac8618162224758d19cf7b50f38d01f))
+
 ### [0.0.53](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.52...v0.0.53) (2024-07-28)
 
 
