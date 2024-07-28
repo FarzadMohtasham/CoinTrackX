@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import Icon from '@/Components/UI/Stuff/Icon';
 import CopyToClipboard from '@/Components/UI/Stuff/CopyToClipboard';
 
-import { CreditDebitCard as CreditDebitCardT } from '@/Lib/Typings/Components/CreditDebitCard.type';
+import { CreditDebitCard as CreditDebitCardT } from '@/Libs/Typings/Components/CreditDebitCard.type';
 import {
    Modal,
    ModalBody,
@@ -14,7 +14,7 @@ import {
    useDisclosure,
 } from '@chakra-ui/react';
 import EditCreditDebitCardModal from '@/Components/Dashboard/Settings/PaymentMethods/EditCreditDebitCard.modal';
-import onSuccessCopyHandler from '@/Lib/Handlers/onSuccessCopyHandler';
+import onSuccessCopyHandler from '@/Libs/Handlers/onSuccessCopyHandler';
 
 type CreditDebitCardProps = {
    creditDebitCardInfo: CreditDebitCardT;

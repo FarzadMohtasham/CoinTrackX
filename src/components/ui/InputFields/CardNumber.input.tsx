@@ -8,9 +8,9 @@ import React, {
 } from 'react';
 import { css, styled } from 'styled-components';
 
-import { checkCardProvider, formatCardNumber } from '@/Lib/Utils/helpers';
+import { checkCardProvider, formatCardNumber } from '@/Libs/Utils/helpers';
 import Icon from '@/Components/UI/Stuff/Icon';
-import { CardNumberProvider } from '@/Lib/Typings/Components/CardNumberInput.type';
+import { CardNumberProvider } from '@/Libs/Typings/Components/CardNumberInput.type';
 
 type CardNumberProps = {
    cardNumberSetterFn: (value: string) => void;

@@ -5,7 +5,7 @@ import Container from '@/Components/UI/Stuff/Container';
 import HeadingBox from '@/Components/UI/Stuff/HeadingBox';
 import Review from '@/Components/UI/Stuff/Review';
 
-import { Review as ReviewType } from '@/Lib/Typings/Components/Review.type';
+import { Review as ReviewType } from '@/Libs/Typings/Components/Review.type';
 
 const reviewsList: ReviewType[] = [
    {

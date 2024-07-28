@@ -6,7 +6,7 @@ import Icon from '@/Components/UI/Stuff/Icon';
 import {
    InputProps,
    InputStyledProps,
-} from '@/Lib/Typings/Components/InputFieldProps.type';
+} from '@/Libs/Typings/Components/InputFieldProps.type';
 
 const PasswordInputStyled = styled.div`
    display: flex;

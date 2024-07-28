@@ -9,7 +9,7 @@ import Icon from '@/Components/UI/Stuff/Icon';
 import {
    ButtonPropsType,
    Properties,
-} from '@/Lib/Typings/Components/ButtonProps.type';
+} from '@/Libs/Typings/Components/ButtonProps.type';
 
 // Data
 import {

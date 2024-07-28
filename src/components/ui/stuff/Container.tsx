@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import {
    ContainerPropsType,
    ContainerStyledProps,
-} from '@/Lib/Typings/Components/ContainerProps.type';
+} from '@/Libs/Typings/Components/ContainerProps.type';
 
 const ContainerStyled = styled.div<ContainerStyledProps>`
    width: 100%;

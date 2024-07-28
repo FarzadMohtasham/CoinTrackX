@@ -1,6 +1,6 @@
 import { css, styled } from 'styled-components';
 
-import { PaymentMethodOptionProps } from '@/Lib/Typings/PaymentMethodOption.type';
+import { PaymentMethodOptionProps } from '@/Libs/Typings/PaymentMethodOption.type';
 import Icon from '@/Components/UI/Stuff/Icon';
 
 const PaymentMethodOptionContainer = styled.div<{ $disabled: boolean }>`

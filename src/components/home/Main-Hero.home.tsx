@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Heading from '@/Components/UI/Stuff/Heading';
 import Button from '@/Components/UI/Stuff/Button';
 import Container from '@/Components/UI/Stuff/Container';
-import useUserLoggedIn from '@/Lib/Hooks/useUserLoggedIn';
+import useUserLoggedIn from '@/Libs/Hooks/useUserLoggedIn';
 
 const HeroStyled = styled.section`
    display: flex;

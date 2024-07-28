@@ -5,9 +5,9 @@ import Skeleton from 'react-loading-skeleton';
 
 import Icon from '@/Components/UI/Stuff/Icon';
 
-import { amountToBeFixed } from '@/Lib/Utils/helpers';
+import { amountToBeFixed } from '@/Libs/Utils/helpers';
 
-import { TopMoverProps } from '@/Lib/Typings/Components/TopMover.type';
+import { TopMoverProps } from '@/Libs/Typings/Components/TopMover.type';
 
 const TopMoverContainer = styled.div`
    width: 100%;

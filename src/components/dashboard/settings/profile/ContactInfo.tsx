@@ -4,9 +4,9 @@ import UploadProfilePhoto from '@/Components/Dashboard/Settings/Profile/ContactI
 import UpdateContactInfo from '@/Components/Dashboard/Settings/Profile/ContactInfo_UpdateContactInfo';
 import Button from '@/Components/UI/Stuff/Button';
 import { useEffect, useState } from 'react';
-import { contactInputSchema } from '@/Lib/Schema/contactInput.schema';
+import { contactInputSchema } from '@/Libs/Schemas/contactInput.schema';
 import { ValidationError } from 'yup';
-import useUser from '@/Lib/Hooks/useUser';
+import useUser from '@/Libs/Hooks/useUser';
 
 type ValidationErrorT = {
    inner?: ValidationError[];

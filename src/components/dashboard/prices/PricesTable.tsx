@@ -19,15 +19,15 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 
 import { Table, TableContainer, Tbody, Td, Thead, Tr } from '@chakra-ui/react';
-import useGetAssetsQuery from '@/Query/Assets/useGetAssets.query';
+import useGetAssetsQuery from '@/Queries/Assets/useGetAssets.query';
 
 import Icon from '@/Components/UI/Stuff/Icon';
 import Badge from '@/Components/UI/Stuff/Badge';
 import PaginationRow from '@/Components/Dashboard/Prices/PaginationRow';
 
-import { Asset } from '@/Lib/Typings/Assets.api.type';
-import { AssetPriceTable } from '@/Lib/Typings/Tables.type';
-import { PaginationRowProps } from '@/Lib/Typings/PricesPage.type';
+import { Asset } from '@/Libs/Typings/Assets.api.type';
+import { AssetPriceTable } from '@/Libs/Typings/Tables.type';
+import { PaginationRowProps } from '@/Libs/Typings/PricesPage.type';
 
 import Input from '@/Components/UI/InputFields/InputField.input';
 import Button from '@/Components/UI/Stuff/Button';
@@ -290,7 +290,7 @@ export default function PricesTable(): JSX.Element {
                      iconSrc={'search-gray.svg'}
                      focusIconSrc={'search-gray-active.svg'}
                      inputValue={search}
-                     onChangeHandler={(value) => setSearch(value)}
+                     onChangeHandler={(value: any) => setSearch(value)}
                   />
                </div>
                <div className={'right-col'}>

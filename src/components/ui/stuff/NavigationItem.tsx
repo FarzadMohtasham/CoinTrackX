@@ -6,7 +6,7 @@ import Icon from '@/Components/UI/Stuff/Icon';
 import {
    NavigationItemStyledProps,
    NavigationProps,
-} from '@/Lib/Typings/NavigationItem.type';
+} from '@/Libs/Typings/NavigationItem.type';
 
 const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
    display: flex;

@@ -8,7 +8,7 @@ import {
    CheckboxStyledProps,
    CheckboxTypes,
    Properties,
-} from '@/Lib/Typings/Components/CheckBox.type';
+} from '@/Libs/Typings/Components/CheckBox.type';
 
 const CheckBoxContainer = styled.div<CheckboxStyledProps>`
    display: flex;

@@ -6,23 +6,23 @@ import Button from '@/Components/UI/Stuff/Button';
 import Icon from '@/Components/UI/Stuff/Icon';
 import CheckboxInput from '@/Components/UI/InputFields/Checkbox.input';
 
-import { InputFieldValidator } from '@/Lib/Validations/InputField.validator';
+import { InputFieldValidator } from '@/Libs/Validations/InputField.validator';
 
-import { InputFieldValidatorResult } from '@/Lib/Typings/Validator/Input.validator.type';
+import { InputFieldValidatorResult } from '@/Libs/Typings/Validator/Input.validator.type';
 import CardNumberInput from '@/Components/UI/InputFields/CardNumber.input';
-import { CardNumberProvider } from '@/Lib/Typings/Components/CardNumberInput.type';
+import { CardNumberProvider } from '@/Libs/Typings/Components/CardNumberInput.type';
 import SimpleNotification from '@/Components/UI/Notifications/Simple-Notification.notif';
-import { NotificationOptions } from '@/Lib/Typings/Components/Notification.type';
+import { NotificationOptions } from '@/Libs/Typings/Components/Notification.type';
 import CreditCardExpInput from '@/Components/UI/InputFields/CreditCardExp.input';
 import CreditCardCVVInput from '@/Components/UI/InputFields/CreditCardCVV.input';
 import PostalCodeInput from '@/Components/UI/InputFields/PostalCode.input';
-import { CreditDebitCard } from '@/Lib/Typings/Components/CreditDebitCard.type';
-import useUser from '@/Lib/Hooks/useUser';
+import { CreditDebitCard } from '@/Libs/Typings/Components/CreditDebitCard.type';
+import useUser from '@/Libs/Hooks/useUser';
 import { AuthUser, PostgrestError } from '@supabase/supabase-js';
 import {
    deleteCreditDebitCard,
    updateCreditDebitCard,
-} from '@/Services/API/payment-methods/creditDebitPayments.api';
+} from '@/Services/APIs/payment-methods/creditDebitPayments.api';
 import { toast } from 'react-hot-toast';
 
 type EditCreditDebitCardModalProps = {

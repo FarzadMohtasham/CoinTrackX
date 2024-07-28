@@ -10,8 +10,8 @@ import InputField from '@/Components/UI/InputFields/InputField.input.tsx';
 import PasswordFieldInput from '@/Components/UI/InputFields/PasswordField.input.tsx';
 import CheckboxInput from '@/Components/UI/InputFields/Checkbox.input.tsx';
 
-import { loginInputValidator } from '@/Lib/Validations/login.validator.ts';
-import { login } from '@/Services/API/auth/auth.api.ts';
+import { loginInputValidator } from '@/Libs/Validations/login.validator.ts';
+import { login } from '@/Services/APIs/auth/auth.api.ts';
 
 import {
    AuthContainer,
@@ -20,7 +20,7 @@ import {
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
 } from './AuthShared.tsx';
-import useLocaleStorage from '@/Lib/Hooks/useLocaleStorage.ts';
+import useLocaleStorage from '@/Libs/Hooks/useLocaleStorage.ts';
 
 const Container = styled(AuthContainer)``;
 const Wrapper = styled(AuthInnerWrapper)``;

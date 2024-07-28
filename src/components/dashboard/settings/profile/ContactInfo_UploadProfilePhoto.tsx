@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import Heading from '@/Components/UI/Stuff/Heading';
 import { ChangeEventHandler, Dispatch, SetStateAction } from 'react';
 import UploadImageInput from '@/Components/UI/InputFields/UploadImage.input';
-import { ImageFileTypeValidator } from '@/Lib/Utils/helpers';
+import { ImageFileTypeValidator } from '@/Libs/Utils/helpers';
 import { toast } from 'react-hot-toast';
 import { ONE_MILLION } from '@/Data/bigNumbers.data';
 

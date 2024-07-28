@@ -16,7 +16,7 @@ import {
    InputProps,
    InputRefProps,
    InputStyledProps,
-} from '@/Lib/Typings/Components/InputFieldProps.type';
+} from '@/Libs/Typings/Components/InputFieldProps.type';
 
 const FieldContainer = styled.div`
    display: flex;

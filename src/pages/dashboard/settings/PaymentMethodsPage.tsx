@@ -20,12 +20,12 @@ import PaymentMethodOptionComponent from '@/Components/Dashboard/Settings/Paymen
 import {
    PaymentMethodOptionProps,
    PaymentMethodTitle,
-} from '@/Lib/Typings/PaymentMethodOption.type';
+} from '@/Libs/Typings/PaymentMethodOption.type';
 import CreditDebitCard from '@/Components/UI/Cards/CreditDebit.card';
-import { CreditDebitCard as CreditDebitCardT } from '@/Lib/Typings/Components/CreditDebitCard.type';
+import { CreditDebitCard as CreditDebitCardT } from '@/Libs/Typings/Components/CreditDebitCard.type';
 import AddCreditDebitCardModal from '@/Components/Dashboard/Settings/PaymentMethods/AddCreditDebitCard.modal';
 import AddCreditDebitCard from '@/Components/UI/Cards/AddCreditDebit.card';
-import useGetCreditDebitCardsQuery from '@/Query/PaymentMethods/useGetCreditDebitCards.query';
+import useGetCreditDebitCardsQuery from '@/Queries/PaymentMethods/useGetCreditDebitCards.query';
 import Skeleton from 'react-loading-skeleton';
 
 const NoPaymentMethodContainer = styled.div`

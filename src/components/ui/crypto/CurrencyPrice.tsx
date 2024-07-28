@@ -18,9 +18,9 @@ import {
 import Select from '@/Components/UI/Stuff/Select';
 import Button from '@/Components/UI/Stuff/Button';
 
-import { SelectMenuItem } from '@/Lib/Typings/Components/Select.type';
-import useGetAssetHistory from '@/Query/Assets/useGetAssetHistory.query';
-import { AssetHistoryInterval, AssetName } from '@/Lib/Typings/Assets.api.type';
+import { SelectMenuItem } from '@/Libs/Typings/Components/Select.type';
+import useGetAssetHistory from '@/Queries/Assets/useGetAssetHistory.query';
+import { AssetHistoryInterval, AssetName } from '@/Libs/Typings/Assets.api.type';
 
 ChartJS.register(
    CategoryScale,

@@ -8,7 +8,7 @@ import CopyRight from '@/Components/UI/Stuff/CopyRight';
 import Heading from '@/Components/UI/Stuff/Heading';
 
 // Type
-import { ColumnItem as ColumnItemType } from '@/Lib/Typings/Components/Footer.type';
+import { ColumnItem as ColumnItemType } from '@/Libs/Typings/Components/Footer.type';
 import { IStyledComponentBase } from 'styled-components/dist/types';
 
 // Data

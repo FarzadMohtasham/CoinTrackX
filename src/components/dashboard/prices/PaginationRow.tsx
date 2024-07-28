@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import Button from '@/Components/UI/Stuff/Button';
 import Icon from '@/Components/UI/Stuff/Icon';
 
-import { PaginationRowProps } from '@/Lib/Typings/PricesPage.type';
+import { PaginationRowProps } from '@/Libs/Typings/PricesPage.type';
 
 const PaginationRowContainer = styled.div`
    display: flex;

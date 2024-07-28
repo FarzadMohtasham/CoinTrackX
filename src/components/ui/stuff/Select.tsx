@@ -8,7 +8,7 @@ import {
    SelectMenuItem as SelectMenuItemT,
    SelectMenuWrapperProps,
    SelectProps,
-} from '@/Lib/Typings/Components/Select.type';
+} from '@/Libs/Typings/Components/Select.type';
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
    display: block;

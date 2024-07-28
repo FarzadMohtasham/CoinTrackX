@@ -5,10 +5,10 @@ import TopMover from '@/Components/Dashboard/Prices/TopMover';
 import Heading from '@/Components/UI/Stuff/Heading';
 import Button from '@/Components/UI/Stuff/Button';
 
-import useGetAssetsQuery from '@/Query/Assets/useGetAssets.query';
+import useGetAssetsQuery from '@/Queries/Assets/useGetAssets.query';
 
-import { TopMover as TopMoverT } from '@/Lib/Typings/Components/TopMover.type';
-import { Asset } from '@/Lib/Typings/Assets.api.type';
+import { TopMover as TopMoverT } from '@/Libs/Typings/Components/TopMover.type';
+import { Asset } from '@/Libs/Typings/Assets.api.type';
 
 const TopMoversContainer = styled.div`
    display: flex;

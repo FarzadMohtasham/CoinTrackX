@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { Tooltip } from '@chakra-ui/react';
-import { CopyToClipboard as ReactCopyToClipboard } from 'react-copy-to-clipboard';
 import { styled } from 'styled-components';
+import { CopyToClipboard as ReactCopyToClipboard } from 'react-copy-to-clipboard';
+import { Tooltip } from '@chakra-ui/react';
 
 type CopyToClipboardProps = {
    children: ReactNode;

@@ -6,7 +6,7 @@ import AssetInfo from '@/Components/Dashboard/Prices/AssetPrice/AssetInfo';
 import AssetSummary from '@/Components/Dashboard/Prices/AssetPrice/AssetSummary';
 import GoBack from '@/Components/UI/Stuff/GoBack';
 
-import { AssetName } from '@/Lib/Typings/Assets.api.type';
+import { AssetName } from '@/Libs/Typings/Assets.api.type';
 
 import AssetChart from '@/Components/Dashboard/Prices/AssetPrice/AssetChart';
 import AssetMarkets from '@/Components/Dashboard/Prices/AssetPrice/AssetMarkets';

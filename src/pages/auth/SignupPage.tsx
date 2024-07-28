@@ -10,8 +10,8 @@ import InputField from '@/Components/UI/InputFields/InputField.input';
 import CheckboxInput from '@/Components/UI/InputFields/Checkbox.input';
 import PasswordFieldInput from '@/Components/UI/InputFields/PasswordField.input';
 
-import { signupInputValidator } from '@/Lib/Validations/signup.validator';
-import { signup } from '@/Services/API/auth/auth.api';
+import { signupInputValidator } from '@/Libs/Validations/signup.validator';
+import { signup } from '@/Services/APIs/auth/auth.api';
 
 import {
    AuthContainer,
@@ -20,8 +20,8 @@ import {
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
 } from '@/Pages/Auth/AuthShared';
-import { SignupValidationResult } from '@/Lib/Typings/Validator/Auth.validator.type';
-import useLocaleStorage from '@/Lib/Hooks/useLocaleStorage';
+import { SignupValidationResult } from '@/Libs/Typings/Validator/Auth.validator.type';
+import useLocaleStorage from '@/Libs/Hooks/useLocaleStorage';
 
 const LoginContainer = styled(AuthContainer)``;
 const LoginWrapper = styled(AuthInnerWrapper)``;
