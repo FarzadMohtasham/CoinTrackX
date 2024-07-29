@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.56](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.55...v0.0.56) (2024-07-29)
+
+
+### Features
+
+* Added invalidateQueries on add new credit/debit card ([087cd35](https://github.com/FarzadMohtasham/CoinTrackX/commit/087cd352851c51457d1c37dc2a0c09a6fb99d0dd))
+
 ### [0.0.55](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.54...v0.0.55) (2024-07-28)
 
 
