@@ -4,8 +4,8 @@ import { queryClient } from "../Configs/ReactQuery/queryClient"
 export const useInvalidateQuery = (queryKey: any) => {
    return (invalidateQueryProps: InvalidateOptions = {}) => {
       queryClient.invalidateQueries({
+         ...invalidateQueryProps,
          queryKey: queryKey,
-         ...invalidateQueryProps
       })
    }
 }
