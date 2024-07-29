@@ -21,12 +21,13 @@ import { Line } from 'react-chartjs-2';
 import Skeleton from 'react-loading-skeleton';
 import Select from '@/Components/UI/Stuff/Select';
 import { styled } from 'styled-components';
+import { queryClient } from '@/Libs/Configs/ReactQuery/queryClient';
+import { useInvalidateQuery } from '@/Libs/Hooks/useInvalidateQuery';
 
 type AssetChartProps = {
    assetName: AssetName;
    hasErrorHandler: () => void;
    hasNoErrorHandler: () => void;
-   refetchListener: number;
 };
 
 type CryptoHistoryRecord = {
@@ -123,15 +124,15 @@ export default function AssetChart(props: AssetChartProps) {
    const [chartInterval, setChartInterval] =
       useState<AssetHistoryInterval>('d1');
 
-   const { assetName, hasErrorHandler, hasNoErrorHandler, refetchListener } =
-      props;
+   const { assetName, hasErrorHandler, hasNoErrorHandler } = props;
 
    const {
       currencyPriceHistoryData,
       error: assetChartError,
-      refetch: assetChartRefetch,
       isLoading: assetChartLoading,
    } = useGetAssetHistory(assetName, chartInterval);
+
+   const invalidateAssetQuery = useInvalidateQuery(['getAssetHistory']);
 
    useEffect(() => {
       if (assetChartError) hasErrorHandler();
@@ -162,12 +163,12 @@ export default function AssetChart(props: AssetChartProps) {
    );
 
    useEffect(() => {
-      assetChartRefetch();
+      invalidateAssetQuery();
    }, [chartInterval]);
 
    useEffect(() => {
       const interval = setInterval(() => {
-         assetChartRefetch();
+         invalidateAssetQuery();
       }, 1000 * 60);
 
       return () => clearInterval(interval);
@@ -177,10 +178,6 @@ export default function AssetChart(props: AssetChartProps) {
       if (assetChartError) hasErrorHandler();
       else hasNoErrorHandler();
    }, [assetChartError]);
-
-   useEffect(() => {
-      assetChartRefetch();
-   }, [refetchListener]);
 
    const chartOptions: ChartOptions = {
       animation: false,

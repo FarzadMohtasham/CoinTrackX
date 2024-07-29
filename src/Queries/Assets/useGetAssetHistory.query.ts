@@ -18,7 +18,7 @@ export default function useGetAssetHistory(
       refetch: any;
       isLoading: any;
    } = useQuery({
-      queryKey: ['currency-price', assetName],
+      queryKey: ['getAssetHistory', assetName],
       queryFn: () => getAssetHistory(assetName, chartInterval, historyLength),
       staleTime: 1000 * 10,
       retry: false,

@@ -108,7 +108,7 @@ export default function PricesTable(): JSX.Element {
    const [search, setSearch] = useState<string>('');
    const [showOnlyWatchlist, setShowOnlyWatchlist] = useState<boolean>(false);
 
-   const { data, refetch: _, isLoading } = useGetAssetsQuery();
+   const { data, isLoading } = useGetAssetsQuery();
    // const user = useUser()
 
    const navigate: NavigateFunction = useNavigate();

@@ -21,7 +21,7 @@ export default function useGetAssetsQuery(
       refetch: any;
       isLoading: any;
    } = useQuery({
-      queryKey: ['use-get-assets'],
+      queryKey: ['useGetAssets'],
       queryFn: () => getAssets(),
       staleTime: staleTime,
       retry: retry,

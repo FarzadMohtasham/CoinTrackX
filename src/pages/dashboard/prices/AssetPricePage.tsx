@@ -12,6 +12,7 @@ import AssetChart from '@/Components/Dashboard/Prices/AssetPrice/AssetChart';
 import AssetMarkets from '@/Components/Dashboard/Prices/AssetPrice/AssetMarkets';
 import Heading from '@/Components/UI/Stuff/Heading';
 import Button from '@/Components/UI/Stuff/Button';
+import { queryClient } from '@/Libs/Configs/ReactQuery/queryClient';
 
 type ErrorStatesProps = {
    assetInfoHasError: boolean;
@@ -116,7 +117,6 @@ export default function AssetPricePage(): JSX.Element {
       assetChartHasError: false,
       assetMarketsHasError: false,
    } as ErrorStatesProps);
-   const [refetchListener, setRefetchListener] = useState<number>(0);
    const { assetName } = useParams<Readonly<string>>();
 
    const {
@@ -132,6 +132,13 @@ export default function AssetPricePage(): JSX.Element {
       assetChartHasError ??
       assetMarketsHasError;
 
+   // Handlers
+   const handleTryAgain = () => {
+      queryClient.invalidateQueries({
+         queryKey: ['useGetAsset'],
+      });
+   };
+
    return (
       <>
          {hasError && (
@@ -144,13 +151,7 @@ export default function AssetPricePage(): JSX.Element {
                      There was an error while fetching asset data from the
                      server, Please refetch or contact with the admin.
                   </span>
-                  <Button
-                     onClickHandler={() =>
-                        setRefetchListener(refetchListener + 1)
-                     }
-                  >
-                     Try again
-                  </Button>
+                  <Button onClickHandler={handleTryAgain}>Try again</Button>
                </ErrorWrapper>
             </ErrorContainer>
          )}
@@ -160,7 +161,6 @@ export default function AssetPricePage(): JSX.Element {
                <GoBack link={'/dashboard/prices'}>Go Back</GoBack>
                <AssetInfo
                   assetName={assetName as AssetName}
-                  refetchListener={refetchListener}
                   hasErrorHandler={() =>
                      dispatchError({ type: 'assetInfoHasError' })
                   }
@@ -170,7 +170,6 @@ export default function AssetPricePage(): JSX.Element {
                />
                <AssetSummary
                   assetName={assetName as AssetName}
-                  refetchListener={refetchListener}
                   hasErrorHandler={() =>
                      dispatchError({ type: 'assetSummaryHasError' })
                   }
@@ -180,7 +179,6 @@ export default function AssetPricePage(): JSX.Element {
                />
                <AssetChart
                   assetName={assetName as AssetName}
-                  refetchListener={refetchListener}
                   hasErrorHandler={() =>
                      dispatchError({ type: 'assetChartHasError' })
                   }
@@ -190,7 +188,6 @@ export default function AssetPricePage(): JSX.Element {
                />
                <AssetMarkets
                   assetName={assetName as AssetName}
-                  refetchListener={refetchListener}
                   hasErrorHandler={() =>
                      dispatchError({ type: 'assetMarketsHasError' })
                   }

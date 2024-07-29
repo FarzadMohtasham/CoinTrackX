@@ -13,7 +13,6 @@ type AssetInfoProps = {
    assetName: AssetName;
    hasErrorHandler: () => void;
    hasNoErrorHandler: () => void;
-   refetchListener: number;
 };
 
 const AssetInfoContainer = styled.div`
@@ -78,13 +77,11 @@ const AssetInfoRightCol = styled.div`
 `;
 
 export default function AssetInfo(props: AssetInfoProps) {
-   const { assetName, hasErrorHandler, hasNoErrorHandler, refetchListener } =
-      props;
+   const { assetName, hasErrorHandler, hasNoErrorHandler } = props;
 
    const {
       data: assetData,
       error: assetError,
-      refetch: assetRefresh,
       isLoading: assetDataIsLoading,
    } = useGetAssetQuery(assetName as AssetName, {
       gcTime: 0,
@@ -94,10 +91,6 @@ export default function AssetInfo(props: AssetInfoProps) {
       if (assetError) hasErrorHandler();
       else hasNoErrorHandler();
    }, [assetError]);
-
-   useEffect(() => {
-      assetRefresh();
-   }, [refetchListener]);
 
    return (
       <>

@@ -24,6 +24,7 @@ import {
    updateCreditDebitCard,
 } from '@/Services/APIs/payment-methods/creditDebitPayments.api';
 import { toast } from 'react-hot-toast';
+import { queryClient } from '@/Libs/Configs/ReactQuery/queryClient';
 
 type EditCreditDebitCardModalProps = {
    onClose: () => void;
@@ -152,6 +153,9 @@ export default function EditCreditDebitCardModal(
       setActionButtonsDisabled(true);
       try {
          await updateCreditDebitCard(creditDebitCardInfo.id, cardInfo);
+         queryClient.invalidateQueries({
+            queryKey: ['getCreditDebitCards'],
+         });
          toast.success('Credit/Debit Card Updated');
          onClose();
       } catch (e: PostgrestError | any) {

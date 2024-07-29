@@ -34,7 +34,6 @@ type AssetMarketsProps = {
    assetName: string;
    hasErrorHandler: () => void;
    hasNoErrorHandler: () => void;
-   refetchListener: number;
 };
 
 type AssetMarketColumnDef = {
@@ -95,12 +94,8 @@ const SelectTableShowStatusList: SelectMenuItem[] = [
 ];
 
 export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
-   const {
-      assetName,
-      hasErrorHandler,
-      hasNoErrorHandler,
-      refetchListener,
-   }: AssetMarketsProps = props;
+   const { assetName, hasErrorHandler, hasNoErrorHandler }: AssetMarketsProps =
+      props;
 
    const [tableShowStatus, setTableShowStatus] = useState<'less' | 'all'>(
       'less',
@@ -163,7 +158,6 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
       data: assetMarketsData,
       error: assetMarketsError,
       isLoading,
-      refetch: assetMarketsRefetch,
    } = useGetAssetMarketsQuery(assetName as AssetName);
 
    const showLessCount = Math.floor(assetMarketsData?.length / 2);
@@ -198,10 +192,6 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
       if (assetMarketsError) hasErrorHandler();
       else hasNoErrorHandler();
    }, [assetMarketsError]);
-
-   useEffect(() => {
-      assetMarketsRefetch();
-   }, [refetchListener]);
 
    return (
       <>

@@ -10,7 +10,6 @@ type AssetSummaryProps = {
    assetName: AssetName;
    hasErrorHandler: () => void;
    hasNoErrorHandler: () => void;
-   refetchListener: number;
 };
 
 const AssetSummaryContainer = styled.div`
@@ -34,24 +33,18 @@ const AssetSummaryContainer = styled.div`
 `;
 
 export default function AssetSummary(props: AssetSummaryProps): JSX.Element {
-   const { assetName, hasErrorHandler, hasNoErrorHandler, refetchListener } =
-      props;
+   const { assetName, hasErrorHandler, hasNoErrorHandler } = props;
 
    const {
       data: assetSummaryData,
       error: assetSummaryError,
       isLoading: assetSummaryIsLoading,
-      refetch: assetSummaryRefresh,
    } = useGetAssetSummaryQuery(assetName);
 
    useEffect((): void => {
       if (assetSummaryError) hasErrorHandler();
       else hasNoErrorHandler();
    }, [assetSummaryError]);
-
-   useEffect((): void => {
-      assetSummaryRefresh().then();
-   }, [refetchListener]);
 
    return (
       <>

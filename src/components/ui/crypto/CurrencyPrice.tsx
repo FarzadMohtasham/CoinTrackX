@@ -20,7 +20,10 @@ import Button from '@/Components/UI/Stuff/Button';
 
 import { SelectMenuItem } from '@/Libs/Typings/Components/Select.type';
 import useGetAssetHistory from '@/Queries/Assets/useGetAssetHistory.query';
-import { AssetHistoryInterval, AssetName } from '@/Libs/Typings/Assets.api.type';
+import {
+   AssetHistoryInterval,
+   AssetName,
+} from '@/Libs/Typings/Assets.api.type';
 
 ChartJS.register(
    CategoryScale,
