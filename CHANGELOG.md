@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.57](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.56...v0.0.57) (2024-07-29)
+
+
+### Features
+
+* Added invalidateQueries for other components and replaced with refetch ([61064a5](https://github.com/FarzadMohtasham/CoinTrackX/commit/61064a55fd6393030058fa6ad1676101aec7d425))
+
 ### [0.0.56](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.55...v0.0.56) (2024-07-29)
 
 
