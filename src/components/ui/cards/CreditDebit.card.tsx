@@ -18,7 +18,6 @@ import onSuccessCopyHandler from '@/Libs/Handlers/onSuccessCopyHandler';
 
 type CreditDebitCardProps = {
    creditDebitCardInfo: CreditDebitCardT;
-   CreditDebitCardsRefetchFn: () => void;
 };
 
 const CreditDebitCardContainer = styled.div`
@@ -95,7 +94,7 @@ const CreditDebitCardContainer = styled.div`
 `;
 
 export default function CreditDebitCard(props: CreditDebitCardProps) {
-   const { creditDebitCardInfo, CreditDebitCardsRefetchFn } = props;
+   const { creditDebitCardInfo } = props;
 
    const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -197,7 +196,6 @@ export default function CreditDebitCard(props: CreditDebitCardProps) {
                   <EditCreditDebitCardModal
                      onClose={onClose}
                      creditDebitCardInfo={creditDebitCardInfo}
-                     creditDebitCardRefetchFn={CreditDebitCardsRefetchFn}
                   />
                </ModalBody>
             </ModalContent>

@@ -28,7 +28,6 @@ import { toast } from 'react-hot-toast';
 type EditCreditDebitCardModalProps = {
    onClose: () => void;
    creditDebitCardInfo: CreditDebitCard;
-   creditDebitCardRefetchFn: () => void;
 };
 
 const LinkYouCardContainer = styled.div`
@@ -76,7 +75,7 @@ const simpleNotifOptions: NotificationOptions = {
 export default function EditCreditDebitCardModal(
    props: EditCreditDebitCardModalProps,
 ) {
-   const { creditDebitCardInfo, onClose, creditDebitCardRefetchFn } = props;
+   const { creditDebitCardInfo, onClose } = props;
 
    const [cardholderNameErrorMsg, setCardholderNameErrorMsg] =
       useState<string>();
@@ -155,7 +154,6 @@ export default function EditCreditDebitCardModal(
          await updateCreditDebitCard(creditDebitCardInfo.id, cardInfo);
          toast.success('Credit/Debit Card Updated');
          onClose();
-         creditDebitCardRefetchFn();
       } catch (e: PostgrestError | any) {
          toast.error(e.message);
       }
@@ -168,7 +166,6 @@ export default function EditCreditDebitCardModal(
          await deleteCreditDebitCard(creditDebitCardInfo.id);
          toast.success('Credit/Debit Card Removed');
          onClose();
-         creditDebitCardRefetchFn();
       } catch (e: PostgrestError | any) {
          toast.error(e.message);
       }

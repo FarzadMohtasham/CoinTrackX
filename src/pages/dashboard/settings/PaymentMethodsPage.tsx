@@ -95,7 +95,6 @@ export default function PaymentMethodsPage() {
    const {
       creditDebitCards,
       error: _,
-      refetch,
       isLoading,
    } = useGetCreditDebitCardsQuery();
    const [paymentMethodStep, setPaymentMethodStep] =
@@ -112,13 +111,6 @@ export default function PaymentMethodsPage() {
       onClose();
       setPaymentMethodStep(null);
    };
-
-   /*
-    * Refetch on modal close
-    * */
-   useEffect(() => {
-      refetch();
-   }, [isOpen]);
 
    let PaymentStepComponent: React.FC<unknown> = () => <div></div>;
 
@@ -158,7 +150,6 @@ export default function PaymentMethodsPage() {
                               ) => {
                                  return (
                                     <CreditDebitCard
-                                       CreditDebitCardsRefetchFn={refetch}
                                        key={
                                           creditDebitCard.cardholder_name +
                                           index

@@ -31,7 +31,7 @@ export default function useGetCreditDebitCardsQuery(
       refetch: any;
       isLoading: any;
    } = useQuery({
-      queryKey: ['use-get-credit-debit-cards'],
+      queryKey: ['getCreditDebitCards'],
       queryFn: () => getCreditDebitCards(),
       staleTime: queryOptions.staleTime,
       gcTime: queryOptions.gcTime,

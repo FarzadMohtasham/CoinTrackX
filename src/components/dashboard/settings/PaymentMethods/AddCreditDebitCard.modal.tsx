@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-hot-toast';
+import { queryClient } from '@/Libs/Configs/ReactQuery/queryClient';
 
 import Input from '@/Components/UI/InputFields/InputField.input';
 import Button from '@/Components/UI/Stuff/Button';
 import Icon from '@/Components/UI/Stuff/Icon';
 import CheckboxInput from '@/Components/UI/InputFields/Checkbox.input';
-
-import { InputFieldValidator } from '@/Libs/Validations/InputField.validator';
-
-import { InputFieldValidatorResult } from '@/Libs/Typings/Validator/Input.validator.type';
-import CardNumberInput from '@/Components/UI/InputFields/CardNumber.input';
-import { CardNumberProvider } from '@/Libs/Typings/Components/CardNumberInput.type';
 import SimpleNotification from '@/Components/UI/Notifications/Simple-Notification.notif';
-import { NotificationOptions } from '@/Libs/Typings/Components/Notification.type';
+import CardNumberInput from '@/Components/UI/InputFields/CardNumber.input';
 import CreditCardExpInput from '@/Components/UI/InputFields/CreditCardExp.input';
 import CreditCardCVVInput from '@/Components/UI/InputFields/CreditCardCVV.input';
 import PostalCodeInput from '@/Components/UI/InputFields/PostalCode.input';
+
+import { InputFieldValidator } from '@/Libs/Validations/InputField.validator';
+
+import useUser from '@/Libs/Hooks/useUser';
+import { InputFieldValidatorResult } from '@/Libs/Typings/Validator/Input.validator.type';
+import { CardNumberProvider } from '@/Libs/Typings/Components/CardNumberInput.type';
+import { NotificationOptions } from '@/Libs/Typings/Components/Notification.type';
 import { createCreditDebitCard } from '@/Services/APIs/payment-methods/creditDebitPayments.api';
 import { CreditDebitCard } from '@/Libs/Typings/Components/CreditDebitCard.type';
-import useUser from '@/Libs/Hooks/useUser';
-import { AuthUser } from '@supabase/supabase-js';
-import { toast } from 'react-hot-toast';
-import { useMutation } from '@tanstack/react-query';
 
 type CreditDebitCardModalProps = {
    onClose: () => void;
@@ -108,6 +108,9 @@ export default function AddCreditDebitCardModal(
    const { mutate, isPending } = useMutation({
       mutationFn: createCreditDebitCard,
       onSuccess: () => {
+         queryClient.invalidateQueries({
+            queryKey: ['getCreditDebitCards'],
+         });
          toast.success('New credit/debit card added');
          props.onClose();
       },
