@@ -37,8 +37,7 @@
          "@Pages/*": ["src/Pages/*"],
          "@Queries/*": ["src/Queries/*"],
          "@Services/*": ["src/Services/*"],
-         "@Styles/*": ["./src/styles/*"],
-         "@Tests/*": ["./src/tests/*"]
+         "@Styles/*": ["./src/styles/*"]
       },
       "useUnknownInCatchVariables": false
    },

@@ -33,7 +33,6 @@ export default defineConfig({
             '@Queries': path.resolve(__dirname, './src/Queries'),
             '@Services': path.resolve(__dirname, './src/Services'),
             '@Styles': path.resolve(__dirname, './src/Styles'),
-            '@Tests': path.resolve(__dirname, './src/Tests'),
         },
     },
     server: {
