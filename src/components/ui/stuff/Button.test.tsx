@@ -1,13 +1,12 @@
-import { ThemeProvider } from 'styled-components';
+import JestProvider from '@/Libs/Providers/JestProvider';
 import Button from './Button';
 import { render, screen } from '@testing-library/react';
-import styledComponentTheme from '@/Libs/Themes/styled-components.theme';
 
 test('Testing Button Component - Value', () => {
    render(
-      <ThemeProvider theme={styledComponentTheme.lightTheme}>
+      <JestProvider>
          <Button>test button</Button>
-      </ThemeProvider>,
+      </JestProvider>,
    );
    const buttonElement = screen.getByText(/test button/i); // Corrected the typo here
    expect(buttonElement).toBeInTheDocument();
