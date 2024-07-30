@@ -64,7 +64,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
    }
 `;
 
-function Button(props: ButtonPropsType): JSX.Element {
+export default function Button(props: ButtonPropsType): JSX.Element {
    let {
       children = 'ERROR - No Value',
       className = '',
@@ -88,7 +88,9 @@ function Button(props: ButtonPropsType): JSX.Element {
    const padding: RuleSet | number = removePadding
       ? 0
       : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`;
-   const fontSize: RuleSet = css`${buttonFontSizeVariations[size].fontSize}`;
+   const fontSize: RuleSet = css`
+      ${buttonFontSizeVariations[size].fontSize}
+   `;
    const cursor: string = disabled ? 'not-allowed' : 'pointer';
 
    const backgroundColor: RuleSet = css`
@@ -189,5 +191,3 @@ function Button(props: ButtonPropsType): JSX.Element {
       </ButtonStyled>
    );
 }
-
-export default Button;
