@@ -76,7 +76,7 @@ export const NavigationListData: NavigationItemType[] = [
          {
             name: 'password',
             title: 'Password',
-            link: '/dashboard/settings/profile',
+            link: '/dashboard/settings/password',
             iconSrc: 'password-gray.svg',
             activeIconSrc: 'password-purple.svg',
             active: false,
