@@ -115,4 +115,14 @@ describe('Button Component', () => {
       expect(leftIconElement).toHaveClass('right-icon');
       expect(leftIconElement).not.toHaveClass('left-icon');
    });
+
+   it('Should Not icon be present in the button', async () => {
+      render(
+         <Button icon={''} iconDir="left">
+            Right Icon Btn
+         </Button>,
+      );
+      const leftIconElement = screen.queryByRole('img');
+      expect(leftIconElement).not.toBeInTheDocument();
+   });
 });
