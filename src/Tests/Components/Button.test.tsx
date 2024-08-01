@@ -93,4 +93,15 @@ describe('Button Component', () => {
 
       expect(onClickFn).toHaveBeenCalled();
    });
+
+   it('should icon be in the left of button text', async () => {
+      render(
+         <Button icon={'dummySrc'} iconDir="left">
+            Left Icon Btn
+         </Button>,
+      );
+      const leftIconElement = await screen.findByRole('img');
+      expect(leftIconElement).toHaveClass('left-icon');
+      expect(leftIconElement).not.toHaveClass('right-icon');
+   });
 });

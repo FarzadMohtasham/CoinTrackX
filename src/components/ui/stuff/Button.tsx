@@ -87,7 +87,11 @@ export default function Button(props: ButtonPropsType): JSX.Element {
 
    const padding: RuleSet | number = removePadding
       ? 0
-      : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`;
+      : css`
+           ${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[
+              size
+           ]['x']}
+        `;
    const fontSize: RuleSet = css`
       ${buttonFontSizeVariations[size].fontSize}
    `;
@@ -180,14 +184,24 @@ export default function Button(props: ButtonPropsType): JSX.Element {
          disabled={disabled || isLoading}
       >
          {icon && iconDir === 'left' && (
-            <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15px'} />
+            <Icon
+               iconSrc={icon}
+               iconAlt={'button-icon'}
+               width={'15px'}
+               className="left-icon"
+            />
          )}
          {isLoading && (
             <HashLoader size={18} color={`var(--color-${variant + '-500)'}`} />
          )}
          {children}
          {icon && iconDir === 'right' && (
-            <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15px'} />
+            <Icon
+               iconSrc={icon}
+               iconAlt={'button-icon'}
+               width={'15px'}
+               className="right-icon"
+            />
          )}
       </ButtonStyled>
    );
