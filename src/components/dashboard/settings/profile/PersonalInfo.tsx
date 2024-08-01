@@ -242,7 +242,7 @@ export default function PersonalInfo() {
       <PersonalInfoContainer>
          <div className="content-wrapper">
             <LeftCol>
-               <Heading headingType={'h6'}>Personal info</Heading>
+               <Heading tagName={'h6'}>Personal info</Heading>
                <span className="description">Manage your information</span>
             </LeftCol>
 

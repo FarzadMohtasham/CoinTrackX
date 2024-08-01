@@ -93,7 +93,7 @@ export default function Hero(): JSX.Element {
          <HeroStyled>
             <div className={'left-col'}>
                <span>Sign in to your secure wallet!</span>
-               <Heading headingType={'h1'}>
+               <Heading tagName={'h1'}>
                   The next-gen crypto tracking & trading training platform
                </Heading>
                <p>

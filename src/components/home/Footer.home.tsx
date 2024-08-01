@@ -139,7 +139,7 @@ export default function Footer(): JSX.Element {
                <div className={'footer-column footer-column-2'}>
                   <Heading
                      className={'footer-heading'}
-                     headingType={'h6'}
+                     tagName={'h6'}
                      fontWeight={'500'}
                   >
                      Company
@@ -161,7 +161,7 @@ export default function Footer(): JSX.Element {
                <div className={'footer-column footer-column-3'}>
                   <Heading
                      className={'footer-heading'}
-                     headingType={'h6'}
+                     tagName={'h6'}
                      fontWeight={'500'}
                   >
                      Features
@@ -183,7 +183,7 @@ export default function Footer(): JSX.Element {
                <div className={'footer-column footer-column-4'}>
                   <Heading
                      className={'footer-heading'}
-                     headingType={'h6'}
+                     tagName={'h6'}
                      fontWeight={'500'}
                   >
                      Resources

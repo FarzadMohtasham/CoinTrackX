@@ -114,7 +114,7 @@ export default function LoginPage(): JSX.Element {
                      Back
                   </Button>
                </Link>
-               <Heading className={'heading'} headingType={'h3'}>
+               <Heading className={'heading'} tagName={'h3'}>
                   Log In
                </Heading>
                <span className={'heading-desc'}>

@@ -144,9 +144,7 @@ export default function AssetPricePage(): JSX.Element {
          {hasError && (
             <ErrorContainer $hasError={hasError}>
                <ErrorWrapper>
-                  <Heading headingType={'h3'}>
-                     Sorry, There is an error!
-                  </Heading>
+                  <Heading tagName={'h3'}>Sorry, There is an error!</Heading>
                   <span className={'error-message'}>
                      There was an error while fetching asset data from the
                      server, Please refetch or contact with the admin.

@@ -467,7 +467,7 @@ export default function DashboardLayout() {
                   className={'menu-burger'}
                   clickable
                />
-               <Heading headingType={'h5'} fontWeight={'bold'}>
+               <Heading tagName={'h5'} fontWeight={'bold'}>
                   {selectedNavName}
                </Heading>
             </div>

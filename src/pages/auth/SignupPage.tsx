@@ -186,7 +186,7 @@ export default function SignupPage(): JSX.Element {
                      Back
                   </Button>
                </Link>
-               <Heading className={'heading'} headingType={'h3'}>
+               <Heading className={'heading'} tagName={'h3'}>
                   Sign Up
                </Heading>
                <span className={'heading-desc'}>

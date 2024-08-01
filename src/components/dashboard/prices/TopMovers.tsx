@@ -127,7 +127,7 @@ export default function TopMovers(props: TopMoversProps): JSX.Element {
    return (
       <TopMoversContainer>
          <TopMoversHeaderWrapper>
-            <Heading headingType={'h6'} fontWeight={'500'}>
+            <Heading tagName={'h6'} fontWeight={'500'}>
                Top Movers
             </Heading>
 
@@ -145,7 +145,7 @@ export default function TopMovers(props: TopMoversProps): JSX.Element {
          {assetsDataLoadError ? (
             <ErrorBox>
                <Heading
-                  headingType={'h6'}
+                  tagName={'h6'}
                   className={'error-title'}
                   fontWeight={'500'}
                >

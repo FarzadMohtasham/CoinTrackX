@@ -36,11 +36,7 @@ export default function SuperchargeCard(
    return (
       <SuperChargedStyled>
          <img src={imgSrc} alt={title} />
-         <Heading
-            fontWeight={'500'}
-            className={'card-heading'}
-            headingType={'h4'}
-         >
+         <Heading fontWeight={'500'} className={'card-heading'} tagName={'h4'}>
             {title}
          </Heading>
          <p>{desc}</p>

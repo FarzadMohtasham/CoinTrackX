@@ -171,7 +171,7 @@ export default function PaymentMethodsPage() {
                            width={'160px'}
                         />
                         <div className={'title-desc-wrapper'}>
-                           <Heading headingType={'h4'} className={'title'}>
+                           <Heading tagName={'h4'} className={'title'}>
                               No Payment Methods Yet
                            </Heading>
                            <span>Please add your payment methods.</span>

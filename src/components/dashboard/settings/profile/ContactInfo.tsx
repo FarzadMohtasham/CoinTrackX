@@ -137,7 +137,7 @@ export default function ContactInfo() {
          {changes}
          <ContentWrapper>
             <LeftCol>
-               <Heading headingType={'h6'}>Contact Info</Heading>
+               <Heading tagName={'h6'}>Contact Info</Heading>
                <span className={'description'}>Manage your information</span>
             </LeftCol>
 

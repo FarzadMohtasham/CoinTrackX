@@ -85,7 +85,7 @@ export default function Review(props: ReviewProps): JSX.Element {
             )}
          </div>
 
-         <Heading className={'quote'} headingType={'h6'}>
+         <Heading className={'quote'} tagName={'h6'}>
             {quote}
          </Heading>
 

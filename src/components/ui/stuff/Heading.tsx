@@ -13,7 +13,7 @@ const HeadingStyled = styled.h1<HeadingStyledProps>`
 export default function Heading(props: HeadingPropsType): JSX.Element {
    const {
       children,
-      headingType = 'h3',
+      tagName = 'h3',
       fontWeight = '400',
       className = '',
    }: HeadingPropsType = props;
@@ -22,7 +22,7 @@ export default function Heading(props: HeadingPropsType): JSX.Element {
       <HeadingStyled
          className={className}
          $fontWeight={fontWeight}
-         as={headingType}
+         as={tagName}
       >
          {children}
       </HeadingStyled>
