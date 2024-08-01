@@ -123,11 +123,14 @@ export default function AssetInfo(props: AssetInfoProps) {
                      <span className="asset-price">
                         ${amountToBeFixed(Number(assetData?.priceUsd))}
                      </span>
-                     <Badge type={'success'} borderRadius={'full'} outline>
-                        <Icon iconSrc={'arrow-up.svg'} width={'6px'} />
-                        {amountToBeFixed(
-                           Number(assetData?.changePercent24Hr),
-                        )}{' '}
+                     <Badge
+                        type={'success'}
+                        borderRadius={'full'}
+                        iconSrc={'arrow-up.svg'}
+                        iconSize={'6px'}
+                        outline
+                     >
+                        {amountToBeFixed(Number(assetData?.changePercent24Hr))}{' '}
                         %
                      </Badge>
                   </div>

@@ -184,17 +184,15 @@ export default function PricesTable(): JSX.Element {
                      type={
                         Number(props.renderValue()) >= 0 ? 'success' : 'danger'
                      }
-                     outline
+                     iconSrc={
+                        Number(props.renderValue()) >= 0
+                           ? 'arrow-up.svg'
+                           : 'arrow-down.svg'
+                     }
+                     iconSize={'8px'}
                      borderRadius={'full'}
+                     outline
                   >
-                     <Icon
-                        iconSrc={
-                           Number(props.renderValue()) >= 0
-                              ? 'arrow-up.svg'
-                              : 'arrow-down.svg'
-                        }
-                        width={'8px'}
-                     />
                      %{Number(props.renderValue()).toFixed(2)}
                   </Badge>
                </ColumnCellSpan>

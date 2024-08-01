@@ -35,9 +35,9 @@ const BadgeStyled = styled.span<BadgeProps>`
 export default function Badge(props: BadgePropsType): JSX.Element {
    const {
       children,
-      icon,
+      iconSrc = null,
+      iconSize = '20px',
       type = 'success',
-      hasIcon = false,
       iconDir = 'left',
       outline = false,
       borderRadius = 'none',
@@ -70,11 +70,19 @@ export default function Badge(props: BadgePropsType): JSX.Element {
          $borderRadiusVariations={borderRadiusVariations}
          $borderRadius={borderRadius}
       >
-         {hasIcon &&
-            (iconDir === 'left' ? <Icon width={'20px'} iconSrc={icon} /> : '')}
+         {iconSrc &&
+            (iconDir === 'left' ? (
+               <Icon width={iconSize} iconSrc={iconSrc} className="left-icon" />
+            ) : null)}
          {children}
-         {hasIcon &&
-            (iconDir === 'right' ? <Icon width={'20px'} iconSrc={icon} /> : '')}
+         {iconSrc &&
+            (iconDir === 'right' ? (
+               <Icon
+                  width={iconSize}
+                  iconSrc={iconSrc}
+                  className="right-icon"
+               />
+            ) : null)}
       </BadgeStyled>
    );
 }

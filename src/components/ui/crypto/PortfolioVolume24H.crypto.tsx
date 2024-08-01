@@ -52,8 +52,13 @@ export default function PortfolioVolume24HCrypto(): JSX.Element {
          </LeftCol>
 
          <RightCol>
-            <Badge borderRadius={'full'} type={'success'} outline>
-               <Icon iconSrc={'arrow-up.svg'} width={'12px'} />
+            <Badge
+               borderRadius={'full'}
+               type={'success'}
+               iconSrc={'arrow-up.svg'}
+               iconSize={'12px'}
+               outline
+            >
                1.37%
             </Badge>
          </RightCol>
