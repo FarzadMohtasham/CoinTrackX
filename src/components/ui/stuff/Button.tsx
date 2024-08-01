@@ -169,7 +169,7 @@ export default function Button(props: ButtonPropsType): JSX.Element {
 
    const onButtonClickHandler = (): void => {
       if (disabled) return;
-      else onClickHandler();
+      onClickHandler();
    };
 
    return (
@@ -177,6 +177,7 @@ export default function Button(props: ButtonPropsType): JSX.Element {
          className={`${className} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`}
          $properties={buttonProperties}
          onClick={onButtonClickHandler}
+         disabled={disabled || isLoading}
       >
          {icon && iconDir === 'left' && (
             <Icon iconSrc={icon} iconAlt={'button-icon'} width={'15px'} />
