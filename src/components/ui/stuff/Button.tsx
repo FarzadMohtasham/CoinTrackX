@@ -87,11 +87,8 @@ export default function Button(props: ButtonPropsType): JSX.Element {
 
    const padding: RuleSet | number = removePadding
       ? 0
-      : css`
-           ${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[
-              size
-           ]['x']}
-        `;
+      // eslint-disable-next-line
+      : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`;
    const fontSize: RuleSet = css`
       ${buttonFontSizeVariations[size].fontSize}
    `;
