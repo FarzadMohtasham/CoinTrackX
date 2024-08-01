@@ -1,6 +1,6 @@
-import JestProvider from '@/Libs/Providers/JestProvider';
-import Button from './Button';
 import { render, screen } from '@testing-library/react';
+import JestProvider from '@/Libs/Providers/JestProvider';
+import Button from '@/Components/UI/Stuff/Button';
 
 describe('Button Component', () => {
    test('Testing Button Component - Value', () => {
