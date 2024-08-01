@@ -93,7 +93,9 @@ describe('Button Component', () => {
 
       expect(onClickFn).toHaveBeenCalled();
    });
+});
 
+describe('Button icon checks', () => {
    it('should icon be in the left of button text', async () => {
       render(
          <Button icon={'dummySrc'} iconDir="left">
@@ -116,9 +118,19 @@ describe('Button Component', () => {
       expect(leftIconElement).not.toHaveClass('left-icon');
    });
 
-   it('Should Not icon be present in the button', async () => {
+   it('Should Not icon be present in the button when icon is empty string', async () => {
       render(
          <Button icon={''} iconDir="left">
+            Right Icon Btn
+         </Button>,
+      );
+      const leftIconElement = screen.queryByRole('img');
+      expect(leftIconElement).not.toBeInTheDocument();
+   });
+
+   it('Should Not icon be present in the button when icon is null', async () => {
+      render(
+         <Button icon={null} iconDir="left">
             Right Icon Btn
          </Button>,
       );
