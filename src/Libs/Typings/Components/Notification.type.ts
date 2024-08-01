@@ -2,10 +2,10 @@ import { ReactNode } from 'react';
 
 export type NotificationOptions = {
    id: number;
-   title: string | ReactNode;
-   createdAt: Date | ReactNode | null;
-   message?: string | ReactNode;
    type: 'success' | 'error' | 'info' | 'warning';
+   createdAt: Date | ReactNode | null;
+   title: string | ReactNode;
+   message?: string | ReactNode;
    closable?: boolean;
    iconSrc?: string;
    width?: string | '100%' | 'min-content' | 'max-content';
