@@ -1,7 +1,7 @@
 {
    "name": "vite-project",
    "private": true,
-   "version": "0.0.78",
+   "version": "0.0.79",
    "type": "module",
    "scripts": {
       "test": "jest --watch",
