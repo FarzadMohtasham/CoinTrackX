@@ -28,4 +28,14 @@ describe('Name of the group', () => {
       const badgeImgEl = screen.getByRole('img');
       expect(badgeImgEl).toHaveClass('right-icon');
    });
+
+   it('should not be any icon in the dom when iconSrc is null', () => {
+      render(<Badge iconSrc={null}>Badge</Badge>);
+
+      const images = screen.queryAllByRole('img');
+      images.forEach((img) => {
+         expect(img).not.toHaveClass('icon-left');
+         expect(img).not.toHaveClass('icon-right');
+      });
+   });
 });
