@@ -12,6 +12,11 @@ const passwordValidationSchema = object({
    password: string()
       .required()
       .test(
+         'no-space',
+         "Password should not have space",
+         (val: string) => !(val.split(' ').length >= 2) 
+      )
+      .test(
          'min-length',
          "Password length can't be lower than 8",
          (val) => val.length >= 8,
