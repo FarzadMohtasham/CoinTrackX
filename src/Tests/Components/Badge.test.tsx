@@ -29,13 +29,23 @@ describe('Name of the group', () => {
       expect(badgeImgEl).toHaveClass('right-icon');
    });
 
-   it('should not be any icon in the dom when iconSrc is null', () => {
+   it('should not be any icon in the dom when iconSrc is null', async () => {
       render(<Badge iconSrc={null}>Badge</Badge>);
 
-      const images = screen.queryAllByRole('img');
-      images.forEach((img) => {
-         expect(img).not.toHaveClass('icon-left');
-         expect(img).not.toHaveClass('icon-right');
-      });
+      const leftIcon = await screen.queryByAltText('left-icon');
+      const RightIcon = await screen.queryByAltText('right-icon');
+
+      expect(leftIcon).not.toBeInTheDocument();
+      expect(RightIcon).not.toBeInTheDocument();
+   });
+
+   it('should not be any icon in the dom when iconSrc is empty string', async () => {
+      render(<Badge iconSrc={''}>Badge</Badge>);
+
+      const leftIcon = await screen.queryByAltText('left-icon');
+      const RightIcon = await screen.queryByAltText('right-icon');
+
+      expect(leftIcon).not.toBeInTheDocument();
+      expect(RightIcon).not.toBeInTheDocument();
    });
 });

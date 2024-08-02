@@ -72,15 +72,21 @@ export default function Badge(props: BadgePropsType): JSX.Element {
       >
          {iconSrc &&
             (iconDir === 'left' ? (
-               <Icon width={iconSize} iconSrc={iconSrc} className="left-icon" />
+               <Icon
+                  className="left-icon"
+                  width={iconSize}
+                  iconSrc={iconSrc}
+                  iconAlt="left-icon"
+               />
             ) : null)}
          {children}
          {iconSrc &&
             (iconDir === 'right' ? (
                <Icon
+                  className="right-icon"
                   width={iconSize}
                   iconSrc={iconSrc}
-                  className="right-icon"
+                  iconAlt="right-icon"
                />
             ) : null)}
       </BadgeStyled>
