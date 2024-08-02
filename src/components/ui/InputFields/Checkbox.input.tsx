@@ -1,4 +1,4 @@
-import { JSX, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
 import checkBoxData from '@/Data/checkBox.data';
@@ -54,6 +54,10 @@ export default function CheckboxInput(props: CheckboxProps): JSX.Element {
 
    const checkboxProperties: Properties = checkboxDataAccessKey(type);
 
+   useEffect(() => {
+      checkBoxSetter(defaultValue);
+   }, []);
+
    return (
       <CheckBoxContainer
          onClick={checkboxOnClickHandler}
@@ -61,6 +65,7 @@ export default function CheckboxInput(props: CheckboxProps): JSX.Element {
       >
          <input
             type={'checkbox'}
+            alt="checkbox"
             checked={checked}
             onChange={(): void => {}}
             name={
