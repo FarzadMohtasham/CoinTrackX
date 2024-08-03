@@ -5,14 +5,14 @@ import _ from 'lodash';
 
 import Icon from '../UI/Stuff/Icon.tsx';
 
-import { useNotificationsQuery } from '@/Queries/Notifications/useNotifications.query.ts';
+import { useNotificationsQuery } from '@Queries/Notifications/useNotifications.query.ts';
 
 import {
    Notification,
    NotificationContainerProps,
-} from '@/Libs/Typings/Components/Notifications.type.ts';
-import SimpleNotification from '@/Components/UI/Notifications/Simple-Notification.notif.tsx';
-import { NotificationOptions } from '@/Libs/Typings/Components/Notification.type.ts';
+} from '@Typings/Components/Notifications.type.ts';
+import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif.tsx';
+import { NotificationOptions } from '@Typings/Components/Notification.type.ts';
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
    display: grid;

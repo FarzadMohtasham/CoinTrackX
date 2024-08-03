@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { QueryOptions } from '@/Libs/Typings/Assets.api.type';
-import { getCreditDebitCards } from '@/Services/APIs/payment-methods/creditDebitPayments.api';
-import { CreditDebitCard } from '@/Libs/Typings/Components/CreditDebitCard.type';
+import { QueryOptions } from '@Typings/Assets.api.type';
+import { getCreditDebitCards } from '@Services/APIs/payment-methods/creditDebitPayments.api';
+import { CreditDebitCard } from '@Typings/Components/CreditDebitCard.type';
 
 const defaultOptions: QueryOptions = {
    staleTime: 1000 * 60 * 60,

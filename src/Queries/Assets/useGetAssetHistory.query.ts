@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAssetHistory } from '@/Services/APIs/assets/assets.api';
-import { AssetHistoryInterval, AssetName } from '@/Libs/Typings/Assets.api.type';
+import { getAssetHistory } from '@Services/APIs/assets/assets.api';
+import { AssetHistoryInterval, AssetName } from '@Typings/Assets.api.type';
 
 export default function useGetAssetHistory(
    assetName: AssetName,

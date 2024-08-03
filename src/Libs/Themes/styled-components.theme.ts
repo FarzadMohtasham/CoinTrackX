@@ -1,4 +1,4 @@
-import { StyledThemeProps } from '@/Libs/Typings/StyledTheme.type';
+import { StyledThemeProps } from '@Typings/StyledTheme.type';
 
 const defaultProps: StyledThemeProps = {
    breakpoints: {

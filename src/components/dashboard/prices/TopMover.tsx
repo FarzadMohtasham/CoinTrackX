@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 
-import Icon from '@/Components/UI/Stuff/Icon';
+import Icon from '@Components/UI/Stuff/Icon';
 
-import { amountToBeFixed } from '@/Libs/Utils/helpers';
+import { amountToBeFixed } from '@Utils/helpers';
 
-import { TopMoverProps } from '@/Libs/Typings/Components/TopMover.type';
+import { TopMoverProps } from '@Typings/Components/TopMover.type';
 
 const TopMoverContainer = styled.div`
    width: 100%;

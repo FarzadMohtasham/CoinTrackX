@@ -1,9 +1,9 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import Container from '@/Components/UI/Stuff/Container';
-import HeadingBox from '@/Components/UI/Stuff/HeadingBox';
-import SuperchargeCard from '@/Components/UI/Cards/Supercharge.card';
+import Container from '@Components/UI/Stuff/Container';
+import HeadingBox from '@Components/UI/Stuff/HeadingBox';
+import SuperchargeCard from '@Components/UI/Cards/Supercharge.card';
 
 const BuyCryptoWrapperStyled = styled.section.attrs({
    id: 'buy-crypto',

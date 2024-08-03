@@ -1,7 +1,7 @@
 import React, { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import Icon from '@/Components/UI/Stuff/Icon';
+import Icon from '@Components/UI/Stuff/Icon';
 
 type AddCreditDebitCardProps = {
    onClick: () => void;

@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
-import Icon from '@/Components/UI/Stuff/Icon';
-import Badge from '@/Components/UI/Stuff/Badge';
+import Icon from '@Components/UI/Stuff/Icon';
+import Badge from '@Components/UI/Stuff/Badge';
 import { JSX } from 'react';
 
 const Container = styled.div`

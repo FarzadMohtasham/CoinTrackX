@@ -3,15 +3,15 @@ import { Link, redirect, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { toast } from 'react-hot-toast';
 
-import Heading from '@/Components/UI/Stuff/Heading';
-import Button from '@/Components/UI/Stuff/Button';
-import Separator from '@/Components/UI/Stuff/Separator';
-import InputField from '@/Components/UI/InputFields/InputField.input';
-import CheckboxInput from '@/Components/UI/InputFields/Checkbox.input';
-import PasswordFieldInput from '@/Components/UI/InputFields/PasswordField.input';
+import Heading from '@Components/UI/Stuff/Heading';
+import Button from '@Components/UI/Stuff/Button';
+import Separator from '@Components/UI/Stuff/Separator';
+import InputField from '@Components/UI/InputFields/InputField.input';
+import CheckboxInput from '@Components/UI/InputFields/Checkbox.input';
+import PasswordFieldInput from '@Components/UI/InputFields/PasswordField.input';
 
-import { signupInputValidator } from '@/Libs/Validations/signup.validator';
-import { signup } from '@/Services/APIs/auth/auth.api';
+import { signupInputValidator } from '@Validations/signup.validator';
+import { signup } from '@Services/APIs/auth/auth.api';
 
 import {
    AuthContainer,
@@ -19,9 +19,9 @@ import {
    AuthLink,
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
-} from '@/Pages/Auth/AuthShared';
-import { SignupValidationResult } from '@/Libs/Typings/Validator/Auth.validator.type';
-import useLocaleStorage from '@/Libs/Hooks/useLocaleStorage';
+} from '@Pages/Auth/AuthShared';
+import { SignupValidationResult } from '@Typings/Validator/Auth.validator.type';
+import useLocaleStorage from '@Hooks/useLocaleStorage';
 
 const LoginContainer = styled(AuthContainer)``;
 const LoginWrapper = styled(AuthInnerWrapper)``;

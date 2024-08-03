@@ -1,4 +1,4 @@
-import { PaymentMethodOptionProps } from '@/Libs/Typings/PaymentMethodOption.type';
+import { PaymentMethodOptionProps } from '@Typings/PaymentMethodOption.type';
 
 export const paymentMethodOptions: PaymentMethodOptionProps[] = [
    {

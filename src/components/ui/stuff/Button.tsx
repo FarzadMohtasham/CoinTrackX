@@ -3,13 +3,13 @@ import { css, RuleSet, styled } from 'styled-components';
 import { HashLoader } from 'react-spinners';
 
 // Components
-import Icon from '@/Components/UI/Stuff/Icon';
+import Icon from '@Components/UI/Stuff/Icon';
 
 //  Types
 import {
    ButtonPropsType,
    Properties,
-} from '@/Libs/Typings/Components/ButtonProps.type';
+} from '@Typings/Components/ButtonProps.type';
 
 // Data
 import {
@@ -17,7 +17,7 @@ import {
    buttonFontSizeVariations,
    buttonPaddingVariations,
    buttonTypeVariations,
-} from '@/Data/button.data';
+} from '@Data/button.data';
 
 type ButtonStyledProps = {
    $properties: Properties;
@@ -87,8 +87,12 @@ export default function Button(props: ButtonPropsType): JSX.Element {
 
    const padding: RuleSet | number = removePadding
       ? 0
-      // eslint-disable-next-line
-      : css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`;
+      : // eslint-disable-next-line
+        css`
+           ${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[
+              size
+           ]['x']}
+        `;
    const fontSize: RuleSet = css`
       ${buttonFontSizeVariations[size].fontSize}
    `;

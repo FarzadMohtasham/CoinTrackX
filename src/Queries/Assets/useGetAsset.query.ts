@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getAsset } from '@/Services/APIs/assets/assets.api';
+import { getAsset } from '@Services/APIs/assets/assets.api';
 
 import {
    Asset,
    AssetAPIQueryReturnOptions,
    AssetName,
    QueryOptions,
-} from '@/Libs/Typings/Assets.api.type';
+} from '@Typings/Assets.api.type';
 
 const defaultOptions: QueryOptions = {
    staleTime: 1000 * 60 * 60,

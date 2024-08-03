@@ -1,5 +1,5 @@
-import { render, screen } from '@/Libs/Utils/test-utils';
-import Icon from '@/Components/UI/Stuff/Icon';
+import { render, screen } from '@Utils/test-utils';
+import Icon from '@Components/UI/Stuff/Icon';
 import userEvent from '@testing-library/user-event';
 
 describe('Icon ', () => {

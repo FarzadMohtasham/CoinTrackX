@@ -2,7 +2,7 @@ import { object, string, ValidationError } from 'yup';
 import {
    InputFieldValidatorProps,
    InputFieldValidatorResult,
-} from '@/Libs/Typings/Validator/Input.validator.type';
+} from '@Typings/Validator/Input.validator.type';
 
 export const InputFieldValidator = async (
    props: InputFieldValidatorProps,

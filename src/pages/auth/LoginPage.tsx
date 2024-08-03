@@ -3,15 +3,15 @@ import { Link, redirect, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { toast } from 'react-hot-toast';
 
-import Heading from '@/Components/UI/Stuff/Heading.tsx';
-import Button from '@/Components/UI/Stuff/Button.tsx';
-import Separator from '@/Components/UI/Stuff/Separator.tsx';
-import InputField from '@/Components/UI/InputFields/InputField.input.tsx';
-import PasswordFieldInput from '@/Components/UI/InputFields/PasswordField.input.tsx';
-import CheckboxInput from '@/Components/UI/InputFields/Checkbox.input.tsx';
+import Heading from '@Components/UI/Stuff/Heading.tsx';
+import Button from '@Components/UI/Stuff/Button.tsx';
+import Separator from '@Components/UI/Stuff/Separator.tsx';
+import InputField from '@Components/UI/InputFields/InputField.input.tsx';
+import PasswordFieldInput from '@Components/UI/InputFields/PasswordField.input.tsx';
+import CheckboxInput from '@Components/UI/InputFields/Checkbox.input.tsx';
 
-import { loginInputValidator } from '@/Libs/Validations/login.validator.ts';
-import { login } from '@/Services/APIs/auth/auth.api.ts';
+import { loginInputValidator } from '@Validations/login.validator.ts';
+import { login } from '@Services/APIs/auth/auth.api.ts';
 
 import {
    AuthContainer,
@@ -20,7 +20,7 @@ import {
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
 } from './AuthShared.tsx';
-import useLocaleStorage from '@/Libs/Hooks/useLocaleStorage.ts';
+import useLocaleStorage from '@Hooks/useLocaleStorage.ts';
 
 const Container = styled(AuthContainer)``;
 const Wrapper = styled(AuthInnerWrapper)``;

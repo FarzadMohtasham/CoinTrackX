@@ -10,13 +10,13 @@ import {
 } from 'react';
 import { css, styled } from 'styled-components';
 
-import Icon from '@/Components/UI/Stuff/Icon';
+import Icon from '@Components/UI/Stuff/Icon';
 
 import {
    InputProps,
    InputRefProps,
    InputStyledProps,
-} from '@/Libs/Typings/Components/InputFieldProps.type';
+} from '@Typings/Components/InputFieldProps.type';
 
 const FieldContainer = styled.div`
    display: flex;

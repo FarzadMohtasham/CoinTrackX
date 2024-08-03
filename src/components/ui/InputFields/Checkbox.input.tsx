@@ -1,14 +1,14 @@
 import { JSX, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
-import checkBoxData from '@/Data/checkBox.data';
+import checkBoxData from '@Data/checkBox.data';
 
 import {
    CheckboxProps,
    CheckboxStyledProps,
    CheckboxTypes,
    Properties,
-} from '@/Libs/Typings/Components/CheckBox.type';
+} from '@Typings/Components/CheckBox.type';
 
 const CheckBoxContainer = styled.div<CheckboxStyledProps>`
    display: flex;

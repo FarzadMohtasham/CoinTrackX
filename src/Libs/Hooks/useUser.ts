@@ -1,5 +1,5 @@
-import useUserLoggedIn from '@/Libs/Hooks/useUserLoggedIn';
-import useLocaleStorage from '@/Libs/Hooks/useLocaleStorage';
+import useUserLoggedIn from '@Hooks/useUserLoggedIn';
+import useLocaleStorage from '@Hooks/useLocaleStorage';
 
 export default function useUser(): AuthResponse | null {
    const userLoggedIn = useUserLoggedIn();

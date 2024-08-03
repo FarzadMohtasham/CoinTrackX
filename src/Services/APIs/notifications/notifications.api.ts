@@ -1,5 +1,5 @@
-import { supabaseClient } from '@/Libs/Configs/Supabase/supabaseConfig';
-import { Notification } from '@/Libs/Typings/Components/Notifications.type';
+import { supabaseClient } from '@Configs/Supabase/supabaseConfig';
+import { Notification } from '@Typings/Components/Notifications.type';
 
 type FetchNotificationsResponse = { data: Notification | any; error: any };
 

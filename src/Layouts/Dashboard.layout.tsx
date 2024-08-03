@@ -8,20 +8,20 @@ import {
 } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
-import Heading from '@/Components/UI/Stuff/Heading';
-import Logo from '@/Components/UI/Stuff/Logo';
-import NavigationItem from '@/Components/UI/Stuff/NavigationItem';
-import Profile from '@/Components/UI/Stuff/Profile';
-import Alert from '@/Components/Dashboard/Notifications';
+import Heading from '@Components/UI/Stuff/Heading';
+import Logo from '@Components/UI/Stuff/Logo';
+import NavigationItem from '@Components/UI/Stuff/NavigationItem';
+import Profile from '@Components/UI/Stuff/Profile';
+import Alert from '@Components/Dashboard/Notifications';
 
-import { NavigationListData } from '@/Data/navigationList.data';
+import { NavigationListData } from '@Data/navigationList.data';
 import {
    NavigationItemType,
    NavigationProps,
-} from '@/Libs/Typings/NavigationItem.type';
-import Icon from '@/Components/UI/Stuff/Icon';
-import { useUiStore } from '@/Services/Stores/ui.store';
-import useUserLoggedIn from '@/Libs/Hooks/useUserLoggedIn';
+} from '@Typings/NavigationItem.type';
+import Icon from '@Components/UI/Stuff/Icon';
+import { useUiStore } from '@Services/Stores/ui.store';
+import useUserLoggedIn from '@Hooks/useUserLoggedIn';
 
 const LayoutContainer = styled.div`
    height: 100vh;

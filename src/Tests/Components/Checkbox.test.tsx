@@ -1,5 +1,5 @@
-import { render, screen } from '@/Libs/Utils/test-utils';
-import CheckboxInput from '@/Components/UI/InputFields/Checkbox.input';
+import { render, screen } from '@Utils/test-utils';
+import CheckboxInput from '@Components/UI/InputFields/Checkbox.input';
 import userEvent from '@testing-library/user-event';
 
 describe('Checkbox input', () => {

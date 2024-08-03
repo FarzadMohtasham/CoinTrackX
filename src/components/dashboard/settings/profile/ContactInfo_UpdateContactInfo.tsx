@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import Input from '@/Components/UI/InputFields/InputField.input';
+import Input from '@Components/UI/InputFields/InputField.input';
 import { Dispatch, SetStateAction } from 'react';
 
 type UpdateContactInfoProps = {

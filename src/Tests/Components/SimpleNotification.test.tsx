@@ -1,6 +1,6 @@
-import { render, screen } from '@/Libs/Utils/test-utils';
-import SimpleNotification from '@/Components/UI/Notifications/Simple-Notification.notif';
-import { NotificationOptions } from '@/Libs/Typings/Components/Notification.type';
+import { render, screen } from '@Utils/test-utils';
+import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif';
+import { NotificationOptions } from '@Typings/Components/Notification.type';
 import userEvent from '@testing-library/user-event';
 
 const date = new Date();

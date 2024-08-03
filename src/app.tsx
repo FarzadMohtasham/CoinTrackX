@@ -10,9 +10,9 @@ import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ChakraProvider, theme as chakraTheme } from '@chakra-ui/react';
 
-import router from '@/Libs/Configs/Routes/index.routes.tsx';
-import ReactQueryClient from '@/Libs/Configs/ReactQuery/queryClient';
-import styledComponentTheme from '@/Libs/Themes/styled-components.theme.ts';
+import router from '@Configs/Routes/index.routes.tsx';
+import ReactQueryClient from '@Configs/ReactQuery/queryClient';
+import styledComponentTheme from '@Themes/styled-components.theme.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
    <React.StrictMode>

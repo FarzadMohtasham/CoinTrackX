@@ -1,5 +1,5 @@
-import { SignupValidationResult, SignupValidatorProps } from "@/Libs/Typings/Validator/Auth.validator.type";
-import { signupInputValidator } from "@/Libs/Validations/signup.validator";
+import { SignupValidationResult, SignupValidatorProps } from "@Typings/Validator/Auth.validator.type";
+import { signupInputValidator } from "@Validations/signup.validator";
 
 describe('Signup validations - firstName', () => {
    it('should username not be valid when is empty', async () => {

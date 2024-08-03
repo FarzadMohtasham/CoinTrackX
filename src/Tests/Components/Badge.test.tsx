@@ -1,5 +1,5 @@
-import { render, screen } from '@/Libs/Utils/test-utils';
-import Badge from '@/Components/UI/Stuff/Badge';
+import { render, screen } from '@Utils/test-utils';
+import Badge from '@Components/UI/Stuff/Badge';
 
 describe('Name of the group', () => {
    it('should render children text in the document', () => {
