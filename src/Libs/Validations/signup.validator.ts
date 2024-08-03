@@ -5,19 +5,19 @@ import {
 } from '@/Libs/Typings/Validator/Auth.validator.type';
 
 const firstNameValidationSchema = object({
-   'first name': string().required().min(1).max(30).trim(),
+   'firstname': string().required().min(1).max(30).trim(),
 });
 
 const lastNameValidationSchema = object({
-   'last name': string().required().min(1).max(30).trim(),
+   'lastname': string().required().min(1).max(30).trim(),
 });
 
 const emailValidationSchema = object({
-   email: string().required().max(100).email().trim(),
+   'email': string().required().max(100).email().trim(),
 });
 
 const passwordValidationSchema = object({
-   password: string()
+   'password': string()
       .required()
       .test(
          'min-length',
@@ -39,27 +39,26 @@ export const signupInputValidator = async (
       errorMessage: '',
    };
 
+   const validationKey: string = props.type.toLowerCase();
+   const validationValue: string = props.payload;
+
+   const validationInputs = {
+      [`${validationKey}`]: validationValue,
+   }
+   
    try {
-      switch (props.type) {
-         case 'firstName':
-            await firstNameValidationSchema.validate({
-               'first name': props.payload,
-            });
+      switch (validationKey) {
+         case 'firstname':
+            await firstNameValidationSchema.validate(validationInputs);
             break;
-         case 'lastName':
-            await lastNameValidationSchema.validate({
-               'last name': props.payload,
-            });
+         case 'lastname':
+            await lastNameValidationSchema.validate(validationInputs);
             break;
          case 'email':
-            await emailValidationSchema.validate({
-               email: props.payload,
-            });
+            await emailValidationSchema.validate(validationInputs);
             break;
          case 'password':
-            await passwordValidationSchema.validate({
-               password: props.payload,
-            });
+            await passwordValidationSchema.validate(validationInputs);
             break;
       }
    } catch (e: any) {
