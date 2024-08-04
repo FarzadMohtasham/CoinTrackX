@@ -11,7 +11,7 @@ module.exports = {
       'eslint:recommended',
       'plugin:prettier/recommended',
    ],
-   ignorePatterns: ['dist', '.eslintrc.cjs'],
+   ignorePatterns: ['dist', '.eslintrc.cjs', '*.js', '*.ts', '*.tsx'],
    parser: '@typescript-eslint/parser',
    plugins: [
       'react-refresh',
@@ -23,7 +23,7 @@ module.exports = {
          'warn',
          { allowConstantExport: true },
       ],
-      "@typescript-eslint/no-explicit-any": "any",
+      '@typescript-eslint/no-explicit-any': 'any',
       quotes: ['error', 'single'],
       'prettier/prettier': [
          'error',

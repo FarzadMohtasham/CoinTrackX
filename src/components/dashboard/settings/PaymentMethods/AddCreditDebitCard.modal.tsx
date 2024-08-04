@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
-import { queryClient } from '@Configs/ReactQuery/queryClient.ts';
+
+import { queryClient } from '@Configs/ReactQuery/queryClient.tsx';
 
 import Input from '@Components/UI/InputFields/InputField.input.tsx';
 import Button from '@Components/UI/Stuff/Button.tsx';
@@ -17,11 +18,13 @@ import PostalCodeInput from '@Components/UI/InputFields/PostalCode.input.tsx';
 import { InputFieldValidator } from '@Validations/InputField.validator.ts';
 
 import useUser from '@Hooks/useUser';
+
 import { InputFieldValidatorResult } from '@Typings/Validator/Input.validator.type.ts';
 import { CardNumberProvider } from '@Typings/Components/CardNumberInput.type.ts';
 import { NotificationOptions } from '@Typings/Components/Notification.type.ts';
-import { createCreditDebitCard } from '@Services/APIs/payment-methods/creditDebitPayments.api.ts';
 import { CreditDebitCard } from '@Typings/Components/CreditDebitCard.type.ts';
+
+import { createCreditDebitCard } from '@Services/APIs/payment-methods/creditDebitPayments.api.ts';
 
 type CreditDebitCardModalProps = {
    onClose: () => void;

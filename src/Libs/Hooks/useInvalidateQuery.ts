@@ -1,5 +1,5 @@
 import { InvalidateOptions } from "@tanstack/react-query"
-import { queryClient } from '@Configs/ReactQuery/queryClient.ts'
+import { queryClient } from '@Configs/ReactQuery/queryClient.tsx';
 
 export const useInvalidateQuery = (queryKey: any) => {
    return (invalidateQueryProps: InvalidateOptions = {}) => {

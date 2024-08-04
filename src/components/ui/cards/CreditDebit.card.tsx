@@ -14,7 +14,7 @@ import {
    useDisclosure,
 } from '@chakra-ui/react';
 import EditCreditDebitCardModal from '@Components/Dashboard/Settings/PaymentMethods/EditCreditDebitCard.modal.tsx';
-import onSuccessCopyHandler from '@Handlers/onSuccessCopyHandler.ts';
+import onSuccessCopyHandler from '@Handlers/onSuccessCopyHandler.tsx';
 
 type CreditDebitCardProps = {
    creditDebitCardInfo: CreditDebitCardT;

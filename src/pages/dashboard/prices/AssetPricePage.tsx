@@ -12,7 +12,7 @@ import AssetChart from '@Components/Dashboard/Prices/AssetPrice/AssetChart.tsx';
 import AssetMarkets from '@Components/Dashboard/Prices/AssetPrice/AssetMarkets.tsx';
 import Heading from '@Components/UI/Stuff/Heading.tsx';
 import Button from '@Components/UI/Stuff/Button.tsx';
-import { queryClient } from '@Configs/ReactQuery/queryClient.ts';
+import { queryClient } from '@Configs/ReactQuery/queryClient.tsx';
 
 type ErrorStatesProps = {
    assetInfoHasError: boolean;

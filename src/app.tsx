@@ -11,7 +11,7 @@ import { ThemeProvider } from 'styled-components';
 import { ChakraProvider, theme as chakraTheme } from '@chakra-ui/react';
 
 import router from '@Configs/Routes/index.routes.tsx';
-import ReactQueryClient from '@Configs/ReactQuery/queryClient';
+import ReactQueryClient from '@Configs/ReactQuery/queryClient.tsx';
 import styledComponentTheme from '@Themes/styled-components.theme.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

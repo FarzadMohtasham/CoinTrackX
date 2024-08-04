@@ -2,42 +2,83 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import sass from 'sass';
 import path from 'path';
+
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react()],
-    css: {
-        preprocessorOptions: {
-            scss: {
-                implementation: sass,
-            },
-        },
-    },
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, './src'),
-            '@Assets': path.resolve(__dirname, './src/Assets'),
-            '@Components': path.resolve(__dirname, './src/Components'),
-            '@Data': path.resolve(__dirname, './src/Data'),
-            '@Layouts': path.resolve(__dirname, './src/Layouts'),
-            
-            '@Configs': path.resolve(__dirname, './src/Libs/Configs'),
-            '@Handlers': path.resolve(__dirname, './src/Libs/Handlers'),
-            '@Hooks': path.resolve(__dirname, './src/Libs/Hooks'),
-            '@Schemas': path.resolve(__dirname, './src/Libs/Schemas'),
-            '@Themes': path.resolve(__dirname, './src/Libs/Themes'),
-            '@Typings': path.resolve(__dirname, './src/Libs/Typings'),
-            '@Utils': path.resolve(__dirname, './src/Libs/Utils'),
-            '@Validations': path.resolve(__dirname, './src/Libs/Validations'),
-               
-            '@Pages': path.resolve(__dirname, './src/Pages'),
-            '@Queries': path.resolve(__dirname, './src/Queries'),
-            '@Services': path.resolve(__dirname, './src/Services'),
-            '@Styles': path.resolve(__dirname, './src/Styles'),
-        },
-    },
-    server: {
-        port: 3000,
-        hmr: true,
-        strictPort: true,
-    },
+   plugins: [react()],
+   css: {
+      preprocessorOptions: {
+         scss: {
+            implementation: sass,
+         },
+      },
+   },
+   resolve: {
+      alias: [
+         { find: '@', replacement: path.join(__dirname, 'src') },
+         {
+            find: '@Assets',
+            replacement: path.join(__dirname, 'src', 'Assets'),
+         },
+         {
+            find: '@Components',
+            replacement: path.join(__dirname, 'src', 'Components'),
+         },
+         { find: '@Data', replacement: path.join(__dirname, 'src', 'Data') },
+         {
+            find: '@Layouts',
+            replacement: path.join(__dirname, 'src', 'Layouts'),
+         },
+         {
+            find: '@Configs',
+            replacement: path.join(__dirname, 'src', 'Libs', 'Configs'),
+         },
+         {
+            find: '@Handlers',
+            replacement: path.join(__dirname, 'src', 'Libs', 'Handlers'),
+         },
+         {
+            find: '@Hooks',
+            replacement: path.join(__dirname, 'src', 'Libs', 'Hooks'),
+         },
+         {
+            find: '@Schemas',
+            replacement: path.join(__dirname, 'src', 'Libs', 'Schemas'),
+         },
+         {
+            find: '@Themes',
+            replacement: path.join(__dirname, 'src', 'Libs', 'Themes'),
+         },
+         {
+            find: '@Typings',
+            replacement: path.join(__dirname, 'src', 'Libs', 'Typings'),
+         },
+         {
+            find: '@Utils',
+            replacement: path.join(__dirname, 'src', 'Libs', 'Utils'),
+         },
+         {
+            find: '@Validations',
+            replacement: path.join(__dirname, 'src', 'Libs', 'Validations'),
+         },
+         { find: '@Pages', replacement: path.join(__dirname, 'src', 'Pages') },
+         {
+            find: '@Queries',
+            replacement: path.join(__dirname, 'src', 'Queries'),
+         },
+         {
+            find: '@Services',
+            replacement: path.join(__dirname, 'src', 'Services'),
+         },
+         {
+            find: '@Styles',
+            replacement: path.join(__dirname, 'src', 'Styles'),
+         },
+      ],
+   },
+   server: {
+      port: 3000,
+      hmr: true,
+      strictPort: true,
+   },
 });
