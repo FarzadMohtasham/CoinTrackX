@@ -11,7 +11,7 @@ module.exports = {
       'eslint:recommended',
       'plugin:prettier/recommended',
    ],
-   ignorePatterns: ['dist', '.eslintrc.cjs', '*.js', '*.ts', '*.tsx'],
+   ignorePatterns: ['dist', '.eslintrc.cjs'],
    parser: '@typescript-eslint/parser',
    plugins: [
       'react-refresh',

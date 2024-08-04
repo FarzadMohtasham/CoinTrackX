@@ -22,9 +22,9 @@
       "paths": {
          "@/*": ["./src/*"],
          "@Assets/*": ["./src/Assets/*"],
-         "@Components/*": ["src/Components/*"],
-         "@Data/*": ["src/Data/*"],
-         "@Layouts/*": ["src/Layouts/*"],
+         "@Components/*": ["./src/Components/*"],
+         "@Data/*": ["./src/Data/*"],
+         "@Layouts/*": ["./src/Layouts/*"],
 
          "@Configs/*": ["./src/Libs/Configs/*"],
          "@Handlers/*": ["./src/Libs/Handlers/*"],
@@ -35,9 +35,9 @@
          "@Utils/*": ["./src/Libs/Utils/*"],
          "@Validations/*": ["./src/Libs/Validations/*"],
 
-         "@Pages/*": ["src/Pages/*"],
-         "@Queries/*": ["src/Queries/*"],
-         "@Services/*": ["src/Services/*"],
+         "@Pages/*": ["./src/Pages/*"],
+         "@Queries/*": ["./src/Queries/*"],
+         "@Services/*": ["./src/Services/*"],
          "@Styles/*": ["./src/styles/*"]
       },
       "useUnknownInCatchVariables": false
