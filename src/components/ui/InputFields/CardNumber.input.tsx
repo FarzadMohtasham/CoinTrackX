@@ -78,7 +78,9 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
    } = props;
 
    const inputRef = useRef<HTMLInputElement | null>(null);
-   const [inputValue, setInputValue] = useState<string>(initialValue);
+   const [inputValue, setInputValue] = useState<string>(() =>
+      formatCardNumber(initialValue),
+   );
    const [creditCardProvider, setCreditCardProvider] = useState<
       'Visa' | 'MasterCard' | ''
    >('');
