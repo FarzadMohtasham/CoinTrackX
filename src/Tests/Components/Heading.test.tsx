@@ -1,4 +1,4 @@
-import { render, screen } from '@Utils/test-utils';
+import { render, screen } from '@/Libs/Utils/testUtilities';
 import Heading from '@Components/UI/Stuff/Heading';
 
 describe('Check heading value', () => {

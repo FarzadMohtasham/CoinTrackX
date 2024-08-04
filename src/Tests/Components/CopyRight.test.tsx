@@ -1,4 +1,4 @@
-import { render, screen } from '@Utils/test-utils';
+import { render, screen } from '@/Libs/Utils/testUtilities';
 import CopyRight from '@Components/UI/Stuff/CopyRight';
 
 const date = new Date();

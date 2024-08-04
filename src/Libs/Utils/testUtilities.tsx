@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import JestProvider from '../Providers/JestProvider';
+import JestProvider from '@Providers/JestProvider';
 import { ReactElement } from 'react';
 
 const customRender = (ui: ReactElement, options?: any) =>

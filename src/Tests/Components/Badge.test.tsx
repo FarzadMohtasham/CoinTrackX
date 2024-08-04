@@ -1,4 +1,4 @@
-import { render, screen } from '@Utils/test-utils';
+import { render, screen } from '@/Libs/Utils/testUtilities';
 import Badge from '@Components/UI/Stuff/Badge';
 
 describe('Name of the group', () => {

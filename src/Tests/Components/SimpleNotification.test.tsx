@@ -1,4 +1,4 @@
-import { render, screen } from '@Utils/test-utils';
+import { render, screen } from '@/Libs/Utils/testUtilities';
 import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif';
 import { NotificationOptions } from '@Typings/Components/Notification.type';
 import userEvent from '@testing-library/user-event';
