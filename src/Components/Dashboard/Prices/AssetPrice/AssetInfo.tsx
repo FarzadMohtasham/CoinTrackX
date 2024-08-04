@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { styled } from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 
-import { AssetName } from '@Typings/Assets.api.type.ts';
-import useGetAssetQuery from '@Queries/Assets/useGetAsset.query.ts';
-import { amountToBeFixed } from '@Utils/helpers.ts';
+import { AssetName } from '@typings/Assets.api.type.ts';
+import useGetAssetQuery from '@queries/assets/useGetAsset.query.ts';
+import { amountToBeFixed } from '@utils/helpers.ts';
 
-import Badge from '@Components/UI/Stuff/Badge.tsx';
-import Icon from '@Components/UI/Stuff/Icon.tsx';
+import Badge from '@components/ui/stuff/Badge.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
 
 type AssetInfoProps = {
    assetName: AssetName;

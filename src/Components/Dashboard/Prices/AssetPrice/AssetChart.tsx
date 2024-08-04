@@ -15,13 +15,13 @@ import {
    Tooltip,
 } from 'chart.js';
 
-import { AssetHistoryInterval, AssetName } from '@Typings/Assets.api.type.ts';
+import { AssetHistoryInterval, AssetName } from '@typings/Assets.api.type.ts';
 
-import { useInvalidateQuery } from '@Hooks/useInvalidateQuery.ts';
-import useGetAssetHistory from '@Queries/Assets/useGetAssetHistory.query.ts';
+import { useInvalidateQuery } from '@hooks/useInvalidateQuery.ts';
+import useGetAssetHistory from '@queries/assets/useGetAssetHistory.query.ts';
 
-import Select from '@Components/UI/Stuff/Select.tsx';
-import { SelectMenuItem } from '@Typings/Components/Select.type.ts';
+import Select from '@components/ui/stuff/Select.tsx';
+import { SelectMenuItem } from '@typings/components/Select.type.ts';
 
 type AssetChartProps = {
    assetName: AssetName;

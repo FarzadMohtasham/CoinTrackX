@@ -24,13 +24,13 @@ import {
 import Skeleton from 'react-loading-skeleton';
 import { object } from 'yup';
 
-import { amountToBeFixed } from '@Utils/helpers.ts';
+import { amountToBeFixed } from '@utils/helpers.ts';
 
-import useGetAssetMarketsQuery from '@Queries/Assets/useGetAssetMarkets.query.ts';
-import { AssetMarketProps, AssetName } from '@Typings/Assets.api.type.ts';
-import { SelectMenuItem } from '@Typings/Components/Select.type.ts';
+import useGetAssetMarketsQuery from '@queries/assets/useGetAssetMarkets.query.ts';
+import { AssetMarketProps, AssetName } from '@typings/Assets.api.type.ts';
+import { SelectMenuItem } from '@typings/components/Select.type.ts';
 
-import Select from '@Components/UI/Stuff/Select.tsx';
+import Select from '@components/ui/stuff/Select.tsx';
 
 type AssetMarketsProps = {
    assetName: string;
