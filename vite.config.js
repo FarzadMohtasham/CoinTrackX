@@ -23,7 +23,6 @@ export default defineConfig({
             '@Configs': path.resolve(__dirname, './src/Libs/Configs'),
             '@Handlers': path.resolve(__dirname, './src/Libs/Handlers'),
             '@Hooks': path.resolve(__dirname, './src/Libs/Hooks'),
-            '@Providers': path.resolve(__dirname, './src/Libs/Providers'),
             '@Schemas': path.resolve(__dirname, './src/Libs/Schemas'),
             '@Themes': path.resolve(__dirname, './src/Libs/Themes'),
             '@Typings': path.resolve(__dirname, './src/Libs/Typings'),

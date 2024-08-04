@@ -29,7 +29,6 @@
          "@Configs/*": ["./src/Libs/Configs/*"],
          "@Handlers/*": ["./src/Libs/Handlers/*"],
          "@Hooks/*": ["./src/Libs/Hooks/*"],
-         "@Providers/*": ["./src/Libs/Providers/*"],
          "@Schemas/*": ["./src/Libs/Schemas/*"],
          "@Themes/*": ["./src/Libs/Themes/*"],
          "@Typings/*": ["./src/Libs/Typings/*"],

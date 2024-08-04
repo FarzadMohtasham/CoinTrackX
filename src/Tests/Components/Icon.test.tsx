@@ -1,4 +1,4 @@
-import { render, screen } from '@/Libs/Utils/testUtilities';
+import { render, screen } from '@/Libs/Utils/testUtils';
 import Icon from '@Components/UI/Stuff/Icon';
 import userEvent from '@testing-library/user-event';
 

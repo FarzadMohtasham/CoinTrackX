@@ -1,4 +1,4 @@
-import { render, screen } from '@/Libs/Utils/testUtilities';
+import { render, screen } from '@/Libs/Utils/testUtils';
 import CheckboxInput from '@Components/UI/InputFields/Checkbox.input';
 import userEvent from '@testing-library/user-event';
 
