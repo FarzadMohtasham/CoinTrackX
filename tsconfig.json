@@ -42,7 +42,7 @@
       },
       "useUnknownInCatchVariables": false
    },
-   "include": ["src/**/*", "./jest.setup.ts"],
+   "include": ["src", "./jest.setup.ts"],
    "references": [
       {
          "path": "./tsconfig.node.json"

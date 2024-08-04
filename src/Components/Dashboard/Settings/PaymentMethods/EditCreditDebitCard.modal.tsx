@@ -10,7 +10,7 @@ import CheckboxInput from '@Components/UI/InputFields/Checkbox.input.tsx';
 import CreditCardExpInput from '@Components/UI/InputFields/CreditCardExp.input.tsx';
 import CreditCardCVVInput from '@Components/UI/InputFields/CreditCardCVV.input.tsx';
 import PostalCodeInput from '@Components/UI/InputFields/PostalCode.input.tsx';
-import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif.tsx';
+import SimpleNotification from '@/Components/UI/Notifications/SimpleNotification.notif';
 import CardNumberInput from '@Components/UI/InputFields/CardNumber.input.tsx';
 
 import { InputFieldValidatorResult } from '@Typings/Validator/Input.validator.type.ts';

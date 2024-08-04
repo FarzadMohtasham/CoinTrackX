@@ -1,7 +1,7 @@
 import { render, screen } from '@/Libs/Utils/testUtils.tsx';
 import userEvent from '@testing-library/user-event';
 
-import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif.tsx';
+import SimpleNotification from '@/Components/UI/Notifications/SimpleNotification.notif';
 import { NotificationOptions } from '@Typings/Components/Notification.type.ts';
 
 const date = new Date();

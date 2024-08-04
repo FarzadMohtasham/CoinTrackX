@@ -11,7 +11,7 @@ import {
    Notification,
    NotificationContainerProps,
 } from '@Typings/Components/Notifications.type.ts';
-import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif.tsx';
+import SimpleNotification from '@/Components/UI/Notifications/SimpleNotification.notif.tsx';
 import { NotificationOptions } from '@Typings/Components/Notification.type.ts';
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`

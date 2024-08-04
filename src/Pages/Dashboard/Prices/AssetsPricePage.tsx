@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 import TopMovers from '@Components/Dashboard/Prices/TopMovers.tsx';
 import PricesTable from '@Components/Dashboard/Prices/PricesTable.tsx';
-import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif.tsx';
+import SimpleNotification from '@/Components/UI/Notifications/SimpleNotification.notif';
 import Icon from '@Components/UI/Stuff/Icon.tsx';
 
 import { NotificationOptions } from '@Typings/Components/Notification.type.ts';
