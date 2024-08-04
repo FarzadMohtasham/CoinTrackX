@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.87](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.86...v0.0.87) (2024-08-04)
+
+
+### Bug Fixes
+
+* Removed unwanted Providers folder and JestProvider ([e3b9353](https://github.com/FarzadMohtasham/CoinTrackX/commit/e3b93533d3f3c067f4157e26bde138ff213d47ec))
+
 ### [0.0.86](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.85...v0.0.86) (2024-08-04)
 
 
