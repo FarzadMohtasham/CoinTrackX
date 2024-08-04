@@ -20,6 +20,7 @@ type CardNumberProps = {
       SetStateAction<CardNumberProvider | ''>
    >;
    initialValue?: string;
+   maxLength?: number;
 };
 
 const CardNumberInputContainer = styled.div<{ $inputFocused: boolean }>`
@@ -73,6 +74,7 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
       creditCardProviderSetterFn,
       disabled = false,
       initialValue = '',
+      maxLength = 19,
    } = props;
 
    const inputRef = useRef<HTMLInputElement | null>(null);
@@ -86,13 +88,15 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
 
-      if (value.length !== 1) {
-         const formatedValue: string = formatCardNumber(value);
-         setInputValue(formatedValue);
-         return;
-      }
+      let sanitizedCardNumber = value.replace(/\s+/g, '');
+      const segmentCounts: number =
+         Math.ceil(sanitizedCardNumber.length / 4) - 2;
+      sanitizedCardNumber = sanitizedCardNumber.slice(
+         0,
+         maxLength - segmentCounts,
+      );
 
-      setInputValue(value);
+      setInputValue(formatCardNumber(sanitizedCardNumber));
    };
 
    // Update inputValue on parent component
@@ -102,8 +106,9 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
 
    // Update credit card provider
    useEffect(() => {
+      const spaceCount = 2;
       setCreditCardProvider('');
-      if (inputValue.length < 13 + 2) return;
+      if (inputValue.length < 13 + spaceCount) return;
       const cardProvider = checkCardProvider(inputValue.split(' ').join(''));
       setCreditCardProvider(cardProvider || '');
    }, [inputValue]);
@@ -146,7 +151,7 @@ export default function CardNumberInput(props: CardNumberProps): JSX.Element {
             ref={inputRef}
             onChange={onInputChange}
             disabled={disabled}
-            maxLength={19}
+            maxLength={maxLength}
             placeholder="XXXX XXXX XXXX XXXX"
          />
          <CreditProvidersWrapper
