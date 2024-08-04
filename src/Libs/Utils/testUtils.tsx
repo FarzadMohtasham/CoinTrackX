@@ -1,10 +1,22 @@
-import { render } from '@testing-library/react';
-import JestProvider from '@Providers/JestProvider';
+import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
+import { ThemeProvider } from 'styled-components';
+import styledComponentTheme from '../Themes/styled-components.theme';
 
-const customRender = (ui: ReactElement, options?: any) =>
+const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+   return (
+      <ThemeProvider theme={styledComponentTheme.lightTheme}>
+         {children}
+      </ThemeProvider>
+   );
+};
+
+const customRender = (
+   ui: ReactElement,
+   options?: Omit<RenderOptions, 'wrapper'>,
+) =>
    render(ui, {
-      wrapper: ({ children }) => <JestProvider>{children}</JestProvider>,
+      wrapper: AllTheProviders,
       ...options,
    });
 
