@@ -183,7 +183,6 @@ export default function EditCreditDebitCardModal(
             <span className={'label'}>Cardholder name</span>
             <Input
                placeHolder={'Enter your Cardholder name'}
-               label={'cardholder-name'}
                iconSrc={null}
                inputValue={
                   cardholderName || creditDebitCardInfo.cardholder_name
