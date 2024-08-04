@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.94](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.93...v0.0.94) (2024-08-04)
+
+
+### Bug Fixes
+
+* Changed git config core.ignorecase false for resolve a 'module not found' error in Vercel ([f23c34b](https://github.com/FarzadMohtasham/CoinTrackX/commit/f23c34bcb0e1a84105955794cfe937f4a5a8a5d1))
+
 ### [0.0.93](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.92...v0.0.93) (2024-08-04)
 
 
