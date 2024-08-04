@@ -1,6 +1,7 @@
-import { css, styled } from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
-import { validatePostalCode } from '@Utils/helpers';
+import { css, styled } from 'styled-components';
+
+import { validatePostalCode } from '@Utils/helpers.ts';
 
 type PostalInputProps = {
    postalSetterFn: (value: string) => void;

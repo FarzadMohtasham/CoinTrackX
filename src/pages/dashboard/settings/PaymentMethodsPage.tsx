@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import Skeleton from 'react-loading-skeleton';
 
-import { paymentMethodOptions } from '@Data/paymentMethodOptions.data';
+import { paymentMethodOptions } from '@Data/paymentMethodOptions.data.ts';
 
 import Icon from '@Components/UI/Stuff/Icon.tsx';
 import Heading from '@Components/UI/Stuff/Heading.tsx';

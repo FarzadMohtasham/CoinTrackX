@@ -13,8 +13,8 @@ import {
    ModalOverlay,
    useDisclosure,
 } from '@chakra-ui/react';
-import EditCreditDebitCardModal from '@Components/Dashboard/Settings/PaymentMethods/EditCreditDebitCard.modal';
-import onSuccessCopyHandler from '@Handlers/onSuccessCopyHandler';
+import EditCreditDebitCardModal from '@Components/Dashboard/Settings/PaymentMethods/EditCreditDebitCard.modal.tsx';
+import onSuccessCopyHandler from '@Handlers/onSuccessCopyHandler.ts';
 
 type CreditDebitCardProps = {
    creditDebitCardInfo: CreditDebitCardT;

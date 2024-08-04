@@ -1,5 +1,5 @@
-import { LoginValidationResult } from "@Typings/Validator/Auth.validator.type";
-import { loginInputValidator } from "@Validations/login.validator";
+import { LoginValidationResult } from '@Typings/Validator/Auth.validator.type.ts';
+import { loginInputValidator } from '@Validations/login.validator.ts';
 
 describe('Login Validation - Email tests', () => {
    it('should validate email', async () => {

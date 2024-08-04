@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import { IconProps } from '@Typings/Components/IconProps.type';
+import { IconProps } from '@Typings/Components/IconProps.type.ts';
 
 const IconImg = styled.img<{
    $clickable: boolean;

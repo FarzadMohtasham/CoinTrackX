@@ -20,8 +20,8 @@ import {
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
 } from '@Pages/Auth/AuthShared';
-import { SignupValidationResult } from '@Typings/Validator/Auth.validator.type';
-import useLocaleStorage from '@Hooks/useLocaleStorage';
+import { SignupValidationResult } from '@Typings/Validator/Auth.validator.type.ts';
+import useLocaleStorage from '@Hooks/useLocaleStorage.ts';
 
 const LoginContainer = styled(AuthContainer)``;
 const LoginWrapper = styled(AuthInnerWrapper)``;

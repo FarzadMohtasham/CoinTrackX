@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 import {
    CopyRightProps,
    CopyRightStyledProps,
-} from '@Typings/Components/CopyRightProps.type';
+} from '@Typings/Components/CopyRightProps.type.ts';
 
 const date: Date = new Date();
 

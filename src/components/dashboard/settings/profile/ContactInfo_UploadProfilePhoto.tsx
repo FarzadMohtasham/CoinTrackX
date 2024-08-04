@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 
 import Heading from '@Components/UI/Stuff/Heading.tsx';
 import UploadImageInput from '@Components/UI/InputFields/UploadImage.input.tsx';
-import { ImageFileTypeValidator } from '@Utils/helpers.tsx';
+import { ImageFileTypeValidator } from '@Utils/helpers.ts';
 
 import { ONE_MILLION } from '@Data/bigNumbers.data.ts';
 

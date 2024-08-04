@@ -1,4 +1,4 @@
-import { render, screen } from '@/Libs/Utils/testUtils.ts';
+import { render, screen } from '@/Libs/Utils/testUtils.tsx';
 
 import CopyRight from '@Components/UI/Stuff/CopyRight.tsx';
 

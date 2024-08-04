@@ -1,9 +1,10 @@
 import { AuthUser, PostgrestError } from '@supabase/supabase-js';
-import { supabaseClient as supabase } from '@Configs/Supabase/supabaseConfig';
 
-import { CreditDebitCard } from '@Typings/Components/CreditDebitCard.type';
+import { supabaseClient as supabase } from '@Configs/Supabase/supabaseConfig.ts';
 
-import useUser from '@Hooks/useUser';
+import { CreditDebitCard } from '@Typings/Components/CreditDebitCard.type.ts';
+
+import useUser from '@Hooks/useUser.ts';
 
 /*
  * This API will insert a creditDebitCard to the DB

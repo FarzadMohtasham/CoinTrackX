@@ -1,4 +1,4 @@
-import { render, screen } from '@/Libs/Utils/testUtils.ts';
+import { render, screen } from '@/Libs/Utils/testUtils.tsx';
 import userEvent from '@testing-library/user-event';
 
 import CheckboxInput from '@Components/UI/InputFields/Checkbox.input.tsx';

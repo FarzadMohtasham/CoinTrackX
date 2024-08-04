@@ -1,6 +1,7 @@
 import { css, styled } from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
-import { validateNumbersOnly } from '@Utils/helpers';
+
+import { validateNumbersOnly } from '@Utils/helpers.ts';
 
 type CreditCardCVVInputProps = {
    creditCardCVVSetterFn: (value: string) => void;

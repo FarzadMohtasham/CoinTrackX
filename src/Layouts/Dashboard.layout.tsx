@@ -18,10 +18,10 @@ import { NavigationListData } from '@Data/navigationList.data.ts';
 import {
    NavigationItemType,
    NavigationProps,
-} from '@Typings/NavigationItem.type';
-import Icon from '@Components/UI/Stuff/Icon';
-import { useUiStore } from '@Services/Stores/ui.store';
-import useUserLoggedIn from '@Hooks/useUserLoggedIn';
+} from '@Typings/NavigationItem.type.ts';
+import Icon from '@Components/UI/Stuff/Icon.tsx';
+import { useUiStore } from '@Services/Stores/ui.store.ts';
+import useUserLoggedIn from '@Hooks/useUserLoggedIn.ts';
 
 const LayoutContainer = styled.div`
    height: 100vh;

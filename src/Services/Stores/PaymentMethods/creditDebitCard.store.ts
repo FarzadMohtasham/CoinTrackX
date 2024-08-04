@@ -1,5 +1,6 @@
 import { create, StoreApi, UseBoundStore } from 'zustand';
-import { CreditDebitCard } from '@Typings/Components/CreditDebitCard.type';
+
+import { CreditDebitCard } from '@Typings/Components/CreditDebitCard.type.ts';
 
 type CreditDebitCardPaymentMethodStates = {
    creditDebitCards: CreditDebitCard[];

@@ -1,4 +1,4 @@
-import { SocialMediaLogo } from '@Typings/Components/Footer.type';
+import { SocialMediaLogo } from '@Typings/Components/Footer.type.ts';
 
 export const socialMediaLogoList: SocialMediaLogo[] = [
    {
