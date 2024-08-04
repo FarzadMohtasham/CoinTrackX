@@ -1,6 +1,6 @@
-import { render, screen } from '@/Libs/Utils/testUtils.tsx';
+import { render, screen } from '@utils/testUtils.tsx';
 
-import CopyRight from '@Components/UI/Stuff/CopyRight.tsx';
+import CopyRight from '@components/ui/stuff/CopyRight.tsx';
 
 const date = new Date();
 

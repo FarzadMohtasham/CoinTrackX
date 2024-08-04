@@ -1,12 +1,11 @@
 import { Dispatch, useEffect, useReducer } from 'react';
 import { styled } from 'styled-components';
+import Heading from '@components/ui/stuff/Heading.tsx';
+import Input from '@components/ui/inputFields/InputField.input.tsx';
+import Button from '@components/ui/stuff/Button.tsx';
+import Select from '@components/ui/stuff/Select.tsx';
 
-import Heading from '@Components/UI/Stuff/Heading.tsx';
-import Input from '@Components/UI/InputFields/InputField.input.tsx';
-import Button from '@Components/UI/Stuff/Button.tsx';
-import Select from '@Components/UI/Stuff/Select.tsx';
-
-import countryOfResidenceList from '@Data/countryOfResidence.data.ts';
+import countryOfResidenceList from '@data/countryOfResidence.data.ts';
 
 const PersonalInfoContainer = styled.div`
    border-radius: 8px;

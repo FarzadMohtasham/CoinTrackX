@@ -3,16 +3,16 @@ import { styled } from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 import _ from 'lodash';
 
-import Icon from '../UI/Stuff/Icon.tsx';
+import Icon from '../ui/stuff/Icon.tsx';
 
-import { useNotificationsQuery } from '@Queries/Notifications/useNotifications.query.ts';
+import { useNotificationsQuery } from '@queries/notifications/useNotifications.query.ts';
 
 import {
    Notification,
    NotificationContainerProps,
-} from '@Typings/Components/Notifications.type.ts';
-import SimpleNotification from '@/Components/UI/Notifications/SimpleNotification.notif.tsx';
-import { NotificationOptions } from '@Typings/Components/Notification.type.ts';
+} from '@typings/components/Notifications.type.ts';
+import SimpleNotification from '@components/ui/notifications/SimpleNotification.notif.tsx';
+import { NotificationOptions } from '@typings/components/Notification.type.ts';
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
    display: grid;

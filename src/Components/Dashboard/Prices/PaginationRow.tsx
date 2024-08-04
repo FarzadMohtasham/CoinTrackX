@@ -1,10 +1,10 @@
 import { JSX, useState } from 'react';
 import { styled } from 'styled-components';
 
-import Button from '@Components/UI/Stuff/Button.tsx';
-import Icon from '@Components/UI/Stuff/Icon.tsx';
+import Button from '@components/ui/stuff/Button.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
 
-import { PaginationRowProps } from '@Typings/PricesPage.type.ts';
+import { PaginationRowProps } from '@typings/PricesPage.type.ts';
 
 const PaginationRowContainer = styled.div`
    display: flex;

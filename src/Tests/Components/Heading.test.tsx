@@ -1,6 +1,6 @@
-import { render, screen } from '@/Libs/Utils/testUtils.tsx';
+import { render, screen } from '@utils/testUtils.tsx';
 
-import Heading from '@Components/UI/Stuff/Heading.tsx';
+import Heading from '@components/ui/stuff/Heading.tsx';
 
 describe('Check heading value', () => {
    it('should have "Im Heading" as content', () => {

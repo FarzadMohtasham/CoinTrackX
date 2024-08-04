@@ -2,7 +2,7 @@ import { object, string, ValidationError } from 'yup';
 import {
    LoginValidationResult,
    LoginValidatorProps,
-} from '@Typings/Validator/Auth.validator.type.ts';
+} from '@typings/validator/Auth.validator.type.ts';
 
 const emailValidationSchema = object({
    email: string().required().max(100).email().trim(),

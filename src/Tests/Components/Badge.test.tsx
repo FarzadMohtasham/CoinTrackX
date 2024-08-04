@@ -1,6 +1,6 @@
-import { render, screen } from '@/Libs/Utils/testUtils.tsx';
+import { render, screen } from '@utils/testUtils.tsx';
 
-import Badge from '@Components/UI/Stuff/Badge.tsx';
+import Badge from '@components/ui/stuff/Badge.tsx';
 
 describe('Name of the group', () => {
    it('should render children text in the document', () => {

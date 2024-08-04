@@ -7,7 +7,7 @@ import Icon from './Icon.tsx';
 import {
    BadgeProps,
    BadgePropsType,
-} from '@Typings/Components/BadgeProps.type.ts';
+} from '@typings/components/BadgeProps.type.ts';
 
 const borderRadiusVariations = {
    none: '0',

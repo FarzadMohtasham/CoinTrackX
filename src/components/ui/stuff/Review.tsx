@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 import Heading from './Heading.tsx';
 
-import { Review as ReviewProps } from '@Typings/Components/Review.type.ts';
+import { Review as ReviewProps } from '@typings/components/Review.type.ts';
 
 const FILLED_STAR_ICON_URL = '/icons/star-filled.svg';
 const UNFILLED_STAR_ICON_URL = '/icons/star-unfilled.svg';

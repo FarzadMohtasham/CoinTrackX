@@ -1,50 +1,50 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, ReactNode, Suspense } from 'react';
 
-import LazyRouteFallbackLoading from '@Components/Fallbacks/LazyRouteFallbackLoading.tsx';
+import LazyRouteFallbackLoading from '@components/fallbacks/LazyRouteFallbackLoading.tsx';
 
 // Loaders
-import { loader as loginPageLoader } from '@Pages/Auth/LoginPage.tsx';
-import { loader as signupPageLoader } from '@Pages/Auth/SignupPage.tsx';
-import { loader as DashboardLayoutLoader } from '@Layouts/Dashboard.layout.tsx';
+import { loader as loginPageLoader } from '@pages/auth/LoginPage.tsx';
+import { loader as signupPageLoader } from '@pages/auth/SignupPage.tsx';
+import { loader as DashboardLayoutLoader } from '@layouts/Dashboard.layout.tsx';
 
 // Lazy-loaded components
-const HomePage = lazy(() => import('@Pages/Home.tsx'));
-const LoginPage = lazy(() => import('@Pages/Auth/LoginPage.tsx'));
-const SignupPage = lazy(() => import('@Pages/Auth/SignupPage.tsx'));
-const DashboardLayout = lazy(() => import('@Layouts/Dashboard.layout.tsx'));
+const HomePage = lazy(() => import('@pages/Home.tsx'));
+const LoginPage = lazy(() => import('@pages/auth/LoginPage.tsx'));
+const SignupPage = lazy(() => import('@pages/auth/SignupPage.tsx'));
+const DashboardLayout = lazy(() => import('@layouts/Dashboard.layout.tsx'));
 const DashboardPage = lazy(
-   () => import('@Pages/Dashboard/Dashboard/DashboardPage.tsx'),
+   () => import('@pages/dashboard/dashboard/DashboardPage.tsx'),
 );
 const AssetsPortfolioPage = lazy(
-   () => import('@Pages/Dashboard/AssetsPortfolio/AssetsPortfolioPage.tsx'),
+   () => import('@pages/dashboard/assetsPortfolio/AssetsPortfolioPage.tsx'),
 );
 const AssetsPricePage = lazy(
-   () => import('@Pages/Dashboard/Prices/AssetsPricePage.tsx'),
+   () => import('@pages/dashboard/prices/AssetsPricePage.tsx'),
 );
 const AssetPricePage = lazy(
-   () => import('@Pages/Dashboard/Prices/AssetPricePage.tsx'),
+   () => import('@pages/dashboard/prices/AssetPricePage.tsx'),
 );
 const TransactionsPage = lazy(
-   () => import('@Pages/Dashboard/Transactions/TransactionsPage.tsx'),
+   () => import('@pages/dashboard/transactions/TransactionsPage.tsx'),
 );
 const SettingsPage = lazy(
-   () => import('@Pages/Dashboard/Settings/SettingsPage.tsx'),
+   () => import('@pages/dashboard/settings/SettingsPage.tsx'),
 );
 const SecurityPage = lazy(
-   () => import('@Pages/Dashboard/Settings/SecurityPage.tsx'),
+   () => import('@pages/dashboard/settings/SecurityPage.tsx'),
 );
 const PaymentMethodsPage = lazy(
-   () => import('@Pages/Dashboard/Settings/PaymentMethodsPage.tsx'),
+   () => import('@pages/dashboard/settings/PaymentMethodsPage.tsx'),
 );
 const ProfilePage = lazy(
-   () => import('@Pages/Dashboard/Settings/ProfilePage.tsx'),
+   () => import('@pages/dashboard/settings/ProfilePage.tsx'),
 );
 const PreferencesPage = lazy(
-   () => import('@Pages/Dashboard/Settings/PreferencesPage.tsx'),
+   () => import('@pages/dashboard/settings/PreferencesPage.tsx'),
 );
 const PasswordPage = lazy(
-   () => import('@Pages/Dashboard/Settings/PasswordPage.tsx'),
+   () => import('@pages/dashboard/settings/PasswordPage.tsx'),
 );
 
 const SuspenseWrapper = ({ children }: { children: ReactNode }) => (

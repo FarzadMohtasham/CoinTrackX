@@ -2,20 +2,20 @@ import { JSX } from 'react';
 import { Link } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
-import Container from '@Components/UI/Stuff/Container.tsx';
-import Logo from '@Components/UI/Stuff/Logo.tsx';
-import CopyRight from '@Components/UI/Stuff/CopyRight.tsx';
-import Heading from '@Components/UI/Stuff/Heading.tsx';
+import Container from '@components/ui/stuff/Container.tsx';
+import Logo from '@components/ui/stuff/Logo.tsx';
+import CopyRight from '@components/ui/stuff/CopyRight.tsx';
+import Heading from '@components/ui/stuff/Heading.tsx';
 
 // Type
-import { ColumnItem as ColumnItemType } from '@Typings/Components/Footer.type.ts';
+import { ColumnItem as ColumnItemType } from '@typings/components/Footer.type.ts';
 import { IStyledComponentBase } from 'styled-components/dist/types.ts';
 
 // Data
 import {
    footerColumnItemsList,
    socialMediaLogoList,
-} from '@Data/footer.data.ts';
+} from '@data/footer.data.ts';
 
 const FooterWrapper: IStyledComponentBase<any> = styled.div`
    padding-bottom: 100px;

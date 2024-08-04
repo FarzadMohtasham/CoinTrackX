@@ -12,18 +12,15 @@ const AssetsPortfolioWrapper = styled.div`
    flex-direction: column;
    gap: 40px;
 
-   @media screen and (max-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (max-width: ${(props: any) => props.theme.breakpoints.sm}) {
       grid-column: 1 / 10;
    }
 
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.sm}) {
+   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.sm}) {
       grid-column: 2 / 9;
    }
 
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.lg}) {
+   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
       grid-column: 3 / 8;
    }
 `;

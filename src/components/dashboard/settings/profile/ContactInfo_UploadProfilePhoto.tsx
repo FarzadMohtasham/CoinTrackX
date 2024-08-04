@@ -2,11 +2,11 @@ import { ChangeEventHandler, Dispatch, SetStateAction } from 'react';
 import { toast } from 'react-hot-toast';
 import { styled } from 'styled-components';
 
-import Heading from '@Components/UI/Stuff/Heading.tsx';
-import UploadImageInput from '@Components/UI/InputFields/UploadImage.input.tsx';
-import { ImageFileTypeValidator } from '@Utils/helpers.ts';
+import Heading from '@components/ui/stuff/Heading.tsx';
+import UploadImageInput from '@components/ui/inputFields/UploadImage.input.tsx';
+import { ImageFileTypeValidator } from '@utils/helpers.ts';
 
-import { ONE_MILLION } from '@Data/bigNumbers.data.ts';
+import { ONE_MILLION } from '@data/bigNumbers.data.ts';
 
 type UploadProfilePhotoProps = {
    imageFile: File | undefined;

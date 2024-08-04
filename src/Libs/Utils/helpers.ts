@@ -1,7 +1,7 @@
-import { AssetName } from '@Typings/Assets.api.type.ts';
-import { assetList } from '@Data/assetsList.ts';
-import creditCardPatternsData from '@Data/cardProviderPatterns.data.ts';
-import { CardNumberProvider } from '@Typings/Components/CardNumberInput.type.ts';
+import { AssetName } from '@typings/Assets.api.type.ts';
+import { assetList } from '@data/assetsList.ts';
+import creditCardPatternsData from '@data/cardProviderPatterns.data.ts';
+import { CardNumberProvider } from '@typings/components/CardNumberInput.type.ts';
 
 export const expDatePattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
 export const numbersOnlyPattern = /^[0-9]+$/;

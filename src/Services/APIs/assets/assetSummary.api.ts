@@ -1,6 +1,6 @@
-import { supabaseClient } from '@Configs/Supabase/supabaseConfig.ts';
-import { AssetName } from '@Typings/Assets.api.type.ts';
-import { AssetSummary } from '@Typings/AssetSummary.type.ts';
+import { supabaseClient } from '@configs/supabase/supabaseConfig.ts';
+import { AssetName } from '@typings/Assets.api.type.ts';
+import { AssetSummary } from '@typings/AssetSummary.type.ts';
 
 const defaultAssetSummary: AssetSummary = {
    asset_name: 'default',

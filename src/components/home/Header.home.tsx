@@ -2,14 +2,13 @@ import { JSX } from 'react';
 import { NavLink } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
-import Logo from '@Components/UI/Stuff/Logo.tsx';
-import Button from '@Components/UI/Stuff/Button.tsx';
-import Icon from '@Components/UI/Stuff/Icon.tsx';
+import Logo from '@components/ui/stuff/Logo.tsx';
+import Button from '@components/ui/stuff/Button.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
 
-import useUserLoggedIn from '@Hooks/useUserLoggedIn.ts';
-import scrollTo from '@Utils/scroller.ts';
-import { removeLetter } from '@Utils/helpers.ts';
-
+import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
+import scrollTo from '@utils/scroller.ts';
+import { removeLetter } from '@utils/helpers.ts';
 
 const navItems = [
    {

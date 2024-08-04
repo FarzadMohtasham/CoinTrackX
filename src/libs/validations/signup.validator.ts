@@ -2,22 +2,22 @@ import { object, string, ValidationError } from 'yup';
 import {
    SignupValidationResult,
    SignupValidatorProps,
-} from '@Typings/Validator/Auth.validator.type.ts';
+} from '@typings/validator/Auth.validator.type.ts';
 
 const firstNameValidationSchema = object({
-   'firstname': string().required().min(1).max(30).trim(),
+   firstname: string().required().min(1).max(30).trim(),
 });
 
 const lastNameValidationSchema = object({
-   'lastname': string().required().min(1).max(30).trim(),
+   lastname: string().required().min(1).max(30).trim(),
 });
 
 const emailValidationSchema = object({
-   'email': string().required().max(100).email().trim(),
+   email: string().required().max(100).email().trim(),
 });
 
 const passwordValidationSchema = object({
-   'password': string()
+   password: string()
       .required()
       .test(
          'min-length',
@@ -44,8 +44,8 @@ export const signupInputValidator = async (
 
    const validationInputs = {
       [`${validationKey}`]: validationValue,
-   }
-   
+   };
+
    try {
       switch (validationKey) {
          case 'firstname':

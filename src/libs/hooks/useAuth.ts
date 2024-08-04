@@ -1,4 +1,4 @@
-import { supabaseClient } from '@Configs/Supabase/supabaseConfig.ts';
+import { supabaseClient } from '@configs/supabase/supabaseConfig.ts';
 
 async function signOut() {
    await supabaseClient.auth.signOut();

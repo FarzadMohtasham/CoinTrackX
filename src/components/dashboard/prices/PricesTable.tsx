@@ -19,18 +19,18 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 
 import { Table, TableContainer, Tbody, Td, Thead, Tr } from '@chakra-ui/react';
-import useGetAssetsQuery from '@Queries/Assets/useGetAssets.query.ts';
+import useGetAssetsQuery from '@queries/assets/useGetAssets.query.ts';
 
-import Icon from '@Components/UI/Stuff/Icon.tsx';
-import Badge from '@Components/UI/Stuff/Badge.tsx';
-import PaginationRow from '@Components/Dashboard/Prices/PaginationRow.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
+import Badge from '@components/ui/stuff/Badge.tsx';
+import PaginationRow from '@components/dashboard/prices/PaginationRow.tsx';
 
-import { Asset } from '@Typings/Assets.api.type.ts';
-import { AssetPriceTable } from '@Typings/Tables.type.ts';
-import { PaginationRowProps } from '@Typings/PricesPage.type.ts';
+import { Asset } from '@typings/Assets.api.type.ts';
+import { AssetPriceTable } from '@typings/Tables.type.ts';
+import { PaginationRowProps } from '@typings/PricesPage.type.ts';
 
-import Input from '@Components/UI/InputFields/InputField.input.tsx';
-import Button from '@Components/UI/Stuff/Button.tsx';
+import Input from '@components/ui/inputFields/InputField.input.tsx';
+import Button from '@components/ui/stuff/Button.tsx';
 
 const PricesTableContainer = styled.div`
    display: flex;

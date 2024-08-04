@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getAssets } from '@Services/APIs/assets/assets.api.ts';
+import { getAssets } from '@services/apis/assets/assets.api.ts';
 
-import { Asset } from '@Typings/Assets.api.type.ts';
+import { Asset } from '@typings/Assets.api.type.ts';
 
 export default function useGetAssetsQuery(
    staleTime: number = 1000 * 60 * 60,

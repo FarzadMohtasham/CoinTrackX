@@ -1,14 +1,14 @@
 import { JSX, Ref, useEffect, useRef, useState } from 'react';
 import { css, styled } from 'styled-components';
 
-import Icon from '@Components/UI/Stuff/Icon.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
 
 import {
    SelectedMenuItemProps,
    SelectMenuItem as SelectMenuItemT,
    SelectMenuWrapperProps,
    SelectProps,
-} from '@Typings/Components/Select.type.ts';
+} from '@typings/components/Select.type.ts';
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
    display: block;

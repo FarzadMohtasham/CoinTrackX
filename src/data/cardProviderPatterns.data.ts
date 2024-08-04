@@ -1,4 +1,4 @@
-import { CardNumberProvider } from '@Typings/Components/CardNumberInput.type.ts';
+import { CardNumberProvider } from '@typings/components/CardNumberInput.type.ts';
 
 export default {
    Visa: /^4[0-9]{12}(?:[0-9]{3})?(?:[0-9]{3})?$/,

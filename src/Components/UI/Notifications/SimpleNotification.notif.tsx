@@ -2,13 +2,13 @@ import { JSX, useState } from 'react';
 import { styled } from 'styled-components';
 import { formatDistance } from 'date-fns';
 
-import Icon from '@Components/UI/Stuff/Icon.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
 
-import { NotificationStyledProps } from '@Typings/Components/Notifications.type.ts';
+import { NotificationStyledProps } from '@typings/components/Notifications.type.ts';
 import {
    SimpleNotifProps,
    SimpleNotifStyled,
-} from '@Typings/Components/Notification.type.ts';
+} from '@typings/components/Notification.type.ts';
 
 const SimpleNotifContainer: any = styled.div<
    NotificationStyledProps & SimpleNotifStyled

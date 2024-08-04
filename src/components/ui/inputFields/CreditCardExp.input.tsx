@@ -1,6 +1,6 @@
 import { css, styled } from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
-import { validateCardExpDate } from '@Utils/helpers';
+import { validateCardExpDate } from '@utils/helpers';
 
 type CreditCardExpInputProps = {
    creditCardExpSetterFn: (value: string) => void;

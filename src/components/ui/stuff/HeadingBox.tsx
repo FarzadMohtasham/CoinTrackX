@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import { HeadingBoxType } from '@Typings/Components/HeadingBox.type.ts';
+import { HeadingBoxType } from '@typings/components/HeadingBox.type.ts';
 
 const HeadingBoxStyled = styled.div`
    display: flex;

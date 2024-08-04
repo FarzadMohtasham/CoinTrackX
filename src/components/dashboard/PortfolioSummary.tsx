@@ -1,8 +1,8 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import PortfolioValueCrypto from '@Components/UI/Crypto/PortfolioValue.crypto.tsx';
-import PortfolioVolume24HCrypto from '@Components/UI/Crypto/PortfolioVolume24H.crypto.tsx';
+import PortfolioValueCrypto from '@components/ui/crypto/PortfolioValue.crypto.tsx';
+import PortfolioVolume24HCrypto from '@components/ui/crypto/PortfolioVolume24H.crypto.tsx';
 
 import { IStyledComponentBase } from 'styled-components/dist/types';
 

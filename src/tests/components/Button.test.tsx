@@ -1,7 +1,7 @@
-import { render, screen } from '@/Libs/Utils/testUtils.tsx';
+import { render, screen } from '@utils/testUtils.tsx';
 import userEvent from '@testing-library/user-event';
 
-import Button from '@Components/UI/Stuff/Button.tsx';
+import Button from '@components/ui/stuff/Button.tsx';
 
 describe('Button Component', () => {
    test('value to be in the button', () => {

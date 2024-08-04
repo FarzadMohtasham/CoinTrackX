@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { coincapAxiosInstance } from '@Configs/Axios/cioncap.axios.ts';
+import { coincapAxiosInstance } from '@configs/axios/coincap.axios';
 
 import {
    Asset,
@@ -7,7 +7,7 @@ import {
    AssetMarketProps,
    AssetName,
    AssetsApiResponse,
-} from '@Typings/Assets.api.type.ts';
+} from '@typings/Assets.api.type.ts';
 
 
 /**

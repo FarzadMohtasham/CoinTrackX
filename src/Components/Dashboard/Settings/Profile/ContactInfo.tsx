@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { ValidationError } from 'yup';
 import { styled } from 'styled-components';
 
-import Heading from '@Components/UI/Stuff/Heading.tsx';
-import UploadProfilePhoto from '@Components/Dashboard/Settings/Profile/ContactInfo_UploadProfilePhoto.tsx';
-import UpdateContactInfo from '@Components/Dashboard/Settings/Profile/ContactInfo_UpdateContactInfo.tsx';
-import Button from '@Components/UI/Stuff/Button.tsx';
-import { contactInputSchema } from '@Schemas/contactInput.schema.ts';
-import useUser from '@Hooks/useUser.ts';
+import Heading from '@components/ui/stuff/Heading.tsx';
+import UploadProfilePhoto from '@components/dashboard/settings/profile/ContactInfo_UploadProfilePhoto.tsx';
+import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInfo_UpdateContactInfo.tsx';
+import Button from '@components/ui/stuff/Button.tsx';
+import { contactInputSchema } from '@schemas/contactInput.schema.ts';
+import useUser from '@hooks/useUser.ts';
 
 type ValidationErrorT = {
    inner?: ValidationError[];

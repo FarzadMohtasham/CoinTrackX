@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
-import ContactInfo from '@Components/Dashboard/Settings/Profile/ContactInfo.tsx';
-import PersonalInfo from '@Components/Dashboard/Settings/Profile/PersonalInfo.tsx';
+import ContactInfo from '@components/dashboard/settings/profile/ContactInfo.tsx';
+import PersonalInfo from '@components/dashboard/settings/profile/PersonalInfo.tsx';
 
 const ProfileContainer = styled.div`
    display: flex;

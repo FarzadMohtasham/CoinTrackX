@@ -3,13 +3,13 @@ import { css, RuleSet, styled } from 'styled-components';
 import { HashLoader } from 'react-spinners';
 
 // Components
-import Icon from '@Components/UI/Stuff/Icon.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
 
 //  Types
 import {
    ButtonPropsType,
    Properties,
-} from '@Typings/Components/ButtonProps.type.ts';
+} from '@typings/components/ButtonProps.type.ts';
 
 // Data
 import {
@@ -17,7 +17,7 @@ import {
    buttonFontSizeVariations,
    buttonPaddingVariations,
    buttonTypeVariations,
-} from '@Data/button.data.ts';
+} from '@data/button.data.ts';
 
 type ButtonStyledProps = {
    $properties: Properties;

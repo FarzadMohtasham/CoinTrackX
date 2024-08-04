@@ -8,20 +8,22 @@ import {
 } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
-import Heading from '@Components/UI/Stuff/Heading.tsx';
-import Logo from '@Components/UI/Stuff/Logo.tsx';
-import NavigationItem from '@Components/UI/Stuff/NavigationItem.tsx';
-import Profile from '@Components/UI/Stuff/Profile.tsx';
-import Alert from '@Components/Dashboard/Notifications.tsx';
+import Heading from '@components/ui/stuff/Heading.tsx';
+import Logo from '@components/ui/stuff/Logo.tsx';
+import NavigationItem from '@components/ui/stuff/NavigationItem.tsx';
+import Profile from '@components/ui/stuff/Profile.tsx';
+import Alert from '@components/dashboard/Notifications.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
 
-import { NavigationListData } from '@Data/navigationList.data.ts';
+import { NavigationListData } from '@data/navigationList.data.ts';
 import {
    NavigationItemType,
    NavigationProps,
-} from '@Typings/NavigationItem.type.ts';
-import Icon from '@Components/UI/Stuff/Icon.tsx';
-import { useUiStore } from '@Services/Stores/ui.store.ts';
-import useUserLoggedIn from '@Hooks/useUserLoggedIn.ts';
+} from '@typings/NavigationItem.type.ts';
+
+import { useUiStore } from '@services/stores/ui.store.ts';
+
+import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
 
 const LayoutContainer = styled.div`
    height: 100vh;

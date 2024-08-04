@@ -11,22 +11,22 @@ import {
 } from '@chakra-ui/react';
 import Skeleton from 'react-loading-skeleton';
 
-import { paymentMethodOptions } from '@Data/paymentMethodOptions.data.ts';
+import { paymentMethodOptions } from '@data/paymentMethodOptions.data.ts';
 
-import Icon from '@Components/UI/Stuff/Icon.tsx';
-import Heading from '@Components/UI/Stuff/Heading.tsx';
-import Button from '@Components/UI/Stuff/Button.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
+import Heading from '@components/ui/stuff/Heading.tsx';
+import Button from '@components/ui/stuff/Button.tsx';
 
-import PaymentMethodOptionComponent from '@Components/Dashboard/Settings/PaymentMethods/PaymentMethodOption.component.tsx';
+import PaymentMethodOptionComponent from '@components/dashboard/settings/paymentMethods/PaymentMethodOption.component.tsx';
 import {
    PaymentMethodOptionProps,
    PaymentMethodTitle,
-} from '@Typings/PaymentMethodOption.type.ts';
-import CreditDebitCard from '@Components/UI/Cards/CreditDebit.card.tsx';
-import { CreditDebitCard as CreditDebitCardT } from '@Typings/Components/CreditDebitCard.type.ts';
-import AddCreditDebitCardModal from '@Components/Dashboard/Settings/PaymentMethods/AddCreditDebitCard.modal.tsx';
-import AddCreditDebitCard from '@Components/UI/Cards/AddCreditDebit.card.tsx';
-import useGetCreditDebitCardsQuery from '@Queries/PaymentMethods/useGetCreditDebitCards.query.ts';
+} from '@typings/PaymentMethodOption.type.ts';
+import CreditDebitCard from '@components/ui/cards/CreditDebit.card.tsx';
+import { CreditDebitCard as CreditDebitCardT } from '@typings/components/CreditDebitCard.type.ts';
+import AddCreditDebitCardModal from '@components/dashboard/settings/paymentMethods/AddCreditDebitCard.modal.tsx';
+import AddCreditDebitCard from '@components/ui/cards/AddCreditDebit.card.tsx';
+import useGetCreditDebitCardsQuery from '@queries/paymentMethods/useGetCreditDebitCards.query.ts';
 
 const NoPaymentMethodContainer = styled.div`
    display: grid;

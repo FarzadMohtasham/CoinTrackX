@@ -2,17 +2,17 @@ import { JSX, useReducer } from 'react';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import AssetInfo from '@Components/Dashboard/Prices/AssetPrice/AssetInfo.tsx';
-import AssetSummary from '@Components/Dashboard/Prices/AssetPrice/AssetSummary.tsx';
-import GoBack from '@Components/UI/Stuff/GoBack.tsx';
+import AssetInfo from '@components/dashboard/prices/assetPrice/AssetInfo.tsx';
+import AssetSummary from '@components/dashboard/prices/assetPrice/AssetSummary.tsx';
+import GoBack from '@components/ui/stuff/GoBack.tsx';
 
-import { AssetName } from '@Typings/Assets.api.type.ts';
+import { AssetName } from '@typings/Assets.api.type.ts';
 
-import AssetChart from '@Components/Dashboard/Prices/AssetPrice/AssetChart.tsx';
-import AssetMarkets from '@Components/Dashboard/Prices/AssetPrice/AssetMarkets.tsx';
-import Heading from '@Components/UI/Stuff/Heading.tsx';
-import Button from '@Components/UI/Stuff/Button.tsx';
-import { queryClient } from '@Configs/ReactQuery/queryClient.tsx';
+import AssetChart from '@components/dashboard/prices/assetPrice/AssetChart.tsx';
+import AssetMarkets from '@components/dashboard/prices/assetPrice/AssetMarkets.tsx';
+import Heading from '@components/ui/stuff/Heading.tsx';
+import Button from '@components/ui/stuff/Button.tsx';
+import { queryClient } from '@configs/react-query/queryClient.tsx';
 
 type ErrorStatesProps = {
    assetInfoHasError: boolean;

@@ -1,4 +1,4 @@
-import { SelectMenuItem } from '@Typings/Components/Select.type.ts';
+import { SelectMenuItem } from '@typings/components/Select.type.ts';
 
 const countryOfResidenceList: SelectMenuItem[] = [
     { name: "Afghanistan", value: "AF", iconSrc: "/flags/af.svg", default: false },

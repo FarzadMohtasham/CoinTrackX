@@ -1,8 +1,8 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import Icon from '@Components/UI/Stuff/Icon.tsx';
-import Badge from '@Components/UI/Stuff/Badge.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
+import Badge from '@components/ui/stuff/Badge.tsx';
 
 const Container = styled.div`
    display: flex;
