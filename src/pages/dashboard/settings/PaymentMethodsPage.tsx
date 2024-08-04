@@ -1,4 +1,4 @@
-import React, { JSX, useEffect, useState } from 'react';
+import React, { JSX, useState } from 'react';
 import { styled } from 'styled-components';
 import {
    Modal,
@@ -9,24 +9,24 @@ import {
    ModalOverlay,
    useDisclosure,
 } from '@chakra-ui/react';
+import Skeleton from 'react-loading-skeleton';
 
 import { paymentMethodOptions } from '@Data/paymentMethodOptions.data';
 
-import Icon from '@Components/UI/Stuff/Icon';
-import Heading from '@Components/UI/Stuff/Heading';
-import Button from '@Components/UI/Stuff/Button';
+import Icon from '@Components/UI/Stuff/Icon.tsx';
+import Heading from '@Components/UI/Stuff/Heading.tsx';
+import Button from '@Components/UI/Stuff/Button.tsx';
 
-import PaymentMethodOptionComponent from '@Components/Dashboard/Settings/PaymentMethods/PaymentMethodOption.component';
+import PaymentMethodOptionComponent from '@Components/Dashboard/Settings/PaymentMethods/PaymentMethodOption.component.tsx';
 import {
    PaymentMethodOptionProps,
    PaymentMethodTitle,
-} from '@Typings/PaymentMethodOption.type';
-import CreditDebitCard from '@Components/UI/Cards/CreditDebit.card';
-import { CreditDebitCard as CreditDebitCardT } from '@Typings/Components/CreditDebitCard.type';
-import AddCreditDebitCardModal from '@Components/Dashboard/Settings/PaymentMethods/AddCreditDebitCard.modal';
-import AddCreditDebitCard from '@Components/UI/Cards/AddCreditDebit.card';
-import useGetCreditDebitCardsQuery from '@Queries/PaymentMethods/useGetCreditDebitCards.query';
-import Skeleton from 'react-loading-skeleton';
+} from '@Typings/PaymentMethodOption.type.ts';
+import CreditDebitCard from '@Components/UI/Cards/CreditDebit.card.tsx';
+import { CreditDebitCard as CreditDebitCardT } from '@Typings/Components/CreditDebitCard.type.ts';
+import AddCreditDebitCardModal from '@Components/Dashboard/Settings/PaymentMethods/AddCreditDebitCard.modal.tsx';
+import AddCreditDebitCard from '@Components/UI/Cards/AddCreditDebit.card.tsx';
+import useGetCreditDebitCardsQuery from '@Queries/PaymentMethods/useGetCreditDebitCards.query.ts';
 
 const NoPaymentMethodContainer = styled.div`
    display: grid;

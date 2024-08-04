@@ -8,13 +8,13 @@ import {
 } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
-import Heading from '@Components/UI/Stuff/Heading';
-import Logo from '@Components/UI/Stuff/Logo';
-import NavigationItem from '@Components/UI/Stuff/NavigationItem';
-import Profile from '@Components/UI/Stuff/Profile';
-import Alert from '@Components/Dashboard/Notifications';
+import Heading from '@Components/UI/Stuff/Heading.tsx';
+import Logo from '@Components/UI/Stuff/Logo.tsx';
+import NavigationItem from '@Components/UI/Stuff/NavigationItem.tsx';
+import Profile from '@Components/UI/Stuff/Profile.tsx';
+import Alert from '@Components/Dashboard/Notifications.tsx';
 
-import { NavigationListData } from '@Data/navigationList.data';
+import { NavigationListData } from '@Data/navigationList.data.ts';
 import {
    NavigationItemType,
    NavigationProps,

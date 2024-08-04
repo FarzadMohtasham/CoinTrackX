@@ -1,8 +1,8 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import Container from '@Components/UI/Stuff/Container';
-import HeadingBox from '@Components/UI/Stuff/HeadingBox';
+import Container from '@Components/UI/Stuff/Container.tsx';
+import HeadingBox from '@Components/UI/Stuff/HeadingBox.tsx';
 
 const PartnersContainer = styled.section.attrs({
    id: 'partners',

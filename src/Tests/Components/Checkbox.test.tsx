@@ -1,6 +1,7 @@
-import { render, screen } from '@/Libs/Utils/testUtils';
-import CheckboxInput from '@Components/UI/InputFields/Checkbox.input';
+import { render, screen } from '@/Libs/Utils/testUtils.ts';
 import userEvent from '@testing-library/user-event';
+
+import CheckboxInput from '@Components/UI/InputFields/Checkbox.input.tsx';
 
 describe('Checkbox input', () => {
    it('should be checked when clicked', async () => {

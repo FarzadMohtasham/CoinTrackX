@@ -1,30 +1,29 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-
-import Input from '@Components/UI/InputFields/InputField.input';
-import Button from '@Components/UI/Stuff/Button';
-import Icon from '@Components/UI/Stuff/Icon';
-import CheckboxInput from '@Components/UI/InputFields/Checkbox.input';
-
-import { InputFieldValidator } from '@Validations/InputField.validator';
-
-import { InputFieldValidatorResult } from '@Typings/Validator/Input.validator.type';
-import CardNumberInput from '@Components/UI/InputFields/CardNumber.input';
-import { CardNumberProvider } from '@Typings/Components/CardNumberInput.type';
-import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif';
-import { NotificationOptions } from '@Typings/Components/Notification.type';
-import CreditCardExpInput from '@Components/UI/InputFields/CreditCardExp.input';
-import CreditCardCVVInput from '@Components/UI/InputFields/CreditCardCVV.input';
-import PostalCodeInput from '@Components/UI/InputFields/PostalCode.input';
-import { CreditDebitCard } from '@Typings/Components/CreditDebitCard.type';
-import useUser from '@Hooks/useUser';
+import { toast } from 'react-hot-toast';
 import { AuthUser, PostgrestError } from '@supabase/supabase-js';
+
+import Input from '@Components/UI/InputFields/InputField.input.tsx';
+import Button from '@Components/UI/Stuff/Button.tsx';
+import Icon from '@Components/UI/Stuff/Icon.tsx';
+import CheckboxInput from '@Components/UI/InputFields/Checkbox.input.tsx';
+import CreditCardExpInput from '@Components/UI/InputFields/CreditCardExp.input.tsx';
+import CreditCardCVVInput from '@Components/UI/InputFields/CreditCardCVV.input.tsx';
+import PostalCodeInput from '@Components/UI/InputFields/PostalCode.input.tsx';
+import SimpleNotification from '@Components/UI/Notifications/Simple-Notification.notif.tsx';
+
+import { InputFieldValidatorResult } from '@Typings/Validator/Input.validator.type.ts';
+import CardNumberInput from '@Components/UI/InputFields/CardNumber.input.tsx';
+import { CardNumberProvider } from '@Typings/Components/CardNumberInput.type.ts';
+import { NotificationOptions } from '@Typings/Components/Notification.type.ts';
+import { CreditDebitCard } from '@Typings/Components/CreditDebitCard.type.ts';
+import useUser from '@Hooks/useUser';
 import {
    deleteCreditDebitCard,
    updateCreditDebitCard,
-} from '@Services/APIs/payment-methods/creditDebitPayments.api';
-import { toast } from 'react-hot-toast';
-import { queryClient } from '@Configs/ReactQuery/queryClient';
+} from '@Services/APIs/payment-methods/creditDebitPayments.api.ts';
+import { queryClient } from '@Configs/ReactQuery/queryClient.ts';
+import { InputFieldValidator } from '@Validations/InputField.validator.ts';
 
 type EditCreditDebitCardModalProps = {
    onClose: () => void;

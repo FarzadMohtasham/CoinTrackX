@@ -1,8 +1,8 @@
 import { JSX } from 'react';
 import { css, styled } from 'styled-components';
 
-import Container from '@Components/UI/Stuff/Container';
-import HeadingBox from '@Components/UI/Stuff/HeadingBox';
+import Container from '@Components/UI/Stuff/Container.tsx';
+import HeadingBox from '@Components/UI/Stuff/HeadingBox.tsx';
 
 const PlatformWrapper = styled.div.attrs({
    id: 'platforms',

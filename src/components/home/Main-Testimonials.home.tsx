@@ -1,11 +1,11 @@
 import { JSX } from 'react';
 import { css, styled } from 'styled-components';
 
-import Container from '@Components/UI/Stuff/Container';
-import HeadingBox from '@Components/UI/Stuff/HeadingBox';
-import Review from '@Components/UI/Stuff/Review';
+import Container from '@Components/UI/Stuff/Container.tsx';
+import HeadingBox from '@Components/UI/Stuff/HeadingBox.tsx';
+import Review from '@Components/UI/Stuff/Review.tsx';
 
-import { Review as ReviewType } from '@Typings/Components/Review.type';
+import { Review as ReviewType } from '@Typings/Components/Review.type.ts';
 
 const reviewsList: ReviewType[] = [
    {

@@ -1,12 +1,12 @@
 import { JSX } from 'react';
 import { css, styled } from 'styled-components';
 
-import Icon from '@Components/UI/Stuff/Icon';
+import Icon from '@Components/UI/Stuff/Icon.tsx';
 
 import {
    NavigationItemStyledProps,
    NavigationProps,
-} from '@Typings/NavigationItem.type';
+} from '@Typings/NavigationItem.type.ts';
 
 const NavigationItemContainer = styled.div<NavigationItemStyledProps>`
    display: flex;

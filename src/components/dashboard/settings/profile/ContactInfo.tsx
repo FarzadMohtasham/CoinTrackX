@@ -1,12 +1,13 @@
-import { styled } from 'styled-components';
-import Heading from '@Components/UI/Stuff/Heading';
-import UploadProfilePhoto from '@Components/Dashboard/Settings/Profile/ContactInfo_UploadProfilePhoto';
-import UpdateContactInfo from '@Components/Dashboard/Settings/Profile/ContactInfo_UpdateContactInfo';
-import Button from '@Components/UI/Stuff/Button';
 import { useEffect, useState } from 'react';
-import { contactInputSchema } from '@Schemas/contactInput.schema';
 import { ValidationError } from 'yup';
-import useUser from '@Hooks/useUser';
+import { styled } from 'styled-components';
+
+import Heading from '@Components/UI/Stuff/Heading.tsx';
+import UploadProfilePhoto from '@Components/Dashboard/Settings/Profile/ContactInfo_UploadProfilePhoto.tsx';
+import UpdateContactInfo from '@Components/Dashboard/Settings/Profile/ContactInfo_UpdateContactInfo.tsx';
+import Button from '@Components/UI/Stuff/Button.tsx';
+import { contactInputSchema } from '@Schemas/contactInput.schema.ts';
+import useUser from '@Hooks/useUser.ts';
 
 type ValidationErrorT = {
    inner?: ValidationError[];

@@ -1,6 +1,7 @@
-import { styled } from 'styled-components';
-import Input from '@Components/UI/InputFields/InputField.input';
 import { Dispatch, SetStateAction } from 'react';
+import { styled } from 'styled-components';
+
+import Input from '@Components/UI/InputFields/InputField.input.tsx';
 
 type UpdateContactInfoProps = {
    setDisplayName: Dispatch<SetStateAction<string>>;

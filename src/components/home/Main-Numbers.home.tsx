@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import Container from '@Components/UI/Stuff/Container';
+import Container from '@Components/UI/Stuff/Container.tsx';
 
 const numbersList: { title: string; desc: string }[] = [
    {

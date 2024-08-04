@@ -1,10 +1,12 @@
-import { styled } from 'styled-components';
-import Heading from '@Components/UI/Stuff/Heading';
-import Input from '@Components/UI/InputFields/InputField.input';
 import { Dispatch, useEffect, useReducer } from 'react';
-import Button from '@Components/UI/Stuff/Button';
-import Select from '@Components/UI/Stuff/Select';
-import countryOfResidenceList from '@Data/countryOfResidence.data';
+import { styled } from 'styled-components';
+
+import Heading from '@Components/UI/Stuff/Heading.tsx';
+import Input from '@Components/UI/InputFields/InputField.input.tsx';
+import Button from '@Components/UI/Stuff/Button.tsx';
+import Select from '@Components/UI/Stuff/Select.tsx';
+
+import countryOfResidenceList from '@Data/countryOfResidence.data.ts';
 
 const PersonalInfoContainer = styled.div`
    border-radius: 8px;

@@ -3,15 +3,15 @@ import { Link, redirect, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { toast } from 'react-hot-toast';
 
-import Heading from '@Components/UI/Stuff/Heading';
-import Button from '@Components/UI/Stuff/Button';
-import Separator from '@Components/UI/Stuff/Separator';
-import InputField from '@Components/UI/InputFields/InputField.input';
-import CheckboxInput from '@Components/UI/InputFields/Checkbox.input';
-import PasswordFieldInput from '@Components/UI/InputFields/PasswordField.input';
+import Heading from '@Components/UI/Stuff/Heading.tsx';
+import Button from '@Components/UI/Stuff/Button.tsx';
+import Separator from '@Components/UI/Stuff/Separator.tsx';
+import InputField from '@Components/UI/InputFields/InputField.input.tsx';
+import CheckboxInput from '@Components/UI/InputFields/Checkbox.input.tsx';
+import PasswordFieldInput from '@Components/UI/InputFields/PasswordField.input.tsx';
 
-import { signupInputValidator } from '@Validations/signup.validator';
-import { signup } from '@Services/APIs/auth/auth.api';
+import { signupInputValidator } from '@Validations/signup.validator.ts';
+import { signup } from '@Services/APIs/auth/auth.api.ts';
 
 import {
    AuthContainer,

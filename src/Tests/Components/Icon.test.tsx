@@ -1,6 +1,7 @@
-import { render, screen } from '@/Libs/Utils/testUtils';
-import Icon from '@Components/UI/Stuff/Icon';
+import { render, screen } from '@/Libs/Utils/testUtils.ts';
 import userEvent from '@testing-library/user-event';
+
+import Icon from '@Components/UI/Stuff/Icon.tsx';
 
 describe('Icon ', () => {
    it('should run handler fn when clicked', async () => {

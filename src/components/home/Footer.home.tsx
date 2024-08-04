@@ -2,17 +2,20 @@ import { JSX } from 'react';
 import { Link } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
-import Container from '@Components/UI/Stuff/Container';
-import Logo from '@Components/UI/Stuff/Logo';
-import CopyRight from '@Components/UI/Stuff/CopyRight';
-import Heading from '@Components/UI/Stuff/Heading';
+import Container from '@Components/UI/Stuff/Container.tsx';
+import Logo from '@Components/UI/Stuff/Logo.tsx';
+import CopyRight from '@Components/UI/Stuff/CopyRight.tsx';
+import Heading from '@Components/UI/Stuff/Heading.tsx';
 
 // Type
-import { ColumnItem as ColumnItemType } from '@Typings/Components/Footer.type';
-import { IStyledComponentBase } from 'styled-components/dist/types';
+import { ColumnItem as ColumnItemType } from '@Typings/Components/Footer.type.ts';
+import { IStyledComponentBase } from 'styled-components/dist/types.ts';
 
 // Data
-import { footerColumnItemsList, socialMediaLogoList } from '@Data/footer.data';
+import {
+   footerColumnItemsList,
+   socialMediaLogoList,
+} from '@Data/footer.data.ts';
 
 const FooterWrapper: IStyledComponentBase<any> = styled.div`
    padding-bottom: 100px;
@@ -64,8 +67,7 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
    }
 
    /*Small devices (landscape phones, 576px and up)*/
-   @media screen and (max-width: ${(props: any) =>
-         props.theme.breakpoints.md}) {
+   @media screen and (max-width: ${(props: any) => props.theme.breakpoints.md}) {
       grid-template-areas:
          'footer-column-1'
          'footer-column-2'
@@ -75,8 +77,7 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
    }
 
    /*Medium devices (tablets, 768px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.md}) {
+   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
       grid-template-areas:
          'footer-column-1 footer-column-2'
          'footer-column-3 footer-column-4';
@@ -84,8 +85,7 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
    }
 
    /*Large devices (desktops, 992px and up)*/
-   @media screen and (min-width: ${(props: any) =>
-         props.theme.breakpoints.lg}) {
+   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
       grid-template-areas: 'footer-column-1 footer-column-2 footer-column-3 footer-column-4';
       gap: 40px;
    }
