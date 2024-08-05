@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 
-import Icon from '@components/UI/Stuff/Icon.tsx';
+import Icon from '@components/ui/stuff/Icon.tsx';
 
 import { amountToBeFixed } from '@utils/helpers.ts';
 

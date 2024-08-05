@@ -2,9 +2,9 @@ import { JSX, useEffect } from 'react';
 import { styled } from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 
-import useGetAssetSummaryQuery from '@Queries/AssetSummary/useGetAssetSummary.query.ts';
+import useGetAssetSummaryQuery from '@queries/assetSummary/useGetAssetSummary.query';
 
-import { AssetName } from '@Typings/Assets.api.type.ts';
+import { AssetName } from '@typings/Assets.api.type.ts';
 
 type AssetSummaryProps = {
    assetName: AssetName;

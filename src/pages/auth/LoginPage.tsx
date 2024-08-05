@@ -20,7 +20,7 @@ import {
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
 } from './AuthShared.tsx';
-import useLocaleStorage from '@Hooks/useLocaleStorage.ts';
+import useLocaleStorage from '@hooks/useLocaleStorage.ts';
 
 const Container = styled(AuthContainer)``;
 const Wrapper = styled(AuthInnerWrapper)``;
