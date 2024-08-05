@@ -1,5 +1,5 @@
 // Styling imports
-import './Styles/index.css';
+import './styles/index.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 import React from 'react';
