@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.102](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.101...v0.0.102) (2024-08-06)
+
+
+### Bug Fixes
+
+* Import fixed ([2d8a853](https://github.com/FarzadMohtasham/CoinTrackX/commit/2d8a8538bb3269ac32b753f0dfc61f35abfa0df3))
+* moduleNameMapper fixed ([e4f45ab](https://github.com/FarzadMohtasham/CoinTrackX/commit/e4f45ab3c050fef49ddd12ee5640b451334ba9b7))
+
 ### [0.0.101](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.100...v0.0.101) (2024-08-05)
 
 
