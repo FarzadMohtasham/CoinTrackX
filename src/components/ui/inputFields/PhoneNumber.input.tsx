@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import {
+   ChangeEvent,
+   Dispatch,
+   SetStateAction,
+   useEffect,
+   useState,
+} from 'react';
 import { styled } from 'styled-components';
 
 import { countriesCode } from '@data/countryCode.data.ts';
 
-type PhoneNumberInputProps = {};
+export type PhoneNumberInputProps = {
+   dispatchFn: Dispatch<SetStateAction<string>>;
+   phoneNumberMaxLength?: number;
+};
 
 const PhoneNumberInputContainer = styled.div`
    width: 100%;
@@ -58,19 +67,35 @@ const PhoneNumberInputContainer = styled.div`
 `;
 
 export default function PhoneNumberInput(props: PhoneNumberInputProps) {
-   const {} = props;
+   const { dispatchFn = () => {}, phoneNumberMaxLength = 10 } = props;
 
    // @ts-ignore
-   const [PhoneNumberInput, setPhoneNumberInput] = useState<string>();
    const [countryCode, setCountryCode] = useState<string>('+93');
+   const [PhoneNumberInput, setPhoneNumberInput] = useState<string>('');
+
+   // Handlers
+   const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+      const selectInputVal = e.target.value;
+      setCountryCode(selectInputVal);
+   };
+
+   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const inputVal = e.target.value;
+      setPhoneNumberInput(inputVal);
+   };
+
+   useEffect(() => {
+      dispatchFn(countryCode + PhoneNumberInput);
+   }, [countryCode, PhoneNumberInput]);
 
    return (
       <PhoneNumberInputContainer>
          <div className={'country-select-wrapper'}>
             <select
                name={'country'}
-               onChange={(e) => setCountryCode(e.target.value)}
+               onChange={onSelectChange}
                className={'country-select'}
+               value={countryCode}
             >
                {countriesCode.map((countryCode) => {
                   return (
@@ -84,10 +109,16 @@ export default function PhoneNumberInput(props: PhoneNumberInputProps) {
                })}
             </select>
          </div>
+
          <div className={'separator'}></div>
+
          <div className={'input-field-wrapper'}>
             <span>{countryCode}</span>
-            <input placeholder={'Enter phone number'} />
+            <input
+               placeholder={'Enter phone number'}
+               onChange={onInputChange}
+               maxLength={phoneNumberMaxLength}
+            />
          </div>
       </PhoneNumberInputContainer>
    );

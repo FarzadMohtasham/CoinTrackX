@@ -105,6 +105,7 @@ const TwoStepVerificationWrapper = styled.div`
 `;
 
 export default function SecurityPage() {
+   const [, setPhoneNumber] = useState<string>('');
    const [textMessageCheckBox, setTextMessageCheckBox] = useState<boolean>();
    const [emailCheckBox, setEmailCheckBox] = useState<boolean>();
 
@@ -118,7 +119,7 @@ export default function SecurityPage() {
 
             <div className="input-wrapper">
                <span className={'title'}>Phone number</span>
-               <PhoneNumberInput />
+               <PhoneNumberInput dispatchFn={setPhoneNumber} />
             </div>
          </PhoneNumberWrapper>
 
