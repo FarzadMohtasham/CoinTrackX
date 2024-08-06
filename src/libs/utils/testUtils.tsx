@@ -1,13 +1,16 @@
 import { render, RenderOptions } from '@testing-library/react';
 import { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
-import styledComponentTheme from '@themes/styled-components.theme';
+import { ChakraProvider, theme as chakraTheme } from '@chakra-ui/react';
+import styledComponentTheme from '@themes/styled-components.theme.ts';
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
    return (
-      <ThemeProvider theme={styledComponentTheme.lightTheme}>
-         {children}
-      </ThemeProvider>
+      <ChakraProvider theme={chakraTheme}>
+         <ThemeProvider theme={styledComponentTheme.lightTheme}>
+            {children}
+         </ThemeProvider>
+      </ChakraProvider>
    );
 };
 

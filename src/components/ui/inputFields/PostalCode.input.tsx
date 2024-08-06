@@ -70,6 +70,7 @@ export default function PostalCodeInput(props: PostalInputProps) {
       }
 
       const validationResult = validatePostalCode(inputValue);
+
       if (validationResult) postalErrorMsgSetterFn(null);
       else postalErrorMsgSetterFn('Enter valid CVV');
    }, [inputValue]);
@@ -99,6 +100,7 @@ export default function PostalCodeInput(props: PostalInputProps) {
             maxLength={maxLength}
             minLength={minLength}
             value={inputValue}
+            role="postalcode-input"
          />
       </PostalCodeInputContainer>
    );
