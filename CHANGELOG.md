@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.106](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.105...v0.0.106) (2024-08-06)
+
+
+### Features
+
+* PhoneNumber component Added some features ([298119c](https://github.com/FarzadMohtasham/CoinTrackX/commit/298119c9860bb476559843181ccdd13e94cd69e4))
+
 ### [0.0.105](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.104...v0.0.105) (2024-08-06)
 
 
