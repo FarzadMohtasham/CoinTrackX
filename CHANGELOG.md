@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.104](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.103...v0.0.104) (2024-08-06)
+
+
+### Bug Fixes
+
+* Fixed AssetMarkets td font-size ([1088a31](https://github.com/FarzadMohtasham/CoinTrackX/commit/1088a3146c3f2ed9be7daa6424367a3f968e8d6d))
+
 ### [0.0.103](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.102...v0.0.103) (2024-08-06)
 
 ### [0.0.102](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.101...v0.0.102) (2024-08-06)
