@@ -17,7 +17,6 @@ import {
    TableCaption,
    TableContainer,
    Tbody,
-   Td,
    Thead,
    Tr,
 } from '@chakra-ui/react';
@@ -78,6 +77,11 @@ const Heading = styled.div`
       font-size: var(--font-size-body-md);
       font-weight: 500;
    }
+`;
+
+const TD = styled.td`
+   padding: 10px;
+   font-size: var(--font-size-body-sm);
 `;
 
 const SelectTableShowStatusList: SelectMenuItem[] = [
@@ -226,7 +230,7 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                                     {headerGroup.headers.map(
                                        (header: Header<any, any>) => {
                                           return (
-                                             <Td
+                                             <TD
                                                 key={header.id}
                                                 className={'table-details'}
                                              >
@@ -234,7 +238,7 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                                                    header.column.columnDef
                                                       .header,
                                                 )}
-                                             </Td>
+                                             </TD>
                                           );
                                        },
                                     )}
@@ -252,12 +256,12 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                                        .getVisibleCells()
                                        .map((cell: Cell<any, any>) => {
                                           return (
-                                             <Td key={cell.id}>
+                                             <TD key={cell.id}>
                                                 {flexRender(
                                                    cell.column.columnDef.cell,
                                                    cell.getContext(),
                                                 )}
-                                             </Td>
+                                             </TD>
                                           );
                                        })}
                                  </Tr>
