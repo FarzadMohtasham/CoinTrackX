@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { styled } from 'styled-components';
-import { Switch } from '@chakra-ui/react';
+import { Switch, Tooltip } from '@chakra-ui/react';
 
 import PhoneNumberInput from '@components/ui/inputFields/PhoneNumber.input.tsx';
 import Icon from '@components/ui/stuff/Icon.tsx';
@@ -138,14 +138,19 @@ export default function SecurityPage() {
                         your login to your number <em>(+44) 5673 436 4xxx</em>
                      </span>
                   </div>
-                  <Switch
-                     size="md"
-                     colorScheme={'green'}
-                     isChecked={textMessageCheckBox}
-                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        setTextMessageCheckBox(e.target.checked);
-                     }}
-                  />
+                  <Tooltip label="Not available yet!">
+                     <div>
+                        <Switch
+                           size="md"
+                           colorScheme={'green'}
+                           isChecked={textMessageCheckBox}
+                           onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                              setTextMessageCheckBox(e.target.checked);
+                           }}
+                           disabled
+                        />
+                     </div>
+                  </Tooltip>
                </div>
 
                <div className={'step2-auth-option email'}>
@@ -158,14 +163,19 @@ export default function SecurityPage() {
                         <em>andresamosa@mail.com</em>
                      </span>
                   </div>
-                  <Switch
-                     size="md"
-                     colorScheme={'green'}
-                     checked={emailCheckBox}
-                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        setEmailCheckBox(e.target.checked);
-                     }}
-                  />
+                  <Tooltip label="Not available yet!">
+                     <div>
+                        <Switch
+                           size="md"
+                           colorScheme={'green'}
+                           checked={emailCheckBox}
+                           onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                              setEmailCheckBox(e.target.checked);
+                           }}
+                           disabled
+                        />
+                     </div>
+                  </Tooltip>
                </div>
             </div>
          </TwoStepVerificationWrapper>
