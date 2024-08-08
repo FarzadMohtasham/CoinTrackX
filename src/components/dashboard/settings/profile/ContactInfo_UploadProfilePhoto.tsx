@@ -15,8 +15,14 @@ type UploadProfilePhotoProps = {
 
 const UploadProfilePhotoContainer = styled.div`
    display: flex;
-   gap: 100px;
+   flex-direction: column;
+   gap: 20px;
    align-items: center;
+
+   @media screen and (min-width: ${(props) => props.theme.breakpoints.md}) {
+      gap: 100px;
+      flex-direction: row;
+   }
 `;
 
 const LeftCol = styled.div`

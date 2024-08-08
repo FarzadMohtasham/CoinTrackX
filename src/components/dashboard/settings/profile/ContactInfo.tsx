@@ -24,13 +24,12 @@ const ContactInfoContainer = styled.div`
 
 const ContentWrapper = styled.div`
    display: flex;
+   flex-direction: column;
    justify-content: space-between;
    gap: 32px;
 `;
 
 const LeftCol = styled.div`
-   padding-top: 32px;
-
    span.description {
       color: var(--color-black-700);
       font-size: var(--font-size-body-sm);
@@ -135,7 +134,6 @@ export default function ContactInfo() {
 
    return (
       <ContactInfoContainer>
-         {changes}
          <ContentWrapper>
             <LeftCol>
                <Heading tagName={'h6'}>Contact Info</Heading>

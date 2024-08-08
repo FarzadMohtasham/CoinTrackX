@@ -32,7 +32,7 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
    cursor: ${(props: any) => props.$properties.cursor};
    padding: ${(props: any) => props.$properties.padding};
    font-size: ${(props: any) => props.$properties.fontSize};
-   width: ${(props: any): string =>
+   width: ${(props: any): string | RuleSet<Object> =>
       props.$properties.expanded ? '100%' : 'max-content'};
    background-color: ${(props: any) => props.$properties.backgroundColor};
    color: ${(props: any) => props.$properties.color};
@@ -88,7 +88,11 @@ export default function Button(props: ButtonPropsType): JSX.Element {
    const padding: RuleSet | number = removePadding
       ? 0
       : // eslint-disable-next-line
-        css`${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[size]['x']}`;
+        css`
+           ${buttonPaddingVariations[size]['y']} ${buttonPaddingVariations[
+              size
+           ]['x']}
+        `;
    const fontSize: RuleSet = css`
       ${buttonFontSizeVariations[size].fontSize}
    `;

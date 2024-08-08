@@ -11,11 +11,13 @@ export type InputProps = {
    maxLength?: number;
    minLength?: number;
    hasError?: boolean;
+   disabled?: boolean;
 };
 
 export type InputStyledProps = {
    $inputIsActive: boolean;
    $hasError: boolean;
+   $disabled: boolean;
 };
 
 export type InputRefProps = {

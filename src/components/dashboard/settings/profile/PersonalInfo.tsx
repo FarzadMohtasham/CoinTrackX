@@ -15,6 +15,21 @@ const PersonalInfoContainer = styled.div`
    flex-direction: column;
    gap: 20px;
 
+   .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+   }
+
+   .name-inputs-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: ${(props) => props.theme.breakpoints.md}) {
+         flex-direction: row;
+      }
+   }
+
    .actions-wrapper {
       display: flex;
       gap: 10px;

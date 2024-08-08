@@ -51,6 +51,8 @@ const InputStyled = styled.div`
 `;
 
 const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
+   position: relative;
+   margin-bottom: 5px;
    border-color: ${(props) =>
       props.$inputIsActive
          ? props.$hasError
@@ -59,7 +61,30 @@ const InputFieldContainer = styled(InputStyled)<InputStyledProps>`
          : props.$hasError
            ? css`var(--color-danger-400)`
            : css`var(--color-black-50)`};
-   margin-bottom: 5px;
+
+   input[type='text'] {
+      color: ${(props) =>
+         props.$disabled ? css`var(--color-black-300)` : 'black'};
+
+      &:disabled {
+         background-color: rgba(0, 0, 0, 0);
+      }
+   }
+
+   ${(props) =>
+      props.$disabled &&
+      css`
+         &::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-black-50);
+            left: 0;
+            top: 0;
+            border-radius: 8px;
+         }
+      `}
 `;
 
 const ErrorContainer = styled.span`
@@ -87,6 +112,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
       maxLength = 200,
       minLength = 0,
       hasError = false,
+      disabled = false,
    } = props;
 
    const [inputFieldIsActive, setInputFieldIsActive] = useState<boolean>(false);
@@ -113,6 +139,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
          <InputFieldContainer
             $inputIsActive={inputFieldIsActive}
             $hasError={hasError}
+            $disabled={disabled}
          >
             {iconSrc !== null && (
                <>
@@ -135,6 +162,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
                onChange={(e) => onChangeHandler(e.target.value)}
                onFocus={inputOnFocusHandler}
                onBlur={inputOnBlurHandler}
+               disabled={disabled}
             />
          </InputFieldContainer>
          {unAllowedErrorMessages.length !== 0 &&

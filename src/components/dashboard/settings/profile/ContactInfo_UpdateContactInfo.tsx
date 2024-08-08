@@ -14,13 +14,19 @@ type UpdateContactInfoProps = {
 
 const UploadProfilePhotoContainer = styled.div`
    display: flex;
+   flex-direction: column;
    justify-content: space-between;
    align-items: center;
    gap: 24px;
+
+   @media screen and (min-width: ${(props) => props.theme.breakpoints.md}) {
+      flex-direction: row;
+   }
 `;
 
 const FieldWrapper = styled.div`
    flex-grow: 1;
+   width: 100%;
 
    span.label {
       margin-bottom: 7px;
@@ -60,6 +66,7 @@ export default function UpdateContactInfo(props: UpdateContactInfoProps) {
                hasError={props.emailErrorMsg.length > 0}
                inputValue={props.email}
                onChangeHandler={props.setEmail}
+               disabled={true}
             />
             <span className={'error-msg'}>{props.emailErrorMsg}</span>
          </FieldWrapper>
