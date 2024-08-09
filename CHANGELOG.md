@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.111](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.110...v0.0.111) (2024-08-09)
+
+
+### Features
+
+* Added SettingsPage Router for loading auth user data in sub-routes ([4cf218d](https://github.com/FarzadMohtasham/CoinTrackX/commit/4cf218da1e6fb45da41e268f9376c53a614c18f9))
+
 ### [0.0.110](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.109...v0.0.110) (2024-08-09)
 
 
