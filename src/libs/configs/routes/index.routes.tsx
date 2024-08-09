@@ -7,7 +7,6 @@ import LazyRouteFallbackLoading from '@components/fallbacks/LazyRouteFallbackLoa
 import { loader as loginPageLoader } from '@pages/auth/LoginPage.tsx';
 import { loader as signupPageLoader } from '@pages/auth/SignupPage.tsx';
 import { loader as DashboardLayoutLoader } from '@layouts/Dashboard.layout.tsx';
-import { SettingsLoader } from '@pages/dashboard/settings/SettingsPage.tsx';
 
 // Lazy-loaded components
 const HomePage = lazy(() => import('@pages/Home.tsx'));
@@ -81,6 +80,7 @@ const router = createBrowserRouter([
    },
    {
       path: 'dashboard',
+      id: 'dashboardPage',
       element: (
          <SuspenseWrapper>
             <DashboardLayout />
@@ -136,7 +136,6 @@ const router = createBrowserRouter([
                   <SettingsPage />
                </SuspenseWrapper>
             ),
-            loader: SettingsLoader,
             children: [
                {
                   path: 'security',

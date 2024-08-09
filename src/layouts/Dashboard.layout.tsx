@@ -24,6 +24,8 @@ import {
 import { useUiStore } from '@services/stores/ui.store.ts';
 
 import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
+import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
+import { User } from '@supabase/supabase-js';
 
 const LayoutContainer = styled.div`
    height: 100vh;
@@ -559,10 +561,21 @@ export default function DashboardLayout() {
    );
 }
 
-export const loader = async () => {
-   const userLoggedIn = useUserLoggedIn();
-   if (!userLoggedIn) {
+export type DashboardPageLoaderResponse = {
+   user: User | null;
+};
+
+export const loader = async (): Promise<
+   DashboardPageLoaderResponse | Response
+> => {
+   const data = await supabaseClient.auth.getUser();
+   const user = data?.data?.user || null;
+
+   if (!user) {
       return redirect('/login');
    }
-   return null;
+
+   return {
+      user,
+   };
 };

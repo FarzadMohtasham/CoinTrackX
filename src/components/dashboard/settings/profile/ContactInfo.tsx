@@ -8,8 +8,7 @@ import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInf
 import Button from '@components/ui/stuff/Button.tsx';
 import { contactInputSchema } from '@schemas/contactInput.schema.ts';
 import { useRouteLoaderData } from 'react-router-dom';
-import { User } from '@supabase/supabase-js';
-import { SettingsPageLoaderResponse } from '@/pages/dashboard/settings/SettingsPage';
+import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
 
 type ValidationErrorT = {
    inner?: ValidationError[];
@@ -55,8 +54,8 @@ const defaultMinChangesNumber = 3;
 
 export default function ContactInfo() {
    const { user } = useRouteLoaderData(
-      'settings',
-   ) as SettingsPageLoaderResponse;
+      'dashboardPage',
+   ) as DashboardPageLoaderResponse;
 
    const defaultContactInfo = {
       displayName: user?.confirmed_at || '',

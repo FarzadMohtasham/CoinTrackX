@@ -13,13 +13,3 @@ export default function SettingsPage(): JSX.Element {
       </SettingsContainer>
    );
 }
-
-export type SettingsPageLoaderResponse = {
-   user: User | null;
-};
-
-export const SettingsLoader = async (): Promise<SettingsPageLoaderResponse> => {
-   const user = await supabaseClient.auth.getUser();
-
-   return { user: user.data.user };
-};
