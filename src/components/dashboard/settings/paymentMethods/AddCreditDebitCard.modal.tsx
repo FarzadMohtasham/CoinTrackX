@@ -176,7 +176,6 @@ export default function AddCreditDebitCardModal(
             <span className={'label'}>Cardholder name</span>
             <Input
                placeHolder={'Enter your Cardholder name'}
-               label={'cardholder-name'}
                iconSrc={null}
                inputValue={cardholderName}
                onChangeHandler={setCardholderName}
