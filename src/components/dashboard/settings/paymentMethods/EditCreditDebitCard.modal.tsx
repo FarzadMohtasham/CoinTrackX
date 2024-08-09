@@ -170,6 +170,9 @@ export default function EditCreditDebitCardModal(
       setActionButtonsDisabled(true);
       try {
          await deleteCreditDebitCard(creditDebitCardInfo.id);
+         queryClient.invalidateQueries({
+            queryKey: ['getCreditDebitCards'],
+         });
          toast.success('Credit/Debit Card Removed');
          onClose();
       } catch (e: PostgrestError | any) {
