@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.108](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.107...v0.0.108) (2024-08-09)
+
+
+### Bug Fixes
+
+* Fixed not updating credit debit cards after deleting ([1129625](https://github.com/FarzadMohtasham/CoinTrackX/commit/11296253122c177f9a354d9ed1af92bedecfb0a1))
+
 ### [0.0.107](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.106...v0.0.107) (2024-08-08)
 
 
