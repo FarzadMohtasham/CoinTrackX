@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.109](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.108...v0.0.109) (2024-08-09)
+
+
+### Bug Fixes
+
+* Deleted input label ([e1871be](https://github.com/FarzadMohtasham/CoinTrackX/commit/e1871be084228921e24d630d3e64b49b02d7b4fa))
+
 ### [0.0.108](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.107...v0.0.108) (2024-08-09)
 
 
