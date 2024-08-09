@@ -1,14 +1,18 @@
-import { JSX } from 'react';
-import { NavLink } from 'react-router-dom';
+import { JSX, useEffect, useState } from 'react';
+import { NavLink, useRouteLoaderData } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
 import Logo from '@components/ui/stuff/Logo.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
 import Icon from '@components/ui/stuff/Icon.tsx';
 
-import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
 import scrollTo from '@utils/scroller.ts';
 import { removeLetter } from '@utils/helpers.ts';
+import Skeleton from 'react-loading-skeleton';
+import { User } from '@supabase/supabase-js';
+import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
+import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
+import useUserLoggedIn from '@/libs/hooks/useUserLoggedIn';
 
 const navItems = [
    {
@@ -135,7 +139,7 @@ const CTABtnText = styled.span<{ $userLoggedIn: boolean }>`
 `;
 
 export default function Header(): JSX.Element {
-   const userLoggedIn = useUserLoggedIn();
+   const { loading, userLoggedIn } = useUserLoggedIn();
 
    return (
       <HeaderStyled>
@@ -162,21 +166,35 @@ export default function Header(): JSX.Element {
             </NavBarStyled>
             <ButtonsCTAStyled className="cta-buttons">
                <NavLink to={'/login'}>
-                  <Button variant={'black'} borderRadius={'lg'} outline>
-                     {userLoggedIn && (
-                        <Icon iconSrc={'dashboard.svg'} width={'20px'} />
-                     )}
-                     <CTABtnText $userLoggedIn={userLoggedIn}>
-                        {userLoggedIn ? 'Go To Dashboard' : 'Login'}
-                     </CTABtnText>
-                  </Button>
-               </NavLink>
-               {!userLoggedIn && (
-                  <NavLink to={'/login'}>
-                     <Button borderRadius={'lg'} hideOn={'mobile'} outline>
-                        Get Started
+                  {loading ? (
+                     <Skeleton width={'150px'} height={'50px'} />
+                  ) : (
+                     <Button variant={'black'} borderRadius={'lg'} outline>
+                        {userLoggedIn && (
+                           <Icon iconSrc={'dashboard.svg'} width={'20px'} />
+                        )}
+                        <CTABtnText $userLoggedIn={userLoggedIn}>
+                           {userLoggedIn ? 'Go To Dashboard' : 'Login'}
+                        </CTABtnText>
                      </Button>
-                  </NavLink>
+                  )}
+               </NavLink>
+               {loading ? (
+                  <Skeleton width={'100px'} height={'50px'} />
+               ) : (
+                  <>
+                     {!userLoggedIn && (
+                        <NavLink to={'/login'}>
+                           <Button
+                              borderRadius={'lg'}
+                              hideOn={'mobile'}
+                              outline
+                           >
+                              Get Started
+                           </Button>
+                        </NavLink>
+                     )}
+                  </>
                )}
             </ButtonsCTAStyled>
          </div>

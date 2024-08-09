@@ -17,14 +17,14 @@ import PostalCodeInput from '@components/ui/inputFields/PostalCode.input.tsx';
 
 import { InputFieldValidator } from '@validations/InputField.validator.ts';
 
-import useUser from '@hooks/useUser';
-
 import { InputFieldValidatorResult } from '@typings/validator/Input.validator.type.ts';
 import { CardNumberProvider } from '@typings/components/CardNumberInput.type.ts';
 import { NotificationOptions } from '@typings/components/Notification.type.ts';
 import { CreditDebitCard } from '@typings/components/CreditDebitCard.type.ts';
 
 import { createCreditDebitCard } from '@services/apis/payment-methods/creditDebitPayments.api.ts';
+import { useRouteLoaderData } from 'react-router-dom';
+import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
 
 type CreditDebitCardModalProps = {
    onClose: () => void;
@@ -75,6 +75,10 @@ const simpleNotifOptions: NotificationOptions = {
 export default function AddCreditDebitCardModal(
    props: CreditDebitCardModalProps,
 ) {
+   const { user } = useRouteLoaderData(
+      'dashboardPage',
+   ) as DashboardPageLoaderResponse;
+
    const [cardholderNameErrorMsg, setCardholderNameErrorMsg] =
       useState<string>('');
 
@@ -106,8 +110,6 @@ export default function AddCreditDebitCardModal(
    const [asMainPaymentMethod, setAsMainPaymentMethods] =
       useState<boolean>(false);
 
-   const user: AuthResponse | null = useUser();
-
    const { mutate, isPending } = useMutation({
       mutationFn: createCreditDebitCard,
       onSuccess: () => {
@@ -131,7 +133,7 @@ export default function AddCreditDebitCardModal(
    });
 
    const cardInfo = {
-      email: user?.user.email || '',
+      email: user?.email,
       cardholder_name: cardholderName,
       card_provider: creditCardProvider,
       card_number: cardNumber,

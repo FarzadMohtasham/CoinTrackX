@@ -23,7 +23,6 @@ import {
 
 import { useUiStore } from '@services/stores/ui.store.ts';
 
-import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
 import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 import { User } from '@supabase/supabase-js';
 

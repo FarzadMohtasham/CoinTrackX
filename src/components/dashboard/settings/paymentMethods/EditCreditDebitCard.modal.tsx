@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { toast } from 'react-hot-toast';
-import { AuthUser, PostgrestError } from '@supabase/supabase-js';
+import { PostgrestError } from '@supabase/supabase-js';
 
 import Input from '@components/ui/inputFields/InputField.input.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
@@ -26,7 +26,8 @@ import { InputFieldValidator } from '@validations/InputField.validator.ts';
 
 import { queryClient } from '@configs/react-query/queryClient.tsx';
 
-import useUser from '@hooks/useUser';
+import { useRouteLoaderData } from 'react-router-dom';
+import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
 
 type EditCreditDebitCardModalProps = {
    onClose: () => void;
@@ -78,6 +79,10 @@ const simpleNotifOptions: NotificationOptions = {
 export default function EditCreditDebitCardModal(
    props: EditCreditDebitCardModalProps,
 ) {
+   const { user } = useRouteLoaderData(
+      'dashboardPage',
+   ) as DashboardPageLoaderResponse;
+
    const { creditDebitCardInfo, onClose } = props;
 
    const [cardholderNameErrorMsg, setCardholderNameErrorMsg] =
@@ -113,11 +118,8 @@ export default function EditCreditDebitCardModal(
 
    const [actionButtonsDisabled, setActionButtonsDisabled] = useState(false);
 
-   // @ts-ignore
-   const { user }: { user: AuthUser } = useUser();
-
    const cardInfo = {
-      email: user.email,
+      email: user?.email,
       cardholder_name: cardholderName,
       card_provider: creditCardProvider,
       card_number: cardNumber,

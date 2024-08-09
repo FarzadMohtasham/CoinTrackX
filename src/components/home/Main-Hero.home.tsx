@@ -1,11 +1,12 @@
-import { JSX } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import { css, styled } from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useRouteLoaderData } from 'react-router-dom';
 
 import Heading from '@components/ui/stuff/Heading.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
 import Container from '@components/ui/stuff/Container.tsx';
-import useUserLoggedIn from '@hooks/useUserLoggedIn.ts';
+import Skeleton from 'react-loading-skeleton';
+import useUserLoggedIn from '@/libs/hooks/useUserLoggedIn';
 
 const HeroStyled = styled.section`
    display: flex;
@@ -82,7 +83,7 @@ const HeroStyled = styled.section`
 `;
 
 export default function Hero(): JSX.Element {
-   const userLoggedIn: boolean = useUserLoggedIn();
+   const { loading, userLoggedIn } = useUserLoggedIn();
 
    return (
       <Container
@@ -100,11 +101,15 @@ export default function Hero(): JSX.Element {
                   Track your crypto currency coin and tokens in one place, from
                   BTC and ETH to XRP...
                </p>
-               <Link to={'login'}>
-                  <Button borderRadius={'lg'}>
-                     {userLoggedIn ? 'Dashboard' : 'Get Started'}
-                  </Button>
-               </Link>
+               {loading ? (
+                  <Skeleton width={'120px'} height={'50px'} />
+               ) : (
+                  <Link to={'login'}>
+                     <Button borderRadius={'lg'}>
+                        {userLoggedIn ? 'Dashboard' : 'Get Started'}
+                     </Button>
+                  </Link>
+               )}
             </div>
 
             <div className={'right-col'}>
