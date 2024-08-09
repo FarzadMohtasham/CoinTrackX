@@ -134,46 +134,49 @@ const router = createBrowserRouter([
                   <SettingsPage />
                </SuspenseWrapper>
             ),
-         },
-         {
-            path: 'settings/security',
-            element: (
-               <SuspenseWrapper>
-                  <SecurityPage />
-               </SuspenseWrapper>
-            ),
-         },
-         {
-            path: 'settings/payment-methods',
-            element: (
-               <SuspenseWrapper>
-                  <PaymentMethodsPage />
-               </SuspenseWrapper>
-            ),
-         },
-         {
-            path: 'settings/profile',
-            element: (
-               <SuspenseWrapper>
-                  <ProfilePage />
-               </SuspenseWrapper>
-            ),
-         },
-         {
-            path: 'settings/preferences',
-            element: (
-               <SuspenseWrapper>
-                  <PreferencesPage />
-               </SuspenseWrapper>
-            ),
-         },
-         {
-            path: 'settings/password',
-            element: (
-               <SuspenseWrapper>
-                  <PasswordPage />
-               </SuspenseWrapper>
-            ),
+            children: [
+               {
+                  path: 'security',
+                  element: (
+                     <SuspenseWrapper>
+                        <SecurityPage />
+                     </SuspenseWrapper>
+                  ),
+                  index: true,
+               },
+               {
+                  path: 'payment-methods',
+                  element: (
+                     <SuspenseWrapper>
+                        <PaymentMethodsPage />
+                     </SuspenseWrapper>
+                  ),
+               },
+               {
+                  path: 'profile',
+                  element: (
+                     <SuspenseWrapper>
+                        <ProfilePage />
+                     </SuspenseWrapper>
+                  ),
+               },
+               {
+                  path: 'preferences',
+                  element: (
+                     <SuspenseWrapper>
+                        <PreferencesPage />
+                     </SuspenseWrapper>
+                  ),
+               },
+               {
+                  path: 'password',
+                  element: (
+                     <SuspenseWrapper>
+                        <PasswordPage />
+                     </SuspenseWrapper>
+                  ),
+               },
+            ],
          },
       ],
    },
