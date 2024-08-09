@@ -7,7 +7,9 @@ import UploadProfilePhoto from '@components/dashboard/settings/profile/ContactIn
 import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInfo_UpdateContactInfo.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
 import { contactInputSchema } from '@schemas/contactInput.schema.ts';
-import useUser from '@hooks/useUser.ts';
+import { useRouteLoaderData } from 'react-router-dom';
+import { User } from '@supabase/supabase-js';
+import { SettingsPageLoaderResponse } from '@/pages/dashboard/settings/SettingsPage';
 
 type ValidationErrorT = {
    inner?: ValidationError[];
@@ -52,10 +54,13 @@ const ActionsContainer = styled.div`
 const defaultMinChangesNumber = 3;
 
 export default function ContactInfo() {
-   const user = useUser();
+   const { user } = useRouteLoaderData(
+      'settings',
+   ) as SettingsPageLoaderResponse;
+
    const defaultContactInfo = {
-      displayName: user?.user.confirmed_at || '',
-      email: user?.user.email || '',
+      displayName: user?.confirmed_at || '',
+      email: user?.email || '',
    };
 
    const [displayName, setDisplayName] = useState<string>(

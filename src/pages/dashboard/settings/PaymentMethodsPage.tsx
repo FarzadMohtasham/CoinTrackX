@@ -27,6 +27,8 @@ import { CreditDebitCard as CreditDebitCardT } from '@typings/components/CreditD
 import AddCreditDebitCardModal from '@components/dashboard/settings/paymentMethods/AddCreditDebitCard.modal.tsx';
 import AddCreditDebitCard from '@components/ui/cards/AddCreditDebit.card.tsx';
 import useGetCreditDebitCardsQuery from '@queries/paymentMethods/useGetCreditDebitCards.query.ts';
+import { useLoaderData, useRouteLoaderData } from 'react-router-dom';
+import { User } from '@supabase/supabase-js';
 
 const NoPaymentMethodContainer = styled.div`
    display: grid;
