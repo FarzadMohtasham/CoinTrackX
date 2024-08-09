@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.112](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.111...v0.0.112) (2024-08-09)
+
+
+### Bug Fixes
+
+* authUser Loader moved to DashboardPage loader ([5f2fc0b](https://github.com/FarzadMohtasham/CoinTrackX/commit/5f2fc0bef7df5ec84e39586950433dd64d2c7aba))
+
 ### [0.0.111](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.110...v0.0.111) (2024-08-09)
 
 
