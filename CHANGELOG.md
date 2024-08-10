@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.114](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.113...v0.0.114) (2024-08-10)
+
+
+### Features
+
+* Added supabase authStateChanges listener ([bb98e87](https://github.com/FarzadMohtasham/CoinTrackX/commit/bb98e87d409ce6130437ada4c02830574dc573d6))
+
 ### [0.0.113](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.112...v0.0.113) (2024-08-09)
 
 ### [0.0.112](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.111...v0.0.112) (2024-08-09)
