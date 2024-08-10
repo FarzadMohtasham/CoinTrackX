@@ -79,6 +79,7 @@ export default function PasswordFieldInput(props: InputProps): JSX.Element {
          <PasswordFieldContainer
             $inputIsActive={passwordFieldSelected}
             $hasError={false}
+            $disabled={false}
          >
             {!passwordFieldSelected && (
                <Icon width={iconWidth} iconSrc={iconSrc || ''} />

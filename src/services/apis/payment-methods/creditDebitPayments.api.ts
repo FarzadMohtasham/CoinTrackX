@@ -1,4 +1,4 @@
-import { AuthUser, PostgrestError } from '@supabase/supabase-js';
+import { PostgrestError } from '@supabase/supabase-js';
 
 import {
    supabaseClient as supabase,

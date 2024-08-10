@@ -1,5 +1,5 @@
-import { JSX, useEffect, useState } from 'react';
-import { NavLink, useRouteLoaderData } from 'react-router-dom';
+import { JSX } from 'react';
+import { NavLink } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
 import Logo from '@components/ui/stuff/Logo.tsx';
@@ -9,9 +9,6 @@ import Icon from '@components/ui/stuff/Icon.tsx';
 import scrollTo from '@utils/scroller.ts';
 import { removeLetter } from '@utils/helpers.ts';
 import Skeleton from 'react-loading-skeleton';
-import { User } from '@supabase/supabase-js';
-import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
-import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 import useUserLoggedIn from '@/libs/hooks/useUserLoggedIn';
 
 const navItems = [

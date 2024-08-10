@@ -1,6 +1,6 @@
-import { JSX, useEffect, useState } from 'react';
+import { JSX } from 'react';
 import { css, styled } from 'styled-components';
-import { Link, useRouteLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Heading from '@components/ui/stuff/Heading.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
