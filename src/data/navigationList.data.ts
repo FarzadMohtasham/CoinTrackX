@@ -83,4 +83,12 @@ export const NavigationListData: NavigationItemType[] = [
          },
       ],
    },
+   {
+      name: 'logout',
+      title: 'Logout',
+      link: '/dashboard/logout',
+      iconSrc: '/icon-pack-1/interface/outline/logout-01.svg',
+      activeIconSrc: '/icon-pack-1/interface/outline/logout-01-active.svg',
+      active: false,
+   },
 ];

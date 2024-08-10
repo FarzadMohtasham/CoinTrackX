@@ -46,6 +46,9 @@ const PreferencesPage = lazy(
 const PasswordPage = lazy(
    () => import('@pages/dashboard/settings/PasswordPage.tsx'),
 );
+const LogoutPage = lazy(
+   () => import('@pages/dashboard/logout/Logout.page.tsx'),
+);
 
 const SuspenseWrapper = ({ children }: { children: ReactNode }) => (
    <Suspense fallback={<LazyRouteFallbackLoading />}>{children}</Suspense>
@@ -179,6 +182,14 @@ const router = createBrowserRouter([
                   ),
                },
             ],
+         },
+         {
+            path: 'logout',
+            element: (
+               <SuspenseWrapper>
+                  <LogoutPage />
+               </SuspenseWrapper>
+            ),
          },
       ],
    },
