@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.117](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.116...v0.0.117) (2024-08-10)
+
+
+### Features
+
+* Added Signout ([5365f80](https://github.com/FarzadMohtasham/CoinTrackX/commit/5365f80ed36f50bb7a3de66b298c534bf052d11b))
+
 ### [0.0.116](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.115...v0.0.116) (2024-08-10)
 
 
