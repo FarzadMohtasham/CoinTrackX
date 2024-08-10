@@ -28,7 +28,7 @@ const reviewsList: ReviewType[] = [
    },
    {
       numberOfStars: 4,
-      quote: '“Best customer service so far. Amazing in.html all areas best centralized exchange.”',
+      quote: '“Best customer service so far. Amazing in all areas best centralized exchange.”',
       author: {
          imgSrc: '/images/review3.author.home.png',
          name: 'Savanna Bridgers',

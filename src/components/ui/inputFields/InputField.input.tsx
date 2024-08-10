@@ -113,6 +113,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
       minLength = 0,
       hasError = false,
       disabled = false,
+      showLabel = true,
    } = props;
 
    const [inputFieldIsActive, setInputFieldIsActive] = useState<boolean>(false);
@@ -135,7 +136,7 @@ function Input(props: InputProps, ref: Ref<InputRefProps>): JSX.Element {
 
    return (
       <FieldContainer>
-         {label && <FieldLabel>{label}</FieldLabel>}
+         {label && showLabel && <FieldLabel>{label}</FieldLabel>}
          <InputFieldContainer
             $inputIsActive={inputFieldIsActive}
             $hasError={hasError}

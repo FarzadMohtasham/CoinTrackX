@@ -28,7 +28,7 @@ export default function Platform(): JSX.Element {
                label={'platform'}
                heading={'Get a bird’s eye view of your crypto assets growing!'}
                desc={
-                  'With a easy-to-use user interface, you can check your tokens and coins profit/loss in.html less than 3 seconds, That’s true'
+                  'With a easy-to-use user interface, you can check your tokens and coins profit/loss in less than 3 seconds, That’s true'
                }
             />
 

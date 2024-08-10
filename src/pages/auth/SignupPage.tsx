@@ -19,7 +19,7 @@ import {
    AuthLink,
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
-} from '@pages/auth/AuthShared';
+} from '@/pages/auth/AuthShared.styled';
 import { SignupValidationResult } from '@typings/validator/Auth.validator.type.ts';
 import useLocaleStorage from '@hooks/useLocaleStorage.ts';
 
@@ -221,9 +221,10 @@ export default function SignupPage(): JSX.Element {
                <div className={'name-inputs-wrapper'}>
                   <InputField
                      inputValue={firstName}
+                     label="firstname"
+                     showLabel={false}
                      onChangeHandler={setFirstName}
                      placeHolder={'First name'}
-                     label={'first-name'}
                      iconSrc={'user-icon.svg'}
                      focusIconSrc={'user-focus-icon.svg'}
                      errorMessage={firstNameFieldError}
@@ -231,9 +232,10 @@ export default function SignupPage(): JSX.Element {
                   />
                   <InputField
                      inputValue={lastName}
+                     label="lastname"
+                     showLabel={false}
                      onChangeHandler={setLastName}
                      placeHolder={'Last name'}
-                     label={'last-name'}
                      iconSrc={'user-icon.svg'}
                      focusIconSrc={'user-focus-icon.svg'}
                      errorMessage={lastNameFieldError}
@@ -242,9 +244,10 @@ export default function SignupPage(): JSX.Element {
                </div>
                <InputField
                   inputValue={email}
+                  label="email"
+                  showLabel={false}
                   onChangeHandler={setEmail}
                   placeHolder={'email'}
-                  label={'email'}
                   iconSrc={'email-icon.svg'}
                   focusIconSrc={'email-focus-icon.svg'}
                   errorMessage={emailFieldError}

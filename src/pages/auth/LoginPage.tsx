@@ -19,7 +19,7 @@ import {
    AuthLink,
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
-} from './AuthShared.tsx';
+} from './AuthShared.styled.tsx';
 import useLocaleStorage from '@hooks/useLocaleStorage.ts';
 
 const Container = styled(AuthContainer)``;
@@ -46,7 +46,7 @@ export default function LoginPage(): JSX.Element {
       try {
          // const data = await login(email, password)
          await login(email, password);
-         toast.success('Good, Sign in.html was successful!');
+         toast.success('Signed successfully!');
          navigate('/dashboard', {
             replace: true,
          });
@@ -151,6 +151,7 @@ export default function LoginPage(): JSX.Element {
                   onChangeHandler={setEmail}
                   placeHolder={'email'}
                   label={'email'}
+                  showLabel={false}
                   iconSrc={'email-icon.svg'}
                   focusIconSrc={'email-focus-icon.svg'}
                   errorMessage={emailFieldError}

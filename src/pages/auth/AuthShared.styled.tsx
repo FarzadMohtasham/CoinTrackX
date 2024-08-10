@@ -15,21 +15,31 @@ export const AuthInnerWrapper = styled.div`
 
    /*Very Small devices (landscape phones, 274px and up)*/
    @media screen and (min-width: ${(props) => props.theme.breakpoints.xsm}) {
-      width: 70dvw;
+      width: 95dvw;
    }
 
    /*Small devices (landscape phones, 576px and up)*/
    @media screen and (min-width: ${(props) => props.theme.breakpoints.sm}) {
-      width: 57dvw;
+      width: 85dvw;
    }
 
    /*Medium devices (tablets, 768px and up)*/
    @media screen and (min-width: ${(props) => props.theme.breakpoints.md}) {
-      width: 45dvw;
+      width: 60dvw;
    }
 
    /*Large devices (desktops, 992px and up)*/
    @media screen and (min-width: ${(props) => props.theme.breakpoints.lg}) {
+      width: 50dvw;
+   }
+
+   /*X Large devices (desktops, 992px and up)*/
+   @media screen and (min-width: ${(props) => props.theme.breakpoints.xl}) {
+      width: 40dvw;
+   }
+
+   /*X Large devices (desktops, 992px and up)*/
+   @media screen and (min-width: ${(props) => props.theme.breakpoints.xxl}) {
       width: 30dvw;
    }
 `;
