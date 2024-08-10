@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate, useRouteLoaderData } from 'react-router-dom';
+import { format } from 'date-fns';
 
 import Button from '@/components/ui/stuff/Button';
+import Heading from '@/components/ui/stuff/Heading';
 
 import useSignout from '@/libs/hooks/useSignout';
 
@@ -36,6 +38,10 @@ const CardWrapper = styled.div`
    .back-to-dashboard {
       width: 100%;
    }
+
+   .last-login-time {
+      text-align: center;
+   }
 `;
 
 export default function LogoutPage() {
@@ -66,6 +72,8 @@ export default function LogoutPage() {
                   alt="message-in-a-bottle"
                />
             </div>
+            <Heading className="title" tagName='h5' fontWeight='bold'>Oh, Do you want to logout?</Heading>
+            <br />
             <Button
                borderRadius="lg"
                variant="danger"
@@ -73,7 +81,7 @@ export default function LogoutPage() {
                disabled={isLoading}
                expanded
             >
-               Yes, Log me out
+               Yes, Log me out please
             </Button>
             <Button
                borderRadius="lg"
@@ -86,7 +94,9 @@ export default function LogoutPage() {
                No, Back to Dashboard
             </Button>
 
-            <span className="last-login-time">last Login: {}</span>
+            <span className="last-login-time">
+               Last login: {format(String(user?.last_sign_in_at), 'PPPPp')}
+            </span>
          </CardWrapper>
       </LogoutContainer>
    );
