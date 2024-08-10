@@ -1,9 +1,12 @@
-import Button from '@/components/ui/stuff/Button';
-import Heading from '@/components/ui/stuff/Heading';
-import useSignout from '@/libs/hooks/useSignout';
-import useAuth from '@/libs/hooks/useSignout';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate, useRouteLoaderData } from 'react-router-dom';
+
+import Button from '@/components/ui/stuff/Button';
+
+import useSignout from '@/libs/hooks/useSignout';
+
+import { DashboardPageLoaderResponse } from '../../../layouts/Dashboard.layout';
 
 const LogoutContainer = styled.div`
    width: 100%;
@@ -36,9 +39,23 @@ const CardWrapper = styled.div`
 `;
 
 export default function LogoutPage() {
+   const { user } = useRouteLoaderData(
+      'dashboardPage',
+   ) as DashboardPageLoaderResponse;
+   const navigate = useNavigate();
    const { signout } = useSignout();
 
-   const onSignoutClick = () => signout();
+   const [isLoading, setIsLoading] = useState(false);
+
+   const onSignoutClick = () => {
+      setIsLoading(true);
+      setTimeout(() => {
+         signout();
+         setIsLoading(false);
+      }, 1000);
+   };
+
+   const backToDashboard = () => navigate('/dashboard');
 
    return (
       <LogoutContainer>
@@ -46,22 +63,30 @@ export default function LogoutPage() {
             <div className="img-wrapper">
                <img
                   src="/images/illustrations/message-in-a-bottle.svg"
-                  alt=""
+                  alt="message-in-a-bottle"
                />
             </div>
             <Button
                borderRadius="lg"
-               variant="black"
+               variant="danger"
                onClickHandler={onSignoutClick}
+               disabled={isLoading}
                expanded
             >
-               Logout
+               Yes, Log me out
             </Button>
-            <Link to={'/dashboard'} className="back-to-dashboard">
-               <Button borderRadius="lg" variant="black" outline expanded>
-                  Back to Dashboard
-               </Button>
-            </Link>
+            <Button
+               borderRadius="lg"
+               variant="black"
+               onClickHandler={backToDashboard}
+               disabled={isLoading}
+               outline
+               expanded
+            >
+               No, Back to Dashboard
+            </Button>
+
+            <span className="last-login-time">last Login: {}</span>
          </CardWrapper>
       </LogoutContainer>
    );

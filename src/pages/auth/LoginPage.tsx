@@ -7,7 +7,7 @@ import Heading from '@components/ui/stuff/Heading.tsx';
 import Button from '@components/ui/stuff/Button.tsx';
 import Separator from '@components/ui/stuff/Separator.tsx';
 import InputField from '@components/ui/inputFields/InputField.input.tsx';
-import PasswordFieldInput from '@components/ui/inputFields/PasswordField.input.tsx';
+import PasswordInputField from '@components/ui/inputFields/PasswordField.input.tsx';
 import CheckboxInput from '@components/ui/inputFields/Checkbox.input.tsx';
 
 import { loginInputValidator } from '@validations/login.validator.ts';
@@ -157,7 +157,7 @@ export default function LoginPage(): JSX.Element {
                   errorMessage={emailFieldError}
                   unAllowedErrorMessages={['email is a required field']}
                />
-               <PasswordFieldInput
+               <PasswordInputField
                   inputValue={password}
                   onChangeHandler={setPassword}
                   placeHolder={'Password'}

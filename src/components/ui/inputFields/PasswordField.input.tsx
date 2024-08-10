@@ -50,7 +50,7 @@ const ErrorContainer = styled.span`
    color: var(--color-danger);
 `;
 
-export default function PasswordFieldInput(props: InputProps): JSX.Element {
+export default function PasswordInputField(props: InputProps): JSX.Element {
    const [passwordFieldSelected, setInputFieldSelected] =
       useState<boolean>(false);
    const [passwordValue, setPasswordValue] = useState<string>('');

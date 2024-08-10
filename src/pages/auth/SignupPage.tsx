@@ -8,10 +8,12 @@ import Button from '@components/ui/stuff/Button.tsx';
 import Separator from '@components/ui/stuff/Separator.tsx';
 import InputField from '@components/ui/inputFields/InputField.input.tsx';
 import CheckboxInput from '@components/ui/inputFields/Checkbox.input.tsx';
-import PasswordFieldInput from '@components/ui/inputFields/PasswordField.input.tsx';
+import PasswordInputField from '@components/ui/inputFields/PasswordField.input.tsx';
 
+import { SignupValidationResult } from '@typings/validator/Auth.validator.type.ts';
 import { signupInputValidator } from '@validations/signup.validator.ts';
 import { signup } from '@services/apis/auth/auth.api.ts';
+import useLocaleStorage from '@hooks/useLocaleStorage.ts';
 
 import {
    AuthContainer,
@@ -20,8 +22,6 @@ import {
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
 } from '@/pages/auth/AuthShared.styled';
-import { SignupValidationResult } from '@typings/validator/Auth.validator.type.ts';
-import useLocaleStorage from '@hooks/useLocaleStorage.ts';
 
 const LoginContainer = styled(AuthContainer)``;
 const LoginWrapper = styled(AuthInnerWrapper)``;
@@ -253,7 +253,7 @@ export default function SignupPage(): JSX.Element {
                   errorMessage={emailFieldError}
                   unAllowedErrorMessages={['email is a required field']}
                />
-               <PasswordFieldInput
+               <PasswordInputField
                   inputValue={password}
                   onChangeHandler={setPassword}
                   placeHolder={'Password'}
