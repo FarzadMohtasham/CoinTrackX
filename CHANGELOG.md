@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.118](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.117...v0.0.118) (2024-08-10)
+
+
+### Features
+
+* Developed structure of PasswordPage + Bug fix Logout and Password Input component ([915bcad](https://github.com/FarzadMohtasham/CoinTrackX/commit/915bcad6bb581ce4421c8f85a80ae38cacca9b1a))
+
+
+### Bug Fixes
+
+* Bug fixed ([026d790](https://github.com/FarzadMohtasham/CoinTrackX/commit/026d7903208774cbd86709b32216da2b1749b3ab))
+
 ### [0.0.117](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.116...v0.0.117) (2024-08-10)
 
 
