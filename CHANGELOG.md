@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.115](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.114...v0.0.115) (2024-08-10)
+
+
+### Bug Fixes
+
+* Removed unused variables and imports ([b3917cd](https://github.com/FarzadMohtasham/CoinTrackX/commit/b3917cdb21f097a7197be791ec1f644986cd5bcb))
+
 ### [0.0.114](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.113...v0.0.114) (2024-08-10)
 
 
