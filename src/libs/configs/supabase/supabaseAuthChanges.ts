@@ -2,7 +2,7 @@ import { AuthChangeEvent, Session } from '@supabase/supabase-js';
 import { supabaseClient } from './supabaseConfig';
 
 const {} = supabaseClient.auth.onAuthStateChange(
-   (event: AuthChangeEvent, session: Session | null) => {
+   (event: AuthChangeEvent, _: Session | null) => {
       switch (event) {
          case 'INITIAL_SESSION':
             // handle initial session
