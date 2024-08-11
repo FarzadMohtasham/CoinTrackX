@@ -55,9 +55,9 @@ export default function LogoutPage() {
 
    const onSignoutClick = () => {
       setIsLoading(true);
-      setTimeout(() => {
-         signout();
-         setIsLoading(false);
+      setTimeout(async () => {
+         const { error } = await signout();
+         if (error) setIsLoading(false);
       }, 1000);
    };
 
