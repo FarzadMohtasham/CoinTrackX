@@ -34,6 +34,7 @@ const ContentWrapper = styled.div`
    .header-wrapper {
       .heading {
          margin-bottom: 10px;
+         font-weight: 500;
       }
 
       .desc {
@@ -132,7 +133,7 @@ export default function PasswordPage() {
       <Container>
          <ContentWrapper>
             <div className="header-wrapper">
-               <Heading tagName="h4" className="heading">
+               <Heading tagName="h5" className="heading">
                   Change password
                </Heading>
                <span className="desc">

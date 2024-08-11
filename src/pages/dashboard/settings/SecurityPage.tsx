@@ -4,9 +4,10 @@ import { Switch, Tooltip } from '@chakra-ui/react';
 
 import PhoneNumberInput from '@components/ui/inputFields/PhoneNumber.input.tsx';
 import Icon from '@components/ui/stuff/Icon.tsx';
+import Heading from '@/components/ui/stuff/Heading';
 
 const SecurityPageContainer = styled.div`
-   padding: 40px;
+   padding: 15px;
    display: flex;
    flex-direction: column;
    gap: 30px;
@@ -18,9 +19,7 @@ const PhoneNumberWrapper = styled.div`
    gap: 20px;
 
    div.heading-wrapper {
-      span.title {
-         display: block;
-         font-size: var(--font-size-body-md);
+      .title {
          font-weight: 500;
       }
 
@@ -34,9 +33,9 @@ const PhoneNumberWrapper = styled.div`
    div.input-wrapper {
       border: 1px solid var(--color-black-100);
       border-radius: 10px;
-      padding: 30px;
+      padding: 20px;
 
-      span.title {
+      span.input-title {
          font-size: var(--font-size-body-sm);
          font-weight: 500;
          display: block;
@@ -51,9 +50,7 @@ const TwoStepVerificationWrapper = styled.div`
    gap: 20px;
 
    div.heading-wrapper {
-      span.title {
-         display: block;
-         font-size: var(--font-size-body-md);
+      .title {
          font-weight: 500;
       }
 
@@ -70,7 +67,7 @@ const TwoStepVerificationWrapper = styled.div`
       gap: 32px;
       border: 1px solid var(--color-black-100);
       border-radius: 10px;
-      padding: 30px;
+      padding: 20px;
 
       div.step2-auth-option {
          display: flex;
@@ -113,19 +110,23 @@ export default function SecurityPage() {
       <SecurityPageContainer>
          <PhoneNumberWrapper>
             <div className="heading-wrapper">
-               <span className={'title'}>Phone number</span>
+               <Heading tagName="h6" className={'title'}>
+                  Phone number
+               </Heading>
                <span className={'desc'}>Keep your phone number up-to-date</span>
             </div>
 
             <div className="input-wrapper">
-               <span className={'title'}>Phone number</span>
+               <span className={'input-title'}>Phone number</span>
                <PhoneNumberInput dispatchFn={setPhoneNumber} />
             </div>
          </PhoneNumberWrapper>
 
          <TwoStepVerificationWrapper>
             <div className="heading-wrapper">
-               <span className={'title'}>Two-step verification</span>
+               <Heading tagName="h6" className={'title'}>
+                  Two-step verification
+               </Heading>
                <span className={'desc'}>Keep your phone number up-to-date</span>
             </div>
 
