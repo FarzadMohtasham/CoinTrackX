@@ -59,6 +59,7 @@ export const getCreditDebitCards = async (): Promise<any> => {
          .from('creditDebitCards')
          .select('*')
          // Filters
+         .eq('user_id', userData.user?.id)
          .eq('email', userData.user?.email);
 
    if (error) throw error;
@@ -89,6 +90,7 @@ export const updateCreditDebitCard = async (
             postal_code: newCreditDebitCardInfo.postal_code,
             as_main_payment: newCreditDebitCardInfo.as_main_payment,
          })
+         .eq('user_id', userData.user?.id)
          .eq('id', id)
          .eq('email', userData.user?.email)
          .select();
@@ -105,6 +107,7 @@ export const deleteCreditDebitCard = async (id: number): Promise<any> => {
    const { error }: { error: PostgrestError | null } = await supabase
       .from('creditDebitCards')
       .delete()
+      .eq('user_id', userData.user?.id)
       .eq('id', id)
       .eq('email', userData.user?.email);
 
