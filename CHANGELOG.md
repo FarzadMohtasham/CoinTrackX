@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.122](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.121...v0.0.122) (2024-08-11)
+
+
+### Features
+
+* Developed PasswordPage ([f2e9494](https://github.com/FarzadMohtasham/CoinTrackX/commit/f2e9494c732df97f7f7e41c12a1c3d5a5ff12679))
+
 ### [0.0.121](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.120...v0.0.121) (2024-08-11)
 
 
