@@ -21,12 +21,19 @@ import {
    MainContent as MainContentStyled,
 } from './AuthShared.styled.tsx';
 import useLocaleStorage from '@hooks/useLocaleStorage.ts';
+import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig.ts';
+import { useMutation } from '@tanstack/react-query';
 
 const Container = styled(AuthContainer)``;
 const Wrapper = styled(AuthInnerWrapper)``;
 const HeadContent = styled(HeadContentStyled)``;
 const MainContent = styled(MainContentStyled)``;
 const SingUpLink = styled(AuthLink)``;
+
+const redirectToUrlAfterAuth =
+   import.meta.env.VITE_NODE_ENV === 'development'
+      ? 'http://localhost:3000/dashboard'
+      : 'https://coin-track-x.vercel.app/dashboard';
 
 export default function LoginPage(): JSX.Element {
    const [email, setEmail] = useState<string>('');
@@ -36,13 +43,32 @@ export default function LoginPage(): JSX.Element {
       null,
    );
    const [_, setRememberMe] = useState<boolean>(false);
-
-   const [authLoading, setAuthLoading] = useState<boolean>(false);
+   const [authIsLoading, setAuthIsLoading] = useState<boolean>(false);
 
    const navigate = useNavigate();
 
+   const { mutateAsync: githubLoginMutation } = useMutation({
+      mutationFn: async () => {
+         await supabaseClient.auth.signInWithOAuth({
+            provider: 'github',
+            options: {
+               redirectTo: redirectToUrlAfterAuth,
+            },
+         });
+      },
+      onMutate: () => {
+         setAuthIsLoading(true);
+      },
+      onError: () => {
+         toast.error('Failed to login with Github, Please try again.');
+      },
+      onSettled: () => {
+         setAuthIsLoading(false);
+      },
+   });
+
    const onLoginHandler = async (): Promise<void> => {
-      setAuthLoading(true);
+      setAuthIsLoading(true);
       try {
          // const data = await login(email, password)
          await login(email, password);
@@ -53,20 +79,7 @@ export default function LoginPage(): JSX.Element {
       } catch (e: string | any) {
          toast.error(e.toString());
       }
-      setAuthLoading(false);
-   };
-
-   const onGoogleAuthHandler = (): void => {
-      toast.error('Google Auth service will add soon...', {
-         icon: (
-            <img
-               src={'/icons/google-logo.png'}
-               width={15}
-               height={15}
-               alt={'google icon'}
-            />
-         ),
-      });
+      setAuthIsLoading(false);
    };
 
    const onAppleAuthHandler = (): void => {
@@ -125,14 +138,15 @@ export default function LoginPage(): JSX.Element {
             <MainContent>
                <div className={'google-apple-login'}>
                   <Button
+                     borderRadius={'lg'}
+                     onClickHandler={githubLoginMutation}
+                     icon={'github-logo.svg'}
+                     variant={'black'}
+                     disabled={authIsLoading}
                      expanded
                      outline
-                     borderRadius={'lg'}
-                     onClickHandler={onGoogleAuthHandler}
-                     icon={'google-logo.png'}
-                     variant={'black'}
                   >
-                     Google
+                     Github
                   </Button>
                   <Button
                      expanded
@@ -177,7 +191,7 @@ export default function LoginPage(): JSX.Element {
                      emailFieldError !== null || passwordFieldError !== null
                   }
                   onClickHandler={onLoginHandler}
-                  isLoading={authLoading}
+                  isLoading={authIsLoading}
                   expanded
                >
                   Log in
