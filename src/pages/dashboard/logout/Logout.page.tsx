@@ -8,7 +8,7 @@ import Heading from '@/components/ui/stuff/Heading';
 
 import useSignout from '@/libs/hooks/useSignout';
 
-import { DashboardPageLoaderResponse } from '../../../layouts/Dashboard.layout';
+import { DashboardPageLoaderResponse } from '@layouts/Dashboard.layout';
 
 const LogoutContainer = styled.div`
    width: 100%;
@@ -72,7 +72,9 @@ export default function LogoutPage() {
                   alt="message-in-a-bottle"
                />
             </div>
-            <Heading className="title" tagName='h5' fontWeight='bold'>Oh, Do you want to logout?</Heading>
+            <Heading className="title" tagName="h5" fontWeight="bold">
+               Oh, Do you want to logout?
+            </Heading>
             <br />
             <Button
                borderRadius="lg"
