@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import PasswordInputField from '@/components/ui/inputFields/PasswordField.input';
 import Button from '@/components/ui/stuff/Button';
 import toast from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
+import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
+import * as Yup from 'yup';
+import Heading from '@/components/ui/stuff/Heading';
+import {
+   Alert,
+   AlertDescription,
+   AlertIcon,
+   AlertTitle,
+} from '@chakra-ui/react';
 
 const Container = styled.div`
    padding: 10px;
@@ -16,7 +26,19 @@ const Container = styled.div`
 `;
 
 const ContentWrapper = styled.div`
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   gap: 30px;
+
    .header-wrapper {
+      .heading {
+         margin-bottom: 10px;
+      }
+
+      .desc {
+         font-size: var(--font-size-body-md);
+      }
    }
 
    .input-fields-wrapper {
@@ -39,17 +61,95 @@ const ContentWrapper = styled.div`
 export default function PasswordPage() {
    const [newPassword, setNewPassword] = useState<string>('');
    const [confirmNewPassword, setConfirmNewPassword] = useState<string>('');
+   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-   const onPasswordChangeClick = () => {
-      toast.success('changed!');
+   const { mutateAsync: changePasswordMutation } = useMutation({
+      mutationFn: async () => {
+         await supabaseClient.auth.updateUser({
+            password: newPassword,
+         });
+      },
+      onSuccess: () => {
+         toast.success('Password changed successfully');
+      },
+      onError: ({ message }) => {
+         toast.error(message);
+      },
+   });
+
+   const onPasswordChangeClick = async () => {
+      changePasswordMutation();
    };
+
+   const validateNewPassword = async (): Promise<{
+      isValid: boolean;
+      message: string | null;
+   }> => {
+      try {
+         const passwordValidationSchema = Yup.object().shape({
+            newPassword: Yup.string()
+               .required('New password field is required')
+               .min(8, 'Password length cannot be lower than 8')
+               .max(24, 'Password length cannot be more than 24'),
+            confirmNewPassword: Yup.string()
+               .required('Confirm new password field is required')
+               .min(8, 'Password length cannot be lower than 8')
+               .max(24, 'Password length cannot be more than 24')
+               .oneOf([Yup.ref('newPassword')], 'Passwords must match'),
+         });
+
+         await passwordValidationSchema.validate({
+            newPassword,
+            confirmNewPassword,
+         });
+
+         return {
+            isValid: true,
+            message: null,
+         };
+      } catch (err: unknown) {
+         const error = err as Yup.ValidationError;
+
+         return {
+            isValid: false,
+            message: error.message,
+         };
+      }
+   };
+
+   useEffect(() => {
+      validateNewPassword().then((validationResult) => {
+         const { isValid, message: validationErrorMsg } = validationResult;
+         if (!isValid) {
+            setErrorMessage(validationErrorMsg);
+            return;
+         }
+         setErrorMessage(null);
+      });
+   }, [newPassword, confirmNewPassword]);
 
    return (
       <Container>
          <ContentWrapper>
-            <div className="header-wrapper"></div>
+            <div className="header-wrapper">
+               <Heading tagName="h4" className="heading">
+                  Change password
+               </Heading>
+               <span className="desc">
+                  Remember not to store your password in your email or cloud and
+                  don't share it with anyone
+               </span>
+            </div>
 
             <div className="input-fields-wrapper">
+               {errorMessage && (
+                  <Alert status="error">
+                     <AlertIcon />
+                     <AlertTitle>Error!</AlertTitle>
+                     <AlertDescription>{errorMessage}</AlertDescription>
+                  </Alert>
+               )}
+
                <div className="input-field">
                   <span className="input-label">New Password</span>
                   <PasswordInputField
@@ -72,7 +172,7 @@ export default function PasswordPage() {
 
                <Button
                   onClickHandler={onPasswordChangeClick}
-                  disabled={false}
+                  disabled={errorMessage ? true : false}
                   expanded
                >
                   Change Password
