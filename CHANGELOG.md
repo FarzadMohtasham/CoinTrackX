@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.125](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.124...v0.0.125) (2024-08-12)
+
+
+### Features
+
+* Added checkAndCreateUserProfileForFirstTime ([70a6680](https://github.com/FarzadMohtasham/CoinTrackX/commit/70a6680a31e91b6067dc2fa83296a09a468a9c6c))
+
 ### [0.0.124](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.123...v0.0.124) (2024-08-12)
 
 ### [0.0.123](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.122...v0.0.123) (2024-08-11)
