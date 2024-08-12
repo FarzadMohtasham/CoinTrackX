@@ -1,17 +1,19 @@
-import { PostgrestSingleResponse } from '@supabase/supabase-js';
-import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 import {
-   GetUserProfileParams,
-   UserProfile,
-} from '@/libs/typings/auth/UserProfile.type';
+   PostgrestSingleResponse,
+   User,
+   UserResponse,
+} from '@supabase/supabase-js';
+import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
+import { UserProfile } from '@/libs/typings/auth/UserProfile.type';
 
-export const getUserProfile = async ({
-   user_id,
-}: GetUserProfileParams): Promise<UserProfile> => {
+export const getUserProfile = async (): Promise<UserProfile> => {
+   const getUserResponse: UserResponse = await supabaseClient.auth.getUser();
+   const authenticatedUser = getUserResponse.data.user as User;
+
    const { data, error }: PostgrestSingleResponse<any[]> = await supabaseClient
       .from('users_profile')
       .select('*')
-      .eq('user_id', user_id);
+      .eq('user_id', authenticatedUser.id);
 
    if (error) throw new Error(error.message);
 
