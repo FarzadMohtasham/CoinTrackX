@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.127](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.126...v0.0.127) (2024-08-12)
+
 ### [0.0.126](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.125...v0.0.126) (2024-08-12)
 
 
