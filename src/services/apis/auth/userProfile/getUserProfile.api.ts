@@ -1,9 +1,9 @@
+import { PostgrestSingleResponse } from '@supabase/supabase-js';
 import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 import {
    GetUserProfileParams,
    UserProfile,
 } from '@/libs/typings/auth/UserProfile.type';
-import { PostgrestSingleResponse } from '@supabase/supabase-js';
 
 export const getUserProfile = async ({
    user_id,
