@@ -1,4 +1,4 @@
-import { useQuery, UseQueryResult } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { QueryOptions } from '@typings/Assets.api.type.ts';
 import { getUserProfile } from '@/services/apis/auth/userProfile/getUserProfile.api';
