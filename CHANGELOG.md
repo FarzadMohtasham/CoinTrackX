@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.130](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.129...v0.0.130) (2024-08-12)
+
+
+### Features
+
+* Added some new feats to ContactInfo component ([a6c9fb3](https://github.com/FarzadMohtasham/CoinTrackX/commit/a6c9fb365be54b6487e06d12cd5416a724f0932d))
+
 ### [0.0.129](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.128...v0.0.129) (2024-08-12)
 
 
