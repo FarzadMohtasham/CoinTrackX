@@ -175,13 +175,6 @@ export default function PersonalInfo() {
       },
    });
 
-   // Constants
-   const showActionButtons =
-      personalInfoState.firstName.changed ||
-      personalInfoState.lastName.changed ||
-      personalInfoState.dateOfBirth.changed ||
-      personalInfoState.countryOfResidence.changed;
-
    // Handlers
    const handleFirstNameChange = (inputValue: string) =>
       personalInfoDispatch({
@@ -304,15 +297,13 @@ export default function PersonalInfo() {
             </RightCol>
          </div>
 
-         {showActionButtons && (
-            <div className="actions-wrapper">
-               <Button>Save Changes</Button>
+         <div className="actions-wrapper">
+            <Button>Save Changes</Button>
 
-               <Button onClickHandler={handleResetChangesClick} outline>
-                  Reset Changes
-               </Button>
-            </div>
-         )}
+            <Button onClickHandler={handleResetChangesClick} outline>
+               Reset Changes
+            </Button>
+         </div>
       </PersonalInfoContainer>
    );
 }
