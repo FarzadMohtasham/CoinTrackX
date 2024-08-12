@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.129](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.128...v0.0.129) (2024-08-12)
+
+
+### Features
+
+* Added getUserQuery ([a970221](https://github.com/FarzadMohtasham/CoinTrackX/commit/a970221c163e275b3a543f7db30e1e0909a8762b))
+
 ### [0.0.128](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.127...v0.0.128) (2024-08-12)
 
 ### [0.0.127](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.126...v0.0.127) (2024-08-12)
