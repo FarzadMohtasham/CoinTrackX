@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 import { ValidationError } from 'yup';
 import { styled } from 'styled-components';
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import Skeleton from 'react-loading-skeleton';
 
+import Button from '@components/ui/stuff/Button.tsx';
 import Heading from '@components/ui/stuff/Heading.tsx';
 import UploadProfilePhoto from '@components/dashboard/settings/profile/ContactInfo_UploadProfilePhoto.tsx';
 import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInfo_UpdateContactInfo.tsx';
-import Button from '@components/ui/stuff/Button.tsx';
+
 import { contactInputSchema } from '@schemas/contactInput.schema.ts';
-import { useRouteLoaderData } from 'react-router-dom';
-import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
+import useUserProfile from '@/queries/auth/useUserProfile.query';
+import { updateUserProfile } from '@/services/apis/auth/userProfile/updateUserProfile.api';
 
 type ValidationErrorT = {
    inner?: ValidationError[];
@@ -49,45 +53,65 @@ const ActionsContainer = styled.div`
    gap: 12px;
 `;
 
-// Constants
-const defaultMinChangesNumber = 3;
+const ErrorContainer = styled.div`
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .desc {
+      margin-bottom: 20px;
+   }
+`;
 
 export default function ContactInfo() {
-   const { user } = useRouteLoaderData(
-      'dashboardPage',
-   ) as DashboardPageLoaderResponse;
-
-   const defaultContactInfo = {
-      displayName: user?.confirmed_at || '',
-      email: user?.email || '',
-   };
-
-   const [displayName, setDisplayName] = useState<string>(
-      () => defaultContactInfo.displayName,
-   );
-   const [email, setEmail] = useState<string>(() => defaultContactInfo.email);
+   const [displayName, setDisplayName] = useState<string>('');
+   const [email, setEmail] = useState<string>('');
    const [profileImageFile, setProfileImageFile] = useState<File | undefined>();
-
    const [displayNameErrorMsg, setDisplayNameErrorMsg] = useState<string>('');
    const [emailErrorMsg, setEmailErrorMsg] = useState<string>('');
-
-   const [changes, setChanges] = useState<number>(0);
 
    // Constants
    const fieldsAreValid: boolean = !!(displayNameErrorMsg || emailErrorMsg);
 
+   // Queries
+   let {
+      data: userProfile,
+      error: userProfileError,
+      isLoading: userProfileIsLoading,
+      refetch: userProfileRefetch,
+   } = useUserProfile();
+
+   const { mutateAsync: mutateContactInfo, isPending: mutateIsPending } =
+      useMutation({
+         mutationFn: async () => {
+            await updateUserProfile({
+               display_name: displayName,
+            });
+         },
+         onSuccess: () => {
+            toast.success('Contact info updated successfully');
+         },
+         onError: ({ message }) => {
+            toast.error(message);
+         },
+      });
+
    // Handlers
    const handleResetChangesClick = () => {
-      setDisplayName(defaultContactInfo.displayName);
-      setEmail(defaultContactInfo.email);
+      if (!userProfile) return;
+
+      setDisplayName(userProfile?.display_name);
+   };
+
+   const saveChangesClick = async () => {
+      await mutateContactInfo();
+      await userProfileRefetch();
    };
 
    const resetErrorMessages = () => {
       setDisplayNameErrorMsg('');
       setEmailErrorMsg('');
    };
-
-   const saveChangesClick = async () => {};
 
    // Validation process of user inputs
    useEffect(() => {
@@ -131,48 +155,84 @@ export default function ContactInfo() {
 
       runValidation().then();
    }, [displayName, email]);
-   // Update Changes in every input change
+
+   // Update fields on isLoading state change
    useEffect(() => {
-      setChanges((prevChanges) => prevChanges + 1);
-   }, [displayName, email, profileImageFile]);
+      if (!userProfile) return;
+
+      setTimeout(() => {
+         setDisplayName(userProfile?.display_name || '');
+         setEmail(userProfile?.email || '');
+      }, 0);
+   }, [userProfile]);
+
+   useEffect(() => {
+      if (userProfileError) {
+         toast.error('Something went wrong, Please try again');
+      }
+   }, [userProfileError]);
+
+   if (userProfileIsLoading)
+      return <Skeleton count={3} height={'100px'} width={'100%'} />;
+
+   if (userProfileError) {
+      return (
+         <ErrorContainer>
+            <Heading className="error-title">Something went wrong!</Heading>
+            <span className="desc">{userProfileError}</span>
+            <Button
+               disabled={userProfileIsLoading}
+               isLoading={userProfileIsLoading}
+               onClickHandler={userProfileRefetch}
+            >
+               Try again
+            </Button>
+         </ErrorContainer>
+      );
+   }
 
    return (
       <ContactInfoContainer>
-         <ContentWrapper>
-            <LeftCol>
-               <Heading tagName={'h6'}>Contact Info</Heading>
-               <span className={'description'}>Manage your information</span>
-            </LeftCol>
+         <>
+            <ContentWrapper>
+               <LeftCol>
+                  <Heading tagName={'h6'}>Contact Info</Heading>
+                  <span className={'description'}>Manage your information</span>
+               </LeftCol>
 
-            <RightCol>
-               <UploadProfilePhoto
-                  imageFile={profileImageFile}
-                  setImageFile={setProfileImageFile}
-               />
-               <UpdateContactInfo
-                  email={email}
-                  setEmail={setEmail}
-                  displayName={displayName}
-                  setDisplayName={setDisplayName}
-                  displayNameErrorMsg={displayNameErrorMsg}
-                  emailErrorMsg={emailErrorMsg}
-               />
-            </RightCol>
-         </ContentWrapper>
+               <RightCol>
+                  <UploadProfilePhoto
+                     imageFile={profileImageFile}
+                     setImageFile={setProfileImageFile}
+                  />
+                  <UpdateContactInfo
+                     email={email}
+                     setEmail={setEmail}
+                     displayName={displayName}
+                     setDisplayName={setDisplayName}
+                     displayNameErrorMsg={displayNameErrorMsg}
+                     emailErrorMsg={emailErrorMsg}
+                  />
+               </RightCol>
+            </ContentWrapper>
 
-         {changes >= defaultMinChangesNumber && (
             <ActionsContainer>
                <Button
-                  disabled={fieldsAreValid}
+                  disabled={mutateIsPending || fieldsAreValid}
+                  isLoading={mutateIsPending}
                   onClickHandler={saveChangesClick}
                >
                   Save Changes
                </Button>
-               <Button outline={true} onClickHandler={handleResetChangesClick}>
+               <Button
+                  disabled={mutateIsPending}
+                  outline={true}
+                  onClickHandler={handleResetChangesClick}
+               >
                   Reset Changes
                </Button>
             </ActionsContainer>
-         )}
+         </>
       </ContactInfoContainer>
    );
 }

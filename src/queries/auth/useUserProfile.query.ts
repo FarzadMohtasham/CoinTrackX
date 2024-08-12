@@ -1,8 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 import { QueryOptions } from '@typings/Assets.api.type.ts';
-import { CreditDebitCard } from '@typings/components/CreditDebitCard.type.ts';
 import { getUserProfile } from '@/services/apis/auth/userProfile/getUserProfile.api';
+import { UserProfile } from '@/libs/typings/auth/UserProfile.type';
 
 const defaultOptions: QueryOptions = {
    staleTime: 1000 * 60 * 60,
@@ -12,25 +12,23 @@ const defaultOptions: QueryOptions = {
    refetchOnReconnect: true,
 };
 
-export default function useGetCreditDebitCardsQuery(
+type UseUserProfileResponse = {
+   data: UserProfile | undefined;
+   error: any;
+   refetch: () => any;
+   isLoading: boolean;
+   isFetched: boolean;
+};
+
+export default function useUserProfile(
    options: QueryOptions = defaultOptions,
-) {
+): UseUserProfileResponse {
    const queryOptions: QueryOptions = {
       ...defaultOptions,
       ...options,
    };
 
-   const {
-      data,
-      error,
-      refetch,
-      isLoading,
-   }: {
-      data: CreditDebitCard[] | any;
-      error: any;
-      refetch: any;
-      isLoading: any;
-   } = useQuery({
+   const { data, error, refetch, isLoading, isFetched } = useQuery({
       queryKey: ['getUserProfile'],
       queryFn: () => getUserProfile(),
       staleTime: queryOptions.staleTime,
@@ -40,5 +38,5 @@ export default function useGetCreditDebitCardsQuery(
       refetchOnReconnect: queryOptions.refetchOnReconnect,
    });
 
-   return { creditDebitCards: data, error, refetch, isLoading };
+   return { data, error, refetch, isLoading, isFetched };
 }
