@@ -31,7 +31,7 @@ export default function Icon(props: IconProps): JSX.Element {
       height = width;
    }
 
-   if (iconSrc === '') iconSrc = `${iconPath}/default.png`;
+   if (iconSrc === '') iconSrc = `${iconPath}/default.svg`;
    else iconSrc = `${iconPath}/${iconSrc}`;
 
    return (
