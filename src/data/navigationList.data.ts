@@ -66,14 +66,6 @@ export const NavigationListData: NavigationItemType[] = [
             active: false,
          },
          {
-            name: 'preferences',
-            title: 'Preferences',
-            link: '/dashboard/settings/preferences',
-            iconSrc: 'preferences-gray.svg',
-            activeIconSrc: 'preferences-purple.svg',
-            active: false,
-         },
-         {
             name: 'password',
             title: 'Password',
             link: '/dashboard/settings/password',

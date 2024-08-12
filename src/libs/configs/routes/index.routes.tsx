@@ -40,9 +40,6 @@ const PaymentMethodsPage = lazy(
 const ProfilePage = lazy(
    () => import('@pages/dashboard/settings/ProfilePage.tsx'),
 );
-const PreferencesPage = lazy(
-   () => import('@pages/dashboard/settings/PreferencesPage.tsx'),
-);
 const PasswordPage = lazy(
    () => import('@pages/dashboard/settings/PasswordPage.tsx'),
 );
@@ -162,14 +159,6 @@ const router = createBrowserRouter([
                   element: (
                      <SuspenseWrapper>
                         <ProfilePage />
-                     </SuspenseWrapper>
-                  ),
-               },
-               {
-                  path: 'preferences',
-                  element: (
-                     <SuspenseWrapper>
-                        <PreferencesPage />
                      </SuspenseWrapper>
                   ),
                },
