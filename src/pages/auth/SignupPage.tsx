@@ -22,6 +22,7 @@ import {
    HeadContent as HeadContentStyled,
    MainContent as MainContentStyled,
 } from '@/pages/auth/AuthShared.styled';
+import SocialAuthButtons from '@/components/auth/SocialAuthButtons';
 
 const LoginContainer = styled(AuthContainer)``;
 const LoginWrapper = styled(AuthInnerWrapper)``;
@@ -195,28 +196,7 @@ export default function SignupPage(): JSX.Element {
             </HeadContent>
 
             <MainContent>
-               <div className={'google-apple-login'}>
-                  <Button
-                     expanded
-                     outline
-                     borderRadius={'lg'}
-                     onClickHandler={onGithubAuthHandler}
-                     icon={'github-logo.svg'}
-                     variant={'black'}
-                  >
-                     Github
-                  </Button>
-                  <Button
-                     expanded
-                     outline
-                     borderRadius={'lg'}
-                     onClickHandler={onAppleAuthHandler}
-                     icon={'apple-logo.png'}
-                     variant={'black'}
-                  >
-                     Apple
-                  </Button>
-               </div>
+               <SocialAuthButtons />
                <Separator title={'OR'} />
                <div className={'name-inputs-wrapper'}>
                   <InputField

@@ -21,21 +21,13 @@ import {
    MainContent as MainContentStyled,
 } from './AuthShared.styled.tsx';
 import useLocaleStorage from '@hooks/useLocaleStorage.ts';
-import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig.ts';
-import { useMutation } from '@tanstack/react-query';
+import SocialAuthButtons from '@/components/auth/SocialAuthButtons.tsx';
 
 const Container = styled(AuthContainer)``;
 const Wrapper = styled(AuthInnerWrapper)``;
 const HeadContent = styled(HeadContentStyled)``;
 const MainContent = styled(MainContentStyled)``;
 const SingUpLink = styled(AuthLink)``;
-
-const app_mode = import.meta.env.MODE;
-let redirectToUrlAfterAuth: string = '';
-if (app_mode === 'development')
-   redirectToUrlAfterAuth = 'http://localhost:3000/dashboard';
-else redirectToUrlAfterAuth = 'https://coin-track-x.vercel.app/dashboard';
-console.log(redirectToUrlAfterAuth);
 
 export default function LoginPage(): JSX.Element {
    const [email, setEmail] = useState<string>('');
@@ -48,26 +40,6 @@ export default function LoginPage(): JSX.Element {
    const [authIsLoading, setAuthIsLoading] = useState<boolean>(false);
 
    const navigate = useNavigate();
-
-   const { mutateAsync: githubLoginMutation } = useMutation({
-      mutationFn: async () => {
-         await supabaseClient.auth.signInWithOAuth({
-            provider: 'github',
-            options: {
-               redirectTo: redirectToUrlAfterAuth,
-            },
-         });
-      },
-      onMutate: () => {
-         setAuthIsLoading(true);
-      },
-      onError: () => {
-         toast.error('Failed to login with Github, Please try again.');
-      },
-      onSettled: () => {
-         setAuthIsLoading(false);
-      },
-   });
 
    const onLoginHandler = async (): Promise<void> => {
       setAuthIsLoading(true);
@@ -82,19 +54,6 @@ export default function LoginPage(): JSX.Element {
          toast.error(e.toString());
       }
       setAuthIsLoading(false);
-   };
-
-   const onAppleAuthHandler = (): void => {
-      toast.error('Apple Auth service will add soon...', {
-         icon: (
-            <img
-               src={'/icons/apple-logo.png'}
-               width={15}
-               height={15}
-               alt={'apple icon'}
-            />
-         ),
-      });
    };
 
    useEffect((): void => {
@@ -138,29 +97,7 @@ export default function LoginPage(): JSX.Element {
             </HeadContent>
 
             <MainContent>
-               <div className={'google-apple-login'}>
-                  <Button
-                     borderRadius={'lg'}
-                     onClickHandler={githubLoginMutation}
-                     icon={'github-logo.svg'}
-                     variant={'black'}
-                     disabled={authIsLoading}
-                     expanded
-                     outline
-                  >
-                     Github
-                  </Button>
-                  <Button
-                     expanded
-                     outline
-                     borderRadius={'lg'}
-                     onClickHandler={onAppleAuthHandler}
-                     icon={'apple-logo.png'}
-                     variant={'black'}
-                  >
-                     Apple
-                  </Button>
-               </div>
+               <SocialAuthButtons />
                <Separator title={'OR'} />
                <InputField
                   inputValue={email}
