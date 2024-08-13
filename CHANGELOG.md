@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.133](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.132...v0.0.133) (2024-08-13)
+
+
+### Features
+
+* Developed PersonalInfo page ([bf932ac](https://github.com/FarzadMohtasham/CoinTrackX/commit/bf932acca5e6bb68dda857ef9b6abcac1f6ab875))
+
 ### [0.0.132](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.131...v0.0.132) (2024-08-12)
 
 ### [0.0.131](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.130...v0.0.131) (2024-08-12)
