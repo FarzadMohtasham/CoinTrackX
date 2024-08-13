@@ -344,6 +344,7 @@ export default function PersonalInfo() {
             <Button
                onClickHandler={handleSaveChangesClick}
                disabled={mutateIsPending}
+               isLoading={mutateIsPending}
             >
                Save Changes
             </Button>

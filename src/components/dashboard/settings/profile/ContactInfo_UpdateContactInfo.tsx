@@ -6,8 +6,6 @@ import Input from '@components/ui/inputFields/InputField.input.tsx';
 type UpdateContactInfoProps = {
    setDisplayName: Dispatch<SetStateAction<string>>;
    setEmail: Dispatch<SetStateAction<string>>;
-   displayNameErrorMsg: string;
-   emailErrorMsg: string;
    displayName: string;
    email: string;
 };
@@ -51,11 +49,9 @@ export default function UpdateContactInfo(props: UpdateContactInfoProps) {
             <Input
                iconSrc={null}
                placeHolder={'Please enter display name'}
-               hasError={props.displayNameErrorMsg.length > 0}
                inputValue={props.displayName}
                onChangeHandler={props.setDisplayName}
             />
-            <span className={'error-msg'}>{props.displayNameErrorMsg}</span>
          </FieldWrapper>
 
          <FieldWrapper>
@@ -63,12 +59,10 @@ export default function UpdateContactInfo(props: UpdateContactInfoProps) {
             <Input
                iconSrc={null}
                placeHolder={'Please enter email'}
-               hasError={props.emailErrorMsg.length > 0}
                inputValue={props.email}
                onChangeHandler={props.setEmail}
                disabled={true}
             />
-            <span className={'error-msg'}>{props.emailErrorMsg}</span>
          </FieldWrapper>
       </UploadProfilePhotoContainer>
    );

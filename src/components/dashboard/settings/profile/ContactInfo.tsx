@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { ValidationError } from 'yup';
 import { styled } from 'styled-components';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
@@ -10,13 +9,8 @@ import Heading from '@components/ui/stuff/Heading.tsx';
 import UploadProfilePhoto from '@components/dashboard/settings/profile/ContactInfo_UploadProfilePhoto.tsx';
 import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInfo_UpdateContactInfo.tsx';
 
-import { contactInputSchema } from '@schemas/contactInput.schema.ts';
 import useUserProfile from '@/queries/auth/useUserProfile.query';
 import { updateUserProfile } from '@/services/apis/auth/userProfile/updateUserProfile.api';
-
-type ValidationErrorT = {
-   inner?: ValidationError[];
-};
 
 const ContactInfoContainer = styled.div`
    border-radius: 8px;
@@ -67,11 +61,6 @@ export default function ContactInfo() {
    const [displayName, setDisplayName] = useState<string>('');
    const [email, setEmail] = useState<string>('');
    const [profileImageFile, setProfileImageFile] = useState<File | undefined>();
-   const [displayNameErrorMsg, setDisplayNameErrorMsg] = useState<string>('');
-   const [emailErrorMsg, setEmailErrorMsg] = useState<string>('');
-
-   // Constants
-   const fieldsAreValid: boolean = !!(displayNameErrorMsg || emailErrorMsg);
 
    // Queries
    let {
@@ -107,54 +96,6 @@ export default function ContactInfo() {
       await mutateContactInfo();
       await userProfileRefetch();
    };
-
-   const resetErrorMessages = () => {
-      setDisplayNameErrorMsg('');
-      setEmailErrorMsg('');
-   };
-
-   // Validation process of user inputs
-   useEffect(() => {
-      const runValidation = async () => {
-         try {
-            await contactInputSchema.validate(
-               {
-                  displayName,
-                  email,
-               },
-               { abortEarly: false },
-            );
-            resetErrorMessages();
-         } catch (e: unknown) {
-            if (!e) return;
-
-            const error: ValidationErrorT = e;
-            let displayNameFieldError = null;
-            let emailFieldError = null;
-
-            const innerError = error.inner || [];
-            innerError.map((err: ValidationError) => {
-               switch (err.path) {
-                  case 'displayName':
-                     displayNameFieldError = err.message;
-                     break;
-                  case 'email':
-                     emailFieldError = err.message;
-                     break;
-               }
-            });
-
-            if (displayNameFieldError)
-               setDisplayNameErrorMsg(displayNameFieldError);
-            else setDisplayNameErrorMsg('');
-
-            if (emailFieldError) setEmailErrorMsg(emailFieldError);
-            else setEmailErrorMsg('');
-         }
-      };
-
-      runValidation().then();
-   }, [displayName, email]);
 
    // Update fields on isLoading state change
    useEffect(() => {
@@ -210,15 +151,13 @@ export default function ContactInfo() {
                      setEmail={setEmail}
                      displayName={displayName}
                      setDisplayName={setDisplayName}
-                     displayNameErrorMsg={displayNameErrorMsg}
-                     emailErrorMsg={emailErrorMsg}
                   />
                </RightCol>
             </ContentWrapper>
 
             <ActionsContainer>
                <Button
-                  disabled={mutateIsPending || fieldsAreValid}
+                  disabled={mutateIsPending}
                   isLoading={mutateIsPending}
                   onClickHandler={saveChangesClick}
                >
