@@ -30,10 +30,12 @@ const HeadContent = styled(HeadContentStyled)``;
 const MainContent = styled(MainContentStyled)``;
 const SingUpLink = styled(AuthLink)``;
 
-const redirectToUrlAfterAuth =
-   import.meta.env.MODE === 'development'
-      ? 'http://localhost:3000/dashboard'
-      : 'https://coin-track-x.vercel.app/dashboard';
+const app_mode = import.meta.env.MODE;
+let redirectToUrlAfterAuth: string = '';
+if (app_mode === 'development')
+   redirectToUrlAfterAuth = 'http://localhost:3000/dashboard';
+else redirectToUrlAfterAuth = 'https://coin-track-x.vercel.app/dashboard';
+console.log(redirectToUrlAfterAuth);
 
 export default function LoginPage(): JSX.Element {
    const [email, setEmail] = useState<string>('');
