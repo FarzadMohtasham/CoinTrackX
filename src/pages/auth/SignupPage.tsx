@@ -90,32 +90,6 @@ export default function SignupPage(): JSX.Element {
       setAuthLoading(false);
    };
 
-   const onGithubAuthHandler = (): void => {
-      toast.error('Github Auth service will add soon...', {
-         icon: (
-            <img
-               src={'/icons/github-logo.svg'}
-               width={15}
-               height={15}
-               alt={'github icon'}
-            />
-         ),
-      });
-   };
-
-   const onAppleAuthHandler = (): void => {
-      toast.error('Apple Auth service will add soon...', {
-         icon: (
-            <img
-               src={'/icons/apple-logo.png'}
-               width={15}
-               height={15}
-               alt={'apple icon'}
-            />
-         ),
-      });
-   };
-
    useEffect((): void => {
       signupInputValidator({
          type: 'firstName',
