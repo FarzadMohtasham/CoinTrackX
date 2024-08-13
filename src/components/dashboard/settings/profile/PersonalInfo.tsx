@@ -6,6 +6,11 @@ import Button from '@components/ui/stuff/Button.tsx';
 import Select from '@components/ui/stuff/Select.tsx';
 
 import countryOfResidenceList from '@data/countryOfResidence.data.ts';
+import useUserProfile from '@/queries/auth/useUserProfile.query';
+import toast from 'react-hot-toast';
+import { updateUserProfile } from '@/services/apis/auth/userProfile/updateUserProfile.api';
+import { useMutation } from '@tanstack/react-query';
+import Skeleton from 'react-loading-skeleton';
 
 const PersonalInfoContainer = styled.div`
    border-radius: 8px;
@@ -59,16 +64,25 @@ const RightCol = styled.div`
    }
 `;
 
+const ErrorContainer = styled.div`
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   .desc {
+      margin-bottom: 20px;
+   }
+`;
+
 type PersonalInfoReducerState = {
-   changed: boolean;
    value: string;
 };
 
 type PersonalInfoReducerStates = {
-   firstName: PersonalInfoReducerState;
-   lastName: PersonalInfoReducerState;
-   dateOfBirth: PersonalInfoReducerState;
-   countryOfResidence: PersonalInfoReducerState;
+   first_name: PersonalInfoReducerState;
+   last_name: PersonalInfoReducerState;
+   date_of_birth: PersonalInfoReducerState;
+   country_of_residence: PersonalInfoReducerState;
 };
 
 type PersonalInfoReducerActions =
@@ -76,28 +90,24 @@ type PersonalInfoReducerActions =
         type: 'setFirstName';
         payload: {
            value: string;
-           reset: boolean;
         };
      }
    | {
         type: 'setLastName';
         payload: {
            value: string;
-           reset: boolean;
         };
      }
    | {
         type: 'setDateOfBirth';
         payload: {
            value: string;
-           reset: boolean;
         };
      }
    | {
         type: 'setCountryOfResidence';
         payload: {
            value: string;
-           reset: boolean;
         };
      };
 
@@ -105,38 +115,34 @@ const personalInfoReducer = (
    state: PersonalInfoReducerStates,
    action: PersonalInfoReducerActions,
 ) => {
-   const { value, reset } = action.payload;
+   const { value } = action.payload;
 
    switch (action.type) {
       case 'setFirstName':
          return {
             ...state,
-            firstName: {
-               changed: !reset,
+            first_name: {
                value: value,
             },
          };
       case 'setLastName':
          return {
             ...state,
-            lastName: {
-               changed: !reset,
+            last_name: {
                value: value,
             },
          };
       case 'setDateOfBirth':
          return {
             ...state,
-            dateOfBirth: {
-               changed: !reset,
+            date_of_birth: {
                value: value,
             },
          };
       case 'setCountryOfResidence':
          return {
             ...state,
-            countryOfResidence: {
-               changed: !reset,
+            country_of_residence: {
                value: value,
             },
          };
@@ -146,34 +152,51 @@ const personalInfoReducer = (
 };
 
 export default function PersonalInfo() {
-   const defaultValues = {
-      firstName: 'John Doe',
-      lastName: 'Smith',
-      dateOfBirth: '1990-01-01',
-      countryOfResidence: 'United States',
-   };
-
    const [personalInfoState, personalInfoDispatch]: [
       PersonalInfoReducerStates,
       Dispatch<PersonalInfoReducerActions>,
    ] = useReducer(personalInfoReducer, {
-      firstName: {
-         changed: false,
-         value: defaultValues.firstName,
+      first_name: {
+         value: '',
       },
-      lastName: {
-         changed: false,
-         value: defaultValues.lastName,
+      last_name: {
+         value: '',
       },
-      dateOfBirth: {
-         changed: false,
-         value: defaultValues.dateOfBirth,
+      date_of_birth: {
+         value: '',
       },
-      countryOfResidence: {
-         changed: false,
-         value: defaultValues.countryOfResidence,
+      country_of_residence: {
+         value: '',
       },
    });
+
+   let {
+      data: userProfile,
+      error: userProfileError,
+      isLoading: userProfileIsLoading,
+      refetch: userProfileRefetch,
+   } = useUserProfile();
+
+   const { mutateAsync: mutatePersonalInfo, isPending: mutateIsPending } =
+      useMutation({
+         mutationFn: async () => {
+            const profilePayload: {
+               [key: string]: any;
+            } = {};
+
+            Object.entries(personalInfoState).forEach(([key, value]) => {
+               profilePayload[key] = value.value;
+            });
+
+            await updateUserProfile(profilePayload);
+         },
+         onSuccess: () => {
+            toast.success('Personal info updated successfully');
+         },
+         onError: ({ message }) => {
+            toast.error(message);
+         },
+      });
 
    // Handlers
    const handleFirstNameChange = (inputValue: string) =>
@@ -181,7 +204,6 @@ export default function PersonalInfo() {
          type: 'setFirstName',
          payload: {
             value: inputValue,
-            reset: false,
          },
       });
 
@@ -190,7 +212,6 @@ export default function PersonalInfo() {
          type: 'setLastName',
          payload: {
             value: inputValue,
-            reset: false,
          },
       });
 
@@ -199,7 +220,6 @@ export default function PersonalInfo() {
          type: 'setDateOfBirth',
          payload: {
             value: inputValue,
-            reset: false,
          },
       });
 
@@ -208,44 +228,67 @@ export default function PersonalInfo() {
          type: 'setCountryOfResidence',
          payload: {
             value: inputValue,
-            reset: false,
          },
       });
+
+   const handleSaveChangesClick = async () => {
+      await mutatePersonalInfo();
+      userProfileRefetch();
+   };
 
    const handleResetChangesClick = () => {
       personalInfoDispatch({
          type: 'setFirstName',
          payload: {
-            value: defaultValues.firstName,
-            reset: true,
+            value: userProfile?.first_name || '',
          },
       });
       personalInfoDispatch({
          type: 'setLastName',
          payload: {
-            value: defaultValues.lastName,
-            reset: true,
+            value: userProfile?.last_name || '',
          },
       });
       personalInfoDispatch({
          type: 'setDateOfBirth',
          payload: {
-            value: defaultValues.dateOfBirth,
-            reset: true,
+            value: userProfile?.date_of_birth || '',
          },
       });
       personalInfoDispatch({
          type: 'setCountryOfResidence',
          payload: {
-            value: defaultValues.countryOfResidence,
-            reset: true,
+            value: userProfile?.country_of_residence || '',
          },
       });
    };
 
    useEffect(() => {
-      handleResetChangesClick();
-   }, []);
+      if (!userProfile) return;
+
+      setTimeout(() => {
+         handleResetChangesClick();
+      }, 0);
+   }, [userProfile]);
+
+   if (userProfileIsLoading)
+      return <Skeleton count={3} height={'100px'} width={'100%'} />;
+
+   if (userProfileError) {
+      return (
+         <ErrorContainer>
+            <Heading className="error-title">Something went wrong!</Heading>
+            <span className="desc">{userProfileError}</span>
+            <Button
+               disabled={userProfileIsLoading}
+               isLoading={userProfileIsLoading}
+               onClickHandler={userProfileRefetch}
+            >
+               Try again
+            </Button>
+         </ErrorContainer>
+      );
+   }
 
    return (
       <PersonalInfoContainer>
@@ -258,14 +301,14 @@ export default function PersonalInfo() {
             <RightCol>
                <div className="name-inputs-wrapper">
                   <Input
-                     inputValue={personalInfoState.firstName.value}
+                     inputValue={personalInfoState.first_name.value}
                      label={'First Name'}
                      onChangeHandler={handleFirstNameChange}
                      placeHolder={'First Name'}
                      iconSrc={null}
                   />
                   <Input
-                     inputValue={personalInfoState.lastName.value}
+                     inputValue={personalInfoState.last_name.value}
                      label={'Last Name'}
                      onChangeHandler={handleLastNameChange}
                      placeHolder={'Last Name'}
@@ -276,7 +319,7 @@ export default function PersonalInfo() {
                <div className="date-of-birth-input-wrapper">
                   <span></span>
                   <Input
-                     inputValue={personalInfoState.dateOfBirth.value}
+                     inputValue={personalInfoState.date_of_birth.value}
                      label={'Date of Birth'}
                      onChangeHandler={handleDateOfBirthChange}
                      placeHolder={'Date of Birth'}
@@ -298,9 +341,18 @@ export default function PersonalInfo() {
          </div>
 
          <div className="actions-wrapper">
-            <Button>Save Changes</Button>
+            <Button
+               onClickHandler={handleSaveChangesClick}
+               disabled={mutateIsPending}
+            >
+               Save Changes
+            </Button>
 
-            <Button onClickHandler={handleResetChangesClick} outline>
+            <Button
+               onClickHandler={handleResetChangesClick}
+               disabled={mutateIsPending}
+               outline
+            >
                Reset Changes
             </Button>
          </div>
