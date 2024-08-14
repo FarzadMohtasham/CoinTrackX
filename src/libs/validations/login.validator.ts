@@ -13,8 +13,8 @@ const passwordValidationSchema = object({
       .required()
       .test(
          'no-space',
-         "Password should not have space",
-         (val: string) => !(val.split(' ').length >= 2) 
+         'Password should not have space',
+         (val: string) => !(val.split(' ').length >= 2),
       )
       .test(
          'min-length',
@@ -51,7 +51,7 @@ export const loginInputValidator = async (
 
       if (error.message) validationResult.isValid = false;
       validationResult.errorMessage = error.message;
+   } finally {
+      return validationResult;
    }
-
-   return validationResult;
 };

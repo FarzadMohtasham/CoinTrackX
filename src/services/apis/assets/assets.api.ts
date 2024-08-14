@@ -9,7 +9,6 @@ import {
    AssetsApiResponse,
 } from '@typings/Assets.api.type.ts';
 
-
 /**
  * The provided TypeScript code defines functions to fetch assets and a specific asset using Axios in
  * an asynchronous manner.
@@ -24,9 +23,9 @@ export const getAssets = async (): Promise<Asset[] | null> => {
       assets = data.data;
    } catch (e: any) {
       throw new Error(e.message);
+   } finally {
+      return assets;
    }
-
-   return assets;
 };
 
 /**
@@ -54,9 +53,9 @@ export const getAsset = async (
       response.data = data.data;
    } catch (e: any) {
       throw new Error(e.message);
+   } finally {
+      return response.data as AssetsApiResponse;
    }
-
-   return response.data as AssetsApiResponse;
 };
 
 /**
@@ -106,9 +105,9 @@ export const getAssetHistory = async (
       }
    } catch (e: any) {
       throw new Error(e.message);
+   } finally {
+      return response.data;
    }
-
-   return response.data;
 };
 
 /**
@@ -125,18 +124,21 @@ export const getAssetMarkets = async (
    let assetMarkets = [];
 
    try {
-      const { data }: AxiosResponse = await coincapAxiosInstance.get('/markets', {
-         headers: {
-            'Content-Type': 'application/json',
+      const { data }: AxiosResponse = await coincapAxiosInstance.get(
+         '/markets',
+         {
+            headers: {
+               'Content-Type': 'application/json',
+            },
+            params: {
+               baseSymbol: assetName,
+            },
          },
-         params: {
-            baseSymbol: assetName,
-         },
-      });
+      );
       assetMarkets = data.data;
    } catch (e: any) {
       throw new Error(e.message);
+   } finally {
+      return assetMarkets;
    }
-
-   return assetMarkets;
 };

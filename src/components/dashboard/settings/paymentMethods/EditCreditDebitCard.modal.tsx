@@ -164,8 +164,9 @@ export default function EditCreditDebitCardModal(
          onClose();
       } catch (e: PostgrestError | any) {
          toast.error(e.message);
+      } finally {
+         setActionButtonsDisabled(false);
       }
-      setActionButtonsDisabled(false);
    };
 
    const onCreditDebitCardDelete = async () => {
@@ -179,8 +180,9 @@ export default function EditCreditDebitCardModal(
          onClose();
       } catch (e: PostgrestError | any) {
          toast.error(e.message);
+      } finally {
+         setActionButtonsDisabled(false);
       }
-      setActionButtonsDisabled(false);
    };
 
    return (

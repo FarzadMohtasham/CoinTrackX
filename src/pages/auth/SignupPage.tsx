@@ -85,9 +85,9 @@ export default function SignupPage(): JSX.Element {
          navigate('/login');
       } catch (e: string | any) {
          toast.error(e.toString());
+      } finally {
+         setAuthLoading(false);
       }
-
-      setAuthLoading(false);
    };
 
    useEffect((): void => {

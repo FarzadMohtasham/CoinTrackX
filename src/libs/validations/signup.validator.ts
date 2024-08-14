@@ -66,7 +66,7 @@ export const signupInputValidator = async (
 
       if (error.message) validationResult.isValid = false;
       validationResult.errorMessage = error.message;
+   } finally {
+      return validationResult;
    }
-
-   return validationResult;
 };

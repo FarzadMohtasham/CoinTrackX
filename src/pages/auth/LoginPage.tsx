@@ -52,8 +52,9 @@ export default function LoginPage(): JSX.Element {
          });
       } catch (e: string | any) {
          toast.error(e.toString());
+      } finally {
+         setAuthIsLoading(false);
       }
-      setAuthIsLoading(false);
    };
 
    useEffect((): void => {
