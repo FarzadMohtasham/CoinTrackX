@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.141](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.140...v0.0.141) (2024-08-15)
+
+
+### Features
+
+* Added some cool animations with framer-motion ([f6cf175](https://github.com/FarzadMohtasham/CoinTrackX/commit/f6cf1758b952a7c097f96def91174661d5d2c5a4))
+
 ### [0.0.140](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.139...v0.0.140) (2024-08-15)
 
 ### [0.0.139](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.138...v0.0.139) (2024-08-14)
