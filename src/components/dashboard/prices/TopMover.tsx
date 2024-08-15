@@ -8,6 +8,7 @@ import Icon from '@components/ui/stuff/Icon.tsx';
 import { amountToBeFixed } from '@utils/helpers.ts';
 
 import { TopMoverProps } from '@typings/components/TopMover.type.ts';
+import { motion } from 'framer-motion';
 
 const TopMoverContainer = styled.div`
    width: 100%;
@@ -88,7 +89,10 @@ export default function TopMover(props: TopMoverProps): JSX.Element {
    };
 
    return (
-      <TopMoverContainer>
+      <TopMoverContainer
+         as={motion.div}
+         whileTap={{ scale: 0.95 }}
+      >
          {isLoading ? (
             <Skeleton height={'100%'} width={'100%'} borderRadius={'8px'} />
          ) : (

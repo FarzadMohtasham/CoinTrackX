@@ -2,6 +2,7 @@ import { JSX, useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 import _ from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
 import Icon from '../ui/stuff/Icon.tsx';
 
@@ -13,6 +14,7 @@ import {
 } from '@typings/components/Notifications.type.ts';
 import SimpleNotification from '@components/ui/notifications/SimpleNotification.notif.tsx';
 import { NotificationOptions } from '@typings/components/Notification.type.ts';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
    display: grid;
@@ -126,29 +128,37 @@ export default function Notifications(): JSX.Element {
                   />
 
                   {notifIsOpen && (
-                     <NotificationsWrapper>
-                        {notifications.map(
-                           (
-                              notificationOptions: Notification,
-                              index: number,
-                           ) => {
-                              const notifOptions: NotificationOptions = {
-                                 ...notificationOptions,
-                                 height: 'max-content',
-                                 iconSize: '20px',
-                                 closeIconSize: '20px',
-                              };
+                     <AnimatePresence>
+                        <NotificationsWrapper
+                           as={motion.div}
+                           key={'anim'}
+                           initial={{ opacity: 0 }}
+                           whileInView={{ opacity: 1 }}
+                           exit={{ opacity: 0 }}
+                        >
+                           {notifications.map(
+                              (
+                                 notificationOptions: Notification,
+                                 index: number,
+                              ) => {
+                                 const notifOptions: NotificationOptions = {
+                                    ...notificationOptions,
+                                    height: 'max-content',
+                                    iconSize: '20px',
+                                    closeIconSize: '20px',
+                                 };
 
-                              return (
-                                 <SimpleNotification
-                                    options={notifOptions}
-                                    onNotifClose={removeNotification}
-                                    key={index}
-                                 />
-                              );
-                           },
-                        )}
-                     </NotificationsWrapper>
+                                 return (
+                                    <SimpleNotification
+                                       options={notifOptions}
+                                       onNotifClose={removeNotification}
+                                       key={index}
+                                    />
+                                 );
+                              },
+                           )}
+                        </NotificationsWrapper>
+                     </AnimatePresence>
                   )}
                </NotificationsContainer>
             )

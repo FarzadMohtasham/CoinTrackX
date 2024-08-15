@@ -4,6 +4,7 @@ import { styled } from 'styled-components';
 import Heading from './Heading.tsx';
 
 import { Review as ReviewProps } from '@typings/components/Review.type.ts';
+import { motion } from 'framer-motion';
 
 const FILLED_STAR_ICON_URL = '/icons/star-filled.svg';
 const UNFILLED_STAR_ICON_URL = '/icons/star-unfilled.svg';
@@ -64,7 +65,19 @@ export default function Review(props: ReviewProps): JSX.Element {
    const { numberOfStars, quote, author } = props;
 
    return (
-      <ReviewStyled className={'review'}>
+      <ReviewStyled
+         as={motion.div}
+         className={'review'}
+         whileHover={{ scale: 1.075 }}
+         whileTap={{ scale: 0.9 }}
+         dragConstraints={{
+            bottom: 0,
+            left: 0,
+            right: 0,
+            top: 0,
+         }}
+         drag
+      >
          <div className="stars">
             {[...Array(5 - numberOfStars + numberOfStars).keys()].map(
                (_: unknown, index: number): JSX.Element => {

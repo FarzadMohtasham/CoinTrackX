@@ -18,6 +18,7 @@ import {
    buttonPaddingVariations,
    buttonTypeVariations,
 } from '@data/button.data.ts';
+import { motion } from 'framer-motion';
 
 type ButtonStyledProps = {
    $properties: Properties;
@@ -179,10 +180,12 @@ export default function Button(props: ButtonPropsType): JSX.Element {
 
    return (
       <ButtonStyled
+         as={motion.button}
          className={`${className} ${hideOn !== 'none' ? `hide-on-${hideOn}` : ''}`}
          $properties={buttonProperties}
          onClick={onButtonClickHandler}
          disabled={disabled || isLoading}
+         whileTap={{ scale: 0.95 }}
       >
          {icon && iconDir === 'left' && (
             <Icon

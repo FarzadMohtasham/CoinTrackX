@@ -3,6 +3,8 @@ import { css, styled } from 'styled-components';
 
 import Container from '@components/ui/stuff/Container.tsx';
 import HeadingBox from '@components/ui/stuff/HeadingBox.tsx';
+import { string } from 'yup';
+import { motion } from 'framer-motion';
 
 const coinsSrcList = [
    '/images/dogecoin.coin.home.svg',
@@ -72,7 +74,15 @@ export default function Coins(): JSX.Element {
 
             <CoinsListStyled>
                {coinsSrcList.map((coinSrc, index) => {
-                  return <img key={coinSrc + index} src={coinSrc} alt="coin" />;
+                  return (
+                     <motion.img
+                        key={coinSrc + index}
+                        src={coinSrc}
+                        alt="crypto coin"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                     />
+                  );
                })}
             </CoinsListStyled>
          </CoinsWrapperStyled>

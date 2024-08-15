@@ -12,7 +12,7 @@ import Heading from '@components/ui/stuff/Heading.tsx';
 import Logo from '@components/ui/stuff/Logo.tsx';
 import NavigationItem from '@components/ui/stuff/NavigationItem.tsx';
 import Profile from '@components/ui/stuff/Profile.tsx';
-import Alert from '@components/dashboard/Notifications.tsx';
+import Notifications from '@components/dashboard/Notifications.tsx';
 import Icon from '@components/ui/stuff/Icon.tsx';
 
 import { NavigationListData } from '@data/navigationList.data.ts';
@@ -25,6 +25,7 @@ import { useUiStore } from '@services/stores/ui.store.ts';
 
 import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 import { User } from '@supabase/supabase-js';
+import { motion } from 'framer-motion';
 
 const LayoutContainer = styled.div`
    height: 100vh;
@@ -476,7 +477,7 @@ export default function DashboardLayout() {
             </div>
 
             <div className={'right-col'}>
-               <Alert />
+               <Notifications />
                <Profile />
             </div>
          </LayoutHeader>
@@ -499,7 +500,11 @@ export default function DashboardLayout() {
                      };
 
                      return (
-                        <div key={navItem.name + index}>
+                        <motion.div
+                           key={navItem.name + index}
+                           initial={{ scale: 1 }}
+                           whileTap={{ scale: 0.95 }}
+                        >
                            <NavigationItem {...navItemProps}>
                               {navItem.title}
                            </NavigationItem>
@@ -546,7 +551,7 @@ export default function DashboardLayout() {
                                     )}
                                  </ChildNavItemsContainer>
                               )}
-                        </div>
+                        </motion.div>
                      );
                   },
                )}

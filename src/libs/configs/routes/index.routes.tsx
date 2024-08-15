@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import { lazy, ReactNode, Suspense } from 'react';
 
 import LazyRouteFallbackLoading from '@components/fallbacks/LazyRouteFallbackLoading.tsx';
@@ -7,6 +7,7 @@ import LazyRouteFallbackLoading from '@components/fallbacks/LazyRouteFallbackLoa
 import { loader as loginPageLoader } from '@pages/auth/LoginPage.tsx';
 import { loader as signupPageLoader } from '@pages/auth/SignupPage.tsx';
 import { loader as DashboardLayoutLoader } from '@layouts/Dashboard.layout.tsx';
+import { PageTransition } from '@/animations/PageTransition';
 
 // Lazy-loaded components
 const HomePage = lazy(() => import('@pages/Home.tsx'));
@@ -51,12 +52,14 @@ const SuspenseWrapper = ({ children }: { children: ReactNode }) => (
    <Suspense fallback={<LazyRouteFallbackLoading />}>{children}</Suspense>
 );
 
-const router = createBrowserRouter([
+const router: any = createBrowserRouter([
    {
       path: '/',
       element: (
          <SuspenseWrapper>
-            <HomePage />
+            <PageTransition>
+               <HomePage />
+            </PageTransition>
          </SuspenseWrapper>
       ),
    },
@@ -64,7 +67,9 @@ const router = createBrowserRouter([
       path: 'login',
       element: (
          <SuspenseWrapper>
-            <LoginPage />
+            <PageTransition>
+               <LoginPage />
+            </PageTransition>
          </SuspenseWrapper>
       ),
       loader: loginPageLoader,
@@ -73,7 +78,9 @@ const router = createBrowserRouter([
       path: 'signup',
       element: (
          <SuspenseWrapper>
-            <SignupPage />
+            <PageTransition>
+               <SignupPage />
+            </PageTransition>
          </SuspenseWrapper>
       ),
       loader: signupPageLoader,
@@ -83,7 +90,9 @@ const router = createBrowserRouter([
       id: 'dashboardPage',
       element: (
          <SuspenseWrapper>
-            <DashboardLayout />
+            <PageTransition>
+               <DashboardLayout />
+            </PageTransition>
          </SuspenseWrapper>
       ),
       loader: DashboardLayoutLoader,
@@ -92,7 +101,9 @@ const router = createBrowserRouter([
             index: true,
             element: (
                <SuspenseWrapper>
-                  <DashboardPage />
+                  <PageTransition>
+                     <DashboardPage />
+                  </PageTransition>
                </SuspenseWrapper>
             ),
          },
@@ -100,7 +111,9 @@ const router = createBrowserRouter([
             path: 'assets-portfolio',
             element: (
                <SuspenseWrapper>
-                  <AssetsPortfolioPage />
+                  <PageTransition>
+                     <AssetsPortfolioPage />
+                  </PageTransition>
                </SuspenseWrapper>
             ),
          },
@@ -108,7 +121,9 @@ const router = createBrowserRouter([
             path: 'prices',
             element: (
                <SuspenseWrapper>
-                  <AssetsPricePage />
+                  <PageTransition>
+                     <AssetsPricePage />
+                  </PageTransition>
                </SuspenseWrapper>
             ),
          },
@@ -116,7 +131,9 @@ const router = createBrowserRouter([
             path: 'prices/:assetName',
             element: (
                <SuspenseWrapper>
-                  <AssetPricePage />
+                  <PageTransition>
+                     <AssetPricePage />
+                  </PageTransition>
                </SuspenseWrapper>
             ),
          },
@@ -124,7 +141,9 @@ const router = createBrowserRouter([
             path: 'transactions',
             element: (
                <SuspenseWrapper>
-                  <TransactionsPage />
+                  <PageTransition>
+                     <TransactionsPage />
+                  </PageTransition>
                </SuspenseWrapper>
             ),
          },
@@ -133,7 +152,9 @@ const router = createBrowserRouter([
             path: 'settings',
             element: (
                <SuspenseWrapper>
-                  <SettingsPage />
+                  <PageTransition>
+                     <SettingsPage />
+                  </PageTransition>
                </SuspenseWrapper>
             ),
             children: [
@@ -141,7 +162,9 @@ const router = createBrowserRouter([
                   path: 'security',
                   element: (
                      <SuspenseWrapper>
-                        <SecurityPage />
+                        <PageTransition>
+                           <SecurityPage />
+                        </PageTransition>
                      </SuspenseWrapper>
                   ),
                   index: true,
@@ -150,7 +173,9 @@ const router = createBrowserRouter([
                   path: 'payment-methods',
                   element: (
                      <SuspenseWrapper>
-                        <PaymentMethodsPage />
+                        <PageTransition>
+                           <PaymentMethodsPage />
+                        </PageTransition>
                      </SuspenseWrapper>
                   ),
                },
@@ -158,7 +183,9 @@ const router = createBrowserRouter([
                   path: 'profile',
                   element: (
                      <SuspenseWrapper>
-                        <ProfilePage />
+                        <PageTransition>
+                           <ProfilePage />
+                        </PageTransition>
                      </SuspenseWrapper>
                   ),
                },
@@ -166,7 +193,9 @@ const router = createBrowserRouter([
                   path: 'password',
                   element: (
                      <SuspenseWrapper>
-                        <PasswordPage />
+                        <PageTransition>
+                           <PasswordPage />
+                        </PageTransition>
                      </SuspenseWrapper>
                   ),
                },
@@ -176,7 +205,9 @@ const router = createBrowserRouter([
             path: 'logout',
             element: (
                <SuspenseWrapper>
-                  <LogoutPage />
+                  <PageTransition>
+                     <LogoutPage />
+                  </PageTransition>
                </SuspenseWrapper>
             ),
          },

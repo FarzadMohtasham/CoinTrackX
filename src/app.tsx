@@ -13,6 +13,7 @@ import { ChakraProvider, theme as chakraTheme } from '@chakra-ui/react';
 import router from '@configs/routes/index.routes.tsx';
 import ReactQueryClient from '@configs/react-query/queryClient.tsx';
 import styledComponentTheme from '@themes/styled-components.theme.ts';
+import { AnimatePresence } from 'framer-motion';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
    <React.StrictMode>
@@ -23,7 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             )}
             <Toaster position="top-center" />
             <ThemeProvider theme={styledComponentTheme.lightTheme}>
-               <RouterProvider router={router} />
+               <AnimatePresence mode="wait">
+                  <RouterProvider router={router} key={location.pathname} />
+               </AnimatePresence>
             </ThemeProvider>
          </ReactQueryClient>
       </ChakraProvider>
