@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouteObject } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { lazy, ReactNode, Suspense } from 'react';
 
 import LazyRouteFallbackLoading from '@components/fallbacks/LazyRouteFallbackLoading.tsx';

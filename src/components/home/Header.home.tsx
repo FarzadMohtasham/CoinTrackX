@@ -41,6 +41,7 @@ const HeaderStyled = styled.header`
    position: fixed;
    background-color: white;
    box-shadow: rgba(17, 12, 46, 0.05) 0px 48px 100px 0px;
+   z-index: 100;
 
    .header-items-wrapper {
       display: flex;
