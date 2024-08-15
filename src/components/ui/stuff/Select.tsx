@@ -9,6 +9,8 @@ import {
    SelectMenuWrapperProps,
    SelectProps,
 } from '@typings/components/Select.type.ts';
+import { AnimatePresence, motion } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 
 const SelectContainer = styled.div<{ ref: Ref<HTMLElement | null> }>`
    display: block;
@@ -172,30 +174,39 @@ export default function Select(props: SelectProps): JSX.Element {
             <Icon iconSrc={'arrow-down-simple.svg'} width={'10px'} />
          </SelectBtnWrapper>
 
-         {selectMenuIsOpen && (
-            <SelectMenuWrapper $menuXDirStartPosition={$menuXDirStartPosition}>
-               <ul className="menu-items-wrapper">
-                  {menuItems.map((item: SelectMenuItemT, i: number) => {
-                     return (
-                        <SelectMenuItem
-                           key={item.name + i}
-                           onClick={() => menuItemOnClickHandler(item)}
-                           $selected={item.name === selectedItem?.name}
-                        >
-                           {hasIcon && (
-                              <Icon
-                                 iconSrc={item.iconSrc}
-                                 className="menu-arrow-icon"
-                                 width={'20px'}
-                              />
-                           )}
-                           {item.name}
-                        </SelectMenuItem>
-                     );
-                  })}
-               </ul>
-            </SelectMenuWrapper>
-         )}
+         <AnimatePresence>
+            {selectMenuIsOpen && (
+               <SelectMenuWrapper
+                  as={motion.div}
+                  $menuXDirStartPosition={$menuXDirStartPosition}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  key={'select-anime' + uuidv4()}
+               >
+                  <ul className="menu-items-wrapper">
+                     {menuItems.map((item: SelectMenuItemT, i: number) => {
+                        return (
+                           <SelectMenuItem
+                              key={item.name + i}
+                              onClick={() => menuItemOnClickHandler(item)}
+                              $selected={item.name === selectedItem?.name}
+                           >
+                              {hasIcon && (
+                                 <Icon
+                                    iconSrc={item.iconSrc}
+                                    className="menu-arrow-icon"
+                                    width={'20px'}
+                                 />
+                              )}
+                              {item.name}
+                           </SelectMenuItem>
+                        );
+                     })}
+                  </ul>
+               </SelectMenuWrapper>
+            )}
+         </AnimatePresence>
       </SelectContainer>
    );
 }

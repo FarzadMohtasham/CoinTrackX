@@ -2,7 +2,6 @@ import { JSX, useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
 import Skeleton from 'react-loading-skeleton';
 import _ from 'lodash';
-import { v4 as uuidv4 } from 'uuid';
 
 import Icon from '../ui/stuff/Icon.tsx';
 
@@ -15,6 +14,7 @@ import {
 import SimpleNotification from '@components/ui/notifications/SimpleNotification.notif.tsx';
 import { NotificationOptions } from '@typings/components/Notification.type.ts';
 import { AnimatePresence, motion } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
 
 const NotificationsContainer = styled.div<NotificationContainerProps>`
    display: grid;
@@ -127,11 +127,11 @@ export default function Notifications(): JSX.Element {
                      onClickHandler={onNotificationsClickHandler}
                   />
 
-                  {notifIsOpen && (
-                     <AnimatePresence>
+                  <AnimatePresence>
+                     {notifIsOpen && (
                         <NotificationsWrapper
                            as={motion.div}
-                           key={'anim'}
+                           key={'notif-anime' + uuidv4()}
                            initial={{ opacity: 0 }}
                            whileInView={{ opacity: 1 }}
                            exit={{ opacity: 0 }}
@@ -158,8 +158,8 @@ export default function Notifications(): JSX.Element {
                               },
                            )}
                         </NotificationsWrapper>
-                     </AnimatePresence>
-                  )}
+                     )}
+                  </AnimatePresence>
                </NotificationsContainer>
             )
          )}
