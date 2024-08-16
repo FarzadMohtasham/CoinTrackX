@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.144](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.143...v0.0.144) (2024-08-16)
+
+
+### Features
+
+* Added some cool animations ([0f7ecff](https://github.com/FarzadMohtasham/CoinTrackX/commit/0f7ecff7d63623d7b4c668e852de0d6bfe57e8c4))
+
 ### [0.0.143](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.142...v0.0.143) (2024-08-15)
 
 
