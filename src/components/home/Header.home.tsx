@@ -10,6 +10,7 @@ import scrollTo from '@utils/scroller.ts';
 import { removeLetter } from '@utils/helpers.ts';
 import Skeleton from 'react-loading-skeleton';
 import useUserLoggedIn from '@/libs/hooks/useUserLoggedIn';
+import { motion } from 'framer-motion';
 
 const navItems = [
    {
@@ -140,7 +141,7 @@ export default function Header(): JSX.Element {
    const { loading, userLoggedIn } = useUserLoggedIn();
 
    return (
-      <HeaderStyled>
+      <HeaderStyled as={motion.header} initial={{ y: -90 }} animate={{ y: 0 }}>
          <div className={'header-items-wrapper'}>
             <Logo />
             <NavBarStyled>

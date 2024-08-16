@@ -6,12 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import {
-   BrowserRouter,
-   Router,
-   RouterProvider,
-   useLocation,
-} from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ChakraProvider, theme as chakraTheme } from '@chakra-ui/react';
 
@@ -43,3 +38,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <App />
    </React.StrictMode>,
 );
+function useFollowPointer(ref: React.MutableRefObject<null>): {
+   x: any;
+   y: any;
+} {
+   throw new Error('Function not implemented.');
+}

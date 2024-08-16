@@ -2,6 +2,7 @@ import { JSX } from 'react';
 import { styled } from 'styled-components';
 
 import Heading from '@components/ui/stuff/Heading.tsx';
+import { motion } from 'framer-motion';
 
 type SuperchargePropsType = {
    imgSrc: string;
@@ -34,8 +35,18 @@ export default function SuperchargeCard(
    const { imgSrc = '', title = '', desc = '' }: SuperchargePropsType = props;
 
    return (
-      <SuperChargedStyled>
-         <img src={imgSrc} alt={title} />
+      <SuperChargedStyled
+         as={motion.div}
+         initial={{ opacity: 0 }}
+         whileInView={{ opacity: 1 }}
+         transition={{ duration: 1.5 }}
+      >
+         <motion.img
+            src={imgSrc}
+            alt={title}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+         />
          <Heading fontWeight={'500'} className={'card-heading'} tagName={'h4'}>
             {title}
          </Heading>

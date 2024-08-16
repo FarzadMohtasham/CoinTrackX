@@ -79,8 +79,21 @@ export default function Coins(): JSX.Element {
                         key={coinSrc + index}
                         src={coinSrc}
                         alt="crypto coin"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        initial={{ scale: 1 }}
+                        animate={{ scale: [1, 1.05, 1] }} // Scale up to 1.1 then back to 1
+                        transition={{
+                           duration: 1, // Duration of one cycle
+                           repeat: Infinity, // Repeat infinitely
+                           repeatType: 'mirror', // Reverse animation for each repeat
+                           ease: 'easeInOut', // Smooth transition
+                        }}
+                        dragConstraints={{
+                           bottom: 0,
+                           left: 0,
+                           right: 0,
+                           top: 0,
+                        }}
+                        drag
                      />
                   );
                })}

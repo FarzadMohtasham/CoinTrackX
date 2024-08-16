@@ -462,7 +462,11 @@ export default function DashboardLayout() {
             ref={sidebarOverlayRef}
          ></MobileNavOverlay>
 
-         <LayoutHeader>
+         <LayoutHeader
+            as={motion.header}
+            initial={{ y: -90 }}
+            animate={{ y: 0 }}
+         >
             <div className={'left-col'}>
                <Icon
                   iconSrc={'menu-burger.svg'}
@@ -482,7 +486,11 @@ export default function DashboardLayout() {
             </div>
          </LayoutHeader>
 
-         <LayoutSidebar>
+         <LayoutSidebar
+            as={motion.div}
+            initial={{ x: -500 }}
+            animate={{ x: 0 }}
+         >
             <Link to={'/dashboard'}>
                <Logo />
             </Link>
