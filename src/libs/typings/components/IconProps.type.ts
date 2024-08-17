@@ -1,3 +1,5 @@
+import { MotionProps } from 'framer-motion';
+
 export type IconProps = {
    iconSrc: string;
    iconAlt?: string;
@@ -6,4 +8,7 @@ export type IconProps = {
    className?: string;
    onClickHandler?: () => void;
    clickable?: boolean;
+   as?: any;
 };
+
+export interface MotionIconProps extends IconProps, MotionProps {}

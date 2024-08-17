@@ -1,20 +1,23 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 
-import { IconProps } from '@typings/components/IconProps.type.ts';
+import { MotionProps } from 'framer-motion';
+import { MotionIconProps } from '@/libs/typings/components/IconProps.type';
 
-const IconImg = styled.img<{
-   $clickable: boolean;
-   $width: string;
-   $height: string;
-}>`
+const IconImg = styled.img<
+   {
+      $clickable: boolean;
+      $width: string;
+      $height: string;
+   } & MotionProps
+>`
    display: inline;
    width: ${(props) => props.$width};
    height: ${(props) => props.$height};
    cursor: ${(props) => (props.$clickable ? 'pointer' : 'cursor')};
 `;
 
-export default function Icon(props: IconProps): JSX.Element {
+export default function Icon(props: MotionIconProps): JSX.Element {
    const iconPath = '/icons';
 
    let {
@@ -25,6 +28,7 @@ export default function Icon(props: IconProps): JSX.Element {
       className = 'icon',
       onClickHandler = (): void => {},
       clickable = false,
+      ...motionProps
    } = props;
 
    if (height === null) {
@@ -43,6 +47,7 @@ export default function Icon(props: IconProps): JSX.Element {
          className={className}
          $clickable={clickable}
          onClick={onClickHandler}
+         {...motionProps}
       />
    );
 }

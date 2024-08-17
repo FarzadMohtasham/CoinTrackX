@@ -2,6 +2,7 @@ import { Fragment, JSX, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
 import Icon from '@components/ui/stuff/Icon.tsx';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 
 import {
    InputProps,
@@ -35,6 +36,7 @@ const PasswordInputStyled = styled.div`
 `;
 
 const PasswordFieldContainer = styled(PasswordInputStyled)<InputStyledProps>`
+   position: relative;
    border-color: ${(props) =>
       props.$inputIsActive
          ? 'var(--color-black-400)'
@@ -66,13 +68,27 @@ export default function PasswordInputField(props: InputProps): JSX.Element {
       unAllowedErrorMessages = [],
    }: InputProps = props;
 
-   useEffect((): void => {
-      onChangeHandler(passwordValue);
-   }, [passwordValue]);
+   const inputFieldIconChangeVariants: Variants = {
+      initial: {
+         opacity: 0,
+      },
+      animate: {
+         opacity: 1,
+         transition: { duration: 0.3 },
+      },
+      exit: {
+         opacity: 0,
+         transition: { duration: 0.3 },
+      },
+   };
 
    const handlePasswordVisible = (): void => {
       setPasswordVisible((preValue: boolean): boolean => !preValue);
    };
+
+   useEffect((): void => {
+      onChangeHandler(passwordValue);
+   }, [passwordValue]);
 
    return (
       <Fragment>
@@ -81,12 +97,32 @@ export default function PasswordInputField(props: InputProps): JSX.Element {
             $hasError={false}
             $disabled={false}
          >
-            {!passwordFieldSelected && (
-               <Icon width={iconWidth} iconSrc={iconSrc || ''} />
-            )}
-            {passwordFieldSelected && (
-               <Icon width={iconWidth} iconSrc={focusIconSrc} />
-            )}
+            <AnimatePresence mode="wait">
+               {!passwordFieldSelected && (
+                  <Icon
+                     key={'!passwordFieldSelected'}
+                     width={iconWidth}
+                     iconSrc={iconSrc || ''}
+                     as={motion.img}
+                     initial={'initial'}
+                     animate={'animate'}
+                     exit={'exit'}
+                     variants={inputFieldIconChangeVariants}
+                  />
+               )}
+               {passwordFieldSelected && (
+                  <Icon
+                     key={'passwordFieldSelected'}
+                     width={iconWidth}
+                     iconSrc={focusIconSrc}
+                     as={motion.img}
+                     initial={'initial'}
+                     animate={'animate'}
+                     exit={'exit'}
+                     variants={inputFieldIconChangeVariants}
+                  />
+               )}
+            </AnimatePresence>
             <input
                type={passwordVisible ? 'text' : 'password'}
                name={'input'}
@@ -96,23 +132,37 @@ export default function PasswordInputField(props: InputProps): JSX.Element {
                onBlur={() => setInputFieldSelected(false)}
                onChange={(e) => setPasswordValue(e.target.value)}
             />
-            {passwordVisible ? (
-               <Icon
-                  width={iconWidth}
-                  iconAlt={'visible icon'}
-                  className={'visible-icon'}
-                  onClickHandler={handlePasswordVisible}
-                  iconSrc={'invisible-icon.svg'}
-               />
-            ) : (
-               <Icon
-                  width={iconWidth}
-                  iconAlt={'invisible icon'}
-                  className={'invisible-icon'}
-                  onClickHandler={handlePasswordVisible}
-                  iconSrc={'visible-icon.svg'}
-               />
-            )}
+            <AnimatePresence mode="wait">
+               {passwordVisible ? (
+                  <Icon
+                     key={'icon1'}
+                     width={iconWidth}
+                     iconAlt={'visible icon'}
+                     className={'visible-icon'}
+                     onClickHandler={handlePasswordVisible}
+                     iconSrc={'invisible-icon.svg'}
+                     as={motion.img}
+                     initial={'initial'}
+                     animate={'animate'}
+                     exit={'exit'}
+                     variants={inputFieldIconChangeVariants}
+                  />
+               ) : (
+                  <Icon
+                     key={'icon2'}
+                     width={iconWidth}
+                     iconAlt={'invisible icon'}
+                     className={'invisible-icon'}
+                     onClickHandler={handlePasswordVisible}
+                     iconSrc={'visible-icon.svg'}
+                     as={motion.img}
+                     initial={'initial'}
+                     animate={'animate'}
+                     exit={'exit'}
+                     variants={inputFieldIconChangeVariants}
+                  />
+               )}
+            </AnimatePresence>
          </PasswordFieldContainer>
          {unAllowedErrorMessages.length !== 0 &&
             errorMessage &&
