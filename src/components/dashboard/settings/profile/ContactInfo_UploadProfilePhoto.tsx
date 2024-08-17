@@ -28,6 +28,7 @@ const UploadProfilePhotoContainer = styled.div`
 
 const LeftCol = styled.div`
    display: flex;
+   flex-direction: row;
    gap: 10px;
    align-items: center;
 
@@ -48,6 +49,10 @@ const LeftCol = styled.div`
       span.email {
          font-size: var(--font-size-body-lg);
       }
+   }
+
+   @media screen and (max-width: ${props => props.theme.breakpoints.sm}) {
+      flex-direction: column;
    }
 `;
 
