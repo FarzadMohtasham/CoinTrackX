@@ -38,9 +38,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <App />
    </React.StrictMode>,
 );
-function useFollowPointer(ref: React.MutableRefObject<null>): {
-   x: any;
-   y: any;
-} {
-   throw new Error('Function not implemented.');
-}

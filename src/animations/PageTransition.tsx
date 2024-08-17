@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export const PageTransition = ({ children }: { children: ReactElement }) => {
    const pageTransition: any = {

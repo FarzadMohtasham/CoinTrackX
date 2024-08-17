@@ -3,7 +3,6 @@ import { css, styled } from 'styled-components';
 
 import Container from '@components/ui/stuff/Container.tsx';
 import HeadingBox from '@components/ui/stuff/HeadingBox.tsx';
-import { string } from 'yup';
 import { motion } from 'framer-motion';
 
 const coinsSrcList = [

@@ -1,6 +1,5 @@
 import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
 import toast from 'react-hot-toast';
 import styled from 'styled-components';
 import Button from '../ui/stuff/Button';
