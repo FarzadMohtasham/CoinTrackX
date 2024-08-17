@@ -21,6 +21,7 @@ const ProfileStyled = styled.div<ProfileStyledProps>`
    align-items: center;
    justify-content: center;
    cursor: pointer;
+   object-fit: cover;
 
    &::before {
       content: ${(props) => props.$userNameFirstLetter};
