@@ -7,6 +7,7 @@ import UploadImageInput from '@components/ui/inputFields/UploadImage.input.tsx';
 import { ImageFileTypeValidator } from '@utils/helpers.ts';
 
 import { ONE_MILLION } from '@data/bigNumbers.data.ts';
+import useUserProfile from '@/queries/auth/useUserProfile.query';
 
 type UploadProfilePhotoProps = {
    imageFile: File | undefined;
@@ -58,6 +59,8 @@ export default function UploadProfilePhoto({
    setImageFile,
    imageFile,
 }: UploadProfilePhotoProps) {
+   const { data: userProfile } = useUserProfile();
+
    const handleFileChange: ChangeEventHandler<HTMLInputElement> = (e): void => {
       if (!e.target.files) {
          return;
@@ -102,6 +105,7 @@ export default function UploadProfilePhoto({
                   <img
                      className={'user-profile'}
                      src={
+                        userProfile?.profile_img_url ||
                         'https://zwrleecsvygsftotatty.supabase.co/storage/v1/object/public/CoinTrackX/blank-profile.png?t=2024-07-19T12%3A39%3A44.706Z'
                      }
                      alt={'user-profile-image'}

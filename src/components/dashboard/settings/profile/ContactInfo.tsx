@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import Skeleton from 'react-loading-skeleton';
+import { v4 as uuidv4 } from 'uuid';
 
 import Button from '@components/ui/stuff/Button.tsx';
 import Heading from '@components/ui/stuff/Heading.tsx';
@@ -11,6 +12,7 @@ import UpdateContactInfo from '@components/dashboard/settings/profile/ContactInf
 
 import useUserProfile from '@/queries/auth/useUserProfile.query';
 import { updateUserProfile } from '@/services/apis/auth/userProfile/updateUserProfile.api';
+import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 
 const ContactInfoContainer = styled.div`
    border-radius: 8px;
@@ -62,6 +64,9 @@ export default function ContactInfo() {
    const [email, setEmail] = useState<string>('');
    const [profileImageFile, setProfileImageFile] = useState<File | undefined>();
 
+   console.log(profileImageFile?.type);
+
+   // ///////////////////////////////////////////////////////////
    // Queries
    const {
       data: userProfile,
@@ -73,8 +78,42 @@ export default function ContactInfo() {
    const { mutateAsync: mutateContactInfo, isPending: mutateIsPending } =
       useMutation({
          mutationFn: async () => {
+            let newUserProfileImgUrl = null;
+
+            if (profileImageFile) {
+               const { data: uploadData, error: uploadError } =
+                  await supabaseClient.storage
+                     .from('avatars')
+                     .upload(
+                        `${userProfile?.user_id}/${userProfile?.email}-${uuidv4()}.${profileImageFile.type.split('/')[1]}`,
+                        profileImageFile,
+                        {
+                           cacheControl: '3600',
+                           upsert: false,
+                        },
+                     );
+
+               console.log(uploadData);
+
+               if (uploadError) throw new Error(uploadError.message);
+
+               const { data: signedUrlData, error: signedUrlError } =
+                  await supabaseClient.storage
+                     .from('avatars')
+                     .createSignedUrl(
+                        uploadData.path,
+                        60 * 60 * 24 * 365 * 100,
+                     );
+
+               if (signedUrlError) throw new Error(signedUrlError.message);
+
+               newUserProfileImgUrl = signedUrlData.signedUrl;
+            }
+
             await updateUserProfile({
                display_name: displayName,
+               profile_img_url:
+                  newUserProfileImgUrl || userProfile?.profile_img_url,
             });
          },
          onSuccess: () => {
@@ -85,18 +124,20 @@ export default function ContactInfo() {
          },
       });
 
+   // ///////////////////////////////////////////////////////////
    // Handlers
+   const saveChangesClick = async () => {
+      await mutateContactInfo();
+      await userProfileRefetch();
+   };
+
    const handleResetChangesClick = () => {
       if (!userProfile) return;
 
       setDisplayName(userProfile?.display_name);
    };
 
-   const saveChangesClick = async () => {
-      await mutateContactInfo();
-      await userProfileRefetch();
-   };
-
+   // ///////////////////////////////////////////////////////////
    // Update fields on isLoading state change
    useEffect(() => {
       if (!userProfile) return;
@@ -113,6 +154,7 @@ export default function ContactInfo() {
       }
    }, [userProfileError]);
 
+   // ///////////////////////////////////////////////////////////
    if (userProfileIsLoading)
       return <Skeleton count={3} height={'100px'} width={'100%'} />;
 
