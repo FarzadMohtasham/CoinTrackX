@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.150](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.149...v0.0.150) (2024-08-17)
+
+
+### Features
+
+* Added UploadProfilePhoto component username and email to right side of user profile image + Added Dashboard header username first letter to profile image ([b7c0c6d](https://github.com/FarzadMohtasham/CoinTrackX/commit/b7c0c6d6e672ed40b116aefcf3151422bd018162))
+
 ### [0.0.149](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.148...v0.0.149) (2024-08-17)
 
 ### [0.0.148](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.147...v0.0.148) (2024-08-17)
