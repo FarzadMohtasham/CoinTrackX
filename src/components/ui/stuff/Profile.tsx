@@ -1,13 +1,11 @@
 import { JSX } from 'react';
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
+import useUserProfile from '@/queries/auth/useUserProfile.query';
 
 type ProfileStyledProps = {
    $imgSrc: string;
-};
-
-type ProfileProps = {
-   imgSrc?: string;
+   $userNameFirstLetter: string;
 };
 
 const ProfileStyled = styled.div<ProfileStyledProps>`
@@ -25,17 +23,31 @@ const ProfileStyled = styled.div<ProfileStyledProps>`
    cursor: pointer;
 
    &::before {
-      content: 'FM';
+      content: ${(props) => props.$userNameFirstLetter};
       color: white;
    }
 `;
 
-export default function Profile(props: ProfileProps): JSX.Element {
-   const { imgSrc = '/icons/profile.jpg' } = props;
+export default function Profile(): JSX.Element {
+   const { data: userProfile } = useUserProfile();
+
+   let userNameFirstLetter = '';
+   if (userProfile?.last_name)
+      userNameFirstLetter = userProfile.last_name.split('')[0];
+   if (userProfile?.display_name)
+      userNameFirstLetter = userProfile.display_name.split('')[0];
+   if (userProfile?.first_name)
+      userNameFirstLetter = userProfile.first_name.split('')[0];
 
    return (
-      <Link to={'/'}>
-         <ProfileStyled $imgSrc={imgSrc} />
+      <Link to={'/dashboard/settings/profile'}>
+         <ProfileStyled
+            $imgSrc={
+               userProfile?.profile_img_url ||
+               'https://zwrleecsvygsftotatty.supabase.co/storage/v1/object/public/CoinTrackX/blank-profile.png?t=2024-07-19T12%3A39%3A44.706Z'
+            }
+            $userNameFirstLetter={userNameFirstLetter}
+         />
       </Link>
    );
 }

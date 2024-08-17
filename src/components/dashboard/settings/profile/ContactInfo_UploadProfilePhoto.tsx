@@ -114,9 +114,13 @@ export default function UploadProfilePhoto({
             </div>
             <div className="profile-info-wrapper">
                <Heading tagName={'h6'} className={'username'}>
-                  Andre Samosa
+                  {userProfile?.display_name
+                     ? userProfile.display_name
+                     : userProfile?.first_name || userProfile?.last_name
+                       ? userProfile.first_name + ' ' + userProfile.last_name
+                       : 'No Name :)'}
                </Heading>
-               <span className="email">andresamosa@mail.com</span>
+               <span className="email">{userProfile?.email}</span>
             </div>
          </LeftCol>
 
