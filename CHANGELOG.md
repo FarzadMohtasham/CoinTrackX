@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.145](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.144...v0.0.145) (2024-08-17)
+
+
+### Features
+
+* Developed Security page ([e6b036e](https://github.com/FarzadMohtasham/CoinTrackX/commit/e6b036e841cd526dcf432e7d22a8d7f8c1ba7c3b))
+
 ### [0.0.144](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.143...v0.0.144) (2024-08-16)
 
 
