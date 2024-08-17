@@ -20,7 +20,7 @@ export const checkAndCreateUserProfileForFirstTime = async (): Promise<any> => {
    }
 
    const currentTimestampz = new Date().toISOString();
-   const { error: createUserProfileError } = await supabaseClient
+   await supabaseClient
       .from('users_profile')
       .insert([
          {
