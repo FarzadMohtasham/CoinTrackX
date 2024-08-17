@@ -8,9 +8,11 @@ import {
 import { styled } from 'styled-components';
 
 import { countriesCode } from '@data/countryCode.data.ts';
+import { UserProfilePhoneNumberT } from '@/libs/typings/auth/UserProfile.type';
 
 export type PhoneNumberInputProps = {
-   dispatchFn: Dispatch<SetStateAction<string>>;
+   dispatchFn: Dispatch<SetStateAction<UserProfilePhoneNumberT>>;
+   initial?: UserProfilePhoneNumberT;
    phoneNumberMaxLength?: number;
 };
 
@@ -67,35 +69,46 @@ const PhoneNumberInputContainer = styled.div`
 `;
 
 export default function PhoneNumberInput(props: PhoneNumberInputProps) {
-   const { dispatchFn = () => {}, phoneNumberMaxLength = 10 } = props;
+   const {
+      dispatchFn = () => {},
+      phoneNumberMaxLength = 10,
+      initial = { countryCode: '', number: '' },
+   } = props;
 
    // @ts-ignore
-   const [countryCode, setCountryCode] = useState<string>('+93');
-   const [PhoneNumberInput, setPhoneNumberInput] = useState<string>('');
+   const [countryCodeInput, setCountryCodeInput] = useState<string>(
+      initial.countryCode,
+   );
+   const [PhoneNumberInput, setPhoneNumberInput] = useState<string>(
+      initial.number,
+   );
 
    // Handlers
-   const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+   const onCountryCodeInputChange = (e: ChangeEvent<HTMLSelectElement>) => {
       const selectInputVal = e.target.value;
-      setCountryCode(selectInputVal);
+      setCountryCodeInput(selectInputVal);
    };
 
-   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+   const onNumberInputChange = (e: ChangeEvent<HTMLInputElement>) => {
       const inputVal = e.target.value;
       setPhoneNumberInput(inputVal);
    };
 
    useEffect(() => {
-      dispatchFn(countryCode + PhoneNumberInput);
-   }, [countryCode, PhoneNumberInput]);
+      dispatchFn({
+         countryCode: countryCodeInput,
+         number: PhoneNumberInput,
+      });
+   }, [countryCodeInput, PhoneNumberInput]);
 
    return (
       <PhoneNumberInputContainer>
          <div className={'country-select-wrapper'}>
             <select
                name={'country'}
-               onChange={onSelectChange}
+               onChange={onCountryCodeInputChange}
                className={'country-select'}
-               value={countryCode}
+               value={countryCodeInput}
             >
                {countriesCode.map((countryCode) => {
                   return (
@@ -113,10 +126,10 @@ export default function PhoneNumberInput(props: PhoneNumberInputProps) {
          <div className={'separator'}></div>
 
          <div className={'input-field-wrapper'}>
-            <span>{countryCode}</span>
             <input
                placeholder={'Enter phone number'}
-               onChange={onInputChange}
+               onChange={onNumberInputChange}
+               value={PhoneNumberInput}
                maxLength={phoneNumberMaxLength}
             />
          </div>

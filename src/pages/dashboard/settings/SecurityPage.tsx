@@ -1,10 +1,17 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { Switch, Tooltip } from '@chakra-ui/react';
 
 import PhoneNumberInput from '@components/ui/inputFields/PhoneNumber.input.tsx';
 import Icon from '@components/ui/stuff/Icon.tsx';
 import Heading from '@/components/ui/stuff/Heading';
+import { updateUserProfile } from '@/services/apis/auth/userProfile/updateUserProfile.api';
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
+import Button from '@/components/ui/stuff/Button';
+import useUserProfile from '@/queries/auth/useUserProfile.query';
+import Skeleton from 'react-loading-skeleton';
+import { UserProfilePhoneNumberT } from '@/libs/typings/auth/UserProfile.type';
 
 const SecurityPageContainer = styled.div`
    padding: 15px;
@@ -102,9 +109,45 @@ const TwoStepVerificationWrapper = styled.div`
 `;
 
 export default function SecurityPage() {
-   const [, setPhoneNumber] = useState<string>('');
+   const [phoneNumber, setPhoneNumber] = useState<UserProfilePhoneNumberT>({
+      countryCode: '',
+      number: '',
+   });
    const [textMessageCheckBox, setTextMessageCheckBox] = useState<boolean>();
    const [emailCheckBox, setEmailCheckBox] = useState<boolean>();
+
+   // Queries
+   const { data: userProfile, isLoading: userProfileIsLoading } =
+      useUserProfile();
+
+   const { mutateAsync: mutatePhoneNumber, isPending: mutateIsPending } =
+      useMutation({
+         mutationFn: async () => {
+            await updateUserProfile({
+               phone_number: phoneNumber,
+            });
+         },
+         onSuccess: () => {
+            toast.success('Phone number updated successfully');
+         },
+         onError: ({ message }) => {
+            toast.error(message);
+         },
+      });
+
+   const handlePhoneNumberUpdate = () => {
+      mutatePhoneNumber();
+   };
+
+   useEffect(() => {
+      setTimeout(() => {
+         setPhoneNumber(
+            userProfile?.phone_number || { number: '', countryCode: '' },
+         );
+      }, 0);
+   }, [userProfile]);
+
+   if (userProfileIsLoading) return <Skeleton count={4} height={'75px'} />;
 
    return (
       <SecurityPageContainer>
@@ -118,7 +161,23 @@ export default function SecurityPage() {
 
             <div className="input-wrapper">
                <span className={'input-title'}>Phone number</span>
-               <PhoneNumberInput dispatchFn={setPhoneNumber} />
+               <PhoneNumberInput
+                  dispatchFn={setPhoneNumber}
+                  initial={
+                     userProfile?.phone_number || {
+                        countryCode: '',
+                        number: '',
+                     }
+                  }
+               />
+               <br />
+               <Button
+                  onClickHandler={handlePhoneNumberUpdate}
+                  disabled={mutateIsPending}
+                  isLoading={mutateIsPending}
+               >
+                  Save changes
+               </Button>
             </div>
          </PhoneNumberWrapper>
 

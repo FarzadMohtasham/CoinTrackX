@@ -1,3 +1,12 @@
+export type GetUserProfileParams = {
+   user_id: string;
+};
+
+export type UserProfilePhoneNumberT = {
+   countryCode: string;
+   number: string;
+};
+
 export type UserProfile = {
    id: number; // bigint
    created_at: string; // timestamp with time zone
@@ -9,11 +18,7 @@ export type UserProfile = {
    last_name: string; // text
    date_of_birth: string; // text
    country_of_residence: string; // text
-   phone_number: string; // text
-};
-
-export type GetUserProfileParams = {
-   user_id: string;
+   phone_number: UserProfilePhoneNumberT; // text
 };
 
 export type UpdateUserProfilePayload = {
@@ -23,5 +28,5 @@ export type UpdateUserProfilePayload = {
    last_name?: string; // text
    date_of_birth?: string; // text
    country_of_residence?: string; // text
-   phone_number?: string; // text
+   phone_number?: UserProfilePhoneNumberT; // text
 };

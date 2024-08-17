@@ -63,7 +63,7 @@ export default function ContactInfo() {
    const [profileImageFile, setProfileImageFile] = useState<File | undefined>();
 
    // Queries
-   let {
+   const {
       data: userProfile,
       error: userProfileError,
       isLoading: userProfileIsLoading,
