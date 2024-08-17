@@ -70,13 +70,6 @@ export default function Review(props: ReviewProps): JSX.Element {
          className={'review'}
          whileHover={{ scale: 1.075 }}
          whileTap={{ scale: 0.9 }}
-         dragConstraints={{
-            bottom: 0,
-            left: 0,
-            right: 0,
-            top: 0,
-         }}
-         drag
       >
          <div className="stars">
             {[...Array(5 - numberOfStars + numberOfStars).keys()].map(
