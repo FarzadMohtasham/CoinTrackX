@@ -1,5 +1,9 @@
-import { supabaseClient } from "@/libs/configs/supabase/supabaseConfig";
-import { PostgrestSingleResponse, User, UserResponse } from "@supabase/supabase-js";
+import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
+import {
+   PostgrestSingleResponse,
+   User,
+   UserResponse,
+} from '@supabase/supabase-js';
 
 export const checkAndCreateUserProfileForFirstTime = async (): Promise<any> => {
    const getUserResponse: UserResponse = await supabaseClient.auth.getUser();
@@ -32,6 +36,4 @@ export const checkAndCreateUserProfileForFirstTime = async (): Promise<any> => {
          },
       ])
       .select();
-
-   console.log(createUserProfileError);
 };

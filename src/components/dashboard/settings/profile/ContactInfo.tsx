@@ -64,8 +64,6 @@ export default function ContactInfo() {
    const [email, setEmail] = useState<string>('');
    const [profileImageFile, setProfileImageFile] = useState<File | undefined>();
 
-   console.log(profileImageFile?.type);
-
    // ///////////////////////////////////////////////////////////
    // Queries
    const {
@@ -92,8 +90,6 @@ export default function ContactInfo() {
                            upsert: false,
                         },
                      );
-
-               console.log(uploadData);
 
                if (uploadError) throw new Error(uploadError.message);
 
