@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.148](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.147...v0.0.148) (2024-08-17)
+
+
+### Features
+
+* Developed user profile upload ([da0393b](https://github.com/FarzadMohtasham/CoinTrackX/commit/da0393b057bea2883f66718a48b95baf516f559e))
+
 ### [0.0.147](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.146...v0.0.147) (2024-08-17)
 
 ### [0.0.146](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.145...v0.0.146) (2024-08-17)
