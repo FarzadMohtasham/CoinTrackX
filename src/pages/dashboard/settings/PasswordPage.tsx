@@ -14,6 +14,7 @@ import {
    AlertIcon,
    AlertTitle,
 } from '@chakra-ui/react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Container = styled.div`
    padding: 10px;
@@ -132,53 +133,75 @@ export default function PasswordPage() {
    return (
       <Container>
          <ContentWrapper>
-            <div className="header-wrapper">
-               <Heading tagName="h5" className="heading">
-                  Change password
-               </Heading>
-               <span className="desc">
-                  Remember not to store your password in your email or cloud and
-                  don't share it with anyone
-               </span>
-            </div>
-
-            <div className="input-fields-wrapper">
-               {errorMessage && (
-                  <Alert status="error">
-                     <AlertIcon />
-                     <AlertTitle>Error!</AlertTitle>
-                     <AlertDescription>{errorMessage}</AlertDescription>
-                  </Alert>
-               )}
-
-               <div className="input-field">
-                  <span className="input-label">New Password</span>
-                  <PasswordInputField
-                     inputValue={newPassword}
-                     onChangeHandler={setNewPassword}
-                     placeHolder="New password"
-                     disabled={false}
-                  />
+            <AnimatePresence>
+               <div className="header-wrapper">
+                  <Heading tagName="h5" className="heading">
+                     Change password
+                  </Heading>
+                  <span className="desc">
+                     Remember not to store your password in your email or cloud
+                     and don't share it with anyone
+                  </span>
                </div>
 
-               <div className="input-field">
-                  <span className="input-label">Confirm New Password</span>
-                  <PasswordInputField
-                     inputValue={confirmNewPassword}
-                     onChangeHandler={setConfirmNewPassword}
-                     placeHolder="Confirm new password"
-                     disabled={false}
-                  />
-               </div>
+               <div className="input-fields-wrapper">
+                  {errorMessage && (
+                     <motion.div
+                        key={'container-1'}
+                        layout
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                     >
+                        <Alert status="error">
+                           <AlertIcon />
+                           <AlertTitle>Error!</AlertTitle>
+                           <AlertDescription>{errorMessage}</AlertDescription>
+                        </Alert>
+                     </motion.div>
+                  )}
 
-               <Button
-                  onClickHandler={onPasswordChangeClick}
-                  disabled={errorMessage ? true : false}
-                  expanded
-               >
-                  Change Password
-               </Button>
-            </div>
+                  <motion.div
+                     key={'container-2'}
+                     layout
+                     className="input-field"
+                  >
+                     <span className="input-label">New Password</span>
+                     <PasswordInputField
+                        inputValue={newPassword}
+                        onChangeHandler={setNewPassword}
+                        iconSrc={'password-icon.svg'}
+                        placeHolder="New password"
+                        disabled={false}
+                     />
+                  </motion.div>
+
+                  <motion.div
+                     key={'container-3'}
+                     layout
+                     className="input-field"
+                  >
+                     <span className="input-label">Confirm New Password</span>
+                     <PasswordInputField
+                        inputValue={confirmNewPassword}
+                        onChangeHandler={setConfirmNewPassword}
+                        iconSrc={'password-icon.svg'}
+                        placeHolder="Confirm new password"
+                        disabled={false}
+                     />
+                  </motion.div>
+
+                  <motion.div layout key={'container-4'}>
+                     <Button
+                        onClickHandler={onPasswordChangeClick}
+                        disabled={errorMessage ? true : false}
+                        expanded
+                     >
+                        Change Password
+                     </Button>
+                  </motion.div>
+               </div>
+            </AnimatePresence>
          </ContentWrapper>
       </Container>
    );

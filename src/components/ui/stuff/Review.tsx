@@ -68,8 +68,12 @@ export default function Review(props: ReviewProps): JSX.Element {
       <ReviewStyled
          as={motion.div}
          className={'review'}
+         initial={{ y: 150 }}
+         whileInView={{ y: 0 }}
          whileHover={{ scale: 1.075 }}
          whileTap={{ scale: 0.9 }}
+         transition={{ duration: 1 }}
+         viewport={{ once: true }}
       >
          <div className="stars">
             {[...Array(5 - numberOfStars + numberOfStars).keys()].map(

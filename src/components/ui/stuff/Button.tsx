@@ -18,9 +18,9 @@ import {
    buttonPaddingVariations,
    buttonTypeVariations,
 } from '@data/button.data.ts';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion, MotionProps } from 'framer-motion';
 
-type ButtonStyledProps = {
+type ButtonStyledProps = MotionProps & {
    $properties: Properties;
 };
 
@@ -195,9 +195,20 @@ export default function Button(props: ButtonPropsType): JSX.Element {
                className="left-icon"
             />
          )}
-         {isLoading && (
-            <HashLoader size={18} color={`var(--color-${variant + '-500)'}`} />
-         )}
+         <AnimatePresence mode="wait">
+            {isLoading && (
+               <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+               >
+                  <HashLoader
+                     size={18}
+                     color={`var(--color-${variant + '-500)'}`}
+                  />
+               </motion.div>
+            )}
+         </AnimatePresence>
          {children}
          {icon && iconDir === 'right' && (
             <Icon

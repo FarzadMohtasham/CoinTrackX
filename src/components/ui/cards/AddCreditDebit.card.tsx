@@ -2,13 +2,14 @@ import React, { JSX } from 'react';
 import { styled } from 'styled-components';
 
 import Icon from '@components/ui/stuff/Icon.tsx';
+import { MotionProps } from 'framer-motion';
 
-type AddCreditDebitCardProps = {
+type AddCreditDebitCardProps = MotionProps & {
    onClick: () => void;
    containerText?: string;
 };
 
-const AddCreditDebitCardContainer = styled.div`
+const AddCreditDebitCardContainer = styled.div<MotionProps>`
    display: grid;
    height: 185px;
    place-content: center;
@@ -35,20 +36,20 @@ const AddCreditDebitCardContainer = styled.div`
    }
 `;
 
-export const AddCreditDebitCard: React.FC<AddCreditDebitCardProps> = (
-   props,
-): JSX.Element => {
+export const AddCreditDebitCard: React.FC<AddCreditDebitCardProps> = ({
+   onClick,
+   containerText = 'Add a Credit/Debit Payment Card',
+   ...otherProps
+}): JSX.Element => {
    return (
-      <AddCreditDebitCardContainer onClick={props.onClick}>
+      <AddCreditDebitCardContainer onClick={onClick} {...otherProps}>
          <div className={'wrapper'}>
             <Icon
                iconSrc={'plus-with-border.svg'}
                width={'40px'}
                height={'40px'}
             />
-            <span className={'add-a-payment-method'}>
-               {props.containerText || 'Add a Credit/Debit Payment Card'}
-            </span>
+            <span className={'add-a-payment-method'}>{containerText}</span>
          </div>
       </AddCreditDebitCardContainer>
    );

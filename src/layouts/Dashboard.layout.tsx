@@ -25,7 +25,7 @@ import { useUiStore } from '@services/stores/ui.store.ts';
 
 import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 import { User } from '@supabase/supabase-js';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const LayoutContainer = styled.div`
    height: 100vh;
@@ -466,6 +466,7 @@ export default function DashboardLayout() {
             as={motion.header}
             initial={{ y: -90 }}
             animate={{ y: 0 }}
+            exit={{ y: -90 }}
          >
             <div className={'left-col'}>
                <Icon
@@ -490,6 +491,7 @@ export default function DashboardLayout() {
             as={motion.div}
             initial={{ x: -500 }}
             animate={{ x: 0 }}
+            exit={{ y: -90 }}
          >
             <Link to={'/dashboard'}>
                <Logo />

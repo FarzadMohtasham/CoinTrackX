@@ -27,6 +27,7 @@ import { CreditDebitCard as CreditDebitCardT } from '@typings/components/CreditD
 import AddCreditDebitCardModal from '@components/dashboard/settings/paymentMethods/AddCreditDebitCard.modal.tsx';
 import AddCreditDebitCard from '@components/ui/cards/AddCreditDebit.card.tsx';
 import useGetCreditDebitCardsQuery from '@queries/paymentMethods/useGetCreditDebitCards.query.ts';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const NoPaymentMethodContainer = styled.div`
    display: grid;
@@ -143,23 +144,37 @@ export default function PaymentMethodsPage() {
                   <PaymentMethodsContainer>
                      {creditDebitCards && (
                         <div className="creditDebitCards">
-                           {creditDebitCards.map(
-                              (
-                                 creditDebitCard: CreditDebitCardT,
-                                 index: number,
-                              ) => {
-                                 return (
-                                    <CreditDebitCard
-                                       key={
-                                          creditDebitCard.cardholder_name +
-                                          index
-                                       }
-                                       creditDebitCardInfo={creditDebitCard}
-                                    />
-                                 );
-                              },
-                           )}
-                           <AddCreditDebitCard onClick={onOpen} />
+                           <AnimatePresence>
+                              {creditDebitCards.map(
+                                 (
+                                    creditDebitCard: CreditDebitCardT,
+                                    i: number,
+                                 ) => {
+                                    return (
+                                       <motion.div
+                                          key={creditDebitCard.card_number + i}
+                                          initial={{ opacity: 0 }}
+                                          animate={{ opacity: 1 }}
+                                          exit={{ opacity: 0 }}
+                                          viewport={{ once: true }}
+                                          layout
+                                       >
+                                          <CreditDebitCard
+                                             key={
+                                                String(
+                                                   creditDebitCard.created_at,
+                                                ) + i
+                                             }
+                                             creditDebitCardInfo={
+                                                creditDebitCard
+                                             }
+                                          />
+                                       </motion.div>
+                                    );
+                                 },
+                              )}
+                              <AddCreditDebitCard onClick={onOpen} />
+                           </AnimatePresence>
                         </div>
                      )}
                   </PaymentMethodsContainer>
@@ -199,12 +214,14 @@ export default function PaymentMethodsPage() {
                         {paymentMethodOptions.map(
                            (
                               paymentMethodOption: PaymentMethodOptionProps,
-                              index: number,
                            ): JSX.Element => {
                               return (
                                  <PaymentMethodOptionComponent
                                     {...paymentMethodOption}
-                                    key={paymentMethodOption.title + index}
+                                    key={
+                                       paymentMethodOption.title +
+                                       paymentMethodOption.description
+                                    }
                                     onClick={() =>
                                        setPaymentMethodStep(
                                           paymentMethodOption.title,

@@ -37,9 +37,10 @@ export default function SuperchargeCard(
    return (
       <SuperChargedStyled
          as={motion.div}
-         initial={{ opacity: 0 }}
-         whileInView={{ opacity: 1 }}
-         transition={{ duration: 1.5 }}
+         initial={{ opacity: 0, y: 150 }}
+         whileInView={{ opacity: 1, y: 0 }}
+         transition={{ duration: 1 }}
+         viewport={{ once: true }}
       >
          <motion.img
             src={imgSrc}

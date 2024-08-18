@@ -201,7 +201,6 @@ export default function CurrencyPrice(): JSX.Element {
       useGetAssetHistory(selectedCurrency as AssetName, selectedChartInterval);
 
    const options: ChartOptions<'line'> = {
-      animation: false,
       plugins: {
          tooltip: {
             enabled: true,
@@ -211,7 +210,36 @@ export default function CurrencyPrice(): JSX.Element {
          },
       },
       responsive: true,
+      elements: {
+         line: {
+            borderWidth: 3,
+         },
+         point: {
+            radius: 5,
+            hoverRadius: 8,
+            hoverBackgroundColor: 'black',
+            pointStyle: 'rectRounded',
+         },
+      },
    };
+
+   // Type assertion to bypass TypeScript's type checking
+   const optionsWithSegment = {
+      ...options,
+      segment: {
+         borderColor: (ctx: any) => {
+            const index = ctx.p0DataIndex; // index of the segment's start point
+            const currentValue = ctx.chart.data.datasets[0].data[
+               index
+            ] as number;
+            const nextValue = ctx.chart.data.datasets[0].data[
+               index + 1
+            ] as number;
+
+            return nextValue > currentValue ? 'green' : 'red';
+         },
+      },
+   } as any;
 
    const fake_data: ChartData<'line'> = {
       labels: labels || [],
@@ -219,7 +247,13 @@ export default function CurrencyPrice(): JSX.Element {
          {
             label: 'Price of ' + selectedCurrency.toUpperCase(),
             data: datasets || [],
-            borderColor: 'gray',
+            pointBackgroundColor: (datasets || []).map(
+               (value, index, array) => {
+                  if (index === 0) return 'black';
+                  return value > array[index - 1] ? 'green' : 'red';
+               },
+            ),
+            tension: 0.2,
          },
       ],
    };
@@ -301,7 +335,7 @@ export default function CurrencyPrice(): JSX.Element {
                      <Line
                         className={'asset-price'}
                         data={fake_data}
-                        options={options}
+                        options={optionsWithSegment}
                      />
                   </Content>
                )}
