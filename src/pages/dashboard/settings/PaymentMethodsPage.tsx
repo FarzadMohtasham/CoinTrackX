@@ -141,30 +141,24 @@ export default function PaymentMethodsPage() {
          ) : (
             <>
                {creditDebitCards.length ? (
-                  <PaymentMethodsContainer>
-                     {creditDebitCards && (
-                        <div className="creditDebitCards">
-                           <AnimatePresence>
+                  <AnimatePresence>
+                     <PaymentMethodsContainer as={motion.div} layout>
+                        {creditDebitCards && (
+                           <div className="creditDebitCards">
                               {creditDebitCards.map(
-                                 (
-                                    creditDebitCard: CreditDebitCardT,
-                                    i: number,
-                                 ) => {
+                                 (creditDebitCard: CreditDebitCardT) => {
                                     return (
                                        <motion.div
-                                          key={creditDebitCard.card_number + i}
+                                          key={creditDebitCard.card_number}
                                           initial={{ opacity: 0 }}
                                           animate={{ opacity: 1 }}
                                           exit={{ opacity: 0 }}
-                                          viewport={{ once: true }}
                                           layout
                                        >
                                           <CreditDebitCard
-                                             key={
-                                                String(
-                                                   creditDebitCard.created_at,
-                                                ) + i
-                                             }
+                                             key={String(
+                                                creditDebitCard.created_at,
+                                             )}
                                              creditDebitCardInfo={
                                                 creditDebitCard
                                              }
@@ -174,10 +168,10 @@ export default function PaymentMethodsPage() {
                                  },
                               )}
                               <AddCreditDebitCard onClick={onOpen} />
-                           </AnimatePresence>
-                        </div>
-                     )}
-                  </PaymentMethodsContainer>
+                           </div>
+                        )}
+                     </PaymentMethodsContainer>
+                  </AnimatePresence>
                ) : (
                   <NoPaymentMethodContainer className={'no-payment-methods'}>
                      <div className={'content-wrapper'}>

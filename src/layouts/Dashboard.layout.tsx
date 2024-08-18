@@ -25,7 +25,7 @@ import { useUiStore } from '@services/stores/ui.store.ts';
 
 import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
 import { User } from '@supabase/supabase-js';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const LayoutContainer = styled.div`
    height: 100vh;
