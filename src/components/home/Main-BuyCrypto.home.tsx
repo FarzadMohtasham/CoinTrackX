@@ -11,7 +11,7 @@ const BuyCryptoWrapperStyled = styled.section.attrs({
    padding: 100px 0;
    display: flex;
    flex-direction: column;
-   gap: 88px;
+   gap: 65px;
 `;
 
 const CardWrapperStyled = styled.div`
@@ -36,6 +36,9 @@ export default function BuyCrypto(): JSX.Element {
             <HeadingBox
                label={'Buy crypto'}
                heading={'Supercharge your trades with advanced features'}
+               desc={
+                  'Buy cryptocurrencies securely with e-wallets or reputable exchanges online, verifying identities and transaction details carefully.'
+               }
             />
 
             <CardWrapperStyled>
