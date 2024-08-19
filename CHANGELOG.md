@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.160](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.159...v0.0.160) (2024-08-19)
+
+
+### Features
+
+* Added queries ([3958e0e](https://github.com/FarzadMohtasham/CoinTrackX/commit/3958e0eb6e4314f70cfb0f446ba1b6b88ec2ca79))
+
 ### [0.0.159](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.158...v0.0.159) (2024-08-19)
 
 
