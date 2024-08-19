@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.161](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.160...v0.0.161) (2024-08-19)
+
+
+### Features
+
+* Added TailwindCSS + some changes ([ed1562f](https://github.com/FarzadMohtasham/CoinTrackX/commit/ed1562fedaeef7d3ec22c24cf1c4b8f90d7ce68e))
+
 ### [0.0.160](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.159...v0.0.160) (2024-08-19)
 
 
