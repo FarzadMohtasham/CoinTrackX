@@ -40,7 +40,7 @@
       },
       "useUnknownInCatchVariables": false
    },
-   "include": ["src", "./jest.setup.ts"],
+   "include": ["src", "./jest.setup.ts", "tailwind.config.js"],
    "references": [
       {
          "path": "./tsconfig.node.json"
