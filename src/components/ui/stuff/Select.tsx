@@ -171,7 +171,12 @@ export default function Select(props: SelectProps): JSX.Element {
                <Icon iconSrc={selectedItem?.iconSrc || ''} width={'18px'} />
             )}
             <span className={'selected-item-text'}>{selectedItem?.name}</span>
-            <Icon iconSrc={'arrow-down-simple.svg'} width={'10px'} />
+            <Icon
+               as={motion.img}
+               animate={{ rotate: selectMenuIsOpen ? '180deg' : '0' }}
+               iconSrc={'arrow-down-simple.svg'}
+               width={'10px'}
+            />
          </SelectBtnWrapper>
 
          <AnimatePresence>
