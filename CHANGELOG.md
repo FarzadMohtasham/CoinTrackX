@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.163](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.162...v0.0.163) (2024-08-21)
+
+
+### Features
+
+* Developed TransactionModal ([13551fc](https://github.com/FarzadMohtasham/CoinTrackX/commit/13551fc5cbed72fbedd1d8b4d702ebd5b2bc26b1))
+
 ### [0.0.162](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.161...v0.0.162) (2024-08-20)
 
 ### [0.0.161](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.160...v0.0.161) (2024-08-19)
