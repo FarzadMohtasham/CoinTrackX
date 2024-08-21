@@ -4,12 +4,12 @@ import {
    UseMutationResult,
 } from '@tanstack/react-query';
 import { updateTransactionAPI } from '@/services/apis/transactions/updateTransaction.api';
-import { TransactionWithoutAutoAddedProps } from '@/libs/typings/Transaction.type';
+import { Transaction } from '@/libs/typings/Transaction.type';
 
 export const deleteTransactionMutation = (
    id: number,
    user_id: string,
-   updatedTransactionInfo: TransactionWithoutAutoAddedProps,
+   updatedTransactionInfo: Transaction,
    mutationOptions?: QueryOptions,
 ): UseMutationResult => {
    return useMutation({

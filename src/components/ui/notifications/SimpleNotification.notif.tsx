@@ -10,9 +10,9 @@ import {
    SimpleNotifStyled,
 } from '@typings/components/Notification.type.ts';
 
-const SimpleNotifContainer: any = styled.div<
-   NotificationStyledProps & SimpleNotifStyled
->`
+type SimpleNotifContainerT = NotificationStyledProps & SimpleNotifStyled;
+
+const SimpleNotifContainer: any = styled.div<SimpleNotifContainerT>`
    display: flex;
    justify-content: space-between;
    border-radius: 8px;
@@ -87,9 +87,10 @@ const RightColumnWrapper: any = styled.div.attrs({
    }
 `;
 
-export default function SimpleNotification(
-   props: SimpleNotifProps,
-): JSX.Element {
+export default function SimpleNotification({
+   onNotifClose,
+   options,
+}: SimpleNotifProps): JSX.Element {
    const {
       id = 1,
       createdAt = null,
@@ -102,9 +103,7 @@ export default function SimpleNotification(
       closeIconSize = '50px',
       width = '100%',
       height = 'max-content',
-   } = props.options;
-
-   const { onNotifClose } = props;
+   } = options;
 
    const [closed, setClosed] = useState<boolean>(false);
 

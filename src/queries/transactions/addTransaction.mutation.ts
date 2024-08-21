@@ -4,10 +4,10 @@ import {
    UseMutationResult,
 } from '@tanstack/react-query';
 import { addNewTransactionAPI } from '@/services/apis/transactions/addTransaction.api';
-import { TransactionWithoutAutoAddedProps } from '@/libs/typings/Transaction.type';
+import { Transaction } from '@/libs/typings/Transaction.type';
 
 export const addTransactionMutation = (
-   newTransactionInfo: TransactionWithoutAutoAddedProps,
+   newTransactionInfo: Transaction,
    mutationOptions?: QueryOptions,
 ): UseMutationResult => {
    return useMutation({

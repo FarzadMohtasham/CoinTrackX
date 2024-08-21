@@ -1,11 +1,8 @@
 import { supabaseClient } from '@/libs/configs/supabase/supabaseConfig';
-import {
-   Transaction,
-   TransactionWithoutAutoAddedProps,
-} from '@/libs/typings/Transaction.type';
+import { Transaction } from '@/libs/typings/Transaction.type';
 
 export const addNewTransactionAPI = async (
-   transaction: TransactionWithoutAutoAddedProps,
+   transaction: Transaction,
 ): Promise<Transaction> => {
    const { data, error } = await supabaseClient
       .from('transactions')

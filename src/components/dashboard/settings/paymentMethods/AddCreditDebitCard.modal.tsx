@@ -25,6 +25,7 @@ import { CreditDebitCard } from '@typings/components/CreditDebitCard.type.ts';
 import { createCreditDebitCard } from '@services/apis/payment-methods/creditDebitPayments.api.ts';
 import { useRouteLoaderData } from 'react-router-dom';
 import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
+import { AnimatePresence, motion } from 'framer-motion';
 
 type CreditDebitCardModalProps = {
    onClose: () => void;
@@ -171,87 +172,131 @@ export default function AddCreditDebitCardModal(
       mutate(cardInfo);
    };
 
+   const [showNotif, setShowNotif] = useState(true);
+
    return (
       <LinkYouCardContainer>
-         <SimpleNotification options={simpleNotifOptions} />
-         <RowWrapper className={'cardholder-name-wrapper'}>
-            <span className={'label'}>Cardholder name</span>
-            <Input
-               placeHolder={'Enter your Cardholder name'}
-               iconSrc={null}
-               inputValue={cardholderName}
-               onChangeHandler={setCardholderName}
-               errorMessage={cardholderNameErrorMsg}
-               unAllowedErrorMessages={['Cardholder Name is a required field']}
-            />
-         </RowWrapper>
-         <RowWrapper className={'card-number'}>
-            <span className={'label'}>Card number</span>
-            <CardNumberInput
-               cardNumberSetterFn={setCardNumber}
-               cardNumberHasErrorSetterFn={setCardNumberHasValid}
-               creditCardProviderSetterFn={setCreditCardProvider}
-            />
-         </RowWrapper>
-         <div className={'credit-card-other-inputs'}>
-            <RowWrapper className={'Expiration'}>
-               <span className={'label'}>Expiration</span>
-               <CreditCardExpInput
-                  creditCardExpSetterFn={setCardExpInput}
-                  creditCardExpErrorMsgSetterFn={setCardExpInputErrorMsg}
-                  maxLength={5}
-               />
-               {cardExpInputErrorMsg !== null &&
-                  cardExpInputErrorMsg.length !== 0 && (
-                     <span className={'error-msg'}>{cardExpInputErrorMsg}</span>
-                  )}
-            </RowWrapper>
-            <RowWrapper className={'CVV'}>
-               <span className={'label'}>CVV</span>
-               <CreditCardCVVInput
-                  creditCardCVVSetterFn={setCardCVVInput}
-                  creditCardCVVErrorMsgSetterFn={setCardCVVInputErrorMsg}
-                  placeholder={'3-digit number'}
-                  maxLength={3}
-               />
-               {<span className={'error-msg'}>{cardCVVInputErrorMsg}</span>}
-            </RowWrapper>
-            <RowWrapper className={'Postal code'}>
-               <span className={'postal-code'}>Postal code</span>
-               <PostalCodeInput
-                  postalSetterFn={setPostalInput}
-                  postalErrorMsgSetterFn={setPostalInputErrorMsg}
-                  placeholder={'Postal'}
-                  maxLength={10}
-               />
-               <span className={'error-msg'}>{postalInputErrorMsg}</span>
-            </RowWrapper>
-         </div>
-         <RowWrapper className={'set-as-main-payment-wrapper'}>
-            <CheckboxInput
-               label={'Set as a main payment'}
-               checkBoxSetter={setAsMainPaymentMethods}
-            />
-         </RowWrapper>
-         <RowWrapper className={'agree-terms-wrapper'}>
-            <span className={'agree-terms'}>
-               By adding a new card, you agree to our terms.
-            </span>
-         </RowWrapper>
-         <RowWrapper className={'add-card-btn-wrapper'}>
-            <Button
-               disabled={buttonDisabled}
-               isLoading={isPending}
-               onClickHandler={onAddCreditDebitCardHandler}
+         <AnimatePresence>
+            {showNotif && (
+               <motion.div key={'simple-notif'} layout>
+                  <SimpleNotification
+                     options={simpleNotifOptions}
+                     onNotifClose={() => setShowNotif(false)}
+                  />
+               </motion.div>
+            )}
+            <RowWrapper
+               as={motion.div}
+               key={'cardholder-name-wrapper'}
+               layout
+               className={'cardholder-name-wrapper'}
             >
-               Add Card
-            </Button>
-            <Icon
-               iconSrc={'processed-by-cointrackx.svg'}
-               width={'160px'}
-               height={'auto'}
-            />
-         </RowWrapper>
+               <span className={'label'}>Cardholder name</span>
+               <Input
+                  placeHolder={'Enter your Cardholder name'}
+                  iconSrc={null}
+                  inputValue={cardholderName}
+                  onChangeHandler={setCardholderName}
+                  errorMessage={cardholderNameErrorMsg}
+                  unAllowedErrorMessages={[
+                     'Cardholder Name is a required field',
+                  ]}
+               />
+            </RowWrapper>
+            <RowWrapper
+               as={motion.div}
+               key={'card-number-wrapper'}
+               layout
+               className={'card-number-wrapper'}
+            >
+               <span className={'label'}>Card number</span>
+               <CardNumberInput
+                  cardNumberSetterFn={setCardNumber}
+                  cardNumberHasErrorSetterFn={setCardNumberHasValid}
+                  creditCardProviderSetterFn={setCreditCardProvider}
+               />
+            </RowWrapper>
+            <motion.div
+               key={'credit-card-other-inputs'}
+               layout
+               className={'credit-card-other-inputs'}
+            >
+               <RowWrapper className={'Expiration'}>
+                  <span className={'label'}>Expiration</span>
+                  <CreditCardExpInput
+                     creditCardExpSetterFn={setCardExpInput}
+                     creditCardExpErrorMsgSetterFn={setCardExpInputErrorMsg}
+                     maxLength={5}
+                  />
+                  {cardExpInputErrorMsg !== null &&
+                     cardExpInputErrorMsg.length !== 0 && (
+                        <span className={'error-msg'}>
+                           {cardExpInputErrorMsg}
+                        </span>
+                     )}
+               </RowWrapper>
+               <RowWrapper className={'CVV'}>
+                  <span className={'label'}>CVV</span>
+                  <CreditCardCVVInput
+                     creditCardCVVSetterFn={setCardCVVInput}
+                     creditCardCVVErrorMsgSetterFn={setCardCVVInputErrorMsg}
+                     placeholder={'3-digit number'}
+                     maxLength={3}
+                  />
+                  {<span className={'error-msg'}>{cardCVVInputErrorMsg}</span>}
+               </RowWrapper>
+               <RowWrapper className={'Postal code'}>
+                  <span className={'postal-code'}>Postal code</span>
+                  <PostalCodeInput
+                     postalSetterFn={setPostalInput}
+                     postalErrorMsgSetterFn={setPostalInputErrorMsg}
+                     placeholder={'Postal'}
+                     maxLength={10}
+                  />
+                  <span className={'error-msg'}>{postalInputErrorMsg}</span>
+               </RowWrapper>
+            </motion.div>
+            <RowWrapper
+               as={motion.div}
+               key={'set-as-main-payment-wrapper'}
+               layout
+               className={'set-as-main-payment-wrapper'}
+            >
+               <CheckboxInput
+                  label={'Set as a main payment'}
+                  checkBoxSetter={setAsMainPaymentMethods}
+               />
+            </RowWrapper>
+            <RowWrapper
+               as={motion.div}
+               key={'agree-terms-wrapper'}
+               layout
+               className={'agree-terms-wrapper'}
+            >
+               <span className={'agree-terms'}>
+                  By adding a new card, you agree to our terms.
+               </span>
+            </RowWrapper>
+            <RowWrapper
+               as={motion.div}
+               key={'add-card-btn-wrapper'}
+               layout
+               className={'add-card-btn-wrapper'}
+            >
+               <Button
+                  disabled={buttonDisabled}
+                  isLoading={isPending}
+                  onClickHandler={onAddCreditDebitCardHandler}
+               >
+                  Add Card
+               </Button>
+               <Icon
+                  iconSrc={'processed-by-cointrackx.svg'}
+                  width={'160px'}
+                  height={'auto'}
+               />
+            </RowWrapper>
+         </AnimatePresence>
       </LinkYouCardContainer>
    );
 }

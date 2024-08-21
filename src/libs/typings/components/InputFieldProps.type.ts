@@ -1,9 +1,11 @@
+export type InputValue = string | number;
+
 export type InputProps = {
    placeHolder: string;
    label?: string;
    showLabel?: boolean;
-   onChangeHandler: (value: string) => void;
-   inputValue: string;
+   onChangeHandler: (value: InputValue) => void;
+   inputValue: InputValue;
    iconSrc?: string | null;
    focusIconSrc?: string;
    iconWidth?: string;

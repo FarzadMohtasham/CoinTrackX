@@ -32,6 +32,7 @@
       "clsx": "^2.1.1",
       "cryptocurrency-icons": "^0.18.1",
       "date-fns": "^3.6.0",
+      "dayjs": "^1.11.12",
       "framer-motion": "^11.3.28",
       "react": "^18.2.0",
       "react-chartjs-2": "^5.2.0",
@@ -44,6 +45,7 @@
       "react-router-dom": "^6.26.1",
       "react-scroll": "^1.9.0",
       "react-spinners": "^0.14.1",
+      "react-tailwindcss-datepicker": "^1.7.0",
       "styled-components": "^6.1.8",
       "uuid": "^10.0.0",
       "yup": "^1.4.0",
@@ -51,6 +53,7 @@
       "zustand": "^4.5.5"
    },
    "devDependencies": {
+      "@tailwindcss/forms": "^0.5.7",
       "@tanstack/eslint-plugin-query": "^5.51.1",
       "@tanstack/react-query-devtools": "^5.35.1",
       "@testing-library/cypress": "^10.0.2",
