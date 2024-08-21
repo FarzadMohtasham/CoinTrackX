@@ -26,6 +26,8 @@ import { SelectMenuItem } from '@/libs/typings/components/Select.type';
 import { AssetName } from '@/libs/typings/Assets.api.type';
 import Button from '@/components/ui/stuff/Button';
 import Icon from '@/components/ui/stuff/Icon';
+import { format } from 'date-fns-tz';
+import { ConvertTimestamptzToTimestamp } from '@/libs/utils/helpers';
 
 const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
    switch (action.type) {
@@ -74,11 +76,6 @@ const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
             ...state,
             deduct_from_usd: action.payload,
          };
-      case 'setDate':
-         return {
-            ...state,
-            date: action.payload,
-         };
       case 'setTime':
          return {
             ...state,
@@ -104,7 +101,6 @@ const transactionReducerInitial: Transaction = {
    fee_currency: 'USD',
    notes: '',
    deduct_from_usd: false,
-   date: '',
    time: '',
    portfolio: 'Default',
 };
@@ -147,6 +143,20 @@ export default function TransactionModal(props: TransactionModalProps) {
       transactionDispatch({
          payload: val,
          type: 'setAsset',
+      });
+   };
+
+   const onDateChange = (event: any) => {
+      const timestamp = event.timeStamp;
+      const date = new Date(timestamp);
+
+      const timestamptz = format(date, "yyyy-MM-dd'T'HH:mm:ssXXX", {
+         timeZone: 'UTC',
+      });
+
+      transactionDispatch({
+         payload: timestamptz,
+         type: 'setTime',
       });
    };
 
@@ -271,6 +281,7 @@ export default function TransactionModal(props: TransactionModalProps) {
                      focusBorderColor={'rgba(14, 6, 55, 0.10)'}
                      height={'50px'}
                      borderRadius={'12px'}
+                     onChange={onDateChange}
                   />
                </div>
 

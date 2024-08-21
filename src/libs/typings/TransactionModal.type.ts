@@ -36,7 +36,6 @@ export type ReducerAction =
         type: 'setDeductFromUSD';
         payload: Transaction['deduct_from_usd'];
      }
-   | { type: 'setDate'; payload: Transaction['date'] }
    | { type: 'setTime'; payload: Transaction['time'] }
    | {
         type: 'setPortfolio';

@@ -14,8 +14,7 @@ export type Transaction = {
    fee_currency: 'USD'; // Text
    notes: string; // text
    deduct_from_usd: boolean; // boolean
-   date: string; // date
-   time: string; // time without time zone
+   time: string; // time: string; // time with time zone
    portfolio: TransactionPortfolio;
 };
 

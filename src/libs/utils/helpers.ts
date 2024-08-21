@@ -2,6 +2,7 @@ import { AssetName } from '@typings/Assets.api.type.ts';
 import { assetList } from '@data/assetsList.ts';
 import creditCardPatternsData from '@data/cardProviderPatterns.data.ts';
 import { CardNumberProvider } from '@typings/components/CardNumberInput.type.ts';
+import { format, parseISO } from 'date-fns';
 
 export const expDatePattern = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
 export const numbersOnlyPattern = /^[0-9]+$/;
@@ -113,4 +114,14 @@ export const ImageFileTypeValidator = (props: ImageFileTypeValidatorProps) => {
    }
 
    return DefaultValidImageFileTypes.includes(fileType);
+};
+
+export const ConvertTimestamptzToTimestamp = (timestamptz: string) => {
+   // Parse the timestamptz to a Date object
+   const date = parseISO(timestamptz);
+
+   // Format the Date object to the required format
+   const formattedDate = format(date, "yyyy-MM-dd'T'HH:mm:ss.SSS");
+
+   return formattedDate;
 };
