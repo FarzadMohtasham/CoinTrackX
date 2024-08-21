@@ -1,6 +1,5 @@
-import { ChangeEventHandler, useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import Select from '@/components/ui/stuff/Select';
-import Datepicker from 'react-tailwindcss-datepicker';
 import {
    Transaction,
    TransactionPortfolio,
@@ -12,7 +11,7 @@ import {
 import {
    Input,
    InputGroup,
-   InputRightElement,
+   InputLeftElement,
    Modal,
    ModalBody,
    ModalCloseButton,
@@ -25,8 +24,8 @@ import {
 import { assetNamesWithSymbols } from '@/data/assetsList';
 import { SelectMenuItem } from '@/libs/typings/components/Select.type';
 import { AssetName } from '@/libs/typings/Assets.api.type';
-import { motion } from 'framer-motion';
 import Button from '@/components/ui/stuff/Button';
+import Icon from '@/components/ui/stuff/Icon';
 
 const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
    switch (action.type) {
@@ -113,13 +112,16 @@ const transactionReducerInitial: Transaction = {
 export default function TransactionModal(props: TransactionModalProps) {
    const { type, isOpen, onClose } = props;
 
+   // ---------- States ----------
    const [transactionState, transactionDispatch] = useReducer(
       reducerFn,
       transactionReducerInitial,
    );
    const [coinList, setCoinList] = useState<SelectMenuItem[]>([]);
 
-   // Handlers
+   // ---------- Queries ----------
+
+   // ---------- Handlers ----------
    const onTypeChange = (transactionType: Transaction['type']) => {
       transactionDispatch({
          payload: transactionType,
@@ -176,9 +178,7 @@ export default function TransactionModal(props: TransactionModalProps) {
       });
    };
 
-   const headerTitle =
-      type === 'edit' ? 'Edit Transaction' : 'Add new transaction';
-
+   // ---------- Hooks ----------
    useEffect(() => {
       const list = Object.entries(assetNamesWithSymbols);
       setCoinList(() =>
@@ -192,6 +192,9 @@ export default function TransactionModal(props: TransactionModalProps) {
          }),
       );
    }, []);
+
+   const headerTitle =
+      type === 'edit' ? 'Edit Transaction' : 'Add new transaction';
 
    return (
       <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
@@ -249,7 +252,7 @@ export default function TransactionModal(props: TransactionModalProps) {
                </div>
 
                <div className="row asset">
-                  <span className="text-md mb-1 block uppercase">Coin</span>
+                  <span className="text-md mb-1 block uppercase">Asset</span>
                   <Select
                      $menuItems={coinList}
                      $newValueSetter={onAssetChange}
@@ -276,34 +279,53 @@ export default function TransactionModal(props: TransactionModalProps) {
                      <span className="text-md mb-1 block uppercase">
                         Amount
                      </span>
-                     <Input
-                        as={motion.input}
-                        whileFocus={{ scale: 0.95 }}
-                        placeholder="Amount"
-                        value={transactionState.amount}
-                        onChange={onAmountChange}
-                        borderWidth={'2px'}
-                        borderColor={'var(--color-black-50)'}
-                        focusBorderColor={'rgba(14, 6, 55, 0.10)'}
-                        height={'50px'}
-                        borderRadius={'12px'}
-                     />
+                     <InputGroup>
+                        <InputLeftElement
+                           pointerEvents="none"
+                           color="gray.300"
+                           fontSize="1.2em"
+                           height={'100%'}
+                        >
+                           <Icon
+                              width="20px"
+                              iconSrc={`/crypto/${transactionState.asset}.svg`}
+                           />
+                        </InputLeftElement>
+                        <Input
+                           placeholder="Amount"
+                           value={transactionState.amount}
+                           onChange={onAmountChange}
+                           borderWidth={'2px'}
+                           borderColor={'var(--color-black-50)'}
+                           focusBorderColor={'rgba(14, 6, 55, 0.10)'}
+                           height={'50px'}
+                           borderRadius={'12px'}
+                        />
+                     </InputGroup>
                   </div>
 
                   <div className="price w-full">
                      <span className="text-md mb-1 block uppercase">Price</span>
-                     <Input
-                        as={motion.input}
-                        whileFocus={{ scale: 0.95 }}
-                        placeholder="Amount"
-                        value={transactionState.price}
-                        onChange={onPriceChange}
-                        borderWidth={'2px'}
-                        borderColor={'var(--color-black-50)'}
-                        focusBorderColor={'rgba(14, 6, 55, 0.10)'}
-                        height={'50px'}
-                        borderRadius={'12px'}
-                     />
+                     <InputGroup>
+                        <InputLeftElement
+                           pointerEvents="none"
+                           color="gray.300"
+                           fontSize="1.2em"
+                           height={'100%'}
+                        >
+                           $
+                        </InputLeftElement>
+                        <Input
+                           placeholder="Amount"
+                           value={transactionState.price}
+                           onChange={onPriceChange}
+                           borderWidth={'2px'}
+                           borderColor={'var(--color-black-50)'}
+                           focusBorderColor={'rgba(14, 6, 55, 0.10)'}
+                           height={'50px'}
+                           borderRadius={'12px'}
+                        />
+                     </InputGroup>
                   </div>
                </div>
 
@@ -312,18 +334,26 @@ export default function TransactionModal(props: TransactionModalProps) {
                      <span className="text-md mb-1 block uppercase">
                         Fee Amount
                      </span>
-                     <Input
-                        as={motion.input}
-                        whileFocus={{ scale: 0.95 }}
-                        placeholder="Fee Amount"
-                        value={transactionState.fee}
-                        onChange={onFeeChange}
-                        borderWidth={'2px'}
-                        borderColor={'var(--color-black-50)'}
-                        focusBorderColor={'rgba(14, 6, 55, 0.10)'}
-                        height={'50px'}
-                        borderRadius={'12px'}
-                     />
+                     <InputGroup>
+                        <InputLeftElement
+                           pointerEvents="none"
+                           color="gray.300"
+                           fontSize="1.2em"
+                           height={'100%'}
+                        >
+                           $
+                        </InputLeftElement>
+                        <Input
+                           placeholder="Fee Amount"
+                           value={transactionState.fee}
+                           onChange={onFeeChange}
+                           borderWidth={'2px'}
+                           borderColor={'var(--color-black-50)'}
+                           focusBorderColor={'rgba(14, 6, 55, 0.10)'}
+                           height={'50px'}
+                           borderRadius={'12px'}
+                        />
+                     </InputGroup>
                   </div>
 
                   <div className="fee-currency w-full">
@@ -331,8 +361,6 @@ export default function TransactionModal(props: TransactionModalProps) {
                         Fee Currency
                      </span>
                      <Input
-                        as={motion.input}
-                        whileFocus={{ scale: 0.95 }}
                         placeholder="Fee Currency"
                         value={transactionState.fee_currency}
                         onChange={onFeeCurrencyChange}
