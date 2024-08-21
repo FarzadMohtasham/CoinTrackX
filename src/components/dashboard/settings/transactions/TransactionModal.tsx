@@ -28,6 +28,8 @@ import Button from '@/components/ui/stuff/Button';
 import Icon from '@/components/ui/stuff/Icon';
 import { format } from 'date-fns-tz';
 import { ConvertTimestamptzToTimestamp } from '@/libs/utils/helpers';
+import { addTransactionMutation } from '@/queries/transactions/addTransaction.mutation';
+import toast from 'react-hot-toast';
 
 const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
    switch (action.type) {
@@ -116,6 +118,14 @@ export default function TransactionModal(props: TransactionModalProps) {
    const [coinList, setCoinList] = useState<SelectMenuItem[]>([]);
 
    // ---------- Queries ----------
+   const { mutateAsync, isPending } = addTransactionMutation(transactionState, {
+      onError: (error) => {
+         toast.error(error.message);
+      },
+      onSuccess: () => {
+         toast.success('Transaction Submitted successfully');
+      },
+   });
 
    // ---------- Handlers ----------
    const onTypeChange = (transactionType: Transaction['type']) => {
@@ -403,7 +413,13 @@ export default function TransactionModal(props: TransactionModalProps) {
             </ModalBody>
 
             <ModalFooter className="flex gap-4 justify-between">
-               <Button variant="black" expanded>
+               <Button
+                  variant="black"
+                  isLoading={isPending}
+                  disabled={isPending}
+                  onClickHandler={mutateAsync}
+                  expanded
+               >
                   Save
                </Button>
                <Button
