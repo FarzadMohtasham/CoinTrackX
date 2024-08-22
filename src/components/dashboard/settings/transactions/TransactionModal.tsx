@@ -1,5 +1,6 @@
 import { useEffect, useReducer, useState } from 'react';
 import Select from '@/components/ui/stuff/Select';
+import toast from 'react-hot-toast';
 import {
    Transaction,
    TransactionPortfolio,
@@ -27,9 +28,8 @@ import { AssetName } from '@/libs/typings/Assets.api.type';
 import Button from '@/components/ui/stuff/Button';
 import Icon from '@/components/ui/stuff/Icon';
 import { format } from 'date-fns-tz';
-import { ConvertTimestamptzToTimestamp } from '@/libs/utils/helpers';
 import { addTransactionMutation } from '@/queries/transactions/addTransaction.mutation';
-import toast from 'react-hot-toast';
+import { useInvalidateQuery } from '@/libs/hooks/useInvalidateQuery';
 
 const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
    switch (action.type) {
@@ -118,12 +118,15 @@ export default function TransactionModal(props: TransactionModalProps) {
    const [coinList, setCoinList] = useState<SelectMenuItem[]>([]);
 
    // ---------- Queries ----------
+   const invalidateTransactionsQuery = useInvalidateQuery(['getTransactions']);
+
    const { mutateAsync, isPending } = addTransactionMutation(transactionState, {
       onError: (error) => {
          toast.error(error.message);
       },
       onSuccess: () => {
          toast.success('Transaction Submitted successfully');
+         invalidateTransactionsQuery();
       },
    });
 
