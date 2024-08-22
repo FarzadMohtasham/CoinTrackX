@@ -7,7 +7,7 @@ const TransactionsContainer = styled.div``;
 
 export default function TransactionsPage(): JSX.Element {
    return (
-      <TransactionsContainer className="max-sm:p-3 sm:py-[32px] sm:px-[20px]">
+      <TransactionsContainer className="flex flex-col gap-6 max-sm:p-3 sm:py-[32px] sm:px-[20px]">
          <TransactionsHeader />
 
          <TransactionsTable />

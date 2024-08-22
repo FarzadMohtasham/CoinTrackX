@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { styled } from 'styled-components';
 
 import Input from '@components/ui/inputFields/InputField.input.tsx';
+import { InputValue } from '@/libs/typings/components/InputFieldProps.type';
 
 type UpdateContactInfoProps = {
    setDisplayName: Dispatch<SetStateAction<string>>;
@@ -50,7 +51,9 @@ export default function UpdateContactInfo(props: UpdateContactInfoProps) {
                iconSrc={null}
                placeHolder={'Please enter display name'}
                inputValue={props.displayName}
-               onChangeHandler={props.setDisplayName}
+               onChangeHandler={(inputVal: InputValue) =>
+                  props.setDisplayName(String(inputVal))
+               }
             />
          </FieldWrapper>
 
@@ -60,7 +63,9 @@ export default function UpdateContactInfo(props: UpdateContactInfoProps) {
                iconSrc={null}
                placeHolder={'Please enter email'}
                inputValue={props.email}
-               onChangeHandler={props.setEmail}
+               onChangeHandler={(inputVal: InputValue) =>
+                  props.setEmail(String(inputVal))
+               }
                disabled={true}
             />
          </FieldWrapper>

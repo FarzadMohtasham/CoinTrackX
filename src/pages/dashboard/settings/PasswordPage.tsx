@@ -15,6 +15,7 @@ import {
    AlertTitle,
 } from '@chakra-ui/react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { InputValue } from '@/libs/typings/components/InputFieldProps.type';
 
 const Container = styled.div`
    padding: 10px;
@@ -169,7 +170,9 @@ export default function PasswordPage() {
                      <span className="input-label">New Password</span>
                      <PasswordInputField
                         inputValue={newPassword}
-                        onChangeHandler={setNewPassword}
+                        onChangeHandler={(inputVal: InputValue) =>
+                           setNewPassword(String(inputVal))
+                        }
                         iconSrc={'password-icon.svg'}
                         placeHolder="New password"
                         disabled={false}
@@ -184,7 +187,9 @@ export default function PasswordPage() {
                      <span className="input-label">Confirm New Password</span>
                      <PasswordInputField
                         inputValue={confirmNewPassword}
-                        onChangeHandler={setConfirmNewPassword}
+                        onChangeHandler={(inputVal: InputValue) =>
+                           setConfirmNewPassword(String(inputVal))
+                        }
                         iconSrc={'password-icon.svg'}
                         placeHolder="Confirm new password"
                         disabled={false}

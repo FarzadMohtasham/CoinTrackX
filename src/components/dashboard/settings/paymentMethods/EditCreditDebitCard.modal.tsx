@@ -28,6 +28,7 @@ import { queryClient } from '@configs/react-query/queryClient.tsx';
 
 import { useRouteLoaderData } from 'react-router-dom';
 import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
+import { InputValue } from '@/libs/typings/components/InputFieldProps.type';
 
 type EditCreditDebitCardModalProps = {
    onClose: () => void;
@@ -196,7 +197,9 @@ export default function EditCreditDebitCardModal(
                inputValue={
                   cardholderName || creditDebitCardInfo.cardholder_name
                }
-               onChangeHandler={setCardholderName}
+               onChangeHandler={(inputVal: InputValue) =>
+                  setCardholderName(String(inputVal))
+               }
                errorMessage={cardholderNameErrorMsg}
                unAllowedErrorMessages={['Cardholder Name is a required field']}
             />

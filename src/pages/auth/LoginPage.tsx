@@ -22,6 +22,7 @@ import {
 } from './AuthShared.styled.tsx';
 import useLocaleStorage from '@hooks/useLocaleStorage.ts';
 import SocialAuthButtons from '@/components/auth/SocialAuthButtons.tsx';
+import { InputValue } from '@/libs/typings/components/InputFieldProps.type.ts';
 
 const Container = styled(AuthContainer)``;
 const Wrapper = styled(AuthInnerWrapper)``;
@@ -102,7 +103,9 @@ export default function LoginPage(): JSX.Element {
                <Separator title={'OR'} />
                <InputField
                   inputValue={email}
-                  onChangeHandler={setEmail}
+                  onChangeHandler={(inputVal: InputValue) =>
+                     setEmail(String(inputVal))
+                  }
                   placeHolder={'email'}
                   label={'email'}
                   showLabel={false}
@@ -113,7 +116,9 @@ export default function LoginPage(): JSX.Element {
                />
                <PasswordInputField
                   inputValue={password}
-                  onChangeHandler={setPassword}
+                  onChangeHandler={(inputVal: InputValue) =>
+                     setPassword(String(inputVal))
+                  }
                   placeHolder={'Password'}
                   label={'password'}
                   unAllowedErrorMessages={['password is a required field']}

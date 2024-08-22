@@ -23,6 +23,7 @@ import {
    MainContent as MainContentStyled,
 } from '@/pages/auth/AuthShared.styled';
 import SocialAuthButtons from '@/components/auth/SocialAuthButtons';
+import { InputValue } from '@/libs/typings/components/InputFieldProps.type';
 
 const LoginContainer = styled(AuthContainer)``;
 const LoginWrapper = styled(AuthInnerWrapper)``;
@@ -177,7 +178,9 @@ export default function SignupPage(): JSX.Element {
                      inputValue={firstName}
                      label="firstname"
                      showLabel={false}
-                     onChangeHandler={setFirstName}
+                     onChangeHandler={(inputVal: InputValue) =>
+                        setFirstName(String(inputVal))
+                     }
                      placeHolder={'First name'}
                      iconSrc={'user-icon.svg'}
                      focusIconSrc={'user-focus-icon.svg'}
@@ -188,7 +191,9 @@ export default function SignupPage(): JSX.Element {
                      inputValue={lastName}
                      label="lastname"
                      showLabel={false}
-                     onChangeHandler={setLastName}
+                     onChangeHandler={(inputVal: InputValue) =>
+                        setLastName(String(inputVal))
+                     }
                      placeHolder={'Last name'}
                      iconSrc={'user-icon.svg'}
                      focusIconSrc={'user-focus-icon.svg'}
@@ -200,7 +205,9 @@ export default function SignupPage(): JSX.Element {
                   inputValue={email}
                   label="email"
                   showLabel={false}
-                  onChangeHandler={setEmail}
+                  onChangeHandler={(inputVal: InputValue) =>
+                     setEmail(String(inputVal))
+                  }
                   placeHolder={'email'}
                   iconSrc={'email-icon.svg'}
                   focusIconSrc={'email-focus-icon.svg'}
@@ -209,7 +216,9 @@ export default function SignupPage(): JSX.Element {
                />
                <PasswordInputField
                   inputValue={password}
-                  onChangeHandler={setPassword}
+                  onChangeHandler={(inputVal: InputValue) =>
+                     setPassword(String(inputVal))
+                  }
                   placeHolder={'Password'}
                   label={'password'}
                   unAllowedErrorMessages={['password is a required field']}

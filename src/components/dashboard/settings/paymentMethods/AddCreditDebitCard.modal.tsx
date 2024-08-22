@@ -26,6 +26,7 @@ import { createCreditDebitCard } from '@services/apis/payment-methods/creditDebi
 import { useRouteLoaderData } from 'react-router-dom';
 import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
 import { AnimatePresence, motion } from 'framer-motion';
+import { InputValue } from '@/libs/typings/components/InputFieldProps.type';
 
 type CreditDebitCardModalProps = {
    onClose: () => void;
@@ -196,7 +197,9 @@ export default function AddCreditDebitCardModal(
                   placeHolder={'Enter your Cardholder name'}
                   iconSrc={null}
                   inputValue={cardholderName}
-                  onChangeHandler={setCardholderName}
+                  onChangeHandler={(inputValue: InputValue) =>
+                     setCardholderName(String(inputValue))
+                  }
                   errorMessage={cardholderNameErrorMsg}
                   unAllowedErrorMessages={[
                      'Cardholder Name is a required field',

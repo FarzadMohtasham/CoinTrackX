@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import { updateUserProfile } from '@/services/apis/auth/userProfile/updateUserProfile.api';
 import { useMutation } from '@tanstack/react-query';
 import Skeleton from 'react-loading-skeleton';
+import { InputValue } from '@/libs/typings/components/InputFieldProps.type';
 
 const PersonalInfoContainer = styled.div`
    border-radius: 8px;
@@ -303,14 +304,18 @@ export default function PersonalInfo() {
                   <Input
                      inputValue={personalInfoState.first_name.value}
                      label={'First Name'}
-                     onChangeHandler={handleFirstNameChange}
+                     onChangeHandler={(inputVal: InputValue) =>
+                        handleFirstNameChange(String(inputVal))
+                     }
                      placeHolder={'First Name'}
                      iconSrc={null}
                   />
                   <Input
                      inputValue={personalInfoState.last_name.value}
                      label={'Last Name'}
-                     onChangeHandler={handleLastNameChange}
+                     onChangeHandler={(inputVal: InputValue) =>
+                        handleLastNameChange(String(inputVal))
+                     }
                      placeHolder={'Last Name'}
                      iconSrc={null}
                   />
@@ -321,7 +326,9 @@ export default function PersonalInfo() {
                   <Input
                      inputValue={personalInfoState.date_of_birth.value}
                      label={'Date of Birth'}
-                     onChangeHandler={handleDateOfBirthChange}
+                     onChangeHandler={(inputVal: InputValue) =>
+                        handleDateOfBirthChange(String(inputVal))
+                     }
                      placeHolder={'Date of Birth'}
                      iconSrc={null}
                   />

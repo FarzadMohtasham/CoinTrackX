@@ -60,7 +60,12 @@ const defaultColumns = [
    }),
    columnHelper.accessor('amount', {
       id: 'amount',
-      cell: (info) => info.getValue(),
+      cell: (info) => (
+         <div className="flex items-center gap-1">
+            <span>{info.getValue()}</span>
+            <span>{info.row.original.asset}</span>
+         </div>
+      ),
       header: 'Amount',
    }),
    columnHelper.accessor('price', {
@@ -90,7 +95,9 @@ const defaultColumns = [
    }),
    columnHelper.accessor('portfolio', {
       id: 'portfolio',
-      cell: (info) => info.getValue(),
+      cell: (info) => {
+         return info.getValue();
+      },
       header: 'Portfolio',
    }),
 ];
@@ -197,7 +204,7 @@ const NoTransaction = () => {
    return (
       <>
          <div className="no-transaction grid place-content-center h-52 w-full">
-            <div className="wrapper">
+            <div className="wrapper flex flex-col gap-6 items-center">
                <Heading as={'h4'}>No Transaction, Add a new one!</Heading>
                <Button onClickHandler={onOpen}>Add New Transaction</Button>
             </div>
