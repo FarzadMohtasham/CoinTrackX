@@ -1,17 +1,17 @@
 import {
-   QueryOptions,
    useMutation,
+   UseMutationOptions,
    UseMutationResult,
 } from '@tanstack/react-query';
 import { deleteTransactionAPI } from '@/services/apis/transactions/deleteTransaction.api';
 
 export const deleteTransactionMutation = (
-   id: number,
    user_id: string,
-   mutationOptions?: QueryOptions,
-): UseMutationResult => {
+   id: number,
+   mutationOptions?: UseMutationOptions,
+): UseMutationResult<unknown, Error, void, unknown> => {
    return useMutation({
-      queryFn: () => deleteTransactionAPI(id, user_id),
+      mutationFn: () => deleteTransactionAPI(user_id, id),
       ...mutationOptions,
    });
 };
