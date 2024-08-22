@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.170](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.169...v0.0.170) (2024-08-22)
+
+
+### Features
+
+* Sort by created_at + added edit and delete button to the latest row ([a1b470a](https://github.com/FarzadMohtasham/CoinTrackX/commit/a1b470a55c4bfc3e9f6bbf58ebb717873904cf2b))
+
 ### [0.0.169](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.168...v0.0.169) (2024-08-22)
 
 
