@@ -2,6 +2,9 @@ import Button from '@/components/ui/stuff/Button';
 import {
    ButtonGroup,
    Button as ChakraButton,
+   Input,
+   InputGroup,
+   InputLeftElement,
    Popover,
    PopoverArrow,
    PopoverCloseButton,
@@ -42,7 +45,7 @@ import { format } from 'date-fns';
 import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
 import { User } from '@supabase/supabase-js';
 import { deleteTransactionMutation } from '@/queries/transactions/deleteTransaction.mutation';
-import React from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useInvalidateQuery } from '@/libs/hooks/useInvalidateQuery';
 
@@ -118,6 +121,7 @@ const defaultColumns = [
    }),
    columnHelper.display({
       id: 'actions',
+      header: 'Actions',
       cell: (props) => {
          const transactions = props.table
             .getRowModel()
@@ -139,7 +143,7 @@ const defaultColumns = [
             meta.user.id,
             currentTransaction?.id || 0,
             {
-               onSuccess: () => {
+               onSuccess: async () => {
                   onClose();
                   toast.success('Transaction Deleted');
                   invalidateTransactionsQuery();
@@ -224,6 +228,9 @@ export default function TransactionsTable() {
       'dashboardPage',
    ) as DashboardPageLoaderResponse;
 
+   // ---------- States ----------
+   const [search, setSearch] = useState<string>('');
+
    // ---------- Queries ----------
    const {
       data: transactionsData,
@@ -266,57 +273,82 @@ export default function TransactionsTable() {
       return <NoTransaction />;
 
    return (
-      <TableContainer>
-         <Table variant="simple">
-            <TableCaption>
-               Transaction data is up-to-date, Enjoy it
-            </TableCaption>
-            <Thead>
-               {table
-                  .getHeaderGroups()
-                  .map((headerGroup: HeaderGroup<Transaction>) => {
+      <div className="table-container flex flex-col gap-4">
+         <InputGroup>
+            <InputLeftElement
+               pointerEvents="none"
+               color="gray.300"
+               fontSize="1.2em"
+               height={'100%'}
+            >
+               <Icon iconSrc="search-gray.svg" height="100%" width='20px' />
+            </InputLeftElement>
+            <Input
+               placeholder="Search"
+               value={search}
+               onChange={(e: any) => setSearch(e.target.value)}
+               borderWidth={'2px'}
+               borderColor={'var(--color-black-50)'}
+               focusBorderColor={'rgba(14, 6, 55, 0.10)'}
+               height={'50px'}
+               borderRadius={'12px'}
+               size={'md'}
+            />
+         </InputGroup>
+
+         <TableContainer>
+            <Table variant="simple">
+               <TableCaption>
+                  Transaction data is up-to-date, Enjoy it
+               </TableCaption>
+               <Thead>
+                  {table
+                     .getHeaderGroups()
+                     .map((headerGroup: HeaderGroup<Transaction>) => {
+                        return (
+                           <Tr key={headerGroup.id}>
+                              {headerGroup.headers.map(
+                                 (header: Header<Transaction, unknown>) => {
+                                    return (
+                                       <Th key={header.id}>
+                                          {header.isPlaceholder
+                                             ? null
+                                             : flexRender(
+                                                  header.column.columnDef
+                                                     .header,
+                                                  header.getContext(),
+                                               )}
+                                       </Th>
+                                    );
+                                 },
+                              )}
+                           </Tr>
+                        );
+                     })}
+               </Thead>
+               <Tbody>
+                  {table.getRowModel().rows.map((row) => {
                      return (
-                        <Tr key={headerGroup.id}>
-                           {headerGroup.headers.map(
-                              (header: Header<Transaction, unknown>) => {
+                        <Tr key={row.id}>
+                           {row
+                              .getVisibleCells()
+                              .map((cell: Cell<Transaction, unknown>) => {
                                  return (
-                                    <Th key={header.id}>
-                                       {header.isPlaceholder
-                                          ? null
-                                          : flexRender(
-                                               header.column.columnDef.header,
-                                               header.getContext(),
-                                            )}
-                                    </Th>
+                                    <Td key={cell.id} className="uppercase">
+                                       {flexRender(
+                                          cell.column.columnDef.cell,
+                                          cell.getContext(),
+                                       )}
+                                    </Td>
                                  );
-                              },
-                           )}
+                              })}
                         </Tr>
                      );
                   })}
-            </Thead>
-            <Tbody>
-               {table.getRowModel().rows.map((row) => {
-                  return (
-                     <Tr key={row.id}>
-                        {row
-                           .getVisibleCells()
-                           .map((cell: Cell<Transaction, unknown>) => {
-                              return (
-                                 <Td key={cell.id} className="uppercase">
-                                    {flexRender(
-                                       cell.column.columnDef.cell,
-                                       cell.getContext(),
-                                    )}
-                                 </Td>
-                              );
-                           })}
-                     </Tr>
-                  );
-               })}
-            </Tbody>
-         </Table>
-      </TableContainer>
+               </Tbody>
+            </Table>
+         </TableContainer>
+      </div>
    );
 }
 
