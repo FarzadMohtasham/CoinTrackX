@@ -123,9 +123,11 @@ export default function TransactionsTable() {
    });
 
    if (isLoading) {
-      <div className="p-3">
-         <Skeleton count={7} height={'100px'} />
-      </div>;
+      return (
+         <div className="p-3">
+            <Skeleton count={7} height={'100px'} />
+         </div>
+      );
    }
 
    if (error) {
