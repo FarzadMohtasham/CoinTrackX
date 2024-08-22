@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.172](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.171...v0.0.172) (2024-08-22)
+
+
+### Features
+
+* Added Search bar ([902c032](https://github.com/FarzadMohtasham/CoinTrackX/commit/902c03269a0ee76e4932503cafc8768e9b9c8b10))
+
 ### [0.0.171](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.170...v0.0.171) (2024-08-22)
 
 
