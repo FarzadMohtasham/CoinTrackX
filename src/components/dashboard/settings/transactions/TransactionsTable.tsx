@@ -100,6 +100,44 @@ const defaultColumns = [
       },
       header: 'Portfolio',
    }),
+   columnHelper.display({
+      id: 'actions',
+      cell: (props) => {
+         const transactions = props.table
+            .getRowModel()
+            .rows.map((row) => row.original);
+
+         const sortedTransactions: Transaction[] = transactions.sort(
+            (transactionA, transactionB) => {
+               const transactionADate = new Date(transactionA.created_at || '');
+               const transactionBDate = new Date(transactionB.created_at || '');
+               const diffInMilliseconds =
+                  transactionADate.getTime() - transactionBDate.getTime();
+
+               return diffInMilliseconds;
+            },
+         );
+
+         const isLastTransaction =
+            sortedTransactions[sortedTransactions.length - 1].id ===
+            props.row.original.id;
+
+         return (
+            <>
+               {isLastTransaction && (
+                  <div className="row-action flex gap-2">
+                     <Button className="edit" outline>
+                        Edit
+                     </Button>
+                     <Button className="edit" variant="danger" outline>
+                        Delete
+                     </Button>
+                  </div>
+               )}
+            </>
+         );
+      },
+   }),
 ];
 
 export default function TransactionsTable() {
@@ -117,7 +155,7 @@ export default function TransactionsTable() {
 
    // ---------- Table ---------
    const table = useReactTable({
-      data: transactionsData || [],
+      data: transactionsData?.reverse() || [],
       columns: defaultColumns,
       getCoreRowModel: getCoreRowModel(),
    });
