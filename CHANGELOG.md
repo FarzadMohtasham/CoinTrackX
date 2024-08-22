@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.171](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.170...v0.0.171) (2024-08-22)
+
+
+### Features
+
+* Developed Transactions action column ([3335363](https://github.com/FarzadMohtasham/CoinTrackX/commit/3335363d24be429f5f9b6132f1f4531b1a4a3d51))
+
 ### [0.0.170](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.169...v0.0.170) (2024-08-22)
 
 
