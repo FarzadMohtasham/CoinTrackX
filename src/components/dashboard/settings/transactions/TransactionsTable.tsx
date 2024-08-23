@@ -230,21 +230,13 @@ const defaultColumns = [
                      </Popover>
                      <AnimatePresence mode="wait">
                         {isTransactionModalOpen && (
-                           <motion.div
-                              layout
-                              initial={{ opacity: 1 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              key={'transaction-modal-edit-container'}
-                           >
-                              <TransactionModal
-                                 type="edit"
-                                 initialTransaction={currentTransaction}
-                                 isOpen={isTransactionModalOpen}
-                                 onClose={onTransactionModalClose}
-                                 key={'transaction-edit-modal'}
-                              />
-                           </motion.div>
+                           <TransactionModal
+                              type="edit"
+                              initialTransaction={currentTransaction}
+                              isOpen={isTransactionModalOpen}
+                              onClose={onTransactionModalClose}
+                              key={'transaction-edit-modal'}
+                           />
                         )}
                      </AnimatePresence>
                   </div>
