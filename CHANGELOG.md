@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.173](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.172...v0.0.173) (2024-08-23)
+
+
+### Features
+
+* Added transaction edit button and modal ([53a4a9d](https://github.com/FarzadMohtasham/CoinTrackX/commit/53a4a9d53d4196047608e29bca1b0aec7c2ae00a))
+
 ### [0.0.172](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.171...v0.0.172) (2024-08-22)
 
 
