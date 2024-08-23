@@ -88,6 +88,8 @@ const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
             ...state,
             portfolio: action.payload,
          };
+      case 'reset':
+         return transactionReducerInitial;
       default:
          return state;
    }
@@ -217,10 +219,6 @@ export default function TransactionModal(props: TransactionModalProps) {
          }),
       );
    }, []);
-
-   useEffect(() => {
-      
-   }, [isOpen])
 
    const headerTitle =
       transactionType === 'edit' ? 'Edit Transaction' : 'Add new transaction';

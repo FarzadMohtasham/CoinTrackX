@@ -40,4 +40,8 @@ export type ReducerAction =
    | {
         type: 'setPortfolio';
         payload: Transaction['portfolio'];
+     }
+   | {
+        type: 'reset';
+        payload?: Transaction;
      };
