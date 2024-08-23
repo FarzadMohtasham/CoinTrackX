@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.181](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.180...v0.0.181) (2024-08-23)
+
+
+### Bug Fixes
+
+* AnimatePrecense not working problem fixed in TransactionModal ([3d61f22](https://github.com/FarzadMohtasham/CoinTrackX/commit/3d61f2237b24ad3829805acc352ef678d852388b))
+
 ### [0.0.180](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.179...v0.0.180) (2024-08-23)
 
 
