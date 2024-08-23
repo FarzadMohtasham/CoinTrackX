@@ -108,12 +108,14 @@ const transactionReducerInitial: Transaction = {
 };
 
 export default function TransactionModal(props: TransactionModalProps) {
-   const { type, isOpen, onClose } = props;
+   const { type: transactionType, isOpen, onClose, initialTransaction } = props;
 
    // ---------- States ----------
    const [transactionState, transactionDispatch] = useReducer(
       reducerFn,
-      transactionReducerInitial,
+      transactionType === 'edit'
+         ? initialTransaction
+         : transactionReducerInitial,
    );
    const [coinList, setCoinList] = useState<SelectMenuItem[]>([]);
 
@@ -216,8 +218,12 @@ export default function TransactionModal(props: TransactionModalProps) {
       );
    }, []);
 
+   useEffect(() => {
+      
+   }, [isOpen])
+
    const headerTitle =
-      type === 'edit' ? 'Edit Transaction' : 'Add new transaction';
+      transactionType === 'edit' ? 'Edit Transaction' : 'Add new transaction';
 
    return (
       <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
