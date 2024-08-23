@@ -135,7 +135,13 @@ const defaultColumns = [
          const currentTransaction = props.row.original;
 
          // ---------- Refs & States ----------
-         const { onOpen, onClose } = useDisclosure();
+         const { onOpen: onDeletePopupOpen, onClose: onDeletePopupClose } =
+            useDisclosure();
+         const {
+            onOpen: onTransactionModalOpen,
+            onClose: onTransactionModalClose,
+            isOpen: isTransactionModalOpen,
+         } = useDisclosure();
          const initialFocusRef = React.useRef(null);
 
          // ---------- Mutations ----------
@@ -144,7 +150,7 @@ const defaultColumns = [
             currentTransaction?.id || 0,
             {
                onSuccess: async () => {
-                  onClose();
+                  onDeletePopupClose();
                   toast.success('Transaction Deleted');
                   invalidateTransactionsQuery();
                },
@@ -176,46 +182,59 @@ const defaultColumns = [
          return (
             <>
                {isLastTransaction && (
-                  <Popover
-                     initialFocusRef={initialFocusRef}
-                     placement="bottom"
-                     closeOnBlur={true}
-                     onOpen={onOpen}
-                  >
-                     <PopoverTrigger>
-                        <ChakraButton>Delete</ChakraButton>
-                     </PopoverTrigger>
-                     <PopoverContent
-                        color="white"
-                        bg="blue.800"
-                        borderColor="blue.800"
+                  <div className="flex gap-3">
+                     <ChakraButton onClick={onTransactionModalOpen}>
+                        Edit
+                     </ChakraButton>
+                     <Popover
+                        initialFocusRef={initialFocusRef}
+                        placement="bottom"
+                        closeOnBlur={true}
+                        onOpen={onDeletePopupOpen}
+                        onClose={onDeletePopupClose}
                      >
-                        <PopoverHeader pt={4} fontWeight="bold" border="0">
-                           Are you sure want to delete?
-                        </PopoverHeader>
-                        <PopoverArrow bg="blue.800" />
-                        <PopoverCloseButton />
-                        <PopoverFooter
-                           border="0"
-                           display="flex"
-                           alignItems="center"
-                           justifyContent="space-between"
-                           pb={4}
+                        <PopoverTrigger>
+                           <ChakraButton>Delete</ChakraButton>
+                        </PopoverTrigger>
+                        <PopoverContent
+                           color="white"
+                           bg="blue.800"
+                           borderColor="blue.800"
                         >
-                           <ButtonGroup size="sm">
-                              <ChakraButton
-                                 colorScheme="red"
-                                 ref={initialFocusRef}
-                                 disabled={isPending}
-                                 isLoading={isPending}
-                                 onClick={onDeleteTransactionClickHandler}
-                              >
-                                 Yes, Delete
-                              </ChakraButton>
-                           </ButtonGroup>
-                        </PopoverFooter>
-                     </PopoverContent>
-                  </Popover>
+                           <PopoverHeader pt={4} fontWeight="bold" border="0">
+                              Are you sure want to delete?
+                           </PopoverHeader>
+                           <PopoverArrow bg="blue.800" />
+                           <PopoverCloseButton />
+                           <PopoverFooter
+                              border="0"
+                              display="flex"
+                              alignItems="center"
+                              justifyContent="space-between"
+                              pb={4}
+                           >
+                              <ButtonGroup size="sm">
+                                 <ChakraButton
+                                    colorScheme="red"
+                                    ref={initialFocusRef}
+                                    disabled={isPending}
+                                    isLoading={isPending}
+                                    onClick={onDeleteTransactionClickHandler}
+                                 >
+                                    Yes, Delete
+                                 </ChakraButton>
+                              </ButtonGroup>
+                           </PopoverFooter>
+                        </PopoverContent>
+                     </Popover>
+                     <TransactionModal
+                        type="edit"
+                        initialTransaction={currentTransaction}
+                        isOpen={isTransactionModalOpen}
+                        onClose={onTransactionModalClose}
+                        key={'transaction-edit-modal'}
+                     />
+                  </div>
                )}
             </>
          );
@@ -281,7 +300,7 @@ export default function TransactionsTable() {
                fontSize="1.2em"
                height={'100%'}
             >
-               <Icon iconSrc="search-gray.svg" height="100%" width='20px' />
+               <Icon iconSrc="search-gray.svg" height="100%" width="20px" />
             </InputLeftElement>
             <Input
                placeholder="Search"
