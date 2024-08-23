@@ -30,6 +30,7 @@ import Icon from '@/components/ui/stuff/Icon';
 import { format } from 'date-fns-tz';
 import { addTransactionMutation } from '@/queries/transactions/addTransaction.mutation';
 import { useInvalidateQuery } from '@/libs/hooks/useInvalidateQuery';
+import { getObjectKeyByValue } from '@/libs/utils/helpers';
 
 const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
    switch (action.type) {
@@ -119,7 +120,7 @@ export default function TransactionModal(props: TransactionModalProps) {
          ? initialTransaction
          : transactionReducerInitial,
    );
-   const [coinList, setCoinList] = useState<SelectMenuItem[]>([]);
+   const [assets, setAssets] = useState<SelectMenuItem[]>([]);
 
    // ---------- Queries ----------
    const invalidateTransactionsQuery = useInvalidateQuery(['getTransactions']);
@@ -208,7 +209,7 @@ export default function TransactionModal(props: TransactionModalProps) {
    // ---------- Hooks ----------
    useEffect(() => {
       const list = Object.entries(assetNamesWithSymbols);
-      setCoinList(() =>
+      setAssets(() =>
          list.map(([key, value], i: number) => {
             return {
                default: i === 0,
@@ -222,6 +223,20 @@ export default function TransactionModal(props: TransactionModalProps) {
 
    const headerTitle =
       transactionType === 'edit' ? 'Edit Transaction' : 'Add new transaction';
+
+   const selectedTransactionAsset: SelectMenuItem | null =
+      transactionType === 'edit'
+         ? {
+              default: false,
+              iconSrc: `/crypto/${transactionState.asset}.svg`,
+              name:
+                 getObjectKeyByValue(
+                    assetNamesWithSymbols,
+                    initialTransaction.asset,
+                 ) || '',
+              value: initialTransaction.asset,
+           }
+         : null;
 
    return (
       <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
@@ -281,8 +296,9 @@ export default function TransactionModal(props: TransactionModalProps) {
                <div className="row asset">
                   <span className="text-md mb-1 block uppercase">Asset</span>
                   <Select
-                     items={coinList}
+                     items={assets}
                      itemSelectSetter={onAssetChange}
+                     defaultSelectedItem={selectedTransactionAsset}
                      hasIcon
                   />
                </div>

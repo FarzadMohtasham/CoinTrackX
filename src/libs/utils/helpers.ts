@@ -125,3 +125,10 @@ export const ConvertTimestamptzToTimestamp = (timestamptz: string) => {
 
    return formattedDate;
 };
+
+export const getObjectKeyByValue = (
+   object: Record<string, string>,
+   value: string,
+): string | undefined => {
+   return Object.keys(object).find((key) => object[key] === value);
+};

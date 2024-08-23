@@ -108,15 +108,16 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
 export default function Select(props: SelectProps): JSX.Element {
    const {
       items,
+      itemSelectSetter,
+      defaultSelectedItem = null,
       hasIcon: hasIcon = false,
       closeAfterSelect = true,
       menuXDirStartPosition = 'right',
-      itemSelectSetter,
       label = null,
    } = props;
 
    const [selectedItem, setSelectedItem] = useState<null | SelectMenuItemT>(
-      null,
+      defaultSelectedItem,
    );
    const [selectMenuIsOpen, setSelectMenuIsOpen] = useState<boolean>(false);
    const selectRef = useRef<HTMLElement | null>(null);
@@ -162,6 +163,11 @@ export default function Select(props: SelectProps): JSX.Element {
          itemSelectSetter(selectedItem.value);
       }
    }, [selectedItem]);
+
+   useEffect(() => {
+      if (defaultSelectedItem && selectedItem === undefined)
+         setSelectedItem(defaultSelectedItem);
+   }, [defaultSelectedItem]);
 
    return (
       <SelectContainer ref={selectRef}>

@@ -7,6 +7,7 @@ export type SelectMenuItem = {
 
 export type SelectProps = {
    items: SelectMenuItem[];
+   defaultSelectedItem?: SelectMenuItem | null;
    itemSelectSetter: any;
    hasIcon?: boolean;
    closeAfterSelect?: boolean;
