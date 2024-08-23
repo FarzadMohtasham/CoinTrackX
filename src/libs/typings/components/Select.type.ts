@@ -6,8 +6,8 @@ export type SelectMenuItem = {
 };
 
 export type SelectProps = {
-   menuItems: SelectMenuItem[];
-   newValueSetter: any;
+   items: SelectMenuItem[];
+   itemSelectSetter: any;
    hasIcon?: boolean;
    closeAfterSelect?: boolean;
    menuXDirStartPosition?: 'right' | 'left';

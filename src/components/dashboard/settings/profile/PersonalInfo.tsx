@@ -336,8 +336,8 @@ export default function PersonalInfo() {
 
                <div className="country-of-residence-wrapper">
                   <Select
-                     menuItems={countryOfResidenceList}
-                     newValueSetter={handleCountryOfResidenceChange}
+                     items={countryOfResidenceList}
+                     itemSelectSetter={handleCountryOfResidenceChange}
                      menuXDirStartPosition="left"
                      label={'Select your country of residence'}
                      hasIcon

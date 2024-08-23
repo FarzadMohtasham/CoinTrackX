@@ -107,11 +107,11 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
 
 export default function Select(props: SelectProps): JSX.Element {
    const {
-      menuItems: menuItems,
+      items,
       hasIcon: hasIcon = false,
       closeAfterSelect = true,
       menuXDirStartPosition = 'right',
-      newValueSetter,
+      itemSelectSetter,
       label = null,
    } = props;
 
@@ -151,7 +151,7 @@ export default function Select(props: SelectProps): JSX.Element {
 
    // Set default menu item to the selectedItem
    useEffect((): void => {
-      const defaultMenuItem = menuItems.filter(
+      const defaultMenuItem = items.filter(
          (item: SelectMenuItemT) => item.default,
       )[0];
       setSelectedItem(defaultMenuItem);
@@ -159,7 +159,7 @@ export default function Select(props: SelectProps): JSX.Element {
 
    useEffect((): void => {
       if (selectedItem?.value) {
-         newValueSetter(selectedItem.value);
+         itemSelectSetter(selectedItem.value);
       }
    }, [selectedItem]);
 
@@ -190,7 +190,7 @@ export default function Select(props: SelectProps): JSX.Element {
                   key={'select-anime' + uuidv4()}
                >
                   <ul className="menu-items-wrapper">
-                     {menuItems.map((item: SelectMenuItemT, i: number) => {
+                     {items.map((item: SelectMenuItemT, i: number) => {
                         return (
                            <SelectMenuItem
                               key={item.name + i}

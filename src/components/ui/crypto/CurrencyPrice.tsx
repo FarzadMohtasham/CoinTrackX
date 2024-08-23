@@ -298,15 +298,15 @@ export default function CurrencyPrice(): JSX.Element {
             <span>Currency Price</span>
             <div className={'options'}>
                <Select
-                  menuItems={currencyList}
+                  items={currencyList}
                   hasIcon
-                  newValueSetter={(newState: string) =>
+                  itemSelectSetter={(newState: string) =>
                      setSelectedCurrency(newState)
                   }
                />
                <Select
-                  menuItems={chartIntervals}
-                  newValueSetter={(newState: AssetHistoryInterval) =>
+                  items={chartIntervals}
+                  itemSelectSetter={(newState: AssetHistoryInterval) =>
                      setSelectedChartInterval(newState)
                   }
                />
