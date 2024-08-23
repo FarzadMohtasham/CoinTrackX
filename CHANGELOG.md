@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.180](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.179...v0.0.180) (2024-08-23)
+
+
+### Bug Fixes
+
+* Select component default selected item bug fixed ([93a1a01](https://github.com/FarzadMohtasham/CoinTrackX/commit/93a1a019ff941bd37937ebc5e2d32722d21fc07d))
+
 ### [0.0.179](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.178...v0.0.179) (2024-08-23)
 
 ### [0.0.178](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.177...v0.0.178) (2024-08-23)
