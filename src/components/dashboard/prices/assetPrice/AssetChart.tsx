@@ -211,8 +211,8 @@ export default function AssetChart(props: AssetChartProps) {
                <div className={'heading-content'}>
                   <span className={'title'}>{props.assetName} chart</span>
                   <Select
-                     $menuItems={chartIntervalsList}
-                     $newValueSetter={setChartInterval}
+                     menuItems={chartIntervalsList}
+                     newValueSetter={setChartInterval}
                   />
                </div>
                <Line

@@ -208,8 +208,8 @@ export default function AssetMarkets(props: AssetMarketsProps): JSX.Element {
                <Heading>
                   <span className={'title'}>Market Stats</span>
                   <Select
-                     $menuItems={SelectTableShowStatusList}
-                     $newValueSetter={setTableShowStatus}
+                     menuItems={SelectTableShowStatusList}
+                     newValueSetter={setTableShowStatus}
                   />
                </Heading>
                <TableContainer>

@@ -107,12 +107,12 @@ const SelectMenuItem = styled.li<SelectedMenuItemProps>`
 
 export default function Select(props: SelectProps): JSX.Element {
    const {
-      $menuItems: menuItems,
-      $hasIcon: hasIcon = false,
-      $closeAfterSelect = true,
-      $menuXDirStartPosition = 'right',
-      $newValueSetter,
-      $label = null,
+      menuItems: menuItems,
+      hasIcon: hasIcon = false,
+      closeAfterSelect = true,
+      menuXDirStartPosition = 'right',
+      newValueSetter,
+      label = null,
    } = props;
 
    const [selectedItem, setSelectedItem] = useState<null | SelectMenuItemT>(
@@ -139,7 +139,7 @@ export default function Select(props: SelectProps): JSX.Element {
    const menuItemOnClickHandler = (menuItem: SelectMenuItemT): void => {
       setSelectedItem(menuItem);
 
-      if ($closeAfterSelect) setSelectMenuIsOpen(false);
+      if (closeAfterSelect) setSelectMenuIsOpen(false);
    };
 
    useEffect(() => {
@@ -159,13 +159,13 @@ export default function Select(props: SelectProps): JSX.Element {
 
    useEffect((): void => {
       if (selectedItem?.value) {
-         $newValueSetter(selectedItem.value);
+         newValueSetter(selectedItem.value);
       }
    }, [selectedItem]);
 
    return (
       <SelectContainer ref={selectRef}>
-         {$label && <span className="label">{$label}</span>}
+         {label && <span className="label">{label}</span>}
          <SelectBtnWrapper onClick={handleSelectBtn}>
             {hasIcon && (
                <Icon iconSrc={selectedItem?.iconSrc || ''} width={'18px'} />
@@ -183,7 +183,7 @@ export default function Select(props: SelectProps): JSX.Element {
             {selectMenuIsOpen && (
                <SelectMenuWrapper
                   as={motion.div}
-                  $menuXDirStartPosition={$menuXDirStartPosition}
+                  $menuXDirStartPosition={menuXDirStartPosition}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}

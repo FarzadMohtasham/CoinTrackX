@@ -6,12 +6,12 @@ export type SelectMenuItem = {
 };
 
 export type SelectProps = {
-   $menuItems: SelectMenuItem[];
-   $newValueSetter: any;
-   $hasIcon?: boolean;
-   $closeAfterSelect?: boolean;
-   $menuXDirStartPosition?: 'right' | 'left';
-   $label?: string | null;
+   menuItems: SelectMenuItem[];
+   newValueSetter: any;
+   hasIcon?: boolean;
+   closeAfterSelect?: boolean;
+   menuXDirStartPosition?: 'right' | 'left';
+   label?: string | null;
 };
 
 export type SelectMenuWrapperProps = {

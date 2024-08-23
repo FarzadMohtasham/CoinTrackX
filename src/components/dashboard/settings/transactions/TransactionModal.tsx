@@ -266,7 +266,7 @@ export default function TransactionModal(props: TransactionModalProps) {
                      Portfolio
                   </span>
                   <Select
-                     $menuItems={[
+                     menuItems={[
                         {
                            default: true,
                            iconSrc: '',
@@ -274,16 +274,16 @@ export default function TransactionModal(props: TransactionModalProps) {
                            value: 'Default',
                         },
                      ]}
-                     $newValueSetter={onPortfolioChange}
+                     newValueSetter={onPortfolioChange}
                   />
                </div>
 
                <div className="row asset">
                   <span className="text-md mb-1 block uppercase">Asset</span>
                   <Select
-                     $menuItems={coinList}
-                     $newValueSetter={onAssetChange}
-                     $hasIcon
+                     menuItems={coinList}
+                     newValueSetter={onAssetChange}
+                     hasIcon
                   />
                </div>
 
