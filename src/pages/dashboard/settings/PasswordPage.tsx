@@ -134,18 +134,18 @@ export default function PasswordPage() {
    return (
       <Container>
          <ContentWrapper>
-            <AnimatePresence>
-               <div className="header-wrapper">
-                  <Heading tagName="h5" className="heading">
-                     Change password
-                  </Heading>
-                  <span className="desc">
-                     Remember not to store your password in your email or cloud
-                     and don't share it with anyone
-                  </span>
-               </div>
+            <div className="header-wrapper">
+               <Heading tagName="h5" className="heading">
+                  Change password
+               </Heading>
+               <span className="desc">
+                  Remember not to store your password in your email or cloud and
+                  don't share it with anyone
+               </span>
+            </div>
 
-               <div className="input-fields-wrapper">
+            <div className="input-fields-wrapper">
+               <AnimatePresence>
                   {errorMessage && (
                      <motion.div
                         key={'container-1'}
@@ -205,8 +205,8 @@ export default function PasswordPage() {
                         Change Password
                      </Button>
                   </motion.div>
-               </div>
-            </AnimatePresence>
+               </AnimatePresence>
+            </div>
          </ContentWrapper>
       </Container>
    );
