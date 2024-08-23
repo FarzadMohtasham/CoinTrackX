@@ -1,6 +1,6 @@
 import { AuthChangeEvent, createClient, Session } from '@supabase/supabase-js';
 import { queryClient } from '../react-query/queryClient';
-import { checkAndCreateUserProfileForFirstTime } from '@/services/apis/auth/userProfile/checkAndCreateUserProfileForFirstTime.api.ts';
+import { checkAndCreateUserProfileForFirstTime } from '@/services/apis/auth/userProfile/checkAndCreateUserProfileForFirstTime.api.tsx';
 
 // export const supabaseClient = createClient(import.meta.env.VITE_SUPABASE_PROJECT_URL, import.meta.env.VITE_SUPABASE_API_KEY)
 export const supabaseClient = createClient(

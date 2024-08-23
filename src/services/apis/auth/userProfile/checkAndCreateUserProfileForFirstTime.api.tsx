@@ -4,10 +4,28 @@ import {
    User,
    UserResponse,
 } from '@supabase/supabase-js';
+import toast from 'react-hot-toast';
 
 export const checkAndCreateUserProfileForFirstTime = async (): Promise<any> => {
-   const getUserResponse: UserResponse = await supabaseClient.auth.getUser();
-   const authenticatedUser = getUserResponse.data.user as User;
+   const user: UserResponse = await supabaseClient.auth.getUser();
+   const authenticatedUser = user.data.user as User;
+
+   if (!user || !authenticatedUser) {
+      toast((t) => {
+         t.duration = 10 * 1000;
+
+         return (
+            <span>
+               Something went wrong, Some part of application may not work as
+               expected, Please reload the page
+            </span>
+         );
+      });
+
+      localStorage.clear();
+
+      return;
+   }
 
    const { data: currentUserProfile, error }: PostgrestSingleResponse<any[]> =
       await supabaseClient

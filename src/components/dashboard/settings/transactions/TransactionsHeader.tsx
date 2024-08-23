@@ -13,7 +13,7 @@ export default function TransactionsHeader() {
             Portfolio Transactions
          </Heading>
 
-         <Button onClickHandler={onOpen} variant="black" outline>
+         <Button size='sm' onClickHandler={onOpen} variant="black" outline>
             Add New
          </Button>
 
