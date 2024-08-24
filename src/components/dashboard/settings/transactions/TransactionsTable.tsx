@@ -127,7 +127,7 @@ const defaultColumns = [
       header: 'Actions',
       cell: (props) => {
          const transactions = props.table
-            .getRowModel()
+            .getCoreRowModel()
             .rows.map((row) => row.original);
          const meta = props.table.options.meta as { user: User };
 
@@ -163,6 +163,12 @@ const defaultColumns = [
             },
          );
 
+         // ---------- Handlers ----------
+         const onDeleteTransactionClickHandler = async () => {
+            await mutateAsync();
+         };
+
+         // ---------- Constants ----------
          const sortedTransactions: Transaction[] = transactions.sort(
             (transactionA, transactionB) => {
                const transactionADate = new Date(transactionA.created_at || '');
@@ -173,10 +179,6 @@ const defaultColumns = [
                return diffInMilliseconds;
             },
          );
-
-         const onDeleteTransactionClickHandler = async () => {
-            await mutateAsync();
-         };
 
          const isLastTransaction =
             sortedTransactions[sortedTransactions.length - 1].id ===
