@@ -72,7 +72,7 @@ export default function Review(props: ReviewProps): JSX.Element {
          whileInView={{ y: 0 }}
          whileHover={{ scale: 1.075 }}
          whileTap={{ scale: 0.9 }}
-         transition={{ duration: 1 }}
+         transition={{type: 'spring'}}
          viewport={{ once: true }}
       >
          <div className="stars">

@@ -31,7 +31,6 @@ import { format } from 'date-fns-tz';
 import { addTransactionMutation } from '@/queries/transactions/addTransaction.mutation';
 import { useInvalidateQuery } from '@/libs/hooks/useInvalidateQuery';
 import { getObjectKeyByValue } from '@/libs/utils/helpers';
-import { updateTransactionAPI } from '@/services/apis/transactions/updateTransaction.api';
 import { updateTransactionMutation } from '@/queries/transactions/updateTransaction.mutation';
 
 const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {

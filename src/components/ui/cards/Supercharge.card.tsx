@@ -39,7 +39,7 @@ export default function SuperchargeCard(
          as={motion.div}
          initial={{ opacity: 0, y: 150 }}
          whileInView={{ opacity: 1, y: 0 }}
-         transition={{ duration: 1 }}
+         transition={{ duration: 0.8, type: 'spring' }}
          viewport={{ once: true }}
       >
          <motion.img
@@ -47,6 +47,7 @@ export default function SuperchargeCard(
             alt={title}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.5, type: 'spring' }}
          />
          <Heading fontWeight={'500'} className={'card-heading'} tagName={'h4'}>
             {title}
