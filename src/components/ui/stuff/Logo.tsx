@@ -9,16 +9,10 @@ export default function Logo() {
    return (
       <LogoContainer className={'brand-logo'}>
          <img
-            src={'/images/logo.svg'}
+            src={'/images/cointrackx-logo.png'}
             className={'logo'}
-            width={24}
+            width={200}
             alt="logo"
-         />
-         <img
-            src={'/images/logo-type.svg'}
-            className={'logo-type'}
-            width={115}
-            alt="logo type"
          />
       </LogoContainer>
    );
