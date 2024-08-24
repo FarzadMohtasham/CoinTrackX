@@ -131,9 +131,11 @@ const defaultColumns = [
       id: 'actions',
       header: 'Actions',
       cell: (props) => {
+         // Last transaction in this list of arrays in the newest transaction, because of reverse function
          const transactions = props.table
             .getCoreRowModel()
-            .rows.map((row) => row.original);
+            .rows.map((row) => row.original)
+            .reverse();
          const meta = props.table.options.meta as { user: User };
 
          const invalidateTransactionsQuery = useInvalidateQuery([
@@ -174,20 +176,8 @@ const defaultColumns = [
          };
 
          // ---------- Constants ----------
-         const sortedTransactions: Transaction[] = transactions.sort(
-            (transactionA, transactionB) => {
-               const transactionADate = new Date(transactionA.created_at || '');
-               const transactionBDate = new Date(transactionB.created_at || '');
-               const diffInMilliseconds =
-                  transactionADate.getTime() - transactionBDate.getTime();
-
-               return diffInMilliseconds;
-            },
-         );
-
          const isLastTransaction =
-            sortedTransactions[sortedTransactions.length - 1].id ===
-            props.row.original.id;
+            transactions[transactions.length - 1].id === props.row.original.id;
 
          return (
             <>
