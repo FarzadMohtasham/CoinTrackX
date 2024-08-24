@@ -337,7 +337,8 @@ export default function TransactionsTable() {
          <TableContainer>
             <Table variant="simple">
                <TableCaption>
-                  Transaction data is up-to-date, Enjoy it
+                  Transactions List is like an stack, You can edit or delete
+                  just the last one!
                </TableCaption>
                <Thead>
                   {table
@@ -388,6 +389,15 @@ export default function TransactionsTable() {
                   <Tr>
                      <Td>
                         <ChakraButton
+                           onClick={() => table.firstPage()}
+                           isDisabled={!table.getCanPreviousPage()}
+                        >
+                           First Page
+                        </ChakraButton>
+                     </Td>
+
+                     <Td>
+                        <ChakraButton
                            onClick={() => table.previousPage()}
                            isDisabled={!table.getCanPreviousPage()}
                         >
@@ -408,6 +418,15 @@ export default function TransactionsTable() {
                            isDisabled={!table.getCanNextPage()}
                         >
                            Next Page
+                        </ChakraButton>
+                     </Td>
+
+                     <Td>
+                        <ChakraButton
+                           onClick={() => table.lastPage()}
+                           isDisabled={!table.getCanNextPage()}
+                        >
+                           Last Page
                         </ChakraButton>
                      </Td>
                   </Tr>
