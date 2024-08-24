@@ -92,12 +92,17 @@ const defaultColumns = [
    }),
    columnHelper.accessor('price', {
       id: 'price',
-      cell: (info) => info.getValue(),
+      cell: (props) => <span>${props.getValue().toLocaleString()}</span>,
       header: 'Price',
    }),
    columnHelper.accessor('fee', {
       id: 'fee',
-      cell: (info) => info.getValue(),
+      cell: (props) => (
+         <span>
+            {props.getValue().toLocaleString()}{' '}
+            {props.row.original.fee_currency}
+         </span>
+      ),
       header: 'Fee',
    }),
    columnHelper.accessor('notes', {
