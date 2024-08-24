@@ -141,7 +141,12 @@ export default function Header(): JSX.Element {
    const { loading, userLoggedIn } = useUserLoggedIn();
 
    return (
-      <HeaderStyled as={motion.header} initial={{ y: -90 }} animate={{ y: 0 }}>
+      <HeaderStyled
+         as={motion.header}
+         initial={{ y: -90 }}
+         animate={{ y: 0 }}
+         transition={{ type: 'spring' }}
+      >
          <div className={'header-items-wrapper'}>
             <Logo />
             <NavBarStyled>

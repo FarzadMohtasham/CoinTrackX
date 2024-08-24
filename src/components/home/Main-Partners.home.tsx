@@ -73,7 +73,7 @@ const BrandImgMotion = (props: { imgSrc: string }) => {
          alt=""
          initial={{ opacity: 0, scale: 0 }}
          whileInView={{ opacity: 1, scale: 1 }}
-         transition={{ duration: 0.5 }}
+         transition={{ type: 'spring' }}
          viewport={{ once: true }}
          whileHover={{ scale: 1.2 }}
          whileTap={{ scale: 0.8 }}

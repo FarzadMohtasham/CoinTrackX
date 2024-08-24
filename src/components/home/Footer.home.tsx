@@ -10,6 +10,7 @@ import Heading from '@components/ui/stuff/Heading.tsx';
 // Type
 import { ColumnItem as ColumnItemType } from '@typings/components/Footer.type.ts';
 import { IStyledComponentBase } from 'styled-components/dist/types.ts';
+import { motion } from 'framer-motion';
 
 // Data
 import {
@@ -67,7 +68,8 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
    }
 
    /*Small devices (landscape phones, 576px and up)*/
-   @media screen and (max-width: ${(props: any) => props.theme.breakpoints.md}) {
+   @media screen and (max-width: ${(props: any) =>
+         props.theme.breakpoints.md}) {
       grid-template-areas:
          'footer-column-1'
          'footer-column-2'
@@ -77,7 +79,8 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
    }
 
    /*Medium devices (tablets, 768px and up)*/
-   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.md}) {
+   @media screen and (min-width: ${(props: any) =>
+         props.theme.breakpoints.md}) {
       grid-template-areas:
          'footer-column-1 footer-column-2'
          'footer-column-3 footer-column-4';
@@ -85,7 +88,8 @@ const FooterStyled: IStyledComponentBase<any> = styled.div`
    }
 
    /*Large devices (desktops, 992px and up)*/
-   @media screen and (min-width: ${(props: any) => props.theme.breakpoints.lg}) {
+   @media screen and (min-width: ${(props: any) =>
+         props.theme.breakpoints.lg}) {
       grid-template-areas: 'footer-column-1 footer-column-2 footer-column-3 footer-column-4';
       gap: 40px;
    }
@@ -119,93 +123,100 @@ export default function Footer(): JSX.Element {
             background-color: #f7f6fe;
          `}
       >
-         <FooterWrapper>
-            <FooterStyled>
-               <div className={'footer-column footer-column-1 brand-info'}>
-                  <Logo />
-                  <div className={'social-media'}>
-                     {socialMediaLogoList.map((social, index) => {
-                        return (
-                           <Link to={'#'} key={social.name + index}>
-                              <img
-                                 key={social.name + index}
-                                 src={social.logoSrc}
-                                 alt={social.name}
-                              />
-                           </Link>
-                        );
-                     })}
+         <motion.div
+            initial={{ y: 200 }}
+            whileInView={{ y: 0 }}
+            transition={{ type: 'spring' }}
+            viewport={{ once: true }}
+         >
+            <FooterWrapper>
+               <FooterStyled>
+                  <div className={'footer-column footer-column-1 brand-info'}>
+                     <Logo />
+                     <div className={'social-media'}>
+                        {socialMediaLogoList.map((social, index) => {
+                           return (
+                              <Link to={'#'} key={social.name + index}>
+                                 <img
+                                    key={social.name + index}
+                                    src={social.logoSrc}
+                                    alt={social.name}
+                                 />
+                              </Link>
+                           );
+                        })}
+                     </div>
+                     <CopyRight color={'#9C9CAB'} />
                   </div>
-                  <CopyRight color={'#9C9CAB'} />
-               </div>
 
-               <div className={'footer-column footer-column-2'}>
-                  <Heading
-                     className={'footer-heading'}
-                     tagName={'h6'}
-                     fontWeight={'500'}
-                  >
-                     Company
-                  </Heading>
+                  <div className={'footer-column footer-column-2'}>
+                     <Heading
+                        className={'footer-heading'}
+                        tagName={'h6'}
+                        fontWeight={'500'}
+                     >
+                        Company
+                     </Heading>
 
-                  <ColumnList>
-                     {footerColumnItemsList.column1.map(
-                        (item: ColumnItemType, index: number) => {
-                           return (
-                              <ColumnItem key={item.name + index}>
-                                 <Link to={item.address}>{item.name}</Link>
-                              </ColumnItem>
-                           );
-                        },
-                     )}
-                  </ColumnList>
-               </div>
+                     <ColumnList>
+                        {footerColumnItemsList.column1.map(
+                           (item: ColumnItemType, index: number) => {
+                              return (
+                                 <ColumnItem key={item.name + index}>
+                                    <Link to={item.address}>{item.name}</Link>
+                                 </ColumnItem>
+                              );
+                           },
+                        )}
+                     </ColumnList>
+                  </div>
 
-               <div className={'footer-column footer-column-3'}>
-                  <Heading
-                     className={'footer-heading'}
-                     tagName={'h6'}
-                     fontWeight={'500'}
-                  >
-                     Features
-                  </Heading>
+                  <div className={'footer-column footer-column-3'}>
+                     <Heading
+                        className={'footer-heading'}
+                        tagName={'h6'}
+                        fontWeight={'500'}
+                     >
+                        Features
+                     </Heading>
 
-                  <ColumnList>
-                     {footerColumnItemsList.column2.map(
-                        (item: ColumnItemType, index: number) => {
-                           return (
-                              <ColumnItem key={item.name + index}>
-                                 <Link to={item.address}>{item.name}</Link>
-                              </ColumnItem>
-                           );
-                        },
-                     )}
-                  </ColumnList>
-               </div>
+                     <ColumnList>
+                        {footerColumnItemsList.column2.map(
+                           (item: ColumnItemType, index: number) => {
+                              return (
+                                 <ColumnItem key={item.name + index}>
+                                    <Link to={item.address}>{item.name}</Link>
+                                 </ColumnItem>
+                              );
+                           },
+                        )}
+                     </ColumnList>
+                  </div>
 
-               <div className={'footer-column footer-column-4'}>
-                  <Heading
-                     className={'footer-heading'}
-                     tagName={'h6'}
-                     fontWeight={'500'}
-                  >
-                     Resources
-                  </Heading>
+                  <div className={'footer-column footer-column-4'}>
+                     <Heading
+                        className={'footer-heading'}
+                        tagName={'h6'}
+                        fontWeight={'500'}
+                     >
+                        Resources
+                     </Heading>
 
-                  <ColumnList>
-                     {footerColumnItemsList.column3.map(
-                        (item: ColumnItemType, index: number) => {
-                           return (
-                              <ColumnItem key={item.name + index}>
-                                 <Link to={item.address}>{item.name}</Link>
-                              </ColumnItem>
-                           );
-                        },
-                     )}
-                  </ColumnList>
-               </div>
-            </FooterStyled>
-         </FooterWrapper>
+                     <ColumnList>
+                        {footerColumnItemsList.column3.map(
+                           (item: ColumnItemType, index: number) => {
+                              return (
+                                 <ColumnItem key={item.name + index}>
+                                    <Link to={item.address}>{item.name}</Link>
+                                 </ColumnItem>
+                              );
+                           },
+                        )}
+                     </ColumnList>
+                  </div>
+               </FooterStyled>
+            </FooterWrapper>
+         </motion.div>
       </Container>
    );
 }
