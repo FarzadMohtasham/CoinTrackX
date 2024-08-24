@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.187](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.186...v0.0.187) (2024-08-24)
+
+
+### Features
+
+* Added better informations to transactions table ([12dc511](https://github.com/FarzadMohtasham/CoinTrackX/commit/12dc51181eca349cc05b2afc6fd48b283d4d60a2))
+
 ### [0.0.186](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.185...v0.0.186) (2024-08-24)
 
 
