@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.186](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.185...v0.0.186) (2024-08-24)
+
+
+### Features
+
+* refactor: Changed table time header content ([529424f](https://github.com/FarzadMohtasham/CoinTrackX/commit/529424fae70b6d734b5946611a74853f9a32e18d))
+
 ### [0.0.185](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.184...v0.0.185) (2024-08-24)
 
 
