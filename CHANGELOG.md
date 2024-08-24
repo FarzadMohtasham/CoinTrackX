@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.192](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.191...v0.0.192) (2024-08-24)
+
+
+### Bug Fixes
+
+* Fixed Logo link, redirect user to / instead of /dashboard ([b993789](https://github.com/FarzadMohtasham/CoinTrackX/commit/b993789ad357e2ab133c4a21014f14647a7092ea))
+
 ### [0.0.191](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.190...v0.0.191) (2024-08-24)
 
 
