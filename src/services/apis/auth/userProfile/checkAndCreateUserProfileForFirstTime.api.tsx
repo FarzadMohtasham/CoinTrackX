@@ -22,7 +22,7 @@ export const checkAndCreateUserProfileForFirstTime = async (): Promise<any> => {
          );
       });
 
-      localStorage.clear();
+      // localStorage.clear();
 
       return;
    }

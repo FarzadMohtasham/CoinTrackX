@@ -12,6 +12,7 @@ import {
    PopoverFooter,
    PopoverHeader,
    PopoverTrigger,
+   Tfoot,
 } from '@chakra-ui/react';
 import { Transaction } from '@/libs/typings/Transaction.type';
 import { getTransactionsQuery } from '@/queries/transactions/getTransactions.query';
@@ -33,8 +34,10 @@ import {
    createColumnHelper,
    flexRender,
    getCoreRowModel,
+   getPaginationRowModel,
    Header,
    HeaderGroup,
+   PaginationState,
    useReactTable,
 } from '@tanstack/react-table';
 import Skeleton from 'react-loading-skeleton';
@@ -48,7 +51,6 @@ import { deleteTransactionMutation } from '@/queries/transactions/deleteTransact
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useInvalidateQuery } from '@/libs/hooks/useInvalidateQuery';
-import { AnimatePresence, motion } from 'framer-motion';
 
 // ---------- Table ----------
 const columnHelper = createColumnHelper<Transaction>();
@@ -228,17 +230,15 @@ const defaultColumns = [
                            </PopoverFooter>
                         </PopoverContent>
                      </Popover>
-                     <AnimatePresence mode="wait">
-                        {isTransactionModalOpen && (
-                           <TransactionModal
-                              type="edit"
-                              initialTransaction={currentTransaction}
-                              isOpen={isTransactionModalOpen}
-                              onClose={onTransactionModalClose}
-                              key={'transaction-edit-modal'}
-                           />
-                        )}
-                     </AnimatePresence>
+                     {isTransactionModalOpen && (
+                        <TransactionModal
+                           type="edit"
+                           initialTransaction={currentTransaction}
+                           isOpen={isTransactionModalOpen}
+                           onClose={onTransactionModalClose}
+                           key={'transaction-edit-modal'}
+                        />
+                     )}
                   </div>
                )}
             </>
@@ -254,6 +254,10 @@ export default function TransactionsTable() {
 
    // ---------- States ----------
    const [search, setSearch] = useState<string>('');
+   const [pagination, setPagination] = useState<PaginationState>({
+      pageIndex: 0,
+      pageSize: 10,
+   });
 
    // ---------- Queries ----------
    const {
@@ -264,13 +268,21 @@ export default function TransactionsTable() {
    } = getTransactionsQuery(user?.id || '');
 
    // ---------- Table ---------
+   const reversedTransactionsData: Transaction[] =
+      transactionsData?.reverse() || [];
+
    const table = useReactTable({
-      data: transactionsData?.reverse() || [],
+      data: reversedTransactionsData,
       columns: defaultColumns,
       getCoreRowModel: getCoreRowModel(),
+      getPaginationRowModel: getPaginationRowModel(),
+      onPaginationChange: setPagination,
       meta: {
          user,
       } as { user: User },
+      state: {
+         pagination,
+      },
    });
 
    if (isLoading) {
@@ -370,6 +382,34 @@ export default function TransactionsTable() {
                      );
                   })}
                </Tbody>
+               <Tfoot>
+                  <Tr>
+                     <Td>
+                        <ChakraButton
+                           onClick={() => table.previousPage()}
+                           isDisabled={!table.getCanPreviousPage()}
+                        >
+                           Prev Page
+                        </ChakraButton>
+                     </Td>
+
+                     <Td>
+                        <span>
+                           page {pagination.pageIndex + 1} of{' '}
+                           {table.getPageCount()}
+                        </span>
+                     </Td>
+
+                     <Td>
+                        <ChakraButton
+                           onClick={() => table.nextPage()}
+                           isDisabled={!table.getCanNextPage()}
+                        >
+                           Next Page
+                        </ChakraButton>
+                     </Td>
+                  </Tr>
+               </Tfoot>
             </Table>
          </TableContainer>
       </div>

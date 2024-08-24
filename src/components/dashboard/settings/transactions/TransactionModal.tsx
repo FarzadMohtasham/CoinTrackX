@@ -31,7 +31,6 @@ import { format } from 'date-fns-tz';
 import { addTransactionMutation } from '@/queries/transactions/addTransaction.mutation';
 import { useInvalidateQuery } from '@/libs/hooks/useInvalidateQuery';
 import { getObjectKeyByValue } from '@/libs/utils/helpers';
-import { motion } from 'framer-motion';
 
 const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
    switch (action.type) {
@@ -240,233 +239,222 @@ export default function TransactionModal(props: TransactionModalProps) {
          : null;
 
    return (
-      <motion.div
-         layout
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1 }}
-         exit={{ opacity: 0 }}
-         key={'transaction-modal'}
-         className='absolute'
-      >
-         <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
-            <ModalOverlay />
-            <ModalContent>
-               <ModalHeader>{headerTitle}</ModalHeader>
-               <ModalCloseButton />
+      <Modal isOpen={isOpen} onClose={onClose} size={'xl'}>
+         <ModalOverlay />
+         <ModalContent>
+            <ModalHeader>{headerTitle}</ModalHeader>
+            <ModalCloseButton />
 
-               <ModalBody className="flex flex-col gap-4">
-                  <div className="row buy-sell flex justify-between gap-3">
-                     <button
-                        className="w-full flex items-center justify-center gap-2 py-2 px-5 border-gray-300 border-2 rounded-full"
-                        onClick={() => onTypeChange('buy')}
+            <ModalBody className="flex flex-col gap-4">
+               <div className="row buy-sell flex justify-between gap-3">
+                  <button
+                     className="w-full flex items-center justify-center gap-2 py-2 px-5 border-gray-300 border-2 rounded-full"
+                     onClick={() => onTypeChange('buy')}
+                  >
+                     <div
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${transactionState.type === 'buy' ? 'bg-green-500' : 'bg-gray-300'}`}
+                     />
+                     <span
+                        className={`font-medium transition-all duration-300 ${transactionState.type === 'buy' ? 'text-green-500' : ''}`}
                      >
-                        <div
-                           className={`w-2 h-2 rounded-full transition-all duration-300 ${transactionState.type === 'buy' ? 'bg-green-500' : 'bg-gray-300'}`}
-                        />
-                        <span
-                           className={`font-medium transition-all duration-300 ${transactionState.type === 'buy' ? 'text-green-500' : ''}`}
-                        >
-                           Buy
-                        </span>
-                     </button>
-
-                     <button
-                        className="w-full flex items-center justify-center gap-2 py-2 px-5 border-gray-300 border-2 rounded-full"
-                        onClick={() => onTypeChange('sell')}
-                     >
-                        <div
-                           className={`w-2 h-2 rounded-full transition-all duration-300 ${transactionState.type === 'sell' ? 'bg-red-500' : 'bg-gray-300'}`}
-                        />
-                        <span
-                           className={`font-medium transition-all duration-300 ${transactionState.type === 'sell' ? 'text-red-500' : ''}`}
-                        >
-                           Sell
-                        </span>
-                     </button>
-                  </div>
-
-                  <div className="row portfolio">
-                     <span className="text-md mb-1 block uppercase">
-                        Portfolio
+                        Buy
                      </span>
-                     <Select
-                        items={[
-                           {
-                              default: true,
-                              iconSrc: '',
-                              name: 'Default',
-                              value: 'Default',
-                           },
-                        ]}
-                        itemSelectSetter={onPortfolioChange}
+                  </button>
+
+                  <button
+                     className="w-full flex items-center justify-center gap-2 py-2 px-5 border-gray-300 border-2 rounded-full"
+                     onClick={() => onTypeChange('sell')}
+                  >
+                     <div
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${transactionState.type === 'sell' ? 'bg-red-500' : 'bg-gray-300'}`}
                      />
-                  </div>
+                     <span
+                        className={`font-medium transition-all duration-300 ${transactionState.type === 'sell' ? 'text-red-500' : ''}`}
+                     >
+                        Sell
+                     </span>
+                  </button>
+               </div>
 
-                  <div className="row asset">
-                     <span className="text-md mb-1 block uppercase">Asset</span>
-                     <Select
-                        items={assets}
-                        itemSelectSetter={onAssetChange}
-                        defaultSelectedItem={selectedTransactionAsset}
-                        hasIcon
-                     />
-                  </div>
+               <div className="row portfolio">
+                  <span className="text-md mb-1 block uppercase">
+                     Portfolio
+                  </span>
+                  <Select
+                     items={[
+                        {
+                           default: true,
+                           iconSrc: '',
+                           name: 'Default',
+                           value: 'Default',
+                        },
+                     ]}
+                     itemSelectSetter={onPortfolioChange}
+                  />
+               </div>
 
-                  <div className="row date-time gap-4">
-                     <span className="text-md mb-1 block uppercase">Date</span>
-                     <Input
-                        placeholder="Select Date and Time"
-                        size="md"
-                        type="datetime-local"
-                        borderWidth={'2px'}
-                        borderColor={'var(--color-black-50)'}
-                        focusBorderColor={'rgba(14, 6, 55, 0.10)'}
-                        height={'50px'}
-                        borderRadius={'12px'}
-                        onChange={onDateChange}
-                     />
-                  </div>
+               <div className="row asset">
+                  <span className="text-md mb-1 block uppercase">Asset</span>
+                  <Select
+                     items={assets}
+                     itemSelectSetter={onAssetChange}
+                     defaultSelectedItem={selectedTransactionAsset}
+                     hasIcon
+                  />
+               </div>
 
-                  <div className="row amount-price flex gap-4 justify-between items-center">
-                     <div className="amount w-full">
-                        <span className="text-md mb-1 block uppercase">
-                           Amount
-                        </span>
-                        <InputGroup>
-                           <InputLeftElement
-                              pointerEvents="none"
-                              color="gray.300"
-                              fontSize="1.2em"
-                              height={'100%'}
-                           >
-                              <Icon
-                                 width="20px"
-                                 iconSrc={`/crypto/${transactionState.asset}.svg`}
-                              />
-                           </InputLeftElement>
-                           <Input
-                              placeholder="Amount"
-                              value={transactionState.amount}
-                              onChange={onAmountChange}
-                              borderWidth={'2px'}
-                              borderColor={'var(--color-black-50)'}
-                              focusBorderColor={'rgba(14, 6, 55, 0.10)'}
-                              height={'50px'}
-                              borderRadius={'12px'}
+               <div className="row date-time gap-4">
+                  <span className="text-md mb-1 block uppercase">Date</span>
+                  <Input
+                     placeholder="Select Date and Time"
+                     size="md"
+                     type="datetime-local"
+                     borderWidth={'2px'}
+                     borderColor={'var(--color-black-50)'}
+                     focusBorderColor={'rgba(14, 6, 55, 0.10)'}
+                     height={'50px'}
+                     borderRadius={'12px'}
+                     onChange={onDateChange}
+                  />
+               </div>
+
+               <div className="row amount-price flex gap-4 justify-between items-center">
+                  <div className="amount w-full">
+                     <span className="text-md mb-1 block uppercase">
+                        Amount
+                     </span>
+                     <InputGroup>
+                        <InputLeftElement
+                           pointerEvents="none"
+                           color="gray.300"
+                           fontSize="1.2em"
+                           height={'100%'}
+                        >
+                           <Icon
+                              width="20px"
+                              iconSrc={`/crypto/${transactionState.asset}.svg`}
                            />
-                        </InputGroup>
-                     </div>
-
-                     <div className="price w-full">
-                        <span className="text-md mb-1 block uppercase">
-                           Price
-                        </span>
-                        <InputGroup>
-                           <InputLeftElement
-                              pointerEvents="none"
-                              color="gray.300"
-                              fontSize="1.2em"
-                              height={'100%'}
-                           >
-                              $
-                           </InputLeftElement>
-                           <Input
-                              placeholder="Amount"
-                              value={transactionState.price}
-                              onChange={onPriceChange}
-                              borderWidth={'2px'}
-                              borderColor={'var(--color-black-50)'}
-                              focusBorderColor={'rgba(14, 6, 55, 0.10)'}
-                              height={'50px'}
-                              borderRadius={'12px'}
-                           />
-                        </InputGroup>
-                     </div>
-                  </div>
-
-                  <div className="row fee flex gap-4 justify-between items-center">
-                     <div className="fee-amount w-full">
-                        <span className="text-md mb-1 block uppercase">
-                           Fee Amount
-                        </span>
-                        <InputGroup>
-                           <InputLeftElement
-                              pointerEvents="none"
-                              color="gray.300"
-                              fontSize="1.2em"
-                              height={'100%'}
-                           >
-                              $
-                           </InputLeftElement>
-                           <Input
-                              placeholder="Fee Amount"
-                              value={transactionState.fee}
-                              onChange={onFeeChange}
-                              borderWidth={'2px'}
-                              borderColor={'var(--color-black-50)'}
-                              focusBorderColor={'rgba(14, 6, 55, 0.10)'}
-                              height={'50px'}
-                              borderRadius={'12px'}
-                           />
-                        </InputGroup>
-                     </div>
-
-                     <div className="fee-currency w-full">
-                        <span className="text-md mb-1 block uppercase">
-                           Fee Currency
-                        </span>
+                        </InputLeftElement>
                         <Input
-                           placeholder="Fee Currency"
-                           value={transactionState.fee_currency}
-                           onChange={onFeeCurrencyChange}
+                           placeholder="Amount"
+                           value={transactionState.amount}
+                           onChange={onAmountChange}
                            borderWidth={'2px'}
                            borderColor={'var(--color-black-50)'}
                            focusBorderColor={'rgba(14, 6, 55, 0.10)'}
                            height={'50px'}
                            borderRadius={'12px'}
-                           disabled
                         />
-                     </div>
+                     </InputGroup>
                   </div>
 
-                  <div className="time w-full">
-                     <span className="text-md mb-1 block uppercase">Notes</span>
-                     <Textarea
-                        value={transactionState.notes}
-                        onChange={onNotesChange}
-                        placeholder="Enter any notes if you wish to write!"
-                        size="sm"
+                  <div className="price w-full">
+                     <span className="text-md mb-1 block uppercase">Price</span>
+                     <InputGroup>
+                        <InputLeftElement
+                           pointerEvents="none"
+                           color="gray.300"
+                           fontSize="1.2em"
+                           height={'100%'}
+                        >
+                           $
+                        </InputLeftElement>
+                        <Input
+                           placeholder="Amount"
+                           value={transactionState.price}
+                           onChange={onPriceChange}
+                           borderWidth={'2px'}
+                           borderColor={'var(--color-black-50)'}
+                           focusBorderColor={'rgba(14, 6, 55, 0.10)'}
+                           height={'50px'}
+                           borderRadius={'12px'}
+                        />
+                     </InputGroup>
+                  </div>
+               </div>
+
+               <div className="row fee flex gap-4 justify-between items-center">
+                  <div className="fee-amount w-full">
+                     <span className="text-md mb-1 block uppercase">
+                        Fee Amount
+                     </span>
+                     <InputGroup>
+                        <InputLeftElement
+                           pointerEvents="none"
+                           color="gray.300"
+                           fontSize="1.2em"
+                           height={'100%'}
+                        >
+                           $
+                        </InputLeftElement>
+                        <Input
+                           placeholder="Fee Amount"
+                           value={transactionState.fee}
+                           onChange={onFeeChange}
+                           borderWidth={'2px'}
+                           borderColor={'var(--color-black-50)'}
+                           focusBorderColor={'rgba(14, 6, 55, 0.10)'}
+                           height={'50px'}
+                           borderRadius={'12px'}
+                        />
+                     </InputGroup>
+                  </div>
+
+                  <div className="fee-currency w-full">
+                     <span className="text-md mb-1 block uppercase">
+                        Fee Currency
+                     </span>
+                     <Input
+                        placeholder="Fee Currency"
+                        value={transactionState.fee_currency}
+                        onChange={onFeeCurrencyChange}
                         borderWidth={'2px'}
                         borderColor={'var(--color-black-50)'}
                         focusBorderColor={'rgba(14, 6, 55, 0.10)'}
                         height={'50px'}
                         borderRadius={'12px'}
-                        fontSize={'large'}
+                        disabled
                      />
                   </div>
-               </ModalBody>
+               </div>
 
-               <ModalFooter className="flex gap-4 justify-between">
-                  <Button
-                     variant="black"
-                     isLoading={isPending}
-                     disabled={isPending}
-                     onClickHandler={mutateAsync}
-                     expanded
-                  >
-                     Save
-                  </Button>
-                  <Button
-                     onClickHandler={onClose}
-                     variant="black"
-                     outline
-                     expanded
-                  >
-                     Cancel
-                  </Button>
-               </ModalFooter>
-            </ModalContent>
-         </Modal>
-      </motion.div>
+               <div className="time w-full">
+                  <span className="text-md mb-1 block uppercase">Notes</span>
+                  <Textarea
+                     value={transactionState.notes}
+                     onChange={onNotesChange}
+                     placeholder="Enter any notes if you wish to write!"
+                     size="sm"
+                     borderWidth={'2px'}
+                     borderColor={'var(--color-black-50)'}
+                     focusBorderColor={'rgba(14, 6, 55, 0.10)'}
+                     height={'50px'}
+                     borderRadius={'12px'}
+                     fontSize={'large'}
+                  />
+               </div>
+            </ModalBody>
+
+            <ModalFooter className="flex gap-4 justify-between">
+               <Button
+                  variant="black"
+                  isLoading={isPending}
+                  disabled={isPending}
+                  onClickHandler={mutateAsync}
+                  expanded
+               >
+                  Save
+               </Button>
+               <Button
+                  onClickHandler={onClose}
+                  variant="black"
+                  outline
+                  expanded
+               >
+                  Cancel
+               </Button>
+            </ModalFooter>
+         </ModalContent>
+      </Modal>
    );
 }
