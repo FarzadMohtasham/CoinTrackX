@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.184](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.183...v0.0.184) (2024-08-24)
+
+
+### Bug Fixes
+
+* Added Sun-Token icon ([854f590](https://github.com/FarzadMohtasham/CoinTrackX/commit/854f5900e23a80671aeeccc439487b17504e8785))
+
 ### [0.0.183](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.182...v0.0.183) (2024-08-24)
 
 
