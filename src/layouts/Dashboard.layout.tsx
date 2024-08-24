@@ -379,7 +379,9 @@ export default function DashboardLayout() {
             $navStatusWithDelay={navStatusWithDelay}
          >
             <div className={'navbar-heading-container'}>
-               <Logo />
+               <Link to={'/'}>
+                  <Logo />
+               </Link>
                <span
                   className={'close-navbar-icon'}
                   onClick={() => setNavStatus(false)}
@@ -493,7 +495,7 @@ export default function DashboardLayout() {
             animate={{ x: 0 }}
             exit={{ y: -90 }}
          >
-            <Link to={'/dashboard'}>
+            <Link to={'/'}>
                <Logo />
             </Link>
             <div className={'navigation-list'}>
