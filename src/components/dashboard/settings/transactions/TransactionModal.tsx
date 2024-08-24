@@ -31,6 +31,8 @@ import { format } from 'date-fns-tz';
 import { addTransactionMutation } from '@/queries/transactions/addTransaction.mutation';
 import { useInvalidateQuery } from '@/libs/hooks/useInvalidateQuery';
 import { getObjectKeyByValue } from '@/libs/utils/helpers';
+import { updateTransactionAPI } from '@/services/apis/transactions/updateTransaction.api';
+import { updateTransactionMutation } from '@/queries/transactions/updateTransaction.mutation';
 
 const reducerFn = (state: Transaction, action: ReducerAction): Transaction => {
    switch (action.type) {
@@ -125,12 +127,28 @@ export default function TransactionModal(props: TransactionModalProps) {
    // ---------- Queries ----------
    const invalidateTransactionsQuery = useInvalidateQuery(['getTransactions']);
 
-   const { mutateAsync, isPending } = addTransactionMutation(transactionState, {
+   const {
+      mutateAsync: transactionAddNewMutate,
+      isPending: addNewTransactionIsPending,
+   } = addTransactionMutation(transactionState, {
       onError: (error) => {
          toast.error(error.message);
       },
       onSuccess: () => {
          toast.success('Transaction Submitted successfully');
+         invalidateTransactionsQuery();
+      },
+   });
+
+   const {
+      mutateAsync: transactionUpdateMutate,
+      isPending: transactionUpdateIsPending,
+   } = updateTransactionMutation(transactionState.id || 0, transactionState, {
+      onError: (error) => {
+         toast.error(error.message);
+      },
+      onSuccess: () => {
+         toast.success('Transaction updated');
          invalidateTransactionsQuery();
       },
    });
@@ -204,6 +222,20 @@ export default function TransactionModal(props: TransactionModalProps) {
          payload: event.target.value,
          type: 'setNotes',
       });
+   };
+
+   const onSaveClickHandler = async () => {
+      switch (transactionType) {
+         case 'new':
+            await transactionAddNewMutate();
+            break;
+         case 'edit':
+            await transactionUpdateMutate();
+            break;
+         default:
+            toast.error('Something went wrong, Please try again');
+            throw new Error('Unknown transactionType');
+      }
    };
 
    // ---------- Hooks ----------
@@ -438,9 +470,13 @@ export default function TransactionModal(props: TransactionModalProps) {
             <ModalFooter className="flex gap-4 justify-between">
                <Button
                   variant="black"
-                  isLoading={isPending}
-                  disabled={isPending}
-                  onClickHandler={mutateAsync}
+                  isLoading={
+                     addNewTransactionIsPending || transactionUpdateIsPending
+                  }
+                  disabled={
+                     addNewTransactionIsPending || transactionUpdateIsPending
+                  }
+                  onClickHandler={onSaveClickHandler}
                   expanded
                >
                   Save

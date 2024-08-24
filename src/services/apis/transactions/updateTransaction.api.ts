@@ -5,8 +5,8 @@ import {
 } from '@/libs/typings/Transaction.type';
 
 export const updateTransactionAPI = async (
-   id: number,
    user_id: string,
+   id: number,
    updatedTransaction: UpdatedTransaction,
 ): Promise<Transaction> => {
    const { data, error } = await supabaseClient

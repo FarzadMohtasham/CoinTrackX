@@ -1,19 +1,25 @@
 import {
-   QueryOptions,
+   MutateOptions,
    useMutation,
    UseMutationResult,
 } from '@tanstack/react-query';
 import { updateTransactionAPI } from '@/services/apis/transactions/updateTransaction.api';
 import { Transaction } from '@/libs/typings/Transaction.type';
+import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
+import { useRouteLoaderData } from 'react-router-dom';
 
-export const deleteTransactionMutation = (
+export const updateTransactionMutation = (
    id: number,
-   user_id: string,
    updatedTransactionInfo: Transaction,
-   mutationOptions?: QueryOptions,
-): UseMutationResult => {
+   mutationOptions?: MutateOptions,
+): UseMutationResult<Transaction, Error, void, unknown> => {
+   const { user } = useRouteLoaderData(
+      'dashboardPage',
+   ) as DashboardPageLoaderResponse;
+
    return useMutation({
-      queryFn: () => updateTransactionAPI(id, user_id, updatedTransactionInfo),
+      mutationFn: () =>
+         updateTransactionAPI(user?.id || '', id, updatedTransactionInfo),
       ...mutationOptions,
    });
 };
