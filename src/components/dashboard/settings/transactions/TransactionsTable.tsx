@@ -113,7 +113,7 @@ const defaultColumns = [
    columnHelper.accessor('time', {
       id: 'time',
       cell: (info) => info.getValue(),
-      header: 'Time',
+      header: 'Buy/Sell Time',
    }),
    columnHelper.accessor('portfolio', {
       id: 'portfolio',
