@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.185](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.184...v0.0.185) (2024-08-24)
+
+
+### Features
+
+* Added FirstPage and LastPage ([4605764](https://github.com/FarzadMohtasham/CoinTrackX/commit/4605764f9a860f9a4e35667a5d8bd7c8eb8d141c))
+
 ### [0.0.184](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.183...v0.0.184) (2024-08-24)
 
 
