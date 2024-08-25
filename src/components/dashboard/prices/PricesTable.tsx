@@ -131,16 +131,16 @@ export default function PricesTable(): JSX.Element {
                   <Link to={`/dashboard/prices/${props.getValue().id}`}>
                      <ColumnName>
                         <Icon
-                           iconSrc={props.renderValue().logoSrc}
+                           iconSrc={props.getValue().logoSrc}
                            className={'left-col'}
                            width={'35px'}
                         />
                         <div className={'right-col'}>
                            <span className={'name'}>
-                              {props.renderValue().name}
+                              {props.getValue().name}
                            </span>
                            <span className={'symbol'}>
-                              {props.renderValue().symbol}
+                              {props.getValue().symbol}
                            </span>
                         </div>
                      </ColumnName>
@@ -153,7 +153,7 @@ export default function PricesTable(): JSX.Element {
             header: 'Price',
             cell: (props: CellContext<any, any>) => (
                <ColumnCellSpan>
-                  ${Number(props.renderValue()).toFixed(2)}
+                  ${Number(props.getValue()).toFixed(2)}
                </ColumnCellSpan>
             ),
          },
@@ -162,7 +162,7 @@ export default function PricesTable(): JSX.Element {
             header: 'Market Cap',
             cell: (props: CellContext<any, any>) => (
                <ColumnCellSpan>
-                  ${Number(props.renderValue()).toFixed(2)}M
+                  ${Number(props.getValue()).toFixed(2)}M
                </ColumnCellSpan>
             ),
          },
@@ -171,7 +171,7 @@ export default function PricesTable(): JSX.Element {
             header: 'Circulating Supply',
             cell: (props: CellContext<any, any>) => (
                <ColumnCellSpan>
-                  {Number(props.renderValue()).toFixed(2)}M
+                  {Number(props.getValue()).toFixed(2)}M
                </ColumnCellSpan>
             ),
          },
@@ -181,11 +181,9 @@ export default function PricesTable(): JSX.Element {
             cell: (props: CellContext<any, any>) => (
                <ColumnCellSpan>
                   <Badge
-                     type={
-                        Number(props.renderValue()) >= 0 ? 'success' : 'danger'
-                     }
+                     type={Number(props.getValue()) >= 0 ? 'success' : 'danger'}
                      iconSrc={
-                        Number(props.renderValue()) >= 0
+                        Number(props.getValue()) >= 0
                            ? 'arrow-up.svg'
                            : 'arrow-down.svg'
                      }
@@ -193,7 +191,7 @@ export default function PricesTable(): JSX.Element {
                      borderRadius={'full'}
                      outline
                   >
-                     %{Number(props.renderValue()).toFixed(2)}
+                     %{Number(props.getValue()).toFixed(2)}
                   </Badge>
                </ColumnCellSpan>
             ),
@@ -203,7 +201,7 @@ export default function PricesTable(): JSX.Element {
             header: 'last (24H)',
             cell: (props: CellContext<any, any>) => (
                <ColumnCellSpan>
-                  {Number(props.renderValue()).toFixed(2)}
+                  {Number(props.getValue()).toFixed(2)}
                </ColumnCellSpan>
             ),
          },
@@ -215,7 +213,7 @@ export default function PricesTable(): JSX.Element {
                   <Icon
                      width={'20px'}
                      iconSrc={
-                        props.renderValue()
+                        props.getValue()
                            ? 'star-filled.svg'
                            : 'star-unfilled.svg'
                      }
