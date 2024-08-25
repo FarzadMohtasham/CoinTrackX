@@ -34,6 +34,7 @@ import {
    createColumnHelper,
    flexRender,
    getCoreRowModel,
+   getFilteredRowModel,
    getPaginationRowModel,
    Header,
    HeaderGroup,
@@ -273,12 +274,15 @@ export default function TransactionsTable() {
       columns: defaultColumns,
       getCoreRowModel: getCoreRowModel(),
       getPaginationRowModel: getPaginationRowModel(),
+      getFilteredRowModel: getFilteredRowModel(),
       onPaginationChange: setPagination,
+      onGlobalFilterChange: setSearch,
       meta: {
          user,
       } as { user: User },
       state: {
          pagination,
+         globalFilter: search,
       },
    });
 
