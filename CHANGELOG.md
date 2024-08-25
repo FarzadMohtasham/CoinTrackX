@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.196](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.195...v0.0.196) (2024-08-25)
+
+
+### Features
+
+* Added Assets Header ([9a213a6](https://github.com/FarzadMohtasham/CoinTrackX/commit/9a213a64e76c060acc61871df9caa15cfb1143db))
+
 ### [0.0.195](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.194...v0.0.195) (2024-08-25)
 
 ### [0.0.194](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.193...v0.0.194) (2024-08-25)
