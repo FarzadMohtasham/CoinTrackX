@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.197](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.196...v0.0.197) (2024-08-26)
+
+
+### Features
+
+* Added sortTransactionsByAsset + types ... ([1a0f67e](https://github.com/FarzadMohtasham/CoinTrackX/commit/1a0f67ef0bea975a6037c841b9647bbe7a678a99))
+
 ### [0.0.196](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.195...v0.0.196) (2024-08-25)
 
 
