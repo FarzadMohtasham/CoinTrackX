@@ -30,7 +30,7 @@ export default function AssetsPortfolioTable() {
          );
       };
 
-      if (transactionsData?.length !== 0 || !transactionsDataIsLoading) {
+      if (transactionsData?.length !== 0 && !transactionsDataIsLoading) {
          handleUseEffect();
       }
    }, [transactionsData, transactionsDataIsLoading]);
