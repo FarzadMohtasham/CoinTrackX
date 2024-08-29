@@ -87,6 +87,7 @@
       "jest-transformer-svg": "^2.0.2",
       "postcss": "^8.4.41",
       "prettier": "^3.3.3",
+      "prettier-plugin-tailwindcss": "^0.6.6",
       "sass": "^1.72.0",
       "sass-loader": "^16.0.0",
       "standard-version": "^9.5.0",

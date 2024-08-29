@@ -1,8 +1,8 @@
 import { DashboardPageLoaderResponse } from '@/layouts/Dashboard.layout';
-import { calcTransactionsProfitLoss } from '@/libs/utils/portfolio-utils/CalcTransactionsProfitLoss';
-import { sortTransactionsByAsset } from '@/libs/utils/portfolio-utils/SortTransactionsByAsset';
+import { calcTransactionsProfitLoss } from '@/libs/utils/portfolio-utils/calcTransactionsProfitLoss';
+import { sortTransactionsByAsset } from '@/libs/utils/portfolio-utils/sortTransactionsByAsset';
 import { getTransactionsQuery } from '@/queries/transactions/getTransactions.query';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouteLoaderData } from 'react-router-dom';
 
 export default function AssetsPortfolioTable() {
