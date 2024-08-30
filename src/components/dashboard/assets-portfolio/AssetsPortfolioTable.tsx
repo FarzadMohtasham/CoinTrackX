@@ -23,11 +23,6 @@ export default function AssetsPortfolioTable() {
 
          const calculatedTransactionsProfitLoss =
             await calcTransactionsProfitLoss(sortedTransactionsByAsset);
-
-         console.log(
-            sortedTransactionsByAsset,
-            calculatedTransactionsProfitLoss,
-         );
       };
 
       if (transactionsData?.length !== 0 && !transactionsDataIsLoading) {
