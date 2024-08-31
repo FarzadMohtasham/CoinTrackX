@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.201](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.200...v0.0.201) (2024-08-31)
+
+
+### Features
+
+* Added table global filter functionality ([966fe6c](https://github.com/FarzadMohtasham/CoinTrackX/commit/966fe6c5a299a0c8bcb9ef807d35e77c5633472c))
+
 ### [0.0.200](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.199...v0.0.200) (2024-08-31)
 
 
