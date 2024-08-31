@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.200](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.199...v0.0.200) (2024-08-31)
+
+
+### Features
+
+* Added some new features to app ([a3e36bc](https://github.com/FarzadMohtasham/CoinTrackX/commit/a3e36bca86930d19f2ca29feccd8ebf312594e5b))
+* Developed calcTransactionsProfitLoss ([574936c](https://github.com/FarzadMohtasham/CoinTrackX/commit/574936c82e23af38082a4914181858dd3e78c1b7))
+
 ### [0.0.199](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.198...v0.0.199) (2024-08-29)
 
 ### [0.0.198](https://github.com/FarzadMohtasham/CoinTrackX/compare/v0.0.197...v0.0.198) (2024-08-27)
