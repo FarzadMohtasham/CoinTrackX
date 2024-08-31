@@ -86,8 +86,6 @@ export async function calcTransactionsProfitLoss(
 
          result.data.push(calculatedTransaction);
       });
-
-      console.log(result);
    } catch (e) {
       result.error = e;
    }

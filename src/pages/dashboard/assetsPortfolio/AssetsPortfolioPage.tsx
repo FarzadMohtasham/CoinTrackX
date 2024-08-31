@@ -9,7 +9,7 @@ const AssetsPortfolioContainer = styled.div`
 
 export default function AssetsPortfolioPage(): JSX.Element {
    return (
-      <AssetsPortfolioContainer>
+      <AssetsPortfolioContainer className="flex flex-col gap-5">
          <AssetsPortfolioHeader />
          <AssetsPortfolioTable />
       </AssetsPortfolioContainer>
