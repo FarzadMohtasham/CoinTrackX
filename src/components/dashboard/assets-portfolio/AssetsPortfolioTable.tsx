@@ -27,6 +27,7 @@ import {
    createColumnHelper,
    flexRender,
    getCoreRowModel,
+   getFilteredRowModel,
    getPaginationRowModel,
    Header,
    HeaderGroup,
@@ -111,9 +112,12 @@ export default function AssetsPortfolioTable() {
       data: tableData,
       getCoreRowModel: getCoreRowModel(),
       getPaginationRowModel: getPaginationRowModel(),
+      getFilteredRowModel: getFilteredRowModel(),
+      onGlobalFilterChange: setSearch,
       onPaginationChange: setPagination,
       state: {
          pagination,
+         globalFilter: search,
       },
    });
 
